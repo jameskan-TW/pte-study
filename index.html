@@ -89,6 +89,9 @@
   .callout.red { background: #fdedec; border-color: #f1948a; }
 
   td.highlight { background: #fff3cd; font-weight: 700; color: #856404; }
+  .day-btn { padding: 6px 14px; border: 1px solid #e9e9e7; background: white; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 600; color: #37352f; }
+  .day-btn:hover { background: #f0f0ef; }
+  .day-btn.active { background: #37352f; color: white; border-color: #37352f; }
 
   /* Score table */
   .score-table { width: auto; }
@@ -154,36 +157,176 @@
   </div>
 
   <!-- Daily Checklist -->
-  <h2>📋 Daily Checklist <button class="reset-btn" onclick="resetChecks()">Reset</button></h2>
+  <h2>📋 Daily Checklist <button class="reset-btn" onclick="resetChecks()">Reset Today</button></h2>
 
-  <div class="checklist-section">
-    <span class="tag morning">☀️ Morning · 9:00–12:00</span>
-    <ul class="checklist">
-      <li><input type="checkbox" id="c1" onchange="saveChecks()"><span>WE x 1</span></li>
-      <li><input type="checkbox" id="c2" onchange="saveChecks()"><span>WE Reading x 3</span></li>
-      <li><input type="checkbox" id="c3" onchange="saveChecks()"><span>SWT x 2</span></li>
-      <li><input type="checkbox" id="c4" onchange="saveChecks()"><span>SWT Reading x 3</span></li>
-      <li><input type="checkbox" id="c5" onchange="saveChecks()"><span>SST x 1</span></li>
-      <li><input type="checkbox" id="c6" onchange="saveChecks()"><span>SST Reading x 2</span></li>
-      <li><input type="checkbox" id="c7" onchange="saveChecks()"><span>WFD x 30</span></li>
-    </ul>
+  <!-- Day selector -->
+  <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap">
+    <button class="day-btn active" onclick="showDay('mon',this)">一 Mon</button>
+    <button class="day-btn" onclick="showDay('tue',this)">二 Tue</button>
+    <button class="day-btn" onclick="showDay('wed',this)">三 Wed</button>
+    <button class="day-btn" onclick="showDay('thu',this)">四 Thu</button>
+    <button class="day-btn" onclick="showDay('fri',this)">五 Fri</button>
   </div>
 
-  <div class="checklist-section">
-    <span class="tag night">🌙 Night · 8:00–9:30</span>
-    <ul class="checklist">
-      <li><input type="checkbox" id="c8" onchange="saveChecks()"><span>FIB (Drop Down / Drag Drop) x 6</span></li>
-      <li><input type="checkbox" id="c9" onchange="saveChecks()"><span>RS x 10</span></li>
-      <li><input type="checkbox" id="c10" onchange="saveChecks()"><span>RO x 2</span></li>
-    </ul>
+  <!-- MON -->
+  <div id="day-mon" class="day-plan">
+    <div class="checklist-section">
+      <span class="tag morning">🌅 06:15–07:45｜Speaking</span>
+      <ul class="checklist">
+        <li><input type="checkbox" id="m1" onchange="saveChecks()"><span>DI x 8</span></li>
+        <li><input type="checkbox" id="m2" onchange="saveChecks()"><span>SGD x 4</span></li>
+        <li><input type="checkbox" id="m3" onchange="saveChecks()"><span>RS x 20 句</span></li>
+      </ul>
+    </div>
+    <div class="checklist-section">
+      <span class="tag" style="background:#e8f5e9;color:#2e7d32">☀️ 13:00–14:00｜家教課</span>
+      <ul class="checklist">
+        <li><input type="checkbox" id="m4" onchange="saveChecks()"><span>DI 驗收 x 2</span></li>
+        <li><input type="checkbox" id="m5" onchange="saveChecks()"><span>SGD 驗收 x 2（老師抓卡頓、發音）</span></li>
+      </ul>
+    </div>
+    <div class="checklist-section">
+      <span class="tag night">🌆 16:00–17:30｜Speaking + Reading</span>
+      <ul class="checklist">
+        <li><input type="checkbox" id="m6" onchange="saveChecks()"><span>RA x 15</span></li>
+        <li><input type="checkbox" id="m7" onchange="saveChecks()"><span>FIB Dropdown x 6</span></li>
+      </ul>
+    </div>
+    <div class="checklist-section">
+      <span class="tag low">🌌 23:30–00:30｜睡前</span>
+      <ul class="checklist">
+        <li><input type="checkbox" id="m8" onchange="saveChecks()"><span>WFD x 35 句 ⭐</span></li>
+        <li><input type="checkbox" id="m9" onchange="saveChecks()"><span>HIW x 4</span></li>
+      </ul>
+    </div>
   </div>
 
-  <div class="checklist-section">
-    <span class="tag low">😴 Low Energy Options</span>
-    <ul class="checklist">
-      <li><input type="checkbox" id="c11" onchange="saveChecks()"><span>FIB-L</span></li>
-      <li><input type="checkbox" id="c12" onchange="saveChecks()"><span>HIW</span></li>
-    </ul>
+  <!-- TUE -->
+  <div id="day-tue" class="day-plan" style="display:none">
+    <div class="checklist-section">
+      <span class="tag morning">🌅 06:15–07:45｜Writing</span>
+      <ul class="checklist">
+        <li><input type="checkbox" id="t1" onchange="saveChecks()"><span>WE x 1 篇（計時 20 分）</span></li>
+        <li><input type="checkbox" id="t2" onchange="saveChecks()"><span>SWT x 3</span></li>
+        <li><input type="checkbox" id="t3" onchange="saveChecks()"><span>RS x 20 句</span></li>
+      </ul>
+    </div>
+    <div class="checklist-section">
+      <span class="tag" style="background:#e8f5e9;color:#2e7d32">☀️ 13:00–14:00｜家教課</span>
+      <ul class="checklist">
+        <li><input type="checkbox" id="t4" onchange="saveChecks()"><span>WE + SWT 批改（老師批第 3、4 段）</span></li>
+      </ul>
+    </div>
+    <div class="checklist-section">
+      <span class="tag night">🌆 16:00–17:30｜Reading</span>
+      <ul class="checklist">
+        <li><input type="checkbox" id="t5" onchange="saveChecks()"><span>FIB Dropdown x 8</span></li>
+        <li><input type="checkbox" id="t6" onchange="saveChecks()"><span>RO x 6</span></li>
+      </ul>
+    </div>
+    <div class="checklist-section">
+      <span class="tag low">🌌 23:30–00:30｜睡前</span>
+      <ul class="checklist">
+        <li><input type="checkbox" id="t7" onchange="saveChecks()"><span>WFD x 35 句 ⭐</span></li>
+        <li><input type="checkbox" id="t8" onchange="saveChecks()"><span>FIB-L x 5</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- WED -->
+  <div id="day-wed" class="day-plan" style="display:none">
+    <div class="checklist-section">
+      <span class="tag morning">🌅 06:15–07:45｜Reading FIB</span>
+      <ul class="checklist">
+        <li><input type="checkbox" id="w1" onchange="saveChecks()"><span>FIB Drag &amp; Drop x 8</span></li>
+        <li><input type="checkbox" id="w2" onchange="saveChecks()"><span>FIB Dropdown x 8</span></li>
+      </ul>
+    </div>
+    <div class="checklist-section">
+      <span class="tag" style="background:#e8f5e9;color:#2e7d32">☀️ 13:00–14:00｜家教課</span>
+      <ul class="checklist">
+        <li><input type="checkbox" id="w3" onchange="saveChecks()"><span>FIB 錯題逐題分析（老師解析語法盲點）</span></li>
+      </ul>
+    </div>
+    <div class="checklist-section">
+      <span class="tag night">🌆 16:00–17:30｜Speaking</span>
+      <ul class="checklist">
+        <li><input type="checkbox" id="w4" onchange="saveChecks()"><span>RS x 35 句</span></li>
+        <li><input type="checkbox" id="w5" onchange="saveChecks()"><span>ASQ x 20</span></li>
+      </ul>
+    </div>
+    <div class="checklist-section">
+      <span class="tag low">🌌 23:30–00:30｜睡前</span>
+      <ul class="checklist">
+        <li><input type="checkbox" id="w6" onchange="saveChecks()"><span>WFD x 35 句 ⭐</span></li>
+        <li><input type="checkbox" id="w7" onchange="saveChecks()"><span>HIW x 4</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- THU -->
+  <div id="day-thu" class="day-plan" style="display:none">
+    <div class="checklist-section">
+      <span class="tag morning">🌅 06:15–07:45｜Listening</span>
+      <ul class="checklist">
+        <li><input type="checkbox" id="h1" onchange="saveChecks()"><span>SST x 2</span></li>
+        <li><input type="checkbox" id="h2" onchange="saveChecks()"><span>RL x 4</span></li>
+        <li><input type="checkbox" id="h3" onchange="saveChecks()"><span>SGD x 3</span></li>
+      </ul>
+    </div>
+    <div class="checklist-section">
+      <span class="tag" style="background:#e8f5e9;color:#2e7d32">☀️ 13:00–14:00｜家教課</span>
+      <ul class="checklist">
+        <li><input type="checkbox" id="h4" onchange="saveChecks()"><span>SST x 1 驗收（筆記速度 + 摘要完整度）</span></li>
+        <li><input type="checkbox" id="h5" onchange="saveChecks()"><span>RL x 1 驗收（模板套用）</span></li>
+      </ul>
+    </div>
+    <div class="checklist-section">
+      <span class="tag night">🌆 16:00–17:30｜Listening + Speaking</span>
+      <ul class="checklist">
+        <li><input type="checkbox" id="h6" onchange="saveChecks()"><span>FIB-L x 8</span></li>
+        <li><input type="checkbox" id="h7" onchange="saveChecks()"><span>DI x 6</span></li>
+      </ul>
+    </div>
+    <div class="checklist-section">
+      <span class="tag low">🌌 23:30–00:30｜睡前</span>
+      <ul class="checklist">
+        <li><input type="checkbox" id="h8" onchange="saveChecks()"><span>WFD x 35 句 ⭐</span></li>
+        <li><input type="checkbox" id="h9" onchange="saveChecks()"><span>RO x 4</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FRI -->
+  <div id="day-fri" class="day-plan" style="display:none">
+    <div class="checklist-section">
+      <span class="tag morning">🌅 06:15–07:45｜綜合衝刺</span>
+      <ul class="checklist">
+        <li><input type="checkbox" id="f1" onchange="saveChecks()"><span>WE x 1 篇（計時 20 分）</span></li>
+        <li><input type="checkbox" id="f2" onchange="saveChecks()"><span>SWT x 2</span></li>
+        <li><input type="checkbox" id="f3" onchange="saveChecks()"><span>DI x 5</span></li>
+      </ul>
+    </div>
+    <div class="checklist-section">
+      <span class="tag" style="background:#e8f5e9;color:#2e7d32">☀️ 13:00–14:00｜家教課</span>
+      <ul class="checklist">
+        <li><input type="checkbox" id="f4" onchange="saveChecks()"><span>週總複盤（老師總結本週最大盲點）</span></li>
+      </ul>
+    </div>
+    <div class="checklist-section">
+      <span class="tag night">🌆 16:00–17:30｜Speaking + Reading</span>
+      <ul class="checklist">
+        <li><input type="checkbox" id="f5" onchange="saveChecks()"><span>RS x 30 句</span></li>
+        <li><input type="checkbox" id="f6" onchange="saveChecks()"><span>FIB Drag &amp; Drop x 6</span></li>
+      </ul>
+    </div>
+    <div class="checklist-section">
+      <span class="tag low">🌌 23:30–00:30｜睡前</span>
+      <ul class="checklist">
+        <li><input type="checkbox" id="f7" onchange="saveChecks()"><span>WFD x 40 句 ⭐（週五加量）</span></li>
+        <li><input type="checkbox" id="f8" onchange="saveChecks()"><span>HIW x 2 + FIB-L x 2</span></li>
+      </ul>
+    </div>
   </div>
 
   <!-- Quote -->
@@ -1015,78 +1158,86 @@ In conclusion, although there are different opinions on this issue, it is clear 
   <p style="color:#9b9a97;font-size:13px;margin-bottom:16px">總時數約 3–4 小時／天 · 家教課每天一堂 · 從 2026/6/2（二）開始</p>
 
   <div class="callout">
-    📌 每週固定原則：<strong>WFD 每天都要練（30–40 句）</strong>，這是 Writing 23% + Listening 13% 的核心。其他題型按日輪替，不重複疲勞。
+    📌 每天固定時間：🌅 06:15–07:45（90分）· ☀️ 13:00–14:00 家教（60分）· 🌆 16:00–17:30（90分）· 🌌 23:30–00:30（60分）<br>
+    <strong>WFD 每天都要練，是 Writing 23% + Listening 13% 的核心，一天都不能少。</strong>
   </div>
 
   <!-- Monday -->
   <div class="tip-card" style="border-left:4px solid #e74c3c">
-    <h3>📅 Monday｜星期一：Speaking 日</h3>
+    <h3>📅 Monday｜Speaking 日（DI / SGD / RA）</h3>
     <table>
-      <tr><th>時段</th><th>題型</th><th>數量</th><th>重點</th></tr>
-      <tr><td>早上</td><td>DI</td><td>8 題</td><td>練所有圖表類型，套模板不卡頓</td></tr>
-      <tr><td>早上</td><td>SGD</td><td>4 題</td><td>聽完即套模板，流暢度第一</td></tr>
-      <tr><td>家教課</td><td>DI + SGD 驗收</td><td>各 2 題</td><td>老師抓卡頓、發音</td></tr>
-      <tr><td>下午</td><td>RA</td><td>10 題</td><td>不給準備時間，直接開口</td></tr>
-      <tr><td>睡前</td><td>WFD</td><td>35 句</td><td>補詞策略，不確定單複數兩個都寫</td></tr>
-      <tr><td>睡前</td><td>RS</td><td>15 句</td><td>睡前熱身，維持聽覺記憶</td></tr>
+      <tr><th>時段</th><th>時間</th><th>題型</th><th>數量</th><th>重點</th></tr>
+      <tr><td>🌅 早上</td><td>06:15–06:45</td><td>DI</td><td>8 題</td><td>所有圖表類型輪一遍，套模板不卡頓</td></tr>
+      <tr><td>🌅 早上</td><td>06:45–07:15</td><td>SGD</td><td>4 題</td><td>聽完即套模板，流暢度第一</td></tr>
+      <tr><td>🌅 早上</td><td>07:15–07:45</td><td>RS</td><td>20 句</td><td>不看答案直練，抓意群不卡頓</td></tr>
+      <tr><td>☀️ 家教</td><td>13:00–14:00</td><td>DI + SGD 驗收</td><td>各 2 題</td><td>老師抓卡頓、發音與模板流暢度</td></tr>
+      <tr><td>🌆 下午</td><td>16:00–16:45</td><td>RA</td><td>15 題</td><td>不給準備時間，直接開口，練連讀</td></tr>
+      <tr><td>🌆 下午</td><td>16:45–17:30</td><td>FIB Dropdown</td><td>6 題</td><td>先判斷詞性，錯題記 Collocation</td></tr>
+      <tr><td>🌌 睡前</td><td>23:30–00:10</td><td>WFD</td><td>35 句</td><td>補詞策略，不確定單複數兩個都寫</td></tr>
+      <tr><td>🌌 睡前</td><td>00:10–00:30</td><td>HIW</td><td>4 題</td><td>眼耳同步，不能漏看</td></tr>
     </table>
   </div>
 
   <!-- Tuesday -->
   <div class="tip-card" style="border-left:4px solid #e67e22">
-    <h3>📅 Tuesday｜星期二：Writing 日</h3>
+    <h3>📅 Tuesday｜Writing 日（WE / SWT）</h3>
     <table>
-      <tr><th>時段</th><th>題型</th><th>數量</th><th>重點</th></tr>
-      <tr><td>早上</td><td>WE</td><td>1 篇（計時）</td><td>限時 20 分鐘打完，練手感與框架</td></tr>
-      <tr><td>早上</td><td>SWT</td><td>2 題</td><td>一邊讀一邊寫，控制在 50 字以內</td></tr>
-      <tr><td>家教課</td><td>WE 批改</td><td>今天的 1 篇</td><td>老師批第 3、4 段文法與拼寫</td></tr>
-      <tr><td>下午</td><td>RO</td><td>6 題</td><td>找代名詞與冠詞的邏輯鏈</td></tr>
-      <tr><td>下午</td><td>HIW</td><td>4 題</td><td>眼耳同步，不能漏看</td></tr>
-      <tr><td>睡前</td><td>WFD</td><td>35 句</td><td>核心功課，每天不能少</td></tr>
+      <tr><th>時段</th><th>時間</th><th>題型</th><th>數量</th><th>重點</th></tr>
+      <tr><td>🌅 早上</td><td>06:15–06:35</td><td>WE</td><td>1 篇（計時 20 分）</td><td>限時打完，練手感與框架輸出</td></tr>
+      <tr><td>🌅 早上</td><td>06:35–07:15</td><td>SWT</td><td>3 題</td><td>一邊讀一邊寫，控制 50 字、用 and 連接</td></tr>
+      <tr><td>🌅 早上</td><td>07:15–07:45</td><td>RS</td><td>20 句</td><td>熱身，維持聽覺敏感度</td></tr>
+      <tr><td>☀️ 家教</td><td>13:00–14:00</td><td>WE + SWT 批改</td><td>今天的題目</td><td>老師批第 3、4 段文法、拼寫、SWT 結構</td></tr>
+      <tr><td>🌆 下午</td><td>16:00–16:50</td><td>FIB Dropdown</td><td>8 題</td><td>密集刷，錯題把正確搭配詞抄下來</td></tr>
+      <tr><td>🌆 下午</td><td>16:50–17:30</td><td>RO</td><td>6 題</td><td>找代名詞與冠詞的邏輯鏈</td></tr>
+      <tr><td>🌌 睡前</td><td>23:30–00:10</td><td>WFD</td><td>35 句</td><td>核心，每天不能少</td></tr>
+      <tr><td>🌌 睡前</td><td>00:10–00:30</td><td>FIB-L</td><td>5 題</td><td>嚴格檢查單複數與時態拼寫</td></tr>
     </table>
   </div>
 
   <!-- Wednesday -->
   <div class="tip-card" style="border-left:4px solid #27ae60">
-    <h3>📅 Wednesday｜星期三：Reading FIB 日</h3>
+    <h3>📅 Wednesday｜Reading FIB 日（FIB D&amp;D / FIB DD）</h3>
     <table>
-      <tr><th>時段</th><th>題型</th><th>數量</th><th>重點</th></tr>
-      <tr><td>早上</td><td>FIB Dropdown</td><td>8 題</td><td>錯題把 Collocation 抄下來</td></tr>
-      <tr><td>早上</td><td>FIB Drag &amp; Drop</td><td>6 題</td><td>判斷詞性再選，先看空格前後</td></tr>
-      <tr><td>家教課</td><td>FIB 錯題分析</td><td>今日錯題</td><td>老師解析語法盲點</td></tr>
-      <tr><td>下午</td><td>RS</td><td>30 句</td><td>不看答案直接練，流暢度為主</td></tr>
-      <tr><td>下午</td><td>ASQ</td><td>15 題</td><td>快速過高頻，不要想太久</td></tr>
-      <tr><td>睡前</td><td>WFD</td><td>35 句</td><td>特別注意固定搭配詞的拼寫</td></tr>
+      <tr><th>時段</th><th>時間</th><th>題型</th><th>數量</th><th>重點</th></tr>
+      <tr><td>🌅 早上</td><td>06:15–07:00</td><td>FIB Drag &amp; Drop</td><td>8 題</td><td>先判斷詞性，空格前後線索優先</td></tr>
+      <tr><td>🌅 早上</td><td>07:00–07:45</td><td>FIB Dropdown</td><td>8 題</td><td>錯題把正確 Collocation 抄下來記憶</td></tr>
+      <tr><td>☀️ 家教</td><td>13:00–14:00</td><td>FIB 錯題分析</td><td>今日全部錯題</td><td>老師逐題解析語法盲點與 V-ing/V-ed 判斷</td></tr>
+      <tr><td>🌆 下午</td><td>16:00–16:50</td><td>RS</td><td>35 句</td><td>不看答案直練，今天量最大，衝流暢度</td></tr>
+      <tr><td>🌆 下午</td><td>16:50–17:30</td><td>ASQ</td><td>20 題</td><td>快速過高頻，不要想太久直接回答</td></tr>
+      <tr><td>🌌 睡前</td><td>23:30–00:10</td><td>WFD</td><td>35 句</td><td>特別注意本週 FIB 出現的搭配詞拼寫</td></tr>
+      <tr><td>🌌 睡前</td><td>00:10–00:30</td><td>HIW</td><td>4 題</td><td>鞏固眼耳同步速度</td></tr>
     </table>
   </div>
 
   <!-- Thursday -->
   <div class="tip-card" style="border-left:4px solid #2980b9">
-    <h3>📅 Thursday｜星期四：Listening 日</h3>
+    <h3>📅 Thursday｜Listening 日（SST / RL / FIB-L）</h3>
     <table>
-      <tr><th>時段</th><th>題型</th><th>數量</th><th>重點</th></tr>
-      <tr><td>早上</td><td>SST</td><td>2 題</td><td>自己聽寫後對照，用顏色標記沒聽出的詞</td></tr>
-      <tr><td>早上</td><td>RL</td><td>3 題</td><td>考前先把模板背好，只記 4 句關鍵句</td></tr>
-      <tr><td>家教課</td><td>SST + RL 驗收</td><td>各 1 題</td><td>老師評估筆記速度與摘要完整度</td></tr>
-      <tr><td>下午</td><td>FIB-L</td><td>6 題</td><td>嚴格檢查單複數與時態</td></tr>
-      <tr><td>下午</td><td>SGD</td><td>3 題</td><td>補充星期一不夠的量</td></tr>
-      <tr><td>睡前</td><td>WFD</td><td>35 句</td><td>重點複習本週出現的錯誤句</td></tr>
-      <tr><td>睡前</td><td>HIW</td><td>3 題</td><td>鞏固眼耳同步習慣</td></tr>
+      <tr><th>時段</th><th>時間</th><th>題型</th><th>數量</th><th>重點</th></tr>
+      <tr><td>🌅 早上</td><td>06:15–06:45</td><td>SST</td><td>2 題</td><td>自己聽寫後對照答案，顏色標記沒聽出的詞</td></tr>
+      <tr><td>🌅 早上</td><td>06:45–07:15</td><td>RL</td><td>4 題</td><td>只記 4 句關鍵句，考前把模板寫在草稿紙</td></tr>
+      <tr><td>🌅 早上</td><td>07:15–07:45</td><td>SGD</td><td>3 題</td><td>補 Speaking 量，練熟模板</td></tr>
+      <tr><td>☀️ 家教</td><td>13:00–14:00</td><td>SST + RL 驗收</td><td>各 1 題</td><td>老師評估筆記速度、摘要完整度、模板套用</td></tr>
+      <tr><td>🌆 下午</td><td>16:00–16:45</td><td>FIB-L</td><td>8 題</td><td>嚴格檢查單複數、動詞時態、拼寫</td></tr>
+      <tr><td>🌆 下午</td><td>16:45–17:30</td><td>DI</td><td>6 題</td><td>補 Speaking，練不同圖表類型</td></tr>
+      <tr><td>🌌 睡前</td><td>23:30–00:10</td><td>WFD</td><td>35 句</td><td>重點複習本週出現過的錯誤句</td></tr>
+      <tr><td>🌌 睡前</td><td>00:10–00:30</td><td>RO</td><td>4 題</td><td>快速排序，不要花超過 3 分鐘一題</td></tr>
     </table>
   </div>
 
   <!-- Friday -->
   <div class="tip-card" style="border-left:4px solid #8e44ad">
-    <h3>📅 Friday｜星期五：綜合衝刺 + 錯題複盤</h3>
+    <h3>📅 Friday｜綜合衝刺 + 週末複盤</h3>
     <table>
-      <tr><th>時段</th><th>題型</th><th>數量</th><th>重點</th></tr>
-      <tr><td>早上</td><td>DI</td><td>5 題</td><td>本週出現過的圖表類型再練一遍</td></tr>
-      <tr><td>早上</td><td>WE</td><td>1 篇（計時）</td><td>換一個本週沒寫過的題目</td></tr>
-      <tr><td>家教課</td><td>週總複盤</td><td>—</td><td>老師總結本週最大盲點，下週調整方向</td></tr>
-      <tr><td>下午</td><td>RO</td><td>4 題</td><td></td></tr>
-      <tr><td>下午</td><td>SWT</td><td>2 題</td><td>複習本週練過的主題，加快速度</td></tr>
-      <tr><td>睡前</td><td>WFD</td><td>40 句</td><td>週五加量，週末可以追進度</td></tr>
-      <tr><td>睡前</td><td>RS</td><td>20 句</td><td>週末前維持聽覺敏感度</td></tr>
+      <tr><th>時段</th><th>時間</th><th>題型</th><th>數量</th><th>重點</th></tr>
+      <tr><td>🌅 早上</td><td>06:15–06:35</td><td>WE</td><td>1 篇（計時 20 分）</td><td>換本週沒寫過的題目，盲打測試</td></tr>
+      <tr><td>🌅 早上</td><td>06:35–07:05</td><td>SWT</td><td>2 題</td><td>加快速度，練到 8 分鐘內完成一題</td></tr>
+      <tr><td>🌅 早上</td><td>07:05–07:45</td><td>DI</td><td>5 題</td><td>本週出現過的圖表類型再掃一遍</td></tr>
+      <tr><td>☀️ 家教</td><td>13:00–14:00</td><td>週總複盤</td><td>—</td><td>老師總結本週最大盲點，調整下週方向</td></tr>
+      <tr><td>🌆 下午</td><td>16:00–16:45</td><td>RS</td><td>30 句</td><td>週末前維持聽覺敏感度</td></tr>
+      <tr><td>🌆 下午</td><td>16:45–17:30</td><td>FIB Drag &amp; Drop</td><td>6 題</td><td>鞏固本週 FIB 的弱點</td></tr>
+      <tr><td>🌌 睡前</td><td>23:30–00:10</td><td>WFD</td><td>40 句</td><td>週五加量，用週末繼續追進度</td></tr>
+      <tr><td>🌌 睡前</td><td>00:10–00:30</td><td>HIW + FIB-L</td><td>各 2 題</td><td>輕鬆收尾，不勉強</td></tr>
     </table>
   </div>
 
@@ -1094,21 +1245,21 @@ In conclusion, although there are different opinions on this issue, it is clear 
   <h2>📊 本週題量總覽</h2>
   <table>
     <tr><th>題型</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>週總量</th></tr>
-    <tr><td>WFD</td><td>35</td><td>35</td><td>35</td><td>35</td><td>40</td><td><strong>180 句</strong></td></tr>
-    <tr><td>RS</td><td>15</td><td>—</td><td>30</td><td>—</td><td>20</td><td><strong>65 句</strong></td></tr>
-    <tr><td>DI</td><td>8</td><td>—</td><td>—</td><td>—</td><td>5</td><td><strong>13 題</strong></td></tr>
+    <tr><td><strong>WFD</strong> ⭐</td><td>35</td><td>35</td><td>35</td><td>35</td><td>40</td><td><strong>180 句</strong></td></tr>
+    <tr><td>RS</td><td>20</td><td>20</td><td>35</td><td>—</td><td>30</td><td><strong>105 句</strong></td></tr>
+    <tr><td>DI</td><td>8</td><td>—</td><td>—</td><td>6</td><td>5</td><td><strong>19 題</strong></td></tr>
     <tr><td>SGD</td><td>4</td><td>—</td><td>—</td><td>3</td><td>—</td><td><strong>7 題</strong></td></tr>
+    <tr><td>RA</td><td>15</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>15 題</strong></td></tr>
     <tr><td>WE</td><td>—</td><td>1</td><td>—</td><td>—</td><td>1</td><td><strong>2 篇</strong></td></tr>
-    <tr><td>SWT</td><td>—</td><td>2</td><td>—</td><td>—</td><td>2</td><td><strong>4 題</strong></td></tr>
-    <tr><td>FIB Dropdown</td><td>—</td><td>—</td><td>8</td><td>—</td><td>—</td><td><strong>8 題</strong></td></tr>
-    <tr><td>FIB D&amp;D</td><td>—</td><td>—</td><td>6</td><td>—</td><td>—</td><td><strong>6 題</strong></td></tr>
-    <tr><td>FIB-L</td><td>—</td><td>—</td><td>—</td><td>6</td><td>—</td><td><strong>6 題</strong></td></tr>
-    <tr><td>RO</td><td>—</td><td>6</td><td>—</td><td>—</td><td>4</td><td><strong>10 題</strong></td></tr>
+    <tr><td>SWT</td><td>—</td><td>3</td><td>—</td><td>—</td><td>2</td><td><strong>5 題</strong></td></tr>
+    <tr><td>FIB Dropdown</td><td>6</td><td>8</td><td>8</td><td>—</td><td>—</td><td><strong>22 題</strong></td></tr>
+    <tr><td>FIB D&amp;D</td><td>—</td><td>—</td><td>8</td><td>—</td><td>6</td><td><strong>14 題</strong></td></tr>
+    <tr><td>FIB-L</td><td>—</td><td>5</td><td>—</td><td>8</td><td>2</td><td><strong>15 題</strong></td></tr>
+    <tr><td>RO</td><td>—</td><td>6</td><td>—</td><td>4</td><td>—</td><td><strong>10 題</strong></td></tr>
     <tr><td>SST</td><td>—</td><td>—</td><td>—</td><td>2</td><td>—</td><td><strong>2 題</strong></td></tr>
-    <tr><td>RL</td><td>—</td><td>—</td><td>—</td><td>3</td><td>—</td><td><strong>3 題</strong></td></tr>
-    <tr><td>RA</td><td>10</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>10 題</strong></td></tr>
-    <tr><td>HIW</td><td>—</td><td>4</td><td>—</td><td>3</td><td>—</td><td><strong>7 題</strong></td></tr>
-    <tr><td>ASQ</td><td>—</td><td>—</td><td>15</td><td>—</td><td>—</td><td><strong>15 題</strong></td></tr>
+    <tr><td>RL</td><td>—</td><td>—</td><td>—</td><td>4</td><td>—</td><td><strong>4 題</strong></td></tr>
+    <tr><td>HIW</td><td>4</td><td>—</td><td>4</td><td>—</td><td>4</td><td><strong>12 題</strong></td></tr>
+    <tr><td>ASQ</td><td>—</td><td>—</td><td>20</td><td>—</td><td>—</td><td><strong>20 題</strong></td></tr>
   </table>
 
   <!-- Summary -->
@@ -1180,8 +1331,24 @@ function loadGoal() {
   if (g.date) document.getElementById('g-date').value = g.date;
 }
 
+function showDay(day, btn) {
+  document.querySelectorAll('.day-plan').forEach(d => d.style.display = 'none');
+  document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('day-' + day).style.display = 'block';
+  btn.classList.add('active');
+}
+
+// Auto-select today's day on load
+function autoSelectDay() {
+  const days = ['sun','mon','tue','wed','thu','fri','sat'];
+  const today = days[new Date().getDay()];
+  const btn = document.querySelector(`.day-btn[onclick*="'${today}'"]`);
+  if (btn) { showDay(today, btn); }
+}
+
 loadChecks();
 loadGoal();
+autoSelectDay();
 </script>
 </body>
 </html>
