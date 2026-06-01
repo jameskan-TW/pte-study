@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PTE Study Hub</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, "Noto Sans TC", sans-serif; background: #f7f7f5; color: #37352f; display: flex; min-height: 100vh; font-size: 15px; line-height: 1.75; }
+
+  /* Sidebar */
+  #sidebar { width: 240px; min-height: 100vh; background: #fbfbfa; border-right: 1px solid #e9e9e7; padding: 24px 12px; position: fixed; top: 0; left: 0; overflow-y: auto; z-index: 100; }
+  #sidebar h2 { font-size: 13px; font-weight: 600; color: #9b9a97; text-transform: uppercase; letter-spacing: .05em; margin: 16px 8px 6px; }
+  #sidebar a { display: flex; align-items: center; gap: 8px; padding: 5px 8px; border-radius: 4px; color: #37352f; text-decoration: none; font-size: 14px; cursor: pointer; }
+  #sidebar a:hover, #sidebar a.active { background: #e9e9e7; }
+  #sidebar .logo { font-size: 16px; font-weight: 700; padding: 4px 8px 16px; border-bottom: 1px solid #e9e9e7; margin-bottom: 8px; }
+
+  /* Main */
+  #main { margin-left: 240px; flex: 1; padding: 48px 64px; max-width: calc(100% - 240px); }
+  .section { display: none; }
+  .section.active { display: block; }
+
+  h1 { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
+  h2 { font-size: 20px; font-weight: 600; margin: 32px 0 12px; border-bottom: 1px solid #e9e9e7; padding-bottom: 6px; }
+  h3 { font-size: 16px; font-weight: 600; margin: 20px 0 8px; }
+  h4 { font-size: 14px; font-weight: 600; margin: 12px 0 6px; color: #6b6b6b; }
+  p { margin-bottom: 8px; }
+
+  /* Goal box */
+  .goal-box { background: #fff8e6; border: 1px solid #f5d87a; border-radius: 8px; padding: 20px 24px; margin-bottom: 24px; }
+  .goal-box .goal-title { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+  .goal-row { display: flex; gap: 24px; flex-wrap: wrap; }
+  .goal-score { background: white; border: 1px solid #e9e9e7; border-radius: 6px; padding: 8px 16px; text-align: center; min-width: 80px; }
+  .goal-score .label { font-size: 11px; color: #9b9a97; text-transform: uppercase; }
+  .goal-score input { width: 60px; font-size: 22px; font-weight: 700; text-align: center; border: none; outline: none; background: transparent; }
+
+  /* Checklist */
+  .checklist-section { background: white; border: 1px solid #e9e9e7; border-radius: 8px; padding: 20px 24px; margin-bottom: 16px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-bottom: 12px; }
+  .tag.morning { background: #ffeab6; color: #b65c00; }
+  .tag.night { background: #d3e5ef; color: #1a5276; }
+  .tag.low { background: #e8e8e8; color: #5a5a5a; }
+  .checklist { list-style: none; }
+  .checklist li { display: flex; align-items: center; gap: 10px; padding: 4px 0; font-size: 14px; }
+  .checklist input[type=checkbox] { width: 16px; height: 16px; accent-color: #37352f; cursor: pointer; flex-shrink: 0; }
+  .checklist input[type=checkbox]:checked + span { text-decoration: line-through; color: #9b9a97; }
+
+  /* Weekly grid */
+  .week-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-top: 12px; }
+  .day-card { background: white; border: 1px solid #e9e9e7; border-radius: 6px; padding: 10px; }
+  .day-card .day-name { font-size: 11px; font-weight: 700; text-transform: uppercase; color: #9b9a97; margin-bottom: 8px; }
+  .type-chip { display: block; font-size: 12px; background: #f0f0ef; border-radius: 4px; padding: 3px 7px; margin-bottom: 4px; font-weight: 500; }
+  .type-chip.priority { background: #ffe2dd; color: #c0392b; }
+
+  /* Tip cards */
+  .tip-card { background: white; border: 1px solid #e9e9e7; border-radius: 8px; padding: 20px 24px; margin-bottom: 16px; }
+  .tip-card h3 { margin-top: 0; }
+
+  /* Table */
+  table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 12px 0 20px; }
+  th { background: #f7f7f5; text-align: left; padding: 7px 12px; font-weight: 600; border: 1px solid #e9e9e7; }
+  td { padding: 7px 12px; border: 1px solid #e9e9e7; vertical-align: top; }
+  tr:nth-child(even) td { background: #fafafa; }
+
+  /* Accordion */
+  details { border: 1px solid #e9e9e7; border-radius: 6px; margin-bottom: 8px; background: white; }
+  details summary { padding: 12px 16px; font-weight: 600; cursor: pointer; font-size: 14px; list-style: none; display: flex; align-items: center; gap: 8px; }
+  details summary::before { content: "▶"; font-size: 10px; color: #9b9a97; transition: transform .2s; }
+  details[open] summary::before { transform: rotate(90deg); }
+  details .detail-body { padding: 0 20px 16px; font-size: 14px; border-top: 1px solid #f0f0ef; }
+  details .detail-body p { margin-top: 12px; }
+
+  /* Essay */
+  .essay { background: #f9f9f8; border-left: 3px solid #e9e9e7; padding: 16px 20px; font-size: 14px; line-height: 1.8; margin-top: 12px; border-radius: 0 6px 6px 0; white-space: pre-wrap; }
+
+  /* Code block */
+  pre { background: #f7f7f5; border: 1px solid #e9e9e7; border-radius: 6px; padding: 14px 16px; font-size: 13px; overflow-x: auto; margin: 10px 0; white-space: pre-wrap; line-height: 1.6; }
+
+  /* List */
+  ul, ol { padding-left: 22px; margin-bottom: 10px; }
+  li { margin-bottom: 3px; font-size: 14px; }
+
+  /* Quote */
+  blockquote { border-left: 3px solid #ccc; background: #f9f9f8; padding: 10px 16px; border-radius: 0 6px 6px 0; font-size: 14px; color: #555; margin: 10px 0; }
+
+  /* Callout */
+  .callout { background: #eaf4fb; border: 1px solid #aed6f1; border-radius: 8px; padding: 16px 20px; margin: 16px 0; font-size: 14px; }
+  .callout.yellow { background: #fef9e7; border-color: #f9e79f; }
+  .callout.red { background: #fdedec; border-color: #f1948a; }
+
+  /* Score table */
+  .score-table { width: auto; }
+  .score-table td, .score-table th { text-align: center; min-width: 55px; }
+
+  /* Badge */
+  .badge { display: inline-block; background: #e8e8e8; color: #555; font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 10px; }
+  .badge.red { background: #ffe2dd; color: #c0392b; }
+
+  /* Progress reset */
+  .reset-btn { font-size: 12px; color: #9b9a97; border: 1px solid #e9e9e7; background: white; padding: 4px 10px; border-radius: 4px; cursor: pointer; float: right; margin-top: -4px; }
+  .reset-btn:hover { background: #f0f0ef; }
+
+  /* Responsive */
+  @media(max-width:768px){
+    #sidebar { display: none; }
+    #main { margin-left: 0; padding: 24px 20px; max-width: 100%; }
+    .week-grid { grid-template-columns: repeat(3,1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<nav id="sidebar">
+  <div class="logo">📚 PTE Study Hub</div>
+  <h2>Overview</h2>
+  <a onclick="show('home')" class="active">🏠 Home</a>
+  <a onclick="show('weekly')">📅 Weekly Plan</a>
+  <h2>Practice</h2>
+  <a onclick="show('speaking')">🗣️ Speaking</a>
+  <a onclick="show('writing')">✍️ Writing</a>
+  <a onclick="show('reading')">📖 Reading</a>
+  <a onclick="show('listening')">🎧 Listening</a>
+  <h2>Resources</h2>
+  <a onclick="show('we-essays')">📝 WE Essays</a>
+  <a onclick="show('sst-predict')">🎯 SST Predict</a>
+  <a onclick="show('grammar')">📐 Grammar Notes</a>
+  <a onclick="show('tips')">💡 Tips Library</a>
+</nav>
+
+<!-- MAIN -->
+<main id="main">
+
+<!-- ====== HOME ====== -->
+<div id="home" class="section active">
+  <h1>🎯 PTE Study Hub</h1>
+  <p style="color:#9b9a97;margin-bottom:24px">Track your progress. Stay consistent. Get that score.</p>
+
+  <div class="goal-box">
+    <div class="goal-title">🎯 Target Score</div>
+    <div class="goal-row">
+      <div class="goal-score"><div class="label">Listening</div><input id="g-l" type="number" placeholder="79" onchange="saveGoal()"></div>
+      <div class="goal-score"><div class="label">Reading</div><input id="g-r" type="number" placeholder="79" onchange="saveGoal()"></div>
+      <div class="goal-score"><div class="label">Writing</div><input id="g-w" type="number" placeholder="79" onchange="saveGoal()"></div>
+      <div class="goal-score"><div class="label">Speaking</div><input id="g-s" type="number" placeholder="79" onchange="saveGoal()"></div>
+    </div>
+    <div style="margin-top:14px;font-size:13px;color:#888">
+      考試日期：<input id="g-date" type="date" style="border:1px solid #e9e9e7;border-radius:4px;padding:3px 8px;font-size:13px" onchange="saveGoal()">
+    </div>
+  </div>
+
+  <!-- Daily Checklist -->
+  <h2>📋 Daily Checklist <button class="reset-btn" onclick="resetChecks()">Reset</button></h2>
+
+  <div class="checklist-section">
+    <span class="tag morning">☀️ Morning · 9:00–12:00</span>
+    <ul class="checklist">
+      <li><input type="checkbox" id="c1" onchange="saveChecks()"><span>WE x 1</span></li>
+      <li><input type="checkbox" id="c2" onchange="saveChecks()"><span>WE Reading x 3</span></li>
+      <li><input type="checkbox" id="c3" onchange="saveChecks()"><span>SWT x 2</span></li>
+      <li><input type="checkbox" id="c4" onchange="saveChecks()"><span>SWT Reading x 3</span></li>
+      <li><input type="checkbox" id="c5" onchange="saveChecks()"><span>SST x 1</span></li>
+      <li><input type="checkbox" id="c6" onchange="saveChecks()"><span>SST Reading x 2</span></li>
+      <li><input type="checkbox" id="c7" onchange="saveChecks()"><span>WFD x 30</span></li>
+    </ul>
+  </div>
+
+  <div class="checklist-section">
+    <span class="tag night">🌙 Night · 8:00–9:30</span>
+    <ul class="checklist">
+      <li><input type="checkbox" id="c8" onchange="saveChecks()"><span>FIB (Drop Down / Drag Drop) x 6</span></li>
+      <li><input type="checkbox" id="c9" onchange="saveChecks()"><span>RS x 10</span></li>
+      <li><input type="checkbox" id="c10" onchange="saveChecks()"><span>RO x 2</span></li>
+    </ul>
+  </div>
+
+  <div class="checklist-section">
+    <span class="tag low">😴 Low Energy Options</span>
+    <ul class="checklist">
+      <li><input type="checkbox" id="c11" onchange="saveChecks()"><span>FIB-L</span></li>
+      <li><input type="checkbox" id="c12" onchange="saveChecks()"><span>HIW</span></li>
+    </ul>
+  </div>
+
+  <!-- Quote -->
+  <div style="margin-top:32px;text-align:center;color:#9b9a97;font-style:italic;font-size:15px">
+    "Accept the challenges so that you can feel the exhilaration of victory."<br>
+    <strong style="font-style:normal;color:#555">— George S. Patton</strong>
+  </div>
+</div>
+
+<!-- ====== WEEKLY PLAN ====== -->
+<div id="weekly" class="section">
+  <h1>📅 Weekly Plan</h1>
+  <p style="color:#9b9a97;margin-bottom:24px">每週題型分配</p>
+
+  <div class="week-grid">
+    <div class="day-card">
+      <div class="day-name">Monday</div>
+      <span class="type-chip priority">SST</span>
+      <span class="type-chip priority">WFD</span>
+    </div>
+    <div class="day-card">
+      <div class="day-name">Tuesday</div>
+      <span class="type-chip priority">WE</span>
+      <span class="type-chip priority">RO</span>
+      <span class="type-chip">HIW</span>
+    </div>
+    <div class="day-card">
+      <div class="day-name">Wednesday</div>
+      <span class="type-chip priority">FIB D&D</span>
+      <span class="type-chip priority">FIB DD</span>
+      <span class="type-chip">RS</span>
+    </div>
+    <div class="day-card">
+      <div class="day-name">Thursday</div>
+      <span class="type-chip">DI</span>
+      <span class="type-chip">RA</span>
+    </div>
+    <div class="day-card">
+      <div class="day-name">Friday</div>
+      <span class="type-chip">SGD</span>
+      <span class="type-chip">SWT</span>
+    </div>
+    <div class="day-card">
+      <div class="day-name">Saturday</div>
+      <span class="type-chip">RL</span>
+      <span class="type-chip">FIB-L</span>
+    </div>
+    <div class="day-card">
+      <div class="day-name">Background</div>
+      <span class="type-chip">RTS</span>
+      <span class="type-chip">ASQ</span>
+      <span class="type-chip">MC-M(R)</span>
+      <span class="type-chip">HCS</span>
+      <span class="type-chip">MC-M(L)</span>
+      <span class="type-chip">MC-S(R/L)</span>
+    </div>
+  </div>
+
+  <h2>📊 Priority</h2>
+  <table>
+    <tr><th>優先級</th><th>題型</th></tr>
+    <tr><td><span class="badge red">🔴 高優先</span></td><td>WFD、WE、SST、FIB (Drop Down)、RO、FIB (Drag &amp; Drop)</td></tr>
+    <tr><td><span class="badge">⚪ 一般</span></td><td>SWT、SGD、RS、DI、RL、RTS、RA、ASQ、SMW、HCS、MC-M/S、HIW、FIB-L</td></tr>
+  </table>
+</div>
+
+<!-- ====== SPEAKING ====== -->
+<div id="speaking" class="section">
+  <h1>🗣️ Speaking</h1>
+
+  <div class="tip-card">
+    <h3>RA · Read Aloud</h3>
+    <ul>
+      <li>不給自己準備時間，拿到題目就開始讀</li>
+      <li>流暢度比速度重要：語速平均、連貫清晰、適當停頓換氣</li>
+      <li>詞與詞之間自然連讀，不要一個字一個字蹦出來</li>
+      <li>逗號、句號、從句前、and 前都要短暫停頓</li>
+      <li>練到非生字句子能完全流暢讀出</li>
+    </ul>
+  </div>
+
+  <div class="tip-card">
+    <h3>RS · Repeat Sentence</h3>
+    <ul>
+      <li>不看答案直接練，每天至少 50 題，熟練後可達 100 題</li>
+      <li>不做筆記以維持流暢度，記不住就多刷題</li>
+      <li>注重流暢度而非完美內容</li>
+      <li>WFD 和 RS 都用常速練習，不加速</li>
+    </ul>
+  </div>
+
+  <div class="tip-card">
+    <h3>RL · Re-tell Lecture</h3>
+    <ul>
+      <li>考前利用自我介紹那頁的 2 分鐘，把模板寫好</li>
+      <li>聽懂哪句就記哪句，模板固定四句</li>
+      <li>錄音結束後只有約 10 秒整理筆記，要快速組織</li>
+    </ul>
+  </div>
+
+  <div class="tip-card">
+    <h3>DI · Describe Image</h3>
+    <ul>
+      <li>開頭念標題，結尾說結論</li>
+      <li>折線圖：說上升下降趨勢</li>
+      <li>柱狀圖：說大小與極值</li>
+      <li>圓餅圖：從大到小描述</li>
+      <li>流程圖：逐步說明步驟</li>
+      <li>地圖或圖片：看到什麼說什麼</li>
+    </ul>
+    <h4>Short Dynamic Template（20–25 sec）</h4>
+    <blockquote>The [type] shows how [topic] changed from [year] to [year].<br>Overall, the trend shows a [steady increase / sharp drop / fluctuation].<br>[Category A] increased the most, while [Category B] showed little change.<br>In general, the graph highlights a clear shift over time.</blockquote>
+    <h4>Standard Dynamic Template（30–35 sec）</h4>
+    <blockquote>The graph illustrates the changes in [topic] over a period from [year] to [year].<br>It can be seen that [main trend] occurred during this time.<br>At the beginning, [starting point], but later it [rose / fell / stabilized].<br>Among the categories, [Category A] experienced the most significant change.<br>Overall, the chart indicates that [main conclusion].</blockquote>
+    <h4>趨勢描述詞彙</h4>
+    <table>
+      <tr><th>方向</th><th>動詞 + 副詞組合</th></tr>
+      <tr><td>📈 上升</td><td>rose steadily / increased gradually / grew significantly / climbed sharply / surged dramatically</td></tr>
+      <tr><td>📉 下降</td><td>fell slightly / dropped suddenly / decreased steadily / declined gradually / plunged rapidly</td></tr>
+      <tr><td>➖ 持平</td><td>remained constant / stayed unchanged / leveled off after [year]</td></tr>
+      <tr><td>🔁 波動</td><td>fluctuated slightly / varied considerably / showed minor fluctuations</td></tr>
+      <tr><td>🎯 極值</td><td>peaked at / hit a record high / bottomed out near zero</td></tr>
+    </table>
+  </div>
+
+  <div class="tip-card">
+    <h3>ASQ · Answer Short Question</h3>
+    <ul>
+      <li>過一遍高頻題，約 100 題，不超過一小時</li>
+      <li>分值低但容易得分，不能放棄</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ====== WRITING ====== -->
+<div id="writing" class="section">
+  <h1>✍️ Writing</h1>
+
+  <div class="tip-card">
+    <h3>WE · Write Essay</h3>
+    <ul>
+      <li>準備一份約 200 字的模板，練到 6 分鐘能完整打出</li>
+      <li>考試時直接套用模板並留時間檢查</li>
+      <li>文章不超過 300 字</li>
+      <li>熟練打字速度（推薦：<a href="https://www.typingclub.com" target="_blank">typingclub.com</a>、<a href="https://www.keybr.com" target="_blank">keybr.com</a>）</li>
+    </ul>
+    <h4>標準四段結構</h4>
+    <table>
+      <tr><th>段落</th><th>開頭句</th></tr>
+      <tr><td>Introduction</td><td>Nowadays, whether [topic] is beneficial or harmful to society has become a widely discussed issue... From my point of view, I firmly believe that [stance].</td></tr>
+      <tr><td>Body 1</td><td>One of the main reasons why I support this view is that [reason]. For example, ... This shows that ...</td></tr>
+      <tr><td>Body 2</td><td>On the other hand, some people may argue that ... However, I am convinced that this view overlooks... For instance, ... This demonstrates that ...</td></tr>
+      <tr><td>Conclusion</td><td>In conclusion, although there are different opinions, it is clear to me that ... If managed properly, this [approach] can continue to bring positive impacts in the future.</td></tr>
+    </table>
+    <h4>Quick Reminder</h4>
+    <ul>
+      <li>開場：<em>Nowadays, whether... is beneficial or harmful to society.</em></li>
+      <li>立場：<em>brings more advantages than disadvantages</em></li>
+      <li>萬用優點：<em>improves one's daily efficiency / saves a significant amount of time</em></li>
+      <li>語法：<em>without + V-ing</em></li>
+      <li>結尾：<em>is essential for maintaining a healthy work-life balance</em></li>
+    </ul>
+    <h4>逆向檢查法</h4>
+    <p>從文章<strong>最後一字往回讀</strong>，打破大腦自動補全慣性，讓每個單字拼寫被獨立審視。</p>
+  </div>
+
+  <div class="tip-card">
+    <h3>SWT · Summarize Written Text</h3>
+    <ul>
+      <li>一邊讀一邊寫，抓各段的第一句或最後一句，用 and 連接</li>
+      <li>不用 but、從句等複雜結構</li>
+      <li>控制在 50 字左右並留時間檢查</li>
+      <li><strong>只能一句話</strong>（5–75 字）</li>
+    </ul>
+    <h4>How to find the key things?</h4>
+    <ol>
+      <li><strong>Find topic &amp; main idea</strong>：通常在第一句，問「這段主要講什麼？」</li>
+      <li><strong>Find author's purpose</strong>：找文章要 explain / prove / describe 什麼</li>
+      <li><strong>Pick 2–3 supporting ideas</strong>：選廣泛且重複出現的概念</li>
+      <li>用連接詞組成 <strong>one smooth sentence</strong></li>
+    </ol>
+    <h4>SWT Content 得分策略</h4>
+    <ol>
+      <li>快速找出主要觀點</li>
+      <li>選出 2–3 個支撐點</li>
+      <li><strong>改寫（Paraphrase）</strong>，不要原文複製</li>
+      <li>保持簡潔，省略次要例子</li>
+      <li>確保連貫，用連接詞讓摘要完整</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ====== READING ====== -->
+<div id="reading" class="section">
+  <h1>📖 Reading</h1>
+
+  <div class="tip-card">
+    <h3>FIB · Fill in the Blanks (Drop Down)</h3>
+    <ul>
+      <li>集中練高頻題，看到空前後幾個詞就能直覺選出</li>
+      <li>熟悉常見搭配、語法結構</li>
+    </ul>
+    <h4>5 Tips for Success</h4>
+    <ol>
+      <li><strong>Read for Gist</strong>：先讀完整段，理解整體「故事」再填空</li>
+      <li><strong>Part of Speech</strong>：填空前判斷：這裡需要名詞、動詞還是形容詞？</li>
+      <li><strong>Collocations</strong>：英文有固定搭配，例如 remain open / research funding</li>
+      <li><strong>Grammar Clues</strong>：看空格前後——"a [blank]" 告訴你下一個詞是單數可數名詞</li>
+      <li><strong>Tone &amp; Context</strong>：文章談「危機」→ 空格詞通常與問題、減少、負面結果有關</li>
+    </ol>
+    <h4>V-ing vs V-ed 判斷</h4>
+    <table>
+      <tr><th>情況</th><th>用法</th><th>例子</th></tr>
+      <tr><td>名詞<strong>發出</strong>動作</td><td>V-ing</td><td>research <em>suggesting</em> that...</td></tr>
+      <tr><td>名詞<strong>接受</strong>動作</td><td>V-ed</td><td>research <em>conducted</em> by...</td></tr>
+    </table>
+    <h4>include / includes / including</h4>
+    <table>
+      <tr><th>用法</th><th>主詞</th><th>範例</th></tr>
+      <tr><td>include</td><td>複數</td><td>Some of the factors <strong>include</strong>...</td></tr>
+      <tr><td>includes</td><td>單數</td><td>The main factor <strong>includes</strong>...</td></tr>
+      <tr><td>including</td><td>分詞（不能當主要動詞）</td><td>...factors, <strong>including</strong> X, are important.</td></tr>
+    </table>
+  </div>
+
+  <div class="tip-card">
+    <h3>RO · Re-order Paragraphs</h3>
+    <ul>
+      <li>只練高頻題，用死記硬背法記順序</li>
+      <li>每篇做錯的提煉關鍵詞，中英雙語，編故事記順序</li>
+    </ul>
+  </div>
+
+  <div class="tip-card">
+    <h3>MCQ · Multiple Choice</h3>
+    <ul>
+      <li>不特別練；考試時若時間充裕可仔細推敲</li>
+      <li>多選不確定時只選一個，避免扣分</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ====== LISTENING ====== -->
+<div id="listening" class="section">
+  <h1>🎧 Listening</h1>
+
+  <div class="tip-card">
+    <h3>SST · Summarize Spoken Text</h3>
+    <ul>
+      <li>聽高頻題音檔，自己練寫摘要再對答案</li>
+      <li>用顏色標籤記錄沒聽出主題的題目，重點複習</li>
+      <li>WFD 做好了，SST 記筆記也會飛快</li>
+    </ul>
+    <h4>簡易摘要模板</h4>
+    <blockquote>The lecture explains [idea 1].<br>It also says [idea 2].<br>Finally, it highlights [idea 3].</blockquote>
+  </div>
+
+  <div class="tip-card">
+    <h3>WFD · Write from Dictation ⭐ 重中之重</h3>
+    <ul>
+      <li>每天練 50 題以上，全部真題練多輪</li>
+      <li>顏色標籤分類：🟢 全對 → 🟡 小錯 → 🔵 錯 → 🔴 特別難</li>
+      <li>練習打字速度（推薦：typingclub.com、keybr.com），目標 50+ wpm</li>
+      <li>要實際打字，不偷懶只口說；多猜詞不扣分但注意拼寫與大小寫</li>
+      <li>保持常速練習，不加速</li>
+    </ul>
+    <h4>Common Connecting Words</h4>
+    <table>
+      <tr><th>類型</th><th>詞彙</th></tr>
+      <tr><td>Conjunctions</td><td>and / or / but / so / because / although / however / while / whereas / therefore</td></tr>
+      <tr><td>Prepositions</td><td>at / in / on / of / for / to / from / with / by / about</td></tr>
+      <tr><td>Connective adverbs</td><td>moreover / furthermore / nevertheless / consequently / hence / thus / instead / otherwise</td></tr>
+      <tr><td>Relative words</td><td>that / which / who / whose / where / when / while / if / since / until</td></tr>
+    </table>
+  </div>
+
+  <div class="tip-card">
+    <h3>HIW · Highlight Incorrect Words</h3>
+    <ul>
+      <li>正常速練習，不用 1.25 倍速</li>
+      <li>黑科技題能練好，考試就沒問題</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ====== WE ESSAYS ====== -->
+<div id="we-essays" class="section">
+  <h1>📝 WE Essay Bank</h1>
+  <p style="color:#9b9a97;margin-bottom:24px">點擊題目展開完整範文</p>
+
+  <details>
+    <summary>🏬 Large shopping malls replacing small shops</summary>
+    <div class="detail-body">
+      <div class="essay">Nowadays, whether the rise of large shopping malls is beneficial or harmful to society has become a widely discussed issue that affects many aspects of modern life. From my point of view, I firmly believe the idea that shopping in large commercial complexes brings more advantages than disadvantages.
+
+One of the main reasons why I support this view is that large shopping malls improve one's daily efficiency and save a significant amount of time. For example, busy city people can purchase everything from groceries to daily necessities in a single location without traveling to different specialized stores, so they can save plenty of time. This shows that enhancing living standards through convenience is essential for maintaining a healthy work-life balance.
+
+On the other hand, some people may argue that the power of large retailers will cause a loss of local character or a sense of isolation. However, I am convinced that this view overlooks how modern shopping centers also allow meaningful face-to-face interactions between neighbors. For instance, when people frequently visit the same large mall in their district, they naturally become familiar with other customers and staff, thereby establishing stable social connections. This demonstrates that large-scale commercial spaces can strengthen social bonds and bridge the emotional distance between people.
+
+In conclusion, although there are different opinions on this issue, it is clear to me that the rise of large shopping malls plays an important role in shaping a well-rounded and versatile society. If managed properly, this modern retail model can continue to bring positive impacts in the future.</div>
+    </div>
+  </details>
+
+  <details>
+    <summary>✈️ Disadvantages of tourism in less developed countries</summary>
+    <div class="detail-body">
+      <div class="essay">Nowadays, whether the growth of tourism in less developed countries is beneficial or harmful to society has become a widely discussed issue. From my point of view, I firmly believe that international tourism brings more advantages than disadvantages.
+
+One of the main reasons why I support this view is that tourism improves local economic efficiency and saves a significant amount of financial resources for the government. For example, developing nations can generate foreign exchange without relying solely on traditional exports, so they can fund public infrastructure faster. This shows that boosting the economy through convenience is essential for maintaining a healthy national development.
+
+On the other hand, some people may argue that rapid tourism development will cause a lot of difficulties in maintaining local traditions. However, I am convinced that this view overlooks the fact that tourism generates the financial resources required for cultural conservation. For instance, when people visit historical sites, they contribute to the local economy, thereby supporting local communities and increasing job opportunities. This demonstrates that international tourism can strengthen international cooperation and bridge the cultural gap between nations.
+
+In conclusion, although there are different opinions on this issue, it is clear to me that the tourism industry plays an important role in shaping a well-rounded and versatile society. If managed properly, this economic model can continue to bring positive impacts in the future.</div>
+    </div>
+  </details>
+
+  <details>
+    <summary>💊 Medical advances and life expectancy</summary>
+    <div class="detail-body">
+      <div class="essay">Nowadays, whether medical advances is beneficial or harmful to society has become a widely discussed issue. From my point of view, I firmly believe that extended longevity brings more advantages than disadvantages.
+
+One of the main reasons why I support this view is that medical advances improve healthcare system efficiency and save a significant amount of medical resources. For example, preventive treatments and early disease detection can keep people healthy without requiring expensive emergency interventions, so they can maintain productivity and quality of life longer. This shows that improving longevity through convenience is essential for maintaining a healthy society and economy.
+
+On the other hand, some people may argue that longer life expectancy will cause a lot of difficulties in supporting an aging population. However, I am convinced that this view overlooks the fact that elderly citizens contribute valuable knowledge and experience to society. For instance, when people live longer, they can serve as educators and mentors, thereby passing down wisdom to younger generations. This demonstrates that increased life expectancy can strengthen intergenerational bonds and bridge the experience gap between age groups.
+
+In conclusion, although there are different opinions on this issue, it is clear to me that the advancement of medical technology plays an important role in shaping a well-rounded and versatile society. If managed properly, this extension of human lifespan can continue to bring positive impacts in the future.</div>
+    </div>
+  </details>
+
+  <details>
+    <summary>🤖 Most important invention: AI</summary>
+    <div class="detail-body">
+      <div class="essay">Nowadays, which important invention is the most significant of the past century has become a widely discussed issue. From my point of view, I firmly believe that artificial intelligence stands as the most transformative and important invention in recent history.
+
+One of the main reasons why I support this view is that AI systems improve workplace productivity efficiency and save a significant amount of time on repetitive tasks. For example, AI systems can handle routine administrative work and data processing without human intervention, so they can complete tasks faster and more accurately. This shows that freeing workers from mundane duties through AI automation is essential for maintaining a healthy and innovative economy.
+
+On the other hand, some people may argue that AI technology will cause a lot of difficulties in distinguishing misleading information and false news. However, I am convinced that this view overlooks the fact that AI can significantly foster human learning outcomes and skill development. For instance, people use AI-powered educational platforms to access personalized learning, receive instant feedback, and acquire new skills in emerging fields, thereby nurturing future talent. This demonstrates that AI as an educational tool can strengthen individual capabilities and workforce adaptability.
+
+In conclusion, although there are different opinions on this issue, it is clear to me that artificial intelligence plays an important role in shaping a well-rounded and versatile society. If managed properly, this revolutionary technology can continue to bring positive impacts in the future.</div>
+    </div>
+  </details>
+
+  <details>
+    <summary>⏰ Reducing working hours / Shortening working week</summary>
+    <div class="detail-body">
+      <div class="essay">Nowadays, whether reducing working hours is beneficial or harmful to society has become a widely discussed issue. From my point of view, I firmly believe the idea that shorter work weeks brings more advantages than disadvantages.
+
+One of the main reasons why I support this view is that automation and AI technology improve workplace productivity efficiency and save a significant amount of time on repetitive tasks. For example, AI systems can handle routine administrative work and data processing without human intervention, so they can complete tasks faster and more accurately. This shows that freeing workers from mundane duties is essential for maintaining a healthy and innovative economy.
+
+On the other hand, some people may argue that reduced working hours will cause a lot of difficulties in maintaining economic output. However, I am convinced that this view overlooks the fact that extra free time enables workers to explore new skills and interests. For instance, when people have more time outside work, they can pursue personal development and creative projects, thereby nurturing future talent and increasing job opportunities. This demonstrates that shorter working hours can strengthen individual capabilities and foster innovation across sectors.
+
+In conclusion, although there are different opinions on this issue, it is clear to me that the trend toward reduced working hours plays an important role in shaping a well-rounded and versatile society. If managed properly, this shift in work-life balance can continue to bring positive impacts in the future.</div>
+    </div>
+  </details>
+
+  <details>
+    <summary>⚖️ Universities deducting marks for late assignments</summary>
+    <div class="detail-body">
+      <div class="essay">Nowadays, whether universities should give grade penalties for late assignment submissions has become a widely discussed issue. From my point of view, I firmly believe that deducting marks for late submissions brings more advantages than disadvantages.
+
+One of the main reasons why I support this view is that developing personal responsibility and accountability is essential for maintaining a good learning environment. For example, students who face penalties for late assignment submissions usually develop better time management, project planning, and responsibility-taking skills. This shows that teaching discipline through clear consequences can positively contribute to personal development and future success.
+
+On the other hand, some people may argue that grade deductions for late work will cause a lot of stress and anxiety among students. However, I am convinced that this view overlooks the fact that penalizing late submissions ensures fairness. For instance, students who submit assignments on time but get the same score as those who submitted late would feel it is unfair. This demonstrates that maintaining fairness is crucial in education.
+
+In conclusion, although there are different opinions on this issue, it is clear to me that having penalties for late submissions plays an important role in shaping a well-rounded and supportive education experience. If managed properly, this rule-based approach can continue to bring positive impacts in the future.</div>
+    </div>
+  </details>
+
+  <details>
+    <summary>🌿 Work-life balance</summary>
+    <div class="detail-body">
+      <div class="essay">Nowadays, maintaining a healthy work-life balance has become a widely discussed issue. From my point of view, I firmly believe that achieving balance between work and personal life is essential.
+
+One of the main reasons why I support this view is that lacking work-life balance often creates long-term pressure and health problems. For example, many workers who constantly prioritize work over personal time face chronic stress, physical exhaustion, and burnout. This shows that the absence of proper balance can negatively affect both personal well-being and family harmony.
+
+On the other hand, some people may argue that working longer hours demonstrates dedication. However, I am convinced that this view overlooks the fact that insufficient rest actually reduces work efficiency. For instance, employees who neglect rest and personal time experience declining performance, increased errors, and reduced creativity. This demonstrates that the lack of work-life balance not only harms health but also limits career advancement.
+
+In conclusion, although there are different opinions on this issue, it is clear to me that promoting work-life balance is crucial for both individual and organizational success. If managed properly, encouraging healthy boundaries can continue to bring positive impacts in the future.</div>
+    </div>
+  </details>
+
+  <details>
+    <summary>🌍 Travel as a necessary component of quality education</summary>
+    <div class="detail-body">
+      <div class="essay">Nowadays, whether travel is a necessary component of a quality education has become a widely discussed topic. From my point of view, I firmly believe that travel is an essential component of a meaningful and well-rounded education.
+
+One of the main reasons why I support this view is that travel provides real-world context that students cannot gain from textbooks alone. For example, students who study history or culture often understand these subjects more deeply when they visit the actual location. This shows that experiencing real environments helps students develop stronger and more memorable learning outcomes.
+
+On the other hand, some people may argue that a person can become a brilliant scholar without leaving their home bases. However, I am convinced that this view overlooks the fact that travel exposes students to new perspectives and ways of thinking. For instance, when students interact with people from different cultural backgrounds, they learn to explain ideas more clearly and think critically rather than relying on a single viewpoint. This demonstrates that travel gives people new ideas and strengthens critical thinking skills.
+
+In conclusion, although there are different opinions on this issue, it is clear to me that travel is a necessary component of quality education. If managed properly, including travel in education can continue to bring positive impacts in the future.</div>
+    </div>
+  </details>
+
+  <details>
+    <summary>🌍 Climate change responsibility</summary>
+    <div class="detail-body">
+      <div class="essay">Nowadays, the responsibility for addressing climate change has become a widely discussed issue. From my point of view, I firmly believe that governments, big companies, and individuals should all take responsibility for this global challenge.
+
+One of the main reasons why I support this view is that governments and big companies have the greatest influence on environmental policies and emissions. For example, governments can introduce laws that limit carbon emissions or invest in renewable energy, while companies can adjust their production processes and adopt sustainable strategies. This shows that large-scale decisions can reduce pollution more effectively and shape long-term environmental outcomes.
+
+On the other hand, some people may argue that individuals have very little impact. However, I am convinced that this view overlooks the fact that personal behavior also contributes to environmental change. For instance, individuals who choose public transport instead of driving can significantly reduce daily carbon emissions. This demonstrates that small actions, when multiplied across large populations, can create meaningful improvements.
+
+In conclusion, although there are different opinions on this issue, it is clear to me that everyone should share responsibility for combating climate change. If managed properly, collective effort can continue to bring positive impacts in the future.</div>
+    </div>
+  </details>
+
+  <details>
+    <summary>👨‍👩‍👧 Parents legally responsible for children's actions</summary>
+    <div class="detail-body">
+      <div class="essay">Nowadays, whether parents should be held legally responsible for their children's actions has become a widely discussed issue. From my point of view, I firmly believe that parents should be legally responsible for their children's behavior before the age of 18.
+
+One of the main reasons why I support this view is that parents are a child's first educators and play a key role in shaping their values and behavior. For example, parents teach children basic rules such as respecting others, following laws, and understanding consequences through daily guidance. This shows that holding parents responsible encourages them to set proper examples and guide their children toward correct behavior.
+
+On the other hand, some people may argue that children should be responsible for their own actions. However, I am convinced that this view overlooks the fact that teenagers are still developing mentally and depend greatly on parental guidance. For instance, when I was a teenager, I once made a poor decision without considering its long-term consequences. It was only after my parents explained the impact of my behavior and set clear boundaries that I began to understand responsibility.
+
+In conclusion, although there are different opinions on this issue, it is clear to me that parents should be legally responsible for their children's actions until they reach adulthood. If managed properly, this approach can continue to bring positive impacts in the future.</div>
+    </div>
+  </details>
+</div>
+
+<!-- ====== SST PREDICT ====== -->
+<div id="sst-predict" class="section">
+  <h1>🎯 SST Predict · 30 Passages</h1>
+  <div class="callout yellow">
+    <strong>AI Prompt：</strong>仔細讀這篇文章，寫一個 60–65 字的摘要，只用簡單英文，依照原文順序，不加入新想法。<br>
+    <strong>模板：</strong>The lecture explains [idea 1]. It also says [idea 2]. Finally, it highlights [idea 3].
+  </div>
+
+  <details><summary>1. Genes and Physical Feature</summary><div class="detail-body"><p>Since the discovery of the DNA structure, people have believed that genes have an impact only on people's physical structure. However, the study of mapping of genes in 2001 found that there is a genetic responsibility for humans' physical and psychological behaviors, which has changed the way we understand our behaviors. The research on genes has provided integrated information and can benefit biology, psychology, and neuroscience.</p><p><strong>我的摘要：</strong></p></div></details>
+
+  <details><summary>2. Market Economy</summary><div class="detail-body"><p>Within most developed countries, we have notions of pragmatism and democracies that have succeeded in tempering the market economy. In the 18th century, the industrial revolution had very negative effects on people, particularly working classes, as life expectancy was reduced and living standards went down. But legislation about working conditions and regulations reversed some damage, and the benefits are now far more widely shared than 100 years ago.</p><p><strong>我的摘要：</strong></p></div></details>
+
+  <details><summary>3. Australian Housing</summary><div class="detail-body"><p>Australian housing is expensive because the economy has been strong over the last 15 years, with rising earnings and the mortgage rate has roughly halved. This means households can afford to borrow more. At the same time, rising immigration is falling average household size, and the number of households looking for accommodation has risen. With no net increase in housing supply, all the purchasing power is pushing up the price of housing.</p><p><strong>我的摘要：</strong></p></div></details>
+
+  <details><summary>4. Canadian Obese Women</summary><div class="detail-body"><p>Thirty-one obese women volunteered in a Canadian study to test changes in their body fat. They followed strict daily dietary requirements and exercised as instructed every day. After six months, some of them lost weight, while others stayed the same, and some even gained weight. There are two explanations: some may have been cheating on the diet, or they did less exercise consciously or unconsciously for psychological reasons.</p><p><strong>我的摘要：</strong></p></div></details>
+
+  <details><summary>5. Global Warming</summary><div class="detail-body"><p>There can now be no reasonable, science-based doubt that cumulative and rapidly growing emission of greenhouse gasses is causing global climate change. As these effects become obvious worldwide, many feel mass panic. Although criticized, the risk that climate scientists have got it wrong supports using the Precautionary Principle, as warmest years and major precipitation changes now appear globally.</p><p><strong>我的摘要：</strong></p></div></details>
+
+  <details><summary>6. Globalization</summary><div class="detail-body"><p>Globalization means the proliferation of transactions across a country, shown by an increase in international communications, more trade between countries, being less self-sufficient, and having multinationals. It also brings growth in travel, communication, and corporate trade across borders. It is also an economic system where countries became integrated, with a global split between consuming and producing goods, creating organic solidarity.</p><p><strong>我的摘要：</strong></p></div></details>
+
+  <details><summary>7. Indian Peasants</summary><div class="detail-body"><p>The debt today is so high for peasants who have no capital, as they must buy seed costing a hundred thousand to two hundred thousand rupees per kilogram, even though seed that used to be free. Pesticides show that the more they use, the more they have to use. Because of the free market and globalization, peasants borrow from seed companies that sell the pesticides.</p><p><strong>我的摘要：</strong></p></div></details>
+
+  <details><summary>8. Artificial Intelligence ⭐</summary><div class="detail-body"><p>Humans used to tell a computer what to do and how to do it, so every action a computer takes was directly programmed and relied on specific instructions. Now, when given the meaning of certain words, computers can operate and develop systems and symbols. This significant shift lets them turn messages into bytes and interpret, process, and act upon data. Their ability to process symbols shared with human brains gives computers potential to bring about artificial intelligence.</p><p><strong>參考摘要：</strong> Humans used to tell a computer what to do and how to do it, so every action was directly programmed and relied on specific instructions. Now, computers can operate and develop systems and symbols, and this significant shift lets them turn messages into bytes and interpret, process, and act upon data, giving them potential to bring about artificial intelligence.</p><p><strong>我的摘要：</strong></p></div></details>
+
+  <details><summary>9. Sign Language</summary><div class="detail-body"><p>This lecture talks about abstraction and the origin of symbolic systems. People had used sign language for a long time, but they found that they could not communicate while doing things. For example, they need to ask for help when they strangle a rhinoceros. So, they need to communicate and do something with their hands at the same time. That's how words and language came.</p><p><strong>我的摘要：</strong></p></div></details>
+
+  <details><summary>10. Adam Smith</summary><div class="detail-body"><p>Before the Industrial Revolution, British economists defined a nation's wealth as the amount of money or gold it could accumulate. In 1776, Adam Smith introduced a groundbreaking perspective, arguing that wealth extended beyond monetary accumulation and included agriculture, manufacturing, and the ability to produce goods and services. This shift laid the foundation for modern economic theory by linking national wealth to national income.</p><p><strong>我的摘要：</strong></p></div></details>
+
+  <details><summary>11. Happiness Economics</summary><div class="detail-body"><p>Happiness economics can help us get to these questions, and surveys show what people say make them happy. We are increasingly confident because their consistent pattern determines wellbeing across countries and over time, showing basic things that make people happy like income, health, marital status, and employment status. These surveys pick up consistent patterns so we can look at how the environment and equality affect people's well-being.</p><p><strong>我的摘要：</strong></p></div></details>
+
+  <details><summary>12. Therapeutic Environment</summary><div class="detail-body"><p>Historically, the therapeutic environment has been important because fresh air and natural daylight help recovery, and the architecture and design of healthcare facilities have similar effects. Views of hospital gardens or yards help patients relax, improve sleep, and alleviate stress and pain. This connection is supported by staff, as 90% of hospital nurses believe design and atmosphere are linked to better recovery outcomes.</p><p><strong>我的摘要：</strong></p></div></details>
+
+  <details><summary>13. Separation of Powers</summary><div class="detail-body"><p>The separation of powers is a fundamental principle with three distinct branches: the legislative branch making laws, the executive branch enforcing laws, and the judicial branch interpreting the laws, creating a system of checks and balances. In the last century, the lines became increasingly blurred as the president gained more influence through executive orders and the expansion of the federal bureaucracy.</p><p><strong>我的摘要：</strong></p></div></details>
+
+  <details><summary>14. Need</summary><div class="detail-body"><p>There are several ways to use and interpret the word 'need'. When you say 'I need a holiday', it is an expression of a strong desire but not a basic need. When you say 'the plant needs water', it is an objective statement because it is essential. Also, there is a psychological use of 'need' when someone lacks something.</p><p><strong>我的摘要：</strong></p></div></details>
+
+  <details><summary>15. Globalization & Detraditionalization</summary><div class="detail-body"><p>The world is a global village with instant communications through the internet. The world is also shrinking due to distance and speed. Globalization has brought detraditionalization because of the erosion of traditional culture and conventional ways of doing things, as young people are rejecting the culture in which they grew up and are keen on imitating the Hollywood models.</p><p><strong>我的摘要：</strong></p></div></details>
+
+  <details><summary>16. The Rise of the Internet</summary><div class="detail-body"><p>The rise of the Internet has profoundly transformed journalism, reshaping its production and consumption. It created an acceleration of news dissemination, letting information spread almost instantaneously and diversifying access through social media, blogs, and independent news sites. The emergence of new forms of journalism, including ordinary videos captured by individuals, shows journalism democratization that expanded its reach and inclusivity.</p><p><strong>我的摘要：</strong></p></div></details>
+
+  <details><summary>17. Cultural Diversity in Australia</summary><div class="detail-body"><p>Being a multicultural country, Australia has immigrants from all over the world, which makes it the home to the world's oldest continuous cultures. Cultural diversity is a significant feature of Australian society. Cultural diversity can benefit the productivity, economic performance and labor force of Australia. According to the statistics, nearly half of Australians were born overseas or have a foreign-born parent.</p><p><strong>我的摘要：</strong></p></div></details>
+
+  <details><summary>18. Manager</summary><div class="detail-body"><p>Although managers often have busy schedules, they must dedicate time to read books, attend seminars, and continue their education to improve leadership and decision-making. The most effective managers have a solid grounding in management principles and a broad perspective on business. In a fast-paced and ever-changing business environment, lifelong learning helps managers make informed decisions, inspire their team, foster innovation, and be effective leaders.</p><p><strong>我的摘要：</strong></p></div></details>
+
+  <details><summary>19. Moral Objectivism</summary><div class="detail-body"><p>With the concept of moral objectivism, we look at universal moral principles that are valid for all people in all social environments and all situations, acting as signposts or a road map to guide behavior. From this perspective comes moral absolutism, with a very firm and unyielding boundary and non-overridable principles that must be followed. Some things are always right or always wrong, with nothing subject to interpretation.</p><p><strong>我的摘要：</strong></p></div></details>
+
+  <details><summary>20. Canned Food</summary><div class="detail-body"><p>During the Great Depression, the beginning of modern food technology appeared, with canned foods coming onto the market and refrigerators becoming very popular in cities. Thanks to electrification and the Rural Electrification Administration, people could buy appliances, and frozen foods were becoming big. Gradually these things picked up, starting the era of supermarkets with rows of freezer cases and canned food.</p><p><strong>我的摘要：</strong></p></div></details>
+
+  <details><summary>21. Synthetic Biology</summary><div class="detail-body"><p>The applications of synthetic biology show the ability and power to engineer life, raising curiosity about the natural world in the future. Synthetic biology is the next level of genetic engineering, allowing scientists to move pieces of DNA, write DNA, chemically synthesize DNA, and create new organisms completely from scratch. A cell programed to make a useful compound becomes a micro-scale manufacturing unit — a cellular factory.</p><p><strong>我的摘要：</strong></p></div></details>
+
+  <details><summary>22. Mars</summary><div class="detail-body"><p>Mars stands out as an intriguing neighboring planet because its comparable geological features and diverse landscapes make it a compelling subject of scientific exploration and a potential candidate for future habitation. Traces of heavy gases lingering for billions of years suggest a more hospitable environment in the distant past. Ongoing missions explore Mars's history, its ability to support life, and its role as an ideal alternative destination.</p><p><strong>我的摘要：</strong></p></div></details>
+
+  <details><summary>23. English</summary><div class="detail-body"><p>English is not a pure language because it has borrowed from over 350 languages, making it a variety of many languages. The history of the English language and the history of the English people are closely connected, so learning language is learning history. But this borrowing was viewed differently in Shakespeare's time, when people were angry about words not original English.</p><p><strong>我的摘要：</strong></p></div></details>
+
+  <details><summary>24. Languages and Basic Vocabulary</summary><div class="detail-body"><p>A historical linguist compares the languages at several levels by looking for a basic vocabulary. All languages have words for eye, head, nose, ear, and sky. You look for notions totally comparable everywhere and take the 100 to 200 most universal notions. Then you compare related languages and look for words that sound the same without being fooled by identical words.</p><p><strong>我的摘要：</strong></p></div></details>
+
+  <details><summary>25. Organization Studies</summary><div class="detail-body"><p>Organization studies draw on many social sciences, including psychology, sociology, economics, anthropology, politics, philosophy, and history. This broad mix can be a pleasure but also comes at the cost of depth. Some say this research is shallow, but it shows that academic lines are not real and that using ideas from many subjects helps us understand the social world.</p><p><strong>我的摘要：</strong></p></div></details>
+
+  <details><summary>26. Australian Immigrant</summary><div class="detail-body"><p>The first inhabitants in Australia were the ancestors of the present indigenous people, with migration dates debated between 40,000 and 70,000 years Before Present. This movement happened when sea levels were much lower, forming a single landmass called Sahul. As sea levels rose 10,000 years ago, Australia became separated again. Later periods saw new migration, including southern Asian refugees and more recent arrivals led by China and India.</p><p><strong>我的摘要：</strong></p></div></details>
+
+  <details><summary>27. Stability of Emotions</summary><div class="detail-body"><p>The lecture explains that we are creatures of mood and that our value as human beings can show great fluctuation. At some points we can tolerate ourselves and forgive our past, but at other points we feel weak, guilty and fall into self-hatred, even seeing ourselves as a cosmic error. Our moods are subject to change, yet we can learn to manage the change so our sadness becomes gentler.</p><p><strong>我的摘要：</strong></p></div></details>
+
+  <details><summary>28. Food Wasted</summary><div class="detail-body"><p>The United States is considered the biggest food waste country in the world, and 60% of food waste comes from general consumption. There are two main sources of food waste. The majority of food waste comes from supermarkets, especially in the use-by section. The other factor is what people purchase and how they eat, so purchasing all items is not a good idea.</p><p><strong>我的摘要：</strong></p></div></details>
+
+  <details><summary>29. Hook</summary><div class="detail-body"><p>A hook is important for writing a persuasive essay, which is intended to grab the reader's attention on the controversial issue. A hook is in the first paragraph with four or five sentences in length. The goal of a hook is to provoke emotional interest by using statistics and facts, presenting hypothetical or worst-case scenarios, and using strong wording to show the urgency of the addressed topic.</p><p><strong>我的摘要：</strong></p></div></details>
+
+  <details><summary>30. Population</summary><div class="detail-body"><p>Population growth has become a big challenge. So far, the world population has grown to seven billion. The biggest challenge we are facing is the limited resources, such as the water crisis, climate change and the food crisis. Moreover, population growth is not equally distributed across different parts of the world, which may change the balance of power. It is predicted that some cities will exceed 20 million people.</p><p><strong>我的摘要：</strong></p></div></details>
+</div>
+
+<!-- ====== GRAMMAR ====== -->
+<div id="grammar" class="section">
+  <h1>📐 Grammar Notes</h1>
+
+  <div class="tip-card">
+    <h3>長難句拆解法（4步驟）</h3>
+    <ol>
+      <li><strong>找主幹</strong>：只找「主詞 + 動詞」，忽略所有修飾</li>
+      <li><strong>標出修飾成分</strong>：which / that / who 子句、插入語</li>
+      <li><strong>刪掉修飾語</strong>：句子瞬間清楚</li>
+      <li><strong>再把修飾語加回去</strong>：理解每個修飾語在補充什麼</li>
+    </ol>
+    <blockquote>Although modern technology, <strong>which has rapidly transformed the way people communicate</strong>, provides convenience, it also creates new challenges <strong>that individuals must learn to manage</strong>.<br><br>→ 主幹：<em>modern technology provides convenience and creates challenges</em></blockquote>
+  </div>
+
+  <div class="tip-card">
+    <h3>句子成分（主謂賓補）</h3>
+    <table>
+      <tr><th>成分</th><th>功能</th><th>問法</th><th>範例</th></tr>
+      <tr><td>主詞 Subject</td><td>誰在做事</td><td>誰？什麼？</td><td><strong>Students</strong> study hard.</td></tr>
+      <tr><td>謂語 Verb</td><td>做了什麼</td><td>在幹嘛？</td><td>study / changes / provides</td></tr>
+      <tr><td>受詞 Object</td><td>動作作用在誰</td><td>對誰？對什麼？</td><td>Students read <strong>books</strong>.</td></tr>
+      <tr><td>補語 Complement</td><td>補充說明</td><td>—</td><td>Technology is <strong>useful</strong>.</td></tr>
+      <tr><td>定語 Modifier(N)</td><td>修飾名詞</td><td>什麼樣的？哪個？</td><td><strong>significant</strong> improvement</td></tr>
+      <tr><td>狀語 Modifier(V)</td><td>修飾動作</td><td>怎麼？何時？</td><td>study <strong>hard</strong></td></tr>
+    </table>
+    <div class="callout">💡 第一輪閱讀只抓主 + 謂，定語、狀語、補語全部先忽略</div>
+  </div>
+
+  <div class="tip-card">
+    <h3>詞性出現的地方</h3>
+    <table>
+      <tr><th>詞性</th><th>出現位置</th><th>範例</th></tr>
+      <tr><td rowspan="5"><strong>名詞</strong></td><td>冠詞後：a/an/the</td><td>the <strong>concept</strong></td></tr>
+      <tr><td>形容詞後</td><td>significant <strong>improvement</strong></td></tr>
+      <tr><td>介係詞後</td><td>the importance of <strong>education</strong></td></tr>
+      <tr><td>所有格後</td><td>their <strong>contribution</strong></td></tr>
+      <tr><td>動詞的主詞/受詞</td><td><strong>Pollution</strong> affects health.</td></tr>
+      <tr><td><strong>形容詞</strong></td><td>連綴動詞後（become/get/grow/turn）</td><td>become <strong>useful</strong></td></tr>
+      <tr><td rowspan="4"><strong>副詞</strong></td><td>形容詞前</td><td><strong>extremely</strong> difficult task</td></tr>
+      <tr><td>一般動詞前後</td><td>He <strong>always</strong> studies / speaks <strong>fluently</strong></td></tr>
+      <tr><td>句首（修飾全句）</td><td><strong>Unfortunately</strong>, the weather changed.</td></tr>
+      <tr><td>完整句子中間（刪掉仍完整）</td><td>No one is sure <strong>exactly</strong> what...</td></tr>
+    </table>
+  </div>
+
+  <div class="tip-card">
+    <h3>When to use "the"</h3>
+    <table>
+      <tr><th>用 "the"</th><th>不用 "the"</th></tr>
+      <tr><td>世界唯一（the sun / the moon）</td><td>泛指一般概念（Happiness is important.）</td></tr>
+      <tr><td>前文已提過同一個東西</td><td>複數/不可數名詞泛指（Apples are healthy.）</td></tr>
+      <tr><td>用片語限定「哪一個」</td><td>語言/運動/三餐（speak English / play tennis）</td></tr>
+      <tr><td>共同背景知識（the weather）</td><td>school/work/home 泛指地點</td></tr>
+      <tr><td>最高級（the best）</td><td></td></tr>
+    </table>
+    <div class="callout">💡 判斷口訣：對方知道我在說「哪一個」嗎？是 → 用 the；否 → 不加</div>
+  </div>
+
+  <div class="tip-card">
+    <h3>Uncountable Nouns（常見不可數名詞）</h3>
+    <table>
+      <tr><th>❌ 錯誤</th><th>✅ 正確</th><th>❌ 錯誤</th><th>✅ 正確</th></tr>
+      <tr><td>knowledges</td><td>knowledge</td><td>informations</td><td>information</td></tr>
+      <tr><td>advices</td><td>advice</td><td>researches</td><td>research</td></tr>
+      <tr><td>furnitures</td><td>furniture</td><td>equipments</td><td>equipment</td></tr>
+      <tr><td>trainings</td><td>training</td><td>homeworks</td><td>homework</td></tr>
+      <tr><td>traffics</td><td>traffic</td><td>progresses</td><td>progress</td></tr>
+      <tr><td>musics</td><td>music</td><td>newses</td><td>news</td></tr>
+      <tr><td>luggages</td><td>luggage</td><td>clothings</td><td>clothing</td></tr>
+    </table>
+    <p><strong>Mini Trick：</strong>能加 many/數字 → 可數；只能加 much/some → 不可數</p>
+  </div>
+</div>
+
+<!-- ====== TIPS LIBRARY ====== -->
+<div id="tips" class="section">
+  <h1>💡 Tips Library</h1>
+
+  <div class="tip-card">
+    <h3>AI Prompts</h3>
+    <h4>SWT 文章分析</h4>
+    <pre>請幫我分析以下這篇 PTE 練習文章。要求如下：
+1. 全文翻譯：提供流暢的中英對照翻譯
+2. 生僻字清單：挑出學術高頻詞或生僻字
+3. 詳細單詞分析：
+   - 單詞翻譯
+   - 英文同義詞
+   - PTE 應用造句（重點展示 Collocations）
+
+[貼上文章]</pre>
+
+    <h4>SWT 文法修改</h4>
+    <pre>請幫我修改這句 PTE SWT 的文法。要求如下：
+1. 單一長句：全篇只能有一個句號
+2. 不使用分號、However、Moreover、Furthermore
+   請使用 While / Although / Because / Since / and / but
+3. 糾正錯誤，根據我原本寫的內容改正，不要亂加詞或改結構
+
+[貼上你的 SWT]</pre>
+  </div>
+
+  <div class="tip-card">
+    <h3>WE · How to Study Essays Efficiently</h3>
+    <ul>
+      <li><strong>不要全文死記硬背</strong>，背「地圖」和「路標」</li>
+      <li><strong>關鍵詞組記憶法</strong>：每題只挑 3–5 個詞組串起主旨</li>
+      <li><strong>點子標籤化</strong>：36 題歸類成 5 大領域（科技/教育/環保/政府/社會）</li>
+      <li><strong>肌肉記憶訓練</strong>：大聲朗讀，每篇讀 3 遍</li>
+      <li><strong>盲打練習</strong>：每天隨機挑 2 題限時打字</li>
+    </ul>
+    <table>
+      <tr><th>Step</th><th>動作</th><th>重點</th></tr>
+      <tr><td>1. 歸類</td><td>36 題按主題分組</td><td>發現共通點</td></tr>
+      <tr><td>2. 提取</td><td>每題標 5 個關鍵詞 + 2 個論點</td><td>唯一需要死記的</td></tr>
+      <tr><td>3. 複述</td><td>看關鍵詞，用自己的話說出全文</td><td>確保文法邏輯通順</td></tr>
+      <tr><td>4. 盲打</td><td>每天 2 題限時打字</td><td>練手感與拼字</td></tr>
+    </table>
+  </div>
+
+  <div class="tip-card">
+    <h3>SGD · Speed Note Symbols</h3>
+    <table>
+      <tr><th>原詞</th><th>速記</th><th>原詞</th><th>速記</th></tr>
+      <tr><td>about</td><td>abt</td><td>because</td><td>bc / →</td></tr>
+      <tr><td>therefore</td><td>∴</td><td>increase</td><td>↑</td></tr>
+      <tr><td>decrease</td><td>↓</td><td>problem</td><td>prob</td></tr>
+      <tr><td>solution</td><td>sol</td><td>important</td><td>imp</td></tr>
+      <tr><td>agree/disagree</td><td>✓ / ✗</td><td>government</td><td>gov</td></tr>
+      <tr><td>people</td><td>ppl</td><td>environment</td><td>env</td></tr>
+    </table>
+  </div>
+
+  <div class="tip-card">
+    <h3>Vocabulary Spelling（易錯詞彙）</h3>
+    <p style="line-height:2">continuously · integrated · accelerate · processes · academic · statistical · circumstances · possessions · laboratory · durable · architectural · architecture · architect · mortgage · prestigious · threatens · benefit · elaborated · semester · gadgets · shipwreck · ruined</p>
+  </div>
+</div>
+
+</main>
+
+<script>
+function show(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('#sidebar a').forEach(a => a.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0,0);
+}
+
+// Persist checkboxes
+function saveChecks() {
+  const state = {};
+  for (let i = 1; i <= 12; i++) {
+    const el = document.getElementById('c' + i);
+    if (el) state['c' + i] = el.checked;
+  }
+  localStorage.setItem('pte-checks', JSON.stringify(state));
+}
+
+function loadChecks() {
+  const state = JSON.parse(localStorage.getItem('pte-checks') || '{}');
+  for (let k in state) {
+    const el = document.getElementById(k);
+    if (el) el.checked = state[k];
+  }
+}
+
+function resetChecks() {
+  for (let i = 1; i <= 12; i++) {
+    const el = document.getElementById('c' + i);
+    if (el) el.checked = false;
+  }
+  localStorage.removeItem('pte-checks');
+}
+
+// Persist goal
+function saveGoal() {
+  localStorage.setItem('pte-goal', JSON.stringify({
+    l: document.getElementById('g-l').value,
+    r: document.getElementById('g-r').value,
+    w: document.getElementById('g-w').value,
+    s: document.getElementById('g-s').value,
+    date: document.getElementById('g-date').value,
+  }));
+}
+
+function loadGoal() {
+  const g = JSON.parse(localStorage.getItem('pte-goal') || '{}');
+  if (g.l) document.getElementById('g-l').value = g.l;
+  if (g.r) document.getElementById('g-r').value = g.r;
+  if (g.w) document.getElementById('g-w').value = g.w;
+  if (g.s) document.getElementById('g-s').value = g.s;
+  if (g.date) document.getElementById('g-date').value = g.date;
+}
+
+loadChecks();
+loadGoal();
+</script>
+</body>
+</html>
