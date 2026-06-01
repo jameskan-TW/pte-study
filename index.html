@@ -88,6 +88,8 @@
   .callout.yellow { background: #fef9e7; border-color: #f9e79f; }
   .callout.red { background: #fdedec; border-color: #f1948a; }
 
+  td.highlight { background: #fff3cd; font-weight: 700; color: #856404; }
+
   /* Score table */
   .score-table { width: auto; }
   .score-table td, .score-table th { text-align: center; min-width: 55px; }
@@ -126,6 +128,7 @@
   <a onclick="show('sst-predict')">🎯 SST Predict</a>
   <a onclick="show('grammar')">📐 Grammar Notes</a>
   <a onclick="show('tips')">💡 Tips Library</a>
+  <a onclick="show('weighting')">📊 PTE 占分比較</a>
 </nav>
 
 <!-- MAIN -->
@@ -807,6 +810,83 @@ In conclusion, although there are different opinions on this issue, it is clear 
     <h3>Vocabulary Spelling（易錯詞彙）</h3>
     <p style="line-height:2">continuously · integrated · accelerate · processes · academic · statistical · circumstances · possessions · laboratory · durable · architectural · architecture · architect · mortgage · prestigious · threatens · benefit · elaborated · semester · gadgets · shipwreck · ruined</p>
   </div>
+</div>
+
+<!-- ====== WEIGHTING ====== -->
+<div id="weighting" class="section">
+  <h1>📊 PTE 占分比較</h1>
+  <p style="color:#9b9a97;margin-bottom:24px">來源：Pearson PTE Academic Question Weighting Table｜數字越大代表對該項分數影響越高</p>
+
+  <div class="callout yellow">
+    💡 重點提示：WFD 對 Writing 佔 <strong>23%</strong>、WE 佔 <strong>31%</strong>、DI 對 Speaking 佔 <strong>31%</strong>、SWT 對 Writing 佔 <strong>28%</strong>。這四題是衝分的核心。
+  </div>
+
+  <h2>Speaking &amp; Writing</h2>
+  <table>
+    <tr>
+      <th>題型</th>
+      <th>Overall</th>
+      <th>Listening</th>
+      <th>Reading</th>
+      <th>Speaking</th>
+      <th>Writing</th>
+    </tr>
+    <tr><td>RA · Read Aloud</td><td>4%</td><td></td><td></td><td>9%</td><td></td></tr>
+    <tr><td>RS · Repeat Sentence</td><td>7%</td><td>17%</td><td></td><td>16%</td><td></td></tr>
+    <tr><td>DI · Describe Image</td><td>15%</td><td></td><td></td><td class="highlight">31%</td><td></td></tr>
+    <tr><td>RL · Retell Lecture</td><td>6%</td><td>13%</td><td></td><td>13%</td><td></td></tr>
+    <tr><td>ASQ · Answer Short Question</td><td>2%</td><td>4%</td><td></td><td></td><td></td></tr>
+    <tr><td>SGD · Summarize Group Discussion</td><td>9%</td><td>20%</td><td></td><td>19%</td><td></td></tr>
+    <tr><td>RS2 · Respond to a Situation</td><td>6%</td><td></td><td></td><td>13%</td><td></td></tr>
+    <tr><td>SWT · Summarize Written Text</td><td>7%</td><td></td><td>23%</td><td></td><td class="highlight">28%</td></tr>
+    <tr><td>WE · Write Essay</td><td>7%</td><td></td><td></td><td></td><td class="highlight">31%</td></tr>
+  </table>
+
+  <h2>Reading</h2>
+  <table>
+    <tr>
+      <th>題型</th>
+      <th>Overall</th>
+      <th>Listening</th>
+      <th>Reading</th>
+      <th>Speaking</th>
+      <th>Writing</th>
+    </tr>
+    <tr><td>FIB · Fill in the Blanks (Dropdown)</td><td>7%</td><td></td><td class="highlight">25%</td><td></td><td></td></tr>
+    <tr><td>MC-M · Multiple Choice, Multiple Answers</td><td>1%</td><td></td><td>5%</td><td></td><td></td></tr>
+    <tr><td>RO · Reorder Paragraph</td><td>3%</td><td></td><td>9%</td><td></td><td></td></tr>
+    <tr><td>FIB · Fill in the Blanks (Drag and Drop)</td><td>6%</td><td></td><td>20%</td><td></td><td></td></tr>
+    <tr><td>MC-S · Multiple Choice, Single Answer</td><td>&lt;1%</td><td></td><td>3%</td><td></td><td></td></tr>
+  </table>
+
+  <h2>Listening</h2>
+  <table>
+    <tr>
+      <th>題型</th>
+      <th>Overall</th>
+      <th>Listening</th>
+      <th>Reading</th>
+      <th>Speaking</th>
+      <th>Writing</th>
+    </tr>
+    <tr><td>SST · Summarize Spoken Text</td><td>4%</td><td>10%</td><td></td><td></td><td>18%</td></tr>
+    <tr><td>MC-M · Multiple Choice, Multiple Answers</td><td>1%</td><td>3%</td><td></td><td></td><td></td></tr>
+    <tr><td>FIB-L · Fill in the Blanks (Type In)</td><td>3%</td><td>8%</td><td></td><td></td><td></td></tr>
+    <tr><td>HCS · Highlight Correct Summary</td><td>&lt;1%</td><td>2%</td><td>3%</td><td></td><td></td></tr>
+    <tr><td>MC-S · Multiple Choice, Single Answer</td><td>&lt;1%</td><td>2%</td><td></td><td></td><td></td></tr>
+    <tr><td>SMW · Select Missing Word</td><td>1%</td><td>1%</td><td></td><td></td><td></td></tr>
+    <tr><td>HIW · Highlight Incorrect Words</td><td>4%</td><td>8%</td><td>13%</td><td></td><td></td></tr>
+    <tr><td>WFD · Write from Dictation</td><td>5%</td><td>13%</td><td></td><td></td><td class="highlight">23%</td></tr>
+  </table>
+
+  <h2>🎯 衝分重點整理</h2>
+  <table>
+    <tr><th>目標</th><th>最重要的題型</th><th>占比</th></tr>
+    <tr><td>Writing ↑</td><td>WE、SWT、WFD</td><td>31% / 28% / 23%</td></tr>
+    <tr><td>Speaking ↑</td><td>DI、RS、SGD</td><td>31% / 16% / 19%</td></tr>
+    <tr><td>Listening ↑</td><td>RS、SGD、WFD</td><td>17% / 20% / 13%</td></tr>
+    <tr><td>Reading ↑</td><td>FIB Dropdown、FIB D&amp;D、SWT</td><td>25% / 20% / 23%</td></tr>
+  </table>
 </div>
 
 </main>
