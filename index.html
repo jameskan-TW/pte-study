@@ -141,6 +141,8 @@
   <a onclick="show('writing')">✍️ Writing</a>
   <a onclick="show('reading')">📖 Reading</a>
   <a onclick="show('listening')">🎧 Listening</a>
+  <h2>My Progress</h2>
+  <a onclick="show('log')">📅 練習日誌</a>
   <h2>Class Notes</h2>
   <a onclick="show('classnotes')">📓 課堂筆記</a>
   <h2>Resources</h2>
@@ -908,6 +910,73 @@ In conclusion, although there are different opinions on this issue, it is clear 
     </table>
     <p><strong>Mini Trick：</strong>能加 many/數字 → 可數；只能加 much/some → 不可數</p>
   </div>
+</div>
+
+<!-- ====== PRACTICE LOG ====== -->
+<div id="log" class="section">
+  <h1>📅 練習日誌</h1>
+  <p style="color:#9b9a97;margin-bottom:24px">每天完成的練習量 + 隔天目標</p>
+
+  <table>
+    <tr>
+      <th>日期</th>
+      <th>星期</th>
+      <th>完成</th>
+      <th>明日目標</th>
+      <th>備注</th>
+    </tr>
+    <tr>
+      <td><strong>6/2</strong></td>
+      <td>二</td>
+      <td>
+        <span class="badge">WE × 1</span>
+        <span class="badge">家教課 × 2堂</span>
+      </td>
+      <td>—</td>
+      <td>第一天上課，DI + WE + SWT + FIB 課堂學習</td>
+    </tr>
+    <tr style="background:#f0faf4">
+      <td><strong>6/3</strong></td>
+      <td>三</td>
+      <td>
+        <span class="badge" style="background:#d5f5e3;color:#1e8449">WE × 2 ✓</span>
+        <span class="badge" style="background:#d5f5e3;color:#1e8449">WFD × 10 ✓</span>
+      </td>
+      <td>
+        <span class="badge">WFD × 20</span>
+        <span class="badge">SWT × 2</span>
+        <span class="badge">WE × 1</span>
+        <span class="badge">DI × 5</span>
+      </td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><strong>6/4</strong></td>
+      <td>四</td>
+      <td>—</td>
+      <td>
+        <span class="badge red">WFD × 20 🎯</span>
+        <span class="badge red">SWT × 2 🎯</span>
+        <span class="badge red">WE × 1 🎯</span>
+        <span class="badge red">DI × 5 🎯</span>
+      </td>
+      <td>今日目標</td>
+    </tr>
+  </table>
+
+  <div class="callout yellow" style="margin-top:8px">
+    💪 6/3 完成了 WE × 2 + WFD × 10，繼續保持！6/4 目標加量，WFD 要衝到 20 句。
+  </div>
+
+  <h2>📊 累積進度</h2>
+  <table>
+    <tr><th>題型</th><th>目標（三週）</th><th>已完成</th><th>進度</th></tr>
+    <tr><td>WFD</td><td>540 句（每天 36 句均）</td><td>10 句</td><td>2%</td></tr>
+    <tr><td>WE</td><td>42 篇（每週 2 篇）</td><td>3 篇</td><td>7%</td></tr>
+    <tr><td>DI</td><td>—</td><td>0</td><td>—</td></tr>
+    <tr><td>SWT</td><td>—</td><td>0</td><td>—</td></tr>
+  </table>
+  <p style="color:#9b9a97;font-size:12px">累積進度手動更新，每次練完告訴我，我幫你更新。</p>
 </div>
 
 <!-- ====== CLASS NOTES ====== -->
