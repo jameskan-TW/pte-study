@@ -41,6 +41,38 @@ header p  { font-size: .85rem; opacity: .8; margin-top: 4px; }
 .si-main { font-weight: 600; color: #222; }
 .si-sub  { padding-left: 1.8em; color: #444; }
 .si-en   { font-family: Georgia, serif; color: #c0392b; font-weight: 400; }
+
+.ref-card { background: white; border-radius: 8px; margin-bottom: 28px;
+            box-shadow: 0 1px 4px rgba(0,0,0,.08); overflow: hidden; }
+.ref-header { background: #2e6da4; color: white; padding: 14px 20px;
+              display: flex; justify-content: space-between; align-items: center;
+              cursor: pointer; font-weight: bold; font-size: 1rem; }
+.ref-toggle { font-size: .8rem; opacity: .8; }
+.ref-body { display: none; padding: 20px; }
+.ref-card.open .ref-body { display: block; }
+.ref-card.open .ref-toggle { content: "▼ 收合"; }
+.ref-note { font-size: .85rem; color: #666; margin-bottom: 16px; border-left: 3px solid #e0e0e0; padding-left: 10px; }
+.ref-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+@media(max-width:700px){ .ref-grid { grid-template-columns: 1fr; } }
+.ref-item { border-radius: 6px; padding: 14px; display: flex; gap: 12px; }
+.ref-1 { background: #eaf4fb; border-left: 4px solid #2980b9; }
+.ref-2 { background: #eafaf1; border-left: 4px solid #27ae60; }
+.ref-3 { background: #fef9e7; border-left: 4px solid #f39c12; }
+.ref-4 { background: #f5eef8; border-left: 4px solid #8e44ad; }
+.ref-5 { background: #fdedec; border-left: 4px solid #e74c3c; }
+.ref-num { font-size: 1.4rem; font-weight: 900; opacity: .5; flex-shrink: 0; width: 28px; }
+.ref-zh { font-size: 1rem; font-weight: 700; margin-bottom: 2px; }
+.ref-trigger { font-size: .75rem; color: #888; margin-bottom: 6px; }
+.ref-en { font-family: Georgia, serif; font-size: .88rem; color: #333; margin-bottom: 2px; }
+.ref-en b { color: #c0392b; }
+.ref-sub { font-size: .78rem; color: #777; margin-top: 8px; font-style: italic; line-height: 1.6; }
+.ref-combo { margin-top: 4px; }
+.ref-combo-title { font-weight: 700; font-size: .9rem; margin-bottom: 8px; }
+.ref-table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+.ref-table th { background: #f0f0f0; padding: 7px 12px; text-align: left; border: 1px solid #ddd; }
+.ref-table td { padding: 7px 12px; border: 1px solid #ddd; }
+.ref-table tr:nth-child(even) td { background: #fafafa; }
+
 </style>
 </head>
 <body>
@@ -50,6 +82,91 @@ header p  { font-size: .85rem; opacity: .8; margin-top: 4px; }
   <div class="search-bar"><input id="search" type="text" placeholder="搜尋題目標題或內容&hellip;"></div>
 </header>
 <div class="container">
+
+<div class="ref-card" id="ref-card">
+  <div class="ref-header" onclick="document.getElementById('ref-card').classList.toggle('open')">
+    <span>&#x1F4CB; 5 大論據速查卡</span>
+    <span class="ref-toggle">▶ 展開</span>
+  </div>
+  <div class="ref-body">
+    <p class="ref-note">Body 1 / Body 2 的核心論點只有這 5 套，換題目就換主詞，其餘照套。</p>
+    <div class="ref-grid">
+
+      <div class="ref-item ref-1">
+        <div class="ref-num">①</div>
+        <div class="ref-content">
+          <div class="ref-zh">效率 &amp; 時間節省</div>
+          <div class="ref-trigger">可以套的題：幾乎所有題</div>
+          <div class="ref-en">result in significant <b>time-savings</b></div>
+          <div class="ref-en">improve <b>efficiency</b> and boost <b>productivity</b></div>
+          <div class="ref-sub">→ James 例：As James uses [X], this can <b>help him to improve efficiency</b> and boost productivity. What this means is that he can <b>stand better chances of being promoted</b>...</div>
+        </div>
+      </div>
+
+      <div class="ref-item ref-2">
+        <div class="ref-num">②</div>
+        <div class="ref-content">
+          <div class="ref-zh">學業 &amp; 未來前景</div>
+          <div class="ref-trigger">可以套的題：教育、考試、兼職、語言</div>
+          <div class="ref-en">achieve outstanding <b>academic performance</b></div>
+          <div class="ref-en">develop a wide range of <b>skills</b> such as critical thinking</div>
+          <div class="ref-en">in turn leading to <b>better future prospects</b></div>
+          <div class="ref-sub">→ James 例：As he studies at a world-renowned university, he can <b>achieve outstanding academic performance</b>...</div>
+        </div>
+      </div>
+
+      <div class="ref-item ref-3">
+        <div class="ref-num">③</div>
+        <div class="ref-content">
+          <div class="ref-zh">身心健康 &amp; 壓力</div>
+          <div class="ref-trigger">可以套的題：工作壓力、媒體、考試、兒童</div>
+          <div class="ref-en">lead to <b>stress and anxiety</b></div>
+          <div class="ref-en">feel <b>frustrated and isolated</b></div>
+          <div class="ref-en">enjoy higher levels of <b>emotional and physical wellbeing</b></div>
+          <div class="ref-sub">→ 通常用在 Body 1 的「concession」段，承認反方有壞處</div>
+        </div>
+      </div>
+
+      <div class="ref-item ref-4">
+        <div class="ref-num">④</div>
+        <div class="ref-content">
+          <div class="ref-zh">視野 &amp; 文化理解</div>
+          <div class="ref-trigger">可以套的題：語言、旅遊、媒體、戲劇、海外學習</div>
+          <div class="ref-en">gain a <b>broader view of life</b></div>
+          <div class="ref-en">gain a better understanding of <b>cultures, traditions, customs and etiquettes</b></div>
+          <div class="ref-en">become increasingly <b>open-minded, wise and knowledgeable</b></div>
+          <div class="ref-sub">→ James 例：As he learns foreign languages, he can <b>gain a better understanding of cultures</b>...</div>
+        </div>
+      </div>
+
+      <div class="ref-item ref-5">
+        <div class="ref-num">⑤</div>
+        <div class="ref-content">
+          <div class="ref-zh">職涯 &amp; 財務</div>
+          <div class="ref-trigger">可以套的題：工作、婚姻、薪資、工時、名人</div>
+          <div class="ref-en">be <b>promoted to higher managerial hierarchies</b></div>
+          <div class="ref-en">financially <b>support</b> his whole family</div>
+          <div class="ref-en">enjoy higher levels of emotional and physical wellbeing because he can <b>support his family financially</b></div>
+          <div class="ref-sub">→ James 例：As James gets [married late / promoted], he can <b>enjoy higher levels of wellbeing</b>...</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ref-combo">
+      <div class="ref-combo-title">&#x1F504; 常見配對組合</div>
+      <table class="ref-table">
+        <tr><th>題型</th><th>Body 1（承認反方）</th><th>Body 2（主論點）</th></tr>
+        <tr><td>A vs B 比較</td><td>② 學業 / ③ 健康</td><td>① 效率 或 ④ 視野</td></tr>
+        <tr><td>應不應該</td><td>② 學業 或 ③ 壓力</td><td>① 效率 或 ⑤ 職涯</td></tr>
+        <tr><td>福禍 / 好壞</td><td>③ 健康（壞處）</td><td>① 效率 或 ② 學業</td></tr>
+        <tr><td>Report 型</td><td>⑤ 職涯（成因）</td><td>① 效率（解方）</td></tr>
+        <tr><td>語言 / 文化類</td><td>① 效率（反方）</td><td>④ 視野（主論）</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
 <div class="article" id="a1"><div class="article-header"><span class="article-num">#1</span><span class="article-title">生活經驗vs學校正規教育</span><span class="article-code">#070001</span><span class="article-mode">Argument</span></div><div class="article-body"><div class="section-label">英文題目</div><div class="en-text"><p>Some people think that life experience is more important than formal education provided in schools and</p><p>universities. How far do you agree with this statement, and provide examples?</p></div><hr class="divider"><div class="section-label">中文翻譯</div><div class="zh-text"><p>有些人認爲，生活經驗比學校和大學提供的正規教育更重要。你在多大程度上同意這種說法？請舉例說明。</p></div><hr class="divider"><div class="section-label">範文</div><div class="en-text essay-text"><p><span class="tpl">It is generally true that</span> whether having experience or education is more important <span class="tpl">has become a staple of discussion over the years</span>, <span class="tpl">and this has caused great controversy and drawn the attention from the general public</span>. <span class="tpl">Some people are of the opinion that</span> having experience can be more advantageous, <span class="tpl">while others hold the view that</span> being educated in schools can be more crucial. <span class="tpl">I tend to agree more with the former <span class="tpl">and will try to elaborate below</span></span>.</p><p><span class="tpl">It has to be admitted that</span> formal education plays a more significant role in our life, <span class="tpl">and one argument in favor of this view can be that</span> this can help people to gain theoretical and practical knowledge. If we can receive formal education, then we can achieve outstanding academic performance, <span class="tpl">as well as developing</span> a wide range of skills, such as critical thinking and analytical skills, <span class="tpl">in turn leading to</span> us having better future prospects. <span class="tpl">Given this, it is unsurprising that</span> formal education <span class="tpl">can bring tangible and intangible benefits</span> to students’ future success.</p><p><span class="tpl">On the other hand, I feel affirmative that</span> experience can be more critical in the future, <span class="tpl">and one compelling reason may well be that</span> having experience can result in significant time-savings. <span class="tpl">A pertinent case in point is</span> James, who works for a world renowned and prestigious firm called Microsoft. As James is fully experienced in terms of artificial intelligence and programming, this can help him to improve efficiency and boost productivity. <span class="tpl">What this means is that</span> he can stand better chances of being promoted to higher managerial hierarchies within the company, or potentially make more money shifting to Facebook or Amazon.</p><p><span class="tpl">In conclusion, despite the fact that the counter argument may hold true in many cases,</span> I feel that experience is more pivotal regarding personal success.</p></div><hr class="divider"><div class="section-label">思路</div><div class="si-wrap"><div class="si-block"><div class="si-main">－重要角色：<span class="si-en">this can help people to gain theoretical and practical knowledge</span></div><div class="si-sub">A.學業成績優秀：<span class="si-en">can achieve outstanding academic performance</span></div><div class="si-sub">B.未來前景更好：<span class="si-en">better future prospects</span></div><div class="si-sub">C.關鍵影響：<span class="si-en">formal education can bring tangible and intangible benefits to students’ future success</span></div></div><div class="si-block"><div class="si-main">－未來更關鍵：<span class="si-en">having experience can result in significant time-savings</span></div><div class="si-sub">A.提升效率：<span class="si-en">help him to improve efficiency and boost productivity</span></div><div class="si-sub">B.晉升管理職位：<span class="si-en">stand better chances of being promoted to higher managerial hierarchies within the company, or poten</span></div></div></div></div></div>
 <div class="article" id="a2"><div class="article-header"><span class="article-num">#2</span><span class="article-title">學習和工作不可能兼顧</span><span class="article-code">#070002</span><span class="article-mode">Argument</span></div><div class="article-body"><div class="section-label">英文題目</div><div class="en-text"><p>Effective learning requires time, comfort and peace so it is impossible to combine study and employment.</p><p>Study and employment distract one from another. To what extent do you think the statements are</p><p>realistic? Support your opinion with examples. (part-time’s advantages and disadvantages)</p></div><hr class="divider"><div class="section-label">中文翻譯</div><div class="zh-text"><p>有效的學習需要時間、舒適和平靜，所以不可能把學習和工作結合起來。學習和就業互相分散。你認爲這些說法在多</p><p>大程度上是現實的？用例子來支持你的觀點。(兼職的優點和缺點)</p></div><hr class="divider"><div class="section-label">範文</div><div class="en-text essay-text"><p><span class="tpl">It is generally true that</span> the combination of study and employment <span class="tpl">has become increasingly important over the years</span> <span class="tpl">and this has caused great controversy and drawn the attention from the general public</span>. <span class="tpl">Some people are of the opinion that</span> combining study and employment can be more advantageous, <span class="tpl">while others hold the view that</span> part time jobs may bring more drawbacks. <span class="tpl">I tend to agree more with the latter <span class="tpl">and will try to elaborate below</span></span>.</p><p><span class="tpl">It has to be admitted that</span> studying and working can bring many benefits, <span class="tpl">and one argument in favor of this view can be that</span> part time jobs can help to improve efficiency and boost productivity. If we work and study simultaneously, then this can result in significant time-savings, <span class="tpl"><span class="tpl">as well as helping</span> us to</span> develop a wide range of skills, <span class="tpl">in turn leading to</span> us having better future prospects. <span class="tpl">Given this, it is unsurprising that</span> this experience can help students to balance studies with earning, gain experience and build professional networks.</p><p><span class="tpl">On the other hand, I feel affirmative that</span> combining study and employment may cause more disadvantages, <span class="tpl">and one compelling reason may well be that</span> part-time jobs may take valuable time away from key subjects. <span class="tpl">A pertinent case in point is</span> James, who studies in a world-renowned and prestigious university. As he tries to fit full-time study with a physically demanding job, he cannot concentrate on his academic pursuits. <span class="tpl">What this means is that</span> he cannot achieve outstanding academic performance, and he may feel emotional exhaustion, overwhelmed, unmotivated and detached.</p><p><span class="tpl">In conclusion, despite the fact that the counter argument may hold true in many cases,</span> I believe that only concentrating on study can be more crucial, and part time job should not take a significant proportion of students’ academic life.</p></div><hr class="divider"><div class="section-label">思路</div><div class="si-wrap"><div class="si-block"><div class="si-main">－帶來諸多益處：<span class="si-en">part time jobs can help to improve efficiency and boost productivity</span></div><div class="si-sub">A.節省時間：<span class="si-en">can result in significant time-savings</span></div><div class="si-sub">B.未來前景更好：<span class="si-en">better future prospects</span></div><div class="si-sub">C.生活平衡：<span class="si-en">this experience can help students to balance studies with earning, gain experience and build profess</span></div></div><div class="si-block"><div class="si-main">－弊大於利：<span class="si-en">part-time jobs may take valuable time away from key subjects</span></div><div class="si-sub">B.學業成績優秀：<span class="si-en">he cannot achieve outstanding academic performance, and he may feel emotional exhaustion, overwhelme</span></div></div></div></div></div>
 <div class="article" id="a3"><div class="article-header"><span class="article-num">#3</span><span class="article-title">數字媒體vs圖書館</span><span class="article-code">#070003</span><span class="article-mode">Argument</span></div><div class="article-body"><div class="section-label">英文題目</div><div class="en-text"><p>With the increase of digital media available online, the role of the library has become obsolete.</p><p>Universities should only procure digital materials rather than constantly upgrading textbooks. Discuss</p><p>both the advantages and disadvantages of this position and give your own point of view.</p></div><hr class="divider"><div class="section-label">中文翻譯</div><div class="zh-text"><p>隨著在線數字媒體的增加，圖書館的作用已經過時了。大學應該只采購數字材料，而不是不斷更新教科書。討論這個</p><p>觀點的優點和缺點，並給出你自己的觀點。</p></div><hr class="divider"><div class="section-label">範文</div><div class="en-text essay-text"><p><span class="tpl">It is generally true that</span> online media <span class="tpl">has become increasingly popular over the years</span>, <span class="tpl">and this has caused great controversy and drawn the attention from the general public</span>. <span class="tpl">Some people are of the opinion that</span> universities should only purchase new digital media rather than constantly upgrade textbooks, <span class="tpl">while others hold the view that</span> textbooks are essential and digital media has numerous drawbacks. <span class="tpl">I tend to agree more with the former <span class="tpl">and will try to elaborate below</span></span>.</p><p><span class="tpl">It has to be admitted that</span> libraries can be more essential, <span class="tpl">and one argument in favor of this view can be that</span> textbooks can bring theoretical and practical knowledge. If we use libraries and textbooks to access information, then we can achieve deep comprehension and long-term retention, <span class="tpl">in turn leading to</span> us achieving better academic performance and having better prospects. <span class="tpl">Given this, it is unsurprising that</span> the use of paper-based materials <span class="tpl">can bring tangible and intangible benefits</span> <span class="tpl">to society as a whole</span>.</p><p><span class="tpl">On the other hand, I feel affirmative that</span> online media can be more critical and bring unique advantages, <span class="tpl">and one compelling reason may well be that</span> online media can improve efficiency and boost productivity. <span class="tpl">A pertinent case in point is</span> James, who studies in a world-renowned and prestigious university. As he accesses information through digital media, this can result in significant time-savings because of the provision of quick access to real-time news and current trends. <span class="tpl">What this means is that</span> the use of online resources can bring incomparable advantages compared to textbooks, such as real-time updates and direct interaction.</p><p><span class="tpl">In conclusion, despite the fact that the counter argument may hold true in many cases,</span> I believe that the use of digital resources can be more significant. <span class="tpl">It is well advised that</span> the combination of both can help to achieve optimal outcomes.</p></div><hr class="divider"><div class="section-label">思路</div><div class="si-wrap"><div class="si-block"><div class="si-main">－關鍵影響：<span class="si-en">textbooks can bring theoretical and practical knowledge</span></div><div class="si-sub">A.關鍵影響：<span class="si-en">can achieve deep comprehension and long-term retention</span></div><div class="si-sub">B.學業表現：<span class="si-en">achieving better academic performance and having better prospects</span></div><div class="si-sub">C.關鍵影響：<span class="si-en">the use of paper-based materials can bring tangible and intangible benefits to society as a whole</span></div></div><div class="si-block"><div class="si-main">－更加關鍵：<span class="si-en">online media can improve efficiency and boost productivity</span></div><div class="si-sub">A.節省時間：<span class="si-en">result in significant time-savings because of the provision of quick access to real-time news and cu</span></div><div class="si-sub">B.年齡限制：<span class="si-en">the use of online resources can bring incomparable advantages compared to textbooks, such as real-ti</span></div></div></div></div></div>
@@ -96,6 +213,14 @@ document.getElementById('search').addEventListener('input', function() {
   const q = this.value.toLowerCase();
   document.querySelectorAll('.article').forEach(a => {
     a.style.display = a.textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
+});
+
+document.querySelectorAll('.ref-header').forEach(h => {
+  h.addEventListener('click', () => {
+    const card = h.closest('.ref-card');
+    card.classList.toggle('open');
+    h.querySelector('.ref-toggle').textContent = card.classList.contains('open') ? '▼ 收合' : '▶ 展開';
   });
 });
 </script>
