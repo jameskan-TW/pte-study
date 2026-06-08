@@ -84,7 +84,7 @@ header p  { font-size: .85rem; opacity: .8; margin-top: 4px; }
 <div class="container">
 
 <div class="ref-card" id="ref-card">
-  <div class="ref-header" onclick="document.getElementById('ref-card').classList.toggle('open')">
+  <div class="ref-header" onclick="var c=this.closest('.ref-card');c.classList.toggle('open');this.querySelector('.ref-toggle').textContent=c.classList.contains('open')?'▼ 收合':'▶ 展開'">
     <span>&#x1F4CB; 5 大論據速查卡</span>
     <span class="ref-toggle">▶ 展開</span>
   </div>
@@ -216,13 +216,6 @@ document.getElementById('search').addEventListener('input', function() {
   });
 });
 
-document.querySelectorAll('.ref-header').forEach(h => {
-  h.addEventListener('click', () => {
-    const card = h.closest('.ref-card');
-    card.classList.toggle('open');
-    h.querySelector('.ref-toggle').textContent = card.classList.contains('open') ? '▼ 收合' : '▶ 展開';
-  });
-});
 </script>
 </body>
 </html>
