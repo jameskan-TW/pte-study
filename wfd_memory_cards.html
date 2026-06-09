@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WFD 圖像記憶卡 — 189句</title>
+<style>
+  :root {
+    --bg: #0f1117; --card-front: #1e2235; --card-back: #12253a;
+    --accent: #4f9cf9; --accent2: #a78bfa; --yellow: #fbbf24;
+    --text: #e2e8f0; --muted: #94a3b8; --border: #2d3350;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; min-height: 100vh; padding: 24px 16px 60px; }
+  header { text-align: center; margin-bottom: 32px; }
+  header h1 { font-size: 1.8rem; font-weight: 700; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 6px; }
+  header p { color: var(--muted); font-size: 0.88rem; }
+  .progress-bar { width: 100%; max-width: 680px; margin: 0 auto 28px; background: var(--border); border-radius: 99px; height: 5px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 99px; transition: width 0.4s ease; }
+  .nav-bar { display: flex; justify-content: center; align-items: center; gap: 14px; margin-bottom: 24px; flex-wrap: wrap; }
+  .nav-btn { background: #1a1d27; border: 1px solid var(--border); color: var(--text); padding: 8px 22px; border-radius: 8px; cursor: pointer; font-size: 0.95rem; transition: all 0.2s; }
+  .nav-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+  .counter { font-size: 1rem; color: var(--muted); min-width: 60px; text-align: center; }
+  .card-scene { width: 100%; max-width: 680px; margin: 0 auto; height: 400px; perspective: 1200px; cursor: pointer; }
+  .card-inner { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.55s cubic-bezier(0.4,0,0.2,1); }
+  .card-scene.flipped .card-inner { transform: rotateY(180deg); }
+  .card-face { position: absolute; inset: 0; border-radius: 20px; border: 1px solid var(--border); backface-visibility: hidden; -webkit-backface-visibility: hidden; padding: 24px 28px; display: flex; flex-direction: column; }
+  .card-front { background: var(--card-front); }
+  .card-back  { background: var(--card-back); transform: rotateY(180deg); }
+  .card-num { font-size: 0.75rem; color: var(--muted); margin-bottom: 16px; letter-spacing: 0.05em; }
+  .icon-chain { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px; flex: 1; }
+  .icon-item { display: flex; flex-direction: column; align-items: center; gap: 3px; background: rgba(255,255,255,0.05); border-radius: 14px; padding: 10px 12px; min-width: 78px; }
+  .icon-item .ico { font-size: 2rem; line-height: 1; }
+  .icon-item .eng { font-size: 0.76rem; font-weight: 600; color: #e2e8f0; text-align: center; line-height: 1.2; max-width: 78px; font-family: 'Consolas','Courier New',monospace; }
+  .icon-item .pos { font-size: 0.6rem; color: var(--accent); text-align: center; background: rgba(79,156,249,0.12); border-radius: 4px; padding: 1px 5px; }
+  .icon-item .lbl { font-size: 0.66rem; color: var(--muted); text-align: center; line-height: 1.3; max-width: 78px; }
+  .chain-arrow { font-size: 1.2rem; color: var(--border); padding: 0 2px; align-self: center; }
+  .flip-hint { text-align: center; color: var(--muted); font-size: 0.76rem; margin-top: 14px; }
+  .en-sentence { font-size: 1.1rem; font-weight: 600; line-height: 1.65; margin-bottom: 12px; color: #fff; }
+  .en-sentence .hl { color: var(--yellow); }
+  .zh-sentence { font-size: 0.92rem; color: var(--muted); margin-bottom: 18px; line-height: 1.6; }
+  .prompt-box { background: rgba(167,139,250,0.08); border: 1px solid rgba(167,139,250,0.2); border-radius: 10px; padding: 12px 14px; margin-top: auto; }
+  .prompt-label { font-size: 0.7rem; color: var(--accent2); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 5px; }
+  .prompt-text { font-size: 0.78rem; color: #c4b5fd; line-height: 1.55; font-style: italic; }
+  .copy-btn { margin-top: 8px; background: rgba(167,139,250,0.15); border: 1px solid rgba(167,139,250,0.3); color: var(--accent2); border-radius: 6px; padding: 4px 12px; font-size: 0.73rem; cursor: pointer; transition: all 0.2s; }
+  .copy-btn:hover { background: rgba(167,139,250,0.3); }
+  .dots { display: flex; justify-content: center; gap: 6px; margin-top: 22px; flex-wrap: wrap; max-width: 680px; margin-left: auto; margin-right: auto; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border); cursor: pointer; transition: all 0.2s; }
+  .dot.active { background: var(--accent); transform: scale(1.35); }
+  .dot.seen   { background: var(--accent2); opacity: 0.5; }
+  @media (max-width: 500px) {
+    .card-scene { height: 440px; }
+    .card-face { padding: 18px 14px; }
+    .icon-item { min-width: 64px; padding: 8px 8px; }
+    .icon-item .ico { font-size: 1.8rem; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>WFD 圖像記憶卡</h1>
+  <p>正面：英文原詞 ＋ 詞性 ＋ 中文　｜　空白鍵翻面，← → 切換</p>
+</header>
+<div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+<div class="nav-bar">
+  <button class="nav-btn" id="prevBtn" onclick="navigate(-1)">← 上一句</button>
+  <span class="counter" id="counter">1 / 189</span>
+  <button class="nav-btn" id="nextBtn" onclick="navigate(1)">下一句 →</button>
+</div>
+<div class="card-scene" id="cardScene" onclick="flipCard()">
+  <div class="card-inner">
+    <div class="card-face card-front" id="cardFront"></div>
+    <div class="card-face card-back"  id="cardBack"></div>
+  </div>
+</div>
+<div class="dots" id="dots"></div>
+
+<script>
+// icon fields: ico, eng (exact word from sentence), pos (grammar tag), lbl (Chinese)
+// arrows use lbl:"" and no eng/pos
+const C = (ico,eng,pos,lbl) => ({ico,eng,pos,lbl});
+const A = () => ({ico:"➡️", lbl:""});
+const OR = () => ({ico:"🔀", eng:"or", pos:"conj.", lbl:""});
+
+const cards = [
+  { num:1, en:"Essays and assignments are spread out across the academic year.", zh:"論文和作業分散在整個學年中。",
+    icons:[C("📝","essays","n.pl","論文作業"), A(), C("📅","academic year","phr.","整個學年"), A(), C("🗓️","spread out","v.phr.","分散各處")],
+    hl:["spread out","academic year"], prompt:"A school calendar spread across a full year with essays and assignments scattered at random dates. Colorful illustrated style." },
+
+  { num:2, en:"Despite their differences, all forms of life share certain characteristics.", zh:"儘管有所不同，所有形式的生命都具有某些共同特徵。",
+    icons:[C("🌿","forms of life","phr.","生命形式"), A(), C("❤️","characteristics","n.pl","共同特徵"), {ico:"🔀",eng:"Despite",pos:"prep.",lbl:"儘管不同"}],
+    hl:["Despite their differences","share certain characteristics"], prompt:"A tree of life with diverse organisms all glowing with the same golden heart. Vibrant educational illustration." },
+
+  { num:3, en:"Experts are now able to forecast weather over much longer periods.", zh:"專家現在能夠預測更長時期的天氣。",
+    icons:[C("👨‍🔬","Experts","n.pl","專家"), C("🌦️","forecast","v.","天氣"), C("📅","periods","n.pl","更長時期")],
+    hl:["forecast","much longer periods"], prompt:"A confident meteorologist in front of a giant screen showing weather extending far into the future. Modern clean illustration." },
+
+  { num:4, en:"New media journalism is an exciting field of study.", zh:"新媒體新聞學是一個令人興奮的研究領域。",
+    icons:[C("📱","New media","phr.","新媒體"), C("📰","journalism","n.","新聞學"), C("⚡","exciting","adj.","令人興奮"), C("🎓","field of study","phr.","研究領域")],
+    hl:["New media","exciting field"], prompt:"An energetic journalist simultaneously streaming, wearing VR, typing, surrounded by glowing social media icons. Electric sparks. Digital art style." },
+
+  { num:5, en:"Before attending the lecture, you must register online or by post.", zh:"在參加講座之前，您必須在線上或透過郵寄方式進行登記。",
+    icons:[C("🎤","lecture","n.","講座"), C("💻","register online","phr.","線上登記"), OR(), C("📮","by post","phr.","郵寄登記")],
+    hl:["register online","by post"], prompt:"A person at lecture hall doors with two paths: a computer showing online registration and a red mailbox. Editorial illustration." },
+
+  { num:6, en:"The printers automatically print two sides of each page.", zh:"印表機會自動列印每頁的兩面。",
+    icons:[C("🖨️","printers","n.pl","印表機"), C("🔄","automatically","adv.","自動"), C("📄","two sides","phr.","每頁兩面")],
+    hl:["automatically","two sides"], prompt:"A printer magically flipping a piece of paper mid-air, cat on front dog on back. Fun whimsical illustration." },
+
+  { num:7, en:"Daily practice can build confidence and improve skills.", zh:"每日練習可以建立信心並提升技能。",
+    icons:[C("🗓️","Daily","adj.","每日"), C("🏋️","practice","n.","練習"), C("💪","confidence","n.","建立信心"), C("📈","improve","v.","提升技能")],
+    hl:["Daily practice","build confidence","improve skills"], prompt:"A person practicing daily in front of a mirror, reflection grows with a golden star on their chest. Motivational warm illustration." },
+
+  { num:8, en:"Students are advised that all the lectures today have been canceled.", zh:"學生們被告知今天所有的講座都已取消。",
+    icons:[C("🎓","Students","n.pl","學生"), C("📢","advised","v.+ed","通知"), C("❌","canceled","v.+ed","取消")],
+    hl:["advised","canceled"], prompt:"A bulletin board with a huge red CANCELED stamp over the lecture schedule. Students reacting with mixed emotions. School setting." },
+
+  { num:9, en:"There is a widely believed perception that engineering is for boys.", zh:"有一種普遍的觀念認為工程學是男生的領域。",
+    icons:[C("🧠","perception","n.","普遍觀念"), C("⚙️","engineering","n.","工程學"), C("👦","boys","n.pl","男生"), C("🚫","widely believed","phr.","刻板印象")],
+    hl:["widely believed perception","for boys"], prompt:"A semi-transparent wall dividing engineering blueprints from a determined woman holding a wrench. A crack forms in the wall. Bold illustration." },
+
+  { num:10, en:"The celebrated theory is still a great source of controversy.", zh:"這個著名的理論至今仍是極具爭議的話題。",
+    icons:[C("🏆","celebrated","adj.","著名"), C("📐","theory","n.","理論"), C("🔥","controversy","n.","爭議"), C("⚡","still","adv.","至今仍")],
+    hl:["celebrated","controversy"], prompt:"A gold trophy engraved with THE THEORY surrounded by scholars arguing with lightning bolts between them. Academic drama illustration." },
+
+  { num:11, en:"There is an accounting assignment for finance students.", zh:"財務系學生有一份會計作業。",
+    icons:[C("🏦","finance","n.","財務系"), C("🧾","accounting","n.","會計"), C("📝","assignment","n.","作業")],
+    hl:["accounting assignment","finance students"], prompt:"A bespectacled student at a desk covered in ledgers with an ACCOUNTING assignment paper. Finance building through the window." },
+
+  { num:12, en:"The commissioner will portion the funds among all the authorities.", zh:"專員將把資金分配給所有機構。",
+    icons:[C("👔","commissioner","n.","專員"), C("💰","funds","n.pl","資金"), C("✂️","portion","v.","分配"), C("🏛️","authorities","n.pl","各機構")],
+    hl:["commissioner","portion the funds","authorities"], prompt:"A formal commissioner cutting a cake (funds) into portions for representatives of different government authorities. Official satirical illustration." },
+
+  { num:13, en:"The business policy seminar includes an internship with a local firm.", zh:"商業政策研討課包含一家本地公司的實習。",
+    icons:[C("📊","seminar","n.","研討課"), C("🏢","local firm","phr.","本地公司"), C("👷","internship","n.","實習")],
+    hl:["seminar","internship","local firm"], prompt:"A classroom and office connected by a passage. Students walk through and put on suits entering the office. Study-to-internship transition." },
+
+  { num:14, en:"He wrote poetry and plays, as well as scientific papers.", zh:"他既寫詩歌和劇本，也撰寫科學論文。",
+    icons:[C("🌹","poetry","n.","詩歌"), C("🎭","plays","n.pl","劇本"), C("🔬","scientific papers","phr.","科學論文")],
+    hl:["poetry and plays","scientific papers"], prompt:"A person simultaneously writing a poetry manuscript, play script, and scientific paper at one desk. Renaissance man energy." },
+
+  { num:15, en:"A good architectural structure should be useful, durable and beautiful.", zh:"良好的建築結構應兼具實用性、耐久性和美觀性。",
+    icons:[C("🏛️","architectural","adj.","建築"), C("🔧","useful","adj.","實用"), C("🛡️","durable","adj.","耐久"), C("✨","beautiful","adj.","美觀")],
+    hl:["useful","durable","beautiful"], prompt:"A building cross-section: ground floor USEFUL, middle floor DURABLE with armor, top floor BEAUTIFUL with ornate decor. Architecture education." },
+
+  { num:16, en:"Geography is generally divided into the two branches human and physical.", zh:"地理學通常分為人文地理和自然地理兩個分支。",
+    icons:[C("🌍","Geography","n.","地理學"), C("👥","human","adj.","人文地理"), OR(), C("⛰️","physical","adj.","自然地理")],
+    hl:["divided into","human and physical"], prompt:"A globe tree with GEOGRAPHY on trunk, branching left with cities and people, right with mountains and rivers. Educational diagram." },
+
+  { num:17, en:"Classical mechanics is sometimes considered as a branch of applied mathematics.", zh:"古典力學有時被視為應用數學的一個分支。",
+    icons:[C("⚙️","Classical mechanics","phr.","古典力學"), C("🔗","considered","v.+ed","被視為"), C("📐","applied mathematics","phr.","應用數學")],
+    hl:["Classical mechanics","applied mathematics"], prompt:"A math textbook with formulas physically transforming into gears and springs. Mathematical symbols morphing into mechanical components." },
+
+  { num:18, en:"More research is needed before any definitive conclusion can be drawn.", zh:"在得出任何明確結論之前，需要進行更多研究。",
+    icons:[C("🔬","research","n.","更多研究"), A(), C("✅","definitive","adj.","明確"), C("💬","conclusion","n.","結論")],
+    hl:["More research","definitive conclusion"], prompt:"A scientist before a question-mark finish line with a mountain of research books behind them. Covered podium labeled CONCLUSION ahead." },
+
+  { num:19, en:"The digital camera has some advantages over traditional film.", zh:"數位相機比傳統膠捲相機具有一些優勢。",
+    icons:[C("📷","digital","adj.","數位相機"), C("⭐","advantages","n.pl","優勢"), C("🎞️","traditional film","phr.","底片相機")],
+    hl:["digital camera","advantages","traditional film"], prompt:"Two cameras side by side: vintage film camera vs sleek digital camera with stars indicating advantages. Comparison illustration." },
+
+  { num:20, en:"All industries are a system of inputs, processes, outputs and feedback.", zh:"所有產業都是由投入、過程、產出和回饋所構成的系統。",
+    icons:[C("📦","inputs","n.pl","投入"), C("⚙️","processes","n.pl","過程"), C("📤","outputs","n.pl","產出"), C("🔁","feedback","n.","回饋")],
+    hl:["inputs","processes","outputs","feedback"], prompt:"A factory system: INPUT entering left, PROCESS gears in middle, OUTPUT exiting right, FEEDBACK pipe returning to beginning. Circular infographic." },
+
+  { num:21, en:"Animals raised in captivity behave differently than their wild counterparts.", zh:"在人工環境中飼養的動物，其行為與野生同類有所不同。",
+    icons:[C("🦁","captivity","n.","人工飼養"), {ico:"↔️",eng:"differently",pos:"adv.",lbl:"行為不同"}, C("🌿","wild","adj.","野生")],
+    hl:["raised in captivity","wild counterparts"], prompt:"Side-by-side: zoo lion lounging lazily vs wild lion sprinting across savanna. Both looking at each other confused. Behavioral contrast." },
+
+  { num:22, en:"Assignments should be submitted to the department office before the deadline.", zh:"作業應在截止日期前提交至系辦公室。",
+    icons:[C("📝","Assignments","n.pl","作業"), C("🏃","submitted","v.+ed","提交"), C("⏰","deadline","n.","截止日"), C("🏢","department office","phr.","系辦公室")],
+    hl:["submitted","department office","deadline"], prompt:"A giant clock approaching midnight, panicked student sprinting with assignments toward a closing DEPARTMENT OFFICE door." },
+
+  { num:23, en:"Lecture outlines are available on the college internal website.", zh:"課程大綱可在學院內部網站上取得。",
+    icons:[C("📋","outlines","n.pl","課程大綱"), C("🔒","internal","adj.","內部"), C("🌐","website","n.","學院網站")],
+    hl:["available","internal website"], prompt:"Student logging into college internal website to find neatly organized lecture outlines in a digital library. Clean UI illustration." },
+
+  { num:24, en:"All of the assignments must be submitted in person to the faculty office.", zh:"所有作業必須親自提交至學院辦公室。",
+    icons:[C("📝","assignments","n.pl","所有作業"), C("🚶","in person","phr.","親自"), C("🏛️","faculty office","phr.","學院辦公室")],
+    hl:["in person","faculty office"], prompt:"Student carrying assignments to FACULTY OFFICE in person. A crossed-out computer icon indicating no online submission. Contrast illustration." },
+
+  { num:25, en:"Organizational failure is considered from various perspectives in academic literature.", zh:"學術文獻從各種角度探討組織失敗的問題。",
+    icons:[C("🏚️","Organizational failure","phr.","組織失敗"), C("📚","academic literature","phr.","學術文獻"), C("🔭","perspectives","n.pl","各種角度")],
+    hl:["various perspectives","academic literature"], prompt:"Collapsed office building with academics examining ruins through different colored lenses from all angles. Multi-perspective illustration." },
+
+  { num:26, en:"The railway makes long distance travel possible for everyone.", zh:"鐵路讓長途旅行對所有人都成為可能。",
+    icons:[C("🚂","railway","n.","鐵路"), C("📏","long distance","phr.","長途"), C("👨‍👩‍👧‍👦","everyone","pron.","所有人")],
+    hl:["railway","long distance","everyone"], prompt:"A railway from a mountain village to a city with diverse passengers on the train. Inclusive travel illustration." },
+
+  { num:27, en:"The elective course introduces engineering students to construction practices.", zh:"該選修課向工程系學生介紹建築施工實務。",
+    icons:[C("📚","elective","adj.","選修課"), C("👷","engineering students","phr.","工程學生"), C("🏗️","construction practices","phr.","施工實務")],
+    hl:["elective course","construction practices"], prompt:"Engineering students wide-eyed in front of a real construction site. Split scene: blueprints on paper vs 3D construction. Wonder atmosphere." },
+
+  { num:28, en:"The rising temperature is changing the wildlife population.", zh:"氣溫上升正在改變野生動物的族群數量。",
+    icons:[C("🌡️","rising","adj.","氣溫上升"), C("🐻‍❄️","wildlife","n.","野生動物"), C("📉","population","n.","族群數量")],
+    hl:["rising temperature","wildlife population"], prompt:"A thermometer rising with fewer animal silhouettes as it climbs. Polar bear on shrinking ice, confused migrating birds. Climate urgency." },
+
+  { num:29, en:"Several candidates would be qualified as the greatest scientists of all time.", zh:"有幾位候選人有資格被評為史上最偉大的科學家。",
+    icons:[C("👨‍🔬","candidates","n.pl","幾位候選人"), C("❓","qualified","adj.","有資格"), C("🏆","greatest","adj.","史上最偉大")],
+    hl:["Several candidates","qualified","greatest scientists"], prompt:"Awards podium with silhouettes of Einstein, Newton, Curie, Darwin below, each with a glowing question mark. Empty gold medal." },
+
+  { num:30, en:"There is a pharmacy on campus near the bookstore.", zh:"校園內書店附近有一家藥局。",
+    icons:[C("🏫","campus","n.","校園"), C("📚","bookstore","n.","書店"), C("📍","near","prep.","附近"), C("💊","pharmacy","n.","藥局")],
+    hl:["pharmacy","campus","bookstore"], prompt:"Campus map showing bookstore next to pharmacy. Student holds textbook in one hand and medicine in the other. Campus life illustration." },
+
+  { num:31, en:"The key difference between courses is the kind of assessment.", zh:"課程之間的主要差別在於評量方式。",
+    icons:[C("📚","courses","n.pl","課程"), C("🔑","key difference","phr.","主要差別"), C("📊","assessment","n.","評量方式")],
+    hl:["key difference","assessment"], prompt:"Two textbooks with arrows pointing to an exam paper and grading rubric. Educational comparison illustration." },
+
+  { num:32, en:"Farming methods across the world have developed greatly recently.", zh:"全球各地的農業方式近來已有長足的發展。",
+    icons:[C("🌾","Farming methods","phr.","農業方法"), C("🌍","world","n.","全球"), C("📈","developed","v.+ed","大幅進步")],
+    hl:["Farming methods","developed greatly"], prompt:"Split globe: traditional hand-farming vs modern drone-assisted farming with an upward arrow labeled RECENTLY. Agricultural progress." },
+
+  { num:33, en:"He landed a job in a very prestigious law firm.", zh:"他在一家非常知名的律師事務所找到了工作。",
+    icons:[C("👨","He","pron.","他"), C("🏛️","prestigious","adj.","知名"), C("💼","landed","v.+ed","找到工作")],
+    hl:["landed a job","prestigious law firm"], prompt:"A man landing superhero-style in front of a grand pillared law firm. Briefcase in hand, confident expression. Dynamic editorial illustration." },
+
+  { num:34, en:"Students are encouraged to think carefully about their accommodation needs.", zh:"學生被鼓勵仔細考慮自己的住宿需求。",
+    icons:[C("🎓","Students","n.pl","學生"), C("🤔","carefully","adv.","仔細考慮"), C("🏠","accommodation","n.","住宿需求")],
+    hl:["encouraged","accommodation needs"], prompt:"A student with thought bubbles showing different housing options — dorm, apartment, homestay. Advisor pointing encouragingly." },
+
+  { num:35, en:"Calculators may not be used during the examination.", zh:"考試期間不得使用計算機。",
+    icons:[C("🧮","Calculators","n.pl","計算機"), C("🚫","not be used","phr.","不可使用"), C("📝","examination","n.","考試中")],
+    hl:["Calculators","not be used","examination"], prompt:"A calculator with a big red X next to an exam paper. Sign reads NO CALCULATORS. Student staring at a difficult equation." },
+
+  { num:36, en:"Collaboration between departments is a feature of successful companies.", zh:"部門之間的協作是成功企業的一項特徵。",
+    icons:[C("🤝","Collaboration","n.","協作"), C("🏢","departments","n.pl","部門間"), C("🏆","successful","adj.","成功企業")],
+    hl:["Collaboration","successful companies"], prompt:"Two departments connected by a bridge of handshakes, with a SUCCESS trophy in the middle. Corporate teamwork infographic." },
+
+  { num:37, en:"Most scientists believe that climate change threatens lives on the earth.", zh:"大多數科學家認為氣候變遷威脅著地球上的生命。",
+    icons:[C("👨‍🔬","scientists","n.pl","科學家"), C("🌡️","climate change","phr.","氣候變遷"), C("⚠️","threatens","v.+s","威脅"), C("🌍","lives","n.pl","地球生命")],
+    hl:["climate change","threatens lives"], prompt:"Concerned scientists surrounding a cracked globe with heat waves rising. Warning signs floating above. Urgent scientific consensus." },
+
+  { num:38, en:"The other book is not thorough but it is more insightful.", zh:"另一本書不夠深入，但見解更為獨到。",
+    icons:[C("📖","thorough","adj.","不夠深入"), {ico:"🔀",eng:"but",pos:"conj.",lbl:""}, C("💡","insightful","adj.","見解獨到")],
+    hl:["not thorough","more insightful"], prompt:"Two books on a scale: heavier THOROUGH sinks but has no lightbulb; lighter INSIGHTFUL floats with a bright glowing lightbulb." },
+
+  { num:39, en:"The lecture today will cover all the main reasons for global warming.", zh:"今天的講座將涵蓋全球暖化的所有主要原因。",
+    icons:[C("🎤","lecture","n.","今日講座"), C("🌡️","global warming","phr.","全球暖化"), C("🔍","reasons","n.pl","所有原因")],
+    hl:["lecture today","global warming"], prompt:"A professor at a podium with a large screen showing global warming causes all connected to a rising thermometer. Lecture hall setting." },
+
+  { num:40, en:"Building trust is not something that can be achieved overnight.", zh:"建立信任並非一蹴可幾之事。",
+    icons:[C("🤝","trust","n.","建立信任"), C("⏳","overnight","adv.","一蹴不及"), C("🌱","achieved","v.+ed","慢慢成長")],
+    hl:["Building trust","achieved overnight"], prompt:"A handshake growing like a plant through seasons — sprout in spring, vine in summer, strong tree in autumn. Trust building metaphor." },
+
+  { num:41, en:"New materials and techniques are changing the style of modern architecture.", zh:"新材料與新技術正在改變現代建築的風格。",
+    icons:[C("🧪","materials","n.pl","新材料"), C("🔧","techniques","n.pl","新技術"), A(), C("🏛️","architecture","n.","現代建築")],
+    hl:["New materials","techniques","modern architecture"], prompt:"A classic stone building morphing into a futuristic glass-steel structure with material swatches and blueprints between them." },
+
+  { num:42, en:"The educational level is found to be related to social and economic backgrounds.", zh:"研究發現，教育程度與社會及經濟背景有關。",
+    icons:[C("🎓","educational level","phr.","教育程度"), C("🔗","related","adj.","有關聯"), C("💰","backgrounds","n.pl","社經背景")],
+    hl:["educational level","social and economic backgrounds"], prompt:"A graduation cap connected by a chain link to house, wallet, and family background icons. Social science infographic style." },
+
+  { num:43, en:"Air pollution is a serious problem all over the world.", zh:"空氣污染是全球性的嚴重問題。",
+    icons:[C("💨","Air pollution","phr.","空氣污染"), C("⚠️","serious","adj.","嚴重"), C("🌍","world","n.","全球")],
+    hl:["Air pollution","serious problem"], prompt:"A smoggy globe with factory smokestacks on every continent, red warning indicators glowing worldwide. Urgent environmental illustration." },
+
+  { num:44, en:"The dance department stages elaborated performances each semester.", zh:"舞蹈系每學期都會籌辦精心製作的演出。",
+    icons:[C("💃","dance department","phr.","舞蹈系"), C("🎭","elaborated","adj.","精心製作"), C("📅","semester","n.","每學期")],
+    hl:["dance department","elaborated performances"], prompt:"A grand theater stage with spotlights, dancers in elaborate costumes mid-performance. A calendar shows EVERY SEMESTER checkmarked." },
+
+  { num:45, en:"Studies showed there is a positive correlation between the two variables.", zh:"研究顯示，這兩個變數之間存在正相關。",
+    icons:[C("📊","Studies","n.pl","研究"), C("📈","positive correlation","phr.","正相關"), C("🔢","variables","n.pl","兩個變數")],
+    hl:["positive correlation","two variables"], prompt:"A scatter plot with dots climbing upward in perfect positive correlation. Two variables X and Y holding hands as they rise." },
+
+  { num:46, en:"The director of the gallery was grateful for the anonymous donation.", zh:"畫廊館長對這筆匿名捐款深表感謝。",
+    icons:[C("🖼️","gallery","n.","畫廊館長"), C("🙏","grateful","adj.","深表感謝"), C("🎭","anonymous","adj.","匿名捐款")],
+    hl:["director of the gallery","anonymous donation"], prompt:"Gallery director bowing before a donation box with a question mark mask. An anonymous figure in a cloak exits. Elegant illustration." },
+
+  { num:47, en:"Banks charge interest on the money they lend to customers.", zh:"銀行對借貸給客戶的款項收取利息。",
+    icons:[C("🏦","Banks","n.pl","銀行"), C("💸","charge interest","phr.","收取利息"), C("💰","lend","v.","借款給客戶")],
+    hl:["charge interest","lend to customers"], prompt:"A bank handing money to a customer with a percentage meter ticking upward above it. Finance illustration." },
+
+  { num:48, en:"Scientists are unsure when the early men first left Africa.", zh:"科學家尚不確定早期人類最初離開非洲的時間。",
+    icons:[C("👨‍🔬","Scientists","n.pl","科學家"), C("❓","unsure","adj.","不確定"), C("🦴","early men","phr.","早期人類"), C("🌍","Africa","n.","非洲")],
+    hl:["Scientists are unsure","early men","left Africa"], prompt:"Scientists with magnifying glasses and question marks around a world map. Footprints leading out of Africa with a blurry start date." },
+
+  { num:49, en:"The ability to work with fellow students cannot be stressed enough.", zh:"與同學合作的能力再怎麼強調都不為過。",
+    icons:[C("🤝","fellow students","phr.","同學合作"), C("💪","ability","n.","能力"), C("‼️","stressed","v.+ed","強調不過")],
+    hl:["work with fellow students","cannot be stressed enough"], prompt:"Students working together, TEAMWORK in giant bold letters above them underlined three times. Over-the-top importance illustration." },
+
+  { num:50, en:"Sea levels are expected to rise during the next century.", zh:"預計下個世紀海平面將會上升。",
+    icons:[C("🌊","Sea levels","phr.","海平面"), C("📈","rise","v.","將上升"), C("📅","century","n.","下個世紀")],
+    hl:["Sea levels","rise","next century"], prompt:"A coastline with a transparent water level indicator showing dramatic rise marked NEXT CENTURY. Future projection illustration." },
+
+  { num:51, en:"Our view is that educational reforms have been inadequately implemented.", zh:"我們的觀點是，教育改革的落實仍不夠充分。",
+    icons:[C("💬","view","n.","我們觀點"), C("🏫","reforms","n.pl","教育改革"), C("⚠️","inadequately","adv.","落實不足")],
+    hl:["educational reforms","inadequately implemented"], prompt:"A reform document half-stamped and half-ignored on a desk. A speech bubble labeled OUR VIEW says INSUFFICIENT. Critical policy illustration." },
+
+  { num:52, en:"Education and training provide important skills for the labor force.", zh:"教育與培訓為勞動力提供重要的技能。",
+    icons:[C("🎓","Education","n.","教育"), C("🏋️","training","n.","培訓"), A(), C("💼","labor force","phr.","勞動力"), C("🛠️","skills","n.pl","重要技能")],
+    hl:["Education and training","skills","labor force"], prompt:"A production line: blank worker figures enter, pass through EDUCATION and TRAINING stations, emerge with skill badges. Workforce illustration." },
+
+  { num:53, en:"Physics is the key to understanding the world and the universe.", zh:"物理學是理解世界與宇宙的關鍵。",
+    icons:[C("⚛️","Physics","n.","物理學"), C("🔑","key","n.","關鍵"), C("🌍","world","n.","世界"), C("🌌","universe","n.","宇宙")],
+    hl:["Physics","key to understanding","universe"], prompt:"A giant golden key labeled PHYSICS unlocking two doors: Earth's inner workings and the vast cosmos. Epic scale illustration." },
+
+  { num:54, en:"We have sophisticated ways of studying the brain in action.", zh:"我們擁有精密的方式來研究大腦的運作。",
+    icons:[C("🧠","brain","n.","大腦"), C("⚡","in action","phr.","運作中"), C("🔬","sophisticated","adj.","精密研究")],
+    hl:["sophisticated ways","brain in action"], prompt:"A glowing brain with neural activity surrounded by MRI machines, EEG headsets, and electrode arrays monitoring live activity." },
+
+  { num:55, en:"Student representatives will be visiting the classrooms with voting forms.", zh:"學生代表將攜帶投票表格前往各班級。",
+    icons:[C("🙋","representatives","n.pl","學生代表"), C("🗳️","voting forms","phr.","投票表格"), C("🚶","visiting","v.+ing","前往各班")],
+    hl:["Student representatives","voting forms"], prompt:"A student in a REPRESENTATIVE sash walking classroom to classroom carrying voting forms. Students inside eagerly reaching for them." },
+
+  { num:56, en:"Certain scientific principles need to be learned verbally or by a logical deduction.", zh:"某些科學原理需要透過口述或邏輯推演來學習。",
+    icons:[C("🔬","principles","n.pl","科學原理"), C("🗣️","verbally","adv.","口述"), OR(), C("🧮","deduction","n.","邏輯推演")],
+    hl:["verbally","logical deduction"], prompt:"A science textbook with two learning paths: one shows a mouth speaking aloud, the other a logical flowchart deducing the answer." },
+
+  { num:57, en:"The rising inflation rate indicates a decrease in demand for consumer products.", zh:"通貨膨脹率上升顯示消費品需求下降。",
+    icons:[C("📈","inflation rate","phr.","通膨上升"), A(), C("📉","decrease","n.","需求下降"), C("🛒","demand","n.","消費品")],
+    hl:["rising inflation rate","decrease in demand"], prompt:"An inflation thermometer rising connected by an arrow to an empty shopping cart rolling away with a downward arrow. Economic indicator." },
+
+  { num:58, en:"All of your assignments should be due by tomorrow.", zh:"你所有的作業都應在明天前繳交。",
+    icons:[C("📝","assignments","n.pl","所有作業"), C("⏰","due","adj.","截止"), C("📅","tomorrow","adv.","明天")],
+    hl:["assignments","due by tomorrow"], prompt:"A stack of assignment papers with a giant clock showing TOMORROW. A student looking panicked at an unchecked checklist." },
+
+  { num:59, en:"The economic strength of the early Roman Republic will be examined.", zh:"早期羅馬共和國的經濟實力將受到探討。",
+    icons:[C("🏛️","Roman Republic","phr.","早期羅馬"), C("💰","economic strength","phr.","經濟實力"), C("🔍","examined","v.+ed","將被探討")],
+    hl:["economic strength","Roman Republic","examined"], prompt:"An ancient Roman forum with coins and merchants, overlaid with modern economic analysis charts and a magnifying glass. Past meets present." },
+
+  { num:60, en:"Important details from the argument are missing in summary.", zh:"摘要中遺漏了論點中的重要細節。",
+    icons:[C("📄","argument","n.","原論點"), A(), C("📋","summary","n.","摘要"), C("❌","missing","adj.","遺漏細節")],
+    hl:["Important details","missing in summary"], prompt:"A detailed document squeezed through a funnel into a short summary, with important pieces labeled DETAILS falling to the floor." },
+
+  { num:61, en:"Our professor is hosting the business development conference.", zh:"我們的教授正在主持這場商業發展研討會。",
+    icons:[C("👨‍🏫","professor","n.","教授"), C("🎤","hosting","v.+ing","主持"), C("💼","conference","n.","研討會")],
+    hl:["professor","hosting","conference"], prompt:"A professor confidently at a podium with a BUSINESS DEVELOPMENT CONFERENCE banner. Audience of suits in foreground." },
+
+  { num:62, en:"I thought it was through the small meeting room.", zh:"我以為是透過那間小會議室。",
+    icons:[C("🤔","thought","v.+ed","我以為"), C("🚶","through","prep.","穿過"), C("🚪","meeting room","phr.","小會議室")],
+    hl:["thought","small meeting room"], prompt:"A confused person pointing at a small meeting room with a thought bubble showing them imagining walking through it." },
+
+  { num:63, en:"It is really a comprehensive program comprising both theory and practice.", zh:"這真的是一個兼顧理論與實務的完整課程。",
+    icons:[C("📚","theory","n.","理論"), {ico:"➕",eng:"comprising",pos:"v.+ing",lbl:""}, C("🔧","practice","n.","實務"), C("✅","comprehensive","adj.","完整課程")],
+    hl:["comprehensive program","theory and practice"], prompt:"Two interlocking puzzle pieces — THEORY with books and PRACTICE with tools — fitting perfectly to form a complete circle. Program design." },
+
+  { num:64, en:"A group meeting will be held tomorrow in the library conference room.", zh:"明天將在圖書館會議室舉行小組會議。",
+    icons:[C("👥","group meeting","phr.","小組會議"), C("📅","tomorrow","adv.","明天"), C("📚","conference room","phr.","圖書館會議室")],
+    hl:["group meeting","tomorrow","library conference room"], prompt:"Calendar showing TOMORROW with an arrow to a library conference room with people around a table. Books on shelves through glass walls." },
+
+  { num:65, en:"Listening is the key skill needed to succeed in this course.", zh:"聆聽是在這門課中取得成功所需的關鍵技能。",
+    icons:[C("👂","Listening","v.+ing","聆聽"), C("🔑","key skill","phr.","關鍵技能"), C("🏆","succeed","v.","課程成功")],
+    hl:["Listening","key skill","succeed"], prompt:"A giant ear with a golden key coming out labeled KEY SKILL, unlocking a trophy labeled COURSE SUCCESS. Bold metaphor illustration." },
+
+  { num:66, en:"Human beings compete with other species for resources and space.", zh:"人類與其他物種競爭資源與空間。",
+    icons:[C("🧑","Human beings","phr.","人類"), C("⚔️","compete","v.","競爭"), C("🌿","resources","n.pl","資源空間")],
+    hl:["compete with other species","resources and space"], prompt:"Humans and animals facing each other across a forest clearing, both reaching for the same food, water, and land resources." },
+
+  { num:67, en:"Please make sure you have correctly cited all the necessary materials.", zh:"請確保你已正確引用所有必要的資料。",
+    icons:[C("📋","materials","n.pl","必要資料"), C("✅","correctly","adv.","正確"), C("📝","cited","v.+ed","引用")],
+    hl:["correctly cited","necessary materials"], prompt:"A checklist of sources being carefully verified with a magnifying glass. Student double-checking citations with a reference guide." },
+
+  { num:68, en:"Consumer confidence has a direct influence on sales.", zh:"消費者信心對銷售額有直接影響。",
+    icons:[C("😊","confidence","n.","消費者信心"), {ico:"➡️",eng:"direct influence",pos:"phr.",lbl:"直接影響"}, C("💹","sales","n.pl","銷售額")],
+    hl:["Consumer confidence","direct influence","sales"], prompt:"A happy consumer with a confidence meter full, connected by a DIRECT INFLUENCE arrow to a rising sales graph. Economic psychology." },
+
+  { num:69, en:"Preparation is important to avoid mishaps in the lab.", zh:"事先準備對於避免實驗室中的意外非常重要。",
+    icons:[C("📋","Preparation","n.","事先準備"), C("🔬","lab","n.","實驗室"), C("🚫","mishaps","n.pl","避免意外")],
+    hl:["Preparation","mishaps in the lab"], prompt:"Two parallel lab scenes: unprepared scientist causing an explosion vs prepared scientist following a checklist with zero mishaps." },
+
+  { num:70, en:"Plants are living things that can grow on land or in water.", zh:"植物是能在陸地或水中生長的生物。",
+    icons:[C("🌱","Plants","n.pl","植物"), C("🌍","land","n.","陸地"), OR(), C("💧","water","n.","水中")],
+    hl:["Plants","grow on land","in water"], prompt:"A plant growing simultaneously from soil on one side and from water on the other. Versatile life illustration." },
+
+  { num:71, en:"Affordable housing is an important issue for all members of society.", zh:"平價住房是社會所有成員的重要議題。",
+    icons:[C("🏠","Affordable housing","phr.","平價住房"), C("⚠️","issue","n.","重要議題"), C("👨‍👩‍👧‍👦","society","n.","全社會")],
+    hl:["Affordable housing","all members of society"], prompt:"A house with an AFFORDABLE price tag surrounded by diverse members of society — elderly, young family, student, worker — all looking hopefully." },
+
+  { num:72, en:"Remember, the prestigious election of stewardship has strict eligibility criteria.", zh:"請記住，這項備受推崇的幹部選舉有嚴格的資格標準。",
+    icons:[C("🏆","prestigious","adj.","備受推崇"), C("📋","eligibility criteria","phr.","資格標準"), C("⚠️","strict","adj.","嚴格")],
+    hl:["prestigious election","strict eligibility criteria"], prompt:"A grand election podium with a long requirements checklist. Only a few candidates pass the strict criteria filter. Formal official illustration." },
+
+  { num:73, en:"Students have the option to live in college residences or apartments.", zh:"學生可以選擇住在學院宿舍或公寓。",
+    icons:[C("🎓","Students","n.pl","學生"), C("🏘️","residences","n.pl","學院宿舍"), OR(), C("🏢","apartments","n.pl","公寓")],
+    hl:["option to live","residences or apartments"], prompt:"A student at a fork: left path leads to a dorm building, right path to a modern apartment. Both look welcoming. Free choice illustration." },
+
+  { num:74, en:"The application process may take longer than expected.", zh:"申請流程可能比預期花費更長的時間。",
+    icons:[C("📋","application","n.","申請"), C("⏳","longer","adj.comp.","更長時間"), C("😮","expected","v.+ed","超出預期")],
+    hl:["application process","longer than expected"], prompt:"A person submitting at step 1, then waiting as a progress bar barely moves while a clock spins. Expected vs actual timeline comparison." },
+
+  { num:75, en:"The most popular courses still have a few places left.", zh:"最熱門的課程仍有少數名額。",
+    icons:[C("⭐","popular","adj.","最熱門"), C("🪑","places","n.pl","少數名額"), C("✅","still","adv.","仍有剩餘")],
+    hl:["most popular courses","few places left"], prompt:"A course registration board: many slots FULL in red, a few remaining glowing green. Students rushing toward green seats. Scarcity illustration." },
+
+  { num:76, en:"The massive accumulation of data was converted into a communicable argument.", zh:"大量累積的資料被轉化為一個可傳達的論點。",
+    icons:[C("📊","accumulation","n.","大量資料"), C("🔄","converted","v.+ed","轉化"), C("💬","communicable","adj.","可傳達論點")],
+    hl:["accumulation of data","communicable argument"], prompt:"A mountain of raw data fed into a machine that outputs a single clear speech bubble. Data to insight transformation illustration." },
+
+  { num:77, en:"Traffic is the main cause of air pollution in many cities.", zh:"交通是許多城市空氣污染的主要原因。",
+    icons:[C("🚗","Traffic","n.","交通"), A(), C("💨","air pollution","phr.","空氣污染"), C("🏙️","cities","n.pl","城市")],
+    hl:["Traffic","main cause","air pollution"], prompt:"A city skyline with a traffic jam, exhaust fumes rising labeled AIR POLLUTION. Cause-and-effect arrow from cars to smoggy sky." },
+
+  { num:78, en:"Water filters on campus will discourage the unnecessary use of plastic bottles.", zh:"校園內的濾水器將減少不必要的塑膠瓶使用。",
+    icons:[C("🚰","filters","n.pl","濾水器"), C("🚫","discourage","v.","減少使用"), C("🍶","plastic bottles","phr.","塑膠瓶")],
+    hl:["Water filters","unnecessary use of plastic bottles"], prompt:"Water filter fountain on campus with students filling reusable bottles, while a crossed-out plastic bottle floats away. Green campus sustainability." },
+
+  { num:79, en:"We can't consider any increase in our price at this stage.", zh:"我們現階段無法考慮任何漲價。",
+    icons:[C("💰","increase","n.","漲價"), C("🚫","consider","v.","無法考慮"), C("📅","stage","n.","現階段")],
+    hl:["increase in our price","this stage"], prompt:"An executive shaking their head at a rising price chart. A large STOP sign before the upward arrow. THIS STAGE calendar on the wall." },
+
+  { num:80, en:"Parents' talk to children tends to be simplified.", zh:"父母與孩子說話時往往會簡化語言。",
+    icons:[C("👨‍👩‍👧","Parents'","poss.","父母"), C("💬","talk","n.","說話"), C("✂️","simplified","v.+ed","簡化語言")],
+    hl:["Parents' talk","simplified"], prompt:"Parent's thought shows complex sentences but words coming out simplify into short phrases with pictures. Child looks delighted and understands." },
+
+  { num:81, en:"Check the website if you are looking for discounted textbooks.", zh:"如果你在找折扣教科書，請查看網站。",
+    icons:[C("📚","discounted","adj.","折扣教科書"), C("🔍","looking for","phr.","查看"), C("💻","website","n.","網站")],
+    hl:["discounted textbooks","website"], prompt:"A student searching a laptop with textbooks showing red sale tags. A helpful arrow pointing from the search bar to discounted books." },
+
+  { num:82, en:"Those who are considering a career in marketing should attend the talk.", zh:"考慮從事行銷職業的人應該參加這場講座。",
+    icons:[C("💼","marketing","n.","行銷職涯"), C("🤔","considering","v.+ing","考慮中"), C("🎤","attend","v.","應參加")],
+    hl:["career in marketing","attend the talk"], prompt:"A person with a MARKETING thought bubble seeing a career talk event poster and being drawn toward it with a guiding arrow." },
+
+  { num:83, en:"Tomorrow's lecture will discuss the educational policy in the United States.", zh:"明天的講座將討論美國的教育政策。",
+    icons:[C("📅","Tomorrow's","poss.","明天講座"), C("🇺🇸","United States","phr.","美國"), C("🏫","policy","n.","教育政策")],
+    hl:["Tomorrow's lecture","educational policy","United States"], prompt:"Lecture hall preview: calendar showing TOMORROW, a screen projecting US flag with education policy documents overlaid." },
+
+  { num:84, en:"The science library is currently located on the ground floor of the library.", zh:"理科圖書館目前位於圖書館的一樓。",
+    icons:[C("🔬","science library","phr.","理科圖書館"), C("📍","located","v.+ed","位於"), C("1️⃣","ground floor","phr.","一樓")],
+    hl:["science library","ground floor"], prompt:"A library building cross-section showing the ground floor labeled SCIENCE LIBRARY with microscopes and chemistry books. Directory map illustration." },
+
+  { num:85, en:"The university has invested in new technology designed to support learning.", zh:"大學已投資新技術，旨在支援學習。",
+    icons:[C("🏫","university","n.","大學"), C("💰","invested","v.+ed","投資"), C("💻","technology","n.","新技術"), C("📚","support learning","phr.","支援學習")],
+    hl:["invested in new technology","support learning"], prompt:"A university building with money flowing into a technology hub — tablets, smart boards, VR — all connected to students learning effectively." },
+
+  { num:86, en:"Mature students usually adapt to university life extremely well.", zh:"成熟學生通常能極佳地適應大學生活。",
+    icons:[C("🧑‍🎓","Mature","adj.","成熟學生"), C("🔄","adapt","v.","適應"), C("⭐","extremely","adv.","極佳地")],
+    hl:["Mature students","adapt to university life"], prompt:"An older student confidently navigating campus — balancing lectures, library, social events — with a high adaptation score meter in the corner." },
+
+  { num:87, en:"They developed a unique approach to training their employees.", zh:"他們開發了一套獨特的員工培訓方法。",
+    icons:[C("🎯","unique","adj.","獨特"), C("📐","approach","n.","方法"), C("👷","employees","n.pl","員工培訓")],
+    hl:["unique approach","training their employees"], prompt:"A company building a one-of-a-kind training machine labeled UNIQUE. Employees emerge with glowing skill badges. Innovation in HR illustration." },
+
+  { num:88, en:"A good academic paper should present clear arguments.", zh:"一篇好的學術論文應提出清晰的論點。",
+    icons:[C("📄","academic","adj.","學術論文"), C("💡","arguments","n.pl","論點"), C("✅","clear","adj.","清晰")],
+    hl:["academic paper","clear arguments"], prompt:"A research paper with arguments displayed as clearly labeled arrows pointing to evidence. A checklist shows CLEAR ARGUMENTS ticked." },
+
+  { num:89, en:"Please note that the seminar has now been canceled.", zh:"請注意，該研討會現已取消。",
+    icons:[C("📢","note","v.","請注意"), C("🎓","seminar","n.","研討會"), C("❌","canceled","v.+ed","已取消")],
+    hl:["seminar","canceled"], prompt:"A seminar poster being crossed out with a big red X stamp labeled CANCELED NOW. Someone reads the notice with a disappointed expression." },
+
+  { num:90, en:"Our courses help improve critical thinking and independent learning skills.", zh:"我們的課程有助於提升批判性思維與自主學習能力。",
+    icons:[C("📚","courses","n.pl","課程"), C("🧠","critical thinking","phr.","批判思維"), C("🏆","independent","adj.","自主學習")],
+    hl:["critical thinking","independent learning skills"], prompt:"A student's brain with two sections growing: CRITICAL THINKING with analysis tools, INDEPENDENT LEARNING with a self-driven motor." },
+
+  { num:91, en:"We have a lecture in the morning on Thursday.", zh:"我們週四早上有一堂課。",
+    icons:[C("📅","Thursday","n.","週四"), C("🌅","morning","n.","早上"), C("🎤","lecture","n.","有課")],
+    hl:["lecture","morning","Thursday"], prompt:"A weekly calendar with Thursday highlighted, morning slot marked with a lecture icon. A sunrise visible through the classroom window." },
+
+  { num:92, en:"Students are encouraged to monitor their studies by themselves.", zh:"學生被鼓勵自行監督自己的學習進度。",
+    icons:[C("🎓","encouraged","v.+ed","被鼓勵"), C("📊","monitor","v.","監督"), C("🙋","themselves","pron.","自行管理")],
+    hl:["monitor their studies","by themselves"], prompt:"A student as their own teacher — looking in a mirror wearing both student and teacher hats, self-assessing a progress report." },
+
+  { num:93, en:"A professor took one year off to work on her book.", zh:"一位教授請了一年假來撰寫她的著作。",
+    icons:[C("👩‍🏫","professor","n.","教授"), C("📅","one year","phr.","請假一年"), C("✍️","work on","phr.","撰寫")],
+    hl:["took one year off","work on her book"], prompt:"A female professor handing lecture notes to a substitute, then retreating to a cozy writing desk surrounded by manuscripts. Sabbatical illustration." },
+
+  { num:94, en:"Enrolling in a double major may increase your career options.", zh:"申請雙主修可能增加你的職涯選擇。",
+    icons:[C("📚","double major","phr.","雙主修"), C("📈","increase","v.","增加"), C("💼","options","n.pl","職涯選擇")],
+    hl:["double major","career options"], prompt:"A student holding two diplomas at a crossroads with many career path signs branching outward vs a single-major student beside them." },
+
+  { num:95, en:"The department has a higher-than-normal proportion of postgraduate students.", zh:"該系所的研究生比例高於一般水準。",
+    icons:[C("🏫","department","n.","系所"), C("📊","proportion","n.","比例"), C("🎓","postgraduate","adj.","研究生")],
+    hl:["higher-than-normal proportion","postgraduate students"], prompt:"A pie chart where the postgraduate students slice is noticeably larger than average, with a comparison chart showing normal vs this department." },
+
+  { num:96, en:"The growing population has posed a challenge to many governments.", zh:"人口增長對許多政府造成了挑戰。",
+    icons:[C("👨‍👩‍👧‍👦","growing","adj.","人口增長"), C("⚠️","challenge","n.","挑戰"), C("🏛️","governments","n.pl","各國政府")],
+    hl:["growing population","challenge","governments"], prompt:"Government buildings crowded by a growing mass of population icons pushing against the walls. Ministers inside looking stressed at population graphs." },
+
+  { num:97, en:"Photography can be very useful to geographical research.", zh:"攝影對地理研究非常有幫助。",
+    icons:[C("📸","Photography","n.","攝影"), C("✅","useful","adj.","非常有用"), C("🌍","geographical","adj.","地理研究")],
+    hl:["Photography","useful","geographical research"], prompt:"A photographer capturing landscapes in the field. Photos transform into geographical data maps and research papers. Field photography to science pipeline." },
+
+  { num:98, en:"The north campus car park could be closed on Sunday.", zh:"北校區停車場週日可能關閉。",
+    icons:[C("🏫","north campus","phr.","北校區"), C("🅿️","car park","phr.","停車場"), C("🚫","closed","adj.","週日關閉")],
+    hl:["north campus","car park","closed on Sunday"], prompt:"A campus map with north car park highlighted, a Sunday closed sign on its gates, a question mark suggesting uncertainty. Campus notice illustration." },
+
+  { num:99, en:"Foods containing too much sugar and calories have little or no nutritional value.", zh:"含有過多糖分和熱量的食物幾乎沒有營養價值。",
+    icons:[C("🍬","sugar","n.","過多糖分"), C("🔥","calories","n.pl","高熱量"), C("🥗","nutritional value","phr.","幾乎無營養")],
+    hl:["too much sugar and calories","little or no nutritional value"], prompt:"Junk food platter labeled HIGH SUGAR HIGH CALORIES on a nutrition scale showing the nutrient bar nearly empty. Compared to a full-bar vegetable plate." },
+
+  { num:100, en:"Sugar is a compound that consists of carbon, oxygen and hydrogen atoms.", zh:"糖是由碳、氧和氫原子組成的化合物。",
+    icons:[C("🍬","Sugar","n.","糖"), C("⚗️","compound","n.","化合物"), C("⚛️","atoms","n.pl","碳氧氫原子")],
+    hl:["Sugar","compound","carbon, oxygen and hydrogen"], prompt:"A sugar crystal magnified showing its molecular structure with labeled C, O, H atoms bonded together in a ring pattern. Chemistry education." },
+
+  { num:101, en:"Make sure you choose a course that provides great career opportunities.", zh:"請確保你選擇一門能提供良好職涯機會的課程。",
+    icons:[C("📚","course","n.","選課"), C("✅","provides","v.+s","確保提供"), C("💼","opportunities","n.pl","職涯機會")],
+    hl:["choose a course","career opportunities"], prompt:"A student at a course selection board choosing wisely while career opportunity doors open in the background with different professions." },
+
+  { num:102, en:"Social media is often criticized for causing Internet addiction.", zh:"社群媒體常因導致網路成癮而受到批評。",
+    icons:[C("📱","Social media","phr.","社群媒體"), C("💬","criticized","v.+ed","常受批評"), C("😵","addiction","n.","網路成癮")],
+    hl:["Social media","criticized","Internet addiction"], prompt:"A phone screen with app icons pulling a person in with hooks, critics pointing accusatory fingers. The person looks glazed and unable to stop." },
+
+  { num:103, en:"You should provide examples to support your ideas and arguments.", zh:"你應該提供例子來支持你的想法和論點。",
+    icons:[C("💡","ideas","n.pl","想法論點"), C("📌","examples","n.pl","提供例子"), C("✅","support","v.","支撐論點")],
+    hl:["provide examples","support your ideas and arguments"], prompt:"An argument structure: main claim at top supported by three example pillars. Without examples the claim topples; with examples it stands." },
+
+  { num:104, en:"Protective clothing must always be worn in the laboratory.", zh:"在實驗室中必須隨時穿著防護服。",
+    icons:[C("🥼","Protective clothing","phr.","防護服"), C("✅","worn","v.+ed","必須穿著"), C("🔬","laboratory","n.","實驗室")],
+    hl:["Protective clothing","worn in the laboratory"], prompt:"Lab coat, safety goggles, and gloves with MANDATORY badges at the laboratory entrance. A sign reads ALWAYS WEAR." },
+
+  { num:105, en:"Honey can be used as a food and health product.", zh:"蜂蜜可作為食品和保健產品使用。",
+    icons:[C("🍯","Honey","n.","蜂蜜"), C("🍽️","food","n.","食品"), {ico:"➕",eng:"and",pos:"conj.",lbl:""}, C("💊","health product","phr.","保健品")],
+    hl:["Honey","food and health product"], prompt:"A honey jar split in half: left side on a breakfast plate labeled FOOD, right side in a medicine cabinet labeled HEALTH PRODUCT." },
+
+  { num:106, en:"Distance learning allows you to develop a career around your commitments.", zh:"遠距學習讓你能在兼顧個人職責的同時發展職涯。",
+    icons:[C("💻","Distance learning","phr.","遠距學習"), C("🔄","commitments","n.pl","兼顧職責"), C("💼","develop","v.","職涯發展")],
+    hl:["Distance learning","career","commitments"], prompt:"A person studying on a laptop while simultaneously caring for a child and handling family duties — all fitting together in a balanced puzzle." },
+
+  { num:107, en:"Dealing with the growing population is a challenge for many governments.", zh:"應對人口增長是許多政府面臨的挑戰。",
+    icons:[C("👨‍👩‍👧‍👦","growing population","phr.","人口增長"), C("⚠️","Dealing with","phr.","應對"), C("🏛️","challenge","n.","政府挑戰")],
+    hl:["growing population","challenge","governments"], prompt:"Ministers in a meeting room with a rapidly growing population graph, brainstorming solutions with sticky notes on a whiteboard." },
+
+  { num:108, en:"Muscle cells bring parts of the body closer together.", zh:"肌肉細胞使身體各部位相互靠近。",
+    icons:[C("💪","Muscle cells","phr.","肌肉細胞"), C("🫀","parts","n.pl","身體各部位"), C("🤝","closer","adj.comp.","相互靠近")],
+    hl:["Muscle cells","bring parts of the body closer together"], prompt:"A muscle cell diagram showing contractile fibers pulling two attachment points closer. Demonstrated on a simple arm flexing illustration." },
+
+  { num:109, en:"You need to put those books on the table over there.", zh:"你需要把那些書放到那邊的桌子上。",
+    icons:[C("📚","books","n.pl","那些書"), A(), C("🪑","table","n.","那邊桌上")],
+    hl:["put those books","table over there"], prompt:"A simple scene with a dotted arrow pointing from a stack of books to a table in the far corner of a room. Minimal directional illustration." },
+
+  { num:110, en:"Academic libraries across the world are steadily incorporating social media.", zh:"世界各地的學術圖書館正穩步融入社群媒體。",
+    icons:[C("📚","libraries","n.pl","學術圖書館"), C("🌍","world","n.","全球"), C("📱","incorporating","v.+ing","融入社群")],
+    hl:["Academic libraries","incorporating social media"], prompt:"A traditional library gaining glowing social media interfaces on walls — QR codes, digital catalogs, Twitter feeds of academic journals." },
+
+  { num:111, en:"Salt is produced from seawater or extracted from the ground.", zh:"鹽由海水製取或從地底開採。",
+    icons:[C("🧂","Salt","n.","鹽"), C("🌊","seawater","n.","海水"), OR(), C("⛏️","extracted","v.+ed","地底開採")],
+    hl:["produced from seawater","extracted from the ground"], prompt:"A salt shaker with two origin paths: solar evaporation ponds from seawater vs a mine shaft extracting rock salt underground." },
+
+  { num:112, en:"Many university lectures can now be viewed on the Internet.", zh:"許多大學課程現在可以在網路上觀看。",
+    icons:[C("🎤","lectures","n.pl","大學課程"), C("💻","Internet","n.","網路"), C("👁️","viewed","v.+ed","可觀看")],
+    hl:["university lectures","viewed on the Internet"], prompt:"A lecturer at a podium with a camera broadcasting to people watching on laptops and phones worldwide. Online education democratization." },
+
+  { num:113, en:"Artists need to make their works both original and accessible.", zh:"藝術家需要使其作品兼具原創性與易於親近性。",
+    icons:[C("🎨","Artists","n.pl","藝術家"), C("🆕","original","adj.","原創性"), C("🚪","accessible","adj.","易於親近")],
+    hl:["original and accessible"], prompt:"An artist's canvas split: uniquely original and inventive on one side, welcoming with open doors for all audiences on the other." },
+
+  { num:114, en:"Your ideas are discussed and debated in seminars and tutorials.", zh:"你的想法會在研討課和輔導課中被討論與辯論。",
+    icons:[C("💡","ideas","n.pl","你的想法"), C("💬","debated","v.+ed","討論辯論"), C("📚","seminars","n.pl","研討課")],
+    hl:["discussed and debated","seminars and tutorials"], prompt:"A light bulb idea entering a seminar room where multiple students discuss and debate it around a table. The idea grows stronger." },
+
+  { num:115, en:"An effective business manager is always open to new ideas.", zh:"一位有效率的企業管理者始終對新想法保持開放態度。",
+    icons:[C("👔","effective","adj.","有效率"), C("🧠","open to","phr.","開放態度"), C("💡","ideas","n.pl","新想法")],
+    hl:["effective business manager","open to new ideas"], prompt:"A manager with their office door literally open, welcoming ideas as lightbulbs. Their desk labeled EFFECTIVE MANAGER. Open door metaphor." },
+
+  { num:116, en:"Relying on natural ability will not get you far in science.", zh:"僅靠天賦在科學領域走不長遠。",
+    icons:[C("🌟","natural ability","phr.","天賦"), C("🚫","Relying on","phr.","僅靠不夠"), C("🔬","far","adv.","走不長遠")],
+    hl:["natural ability","not get you far in science"], prompt:"A gifted student coasting on talent hitting a wall labeled LIMIT, while a determined student with study stacks walks past the wall." },
+
+  { num:117, en:"Farmers need to adapt to the changes in climate.", zh:"農民需要適應氣候變化。",
+    icons:[C("👨‍🌾","Farmers","n.pl","農民"), C("🔄","adapt","v.","適應"), C("🌡️","climate","n.","氣候變化")],
+    hl:["Farmers","adapt","changes in climate"], prompt:"A farmer adjusting practices — installing irrigation, switching crops, using weather apps — as the climate chart behind them shifts." },
+
+  { num:118, en:"The marine environment has been destroyed by pollution and unsustainable practices.", zh:"海洋環境已因污染和不永續的做法而遭到破壞。",
+    icons:[C("🌊","marine","adj.","海洋環境"), C("💔","destroyed","v.+ed","被破壞"), C("🏭","pollution","n.","污染"), C("♻️","unsustainable","adj.","不永續")],
+    hl:["marine environment","destroyed","pollution"], prompt:"An underwater scene split: vibrant coral reef vs degraded polluted seabed with plastics and industrial runoff. Marine destruction illustration." },
+
+  { num:119, en:"Designers need to keep up with social trends.", zh:"設計師需要緊跟社會潮流。",
+    icons:[C("🎨","Designers","n.pl","設計師"), C("👁️","keep up with","phr.","緊跟"), C("📱","trends","n.pl","社會潮流")],
+    hl:["Designers","keep up with social trends"], prompt:"A designer running to catch a fast-moving social trend wave, sketchbook in hand, constantly updating their work to match current style." },
+
+  { num:120, en:"The department works closely with their partners in business communities.", zh:"該系所與商業社群中的合作夥伴緊密合作。",
+    icons:[C("🏫","department","n.","系所"), C("🤝","closely","adv.","緊密合作"), C("🏢","communities","n.pl","商業社群")],
+    hl:["works closely","partners in business communities"], prompt:"A university department connected by a bridge to a business district, ideas flowing across labeled CLOSE PARTNERSHIP. Academic-industry illustration." },
+
+  { num:121, en:"A good abstract highlights the key points of your paper.", zh:"一篇好的摘要能突顯你論文的重點。",
+    icons:[C("📄","abstract","n.","摘要"), C("🔦","highlights","v.+s","突顯"), C("🔑","key points","phr.","論文重點")],
+    hl:["abstract highlights","key points"], prompt:"A long research paper with a spotlight on just the key points — they glow brightly while other text fades. The abstract at top captures the light." },
+
+  { num:122, en:"An introduction is an essential element of a presentation.", zh:"引言是簡報中不可或缺的要素。",
+    icons:[C("🚪","introduction","n.","引言"), C("📌","essential","adj.","不可或缺"), C("🎤","presentation","n.","簡報")],
+    hl:["introduction","essential element","presentation"], prompt:"A presentation structure where the INTRODUCTION is the foundation brick — remove it and the whole structure crumbles. Essential building block metaphor." },
+
+  { num:123, en:"The library will be closed for staff training tomorrow morning.", zh:"圖書館明天上午將因員工培訓而暫停開放。",
+    icons:[C("📚","library","n.","圖書館"), C("🚫","closed","adj.","暫停開放"), C("👩‍💼","staff training","phr.","員工培訓"), C("📅","tomorrow morning","phr.","明天早上")],
+    hl:["library will be closed","staff training","tomorrow morning"], prompt:"Library doors locked with a sign reading CLOSED FOR STAFF TRAINING — TOMORROW MORNING. Staff visible in a meeting room learning." },
+
+  { num:124, en:"Many diseases that were once serious have now been eradicated.", zh:"許多曾經嚴重的疾病現在已被根除。",
+    icons:[C("🦠","diseases","n.pl","曾嚴重疾病"), C("💉","eradicated","v.+ed","已根除"), C("✅","serious","adj.","曾嚴重")],
+    hl:["diseases","once serious","eradicated"], prompt:"A medical timeline showing dangerous diseases being crossed off one by one with stamps reading ERADICATED. Public health triumph illustration." },
+
+  { num:125, en:"The use of mobile phones is not permitted in the library.", zh:"圖書館內不允許使用手機。",
+    icons:[C("📱","mobile phones","phr.","手機"), C("🚫","permitted","v.+ed","不允許"), C("📚","library","n.","圖書館")],
+    hl:["mobile phones","not permitted","library"], prompt:"A phone with a red circle-slash symbol at the library entrance. A student pockets their phone before entering. Quiet study environment rule." },
+
+  { num:126, en:"The rising sea temperature is a sign of climate change.", zh:"海水溫度上升是氣候變遷的徵兆。",
+    icons:[C("🌡️","sea temperature","phr.","海水升溫"), C("🔎","sign","n.","徵兆"), C("🌍","climate change","phr.","氣候變遷")],
+    hl:["rising sea temperature","sign of climate change"], prompt:"An ocean thermometer rising with a magnifying glass labeled SIGN OF CLIMATE CHANGE. Coral bleaching visible below. Early warning illustration." },
+
+  { num:127, en:"The student shop sells a range of stationery.", zh:"學生商店販售各種文具。",
+    icons:[C("🏪","student shop","phr.","學生商店"), C("✏️","stationery","n.","文具"), C("🛒","range","n.","各種")],
+    hl:["student shop","range of stationery"], prompt:"A bright campus shop with shelves of pens, notebooks, rulers, and highlighters. A student filling their basket with stationery essentials." },
+
+  { num:128, en:"Music has the ability to shape our emotions.", zh:"音樂具有塑造我們情緒的能力。",
+    icons:[C("🎵","Music","n.","音樂"), C("💪","ability","n.","能力"), C("😊","emotions","n.pl","塑造情緒")],
+    hl:["Music","shape our emotions"], prompt:"A musical note transforming into different emotion icons as it travels — happy face, sad face, excited face. Music as emotion sculptor." },
+
+  { num:129, en:"Students should take the training before using the gym.", zh:"學生在使用健身房前應先完成培訓。",
+    icons:[C("📋","training","n.","先完成培訓"), A(), C("🏋️","gym","n.","使用健身房")],
+    hl:["take the training","before using the gym"], prompt:"A two-step sign: Step 1 TRAINING (classroom with safety instructions), Step 2 GYM. A person trying to skip Step 1 gets blocked." },
+
+  { num:130, en:"Momentum is defined as the combination of mass and velocity.", zh:"動量被定義為質量與速度的結合。",
+    icons:[C("⚡","Momentum","n.","動量"), C("⚖️","mass","n.","質量"), {ico:"✖️",eng:"×",pos:"math",lbl:""}, C("🏃","velocity","n.","速度")],
+    hl:["Momentum","mass and velocity"], prompt:"The equation p=mv brought to life: a heavy bowling ball (mass) rolling fast (velocity) creating a powerful momentum wave. Physics diagram." },
+
+  { num:131, en:"The gravity is the force that attracts two bodies from one another.", zh:"重力是使兩個物體相互吸引的力。",
+    icons:[C("🍎","gravity","n.","重力"), C("💫","force","n.","吸引力"), C("🪐","attracts","v.+s","兩個物體")],
+    hl:["gravity","force that attracts","two bodies"], prompt:"Two celestial bodies in space with gravitational attraction lines pulling them together. Newton's apple falling in the corner. Gravity visualization." },
+
+  { num:132, en:"Much of this research is carried out in the laboratory.", zh:"這項研究大部分在實驗室中進行。",
+    icons:[C("🔬","research","n.","研究"), C("📍","carried out","phr.","大部分進行"), C("🧪","laboratory","n.","實驗室")],
+    hl:["research","carried out in the laboratory"], prompt:"A researcher in a lab coat surrounded by experiments and data collection tools. LABORATORY label as the primary research location." },
+
+  { num:133, en:"Participating in the class is the center of the course.", zh:"課堂參與是這門課程的核心。",
+    icons:[C("🙋","Participating","v.+ing","課堂參與"), C("🎯","center","n.","核心"), C("📚","course","n.","這門課")],
+    hl:["Participating in the class","center of the course"], prompt:"A course diagram with PARTICIPATION as the bright sun in the center, and assignments, readings, exams orbiting around it as planets." },
+
+  { num:134, en:"The college operates a system of continuous assessments.", zh:"該學院實行持續評量制度。",
+    icons:[C("🏫","college","n.","學院"), C("📊","continuous","adj.","持續"), C("🔄","assessments","n.pl","評量制度")],
+    hl:["continuous assessments"], prompt:"A college building with an ongoing conveyor belt of small assessments — quizzes, projects, presentations — rolling through the semester rather than one big exam." },
+
+  { num:135, en:"You do not need specialist knowledge to enjoy the book.", zh:"你不需要具備專業知識也能欣賞這本書。",
+    icons:[C("📖","book","n.","這本書"), C("🚫","specialist knowledge","phr.","不需專業"), C("😊","enjoy","v.","也能欣賞")],
+    hl:["specialist knowledge","enjoy the book"], prompt:"Diverse people from different backgrounds — not scientists, just everyday people — all happily reading the same book. EVERYONE WELCOME banner." },
+
+  { num:136, en:"Some people regard it as reforming zeal, while others regard it as recklessness.", zh:"有些人將其視為改革熱忱，另一些人則視之為魯莽。",
+    icons:[C("🔥","reforming zeal","phr.","改革熱忱"), {ico:"🔀",eng:"while",pos:"conj.",lbl:""}, C("⚠️","recklessness","n.","魯莽")],
+    hl:["reforming zeal","recklessness"], prompt:"The same action seen through two different glasses: one lens shows a heroic reformer, the other shows a reckless fool. Perspective duality illustration." },
+
+  { num:137, en:"Strangely, people are simultaneously impressed by and skeptical about statistics.", zh:"奇怪的是，人們同時對統計數據印象深刻又抱持懷疑。",
+    icons:[C("📊","statistics","n.pl","統計數據"), C("😲","impressed","adj.","印象深刻"), {ico:"🔀",eng:"simultaneously",pos:"adv.",lbl:""}, C("🤨","skeptical","adj.","懷疑")],
+    hl:["simultaneously impressed by and skeptical about statistics"], prompt:"A person staring at a statistics chart with two simultaneous expressions — WOW amazed and suspicious squinting — at the same time. Cognitive dissonance." },
+
+  { num:138, en:"There is a great deal of debate on that topic.", zh:"關於那個議題有大量的辯論。",
+    icons:[C("💬","debate","n.","辯論"), C("🔥","great deal","phr.","大量"), C("📌","topic","n.","議題")],
+    hl:["great deal of debate"], prompt:"A central topic bubble surrounded by dozens of speech bubbles arguing from all sides, creating a chaotic web. The center glows red from the heat." },
+
+  { num:139, en:"The media have transcended traditional national boundaries.", zh:"媒體已超越傳統的國家疆界。",
+    icons:[C("📺","media","n.","媒體"), C("🚀","transcended","v.+ed","超越"), C("🗺️","boundaries","n.pl","國家疆界")],
+    hl:["media","transcended","national boundaries"], prompt:"A television signal breaking through a dotted-line world map border, reaching all continents. National boundary markers fade as media waves cross them." },
+
+  { num:140, en:"Optional tutorials are offered in the final week of a term.", zh:"選修輔導課程在學期最後一週開設。",
+    icons:[C("📚","Optional tutorials","phr.","選修輔導課"), C("📅","final week","phr.","最後一週"), C("✅","offered","v.+ed","開設")],
+    hl:["Optional tutorials","final week of a term"], prompt:"A semester timeline with the final week highlighted showing OPTIONAL TUTORIALS. Students with question marks deciding whether to attend." },
+
+  { num:141, en:"Currently, the growth of the company is unpredictable.", zh:"目前，該公司的成長難以預測。",
+    icons:[C("🏢","growth","n.","公司成長"), C("❓","Currently","adv.","目前"), C("🔮","unpredictable","adj.","難以預測")],
+    hl:["growth of the company","unpredictable"], prompt:"A company growth graph with a jagged uncertain line going in random directions labeled CURRENTLY UNPREDICTABLE. A crystal ball showing a blurry future." },
+
+  { num:142, en:"Calculators allow us to add numbers without making mistakes.", zh:"計算機讓我們能夠在不出錯的情況下進行數字加總。",
+    icons:[C("🧮","Calculators","n.pl","計算機"), C("➕","add","v.","加總"), C("✅","mistakes","n.pl","不出錯")],
+    hl:["Calculators","add numbers without making mistakes"], prompt:"Human hand with eraser marks vs a calculator with a perfect clean answer. Error-prone human arithmetic vs accurate calculator. Efficiency comparison." },
+
+  { num:143, en:"When the root system of a plant fails, foliage suffers.", zh:"當植物的根系出現問題時，葉片也會受到影響。",
+    icons:[C("🌱","root system","phr.","根系"), C("❌","fails","v.+s","出問題"), A(), C("🍃","foliage","n.","葉片受損")],
+    hl:["root system","fails","foliage suffers"], prompt:"A plant cross-section showing a failing brown root system underground, with leaves above yellowing and wilting as a direct consequence." },
+
+  { num:144, en:"The course involves a combination of pure and applied mathematics.", zh:"這門課程結合了純數學與應用數學。",
+    icons:[C("📐","pure","adj.","純數學"), {ico:"➕",eng:"combination",pos:"n.",lbl:""}, C("🔧","applied","adj.","應用數學"), C("📚","course","n.","這門課")],
+    hl:["pure and applied mathematics"], prompt:"Two textbooks merging — abstract pure mathematics with elegant proofs and practical applied mathematics with real-world problems." },
+
+  { num:145, en:"A new collection of articles has just been published.", zh:"一本全新的論文集剛剛出版。",
+    icons:[C("📰","articles","n.pl","論文集"), C("🆕","new","adj.","全新"), C("✅","published","v.+ed","剛出版")],
+    hl:["new collection of articles","published"], prompt:"A fresh book coming off a printing press, pages still warm, labeled NEW COLLECTION OF ARTICLES. Academic excitement around a new publication." },
+
+  { num:146, en:"The student union hosts a variety of social events.", zh:"學生會舉辦各種社交活動。",
+    icons:[C("🎓","student union","phr.","學生會"), C("🎉","variety","n.","各種"), C("👥","events","n.pl","社交活動")],
+    hl:["student union","social events"], prompt:"A student union building with multiple events happening simultaneously — a party, club fair, movie night, sports tournament. Diversity of campus life." },
+
+  { num:147, en:"A mixture is defined as the compound of chemically separate parts.", zh:"混合物被定義為由化學上各自獨立的成分所組成的化合物。",
+    icons:[C("⚗️","mixture","n.","混合物"), C("🔬","chemically","adv.","化學上"), C("🧩","separate","adj.","各自獨立")],
+    hl:["mixture","chemically separate parts"], prompt:"A beaker showing a mixture where different colored substances swirl together but maintain separate identities. Chemistry definition visualization." },
+
+  { num:148, en:"The museum is closed on the third Monday of every month.", zh:"博物館每月第三個星期一休館。",
+    icons:[C("🏛️","museum","n.","博物館"), C("🚫","closed","adj.","休館"), C("📅","third Monday","phr.","每月第三週一")],
+    hl:["museum","closed","third Monday"], prompt:"A museum calendar with every third Monday circled in red with CLOSED. A visitor arriving to find locked gates on that specific day." },
+
+  { num:149, en:"Some people believe that education should be free for all.", zh:"有些人認為教育應該對所有人免費開放。",
+    icons:[C("🎓","education","n.","教育"), C("💰","free","adj.","免費"), C("👨‍👩‍👧‍👦","all","pron.","所有人")],
+    hl:["education should be free for all"], prompt:"Open school gates welcoming all people with a FREE EDUCATION banner, diverse income levels entering together. Education equality illustration." },
+
+  { num:150, en:"You can use your laptops in the lecture.", zh:"你可以在課堂中使用筆記型電腦。",
+    icons:[C("💻","laptops","n.pl","筆電"), C("✅","use","v.","可以使用"), C("🎤","lecture","n.","課堂中")],
+    hl:["use your laptops","lecture"], prompt:"A lecture hall where students are openly using laptops, a permissive sign on the board. Bright contrast to NO PHONES signs elsewhere." },
+
+  { num:151, en:"You must be able to work as a team.", zh:"你必須具備團隊合作的能力。",
+    icons:[C("👥","team","n.","團隊"), C("🤝","work as","phr.","合作"), C("‼️","must","modal","必須")],
+    hl:["work as a team"], prompt:"A team holding puzzle pieces, only able to complete the picture by working together. MUST emphasized in bold above. Teamwork requirement illustration." },
+
+  { num:152, en:"Population has a sharp rise in the recent twenty years.", zh:"近二十年來人口急劇增加。",
+    icons:[C("👨‍👩‍👧‍👦","Population","n.","人口"), C("📈","sharp rise","phr.","急劇上升"), C("📅","twenty years","phr.","近二十年")],
+    hl:["sharp rise","recent twenty years"], prompt:"A population graph with a dramatically steep upward curve labeled LAST 20 YEARS, tiny human figures multiplying rapidly as the line rises." },
+
+  { num:153, en:"Social psychology is concerned with the understanding of human behaviors.", zh:"社會心理學關注的是對人類行為的理解。",
+    icons:[C("🧠","Social psychology","phr.","社會心理學"), C("🔍","understanding","n.","關注理解"), C("🧑","behaviors","n.pl","人類行為")],
+    hl:["Social psychology","understanding of human behaviors"], prompt:"A social psychologist with a magnifying glass examining human interactions in a crowd, taking notes. Academic study of people illustration." },
+
+  { num:154, en:"Computers used to be larger than they are now.", zh:"電腦以前比現在大。",
+    icons:[C("🖥️","Computers","n.pl","以前的電腦"), C("📦","larger","adj.comp.","龐大"), A(), C("💻","now","adv.","現在小巧")],
+    hl:["Computers used to be larger"], prompt:"A 1960s room-sized mainframe computer on the left vs a modern slim laptop on the right. Size comparison spanning the decades. Miniaturization illustration." },
+
+  { num:155, en:"It may not be possible to solve the problem easily.", zh:"這個問題可能無法輕易解決。",
+    icons:[C("❓","problem","n.","難題"), C("🚫","possible","adj.","不易"), C("⚡","easily","adv.","輕易解決")],
+    hl:["may not be possible to solve the problem easily"], prompt:"A puzzle piece that won't fit despite multiple attempts. A person trying different approaches but the problem resists. DIFFICULT label on the problem." },
+
+  { num:156, en:"It is important to plan your study time carefully.", zh:"仔細規劃學習時間是很重要的。",
+    icons:[C("📅","study time","phr.","學習時間"), C("🗓️","plan","v.","規劃"), C("⭐","carefully","adv.","仔細")],
+    hl:["plan your study time carefully"], prompt:"A student with a well-organized study planner, color-coded schedules for each subject. IMPORTANT badge in the corner. Study planning illustration." },
+
+  { num:157, en:"There was a prize for the best student presentation.", zh:"最佳學生報告設有獎項。",
+    icons:[C("🎤","presentation","n.","學生報告"), C("🏆","prize","n.","獎項"), C("⭐","best","adj.","最佳")],
+    hl:["prize for the best student presentation"], prompt:"A student at a podium mid-presentation with a glowing BEST PRESENTATION trophy visible in the wings waiting to be awarded." },
+
+  { num:158, en:"The area has a variety of underwater species and habitats.", zh:"該地區擁有多種水下物種與棲息地。",
+    icons:[C("🌊","underwater","adj.","水下"), C("🐠","species","n.pl","多種物種"), C("🏝️","habitats","n.pl","棲息地")],
+    hl:["variety of underwater species and habitats"], prompt:"An underwater panorama showing diverse ecosystems — coral reefs, kelp forests, sandy beds — each hosting different species. Marine biodiversity." },
+
+  { num:159, en:"The Industrial Revolution in Europe was driven by steam technology.", zh:"歐洲工業革命是由蒸汽技術所推動的。",
+    icons:[C("🏭","Industrial Revolution","phr.","工業革命"), C("💨","steam","n.","蒸汽"), C("🚀","driven","v.+ed","推動")],
+    hl:["Industrial Revolution","driven by steam technology"], prompt:"A steam engine as the central engine of the Industrial Revolution, with factory wheels and production lines spinning outward across a European map." },
+
+  { num:160, en:"Most of the lectures begin promptly, so please do not be late.", zh:"大多數課程準時開始，請勿遲到。",
+    icons:[C("🎤","lectures","n.pl","課程"), C("⏰","promptly","adv.","準時"), C("🚫","late","adj.","請勿遲到")],
+    hl:["begin promptly","do not be late"], prompt:"A lecture hall clock striking the hour as a professor begins speaking — all seats filled except for late students running down the corridor." },
+
+  { num:161, en:"The coffee machine located on the third floor is not working today.", zh:"位於三樓的咖啡機今天無法使用。",
+    icons:[C("☕","coffee machine","phr.","咖啡機"), C("📍","third floor","phr.","三樓"), C("❌","working","v.+ing","今天故障")],
+    hl:["coffee machine","third floor","not working today"], prompt:"A coffee machine on the third floor with an OUT OF ORDER sign. A sad student holding an empty cup stares at it. Daily campus life struggle." },
+
+  { num:162, en:"The library plays an important part in students' lives.", zh:"圖書館在學生生活中扮演重要角色。",
+    icons:[C("📚","library","n.","圖書館"), C("🎯","important part","phr.","重要角色"), C("🎓","students'","poss.","學生生活")],
+    hl:["library plays an important part","students' lives"], prompt:"A library shown as a vital organ in the university body — students flowing in and out energized. All student needs served inside." },
+
+  { num:163, en:"When attending a job interview, punctuality is the key.", zh:"參加求職面試時，準時是關鍵。",
+    icons:[C("💼","interview","n.","求職面試"), C("⏰","punctuality","n.","準時"), C("🔑","key","n.","關鍵")],
+    hl:["job interview","punctuality is the key"], prompt:"An interview room with a clock on the wall. The on-time candidate is welcomed with a golden key. The late candidate sees the door closing." },
+
+  { num:164, en:"The studies showed the Hong Kong people are the most active in Asia.", zh:"研究顯示香港人是亞洲最活躍的。",
+    icons:[C("📊","studies","n.pl","研究顯示"), C("🇭🇰","Hong Kong","phr.","香港人"), C("🏃","active","adj.","最活躍"), C("🌏","Asia","n.","亞洲")],
+    hl:["studies showed","Hong Kong people","most active in Asia"], prompt:"An Asian activity map with Hong Kong people represented by the tallest activity bar. All running and cycling vs other regions at lower levels." },
+
+  { num:165, en:"Without doubt, this theory has a number of limitations.", zh:"毫無疑問，這個理論有若干局限性。",
+    icons:[C("🤔","doubt","n.","毫無疑問"), C("📐","theory","n.","這個理論"), C("⚠️","limitations","n.pl","若干局限")],
+    hl:["Without doubt","limitations"], prompt:"A well-known theory on a pedestal with boundary lines labeled LIMITATIONS around it. A scholar points to the limits with confident certainty." },
+
+  { num:166, en:"There must be life on the other planets in the universe.", zh:"宇宙中其他星球上一定有生命存在。",
+    icons:[C("🌌","universe","n.","宇宙"), C("🪐","planets","n.pl","其他星球"), C("👽","life","n.","一定有生命")],
+    hl:["life on the other planets","universe"], prompt:"A vast cosmic scene with hundreds of planets, some showing faint signs of life. A confident astronomer points saying MUST BE. Astrobiology optimism." },
+
+  { num:167, en:"Take the first step by applying for a university scholarship now.", zh:"立即申請大學獎學金，邁出第一步。",
+    icons:[C("👣","first step","phr.","第一步"), C("📋","applying","v.+ing","申請"), C("🎓","scholarship","n.","大學獎學金")],
+    hl:["first step","applying for a university scholarship"], prompt:"A giant first footstep forward onto a path labeled SCHOLARSHIP APPLICATION, illuminating the entire road to university ahead. Motivational illustration." },
+
+  { num:168, en:"We are looking for new ways to engage learners.", zh:"我們正在尋找吸引學習者的新方法。",
+    icons:[C("🔍","looking for","phr.","尋找"), C("🆕","ways","n.pl","新方法"), C("📚","engage","v.","吸引學習者")],
+    hl:["new ways to engage learners"], prompt:"Educators brainstorming with sticky notes of NEW ENGAGEMENT IDEAS — VR, gamification, storytelling — while students look curious and interested." },
+
+  { num:169, en:"Football is played throughout all years at the university.", zh:"足球在大學各年級中均有開展。",
+    icons:[C("⚽","Football","n.","足球"), C("🏫","university","n.","大學"), C("📅","throughout","prep.","各年級均有")],
+    hl:["Football is played","all years at the university"], prompt:"A university sports field with four teams labeled YEAR 1, 2, 3, 4 all playing football on different sections of the same pitch." },
+
+  { num:170, en:"Mathematics provides a foundation for understanding and analyzing data.", zh:"數學為理解和分析數據奠定基礎。",
+    icons:[C("📐","Mathematics","n.","數學"), C("🏗️","foundation","n.","奠定基礎"), C("📊","analyzing","v.+ing","分析數據")],
+    hl:["Mathematics provides a foundation","analyzing data"], prompt:"A data analysis building with MATHEMATICS as the literal concrete foundation at the base. Charts and statistics rise from it like floors." },
+
+  { num:171, en:"The office hours will change next term.", zh:"下學期辦公室時間將有所調整。",
+    icons:[C("🏢","office hours","phr.","辦公室時間"), C("🔄","change","v.","將調整"), C("📅","next term","phr.","下學期")],
+    hl:["office hours will change next term"], prompt:"An office door schedule showing current hours crossed out with NEW HOURS notice below and a NEXT TERM calendar page. Administrative change." },
+
+  { num:172, en:"Unemployment rate has fallen to its lowest level in years.", zh:"失業率已降至多年來的最低水平。",
+    icons:[C("📉","Unemployment rate","phr.","失業率"), C("⬇️","fallen","v.+ed","降至"), C("🏆","lowest","adj.","多年最低")],
+    hl:["Unemployment rate","lowest level in years"], prompt:"An unemployment rate chart diving to a record low with a flag planted labeled LOWEST IN YEARS. Celebrating workers in the background." },
+
+  { num:173, en:"The teacher training courses includes observing the classes.", zh:"教師培訓課程包含課堂觀察。",
+    icons:[C("👩‍🏫","teacher training","phr.","教師培訓"), C("📋","includes","v.+s","包含"), C("👁️","observing","v.+ing","課堂觀察")],
+    hl:["teacher training","observing the classes"], prompt:"A trainee teacher at the back of a classroom with a notepad, observing an experienced teacher in action with observation checkboxes being filled." },
+
+  { num:174, en:"Students will focus on reporting news in a changing media world.", zh:"學生將專注於在瞬息萬變的媒體世界中報導新聞。",
+    icons:[C("🎓","Students","n.pl","學生"), C("📰","reporting","v.+ing","報導新聞"), C("🔄","changing","adj.","瞬息萬變"), C("📱","media","n.","媒體世界")],
+    hl:["reporting news","changing media world"], prompt:"Journalism students on a rapidly spinning media world — print, TV, podcast, TikTok — all swirling as they try to report across all platforms." },
+
+  { num:175, en:"Class participation is an important part of your final grade.", zh:"課堂參與是期末成績的重要組成部分。",
+    icons:[C("🙋","participation","n.","課堂參與"), C("📊","final grade","phr.","期末成績"), C("📝","important","adj.","重要組成")],
+    hl:["Class participation","final grade"], prompt:"A grade breakdown pie chart where CLASS PARTICIPATION takes up a significant highlighted slice. A student raising their hand in class next to the chart." },
+
+  { num:176, en:"Chemical reactions occur when substances combine or change.", zh:"化學反應發生於物質結合或發生變化時。",
+    icons:[C("⚗️","Chemical reactions","phr.","化學反應"), C("🧪","substances","n.pl","物質"), C("🔄","combine","v.","結合或變化")],
+    hl:["Chemical reactions","combine or change"], prompt:"Two chemical substances meeting in a flask, creating a reaction — bubbles, color change, energy release. Both COMBINE and CHANGE pathways shown." },
+
+  { num:177, en:"It is quite clear that facial expressions are similar across the culture.", zh:"很明顯，面部表情在不同文化中具有相似性。",
+    icons:[C("😊","facial expressions","phr.","面部表情"), C("🌍","culture","n.","跨文化"), C("✅","similar","adj.","相似")],
+    hl:["facial expressions","similar across the culture"], prompt:"Faces from diverse cultures all showing the same basic emotions with matching universal expressions. Cross-cultural psychology illustration." },
+
+  { num:178, en:"All experimental procedures are outlined in the laboratory manual.", zh:"所有實驗程序均在實驗室手冊中列明。",
+    icons:[C("🧪","procedures","n.pl","實驗程序"), C("📖","outlined","v.+ed","列明"), C("🔬","manual","n.","實驗室手冊")],
+    hl:["experimental procedures","laboratory manual"], prompt:"A laboratory manual open on a lab bench with clear step-by-step procedures. ALL PROCEDURES arrows pointing from manual to each experimental station." },
+
+  { num:179, en:"Course work gives students the chances to thoroughly explore the subject.", zh:"課程作業給予學生深入探索學科的機會。",
+    icons:[C("📝","Course work","phr.","課程作業"), C("🔍","thoroughly","adv.","深入"), C("🎓","explore","v.","探索學科")],
+    hl:["Course work","thoroughly explore the subject"], prompt:"A student using a course assignment as a diving suit to explore the depths of their subject — diving deeper than lectures alone allow." },
+
+  { num:180, en:"Having enough sleep has many positive benefits.", zh:"充足的睡眠有許多正面的好處。",
+    icons:[C("😴","sleep","n.","充足睡眠"), C("📈","positive","adj.","正面"), C("✅","benefits","n.pl","諸多好處")],
+    hl:["enough sleep","positive benefits"], prompt:"A sleeping person with benefit badges floating above: improved memory, better mood, stronger immunity, more energy. Sleep as a superpower visualization." },
+
+  { num:181, en:"The content is to define the combination of math and philosophy.", zh:"這門課的內容是探討數學與哲學的結合。",
+    icons:[C("📐","math","n.","數學"), {ico:"➕",eng:"combination",pos:"n.",lbl:""}, C("🤔","philosophy","n.","哲學"), C("📚","content","n.","課程內容")],
+    hl:["combination of math and philosophy"], prompt:"A course syllabus with a mathematical equation and a philosophical question mark merging into a single interdisciplinary Venn diagram." },
+
+  { num:182, en:"The next lecture will take place at a different location.", zh:"下一次講座將在不同的地點舉行。",
+    icons:[C("🎤","lecture","n.","下次講座"), C("📍","different location","phr.","不同地點"), C("🗺️","take place","phr.","舉行")],
+    hl:["next lecture","different location"], prompt:"A usual lecture room with an arrow redirecting students to a different building on a campus map. CHANGE OF LOCATION notice prominently displayed." },
+
+  { num:183, en:"You need to make sure that all your essays are handed in on time.", zh:"你需要確保所有的論文都準時繳交。",
+    icons:[C("📝","essays","n.pl","所有論文"), C("✅","handed in","phr.","繳交"), C("⏰","on time","phr.","準時")],
+    hl:["essays are handed in on time"], prompt:"A student with a checklist of essays, each getting a green tick as it's submitted on time. A deadline clock in the background. Organized submission." },
+
+  { num:184, en:"A university degree is required for entry into various professions.", zh:"進入各種職業需要具備大學學歷。",
+    icons:[C("🎓","degree","n.","大學學歷"), C("📋","required","adj.","必要條件"), C("💼","professions","n.pl","各種職業")],
+    hl:["university degree","required","various professions"], prompt:"Multiple profession doors — doctor, lawyer, engineer, teacher — each with a degree requirement keyhole. A graduation diploma fits all the locks." },
+
+  { num:185, en:"The professor discussed the article yesterday in this class.", zh:"教授昨天在這堂課討論了那篇文章。",
+    icons:[C("👨‍🏫","professor","n.","教授"), C("📰","article","n.","文章"), C("💬","discussed","v.+ed","昨天討論")],
+    hl:["professor discussed the article","yesterday"], prompt:"A professor holding up a journal article, engaged in animated discussion with students around a seminar table. Calendar shows YESTERDAY on the wall." },
+
+  { num:186, en:"Effective communication is the key to becoming a successful manager.", zh:"有效的溝通是成為成功管理者的關鍵。",
+    icons:[C("💬","communication","n.","有效溝通"), C("🔑","key","n.","關鍵"), C("👔","successful","adj.","成功管理者")],
+    hl:["Effective communication","key","successful manager"], prompt:"A manager at the center of a communication web — clear messages flowing in and out, everyone understanding perfectly. COMMUNICATION key in hand." },
+
+  { num:187, en:"The class is canceled because the professor is sick.", zh:"由於教授生病，課程取消。",
+    icons:[C("🤒","sick","adj.","教授生病"), A(), C("❌","canceled","v.+ed","課程取消")],
+    hl:["canceled because the professor is sick"], prompt:"A professor in bed with thermometer and tissues, while a CANCELED notice appears on the classroom door. Students receive the notification on phones." },
+
+  { num:188, en:"Social psychology is a new area of study.", zh:"社會心理學是一個新興的研究領域。",
+    icons:[C("🧠","Social psychology","phr.","社會心理學"), C("🆕","new","adj.","新興"), C("🎓","area of study","phr.","研究領域")],
+    hl:["Social psychology","new area of study"], prompt:"A fresh branch growing on the academic knowledge tree labeled SOCIAL PSYCHOLOGY — newer and greener than older established branches. Emerging discipline." },
+
+  { num:189, en:"You can find the complex form on the website.", zh:"你可以在網站上找到複雜的表單。",
+    icons:[C("💻","website","n.","網站"), C("🔍","find","v.","可以找到"), C("📋","complex","adj.","複雜表單")],
+    hl:["complex form","website"], prompt:"A person navigating a laptop, finally locating a complex multi-page form buried in the menu. A helpful arrow points to it. Digital bureaucracy navigation." }
+];
+
+let current = 0;
+const seen = new Set();
+
+function buildFront(c) {
+  const items = c.icons.map(i => {
+    if (i.lbl === "") return `<span class="chain-arrow">${i.ico}</span>`;
+    const engLine = i.eng ? `<span class="eng">${i.eng}</span>` : '';
+    const posLine = i.pos ? `<span class="pos">${i.pos}</span>` : '';
+    return `<div class="icon-item"><span class="ico">${i.ico}</span>${engLine}${posLine}<span class="lbl">${i.lbl}</span></div>`;
+  }).join('');
+  return `
+    <div class="card-num"># ${c.num} / ${cards.length}</div>
+    <div class="icon-chain">${items}</div>
+    <div class="flip-hint">點擊翻面查看英文原句 →</div>
+  `;
+}
+
+function buildBack(c) {
+  let hl = c.en;
+  c.hl.forEach(h => {
+    hl = hl.replace(new RegExp(h.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'), 'gi'),
+      m => `<span class="hl">${m}</span>`);
+  });
+  return `
+    <div class="card-num"># ${c.num} — 點擊翻回圖示</div>
+    <div class="en-sentence">${hl}</div>
+    <div class="zh-sentence">${c.zh}</div>
+    <div class="prompt-box">
+      <div class="prompt-label">🎨 AI 繪圖 Prompt</div>
+      <div class="prompt-text" id="pt${c.num}">${c.prompt}</div>
+      <button class="copy-btn" onclick="copyP(event,${c.num})">複製 Prompt</button>
+    </div>
+  `;
+}
+
+function render() {
+  const c = cards[current];
+  document.getElementById('cardFront').innerHTML = buildFront(c);
+  document.getElementById('cardBack').innerHTML  = buildBack(c);
+  document.getElementById('counter').textContent = `${current+1} / ${cards.length}`;
+  document.getElementById('prevBtn').disabled = current === 0;
+  document.getElementById('nextBtn').disabled = current === cards.length - 1;
+  document.getElementById('progressFill').style.width = `${(seen.size/cards.length)*100}%`;
+  renderDots();
+}
+
+function renderDots() {
+  const el = document.getElementById('dots');
+  el.innerHTML = '';
+  cards.forEach((_,i) => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i===current?' active': seen.has(i)?' seen':'');
+    d.onclick = () => goTo(i);
+    el.appendChild(d);
+  });
+}
+
+function flipCard() {
+  const scene = document.getElementById('cardScene');
+  const flipped = scene.classList.toggle('flipped');
+  if (flipped) { seen.add(current); renderDots(); document.getElementById('progressFill').style.width=`${(seen.size/cards.length)*100}%`; }
+}
+
+function navigate(dir) {
+  current = Math.max(0, Math.min(cards.length-1, current+dir));
+  document.getElementById('cardScene').classList.remove('flipped');
+  render();
+}
+
+function goTo(i) { current=i; document.getElementById('cardScene').classList.remove('flipped'); render(); }
+
+function copyP(e, num) {
+  e.stopPropagation();
+  navigator.clipboard.writeText(document.getElementById('pt'+num).textContent).then(() => {
+    e.target.textContent = '已複製 ✓';
+    setTimeout(() => e.target.textContent = '複製 Prompt', 2000);
+  });
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key==='ArrowRight'||e.key==='ArrowDown') navigate(1);
+  else if (e.key==='ArrowLeft'||e.key==='ArrowUp') navigate(-1);
+  else if (e.key===' '||e.key==='Enter') { e.preventDefault(); flipCard(); }
+});
+
+render();
+</script>
+</body>
+</html>
