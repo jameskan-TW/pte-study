@@ -73,6 +73,19 @@ header p  { font-size: .85rem; opacity: .8; margin-top: 4px; }
 .ref-table td { padding: 7px 12px; border: 1px solid #ddd; }
 .ref-table tr:nth-child(even) td { background: #fafafa; }
 
+
+.tpl-block { border-left: 4px solid #1a3a5c; padding: 12px 16px; margin-bottom: 12px;
+             background: #f9fbff; border-radius: 0 6px 6px 0; }
+.tpl-para-label { font-size: .72rem; font-weight: 700; color: #1a3a5c;
+                  text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
+.tpl-para { font-family: Georgia, serif; font-size: .93rem; color: #333;
+            line-height: 2; }
+.tpl-para b { color: #5b9bd5; }
+.slot { background: #fff3cd; border: 1px solid #ffc107; border-radius: 4px;
+        padding: 1px 6px; font-style: italic; color: #856404; font-size: .88rem; }
+.tpl-wordcount { text-align: center; margin-top: 16px; padding: 10px;
+                 background: #eafaf1; border-radius: 6px; font-size: .9rem; color: #1e8449; }
+
 </style>
 </head>
 <body>
@@ -162,6 +175,68 @@ header p  { font-size: .85rem; opacity: .8; margin-top: 4px; }
         <tr><td>福禍 / 好壞</td><td>③ 健康（壞處）</td><td>① 效率 或 ② 學業</td></tr>
         <tr><td>Report 型</td><td>⑤ 職涯（成因）</td><td>① 效率（解方）</td></tr>
         <tr><td>語言 / 文化類</td><td>① 效率（反方）</td><td>④ 視野（主論）</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<div class="ref-card" id="tpl-card">
+  <div class="ref-header" onclick="var c=this.closest('.ref-card');c.classList.toggle('open');this.querySelector('.ref-toggle').textContent=c.classList.contains('open')?'▼ 收合':'▶ 展開'">
+    <span>&#x270D;&#xFE0F; 我的專屬模板</span>
+    <span class="ref-toggle">▶ 展開</span>
+  </div>
+  <div class="ref-body">
+    <p class="ref-note">175 字骨架，填入 25–125 字內容即可達標 200–300 字。每個 <span class="slot">[slot]</span> 約 10–15 字。</p>
+
+    <div class="tpl-block">
+      <div class="tpl-para-label">P1 &nbsp;Introduction</div>
+      <div class="tpl-para">
+        It is generally true that <span class="slot">[topic]</span> has become <b>a matter of concern</b> over the years, and this has caused <b>great</b> controversy and drawn <b>the attention</b> from the general public.
+        Some people are of the opinion that <span class="slot">[opposite view]</span>, while <b>others hold the view</b> that <span class="slot">[your view]</span>.
+        I tend to agree more with the <span class="slot">[former&nbsp;/&nbsp;latter]</span> and <b>will discuss this further</b> below.
+      </div>
+    </div>
+
+    <div class="tpl-block">
+      <div class="tpl-para-label">P2 &nbsp;Body 1 — Concession</div>
+      <div class="tpl-para">
+        <b>It has to be admitted that</b> <span class="slot">[concession point]</span>, and one argument in favor of this view <b>can be</b> that <span class="slot">[reason]</span>.
+        If <span class="slot">[condition]</span>, then <span class="slot">[we&nbsp;/&nbsp;this]</span> can <span class="slot">[result A]</span>, <b>in turn leading to</b> <span class="slot">[result B]</span>.
+        <b>As a result</b>, it is unsurprising that <span class="slot">[conclusion]</span>.
+      </div>
+    </div>
+
+    <div class="tpl-block">
+      <div class="tpl-para-label">P3 &nbsp;Body 2 — Main Argument</div>
+      <div class="tpl-para">
+        <b>On the other hand, I feel affirmative that</b> <span class="slot">[your main stance]</span>, and one compelling reason <b>is</b> that <span class="slot">[key reason]</span>.
+        A pertinent case in point is James, who <b>works at</b> a world-renowned and prestigious <span class="slot">[university&nbsp;/&nbsp;firm]</span>.
+        As James <span class="slot">[does something]</span>, <b>he is able to</b> <span class="slot">[immediate result]</span>.
+        <b>In other words,</b> <span class="slot">[broader implication]</span>.
+      </div>
+    </div>
+
+    <div class="tpl-block">
+      <div class="tpl-para-label">P4 &nbsp;Conclusion</div>
+      <div class="tpl-para">
+        In conclusion, despite the fact that the counter argument may hold true in many cases, I <b>believe</b> that <span class="slot">[final stance]</span>.
+        It is <b>crucial</b> that <span class="slot">[recommendation]</span>.
+      </div>
+    </div>
+
+    <div class="tpl-wordcount">
+      骨架 <b>175</b> 字 &nbsp;＋&nbsp; 填入內容 <b>25–125</b> 字 &nbsp;＝&nbsp; 目標 <b>200–300</b> 字 ✓
+    </div>
+
+    <div class="ref-combo" style="margin-top:16px">
+      <div class="ref-combo-title">&#x1F4CC; 5 大論據快填（Result A / B 從這裡選）</div>
+      <table class="ref-table">
+        <tr><th>①</th><td>result in significant <b>time-savings</b></td><td>improve <b>efficiency</b> and boost <b>productivity</b></td></tr>
+        <tr><th>②</th><td>achieve outstanding <b>academic performance</b></td><td>in turn leading to <b>better future prospects</b></td></tr>
+        <tr><th>③</th><td>lead to <b>stress and anxiety</b></td><td>enjoy higher levels of <b>emotional and physical wellbeing</b></td></tr>
+        <tr><th>④</th><td>gain a <b>broader view of life</b></td><td>become increasingly <b>open-minded, wise and knowledgeable</b></td></tr>
+        <tr><th>⑤</th><td>be <b>promoted</b> to higher managerial hierarchies</td><td><b>financially support</b> his whole family</td></tr>
       </table>
     </div>
   </div>
