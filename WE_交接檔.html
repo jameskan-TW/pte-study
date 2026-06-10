@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WE 寫作交接檔</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+       background: #f5f5f5; color: #333; line-height: 1.8; }
+header { background: #1a3a5c; color: white; padding: 24px 32px; }
+header h1 { font-size: 1.5rem; }
+header p { font-size: .9rem; opacity: .8; margin-top: 4px; }
+.container { max-width: 960px; margin: 0 auto; padding: 24px 16px; }
+.card { background: white; border-radius: 8px; margin-bottom: 28px;
+        box-shadow: 0 1px 4px rgba(0,0,0,.08); overflow: hidden; }
+.card-header { background: #1a3a5c; color: white; padding: 14px 20px;
+               font-weight: bold; font-size: 1.05rem; cursor: pointer;
+               display: flex; justify-content: space-between; align-items: center; }
+.card-header:hover { background: #2e6da4; }
+.card-body { padding: 20px; display: none; }
+.card.open .card-body { display: block; }
+.toggle { font-size: .8rem; opacity: .8; }
+h3 { color: #1a3a5c; margin: 16px 0 8px; font-size: 1rem; }
+h3:first-child { margin-top: 0; }
+.tpl { color: #5b9bd5; font-weight: bold; }
+.slot { background: #fff3cd; padding: 1px 4px; border-radius: 3px; font-style: italic; }
+.label { display: inline-block; background: #e8f0fb; color: #1a3a5c;
+         padding: 2px 8px; border-radius: 10px; font-size: .8rem; margin: 2px; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: .9rem; }
+th { background: #1a3a5c; color: white; padding: 8px 12px; text-align: left; }
+td { padding: 8px 12px; border-bottom: 1px solid #eee; vertical-align: top; }
+tr:nth-child(even) td { background: #f9f9f9; }
+pre { background: #f4f4f4; border-left: 3px solid #5b9bd5; padding: 14px 16px;
+      border-radius: 0 4px 4px 0; font-family: Georgia, serif; font-size: .9rem;
+      line-height: 1.9; white-space: pre-wrap; margin: 8px 0; }
+.note { background: #fff8e1; border-left: 3px solid #f5a623; padding: 10px 14px;
+        border-radius: 0 4px 4px 0; font-size: .9rem; margin: 8px 0; }
+ul { padding-left: 1.5em; }
+ul li { margin-bottom: 4px; }
+.section { margin-bottom: 16px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>PTE WE 寫作交接檔</h1>
+  <p>個人模板 · 五大論點 · 套題練習 — 帶進新 session 使用</p>
+</header>
+<div class="container">
+
+<!-- 1. 個人模板 -->
+<div class="card open">
+  <div class="card-header" onclick="this.closest('.card').classList.toggle('open')">
+    1. 個人專屬模板（175字）<span class="toggle">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="note">藍色 = 固定模板句，不用改。黃色 = slot，考試時填入自己的內容。</div>
+    <h3>P1 引言</h3>
+    <pre><span class="tpl">It is generally true that</span> <span class="slot">[topic]</span> <span class="tpl">has become a matter of concern over the years. This has caused great controversy and drawn the attention from the general public.</span> Some people are of the opinion that <span class="slot">[view A]</span><span class="tpl">, while others hold the view that</span> <span class="slot">[view B]</span>. <span class="tpl">I tend to agree more with the latter, and will discuss this further below.</span></pre>
+
+    <h3>P2 讓步段</h3>
+    <pre><span class="tpl">It has to be admitted that</span> <span class="slot">[concession point]</span><span class="tpl">, and one argument in favor of this view can be that</span> <span class="slot">[reason]</span>. <span class="tpl">If</span> <span class="slot">[condition]</span><span class="tpl">, then we can</span> <span class="slot">[result]</span><span class="tpl">, in turn leading to</span> <span class="slot">[consequence]</span>. <span class="tpl">As a result, it is unsurprising that</span> <span class="slot">[outcome]</span>.</pre>
+
+    <h3>P3 主論段</h3>
+    <pre><span class="tpl">On the other hand, I feel affirmative that</span> <span class="slot">[main argument]</span><span class="tpl">, and one compelling reason is that</span> <span class="slot">[reason]</span>. <span class="tpl">A pertinent case in point is James, who works at a world-renowned and prestigious firm. As James</span> <span class="slot">[action/situation]</span><span class="tpl">, he is able to</span> <span class="slot">[outcome]</span>. <span class="tpl">In other words,</span> <span class="slot">[restate main point]</span>.</pre>
+
+    <h3>P4 結論</h3>
+    <pre><span class="tpl">In conclusion, despite the fact that the counter argument may hold true in many cases, I believe that</span> <span class="slot">[final stance]</span>. <span class="tpl">It is crucial that</span> <span class="slot">[recommendation]</span>.</pre>
+  </div>
+</div>
+
+<!-- 2. 五大論點速查 -->
+<div class="card open">
+  <div class="card-header" onclick="this.closest('.card').classList.toggle('open')">
+    2. 五大論點速查卡<span class="toggle">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="note">所有 37 題的思路都能從這 5 類套出來。P2 用其中一類讓步，P3 用另一類主論。</div>
+    <table>
+      <tr><th>論點</th><th>核心概念</th><th>常用句型</th></tr>
+      <tr>
+        <td>💪 效率／生產力</td>
+        <td>提升工作效率、節省時間、增加產出</td>
+        <td>can boost productivity / save time / improve performance</td>
+      </tr>
+      <tr>
+        <td>📚 學術／研究</td>
+        <td>研究證明、學術數據支持、認知表現</td>
+        <td>studies show / research suggests / evidence indicates</td>
+      </tr>
+      <tr>
+        <td>🏥 健康</td>
+        <td>身心健康、壓力、生活品質</td>
+        <td>improve physical and mental health / reduce stress / enhance wellbeing</td>
+      </tr>
+      <tr>
+        <td>🎭 文化／社會</td>
+        <td>社區認同、文化傳承、社會凝聚力</td>
+        <td>strengthen cultural identity / build community / preserve heritage</td>
+      </tr>
+      <tr>
+        <td>💼 職業／事業</td>
+        <td>職涯發展、就業機會、技能提升</td>
+        <td>advance career prospects / create job opportunities / develop skills</td>
+      </tr>
+    </table>
+    <div class="note">選論點原則：P2（讓步）選跟你主論相反的角度，P3（主論）選你最有把握的那一類。</div>
+  </div>
+</div>
+
+<!-- 3. 正反論述寫法 -->
+<div class="card open">
+  <div class="card-header" onclick="this.closest('.card').classList.toggle('open')">
+    3. 正反論述寫法（以「學術」論點為例）<span class="toggle">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="note">題目如果問 positively or negatively，P2 寫反面讓步，P3 寫你支持的正面主論。</div>
+
+    <h3>支持正面 → P2 寫負面讓步</h3>
+    <pre>It has to be admitted that buildings with bad air flow, little natural light, and too much noise can raise stress and harm people's health. If workers spend time in these kinds of places, then they can feel tired and find it hard to focus, in turn leading to a strong wish to move somewhere else.</pre>
+
+    <h3>支持正面 → P3 寫正面主論</h3>
+    <pre>Studies show that buildings with good lighting, fresh air, and quiet spaces help people think better and feel happier at work. If people live or work in these kinds of places, then they can stay focused and feel good each day, in turn leading to a stronger desire to stay in that location.</pre>
+
+    <h3>P3 James 例子（配正面）</h3>
+    <pre>A pertinent case in point is James, who works at a world-renowned and prestigious firm. As James works in a bright and well-designed office with plenty of natural light and open space, he is able to stay focused and feel good at work every day. In other words, the design of his workplace has made him want to stay there long term.</pre>
+  </div>
+</div>
+
+<!-- 4. 套題示範：建築設計 -->
+<div class="card">
+  <div class="card-header" onclick="this.closest('.card').classList.toggle('open')">
+    4. 套題示範：建築設計題<span class="toggle">▶ 展開</span>
+  </div>
+  <div class="card-body">
+    <div class="note"><b>題目：</b>How does the design of buildings affect, either positively or negatively, where people work or live?</div>
+    <h3>立場分析</h3>
+    <ul>
+      <li>支持：正面影響（好設計讓人想留下）</li>
+      <li>P2 讓步：負面（差設計讓人想離開）</li>
+      <li>P3 主論：正面（好設計提升健康/學術表現）</li>
+      <li>論點選擇：學術論點（研究數據支撐）</li>
+    </ul>
+    <h3>思路結構</h3>
+    <table>
+      <tr><th>段落</th><th>內容</th></tr>
+      <tr><td>P1</td><td>建築設計對工作/居住地點選擇有正負面影響 → 我支持正面影響更顯著</td></tr>
+      <tr><td>P2</td><td>讓步：差的設計（噪音、缺光）→ 壓力上升 → 人想離開</td></tr>
+      <tr><td>P3</td><td>主論：好的設計（採光、通風）→ 認知表現提升 → 人選擇留下 → James 例子</td></tr>
+      <tr><td>P4</td><td>結論：建築設計的正面影響對人的居住/工作選擇至關重要</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- 5. 模板注意事項 -->
+<div class="card">
+  <div class="card-header" onclick="this.closest('.card').classList.toggle('open')">
+    5. 模板使用注意事項<span class="toggle">▶ 展開</span>
+  </div>
+  <div class="card-body">
+    <h3>固定不變的句子</h3>
+    <ul>
+      <li>所有藍色模板句在 37 題裡都通用，不需要改</li>
+      <li>James 的名字固定，職場描述固定：<b>works at a world-renowned and prestigious firm</b></li>
+      <li>結論段幾乎不需要改，只換最後兩個 slot</li>
+    </ul>
+    <h3>容易出錯的地方</h3>
+    <ul>
+      <li>P1 最後一句：<b>latter</b>（後者）= 你支持的立場，確認邏輯方向</li>
+      <li>P2 開頭：<b>It has to be admitted that</b> = 讓步，內容要跟你的主論<b>相反</b></li>
+      <li>P3：<b>On the other hand</b> 接主論，James 例子要跟 P3 論點一致</li>
+      <li>字數目標：175字左右，不要超過 200 字</li>
+    </ul>
+    <h3>簡單字彙替換原則</h3>
+    <div class="note">不確定一個字對不對，換成更簡單的字。PTE 評分看邏輯結構，不看難字。</div>
+    <table>
+      <tr><th>難字</th><th>簡單替換</th></tr>
+      <tr><td>inadequate lighting</td><td>little natural light</td></tr>
+      <tr><td>cognitive performance</td><td>ability to think and focus</td></tr>
+      <tr><td>chronic fatigue</td><td>feeling tired all the time</td></tr>
+      <tr><td>ergonomically designed</td><td>well-designed / comfortable</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- 6. 記憶歌曲 -->
+<div class="card">
+  <div class="card-header" onclick="this.closest('.card').classList.toggle('open')">
+    6. Suno 記憶歌曲資訊<span class="toggle">▶ 展開</span>
+  </div>
+  <div class="card-body">
+    <h3>最終選定曲風</h3>
+    <div class="note"><b>Anthemic Pop Rock + EDM fusion</b><br>
+    <code>[Style: anthemic pop rock, EDM fusion, synth leads, driving piano, powerful male vocals, festival anthem, 128 BPM]</code></div>
+    <h3>歌詞規則</h3>
+    <ul>
+      <li>模板句原文唱出來，不改字</li>
+      <li>slot 位置唱 <b>mm mm mm</b>（主論/立場）或 <b>la la la</b>（條件/例子）</li>
+      <li>唱的時候腦袋自動區分：有意義的字 = 模板，mm/la = 我要填的內容</li>
+    </ul>
+    <h3>WAV 下載</h3>
+    <ul>
+      <li>需要 Suno 付費版才能下載 WAV</li>
+      <li>下載後拖進 Mac Music app → iCloud 同步到 iPhone</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 7. 相關檔案 -->
+<div class="card">
+  <div class="card-header" onclick="this.closest('.card').classList.toggle('open')">
+    7. 相關檔案位置<span class="toggle">▶ 展開</span>
+  </div>
+  <div class="card-body">
+    <table>
+      <tr><th>檔案</th><th>位置</th><th>內容</th></tr>
+      <tr>
+        <td>WE_中文翻譯.html</td>
+        <td>projects/PTE-Study-Hub/</td>
+        <td>37題完整內容，含模板標色 + 思路 + 速查卡</td>
+      </tr>
+      <tr>
+        <td>WE_交接檔.html（本檔）</td>
+        <td>projects/PTE-Study-Hub/</td>
+        <td>模板、論點、套題方法整合</td>
+      </tr>
+      <tr>
+        <td>WE_論點總表.html</td>
+        <td>projects/PTE-Study-Hub/</td>
+        <td>37題完整範文：模板句藍色、五大論據五色高亮，每題附立場 + P2/P3 思路</td>
+      </tr>
+      <tr>
+        <td>WE_預測_中文翻譯_2026-06-08.pdf</td>
+        <td>Downloads/</td>
+        <td>原始 PDF（PTEfighter 37題預測）</td>
+      </tr>
+      <tr>
+        <td>gen_we.py</td>
+        <td>C:/Users/james/AppData/Local/Temp/</td>
+        <td>HTML 生成腳本（需要時重跑）</td>
+      </tr>
+      <tr>
+        <td>GitHub Pages</td>
+        <td>jameskan-TW/pte-study</td>
+        <td>線上版：jameskan-tw.github.io/pte-study/WE_中文翻譯.html</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+</div>
+<script>
+document.querySelectorAll('.card-header').forEach(h => {
+  h.addEventListener('click', function() {
+    const toggle = this.querySelector('.toggle');
+    if (toggle) toggle.textContent = this.closest('.card').classList.contains('open') ? '▼' : '▶ 展開';
+  });
+});
+</script>
+</body>
+</html>
