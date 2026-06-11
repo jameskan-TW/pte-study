@@ -101,6 +101,10 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
 .a4 { color: #6f3585; background: #ebdef0; }
 .a5 { color: #b03a2e; background: #fadbd8; }
 .wc { text-align: right; font-size: .78rem; color: #999; font-family: 'Noto Sans TC', sans-serif; margin-top: 8px; }
+.slot { color: #555; background: #f0f0ef; border: 1px dashed #bbb; border-radius: 3px;
+        padding: 0 5px; font-family: 'Noto Sans TC', sans-serif; font-size: .85em; white-space: nowrap; }
+.tpl-label { font-size: .78rem; font-weight: 700; color: #888; text-transform: uppercase;
+             letter-spacing: .05em; font-family: 'Noto Sans TC', sans-serif; display: block; margin-bottom: 4px; }
 </style>
 </head>
 <body>
@@ -124,6 +128,24 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
     <span class="bg bg3">③ 健康 &amp; 壓力</span>
     <span class="bg bg4">④ 視野 &amp; 文化</span>
     <span class="bg bg5">⑤ 職涯 &amp; 財務</span>
+  </div>
+</div>
+
+<div class="sum-card open" id="template">
+  <div class="sum-header" onclick="this.closest('.sum-card').classList.toggle('open')">
+    <span>📝 完整模板（藍字 37 題通用背熟；虛線框依題目填）</span><span>▼</span>
+  </div>
+  <div class="sum-body">
+    <div class="essay">
+      <p><span class="tpl-label">P1 開頭（立場）</span>
+      <span class="tpl">It is generally true that</span> <span class="slot">主題（名詞片語）</span> <span class="tpl">has become a matter of concern over the years, and this has caused great controversy and captured public attention. Some people are of the opinion that</span> <span class="slot">觀點A（反方）</span><span class="tpl">, while others hold the view that</span> <span class="slot">觀點B（我方）</span>. <span class="tpl">I tend to agree more with the latter and will discuss this further below.</span></p>
+      <p><span class="tpl-label">P2 讓步段</span>
+      <span class="tpl">It has to be admitted that</span> <span class="slot">反方論點</span><span class="tpl">, and one argument in favor of this view can be that</span> <span class="slot">理由</span>. <span class="tpl">If</span> <span class="slot">條件</span><span class="tpl">, then</span> <span class="slot">主詞</span> <span class="tpl">can</span> <span class="slot">結果A（原形動詞）</span><span class="tpl">, in turn leading to</span> <span class="slot">結果B（名詞）</span>. <span class="tpl">As a result, it is unsurprising that</span> <span class="slot">小結</span>.</p>
+      <p><span class="tpl-label">P3 主論段</span>
+      <span class="tpl">On the other hand, I firmly believe that</span> <span class="slot">我的立場</span><span class="tpl">, and one compelling reason is that</span> <span class="slot">理由</span>. <span class="tpl">A pertinent case in point is James, who</span> <span class="slot">works／studies</span> <span class="tpl">at a world-renowned and prestigious</span> <span class="slot">firm／university</span>. <span class="tpl">As James</span> <span class="slot">做了什麼</span><span class="tpl">, he is able to</span> <span class="slot">結果（原形動詞）</span>. <span class="tpl">In other words,</span> <span class="slot">含義</span>.</p>
+      <p><span class="tpl-label">P4 結論</span>
+      <span class="tpl">In conclusion, despite the fact that the counterargument may hold true in many cases, I believe that</span> <span class="slot">最終立場</span>. <span class="tpl">It is crucial that</span> <span class="slot">建議（原形動詞）</span>.</p>
+    </div>
   </div>
 </div>
 
