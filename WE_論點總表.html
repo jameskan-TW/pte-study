@@ -127,6 +127,32 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
   </div>
 </div>
 
+<div class="legend" style="border-left:4px solid #e67e22">
+  <div style="font-weight:700;margin-bottom:8px">⚠️ Slot 填法注意（模板沒錯，但填錯 slot 會變錯）</div>
+  <table style="width:100%;border-collapse:collapse;font-size:.85rem">
+    <tr style="background:#f0f0f0">
+      <th style="padding:5px 10px;text-align:left;border-bottom:2px solid #ddd">位置</th>
+      <th style="padding:5px 10px;text-align:left;border-bottom:2px solid #ddd">規則</th>
+      <th style="padding:5px 10px;text-align:left;border-bottom:2px solid #ddd">範例</th>
+    </tr>
+    <tr>
+      <td style="padding:5px 10px;border-bottom:1px solid #eee">P1 <code>[topic]</code></td>
+      <td style="padding:5px 10px;border-bottom:1px solid #eee">必須是名詞片語</td>
+      <td style="padding:5px 10px;border-bottom:1px solid #eee;font-family:Georgia,serif">✅ the role of the library&nbsp;&nbsp;❌ libraries are obsolete</td>
+    </tr>
+    <tr>
+      <td style="padding:5px 10px;border-bottom:1px solid #eee">P3 <code>he is able to [結果]</code></td>
+      <td style="padding:5px 10px;border-bottom:1px solid #eee">接原形動詞</td>
+      <td style="padding:5px 10px;border-bottom:1px solid #eee;font-family:Georgia,serif">✅ save time&nbsp;&nbsp;❌ saving time</td>
+    </tr>
+    <tr>
+      <td style="padding:5px 10px">P4 <code>It is crucial that [建議]</code></td>
+      <td style="padding:5px 10px">用原形動詞（虛擬語氣）</td>
+      <td style="padding:5px 10px;font-family:Georgia,serif">✅ the law <b>provide</b> support&nbsp;&nbsp;❌ provide<b>s</b></td>
+    </tr>
+  </table>
+</div>
+
 <div class="sum-card open" id="refcard">
   <div class="sum-header" onclick="this.closest('.sum-card').classList.toggle('open')">
     <span>📚 五大論據英文句（背熟這些，37 題通吃）</span><span>▼</span>
@@ -138,10 +164,10 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
         <div>
           <div class="ref-zh">效率 &amp; 時間節省</div>
           <div class="ref-trigger">可套的題：幾乎所有題（科技、商場、媒體、工時）</div>
-          <div class="ref-main"><span class="zh-tag">論點：</span>[X] can help people to <b>improve efficiency and boost productivity</b></div>
-          <div class="ref-sub"><span class="zh-tag">A. 省時：</span>this can result in significant <b>time-savings</b></div>
-          <div class="ref-sub"><span class="zh-tag">B. 專注：</span>concentrate on work and <b>work more efficiently</b></div>
-          <div class="ref-sub"><span class="zh-tag">C. 關鍵影響：</span>accomplish more within limited time and <b>stand better chances of being promoted</b></div>
+          <div class="ref-main"><span class="zh-tag">論點：</span>[X] can help people <b>save time and work better</b>（進階：<b>improve efficiency and boost productivity</b>）</div>
+          <div class="ref-sub"><span class="zh-tag">A. 省時：</span>people can <b>finish their work faster</b></div>
+          <div class="ref-sub"><span class="zh-tag">B. 陪家人：</span>they can <b>spend more quality time with their families</b></div>
+          <div class="ref-sub"><span class="zh-tag">C. 關鍵影響：</span>this makes the family <b>closer and happier</b></div>
         </div>
       </div>
       <div class="ref-item rf2">
@@ -150,9 +176,9 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
           <div class="ref-zh">學業 &amp; 未來前景</div>
           <div class="ref-trigger">可套的題：教育、考試、兼職、語言、媒體</div>
           <div class="ref-main"><span class="zh-tag">論點：</span>[X] can help students <b>achieve outstanding academic performance</b></div>
-          <div class="ref-sub"><span class="zh-tag">A. 技能：</span>develop a wide range of <b>skills such as critical thinking</b></div>
-          <div class="ref-sub"><span class="zh-tag">B. 知識：</span>build <b>systematic knowledge</b> and concentrate on academic pursuits</div>
-          <div class="ref-sub"><span class="zh-tag">C. 關鍵影響：</span>in turn leading to <b>better future prospects</b></div>
+          <div class="ref-sub"><span class="zh-tag">A. 性格：</span>they can build good habits, such as <b>self-discipline</b></div>
+          <div class="ref-sub"><span class="zh-tag">B. 自律：</span>with self-discipline, they <b>keep learning and growing</b></div>
+          <div class="ref-sub"><span class="zh-tag">C. 關鍵影響：</span>this <b>leads them to a better future</b></div>
         </div>
       </div>
       <div class="ref-item rf3">
@@ -161,9 +187,10 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
           <div class="ref-zh">身心健康 &amp; 壓力</div>
           <div class="ref-trigger">可套的題：工作壓力、媒體、考試、兒童（最常拿來 P2 讓步）</div>
           <div class="ref-main"><span class="zh-tag">論點（反面）：</span>[X] can <b>lead to stress and anxiety</b></div>
-          <div class="ref-sub"><span class="zh-tag">A. 情緒：</span>feel <b>frustrated and isolated</b></div>
-          <div class="ref-sub"><span class="zh-tag">B. 惡化：</span>develop serious <b>mental health issues</b> such as depression</div>
-          <div class="ref-sub"><span class="zh-tag">C. 正面版：</span>enjoy <b>higher levels of emotional and physical wellbeing</b></div>
+          <div class="ref-sub"><span class="zh-tag">A. 煩躁：</span>people easily <b>feel upset and angry</b></div>
+          <div class="ref-sub"><span class="zh-tag">B. 脾氣：</span>they <b>lose their temper over small things</b></div>
+          <div class="ref-sub"><span class="zh-tag">C. 關鍵影響：</span>they <b>speak rudely to their families</b>, which hurts family relationships</div>
+          <div class="ref-sub"><span class="zh-tag">正面版（讓步用）：</span>people <b>feel relaxed and enjoy peace of mind</b></div>
         </div>
       </div>
       <div class="ref-item rf4">
@@ -172,9 +199,9 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
           <div class="ref-zh">視野 &amp; 文化理解</div>
           <div class="ref-trigger">可套的題：語言、旅遊、媒體、戲劇、海外學習</div>
           <div class="ref-main"><span class="zh-tag">論點：</span>[X] can help people <b>gain a broader view of life</b></div>
-          <div class="ref-sub"><span class="zh-tag">A. 文化：</span>gain a better understanding of <b>cultures, traditions, customs and etiquettes</b></div>
-          <div class="ref-sub"><span class="zh-tag">B. 性格：</span>become increasingly <b>open-minded, wise and knowledgeable</b></div>
-          <div class="ref-sub"><span class="zh-tag">C. 關鍵影響：</span>communicate with people from different backgrounds and <b>build genuine trust</b></div>
+          <div class="ref-sub"><span class="zh-tag">A. 懂很多：</span>they learn things they <b>cannot find in books</b></div>
+          <div class="ref-sub"><span class="zh-tag">B. 談吐：</span>they become <b>more interesting and confident when they talk</b></div>
+          <div class="ref-sub"><span class="zh-tag">C. 關鍵影響：</span>this helps them <b>get along with people from different backgrounds</b></div>
         </div>
       </div>
       <div class="ref-item rf5">
@@ -182,12 +209,68 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
         <div>
           <div class="ref-zh">職涯 &amp; 財務</div>
           <div class="ref-trigger">可套的題：工作、婚姻、薪資、工時、名人</div>
-          <div class="ref-main"><span class="zh-tag">論點：</span>[X] can bring <b>career advancement and financial stability</b></div>
-          <div class="ref-sub"><span class="zh-tag">A. 升遷：</span>be <b>promoted to higher managerial hierarchies</b></div>
-          <div class="ref-sub"><span class="zh-tag">B. 養家：</span><b>financially support</b> his whole family</div>
-          <div class="ref-sub"><span class="zh-tag">C. 關鍵影響：</span>enjoy higher levels of wellbeing thanks to <b>financial security</b></div>
+          <div class="ref-main"><span class="zh-tag">論點：</span>[X] can bring people <b>a good job and a steady income</b>（進階：<b>financial stability</b>）</div>
+          <div class="ref-sub"><span class="zh-tag">A. 不擔心錢：</span>they <b>do not need to worry about money</b></div>
+          <div class="ref-sub"><span class="zh-tag">B. 心情穩：</span>they can <b>enjoy peace of mind</b></div>
+          <div class="ref-sub"><span class="zh-tag">C. 關鍵影響：</span>this creates <b>a warm and stable home for the whole family</b></div>
         </div>
       </div>
+      <div class="ref-item" style="background:#fffbea;border-left:4px solid #f1c40f;grid-column:1/-1">
+        <div class="ref-num">💡</div>
+        <div>
+          <div class="ref-zh">記憶法：論據宇宙只有兩個終點</div>
+          <div class="ref-sub" style="padding-left:0"><b>①③⑤ → 家人</b>（省時→家人更親密／壓力→傷害家人／收入穩→家庭氣氛穩）</div>
+          <div class="ref-sub" style="padding-left:0"><b>②④ → 個人成長</b>（自律→更好的未來／視野→談吐與人緣）</div>
+          <div class="ref-sub" style="padding-left:0;color:#888">考場上忘詞時，往「家人」或「個人成長」兩個方向想就對了。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sum-card open" id="vocab">
+  <div class="sum-header" onclick="this.closest('.sum-card').classList.toggle('open')">
+    <span>🔤 五大論據關鍵字背誦清單（★ = 拼字要特別練）</span><span>▼</span>
+  </div>
+  <div class="sum-body">
+    <table class="sum-table">
+      <tr><th style="width:90px">論據</th><th>關鍵字</th><th>中文</th><th>拼字提示</th></tr>
+      <tr><td rowspan="5"><span class="bg bg1">① 效率</span></td>
+          <td style="font-family:Georgia,serif">save time</td><td>省時</td><td>—</td></tr>
+      <tr><td style="font-family:Georgia,serif">finish their work faster</td><td>更快做完事</td><td>—</td></tr>
+      <tr><td style="font-family:Georgia,serif"><b>quality time</b></td><td>高品質陪伴</td><td>qua-li-ty</td></tr>
+      <tr><td style="font-family:Georgia,serif">closer and happier</td><td>更親密更快樂</td><td>—</td></tr>
+      <tr><td style="font-family:Georgia,serif">★ efficiency / productivity（進階）</td><td>效率／生產力</td><td>ef-fi-cien-cy、pro-duc-ti-vi-ty</td></tr>
+      <tr><td rowspan="6"><span class="bg bg2">② 學業</span></td>
+          <td style="font-family:Georgia,serif">★ achieve</td><td>達成</td><td>a-<b>chie</b>-ve（i 在 e 前）</td></tr>
+      <tr><td style="font-family:Georgia,serif">★ academic performance</td><td>學業表現</td><td>a-ca-de-mic、per-for-mance</td></tr>
+      <tr><td style="font-family:Georgia,serif">good habits</td><td>好習慣</td><td>ha-bits（一個 b）</td></tr>
+      <tr><td style="font-family:Georgia,serif">★ self-discipline</td><td>自律</td><td>dis-<b>sci</b>-pline（中間藏 sci）</td></tr>
+      <tr><td style="font-family:Georgia,serif">keep learning and growing</td><td>持續學習成長</td><td>—</td></tr>
+      <tr><td style="font-family:Georgia,serif">a better future</td><td>更好的未來</td><td>—</td></tr>
+      <tr><td rowspan="7"><span class="bg bg3">③ 壓力</span></td>
+          <td style="font-family:Georgia,serif">stress</td><td>壓力</td><td>—</td></tr>
+      <tr><td style="font-family:Georgia,serif">★ anxiety</td><td>焦慮</td><td>an-xi-e-ty</td></tr>
+      <tr><td style="font-family:Georgia,serif">upset and angry</td><td>煩躁生氣</td><td>—</td></tr>
+      <tr><td style="font-family:Georgia,serif"><b>lose their temper</b></td><td>發脾氣</td><td>tem-per</td></tr>
+      <tr><td style="font-family:Georgia,serif">speak rudely</td><td>口氣差</td><td>rude+ly</td></tr>
+      <tr><td style="font-family:Georgia,serif">★ relationships</td><td>關係</td><td>re-la-tion-ships</td></tr>
+      <tr><td style="font-family:Georgia,serif"><b>peace of mind</b></td><td>內心平靜</td><td>全簡單字</td></tr>
+      <tr><td rowspan="5"><span class="bg bg4">④ 視野</span></td>
+          <td style="font-family:Georgia,serif">★ a broader view of life</td><td>更廣的視野</td><td>broa-der</td></tr>
+      <tr><td style="font-family:Georgia,serif">cannot find in books</td><td>書裡學不到</td><td>—</td></tr>
+      <tr><td style="font-family:Georgia,serif">interesting and confident</td><td>有趣又自信</td><td>in-te-res-ting</td></tr>
+      <tr><td style="font-family:Georgia,serif"><b>get along with</b></td><td>相處融洽</td><td>全簡單字</td></tr>
+      <tr><td style="font-family:Georgia,serif">★ backgrounds</td><td>背景</td><td>back-grounds（有 s）</td></tr>
+      <tr><td rowspan="5"><span class="bg bg5">⑤ 財務</span></td>
+          <td style="font-family:Georgia,serif">★ steady income</td><td>穩定收入</td><td>st<b>ea</b>-dy（ea 不是 e）</td></tr>
+      <tr><td style="font-family:Georgia,serif">worry about money</td><td>擔心錢</td><td>wo-rry（兩個 r）</td></tr>
+      <tr><td style="font-family:Georgia,serif">peace of mind</td><td>內心平靜</td><td>跟 ③ 共用</td></tr>
+      <tr><td style="font-family:Georgia,serif">a warm and stable home</td><td>溫暖穩定的家</td><td>—</td></tr>
+      <tr><td style="font-family:Georgia,serif">★ financial stability（進階）</td><td>財務穩定</td><td>fi-nan-cial、sta-bi-li-ty</td></tr>
+    </table>
+    <div style="font-size:.82rem;color:#888;margin-top:10px;line-height:1.7">
+      背誦優先順序：<b>粗體片語</b>（quality time、lose their temper、peace of mind、get along with）最優先——固定搭配有 vocabulary 分又不容易錯；★ 的字每天默寫一次；其他都是基本字，唸過就好。
     </div>
   </div>
 </div>
@@ -702,10 +785,10 @@ function badge(c){ const [cls,txt]=CAT[c]; return `<span class="bg ${cls}">${txt
 function T(s){ return `<span class="tpl">${s}</span>`; }
 
 function buildEssay(e){
-  const p1 = `${T('It is generally true that')} ${e.topic} ${T('has become a matter of concern over the years, and this has caused great controversy and drawn the attention from the general public. Some people are of the opinion that')} ${e.va}${T(', while others hold the view that')} ${e.vb}. ${T('I tend to agree more with the latter and will discuss this further below.')}`;
+  const p1 = `${T('It is generally true that')} ${e.topic} ${T('has become a matter of concern over the years, and this has caused great controversy and captured public attention. Some people are of the opinion that')} ${e.va}${T(', while others hold the view that')} ${e.vb}. ${T('I tend to agree more with the latter and will discuss this further below.')}`;
   const p2 = `${T('It has to be admitted that')} ${e.con}${T(', and one argument in favor of this view can be that')} ${e.conR}. ${T('If')} ${e.cond}${T(', then')} ${e.subj} ${T('can')} ${e.resA}${T(', in turn leading to')} ${e.resB}. ${T('As a result, it is unsurprising that')} ${e.concl}.`;
-  const p3 = `${T('On the other hand, I feel affirmative that')} ${e.stance}${T(', and one compelling reason is that')} ${e.reason}. ${T(`A pertinent case in point is James, who ${e.jv} at a world-renowned and prestigious ${e.jn}. As James`)} ${e.does}${T(', he is able to')} ${e.result}. ${T('In other words,')} ${e.impl}.`;
-  const p4 = `${T('In conclusion, despite the fact that the counter argument may hold true in many cases, I believe that')} ${e.final}. ${T('It is crucial that')} ${e.rec}.`;
+  const p3 = `${T('On the other hand, I firmly believe that')} ${e.stance}${T(', and one compelling reason is that')} ${e.reason}. ${T(`A pertinent case in point is James, who ${e.jv} at a world-renowned and prestigious ${e.jn}. As James`)} ${e.does}${T(', he is able to')} ${e.result}. ${T('In other words,')} ${e.impl}.`;
+  const p4 = `${T('In conclusion, despite the fact that the counterargument may hold true in many cases, I believe that')} ${e.final}. ${T('It is crucial that')} ${e.rec}.`;
   return [p1,p2,p3,p4];
 }
 
