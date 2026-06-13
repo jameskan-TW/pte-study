@@ -114,6 +114,16 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
              padding: 5px 14px; border-radius: 5px; cursor: pointer; margin: 0 8px 12px 0;
              font-family: 'Noto Sans TC', sans-serif; }
 .drill-btn:hover { background: #eaf2fb; }
+.mistakes { background: #fff7f5; border: 1px solid #f3c9bf; border-left: 4px solid #e74c3c;
+            border-radius: 6px; padding: 12px 16px; margin-top: 12px; }
+.mistakes .mk-title { font-weight: 700; color: #b03a2e; font-size: .9rem; margin-bottom: 8px; }
+.mistakes .mk-cat { font-size: .76rem; font-weight: 700; color: #888; text-transform: uppercase;
+            letter-spacing: .05em; margin: 8px 0 4px; }
+.mistakes ul { list-style: none; padding-left: 0; margin: 0; }
+.mistakes li { font-size: .9rem; line-height: 1.9; }
+.mistakes .x { color: #b03a2e; text-decoration: line-through; font-family: Georgia, serif; }
+.mistakes .o { color: #1e8449; font-weight: 700; font-family: Georgia, serif; }
+.mistakes .nt { color: #888; font-size: .82rem; font-family: 'Noto Sans TC', sans-serif; }
 </style>
 </head>
 <body>
@@ -377,7 +387,26 @@ const DATA = [
  jv:'works', jn:'firm', does:'manages work and family chats on his smartphone',
  result:'<i class="a1">finish his work faster</i> and reach his family anytime',
  impl:'it keeps families connected and <i class="a1">closer and happier</i>',
- final:'the benefits of the smartphone far outweigh its drawbacks', rec:'users build healthy digital habits'}},
+ final:'the benefits of the smartphone far outweigh its drawbacks', rec:'users build healthy digital habits'},
+ mistakes:{
+  spell:[
+   {x:'evoloing', o:'evolving', nt:'演進'},
+   {x:'espacially', o:'especially'},
+   {x:'surffing', o:'surfing'},
+   {x:'closr and happer', o:'closer and happier'},
+  ],
+  grammar:[
+   {x:'cannot stay focus', o:'cannot stay focused', nt:'stay + 形容詞'},
+   {x:'a bad performace on academic', o:'poor academic performance', nt:'形容詞+名詞，不用 on'},
+   {x:'save time for many employee', o:'...for many employees', nt:'many + 複數'},
+   {x:'while he spend time', o:'while he spends time', nt:'第三人稱單數 +s'},
+   {x:'deal with the works', o:'deal with his work', nt:'work 不可數，不加 the/s'},
+   {x:'allow their child using', o:'allow their children to use', nt:'allow sb to do'},
+   {x:'If a student surffing on internet', o:'If a student surfs the internet', nt:'if 子句用現在式'},
+   {x:'have more benefits that the shortage', o:'has more benefits than drawbacks', nt:'主詞單數用 has；比較用 than'},
+  ],
+  note:'2026-06-11 第一次手寫。內容與論點結構全對，純拼字／文法。重點：第三人稱 +s、單複數、if 子句時態。'
+ }},
 
 {n:'①-4', o:36, t:'未來會工作更少時間嗎', en:'“In the future, people will work less hours at their jobs.” To what extent do you agree with it? Please support your opinion with your own experience.',
  stance:'同意', p2c:5, p2zh:'讓步：競爭與不穩 → 有些人更長工時', p3c:1, p3zh:'主論：自動化 → 效率倍增 → 工時下降',
@@ -823,6 +852,15 @@ const DATA = [
 ];
 
 function badge(c){ const [cls,txt]=CAT[c]; return `<span class="bg ${cls}">${txt}</span>`; }
+function renderMistakes(mk){
+  if (!mk) return '';
+  const item = m => `<li><span class="x">${m.x}</span> → <span class="o">${m.o}</span>${m.nt?` <span class="nt">（${m.nt}）</span>`:''}</li>`;
+  let out = '<div class="mistakes"><div class="mk-title">📌 我的錯誤複習區（自己寫過、扣除模板）</div>';
+  if (mk.spell && mk.spell.length) out += '<div class="mk-cat">拼字</div><ul>' + mk.spell.map(item).join('') + '</ul>';
+  if (mk.grammar && mk.grammar.length) out += '<div class="mk-cat">文法</div><ul>' + mk.grammar.map(item).join('') + '</ul>';
+  if (mk.note) out += `<div class="nt" style="margin-top:8px">${mk.note}</div>`;
+  return out + '</div>';
+}
 function T(s){ return `<span class="tpl">${s}</span>`; }
 
 function buildEssay(e){
@@ -894,6 +932,7 @@ DATA.forEach(d=>{
         <div class="wc">約 ${wc} 字</div>
       </div>
     </div>
+    ${renderMistakes(d.mistakes)}
   </div>`;
   qlist.appendChild(div);
 });
