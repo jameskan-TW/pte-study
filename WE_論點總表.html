@@ -105,6 +105,15 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
         padding: 0 5px; font-family: 'Noto Sans TC', sans-serif; font-size: .85em; white-space: nowrap; }
 .tpl-label { font-size: .78rem; font-weight: 700; color: #888; text-transform: uppercase;
              letter-spacing: .05em; font-family: 'Noto Sans TC', sans-serif; display: block; margin-bottom: 4px; }
+.mask { color: #5b9bd5; cursor: pointer; border-bottom: 1px dashed #9cc3e8; }
+.mask.hidden { color: transparent; background: #eaf2fb; border-radius: 3px;
+               border-bottom: 1px dashed #9cc3e8; position: relative; }
+.mask.hidden::after { content: attr(data-hint); position: absolute; left: 0; top: 0;
+               color: #b0c8e0; font-family: Georgia, serif; }
+.drill-btn { font-size: .82rem; color: #2e6da4; border: 1px solid #2e6da4; background: white;
+             padding: 5px 14px; border-radius: 5px; cursor: pointer; margin: 0 8px 12px 0;
+             font-family: 'Noto Sans TC', sans-serif; }
+.drill-btn:hover { background: #eaf2fb; }
 </style>
 </head>
 <body>
@@ -135,7 +144,7 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
     <span>📝 完整模板（藍字 37 題通用背熟；虛線框依題目填）</span><span>▼</span>
   </div>
   <div class="sum-body">
-    <div class="essay">
+    <div class="essay" id="tplsource">
       <p><span class="tpl-label">P1 開頭（立場）</span>
       <span class="tpl">It is generally true that</span> <span class="slot">主題（名詞片語）</span> <span class="tpl">has become a matter of concern over the years, and this has caused great controversy and captured public attention. Some people are of the opinion that</span> <span class="slot">觀點A（反方）</span><span class="tpl">, while others hold the view that</span> <span class="slot">觀點B（我方）</span>. <span class="tpl">I tend to agree more with the latter and will discuss this further below.</span></p>
       <p><span class="tpl-label">P2 讓步段</span>
@@ -145,6 +154,20 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
       <p><span class="tpl-label">P4 結論</span>
       <span class="tpl">In conclusion, despite the fact that the counterargument may hold true in many cases, I believe that</span> <span class="slot">最終立場</span>. <span class="tpl">It is crucial that</span> <span class="slot">建議（原形動詞）</span>.</p>
     </div>
+  </div>
+</div>
+
+<div class="sum-card" id="drill">
+  <div class="sum-header" onclick="this.closest('.sum-card').classList.toggle('open')">
+    <span>✍️ 模板默寫卡（藍字遮住，心裡默寫再點開對答案）</span><span>▼</span>
+  </div>
+  <div class="sum-body">
+    <div style="margin-bottom:10px">
+      <button class="drill-btn" onclick="drillMask(true)">全部遮住</button>
+      <button class="drill-btn" onclick="drillMask(false)">全部顯示</button>
+      <span style="font-size:.8rem;color:#888">點任一藍字方塊可單獨翻開；灰色小字是每個單字的首字母提示。</span>
+    </div>
+    <div class="essay" id="drillbody"></div>
   </div>
 </div>
 
@@ -874,6 +897,25 @@ DATA.forEach(d=>{
   </div>`;
   qlist.appendChild(div);
 });
+
+// 模板默寫卡：複製完整模板，把藍字 .tpl 變成可遮蔽的方塊
+(function(){
+  const src = document.getElementById('tplsource');
+  const body = document.getElementById('drillbody');
+  if (!src || !body) return;
+  body.innerHTML = src.innerHTML;
+  body.querySelectorAll('.tpl').forEach(el=>{
+    const hint = el.textContent.split(/\s+/).map(w=>w[0]||'').join(' ');
+    el.classList.add('mask','hidden');
+    el.setAttribute('data-hint', hint);
+    el.onclick = ()=> el.classList.toggle('hidden');
+  });
+})();
+function drillMask(hide){
+  document.querySelectorAll('#drillbody .mask').forEach(el=>{
+    el.classList.toggle('hidden', hide);
+  });
+}
 
 document.getElementById('search').addEventListener('input', function(){
   const kw = this.value.trim().toLowerCase();
