@@ -124,6 +124,7 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
 .mistakes .x { color: #b03a2e; text-decoration: line-through; font-family: Georgia, serif; }
 .mistakes .o { color: #1e8449; font-weight: 700; font-family: Georgia, serif; }
 .mistakes .nt { color: #888; font-size: .82rem; font-family: 'Noto Sans TC', sans-serif; }
+.done-mark { margin: 0 6px 0 2px; font-size: .95em; }
 </style>
 </head>
 <body>
@@ -900,7 +901,7 @@ DATA.forEach(d=>{
     qlist.appendChild(gh);
   }
   const tr = document.createElement('tr');
-  tr.innerHTML = `<td style="white-space:nowrap">${d.n}<span style="color:#bbb;font-size:.75em"> 原#${d.o}</span></td><td>${d.t}</td><td>${d.stance}</td><td>${badge(d.p2c)}</td><td>${badge(d.p3c)}</td>`;
+  tr.innerHTML = `<td style="white-space:nowrap">${d.mistakes?'📌':''}${d.n}<span style="color:#bbb;font-size:.75em"> 原#${d.o}</span></td><td>${d.t}</td><td>${d.stance}</td><td>${badge(d.p2c)}</td><td>${badge(d.p3c)}</td>`;
   tr.onclick = ()=>{ const el=document.getElementById('q'+d.n); el.classList.add('open'); el.scrollIntoView({behavior:'smooth'}); };
   sumtable.appendChild(tr);
 
@@ -912,7 +913,7 @@ DATA.forEach(d=>{
   div.id = 'q'+d.n;
   div.innerHTML = `
   <div class="q-header" onclick="this.closest('.q').classList.toggle('open')">
-    <span class="q-num">${d.n} · 原#${d.o}</span><span class="q-title">${d.t}</span>
+    <span class="q-num">${d.n} · 原#${d.o}</span>${d.mistakes?'<span class="done-mark" title="已練習，有錯誤複習區">📌</span>':''}<span class="q-title">${d.t}</span>
     ${badge(d.p2c)} <span style="opacity:.6">→</span> ${badge(d.p3c)}
   </div>
   <div class="q-body">
