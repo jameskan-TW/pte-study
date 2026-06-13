@@ -420,7 +420,26 @@ const DATA = [
  jv:'works', jn:'firm', does:'uses AI tools to automate repetitive tasks',
  result:'<i class="a1">finish work faster</i> and <i class="a1">spend more quality time with his family</i>',
  impl:'technology keeps cutting the hours we need to work',
- final:'future generations will indeed work fewer hours', rec:'societies prepare for this shift'}},
+ final:'future generations will indeed work fewer hours', rec:'societies prepare for this shift'},
+ mistakes:{
+  spell:[
+   {x:'remotly', o:'remotely', nt:'遠端'},
+   {x:'useing', o:'using'},
+   {x:'simotaniously', o:'simultaneously', nt:'同時地'},
+   {x:'Al（小寫 L）', o:'AI（大寫）', nt:'全文錯 4 次，AI 一定大寫'},
+  ],
+  grammar:[
+   {x:'individuals can work lessly', o:'...can work less', nt:'lessly 不是字'},
+   {x:'then employee can', o:'then employees can', nt:'複數'},
+   {x:'work anyway anytime', o:'work anywhere, anytime', nt:'anyway=無論如何；要的是 anywhere'},
+   {x:'no time spend with family', o:'no time spent with family', nt:'過去分詞'},
+   {x:'the workers are worry', o:'workers are worried', nt:'worried 是形容詞'},
+   {x:'work muti-tasks', o:'handle multiple tasks', nt:'multitask 是動詞；muti 拼字'},
+   {x:'have full evening', o:'have the whole evening', nt:'要冠詞'},
+   {x:'reason is that the development of AI', o:'reason is that AI is developing fast', nt:'that 後接子句，不放名詞片語'},
+  ],
+  note:'2026-06-11 第二篇。模板框架大進步（P4 完整）。重複錯：anywhere/anytime、AI 大寫、第三人稱與複數。'
+ }},
 
 {n:'③-1', o:7, t:'多修路 vs 提升公共交通', en:'Some believe that governments need to build more roads, while others hold the view that governments need to improve public transportation. Discuss both sides and give your own opinion.',
  stance:'支持提升公共交通（latter）', p2c:1, p2zh:'讓步：修路短期緩解塞車', p3c:3, p3zh:'主論：公共交通 → 減污染減壓 → 身心健康',
