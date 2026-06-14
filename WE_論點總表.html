@@ -362,7 +362,29 @@ const DATA = [
  jv:'works', jn:'firm', does:'shops at a large mall',
  result:'buy everything in one place and <i class="a1">spend more quality time with his family</i>',
  impl:'large malls serve modern lifestyles better',
- final:'large malls are a positive trend', rec:'cities keep space for special small shops'}},
+ final:'large malls are a positive trend', rec:'cities keep space for special small shops'},
+ mistakes:{
+  spell:[
+   {x:'lage', o:'large'},
+   {x:'futher', o:'further'},
+   {x:'shopes', o:'shops'},
+   {x:'crucia', o:'crucial'},
+   {x:'convinent', o:'convenient'},
+   {x:'poeple / peopel', o:'people', nt:'同一字錯兩種拼法'},
+   {x:'grossary', o:'groceries'},
+   {x:'dispect', o:'despite'},
+  ],
+  grammar:[
+   {x:'I tend to be more agree', o:'I tend to agree more', nt:'agree 是動詞，前面不加 be'},
+   {x:'spend time on small shops', o:'spend time at small shops', nt:'介係詞 at'},
+   {x:'the people live nearby', o:'the people who live nearby', nt:'關係代名詞 who'},
+   {x:'the good connection', o:'good connections', nt:'複數'},
+   {x:'As James always shopping', o:'As James always shops', nt:'第三人稱 +s，非進行式'},
+   {x:'buy the home need grossary', o:'buy his daily groceries', nt:'名詞別硬疊'},
+   {x:'government should provide more policy', o:'the government provide more policies', nt:'冠詞 the＋policy 複數＋虛擬語氣原形'},
+  ],
+  note:'2026-06-11 第三篇。結構全對。重複錯：people 拼字、第三人稱 +s、冠詞與單複數。拼字錯偏多，列入每日默寫。'
+ }},
 
 {n:'①-2', o:23, t:'電視是生活中重要的一部分（Report）', en:'Television serves many useful functions. It helps people to relax. We can learn from television and it can also be seen as a companion for the lonely. To What extent do you agree with this? Explain why with your own experiences.',
  stance:'不同意 — 電視吃掉家人時間', p2c:4, p2zh:'讓步：從電視能學東西', p3c:1, p3zh:'主論：關電視 → 真互動 → 家人更親',
