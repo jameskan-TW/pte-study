@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WE 模板盲打計時器</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, "Noto Sans TC", sans-serif; background: #f7f7f5; color: #37352f; font-size: 15px; line-height: 1.75; padding: 32px 20px 80px; }
+  .wrap { max-width: 860px; margin: 0 auto; }
+  .back { font-size: 13px; color: #9b9a97; text-decoration: none; }
+  .back:hover { color: #37352f; }
+  h1 { font-size: 26px; font-weight: 700; margin: 10px 0 4px; }
+  .sub { color: #9b9a97; margin-bottom: 22px; font-size: 14px; }
+
+  /* Control bar */
+  .bar { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; background: #fff; border: 1px solid #e9e9e7; border-radius: 10px; padding: 14px 20px; margin-bottom: 16px; position: sticky; top: 8px; z-index: 10; }
+  .timer { font-size: 30px; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: .02em; min-width: 110px; }
+  .timer.warn { color: #c0392b; }
+  .timer.done { color: #2e7d32; }
+  .stat { text-align: center; min-width: 64px; }
+  .stat .v { font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .stat .l { font-size: 11px; color: #9b9a97; text-transform: uppercase; letter-spacing: .04em; }
+  .spacer { flex: 1; }
+  button { font-family: inherit; font-size: 14px; font-weight: 600; padding: 8px 18px; border-radius: 7px; border: 1px solid #37352f; background: #37352f; color: #fff; cursor: pointer; }
+  button:hover { opacity: .88; }
+  button.ghost { background: #fff; color: #37352f; border-color: #e9e9e7; }
+  button.ghost:hover { background: #f0f0ef; opacity: 1; }
+
+  /* Options */
+  .opts { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; font-size: 13px; color: #555; margin-bottom: 14px; padding: 0 4px; }
+  .opts label { cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+  .opts .grp { display: inline-flex; gap: 10px; align-items: center; }
+  .opts b { color: #37352f; }
+
+  /* Progress */
+  .pbar { height: 6px; background: #ececea; border-radius: 4px; overflow: hidden; margin-bottom: 18px; }
+  .pbar > div { height: 100%; width: 0; background: #37352f; transition: width .12s linear; }
+
+  /* Typing area */
+  #area { background: #fff; border: 1px solid #e9e9e7; border-radius: 10px; padding: 26px 30px; font-family: "SF Mono", "JetBrains Mono", Consolas, monospace; font-size: 16.5px; line-height: 2.05; white-space: pre-wrap; word-break: break-word; cursor: text; min-height: 360px; }
+  #area.blurred { filter: blur(4px); }
+  .ch { border-radius: 2px; }
+  .ch.pending { color: #c4c4c2; }
+  .ch.correct { color: #2e7d32; }
+  .ch.wrong { color: #c0392b; background: #fdecea; }
+  .ch.current { color: #37352f; background: #fff3cd; box-shadow: -1.5px 0 0 #37352f; border-radius: 0; }
+  .ch.dot { color: #d8d8d6; }
+  .slot { display: inline-block; font-size: 12px; line-height: 1.4; padding: 1px 7px; margin: 0 2px; border-radius: 5px; background: #eef0f4; color: #8a8fa0; border: 1px dashed #c8cdd8; vertical-align: 1px; }
+  .slot.passed { background: #e7efe7; color: #5f8a5f; border-color: #bcd6bc; }
+  .pgap { display: block; height: 14px; }
+
+  textarea#input { position: absolute; left: -9999px; opacity: 0; }
+
+  /* Result */
+  #result { display: none; background: #fff; border: 1px solid #e9e9e7; border-radius: 10px; padding: 24px 28px; margin-top: 16px; }
+  #result.show { display: block; }
+  #result h2 { font-size: 19px; font-weight: 700; margin-bottom: 14px; }
+  .rgrid { display: flex; gap: 26px; flex-wrap: wrap; margin-bottom: 14px; }
+  .rgrid .stat .v { font-size: 26px; }
+  .verdict { font-size: 14px; padding: 12px 16px; border-radius: 8px; background: #f7f7f5; border: 1px solid #e9e9e7; }
+  .verdict.good { background: #eafaf0; border-color: #b7e4c7; color: #1e6b3a; }
+  .verdict.bad { background: #fdedec; border-color: #f1948a; color: #a83228; }
+  kbd { font-family: inherit; background: #f0f0ef; border: 1px solid #ddd; border-bottom-width: 2px; border-radius: 4px; padding: 0 6px; font-size: 12px; }
+  .hint { font-size: 12px; color: #9b9a97; margin-top: 10px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="index.html">← 回 PTE Study Hub</a>
+  <h1>⌨️ WE 模板盲打計時器</h1>
+  <p class="sub">練固定英文骨架的背誦＋打字速度。中文 slot（<span class="slot" style="vertical-align:0">主題</span> 之類）會自動跳過，<b>不用打</b>。目標：6 分鐘內完整打完。</p>
+
+  <div class="bar">
+    <div id="timer" class="timer">6:00</div>
+    <div class="stat"><div class="v" id="s-wpm">0</div><div class="l">WPM</div></div>
+    <div class="stat"><div class="v" id="s-acc">100<span style="font-size:13px">%</span></div><div class="l">正確率</div></div>
+    <div class="stat"><div class="v" id="s-prog">0<span style="font-size:13px">%</span></div><div class="l">進度</div></div>
+    <div class="stat"><div class="v" id="s-err" style="color:#c0392b">0</div><div class="l">錯字</div></div>
+    <div class="spacer"></div>
+    <button class="ghost" id="btn-reset" onclick="reset()">重新開始</button>
+  </div>
+
+  <div class="opts">
+    <div class="grp"><b>提示模式：</b>
+      <label><input type="radio" name="mode" value="see" checked onchange="setMode('see')"> 看著打</label>
+      <label><input type="radio" name="mode" value="blind" onchange="setMode('blind')"> 背著打（藏字）</label>
+    </div>
+    <label><input type="checkbox" id="opt-slot" checked onchange="render()"> 顯示中文 slot 提示</label>
+    <span id="counts" style="margin-left:auto;color:#9b9a97"></span>
+  </div>
+
+  <div class="pbar"><div id="pfill"></div></div>
+
+  <div id="area" onclick="focusInput()"></div>
+  <textarea id="input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+  <p class="hint">點上方文字區開始打字。<kbd>Backspace</kbd> 可修正。計時在你按下第一個鍵時啟動。背著打模式下打錯的字會原地顯示紅色，可當作提示。</p>
+
+  <div id="result">
+    <h2 id="r-title">⏱ 結果</h2>
+    <div class="rgrid">
+      <div class="stat"><div class="v" id="r-time">0:00</div><div class="l">用時</div></div>
+      <div class="stat"><div class="v" id="r-wpm">0</div><div class="l">WPM</div></div>
+      <div class="stat"><div class="v" id="r-acc">0%</div><div class="l">正確率</div></div>
+      <div class="stat"><div class="v" id="r-err">0</div><div class="l">總錯字</div></div>
+    </div>
+    <div class="verdict" id="r-verdict"></div>
+  </div>
+</div>
+
+<script>
+/* ===== 模板資料：字串=要打的固定英文；{s:'…'}=中文 slot（跳過不打） ===== */
+const PARAS = [
+  [
+    ["It is generally true that ", {s:"主題"}],
+    ["has become a matter of concern over the years"],
+    ["and this has caused great controversy"],
+    ["and captured public attention"],
+    ["Some people are of the opinion that ", {s:"觀點A"}],
+    ["while others hold the view that ", {s:"觀點B"}],
+    ["I tend to agree more with the latter"],
+    ["and will discuss this further below"],
+  ],
+  [
+    ["It has to be admitted that ", {s:"反方論點"}],
+    ["and one argument in favor of this view"],
+    ["can be that ", {s:"理由"}],
+    ["If ", {s:"條件"}, ", then ", {s:"主詞"}, " can ", {s:"結果A"}],
+    ["in turn leading to ", {s:"結果B"}],
+    ["As a result, it is unsurprising that ", {s:"小結"}],
+  ],
+  [
+    ["On the other hand, I firmly believe that ", {s:"我的立場"}],
+    ["and one compelling reason is that ", {s:"理由"}],
+    ["A pertinent case in point is James"],
+    ["who works at a world-renowned and prestigious firm"],
+    ["As James ", {s:"做了什麼"}, ", he is able to ", {s:"結果"}],
+    ["In other words, ", {s:"含義"}],
+  ],
+  [
+    ["In conclusion, despite the fact"],
+    ["that the counterargument may hold true in many cases"],
+    ["I believe that ", {s:"最終立場"}],
+    ["It is crucial that ", {s:"建議"}],
+  ],
+];
+
+/* ===== 建立 unit 序列 + 目標字串 ===== */
+const units = [];
+let target = "";
+function pushChar(ch){ units.push({t:'c', ch, idx: target.length}); target += ch; }
+function pushText(str){
+  if (target.endsWith(' ')) str = str.replace(/^ +/, '');   // 跨 slot 不產生雙空格
+  for (const ch of str) pushChar(ch);
+}
+PARAS.forEach((para, pi) => {
+  para.forEach((line, li) => {
+    line.forEach(seg => {
+      if (typeof seg === 'string') pushText(seg);
+      else units.push({ t:'slot', label: seg.s, at: target.length });
+    });
+    const lastLine = li === para.length - 1;
+    if (!lastLine) {
+      if (!target.endsWith(' ')) pushChar(' ');
+      units.push({ t:'br' });
+    } else if (pi < PARAS.length - 1) {
+      if (!target.endsWith(' ')) pushChar(' ');
+      units.push({ t:'pbr' });
+    }
+  });
+});
+target = target.replace(/\s+$/, '');
+
+const TOTAL = target.length;
+const WORDS = target.split(/\s+/).filter(Boolean).length;
+
+/* ===== DOM ===== */
+const area = document.getElementById('area');
+const ta = document.getElementById('input');
+const timerEl = document.getElementById('timer');
+const LIMIT = 360;
+let mode = 'see';
+let started = false, finished = false, startT = 0, intId = null;
+
+ta.maxLength = TOTAL;
+ta.addEventListener('input', onInput);
+ta.addEventListener('paste', e => e.preventDefault());
+document.getElementById('counts').textContent = `固定骨架 ${TOTAL} 字 · 約 ${WORDS} 詞`;
+
+function focusInput(){ if(!finished) ta.focus(); }
+function setMode(m){ mode = m; render(); focusInput(); }
+
+function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function render(){
+  const typed = ta.value;
+  const showSlot = document.getElementById('opt-slot').checked;
+  let html = "";
+  for (const u of units){
+    if (u.t === 'c'){
+      let cls = 'pending', disp;
+      if (u.idx < typed.length)      cls = (typed[u.idx] === u.ch) ? 'correct' : 'wrong';
+      else if (u.idx === typed.length) cls = 'current';
+      disp = u.ch === ' ' ? ' ' : esc(u.ch);
+      if (mode === 'blind' && cls === 'pending' && u.ch !== ' '){ disp = '·'; cls = 'dot'; }
+      html += `<span class="ch ${cls}">${disp}</span>`;
+    } else if (u.t === 'slot'){
+      const passed = typed.length > u.at ? ' passed' : '';
+      html += `<span class="slot${passed}">${showSlot ? esc(u.label) : '▢'}</span>`;
+    } else if (u.t === 'br'){ html += '<br>'; }
+    else if (u.t === 'pbr'){ html += '<span class="pgap"></span>'; }
+  }
+  area.innerHTML = html;
+}
+
+function calc(){
+  const typed = ta.value;
+  let correct = 0, errors = 0;
+  for (let i = 0; i < typed.length; i++){ if (typed[i] === target[i]) correct++; else errors++; }
+  const elapsed = started ? (performance.now() - startT) / 1000 : 0;
+  const wpm = elapsed > 0 ? Math.round((correct / 5) / (elapsed / 60)) : 0;
+  const acc = typed.length ? Math.round(correct / typed.length * 100) : 100;
+  return { correct, errors, wpm, acc, typed: typed.length, elapsed };
+}
+
+function updateStats(){
+  const s = calc();
+  document.getElementById('s-wpm').textContent = s.wpm;
+  document.getElementById('s-acc').innerHTML = s.acc + '<span style="font-size:13px">%</span>';
+  document.getElementById('s-err').textContent = s.errors;
+  const prog = Math.round(s.typed / TOTAL * 100);
+  document.getElementById('s-prog').innerHTML = prog + '<span style="font-size:13px">%</span>';
+  document.getElementById('pfill').style.width = prog + '%';
+}
+
+function fmt(sec){
+  sec = Math.max(0, Math.ceil(sec));
+  const m = Math.floor(sec / 60), s = sec % 60;
+  return m + ':' + String(s).padStart(2, '0');
+}
+
+function onInput(){
+  if (finished){ ta.value = ta.value.slice(0, 0); return; }
+  if (!started){
+    started = true; startT = performance.now();
+    intId = setInterval(tick, 150);
+  }
+  render(); updateStats();
+  if (ta.value.length >= TOTAL) finish(false);
+}
+
+function tick(){
+  const remain = LIMIT - (performance.now() - startT) / 1000;
+  timerEl.textContent = fmt(remain);
+  if (remain <= 30 && remain > 0) timerEl.classList.add('warn');
+  updateStats();
+  if (remain <= 0) finish(true);
+}
+
+function finish(timeUp){
+  if (finished) return;
+  finished = true;
+  clearInterval(intId);
+  ta.blur();
+  const s = calc();
+  const completed = s.typed >= TOTAL;
+  const used = completed ? s.elapsed : LIMIT;
+  timerEl.classList.remove('warn');
+  timerEl.textContent = fmt(completed ? LIMIT - s.elapsed : 0);
+  if (completed) timerEl.classList.add('done');
+
+  document.getElementById('r-time').textContent = fmt(used);
+  document.getElementById('r-wpm').textContent = s.wpm;
+  document.getElementById('r-acc').textContent = s.acc + '%';
+  document.getElementById('r-err').textContent = s.errors;
+  const v = document.getElementById('r-verdict');
+  const title = document.getElementById('r-title');
+  if (completed){
+    title.textContent = '✅ 完整打完！';
+    if (s.errors === 0 && s.elapsed <= 360){
+      v.className = 'verdict good';
+      v.innerHTML = `零錯字、${fmt(s.elapsed)} 完成，速度 ${s.wpm} WPM。考試這段模板穩了，剩下時間留給套題目＋逆向檢查。`;
+    } else if (s.errors === 0){
+      v.className = 'verdict good';
+      v.innerHTML = `零錯字、${s.wpm} WPM。準度很好，再把速度往上推一點就更安全。`;
+    } else {
+      v.className = 'verdict';
+      v.innerHTML = `${fmt(s.elapsed)} 完成、${s.wpm} WPM，但有 <b>${s.errors}</b> 個錯字。WE 是內容分＋語法分，拼錯會扣，先把錯字壓到 0 再衝速度。`;
+    }
+  } else {
+    title.textContent = '⏱ 時間到';
+    v.className = 'verdict bad';
+    v.innerHTML = `6 分鐘只打到 <b>${Math.round(s.typed/TOTAL*100)}%</b>（${s.wpm} WPM）。模板還不夠熟或打字偏慢——多刷幾輪，先求背得出來，再求快。`;
+  }
+  document.getElementById('result').classList.add('show');
+}
+
+function reset(){
+  finished = false; started = false; clearInterval(intId);
+  ta.value = ''; ta.removeAttribute('readonly');
+  timerEl.textContent = '6:00';
+  timerEl.classList.remove('warn', 'done');
+  document.getElementById('result').classList.remove('show');
+  render(); updateStats();
+  focusInput();
+}
+
+render(); updateStats();
+focusInput();
+</script>
+</body>
+</html>
