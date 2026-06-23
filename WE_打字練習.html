@@ -50,7 +50,7 @@
   .slot.passed { background: #e7efe7; color: #5f8a5f; border-color: #bcd6bc; }
   .pgap { display: block; height: 14px; }
 
-  textarea#input { position: absolute; left: -9999px; opacity: 0; }
+  textarea#input { position: fixed; top: 0; left: 0; width: 1px; height: 1px; padding: 0; border: 0; opacity: 0; z-index: -1; }
 
   /* Result */
   #result { display: none; background: #fff; border: 1px solid #e9e9e7; border-radius: 10px; padding: 24px 28px; margin-top: 16px; }
@@ -187,7 +187,7 @@ ta.addEventListener('input', onInput);
 ta.addEventListener('paste', e => e.preventDefault());
 document.getElementById('counts').textContent = `固定骨架 ${TOTAL} 字 · 約 ${WORDS} 詞`;
 
-function focusInput(){ if(!finished) ta.focus(); }
+function focusInput(){ if(!finished) ta.focus({ preventScroll: true }); }
 function setMode(m){ mode = m; render(); focusInput(); }
 
 function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
