@@ -145,34 +145,49 @@ const PARAS = [
   ],
 ];
 
-/* ===== 建立 unit 序列 + 目標字串 ===== */
-const units = [];
-let target = "";
-function pushChar(ch){ units.push({t:'c', ch, idx: target.length}); target += ch; }
-function pushText(str){
-  if (target.endsWith(' ')) str = str.replace(/^ +/, '');   // 跨 slot 不產生雙空格
-  for (const ch of str) pushChar(ch);
-}
+/* ===== 建立 unit 序列 + 目標字串 =====
+   規則：單字之間的空格要打；緊鄰 slot 或換行的空格自動跳過（顯示但不用打） */
+const tokens = [];
 PARAS.forEach((para, pi) => {
   para.forEach((line, li) => {
     line.forEach(seg => {
-      if (typeof seg === 'string') pushText(seg);
-      else units.push({ t:'slot', label: seg.s, at: target.length });
+      if (typeof seg === 'string') {
+        const s = seg.replace(/\s+/g, ' ').trim();
+        if (s) tokens.push({ type:'text', s, lead: /^\s/.test(seg), trail: /\s$/.test(seg) });
+      } else {
+        tokens.push({ type:'slot', label: seg.s });
+      }
     });
     const lastLine = li === para.length - 1;
-    if (!lastLine) {
-      if (!target.endsWith(' ')) pushChar(' ');
-      units.push({ t:'br' });
-    } else if (pi < PARAS.length - 1) {
-      if (!target.endsWith(' ')) pushChar(' ');
-      units.push({ t:'pbr' });
-    }
+    if (!lastLine) tokens.push({ type:'nl' });
+    else if (pi < PARAS.length - 1) tokens.push({ type:'nl', para: true });
   });
 });
-target = target.replace(/\s+$/, '');
+
+const units = [];
+let target = "";
+function emitChar(ch){ units.push({ t:'c', ch, idx: target.length }); target += ch; }
+let prev = null;
+for (const tk of tokens) {
+  if (tk.type === 'nl') {                       // 換行本身即分隔，邊界空格不打
+    units.push({ t: tk.para ? 'pbr' : 'br' });
+    prev = null;
+    continue;
+  }
+  if (prev) {                                   // 兩 token 間若有空白 → 視覺 gap（不用打）
+    const sep = (prev.type === 'text' && prev.trail) || (tk.type === 'text' && tk.lead);
+    if (sep) units.push({ t:'gap' });
+  }
+  if (tk.type === 'text') {
+    for (const ch of tk.s) emitChar(ch);
+  } else {
+    units.push({ t:'slot', label: tk.label, at: target.length });
+  }
+  prev = tk;
+}
 
 const TOTAL = target.length;
-const WORDS = target.split(/\s+/).filter(Boolean).length;
+const WORDS = tokens.filter(t => t.type === 'text').reduce((n, t) => n + t.s.split(' ').length, 0);
 
 /* ===== DOM ===== */
 const area = document.getElementById('area');
@@ -207,7 +222,8 @@ function render(){
     } else if (u.t === 'slot'){
       const passed = typed.length > u.at ? ' passed' : '';
       html += `<span class="slot${passed}">${showSlot ? esc(u.label) : '▢'}</span>`;
-    } else if (u.t === 'br'){ html += '<br>'; }
+    } else if (u.t === 'gap'){ html += ' '; }
+    else if (u.t === 'br'){ html += '<br>'; }
     else if (u.t === 'pbr'){ html += '<span class="pgap"></span>'; }
   }
   area.innerHTML = html;
