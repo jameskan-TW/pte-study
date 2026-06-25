@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WFD 保底字庫 — 防漏打技巧</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, "Noto Sans TC", sans-serif; background: #f7f7f5; color: #37352f; font-size: 15px; line-height: 1.75; }
+  .wrap { max-width: 820px; margin: 0 auto; padding: 40px 24px 100px; }
+  h1 { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+  .sub { color: #787774; margin-bottom: 22px; }
+
+  .note { background:#fff8e6; border:1px solid #f5d87a; border-radius:8px; padding:14px 18px; margin-bottom:14px; font-size:14px; }
+  .note b { color:#b65c00; }
+  .warn { background:#fbeef0; border:1px solid #eccad0; border-radius:8px; padding:14px 18px; margin-bottom:26px; font-size:14px; }
+  .warn b { color:#b03050; }
+
+  h2 { font-size: 18px; font-weight: 700; margin: 28px 0 4px; }
+  h2 .meta { font-size: 12px; font-weight: 500; color:#9b9a97; margin-left:8px; }
+  .hint { font-size: 13px; color:#787774; margin-bottom:10px; }
+
+  .chips { display:flex; flex-wrap:wrap; gap:7px; }
+  .chip { background:#fff; border:1px solid #e0e0dd; border-radius:6px; padding:4px 11px; font-size:15px; font-family:"SF Mono",Consolas,monospace; position:relative; }
+  .chip.hot { background:#fff3d6; border-color:#f0d589; font-weight:700; }
+  .chip .f { font-size:10px; color:#b65c00; vertical-align:super; margin-left:2px; font-family:-apple-system; }
+  .copy { font-size:12px; color:#2383e2; cursor:pointer; margin-left:10px; font-weight:500; }
+  .copy:hover { text-decoration:underline; }
+  .grp-head { display:flex; align-items:baseline; }
+
+  .star { background:#37352f; color:#fff; border-radius:10px; padding:18px 22px; margin:24px 0; }
+  .star h2 { color:#fff; margin-top:0; }
+  .star .chips .chip { background:#4a4843; border-color:#5c5a55; color:#fff; }
+  .star .chips .chip.hot { background:#ffd54a; color:#37352f; border-color:#ffd54a; }
+  .star .hint { color:#bdbcb8; }
+
+  table { border-collapse:collapse; width:100%; margin:8px 0 4px; font-size:14px; }
+  th,td { border:1px solid #e9e9e7; padding:7px 10px; text-align:left; }
+  th { background:#faf9f7; font-weight:600; }
+  code { background:#f0f0ee; padding:1px 5px; border-radius:4px; font-size:13px; }
+  .foot { color:#9b9a97; font-size:12px; margin-top:30px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🛟 WFD 保底字庫 — 防漏打技巧</h1>
+  <p class="sub">Write From Dictation 沒有倒扣，分數 = 拼對且順序正確的字數。漏字幾乎都漏在「小功能字」上 — 把它們背熟、聽到就補上，分數最大化。</p>
+
+  <div class="note"><b>核心策略</b>：把聽到的句子<b>完整打出來</b>，文法上一定會出現的小字（冠詞 / be 動詞 / 介係詞 / 連接詞 / 複數 -s）<b>絕不留空</b>。沒聽清楚某個小連接詞時，補上最可能的那一個 — 對了 +1 分，錯了不扣分。</div>
+
+  <div class="warn"><b>但不要亂塞</b>：WFD 是按「正確字＋正確順序」計分。隨機把一堆無關字硬塞進句子中間，會打亂語序、又浪費時間，CP 值低。保底字庫的用法是<b>補齊該有但聽漏的字</b>，不是無腦灌字。</div>
+
+  <p class="hint">📊 標 <span style="background:#fff3d6;border:1px solid #f0d589;border-radius:4px;padding:0 5px">黃底</span> 的字是你這 189 句題庫裡<b>實際高頻</b>的字，右上小數字是出現次數。</p>
+
+  <div class="star">
+    <div class="grp-head"><h2>⭐ 考前必背 30 字（最不能漏）</h2></div>
+    <p class="hint">這些幾乎每句都會出現。閉著眼睛也要記得打。</p>
+    <div class="chips" id="g0">
+      <span class="chip hot">the<span class="f">152</span></span>
+      <span class="chip hot">a<span class="f">57</span></span>
+      <span class="chip hot">an<span class="f">9</span></span>
+      <span class="chip hot">is<span class="f">57</span></span>
+      <span class="chip hot">are<span class="f">24</span></span>
+      <span class="chip hot">be<span class="f">27</span></span>
+      <span class="chip hot">of<span class="f">49</span></span>
+      <span class="chip hot">to<span class="f">45</span></span>
+      <span class="chip hot">in<span class="f">39</span></span>
+      <span class="chip hot">on<span class="f">21</span></span>
+      <span class="chip hot">for<span class="f">19</span></span>
+      <span class="chip hot">and<span class="f">27</span></span>
+      <span class="chip hot">that<span class="f">15</span></span>
+      <span class="chip hot">has<span class="f">15</span></span>
+      <span class="chip hot">have<span class="f">11</span></span>
+      <span class="chip hot">will<span class="f">12</span></span>
+      <span class="chip hot">all<span class="f">15</span></span>
+      <span class="chip hot">you<span class="f">13</span></span>
+      <span class="chip hot">your<span class="f">10</span></span>
+      <span class="chip hot">as<span class="f">10</span></span>
+      <span class="chip hot">can<span class="f">9</span></span>
+      <span class="chip hot">not<span class="f">9</span></span>
+      <span class="chip hot">by<span class="f">8</span></span>
+      <span class="chip hot">with<span class="f">8</span></span>
+      <span class="chip hot">it<span class="f">8</span></span>
+      <span class="chip hot">should<span class="f">8</span></span>
+      <span class="chip hot">there<span class="f">8</span></span>
+      <span class="chip hot">their<span class="f">7</span></span>
+      <span class="chip hot">or<span class="f">7</span></span>
+      <span class="chip hot">this<span class="f">5</span></span>
+    </div>
+  </div>
+
+  <div class="grp-head"><h2>1. 冠詞 Articles<span class="meta">最常被聽漏</span></h2><span class="copy" data-g="g1">複製整類</span></div>
+  <p class="hint">名詞前幾乎一定有；a / an 看下個字的「音」（母音→an）。</p>
+  <div class="chips" id="g1">
+    <span class="chip hot">the<span class="f">152</span></span>
+    <span class="chip hot">a<span class="f">57</span></span>
+    <span class="chip hot">an<span class="f">9</span></span>
+  </div>
+
+  <div class="grp-head"><h2>2. be 動詞 ＆ 助動詞</h2><span class="copy" data-g="g2">複製整類</span></div>
+  <p class="hint">弱讀最容易吃掉，尤其句中的 is / are / be / been。</p>
+  <div class="chips" id="g2">
+    <span class="chip hot">is<span class="f">57</span></span>
+    <span class="chip hot">are<span class="f">24</span></span>
+    <span class="chip hot">was<span class="f">5</span></span>
+    <span class="chip">were</span>
+    <span class="chip hot">be<span class="f">27</span></span>
+    <span class="chip hot">been<span class="f">6</span></span>
+    <span class="chip">being</span>
+    <span class="chip">am</span>
+    <span class="chip hot">has<span class="f">15</span></span>
+    <span class="chip hot">have<span class="f">11</span></span>
+    <span class="chip">had</span>
+    <span class="chip">do</span>
+    <span class="chip">does</span>
+    <span class="chip">did</span>
+  </div>
+
+  <div class="grp-head"><h2>3. 情態助動詞 Modals</h2><span class="copy" data-g="g3">複製整類</span></div>
+  <div class="chips" id="g3">
+    <span class="chip hot">will<span class="f">12</span></span>
+    <span class="chip">would</span>
+    <span class="chip hot">can<span class="f">9</span></span>
+    <span class="chip">could</span>
+    <span class="chip">may</span>
+    <span class="chip">might</span>
+    <span class="chip hot">should<span class="f">8</span></span>
+    <span class="chip hot">must<span class="f">5</span></span>
+    <span class="chip">shall</span>
+    <span class="chip">need to</span>
+  </div>
+
+  <div class="grp-head"><h2>4. 介係詞 Prepositions</h2><span class="copy" data-g="g4">複製整類</span></div>
+  <p class="hint">短、弱、藏在句中，是漏字重災區。</p>
+  <div class="chips" id="g4">
+    <span class="chip hot">of<span class="f">49</span></span>
+    <span class="chip hot">to<span class="f">45</span></span>
+    <span class="chip hot">in<span class="f">39</span></span>
+    <span class="chip hot">on<span class="f">21</span></span>
+    <span class="chip">at</span>
+    <span class="chip hot">for<span class="f">19</span></span>
+    <span class="chip hot">with<span class="f">8</span></span>
+    <span class="chip hot">by<span class="f">8</span></span>
+    <span class="chip hot">from<span class="f">5</span></span>
+    <span class="chip hot">as<span class="f">10</span></span>
+    <span class="chip">about</span>
+    <span class="chip">into</span>
+    <span class="chip hot">over<span class="f">4</span></span>
+    <span class="chip">under</span>
+    <span class="chip">between</span>
+    <span class="chip">among</span>
+    <span class="chip">through</span>
+    <span class="chip">during</span>
+    <span class="chip hot">across<span class="f">4</span></span>
+    <span class="chip">within</span>
+    <span class="chip">without</span>
+    <span class="chip">against</span>
+    <span class="chip">around</span>
+    <span class="chip">up</span>
+    <span class="chip">out</span>
+    <span class="chip">off</span>
+  </div>
+
+  <div class="grp-head"><h2>5. 代名詞 ＆ 指示詞</h2><span class="copy" data-g="g5">複製整類</span></div>
+  <div class="chips" id="g5">
+    <span class="chip hot">it<span class="f">8</span></span>
+    <span class="chip">its</span>
+    <span class="chip">they</span>
+    <span class="chip hot">their<span class="f">7</span></span>
+    <span class="chip">them</span>
+    <span class="chip">he</span>
+    <span class="chip">his</span>
+    <span class="chip">him</span>
+    <span class="chip">she</span>
+    <span class="chip">her</span>
+    <span class="chip hot">you<span class="f">13</span></span>
+    <span class="chip hot">your<span class="f">10</span></span>
+    <span class="chip">we</span>
+    <span class="chip hot">our<span class="f">5</span></span>
+    <span class="chip">us</span>
+    <span class="chip">I</span>
+    <span class="chip">my</span>
+    <span class="chip hot">this<span class="f">5</span></span>
+    <span class="chip hot">that<span class="f">15</span></span>
+    <span class="chip">these</span>
+    <span class="chip">those</span>
+    <span class="chip">who</span>
+    <span class="chip">which</span>
+    <span class="chip">what</span>
+    <span class="chip">whose</span>
+  </div>
+
+  <div class="grp-head"><h2>6. 連接詞 Conjunctions</h2><span class="copy" data-g="g6">複製整類</span></div>
+  <div class="chips" id="g6">
+    <span class="chip hot">and<span class="f">27</span></span>
+    <span class="chip hot">or<span class="f">7</span></span>
+    <span class="chip">but</span>
+    <span class="chip">so</span>
+    <span class="chip">because</span>
+    <span class="chip">although</span>
+    <span class="chip">though</span>
+    <span class="chip">while</span>
+    <span class="chip">when</span>
+    <span class="chip">if</span>
+    <span class="chip hot">as<span class="f">10</span></span>
+    <span class="chip hot">than<span class="f">4</span></span>
+    <span class="chip hot">that<span class="f">15</span></span>
+    <span class="chip">whether</span>
+    <span class="chip">since</span>
+    <span class="chip">unless</span>
+    <span class="chip">before</span>
+    <span class="chip">after</span>
+  </div>
+
+  <div class="grp-head"><h2>7. 限定詞 ＆ 量詞</h2><span class="copy" data-g="g7">複製整類</span></div>
+  <div class="chips" id="g7">
+    <span class="chip hot">all<span class="f">15</span></span>
+    <span class="chip">some</span>
+    <span class="chip">any</span>
+    <span class="chip hot">many<span class="f">6</span></span>
+    <span class="chip">much</span>
+    <span class="chip">most</span>
+    <span class="chip">more</span>
+    <span class="chip hot">two<span class="f">4</span></span>
+    <span class="chip">both</span>
+    <span class="chip">each</span>
+    <span class="chip">every</span>
+    <span class="chip">few</span>
+    <span class="chip">several</span>
+    <span class="chip">no</span>
+    <span class="chip">such</span>
+    <span class="chip hot">other<span class="f">4</span></span>
+    <span class="chip">another</span>
+    <span class="chip hot">new<span class="f">7</span></span>
+  </div>
+
+  <div class="grp-head"><h2>8. 高頻副詞 ＆ 小字</h2><span class="copy" data-g="g8">複製整類</span></div>
+  <div class="chips" id="g8">
+    <span class="chip hot">not<span class="f">9</span></span>
+    <span class="chip">also</span>
+    <span class="chip">only</span>
+    <span class="chip">just</span>
+    <span class="chip">even</span>
+    <span class="chip">still</span>
+    <span class="chip hot">now<span class="f">6</span></span>
+    <span class="chip">then</span>
+    <span class="chip">very</span>
+    <span class="chip">too</span>
+    <span class="chip hot">there<span class="f">8</span></span>
+    <span class="chip">here</span>
+    <span class="chip">well</span>
+    <span class="chip">often</span>
+    <span class="chip">always</span>
+    <span class="chip">usually</span>
+    <span class="chip hot">important<span class="f">7</span></span>
+    <span class="chip hot">key<span class="f">6</span></span>
+  </div>
+
+  <h2>🎯 最容易聽漏的 5 個位置</h2>
+  <table>
+    <tr><th>位置</th><th>易漏</th><th>例</th></tr>
+    <tr><td>名詞前的冠詞</td><td><code>a / an / the</code></td><td>find <b>the</b> complex form</td></tr>
+    <tr><td>句中弱讀 be / 助動詞</td><td><code>is / are / be / been / has</code></td><td>assignments <b>are</b> spread out</td></tr>
+    <tr><td>名詞字尾複數 / 第三人稱 -s</td><td><code>students / lectures / works</code></td><td>all the lecture<b>s</b> today</td></tr>
+    <tr><td>短介係詞</td><td><code>of / to / in / on / for</code></td><td>a branch <b>of</b> mathematics</td></tr>
+    <tr><td>所有格 / 指示詞</td><td><code>your / their / this / that</code></td><td>submit <b>your</b> assignments</td></tr>
+  </table>
+
+  <p class="foot">頻率數據來自本專案 189 句 WFD 題庫實際統計（the 152 次、is/a 各 57 次…）。點各類「複製整類」可把該類字複製起來練習。</p>
+</div>
+
+<script>
+document.querySelectorAll('.copy').forEach(el=>{
+  el.onclick=()=>{
+    const box=document.getElementById(el.dataset.g);
+    const words=[...box.querySelectorAll('.chip')].map(c=>c.childNodes[0].textContent.trim());
+    navigator.clipboard.writeText(words.join(' ')).then(()=>{
+      const old=el.textContent; el.textContent='✓ 已複製'; setTimeout(()=>el.textContent=old,1200);
+    });
+  };
+});
+</script>
+</body>
+</html>
