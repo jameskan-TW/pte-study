@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>閱讀訂正 — 錯題原文＋根因複習</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, "Noto Sans TC", sans-serif; background: #f7f7f5; color: #37352f; font-size: 15px; line-height: 1.7; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 40px 24px 120px; }
+  h1 { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+  .sub { color: #787774; margin-bottom: 22px; }
+  .sub b { color:#37352f; }
+
+  /* diagnosis */
+  .diag { background:#fff; border:1px solid #e9e9e7; border-radius:12px; padding:18px 20px; margin-bottom:22px; }
+  .diag h3 { font-size:14px; font-weight:700; margin-bottom:12px; }
+  .diag h3 .em { color:#c0392b; }
+  .barrow { display:flex; height:26px; border-radius:6px; overflow:hidden; margin-bottom:12px; font-size:11px; font-weight:700; }
+  .barrow > span { display:flex; align-items:center; justify-content:center; color:#fff; min-width:0; }
+  .legend { display:flex; flex-wrap:wrap; gap:6px 16px; font-size:12.5px; color:#555; }
+  .legend i { display:inline-block; width:10px; height:10px; border-radius:3px; margin-right:5px; vertical-align:middle; }
+  .take { margin-top:12px; font-size:13.5px; background:#fff8e6; border-left:3px solid #e0a500; border-radius:0 6px 6px 0; padding:9px 12px; color:#5a4a00; }
+
+  .c-col{background:#1f7a45;} .c-sem{background:#2383e2;} .c-log{background:#b0561f;}
+  .c-pos{background:#7a3fb0;} .c-ten{background:#b03050;}
+
+  /* toolbar */
+  .bar { position: sticky; top: 0; background: rgba(247,247,245,.96); backdrop-filter: blur(6px); padding: 12px 0; border-bottom: 1px solid #e9e9e7; z-index: 20; margin-bottom: 20px; }
+  .lbl { font-size: 11px; font-weight: 700; color: #9b9a97; letter-spacing: .04em; margin: 0 6px 5px; }
+  .pills { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 8px; }
+  .pill { border: 1px solid #e0e0dd; background: #fff; border-radius: 20px; padding: 4px 13px; font-size: 13px; cursor: pointer; user-select: none; white-space: nowrap; }
+  .pill:hover { background: #f0f0ee; }
+  .pill.active { background: #37352f; color: #fff; border-color: #37352f; }
+  .pill .n { opacity: .55; margin-left: 4px; font-size: 12px; }
+  .actions { display:flex; gap:8px; align-items:center; margin-top:4px; }
+  .toggle { border:1px solid #2a7d3f; background:#e7f6ec; color:#1f7a45; border-radius:6px; padding:5px 13px; font-size:13px; cursor:pointer; font-weight:600; }
+  .toggle.off { border-color:#d0d0cc; background:#fff; color:#37352f; font-weight:500; }
+  .cnt { margin-left:auto; font-size:13px; color:#9b9a97; }
+
+  /* passage card */
+  .card { background:#fff; border:1px solid #e9e9e7; border-radius:10px; padding:16px 20px; margin-bottom:14px; border-left:4px solid #e9e9e7; }
+  .card.col{border-left-color:#1f7a45;} .card.sem{border-left-color:#2383e2;}
+  .card.log{border-left-color:#b0561f;} .card.pos{border-left-color:#7a3fb0;}
+  .card.ten{border-left-color:#b03050;}
+  .chead { display:flex; align-items:baseline; gap:9px; margin-bottom:11px; flex-wrap:wrap; }
+  .title { font-size:16px; font-weight:700; }
+  .pid { font-size:12px; font-weight:600; color:#9b9a97; }
+  .type { font-size:11px; color:#9b9a97; border:1px solid #e0e0dd; border-radius:4px; padding:1px 6px; }
+  .badges { margin-left:auto; display:flex; gap:5px; flex-wrap:wrap; }
+  .badge { font-size:11px; font-weight:700; padding:2px 9px; border-radius:5px; color:#fff; }
+  .b-col{background:#1f7a45;} .b-sem{background:#2383e2;} .b-log{background:#b0561f;}
+  .b-pos{background:#7a3fb0;} .b-ten{background:#b03050;}
+
+  .passage { font-size:15.5px; line-height:2.05; color:#2f2f2c; }
+  .cok { color:#8a8a86; }                         /* answered correctly */
+  .cok::after { content:"✓"; font-size:10px; color:#1f7a45; vertical-align:super; margin-left:1px; }
+  .g { white-space:nowrap; }
+  .g sup { font-weight:700; color:#c0392b; margin-right:1px; font-size:12px; }
+  .g s { color:#c0392b; opacity:.72; margin:0 2px; text-decoration-thickness:1px; }
+  .g b { color:#1f7a45; background:#e7f6ec; padding:0 5px; border-radius:4px; }
+  .g.q u, .g.q .u { }
+  .blk { display:inline-block; min-width:70px; border-bottom:2px solid #b9b9b6; text-align:center; }
+
+  .reveal { display:inline-block; margin-top:12px; font-size:13px; color:#2383e2; cursor:pointer; user-select:none; font-weight:600; }
+  .reveal:hover { text-decoration:underline; }
+
+  /* explanation list */
+  .ex { margin:14px 0 0; padding:13px 16px; background:#fafaf8; border-radius:8px; list-style:none; }
+  .ex li { font-size:13.5px; color:#555; padding:5px 0; border-top:1px dashed #e5e5e2; }
+  .ex li:first-child { border-top:none; }
+  .ex .exn { font-weight:700; color:#37352f; margin-right:6px; }
+  .ex .r { color:#1f7a45; font-weight:700; }
+  .ex .w { color:#c0392b; opacity:.75; margin:0 6px; }
+  .ex .badge { margin-left:4px; }
+  .ex .wy { display:block; margin-top:3px; color:#666; }
+  .ex .en { font-family:"SF Mono",Menlo,Consolas,monospace; font-size:12px; background:#eef0f2; padding:1px 5px; border-radius:4px; color:#2b4a6b; }
+
+  /* quiz mode */
+  body.quiz .ex { display:none; }
+  body:not(.quiz) .reveal { display:none; }
+  .card.open .ex { display:block; }
+  .card.open .reveal { display:none; }
+
+  .done { background:#fff; border:1px solid #e9e9e7; border-radius:10px; padding:13px 18px; margin-bottom:14px; font-size:13.5px; color:#666; border-left:4px solid #d0d0cc; }
+  .done b { color:#1f7a45; }
+  .foot { color:#9b9a97; font-size:12.5px; margin-top:26px; text-align:center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>📖 閱讀訂正 — 錯題原文＋根因複習</h1>
+  <p class="sub">來源：PTE 閱讀填空 (R-FIB / FIB-DD) 訂正。每篇附<b>完整原文</b>，錯的空格標成 <s style="color:#c0392b">你選</s> <b style="color:#1f7a45;background:#e7f6ec;padding:0 4px;border-radius:3px">正解</b>，並貼上<b>根因類別</b>。可篩選、可開<b>自測模式</b>把答案藏起來自己想。</p>
+
+  <div class="diag">
+    <h3 id="diagHead"></h3>
+    <div class="barrow" id="diagBar"></div>
+    <div class="legend">
+      <span><i class="c-col"></i>固定搭配（collocation / 慣用語）</span>
+      <span><i class="c-sem"></i>語意精準／線索</span>
+      <span><i class="c-log"></i>轉折邏輯（but・連接詞）</span>
+      <span><i class="c-pos"></i>詞性／詞形</span>
+      <span><i class="c-ten"></i>時態／語態</span>
+    </div>
+    <div class="take">💡 <b>複習策略：</b>①看到 <b>but / however / nevertheless</b> 先判斷轉折方向 ②填空先問「這裡有沒有固定搭配」 ③括號、前句動詞、並列詞常是<b>線索</b> ④文法只需盯少數詞性/詞形/時態陷阱。</div>
+  </div>
+
+  <div class="bar">
+    <div class="lbl">依根因篩選（顯示含該類錯格的篇目）</div>
+    <div class="pills" id="pills"></div>
+    <div class="actions">
+      <button class="toggle" id="quizBtn">🎯 自測模式：關</button>
+      <span class="cnt" id="cnt"></span>
+    </div>
+  </div>
+
+  <div id="list"></div>
+
+  <div class="done">✅ <b>已全對（做過、沒錯）：</b>Mass Extinction 大規模滅絕 <span class="pid">#080350</span> — published / previously / causes / Instead 全對。</div>
+
+  <div class="foot">錯一次是意外，錯兩次是模式。下次做題前掃一遍這頁的紅字。</div>
+</div>
+
+<script>
+const CAT = {
+  col:{name:"固定搭配", cls:"col"},
+  sem:{name:"語意精準", cls:"sem"},
+  log:{name:"轉折邏輯", cls:"log"},
+  pos:{name:"詞性詞形", cls:"pos"},
+  ten:{name:"時態語態", cls:"ten"},
+};
+const CIRC = ['①','②','③','④','⑤','⑥'];
+const ok = w => `<span class="cok">${w}</span>`;   // correctly answered blank
+
+// Each passage: text uses [[n]] where the n-th ERROR blank goes.
+const DATA = [
+  { title:"Arlington Springs Woman", pid:"", type:"R-FIB",
+    text:`In 1959, the partial skeletal remains of an ancient woman estimated to be 10,000 years old were unearthed in Arlington Springs on Santa Rosa Island, one of the eight Channel Islands off the southern California coast. They were discovered by Phil C. Orr, curator of anthropology and natural history at the Santa Barbara Museum of Natural History. The remains of the so-called Arlington Springs woman were recently re-analyzed by the ${ok('latest')} radiocarbon dating techniques and were found to be approximately 13,000 years old. The new date makes her remains older than any other known human skeleton found [[1]] in North America. The discovery [[2]] the popular belief that the first colonists to North America arrived at the end of the last ice age about 11,500 years ago by crossing a Bering land bridge that connected Siberia to Alaska and northwestern Canada. The earlier date and the location of the woman's remains on the island adds weight to an alternative theory that some early settlers may have constructed boats and migrated from Asia by sailing down the Pacific coast.`,
+    blanks:[
+      { wrong:"until now", right:"so far", cat:"col", why:`「到目前為止」的慣用語是 <span class="en">so far</span>；<span class="en">found so far</span> 才通順。until now 多放句首或句尾，且常隱含「但現在改變了」。` },
+      { wrong:"proves", right:"challenges", cat:"sem", why:`更早的遺骸「<b>挑戰(challenges)</b>」了原本的信念 —— 它與「11,500 年前才到達」互相矛盾，不是「證明(proves)」。` },
+    ]},
+
+  { title:"Smart Grid 智慧電網", pid:"", type:"R-FIB",
+    text:`Imagine a time in the not too distant future when your power comes from a seamless mix of renewable energy and traditional sources. It is delivered by a grid that manages thousands of windmills and hundreds of thousands of customers. Computer ${ok('controlled')}, the grid is able to manage instant variations in supply and demand and provides a real time power balance. Far more complex than anything ${ok('in')} existence today, it is called a smart grid. This technology is a new frontier in power supply and seen as a green solution to current outdated management systems. When introduced smart grids will result in energy savings and will allow consumers a choice in their electricity charges and to be able to select the cheapest time [[1]]. The difficulty for the energy industry is that smart grids ${ok('do not exist')} in reality and the power companies cannot experiment with existing supplies. Without an actual grid to conduct research on, Professor Wu has had to design a simulated laboratory including input from theoretical wind generators and solar panels to feed into a constantly operating system. For an authentic approach researchers built various types of equipment failures ${ok('into')} the grid to test the system. And it works.`,
+    blanks:[
+      { wrong:"duration", right:"slots", cat:"col", why:`固定搭配 <span class="en">time slots</span>＝時段。cheapest time slots＝最便宜的時段。duration（持續時間）搭不上。` },
+    ]},
+
+  { title:"Desert 沙漠", pid:"#110202", type:"FIB-DD",
+    text:`Wind-blown [[1]] of sand from dunes may carry far inland, covering fields and diverting streams. More seriously, drifting sands can bury whole buildings and transform ${ok('fertile')} land into desert. However, dunes can be made more stable by the artificial ${ok('planting')} of marram grass, a plant so robust that it can find ${ok('nourishment')} even in sand. The grass spreads over the ${ok('surface')} of the dune, protecting it against wind, while its roots bind the sand together.`,
+    blanks:[
+      { wrong:"sustenance", right:"grains", cat:"col", why:`固定搭配 <span class="en">grains of sand</span>＝沙粒（顆粒）。sustenance（養分）語意不合，且後面已有 nourishment。` },
+    ]},
+
+  { title:"Business Etiquette 商務禮儀", pid:"", type:"FIB-DD",
+    text:`Business etiquette in Australia is relatively straightforward for Americans and Europeans. But it ${ok('differs')} greatly to the approach taken in the country's Asian backyard, the ${ok('source')} of an increasing proportion of its trade and investment. To many Asians, Australians' openness can appear blunt and [[1]], their informality confusing and even disrespectful. Even if Australia is less egalitarian than it was, it is less ${ok('hierarchical')} than many societies and first names are almost always used, irrespective of rank.`,
+    blanks:[
+      { wrong:"nuanced", right:"unsubtle", cat:"sem", why:`與前面的 <span class="en">blunt</span>（直率）並列，需要同方向的 <span class="en">unsubtle</span>（不細膩、太直接）。nuanced（細膩）語意相反。` },
+    ]},
+
+  { title:"Thea Proctor 西婭·普羅克特", pid:"#110001", type:"FIB-DD",
+    text:`Thea Proctor was just sixteen when her entry at the Bowral Art Competition caught the eye of the judge, Arthur Streeton. It was the first of many associations with art world ${ok('recruits')}. The next year saw her at the Julian Ashton Art School in the illustrious company of Elioth Gruner, Sydney Long and George Lambert, for whom she often posed and who ${ok('remained')} her great friend until his death in 1930. Lambert's paintings and sketches of Proctor emphasize the elegance of her dress. A keen interest in fashion was just one ${ok('aspect')} of her fascination with design, and she saw herself as an early style guru on a quest to rid Australian art of "its lack of imagination and inventive design". Skilled in watercolors and drawings, Proctor did not ${ok('limit')} herself to paper, canvases or to her popular magazine illustrations; she designed theatre sets and a restaurant interior and wrote on a range of subjects from flower arranging to the colors of cars. It made for a busy and [[1]] life but, as she said, she was not the sort of person "who could sit at home and knit socks".`,
+    blanks:[
+      { wrong:"tiresome", right:"varied", cat:"log", why:`轉折詞 <span class="en">but</span> + 「不是能在家坐著織襪子的人」→ 忙碌生活對她是<b>豐富多采(varied)</b>而非厭煩(tiresome)。搭配 <span class="en">a busy and varied life</span>。` },
+    ]},
+
+  { title:"Australia and New Zealand", pid:"#110003", type:"FIB-DD",
+    text:`Australia and New Zealand have many common links. Both countries were recently settled by Europeans, are predominantly English speaking and in that sense, share a common cultural ${ok('heritage')}. Although in close proximity to one another, both countries are geographically isolated and have small populations by world ${ok('standards')}. They have similar histories and enjoy close relations on many fronts. In terms of population ${ok('characteristics')}, Australia and New Zealand have much in common. Both countries have minority indigenous populations, and during the latter half of the 20th century have seen a steady stream of migrants from a variety of regions throughout the world. Both countries have ${ok('experienced')} similar declines in fertility since the high levels recorded during the baby boom, and alongside this have enjoyed the benefits of continually improving life expectancy. One consequence of these trends is that both countries are faced with an ageing population, and the [[1]] challenge of providing appropriate care and support for this growing group within the community.`,
+    blanks:[
+      { wrong:"experimented", right:"associated", cat:"col", why:`需過去分詞當形容詞修飾 challenge。<span class="en">associated challenge</span>＝伴隨而來的挑戰；人口老化自然「帶來」照顧需求。experimented（做實驗）—挑戰不會去做實驗。` },
+    ]},
+
+  { title:"Linguistic Effect 語言效果", pid:"#110004", type:"FIB-DD",
+    text:`An important corollary of this focus on language as the window to legal epistemology is the central role of ${ok('discourse')} to law and other sociocultural processes. In particular, the [[1]] that people hold about how language works (linguistic ideologies) combine with linguistic structuring to create powerful, often unconscious effects. In recent years, linguistic anthropologists have made much progress in developing more precisely analytic ${ok('tools')} for tracking those effects.`,
+    blanks:[
+      { wrong:"evidence", right:"ideas", cat:"sem", why:`括號 <span class="en">linguistic ideologies</span>（語言意識形態）是線索。人對語言持有的是主觀「觀念(ideas)」而非「證據」。搭配 <span class="en">ideas that people hold</span>。` },
+    ]},
+
+  { title:"The Logic of Scientific Method 科學方法的邏輯", pid:"#110005", type:"FIB-DD",
+    text:`The logic of the scientific method was set out by John Stuart Mill in 1843 and was named the method of difference. A simple example of what he meant by this is to take two glasses of water which are ${ok('identical')} in every respect. Introduce a few drops of ink into one of these glasses. The water changes colour! According to Mills method of difference it is safe to assume that the change in the colour of the water is due to the [[1]] of a new factor - the ${ok('independent')} variable - in this case, the ink.`,
+    blanks:[
+      { wrong:"exploration", right:"introduction", cat:"col", why:`前一句剛用動詞 <span class="en">Introduce</span>（滴入墨水），名詞 <span class="en">introduction</span> 字根呼應＝引入/加入。實驗是人為「加墨水」，不是「探索」新因素。` },
+    ]},
+
+  { title:"Exponential Growth of the Internet 互聯網指數級增長", pid:"#110006", type:"FIB-DD",
+    text:`The exponential growth of the Internet was [[1]], in the 1990s, as revolutionizing the production and [[2]] of information. Some people saw the Internet as a means of [[3]] access to knowledge. For people [[4]] about African development, it seemed to offer the possibility of leapfrogging over the technology gap ${ok('separating')} Africa from advanced industrialized countries.`,
+    blanks:[
+      { wrong:"concerned", right:"heralded", cat:"sem", why:`被動 <span class="en">was heralded as</span>＝被預示/歡呼為。網路成長是客觀科技現象，不會「擔憂(concerned)」自己是革命。` },
+      { wrong:"democratizing", right:"dissemination", cat:"pos", why:`要與名詞 production <b>並列</b>，需名詞 <span class="en">dissemination</span>＝傳播。democratizing 是動名詞，破壞 A and B 對等結構。` },
+      { wrong:"approaching", right:"democratizing", cat:"sem", why:`<span class="en">democratizing access</span>＝使取得知識管道大眾化/民主化，網路普及的經典搭配。approaching（接近）語意不通。` },
+      { wrong:"concerning", right:"concerned", cat:"pos", why:`<span class="en">people concerned about…</span>＝關心…的人，需過去分詞當形容詞。concerning 形式錯。` },
+    ]},
+
+  { title:"Teenage Daughter 青少年大腦", pid:"#110007", type:"FIB-DD",
+    text:`Your teenage daughter gets top marks in school, captains the debate team, and volunteers at a shelter for homeless people. But while driving the family car, she text-messages her best friend and rear-ends another vehicle. How can teens be so clever, accomplished, and responsible—and reckless ${ok('at the same time')}? Easily, according to two physicians at Children's Hospital Boston and Harvard Medical School (HMS) who have been [[1]] the unique structure and chemistry of the adolescent brain. "The teenage brain is not just an adult brain with fewer miles on it," says Frances E. Jensen, a professor of neurology. "It's a paradoxical time of [[2]]. These are people with very [[3]] brains, but they're not quite sure what to do with them."`,
+    blanks:[
+      { wrong:"explored", right:"exploring", cat:"ten", why:`現在完成進行式 <span class="en">have been exploring</span>；主詞是醫生＝動作發動者，用主動現在分詞。explored 會變成「大腦被探索」語態錯。` },
+      { wrong:"growing", right:"development", cat:"pos", why:`介系詞 of 後接標準名詞 <span class="en">a time of development</span>＝發展的時期。學術寫作偏好名詞而非動名詞 growing。` },
+      { wrong:"special", right:"sharp", cat:"sem", why:`<span class="en">sharp brains</span>＝敏銳犀利的大腦，精準點出反應敏捷。special（特別）太籠統空泛。` },
+    ]},
+
+  { title:"Radioactivity 放射性", pid:"#110010", type:"FIB-DD",
+    text:`So why is it a concern? It is ${ok('because')} radioactivity is invisible and unsensed, and for that reason is perceived as scary. [[1]], we understand quite well the radiation levels to which people can be [[2]] without harm, and those levels are orders of [[3]] above the typical background levels.`,
+    blanks:[
+      { wrong:"Therefore", right:"Nevertheless", cat:"log", why:`前句「令人害怕」與後句「其實我們很清楚安全劑量」是<b>轉折</b>，用 <span class="en">Nevertheless</span>（然而），不是 Therefore（因此）。` },
+      { wrong:"exposure", right:"exposed", cat:"pos", why:`<span class="en">can be exposed</span> 被動語態需過去分詞。exposure 是名詞，詞性錯。` },
+      { wrong:"volume", right:"magnitude", cat:"col", why:`固定片語 <span class="en">orders of magnitude</span>＝數量級（差好幾個級距）。volume 搭不上。` },
+    ]},
+
+  { title:"Volcanoes 火山", pid:"#110011", type:"FIB-DD",
+    text:`Volcanoes blast more than 100 million tons of carbon dioxide into the atmosphere every year but the gas is usually [[1]]. When a volcano erupts, carbon dioxide spreads out into the atmosphere and isn't [[2]] in one spot. But sometimes the gas gets trapped ${ok('underground')} under enormous pressure. If it escapes to the surface in a dense [[3]], it can push out oxygen-rich air and become deadly.`,
+    blanks:[
+      { wrong:"harmful", right:"harmless", cat:"log", why:`轉折詞 <span class="en">but</span> + 後文「擴散、不集中、無立即危險」→ 平常是<b>無害的(harmless)</b>。harmful 與後文矛盾。` },
+      { wrong:"condensed", right:"concentrated", cat:"col", why:`氣體在局部「聚集、集中」用 <span class="en">concentrated</span>。condensed（凝結成液體）指物態改變，這裡是擴散/稀釋。` },
+      { wrong:"air", right:"cloud", cat:"col", why:`高濃度氣體湧出形成 <span class="en">gas cloud</span>（氣雲）。填 air 語意重複（後面已有 oxygen-rich air）且不通。` },
+    ]},
+];
+
+// ---------- render ----------
+const list = document.getElementById('list');
+const pillBox = document.getElementById('pills');
+const cnt = document.getElementById('cnt');
+let filter = 'all';
+
+// all blanks flat, for stats & pill counts
+const allBlanks = DATA.flatMap(p => p.blanks);
+const catCount = {}; allBlanks.forEach(b => catCount[b.cat] = (catCount[b.cat]||0)+1);
+const total = allBlanks.length;
+
+// diagnosis (dynamic)
+const semGroup = (catCount.col||0)+(catCount.sem||0)+(catCount.log||0);
+const gramGroup = (catCount.pos||0)+(catCount.ten||0);
+const pct = Math.round(semGroup/total*100);
+document.getElementById('diagHead').innerHTML =
+  `🩺 弱點診斷 — 做過 ${DATA.length} 篇、共 ${total} 個錯格：<span class="em">語意/搭配/邏輯 ${semGroup} 個 (${pct}%)</span>，純文法只有 ${gramGroup} 個`;
+document.getElementById('diagBar').innerHTML =
+  Object.keys(CAT).map(k => {
+    const n = catCount[k]||0; if(!n) return '';
+    return `<span class="c-${k}" style="flex:${n}" title="${CAT[k].name} ${n}">${CAT[k].name.slice(0,2)} ${n}</span>`;
+  }).join('');
+
+// pills
+function pill(key,label,n){ return `<div class="pill" data-k="${key}">${label}<span class="n">${n}</span></div>`; }
+let ph = pill('all','全部', DATA.length);
+Object.keys(CAT).forEach(k => ph += pill(k, CAT[k].name, catCount[k]||0));
+pillBox.innerHTML = ph;
+pillBox.querySelector('[data-k="all"]').classList.add('active');
+
+function blankInline(b, i, quiz){
+  const n = CIRC[i];
+  if(quiz) return `<span class="g q"><sup>${n}</sup><span class="blk">＿＿</span></span>`;
+  return `<span class="g"><sup>${n}</sup><s>${b.wrong}</s><b>${b.right}</b></span>`;
+}
+function passageHTML(p, quiz){
+  let html = p.text;
+  p.blanks.forEach((b,i)=> html = html.replace(`[[${i+1}]]`, blankInline(b,i,quiz)));
+  return html;
+}
+function primaryCat(p){ return p.blanks[0].cat; }
+
+function render(){
+  const quiz = document.body.classList.contains('quiz');
+  const items = DATA.filter(p => filter==='all' || p.blanks.some(b=>b.cat===filter));
+  cnt.textContent = `${items.length} 篇 / ${items.reduce((s,p)=>s+p.blanks.length,0)} 格`;
+  list.innerHTML = items.map(p=>{
+    const cls = primaryCat(p);
+    const cats = [...new Set(p.blanks.map(b=>b.cat))];
+    const badges = cats.map(c=>`<span class="badge b-${c}">${CAT[c].name}</span>`).join('');
+    const ex = p.blanks.map((b,i)=>`
+      <li><span class="exn">${CIRC[i]}</span><b class="r">${b.right}</b><s class="w">${b.wrong}</s>
+      <span class="badge b-${b.cat}">${CAT[b.cat].name}</span>
+      <span class="wy">${b.why}</span></li>`).join('');
+    return `<div class="card ${cls}">
+      <div class="chead">
+        <span class="title">📄 ${p.title}</span>
+        ${p.pid?`<span class="pid">${p.pid}</span>`:''}
+        <span class="type">${p.type}</span>
+        <span class="badges">${badges}</span>
+      </div>
+      <div class="passage">${passageHTML(p, quiz)}</div>
+      <span class="reveal" onclick="this.closest('.card').classList.add('open')">👁 顯示答案與解析</span>
+      <ol class="ex">${ex}</ol>
+    </div>`;
+  }).join('');
+}
+render();
+
+pillBox.addEventListener('click', e=>{
+  const p = e.target.closest('.pill'); if(!p) return;
+  pillBox.querySelectorAll('.pill').forEach(x=>x.classList.remove('active'));
+  p.classList.add('active'); filter = p.dataset.k; render();
+});
+
+const qBtn = document.getElementById('quizBtn');
+function setQuiz(on){
+  document.body.classList.toggle('quiz', on);
+  qBtn.classList.toggle('off', !on);
+  qBtn.textContent = `🎯 自測模式：${on?'開':'關'}`;
+  localStorage.setItem('rc_quiz', on?'1':'0');
+  render();
+}
+qBtn.addEventListener('click', ()=> setQuiz(!document.body.classList.contains('quiz')));
+setQuiz(localStorage.getItem('rc_quiz')==='1');
+</script>
+</body>
+</html>
