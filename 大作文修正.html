@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大作文修正 — WE 錯誤根因複習</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, "Noto Sans TC", sans-serif; background: #f7f7f5; color: #37352f; font-size: 15px; line-height: 1.7; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 40px 24px 120px; }
+  h1 { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+  .sub { color: #787774; margin-bottom: 22px; }
+  .sub b { color:#37352f; }
+
+  .diag { background:#fff; border:1px solid #e9e9e7; border-radius:12px; padding:18px 20px; margin-bottom:22px; }
+  .diag h3 { font-size:14px; font-weight:700; margin-bottom:12px; }
+  .diag h3 .em { color:#c0392b; }
+  .barrow { display:flex; height:26px; border-radius:6px; overflow:hidden; margin-bottom:12px; font-size:11px; font-weight:700; }
+  .barrow > span { display:flex; align-items:center; justify-content:center; color:#fff; min-width:0; }
+  .legend { display:flex; flex-wrap:wrap; gap:6px 16px; font-size:12.5px; color:#555; }
+  .legend i { display:inline-block; width:10px; height:10px; border-radius:3px; margin-right:5px; vertical-align:middle; }
+  .take { margin-top:12px; font-size:13.5px; background:#fff8e6; border-left:3px solid #e0a500; border-radius:0 6px 6px 0; padding:9px 12px; color:#5a4a00; }
+  .take b { color:#5a4a00; }
+
+  .c-mech{background:#b03050;} .c-gram{background:#7a3fb0;} .c-word{background:#2383e2;}
+  .c-stru{background:#b0561f;} .c-task{background:#1f7a45;}
+
+  .bar { position: sticky; top: 0; background: rgba(247,247,245,.96); backdrop-filter: blur(6px); padding: 12px 0; border-bottom: 1px solid #e9e9e7; z-index: 20; margin-bottom: 20px; }
+  .lbl { font-size: 11px; font-weight: 700; color: #9b9a97; letter-spacing: .04em; margin: 0 6px 5px; }
+  .pills { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 8px; }
+  .pill { border: 1px solid #e0e0dd; background: #fff; border-radius: 20px; padding: 4px 13px; font-size: 13px; cursor: pointer; user-select: none; white-space: nowrap; }
+  .pill:hover { background: #f0f0ee; }
+  .pill.active { background: #37352f; color: #fff; border-color: #37352f; }
+  .pill .n { opacity: .55; margin-left: 4px; font-size: 12px; }
+  .actions { display:flex; gap:8px; align-items:center; margin-top:4px; }
+  .toggle { border:1px solid #2a7d3f; background:#e7f6ec; color:#1f7a45; border-radius:6px; padding:5px 13px; font-size:13px; cursor:pointer; font-weight:600; }
+  .toggle.off { border-color:#d0d0cc; background:#fff; color:#37352f; font-weight:500; }
+  .cnt { margin-left:auto; font-size:13px; color:#9b9a97; }
+
+  .card { background:#fff; border:1px solid #e9e9e7; border-radius:10px; padding:16px 20px; margin-bottom:14px; border-left:4px solid #e9e9e7; }
+  .card.mech{border-left-color:#b03050;} .card.gram{border-left-color:#7a3fb0;}
+  .card.word{border-left-color:#2383e2;} .card.stru{border-left-color:#b0561f;} .card.task{border-left-color:#1f7a45;}
+  .chead { display:flex; align-items:baseline; gap:9px; margin-bottom:11px; flex-wrap:wrap; }
+  .title { font-size:16px; font-weight:700; }
+  .pid { font-size:12px; font-weight:600; color:#9b9a97; }
+  .type { font-size:11px; color:#9b9a97; border:1px solid #e0e0dd; border-radius:4px; padding:1px 6px; }
+  .badges { margin-left:auto; display:flex; gap:5px; flex-wrap:wrap; }
+  .badge { font-size:11px; font-weight:700; padding:2px 9px; border-radius:5px; color:#fff; }
+  .b-mech{background:#b03050;} .b-gram{background:#7a3fb0;} .b-word{background:#2383e2;}
+  .b-stru{background:#b0561f;} .b-task{background:#1f7a45;}
+
+  .passage { font-size:15.5px; line-height:2.15; color:#2f2f2c; }
+  .passage p { margin:0 0 12px; }
+  .g { white-space:normal; }
+  .g sup { font-weight:700; color:#c0392b; margin-right:1px; font-size:12px; }
+  .g s { color:#c0392b; opacity:.72; margin:0 2px; text-decoration-thickness:1px; }
+  .g b { color:#1f7a45; background:#e7f6ec; padding:0 5px; border-radius:4px; }
+  .blk { display:inline-block; min-width:60px; border-bottom:2px solid #b9b9b6; }
+
+  .reveal { display:inline-block; margin-top:12px; font-size:13px; color:#2383e2; cursor:pointer; user-select:none; font-weight:600; }
+  .reveal:hover { text-decoration:underline; }
+
+  .ex { margin:14px 0 0; padding:13px 16px; background:#fafaf8; border-radius:8px; list-style:none; }
+  .ex li { font-size:13.5px; color:#555; padding:5px 0; border-top:1px dashed #e5e5e2; }
+  .ex li:first-child { border-top:none; }
+  .ex .exn { font-weight:700; color:#37352f; margin-right:6px; }
+  .ex .r { color:#1f7a45; font-weight:700; }
+  .ex .w { color:#c0392b; opacity:.75; margin:0 6px; text-decoration:line-through; }
+  .ex .badge { margin-left:4px; }
+  .ex .wy { display:block; margin-top:3px; color:#666; }
+  .ex .en { font-family:"SF Mono",Menlo,Consolas,monospace; font-size:12px; background:#eef0f2; padding:1px 5px; border-radius:4px; color:#2b4a6b; }
+
+  body.quiz .ex { display:none; }
+  body:not(.quiz) .reveal { display:none; }
+  .card.open .ex { display:block; }
+  .card.open .reveal { display:none; }
+
+  .good { background:#eef8f1; border:1px solid #cde9d6; border-radius:10px; padding:13px 18px; margin-bottom:14px; font-size:13.5px; color:#2a6a41; border-left:4px solid #1f7a45; }
+  .good b { color:#1f7a45; }
+  .foot { color:#9b9a97; font-size:12.5px; margin-top:26px; text-align:center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>📝 大作文修正 — WE 錯誤根因複習</h1>
+  <p class="sub">來源：Write Essay 練習後的 AI 批改。每篇附<b>原文</b>，錯處標成 <s style="color:#c0392b">你寫的</s> <b style="color:#1f7a45;background:#e7f6ec;padding:0 4px;border-radius:3px">修改後</b>，並貼上<b>根因類別</b>。可篩選、可開<b>自測模式</b>把修改藏起來自己先改。</p>
+
+  <div class="diag">
+    <h3 id="diagHead"></h3>
+    <div class="barrow" id="diagBar"></div>
+    <div class="legend">
+      <span><i class="c-mech"></i>拼字／標點（mechanics）</span>
+      <span><i class="c-gram"></i>文法（主謂・單複數・冠詞・時態）</span>
+      <span><i class="c-word"></i>用字／搭配</span>
+      <span><i class="c-stru"></i>結構／句構</span>
+      <span><i class="c-task"></i>切題</span>
+    </div>
+    <div class="take" id="take"></div>
+  </div>
+
+  <div class="good">💪 <b>先說做對的：</b>這篇<b>內容與結構其實到位</b> —— 有清楚立場、讓步段（It has to be admitted…）、具體例子（James）、結論收尾，模板完整。分數卡住的<b>不是想法，是拼字和基礎文法的準確度</b>。把紅字修乾淨，這篇就能上一個檔次。</div>
+
+  <div class="bar">
+    <div class="lbl">依根因篩選</div>
+    <div class="pills" id="pills"></div>
+    <div class="actions">
+      <button class="toggle" id="quizBtn">🎯 自測模式：關</button>
+      <span class="cnt" id="cnt"></span>
+    </div>
+  </div>
+
+  <div id="list"></div>
+  <div class="foot">拼字黑名單天天默：responsible / responsibility・children・become・controversy・believe・conclusion・interact・cooperate・successful・mentor・behaviour。</div>
+</div>
+
+<script>
+const CAT = {
+  mech:{name:"拼字標點", cls:"mech"},
+  gram:{name:"文法",     cls:"gram"},
+  word:{name:"用字搭配", cls:"word"},
+  stru:{name:"結構句構", cls:"stru"},
+  task:{name:"切題",     cls:"task"},
+};
+
+// Each essay: text uses [[n]] where the n-th error goes (in appearance order).
+const DATA = [
+  { title:"父母該為孩子的行為負法律責任嗎？", pid:"2026/08/04", type:"WE",
+    text:`<p>It is generally true that parents should be held legally [[1]] for their children's [[2]]. It has [[3]] a matter of concern over the [[4]] caused great [[5]] and captured public attention. Some people are of the opinion that children [[6]] an [[7]], who should take [[8]] own [[9]], while others hold the view that parents should take the [[10]] for [[11]]. I tend to agree more with the latter, and will discuss this further below.</p>
+<p>It has to be admitted that parents cannot take all the responsibility for their child, and one argument of this view can be that parents will not always stay with their children. If children grow up to 18 years, then they must take the [[12]] for [[13]], in turn leading to [[14]] a fully mature adult. As a result, it is unsurprising that people don't think that all the [[15]] from child need their parents to take [[16]].</p>
+<p>On the other hand, I firmly believe that parents [[17]] [[18]] legally responsible for their children in different level, and one compelling reason is that parents are the first [[19]] for children. A pertinent case in point is James, who works at [[20]]-renowned and prestigious firm. As James has [[21]] him [[22]] when he was a child, he is able to know how to [[23]] with different people from various ages and backgrounds. In other words he has the ability to [[24]] with different people, this good manner makes him become a [[25]] business man.</p>
+<p>In [[26]], despite the fact that the counterargument may hold true in many cases, I [[27]] that parents have responsibility [[28]] their children, it is crucial that parents should [[29]] more attention [[30]] teaching their [[31]].</p>`,
+    blanks:[
+      { wrong:"reponsible", right:"responsible", cat:"mech", why:`拼字。這個字全文拼錯 3 次（responsible / responsibility）——最該優先攻下的字。` },
+      { wrong:"act", right:"actions", cat:"word", why:`children's <span class="en">actions</span>（行為，複數）較自然；act 單數在此偏「單一動作/法案」。` },
+      { wrong:"becmoe", right:"become", cat:"mech", why:`拼字：<span class="en">become</span>。` },
+      { wrong:"years, it has", right:"years. It has", cat:"stru", why:`<b>逗號連接兩個完整句（comma splice）</b>：用句號或 and 斷開。這個毛病本篇出現不只一次，要特別留意。` },
+      { wrong:"controvesy", right:"controversy", cat:"mech", why:`拼字：<span class="en">controversy</span>。` },
+      { wrong:"is", right:"are", cat:"gram", why:`主謂一致：主詞 children（複數）→ <span class="en">are</span>。` },
+      { wrong:"individual", right:"individuals", cat:"gram", why:`單複數：children are <span class="en">individuals</span>（主詞複數，補語也複數）。` },
+      { wrong:"it's", right:"their", cat:"gram", why:`代名詞：指 children（複數）用 <span class="en">their</span>；而且 it's = it is，用法錯。` },
+      { wrong:"responsible", right:"responsibility", cat:"word", why:`詞形：take <span class="en">responsibility</span>（名詞）。responsible 是形容詞。` },
+      { wrong:"resposible", right:"responsibility", cat:"mech", why:`拼字＋詞形：<span class="en">responsibility</span>。` },
+      { wrong:"childern", right:"children", cat:"mech", why:`拼字：<span class="en">children</span>（本篇錯 2 次）。` },
+      { wrong:"resposible", right:"responsibility", cat:"mech", why:`拼字＋詞形：<span class="en">responsibility</span>。` },
+      { wrong:"themself", right:"themselves", cat:"gram", why:`反身代名詞複數：<span class="en">themselves</span>。themself 非標準。` },
+      { wrong:"become", right:"becoming", cat:"gram", why:`<span class="en">leading to</span> 後接動名詞：leading to <span class="en">becoming</span>。to 是介系詞不是不定詞。` },
+      { wrong:"bahaviors", right:"behaviours", cat:"mech", why:`拼字：<span class="en">behaviour(s)</span>（英式；美式 behaviors 亦可，但別拼成 baha-）。` },
+      { wrong:"the responsibility", right:"responsibility", cat:"gram", why:`冠詞：泛指責任時 take <span class="en">responsibility</span>，不加 the。` },
+      { wrong:"shuld", right:"should", cat:"mech", why:`拼字：<span class="en">should</span>。` },
+      { wrong:"held", right:"be held", cat:"gram", why:`被動語態：should <span class="en">be held</span> responsible（父母「被」要求負責）。漏了 be。` },
+      { wrong:"montor", right:"mentor", cat:"mech", why:`拼字：<span class="en">mentor</span>（導師）。` },
+      { wrong:"world", right:"a world", cat:"gram", why:`冠詞：works at <span class="en">a</span> world-renowned firm（單數可數名詞 firm 前要冠詞）。` },
+      { wrong:"a great parents taught", right:"great parents who taught", cat:"stru", why:`句構斷裂＋冠詞：a 不接複數 parents；且需關係代名詞。改 <span class="en">great parents who taught him…</span>。` },
+      { wrong:"a good manner", right:"good manners", cat:"gram", why:`固定用複數：<span class="en">good manners</span>＝禮貌／教養；且不加 a。` },
+      { wrong:"enteract", right:"interact", cat:"mech", why:`拼字：<span class="en">interact</span>。` },
+      { wrong:"coperate", right:"cooperate", cat:"mech", why:`拼字：<span class="en">cooperate</span>（雙 o）。` },
+      { wrong:"succsesful", right:"successful", cat:"mech", why:`拼字：<span class="en">successful</span>（雙 c、雙 s）。` },
+      { wrong:"conclsion", right:"conclusion", cat:"mech", why:`拼字：<span class="en">conclusion</span>。片語 <span class="en">In conclusion</span> 是結論固定開頭。` },
+      { wrong:"beleive", right:"believe", cat:"mech", why:`拼字：<span class="en">believe</span>（i before e）。` },
+      { wrong:"to", right:"for", cat:"word", why:`搭配：responsibility <span class="en">for</span> their children（對…的責任）。` },
+      { wrong:"take", right:"pay", cat:"word", why:`搭配：<span class="en">pay</span> attention（付出注意力），不用 take。` },
+      { wrong:"on", right:"to", cat:"word", why:`搭配：pay attention <span class="en">to</span> …（注意力放在…）。` },
+      { wrong:"childern", right:"children", cat:"mech", why:`拼字：<span class="en">children</span>（本篇第 2 次錯）。` },
+    ]},
+];
+
+// ---------- render ----------
+const list = document.getElementById('list');
+const pillBox = document.getElementById('pills');
+const cnt = document.getElementById('cnt');
+let filter = 'all';
+
+const allErr = DATA.flatMap(p => p.blanks);
+const catCount = {}; allErr.forEach(b => catCount[b.cat] = (catCount[b.cat]||0)+1);
+const total = allErr.length;
+
+// diagnosis (dynamic): biggest bucket + basic-accuracy framing
+const order = Object.keys(CAT);
+let maxK = order[0]; order.forEach(k => { if((catCount[k]||0) > (catCount[maxK]||0)) maxK = k; });
+const maxN = catCount[maxK]||0, maxPct = Math.round(maxN/total*100);
+const basic = (catCount.mech||0)+(catCount.gram||0);
+const basicPct = Math.round(basic/total*100);
+document.getElementById('diagHead').innerHTML =
+  `🩺 弱點診斷 — 這篇共 ${total} 個錯，最大破口是「<span class="em">${CAT[maxK].name} ${maxN} 個 (${maxPct}%)</span>」`;
+document.getElementById('diagBar').innerHTML =
+  order.map(k => { const n = catCount[k]||0; if(!n) return '';
+    return `<span class="c-${k}" style="flex:${n}" title="${CAT[k].name} ${n}">${CAT[k].name.slice(0,2)} ${n}</span>`; }).join('');
+document.getElementById('take').innerHTML =
+  `💡 <b>複習策略：</b>拼字＋文法屬於「基礎準確度」，本篇就佔了 <b>${basic}/${total}（${basicPct}%）</b>，是 PTE 獨立扣分的地方。①拼字：把頁尾黑名單天天默寫 ②文法盯五樣：主謂一致、單複數、冠詞 a/the、被動 be+p.p.、leading to + <span class="en">Ving</span> ③用字：<span class="en">pay attention to</span>、<span class="en">responsibility for</span>。`;
+
+function pill(key,label,n){ return `<div class="pill" data-k="${key}">${label}<span class="n">${n}</span></div>`; }
+let ph = pill('all','全部', total);
+order.forEach(k => ph += pill(k, CAT[k].name, catCount[k]||0));
+pillBox.innerHTML = ph;
+pillBox.querySelector('[data-k="all"]').classList.add('active');
+
+const CIRC = i => `<span style="font-weight:700;color:#c0392b;font-size:12px">${i}.</span>`;
+function blankInline(b, i, quiz){
+  const n = i+1;
+  if(quiz) return `<span class="g q"><sup>${n}</sup><span class="blk">＿＿</span></span>`;
+  return `<span class="g"><sup>${n}</sup><s>${b.wrong}</s><b>${b.right}</b></span>`;
+}
+function passageHTML(p, quiz){
+  let html = p.text;
+  p.blanks.forEach((b,i)=> html = html.replace(`[[${i+1}]]`, blankInline(b,i,quiz)));
+  return html;
+}
+function primaryCat(p){
+  // colour the card by its dominant error type
+  const c={}; p.blanks.forEach(b=>c[b.cat]=(c[b.cat]||0)+1);
+  return Object.keys(c).sort((a,b)=>c[b]-c[a])[0];
+}
+
+function render(){
+  const quiz = document.body.classList.contains('quiz');
+  const items = DATA.filter(p => filter==='all' || p.blanks.some(b=>b.cat===filter));
+  cnt.textContent = `${items.length} 篇 / ${items.reduce((s,p)=>s+p.blanks.length,0)} 錯`;
+  list.innerHTML = items.map(p=>{
+    const cls = primaryCat(p);
+    const cats = order.filter(k => p.blanks.some(b=>b.cat===k));
+    const badges = cats.map(k=>`<span class="badge b-${k}">${CAT[k].name} ${p.blanks.filter(b=>b.cat===k).length}</span>`).join('');
+    // explanations, optionally filtered
+    const exItems = p.blanks.map((b,i)=>({b,i})).filter(o => filter==='all' || o.b.cat===filter);
+    const ex = exItems.map(({b,i})=>`
+      <li><span class="exn">${i+1}.</span><b class="r">${b.right}</b><s class="w">${b.wrong}</s>
+      <span class="badge b-${b.cat}">${CAT[b.cat].name}</span>
+      <span class="wy">${b.why}</span></li>`).join('');
+    return `<div class="card ${cls}">
+      <div class="chead">
+        <span class="title">📝 ${p.title}</span>
+        ${p.pid?`<span class="pid">${p.pid}</span>`:''}
+        <span class="type">${p.type}</span>
+        <span class="badges">${badges}</span>
+      </div>
+      <div class="passage">${passageHTML(p, quiz)}</div>
+      <span class="reveal" onclick="this.closest('.card').classList.add('open')">👁 顯示修改與解析</span>
+      <ol class="ex">${ex}</ol>
+    </div>`;
+  }).join('');
+}
+render();
+
+pillBox.addEventListener('click', e=>{
+  const p = e.target.closest('.pill'); if(!p) return;
+  pillBox.querySelectorAll('.pill').forEach(x=>x.classList.remove('active'));
+  p.classList.add('active'); filter = p.dataset.k; render();
+});
+
+const qBtn = document.getElementById('quizBtn');
+function setQuiz(on){
+  document.body.classList.toggle('quiz', on);
+  qBtn.classList.toggle('off', !on);
+  qBtn.textContent = `🎯 自測模式：${on?'開':'關'}`;
+  localStorage.setItem('we_quiz', on?'1':'0');
+  render();
+}
+qBtn.addEventListener('click', ()=> setQuiz(!document.body.classList.contains('quiz')));
+setQuiz(localStorage.getItem('we_quiz')==='1');
+</script>
+</body>
+</html>
