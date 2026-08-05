@@ -85,6 +85,24 @@
   .done { background:#fff; border:1px solid #e9e9e7; border-radius:10px; padding:13px 18px; margin-bottom:14px; font-size:13.5px; color:#666; border-left:4px solid #d0d0cc; }
   .done b { color:#1f7a45; }
   .foot { color:#9b9a97; font-size:12.5px; margin-top:26px; text-align:center; }
+
+  /* 目錄卡（一篇一列，點入複習） */
+  .idxcard { background:#fff; border:1px solid #e9e9e7; border-radius:10px; padding:14px 18px; margin-bottom:12px; border-left:4px solid #e9e9e7; cursor:pointer; transition:box-shadow .12s, transform .12s; }
+  .idxcard:hover { box-shadow:0 4px 16px rgba(0,0,0,.09); transform:translateY(-1px); }
+  .idxcard.col{border-left-color:#1f7a45;} .idxcard.sem{border-left-color:#2383e2;}
+  .idxcard.log{border-left-color:#b0561f;} .idxcard.pos{border-left-color:#7a3fb0;} .idxcard.ten{border-left-color:#b03050;}
+  .idxmeta { font-size:12.5px; color:#9b9a97; margin-top:8px; }
+  .idxmeta b { color:#c0392b; }
+  .idxmeta .go { color:#2383e2; font-weight:600; }
+
+  /* 詳情頁導覽列 */
+  .dnav { position:sticky; top:0; z-index:20; display:flex; align-items:center; gap:8px; flex-wrap:wrap; background:rgba(247,247,245,.96); backdrop-filter:blur(6px); padding:12px 0; border-bottom:1px solid #e9e9e7; margin-bottom:20px; }
+  .navbtn { border:1px solid #e0e0dd; background:#fff; border-radius:7px; padding:6px 13px; font-size:13px; cursor:pointer; font-weight:600; color:#37352f; }
+  .navbtn:hover:not(:disabled){ background:#f0f0ee; }
+  .navbtn:disabled { opacity:.35; cursor:default; }
+  .navbtn.back { background:#37352f; color:#fff; border-color:#37352f; }
+  .pos { font-size:13px; color:#787774; font-weight:600; }
+  .dnav .toggle { margin-left:auto; }
 </style>
 </head>
 <body>
@@ -92,33 +110,47 @@
   <h1>📖 閱讀訂正 — 錯題原文＋根因複習</h1>
   <p class="sub">來源：PTE 閱讀填空 (R-FIB / FIB-DD) 訂正。每篇附<b>完整原文</b>，錯的空格標成 <s style="color:#c0392b">你選</s> <b style="color:#1f7a45;background:#e7f6ec;padding:0 4px;border-radius:3px">正解</b>，並貼上<b>根因類別</b>。可篩選、可開<b>自測模式</b>把答案藏起來自己想。</p>
 
-  <div class="diag">
-    <h3 id="diagHead"></h3>
-    <div class="barrow" id="diagBar"></div>
-    <div class="legend">
-      <span><i class="c-col"></i>固定搭配（collocation / 慣用語）</span>
-      <span><i class="c-sem"></i>語意精準／線索</span>
-      <span><i class="c-log"></i>轉折邏輯（but・連接詞）</span>
-      <span><i class="c-pos"></i>詞性／詞形</span>
-      <span><i class="c-ten"></i>時態／語態</span>
+  <!-- ============ 目錄頁 ============ -->
+  <div id="indexView">
+    <div class="diag">
+      <h3 id="diagHead"></h3>
+      <div class="barrow" id="diagBar"></div>
+      <div class="legend">
+        <span><i class="c-col"></i>固定搭配（collocation / 慣用語）</span>
+        <span><i class="c-sem"></i>語意精準／線索</span>
+        <span><i class="c-log"></i>轉折邏輯（but・連接詞）</span>
+        <span><i class="c-pos"></i>詞性／詞形</span>
+        <span><i class="c-ten"></i>時態／語態</span>
+      </div>
+      <div class="take">💡 <b>複習策略：</b>①看到 <b>but / however / nevertheless</b> 先判斷轉折方向 ②填空先問「這裡有沒有固定搭配」 ③括號、前句動詞、並列詞常是<b>線索</b> ④文法只需盯少數詞性/詞形/時態陷阱。</div>
     </div>
-    <div class="take">💡 <b>複習策略：</b>①看到 <b>but / however / nevertheless</b> 先判斷轉折方向 ②填空先問「這裡有沒有固定搭配」 ③括號、前句動詞、並列詞常是<b>線索</b> ④文法只需盯少數詞性/詞形/時態陷阱。</div>
+
+    <div class="bar">
+      <div class="lbl">依根因篩選（點下方篇目進入複習）</div>
+      <div class="pills" id="pills"></div>
+      <div class="actions">
+        <span class="cnt" id="cnt"></span>
+      </div>
+    </div>
+
+    <div id="idxList"></div>
+
+    <div class="done">✅ <b>已全對（做過、沒錯）：</b>Mass Extinction 大規模滅絕 <span class="pid">#080350</span> — published / previously / causes / Instead 全對。</div>
+
+    <div class="foot">錯一次是意外，錯兩次是模式。下次做題前掃一遍這頁的紅字。</div>
   </div>
 
-  <div class="bar">
-    <div class="lbl">依根因篩選（顯示含該類錯格的篇目）</div>
-    <div class="pills" id="pills"></div>
-    <div class="actions">
+  <!-- ============ 單篇複習頁 ============ -->
+  <div id="detailView" style="display:none">
+    <div class="dnav">
+      <button class="navbtn back" id="backBtn">← 目錄</button>
+      <button class="navbtn" id="prevBtn">← 上一篇</button>
+      <span class="pos" id="pos"></span>
+      <button class="navbtn" id="nextBtn">下一篇 →</button>
       <button class="toggle" id="quizBtn">🎯 自測模式：關</button>
-      <span class="cnt" id="cnt"></span>
     </div>
+    <div id="detailBody"></div>
   </div>
-
-  <div id="list"></div>
-
-  <div class="done">✅ <b>已全對（做過、沒錯）：</b>Mass Extinction 大規模滅絕 <span class="pid">#080350</span> — published / previously / causes / Instead 全對。</div>
-
-  <div class="foot">錯一次是意外，錯兩次是模式。下次做題前掃一遍這頁的紅字。</div>
 </div>
 
 <script>
@@ -249,11 +281,16 @@ const DATA = [
     ]},
 ];
 
-// ---------- render ----------
-const list = document.getElementById('list');
+// ---------- state ----------
 const pillBox = document.getElementById('pills');
 const cnt = document.getElementById('cnt');
+const idxList = document.getElementById('idxList');
+const indexView = document.getElementById('indexView');
+const detailView = document.getElementById('detailView');
+const detailBody = document.getElementById('detailBody');
+const posEl = document.getElementById('pos');
 let filter = 'all';
+let current = 0;
 
 // all blanks flat, for stats & pill counts
 const allBlanks = DATA.flatMap(p => p.blanks);
@@ -290,38 +327,87 @@ function passageHTML(p, quiz){
   return html;
 }
 function primaryCat(p){ return p.blanks[0].cat; }
+function badgesFor(p){
+  const cats = [...new Set(p.blanks.map(b=>b.cat))];
+  return cats.map(c=>`<span class="badge b-${c}">${CAT[c].name} ${p.blanks.filter(b=>b.cat===c).length}</span>`).join('');
+}
 
-function render(){
-  const quiz = document.body.classList.contains('quiz');
-  const items = DATA.filter(p => filter==='all' || p.blanks.some(b=>b.cat===filter));
-  cnt.textContent = `${items.length} 篇 / ${items.reduce((s,p)=>s+p.blanks.length,0)} 格`;
-  list.innerHTML = items.map(p=>{
-    const cls = primaryCat(p);
-    const cats = [...new Set(p.blanks.map(b=>b.cat))];
-    const badges = cats.map(c=>`<span class="badge b-${c}">${CAT[c].name}</span>`).join('');
-    const ex = p.blanks.map((b,i)=>`
-      <li><span class="exn">${CIRC[i]}</span><b class="r">${b.right}</b><s class="w">${b.wrong}</s>
-      <span class="badge b-${b.cat}">${CAT[b.cat].name}</span>
-      <span class="wy">${b.why}</span></li>`).join('');
-    return `<div class="card ${cls}">
+// ---------- 目錄頁 ----------
+function renderIndex(){
+  const items = DATA.map((p,i)=>({p,i})).filter(o => filter==='all' || o.p.blanks.some(b=>b.cat===filter));
+  cnt.textContent = `${items.length} 篇 / ${items.reduce((s,o)=>s+o.p.blanks.length,0)} 格`;
+  idxList.innerHTML = items.map(({p,i})=>`
+    <div class="idxcard ${primaryCat(p)}" data-i="${i}">
       <div class="chead">
         <span class="title">📄 ${p.title}</span>
         ${p.pid?`<span class="pid">${p.pid}</span>`:''}
         <span class="type">${p.type}</span>
-        <span class="badges">${badges}</span>
+        <span class="badges">${badgesFor(p)}</span>
+      </div>
+      <div class="idxmeta">共 <b>${p.blanks.length}</b> 個錯格 · <span class="go">點我進入複習 →</span></div>
+    </div>`).join('') || `<div class="foot">此類別沒有篇目。</div>`;
+}
+idxList.addEventListener('click', e=>{
+  const c = e.target.closest('.idxcard'); if(!c) return;
+  openDetail(+c.dataset.i);
+});
+
+// ---------- 單篇複習頁 ----------
+function renderDetail(){
+  const p = DATA[current];
+  const quiz = document.body.classList.contains('quiz');
+  posEl.textContent = `第 ${current+1} / ${DATA.length} 篇`;
+  const ex = p.blanks.map((b,i)=>`
+    <li><span class="exn">${CIRC[i]}</span><b class="r">${b.right}</b><s class="w">${b.wrong}</s>
+    <span class="badge b-${b.cat}">${CAT[b.cat].name}</span>
+    <span class="wy">${b.why}</span></li>`).join('');
+  detailBody.innerHTML = `<div class="card ${primaryCat(p)}">
+      <div class="chead">
+        <span class="title">📄 ${p.title}</span>
+        ${p.pid?`<span class="pid">${p.pid}</span>`:''}
+        <span class="type">${p.type}</span>
+        <span class="badges">${badgesFor(p)}</span>
       </div>
       <div class="passage">${passageHTML(p, quiz)}</div>
       <span class="reveal" onclick="this.closest('.card').classList.add('open')">👁 顯示答案與解析</span>
       <ol class="ex">${ex}</ol>
     </div>`;
-  }).join('');
+  document.getElementById('prevBtn').disabled = current===0;
+  document.getElementById('nextBtn').disabled = current===DATA.length-1;
 }
-render();
+function openDetail(i){
+  current = i;
+  indexView.style.display = 'none';
+  detailView.style.display = '';
+  renderDetail();
+  window.scrollTo(0,0);
+}
+function backToIndex(){
+  detailView.style.display = 'none';
+  indexView.style.display = '';
+  renderIndex();
+  window.scrollTo(0,0);
+}
+function go(delta){
+  const n = current+delta;
+  if(n<0 || n>=DATA.length) return;
+  current = n; renderDetail(); window.scrollTo(0,0);
+}
+document.getElementById('backBtn').onclick = backToIndex;
+document.getElementById('prevBtn').onclick = ()=>go(-1);
+document.getElementById('nextBtn').onclick = ()=>go(1);
+document.addEventListener('keydown', e=>{
+  if(detailView.style.display==='none') return;
+  if(e.key==='ArrowLeft') go(-1);
+  else if(e.key==='ArrowRight') go(1);
+  else if(e.key==='Escape') backToIndex();
+});
 
+// ---------- 篩選 + 自測 ----------
 pillBox.addEventListener('click', e=>{
   const p = e.target.closest('.pill'); if(!p) return;
   pillBox.querySelectorAll('.pill').forEach(x=>x.classList.remove('active'));
-  p.classList.add('active'); filter = p.dataset.k; render();
+  p.classList.add('active'); filter = p.dataset.k; renderIndex();
 });
 
 const qBtn = document.getElementById('quizBtn');
@@ -330,10 +416,12 @@ function setQuiz(on){
   qBtn.classList.toggle('off', !on);
   qBtn.textContent = `🎯 自測模式：${on?'開':'關'}`;
   localStorage.setItem('rc_quiz', on?'1':'0');
-  render();
+  if(detailView.style.display!=='none') renderDetail();
 }
 qBtn.addEventListener('click', ()=> setQuiz(!document.body.classList.contains('quiz')));
 setQuiz(localStorage.getItem('rc_quiz')==='1');
+
+renderIndex();
 </script>
 </body>
 </html>
