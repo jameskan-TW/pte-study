@@ -22,6 +22,16 @@
   .legend i { display:inline-block; width:10px; height:10px; border-radius:3px; margin-right:5px; vertical-align:middle; }
   .take { margin-top:12px; font-size:13.5px; background:#fff8e6; border-left:3px solid #e0a500; border-radius:0 6px 6px 0; padding:9px 12px; color:#5a4a00; }
 
+  /* 要背單字 bank */
+  .vocab { background:#fffaf0; border:1px solid #f0e2c0; border-radius:12px; padding:16px 20px; margin-bottom:22px; }
+  .vocab h3 { font-size:14px; font-weight:700; margin-bottom:4px; color:#8a6d00; }
+  .vocab .vsub { font-size:12.5px; color:#a08a4a; margin-bottom:12px; }
+  .vchips { display:flex; flex-wrap:wrap; gap:9px; }
+  .vchip { background:#fff; border:1px solid #ecd9a0; border-radius:9px; padding:7px 13px; min-width:0; }
+  .vchip .vw { font-family:"SF Mono",Menlo,Consolas,monospace; font-size:15px; font-weight:700; color:#7a5c00; }
+  .vchip .vsyl { display:block; font-size:11.5px; color:#b09540; margin-top:1px; }
+  .vtag { font-size:10.5px; font-weight:700; background:#f6e2a8; color:#7a5c00; border-radius:4px; padding:1px 6px; margin-left:6px; vertical-align:middle; }
+
   .c-spell{background:#1f7a45;} .c-form{background:#2383e2;} .c-word{background:#7a3fb0;}
   .c-s3{background:#b03050;} .c-plural{background:#b0561f;}
 
@@ -99,8 +109,10 @@
       <span><i class="c-s3"></i>第三人稱單數 +s（頭號罩門）</span>
       <span><i class="c-plural"></i>單複數／冠詞</span>
     </div>
-    <div class="take">💡 <b>複習策略：</b>①長難字放慢拼，盯 <b>mechanics／mathematics／further</b> 別漏或顛倒字母 ②被動 <b>is considered</b> 不要多打 be ③副詞 <b>sometimes</b> 記得有 s ④動詞先問「主詞第三單？→ 補 s」 ⑤交卷前數一次字數防多字／漏字。</div>
+    <div class="take">💡 <b>複習策略：</b>①長難字放慢拼，盯 <b>available／college／faculty／temperature／construction／definitive</b> 別顛倒或漏字母 ②動詞先問「主詞第三單？→ 補 s」（makes／has／introduces） ③並列名詞記得複數（inputs processes outputs、perspectives） ④被動 <b>be submitted／is considered</b> 別漏 be ⑤交卷前數一次字數防多字／漏字。</div>
   </div>
+
+  <div class="vocab" id="vocab"></div>
 
   <div class="bar">
     <div class="lbl">依根因篩選（顯示含該類錯字的句子）</div>
@@ -129,7 +141,97 @@ const CIRC = ['①','②','③','④','⑤','⑥','⑦','⑧'];
 // Each sentence: text 是完整正確句，[[n]] 標第 n 個錯字位置（依序）。
 // blanks: { wrong:"你打的", right:"正解", cat:"s3|spell|form|plural|miss", why:"繁中一句話" }
 const DATA = [
-  { title:"Classical mechanics 古典力學", pid:"", type:"WFD",
+  { title:"More research is needed 需要更多研究", pid:"", type:"WFD", date:"08-05",
+    text:`More research is needed before any [[1]] conclusion can be [[2]].`,
+    blanks:[
+      { wrong:"definided", right:"definitive", cat:"spell", vocab:"definitive",
+        why:`拼字：<span class="en">de·fin·i·tive</span>（明確的）。你打過 definided／definded 都不對 — 逐音節記 <b>de-fin-i-tive</b>。` },
+      { wrong:"can drawn（語序打亂）", right:"can be drawn", cat:"word",
+        why:`整句最大破口是<b>語序沒抓穩</b>：三個意群 <span class="en">More research is needed / before any definitive conclusion / can be drawn</span>，被動 <span class="en">can be drawn</span> 放句尾、別漏 be。` },
+    ]},
+  { title:"The digital camera 數碼相機", pid:"", type:"WFD", date:"08-05",
+    text:`The digital camera [[1]] some advantages [[2]] traditional film.`,
+    blanks:[
+      { wrong:"have", right:"has", cat:"s3",
+        why:`主詞 <span class="en">camera</span> 是第三人稱單數 → 動詞用 <span class="en">has</span>，不是 have。` },
+      { wrong:"than", right:"over", cat:"word",
+        why:`搭配 <span class="en">advantages over ~</span>（比…有優勢），介系詞用 <b>over</b> 不是 than。另外別在 traditional film 前多加 the。` },
+    ]},
+  { title:"All industries are a system 產業系統", pid:"", type:"WFD", date:"08-05",
+    text:`All industries are a system of [[1]] [[2]] [[3]] and feedback.`,
+    blanks:[
+      { wrong:"input", right:"inputs", cat:"plural",
+        why:`三個並列名詞都要複數：<span class="en">inputs</span>。` },
+      { wrong:"process", right:"processes", cat:"plural",
+        why:`複數 <span class="en">processes</span>（-s/-ss 結尾加 es）。` },
+      { wrong:"output", right:"outputs", cat:"plural",
+        why:`複數 <span class="en">outputs</span>。三個一起 <b>inputs processes outputs</b> 一組記。另外 a system 別打成 the。` },
+    ]},
+  { title:"Assignments should be submitted 作業繳交", pid:"", type:"WFD", date:"08-05",
+    text:`[[1]] should [[2]] submitted to the department office before the deadline.`,
+    blanks:[
+      { wrong:"Assignment", right:"Assignments", cat:"plural",
+        why:`開頭主詞用複數 <span class="en">Assignments</span>（沒有 all of 時，句首名詞常是複數泛指）。` },
+      { wrong:"（漏 be）", right:"be", cat:"word",
+        why:`被動 <span class="en">should be submitted</span>（應被繳交），should 後面要有 <b>be</b>，你漏掉了。別打成 need／hand into。` },
+    ]},
+  { title:"Lecture outlines are available 課綱上線", pid:"", type:"WFD", date:"08-05",
+    text:`Lecture [[1]] are [[2]] on the [[3]] internal [[4]].`,
+    blanks:[
+      { wrong:"outline", right:"outlines", cat:"plural",
+        why:`複數 <span class="en">outlines</span>（課綱不只一份）。` },
+      { wrong:"avaliable", right:"available", cat:"spell", vocab:"available",
+        why:`拼字：<span class="en">a·vail·a·ble</span>。你多次寫成 avaliable（ai 顛倒）— 記 <b>a-vail-able</b>。` },
+      { wrong:"colleage", right:"college", cat:"spell", vocab:"college",
+        why:`拼字：<span class="en">col·lege</span>，字尾 <b>-lege</b>，不是 colleage／college 前後別亂加 a。` },
+      { wrong:"websites", right:"website", cat:"plural",
+        why:`這裡是單一網站 → 單數 <span class="en">website</span>。另外 available <b>on</b> the website，介系詞用 on 不是 in。` },
+    ]},
+  { title:"All of these assignments 全部作業", pid:"", type:"WFD", date:"08-05",
+    text:`All of these assignments must [[1]] submitted in person to the [[2]] office.`,
+    blanks:[
+      { wrong:"（漏 be）", right:"be", cat:"word",
+        why:`被動 <span class="en">must be submitted</span>，must 後面要補 <b>be</b>，你漏了。` },
+      { wrong:"facoty", right:"faculty", cat:"spell", vocab:"faculty",
+        why:`拼字：<span class="en">fac·ul·ty</span>（系所／教職），字中是 <b>-cul-</b>，別寫成 facoty。` },
+    ]},
+  { title:"Organizational failure 組織失敗", pid:"", type:"WFD", date:"08-05",
+    text:`Organizational failure is [[1]] from [[2]] in academic [[3]].`,
+    blanks:[
+      { wrong:"consider", right:"considered", cat:"form",
+        why:`被動 <span class="en">is considered</span>（被探討），要有過去分詞 <b>-ed</b>，不是 consider。` },
+      { wrong:"very prespective", right:"various perspectives", cat:"spell",
+        why:`聽成 very，其實是 <span class="en">various</span>（各種）；拼字 <span class="en">per·spec·tives</span>（別寫 prespective）＋複數 -s。` },
+      { wrong:"literatures", right:"literature", cat:"plural",
+        why:`<span class="en">literature</span>（文獻）此處不可數，<b>不加 s</b>。片語 <span class="en">from various perspectives in ~ literature</span>。` },
+    ]},
+  { title:"The railway makes travel possible 鐵路", pid:"", type:"WFD", date:"08-05",
+    text:`The railway [[1]] long distance travel [[2]] for everyone.`,
+    blanks:[
+      { wrong:"make", right:"makes", cat:"s3",
+        why:`主詞 <span class="en">railway</span> 第三人稱單數 → <span class="en">makes</span>。頭號罩門，動詞先問「主詞第三單？→ 補 s」。別漏句首 The。` },
+      { wrong:"posible", right:"possible", cat:"spell",
+        why:`拼字：<span class="en">pos·si·ble</span>，雙 <b>s</b>，別寫成 posible。` },
+    ]},
+  { title:"The elective course 選修課程", pid:"", type:"WFD", date:"08-05",
+    text:`The elective course [[1]] engineering students to [[2]] practices and [[3]].`,
+    blanks:[
+      { wrong:"is introduce the", right:"introduces", cat:"s3",
+        why:`主詞 <span class="en">course</span> 第三單 → 主動 <span class="en">introduces</span>（不是 is introduce）。⚠️ 機經：也有版本是 <span class="en">elective students</span>，考試注意聽。` },
+      { wrong:"introduction structure", right:"construction", cat:"spell", vocab:"construction",
+        why:`聽成 introduction／structure，實際是 <span class="en">con·struc·tion</span>（建築施工）。此句最難、7/11 — 慢拼這字。` },
+      { wrong:"the concept", right:"concepts", cat:"plural",
+        why:`片語 <span class="en">practices and concepts</span>，concept 要<b>複數</b>並用 and 並列，別打成 to the concept。` },
+    ]},
+  { title:"The rising temperature 氣溫上升", pid:"", type:"WFD", date:"08-05",
+    text:`The rising [[1]] is changing the [[2]] population.`,
+    blanks:[
+      { wrong:"temparature", right:"temperature", cat:"spell", vocab:"temperature",
+        why:`拼字：<span class="en">tem·per·a·ture</span>，中間 <b>-per-a-</b>，別寫 temparature。` },
+      { wrong:"wild life", right:"wildlife", cat:"form", vocab:"wildlife",
+        why:`<span class="en">wildlife</span>（野生動物）是<b>一個字</b>，別拆成 wild life。` },
+    ]},
+  { title:"Classical mechanics 古典力學", pid:"", type:"WFD", date:"（先前）",
     text:`[[1]] [[2]] is [[3]] [[4]] as a branch of applied [[5]].`,
     blanks:[
       { wrong:"Classic", right:"Classical", cat:"form",
@@ -144,6 +246,14 @@ const DATA = [
         why:`拼字：<span class="en">ma·the·ma·tics</span>，the 後面有 <b>e</b>，別寫成 mathmatics。` },
     ]},
 ];
+
+// 要背單字（James 標註）— 音節拆解幫記憶
+const VOCAB_TIP = {
+  definitive:"de·fin·i·tive", available:"a·vail·a·ble", college:"col·lege",
+  faculty:"fac·ul·ty", elective:"e·lec·tive", engineering:"en·gi·neer·ing",
+  construction:"con·struc·tion", temperature:"tem·per·a·ture", wildlife:"wild·life（一個字）",
+};
+const VOCAB_EXTRA = ["elective","engineering"]; // 有標要背但不是錯字的
 
 // ---------- render ----------
 const list = document.getElementById('list');
@@ -170,6 +280,18 @@ if(total === 0){
       return `<span class="c-${k}" style="flex:${n}" title="${CAT[k].name} ${n}">${CAT[k].name.slice(0,3)} ${n}</span>`;
     }).join('');
 }
+
+// 要背單字 bank（收集 blanks 標的 vocab + 額外標註）
+const vocabSet = [...new Set([...allBlanks.map(b=>b.vocab).filter(Boolean), ...VOCAB_EXTRA])];
+const vbox = document.getElementById('vocab');
+if(vocabSet.length){
+  vbox.innerHTML =
+    `<h3>📌 要背單字 <span style="font-weight:400;color:#b09540">（${vocabSet.length}）</span></h3>
+     <div class="vsub">你這次標「要背」的字，按音節拆好幫記憶 — 下次聽寫前先掃一遍。</div>
+     <div class="vchips">` +
+    vocabSet.map(w=>`<div class="vchip"><span class="vw">${w}</span><span class="vsyl">${VOCAB_TIP[w]||''}</span></div>`).join('') +
+    `</div>`;
+} else { vbox.style.display='none'; }
 
 // pills
 function pill(key,label,n){ return `<div class="pill" data-k="${key}">${label}<span class="n">${n}</span></div>`; }
@@ -203,6 +325,8 @@ function render(){
     const cls = primaryCat(p);
     const cats = [...new Set(p.blanks.map(b=>b.cat))];
     const badges = cats.map(c=>`<span class="badge b-${c}">${CAT[c].name}</span>`).join('');
+    const vwords = p.blanks.map(b=>b.vocab).filter(Boolean);
+    const vtag = vwords.length ? `<span class="vtag">📌 要背 ${vwords.join('・')}</span>` : '';
     const ex = p.blanks.map((b,i)=>`
       <li><span class="exn">${CIRC[i]}</span><b class="r">${b.right}</b><s class="w">${b.wrong}</s>
       <span class="badge b-${b.cat}">${CAT[b.cat].name}</span>
@@ -212,6 +336,7 @@ function render(){
         <span class="title">📄 ${p.title}</span>
         ${p.pid?`<span class="pid">${p.pid}</span>`:''}
         <span class="type">${p.type||'WFD'}</span>
+        ${vtag}
         <span class="badges">${badges}</span>
       </div>
       <div class="passage">${passageHTML(p, quiz)}</div>
