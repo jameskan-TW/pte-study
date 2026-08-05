@@ -82,40 +82,72 @@
   .good { background:#eef8f1; border:1px solid #cde9d6; border-radius:10px; padding:13px 18px; margin-bottom:14px; font-size:13.5px; color:#2a6a41; border-left:4px solid #1f7a45; }
   .good b { color:#1f7a45; }
   .foot { color:#9b9a97; font-size:12.5px; margin-top:26px; text-align:center; }
+
+  /* 目錄卡（一篇一列，點入複習） */
+  .idxcard { background:#fff; border:1px solid #e9e9e7; border-radius:10px; padding:14px 18px; margin-bottom:12px; border-left:4px solid #e9e9e7; cursor:pointer; transition:box-shadow .12s, transform .12s; }
+  .idxcard:hover { box-shadow:0 4px 16px rgba(0,0,0,.09); transform:translateY(-1px); }
+  .idxcard.mech{border-left-color:#b03050;} .idxcard.gram{border-left-color:#7a3fb0;}
+  .idxcard.word{border-left-color:#2383e2;} .idxcard.stru{border-left-color:#b0561f;} .idxcard.task{border-left-color:#1f7a45;}
+  .idxmeta { font-size:12.5px; color:#9b9a97; margin-top:8px; }
+  .idxmeta b { color:#c0392b; }
+  .idxmeta .go { color:#2383e2; font-weight:600; }
+
+  /* 詳情頁導覽列 */
+  .dnav { position:sticky; top:0; z-index:20; display:flex; align-items:center; gap:8px; flex-wrap:wrap; background:rgba(247,247,245,.96); backdrop-filter:blur(6px); padding:12px 0; border-bottom:1px solid #e9e9e7; margin-bottom:20px; }
+  .navbtn { border:1px solid #e0e0dd; background:#fff; border-radius:7px; padding:6px 13px; font-size:13px; cursor:pointer; font-weight:600; color:#37352f; }
+  .navbtn:hover:not(:disabled){ background:#f0f0ee; }
+  .navbtn:disabled { opacity:.35; cursor:default; }
+  .navbtn.back { background:#37352f; color:#fff; border-color:#37352f; }
+  .pos { font-size:13px; color:#787774; font-weight:600; }
+  .dnav .toggle { margin-left:auto; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <h1>📝 大作文修正 — WE 錯誤根因複習</h1>
-  <p class="sub">來源：Write Essay 練習後的 AI 批改。每篇附<b>原文</b>，錯處標成 <s style="color:#c0392b">你寫的</s> <b style="color:#1f7a45;background:#e7f6ec;padding:0 4px;border-radius:3px">修改後</b>，並貼上<b>根因類別</b>。可篩選、可開<b>自測模式</b>把修改藏起來自己先改。</p>
+  <p class="sub">來源：Write Essay 練習後的 AI 批改。每篇附<b>原文</b>，錯處標成 <s style="color:#c0392b">你寫的</s> <b style="color:#1f7a45;background:#e7f6ec;padding:0 4px;border-radius:3px">修改後</b>，並貼上<b>根因類別</b>。點篇目進入單篇複習，可開<b>自測模式</b>把修改藏起來自己先改。</p>
 
-  <div class="diag">
-    <h3 id="diagHead"></h3>
-    <div class="barrow" id="diagBar"></div>
-    <div class="legend">
-      <span><i class="c-mech"></i>拼字／標點（mechanics）</span>
-      <span><i class="c-gram"></i>文法（主謂・單複數・冠詞・時態）</span>
-      <span><i class="c-word"></i>用字／搭配</span>
-      <span><i class="c-stru"></i>結構／句構</span>
-      <span><i class="c-task"></i>切題</span>
+  <!-- ============ 目錄頁 ============ -->
+  <div id="indexView">
+    <div class="diag">
+      <h3 id="diagHead"></h3>
+      <div class="barrow" id="diagBar"></div>
+      <div class="legend">
+        <span><i class="c-mech"></i>拼字／標點（mechanics）</span>
+        <span><i class="c-gram"></i>文法（主謂・單複數・冠詞・時態）</span>
+        <span><i class="c-word"></i>用字／搭配</span>
+        <span><i class="c-stru"></i>結構／句構</span>
+        <span><i class="c-task"></i>切題</span>
+      </div>
+      <div class="trend" id="trend"></div>
+      <div class="take" id="take"></div>
     </div>
-    <div class="trend" id="trend"></div>
-    <div class="take" id="take"></div>
+
+    <div class="good">💪 <b>你的強項：</b>模板用得很熟 —— 立場、讓步段、James 例子、結論都齊全，<b>內容和結構不是問題</b>。分數卡住的一直是<b>拼字和基礎文法的準確度</b>。這是好消息：準確度靠檢查清單就能練起來，把紅字修乾淨就能上一個檔次。</div>
+
+    <div class="bar">
+      <div class="lbl">依根因篩選（點下方篇目進入複習）</div>
+      <div class="pills" id="pills"></div>
+      <div class="actions">
+        <span class="cnt" id="cnt"></span>
+      </div>
+    </div>
+
+    <div id="idxList"></div>
+    <div class="foot">拼字黑名單天天默：responsible / responsibility・children・become・controversy・believe・conclusion・interact・cooperate・successful・mentor・behaviour・build・environment・vehicles・system・gasoline・source・government・traffic。</div>
   </div>
 
-  <div class="good">💪 <b>你的強項：</b>模板用得很熟 —— 立場、讓步段、James 例子、結論都齊全，<b>內容和結構不是問題</b>。分數卡住的一直是<b>拼字和基礎文法的準確度</b>。這是好消息：準確度靠檢查清單就能練起來，把紅字修乾淨就能上一個檔次。</div>
-
-  <div class="bar">
-    <div class="lbl">依根因篩選</div>
-    <div class="pills" id="pills"></div>
-    <div class="actions">
+  <!-- ============ 單篇複習頁 ============ -->
+  <div id="detailView" style="display:none">
+    <div class="dnav">
+      <button class="navbtn back" id="backBtn">← 目錄</button>
+      <button class="navbtn" id="prevBtn">← 上一篇</button>
+      <span class="pos" id="pos"></span>
+      <button class="navbtn" id="nextBtn">下一篇 →</button>
       <button class="toggle" id="quizBtn">🎯 自測模式：關</button>
-      <span class="cnt" id="cnt"></span>
     </div>
+    <div id="detailBody"></div>
   </div>
-
-  <div id="list"></div>
-  <div class="foot">拼字黑名單天天默：responsible / responsibility・children・become・controversy・believe・conclusion・interact・cooperate・successful・mentor・behaviour・build・environment・vehicles・system・gasoline・source・government・traffic。</div>
 </div>
 
 <script>
@@ -198,11 +230,16 @@ const DATA = [
     ]},
 ];
 
-// ---------- render ----------
-const list = document.getElementById('list');
+// ---------- state ----------
 const pillBox = document.getElementById('pills');
 const cnt = document.getElementById('cnt');
+const idxList = document.getElementById('idxList');
+const indexView = document.getElementById('indexView');
+const detailView = document.getElementById('detailView');
+const detailBody = document.getElementById('detailBody');
+const posEl = document.getElementById('pos');
 let filter = 'all';
+let current = 0;
 
 const allErr = DATA.flatMap(p => p.blanks);
 const catCount = {}; allErr.forEach(b => catCount[b.cat] = (catCount[b.cat]||0)+1);
@@ -241,7 +278,6 @@ order.forEach(k => ph += pill(k, CAT[k].name, catCount[k]||0));
 pillBox.innerHTML = ph;
 pillBox.querySelector('[data-k="all"]').classList.add('active');
 
-const CIRC = i => `<span style="font-weight:700;color:#c0392b;font-size:12px">${i}.</span>`;
 function blankInline(b, i, quiz){
   const n = i+1;
   if(quiz) return `<span class="g q"><sup>${n}</sup><span class="blk">＿＿</span></span>`;
@@ -253,44 +289,90 @@ function passageHTML(p, quiz){
   return html;
 }
 function primaryCat(p){
-  // colour the card by its dominant error type
   const c={}; p.blanks.forEach(b=>c[b.cat]=(c[b.cat]||0)+1);
   return Object.keys(c).sort((a,b)=>c[b]-c[a])[0];
 }
+function badgesFor(p){
+  return order.filter(k=>p.blanks.some(b=>b.cat===k))
+    .map(k=>`<span class="badge b-${k}">${CAT[k].name} ${p.blanks.filter(b=>b.cat===k).length}</span>`).join('');
+}
 
-function render(){
-  const quiz = document.body.classList.contains('quiz');
-  const items = DATA.filter(p => filter==='all' || p.blanks.some(b=>b.cat===filter));
-  cnt.textContent = `${items.length} 篇 / ${items.reduce((s,p)=>s+p.blanks.length,0)} 錯`;
-  list.innerHTML = items.map(p=>{
-    const cls = primaryCat(p);
-    const cats = order.filter(k => p.blanks.some(b=>b.cat===k));
-    const badges = cats.map(k=>`<span class="badge b-${k}">${CAT[k].name} ${p.blanks.filter(b=>b.cat===k).length}</span>`).join('');
-    // explanations, optionally filtered
-    const exItems = p.blanks.map((b,i)=>({b,i})).filter(o => filter==='all' || o.b.cat===filter);
-    const ex = exItems.map(({b,i})=>`
-      <li><span class="exn">${i+1}.</span><b class="r">${b.right}</b><s class="w">${b.wrong}</s>
-      <span class="badge b-${b.cat}">${CAT[b.cat].name}</span>
-      <span class="wy">${b.why}</span></li>`).join('');
-    return `<div class="card ${cls}">
+// ---------- 目錄頁 ----------
+function renderIndex(){
+  const items = DATA.map((p,i)=>({p,i})).filter(o => filter==='all' || o.p.blanks.some(b=>b.cat===filter));
+  cnt.textContent = `${items.length} 篇 / ${items.reduce((s,o)=>s+o.p.blanks.length,0)} 錯`;
+  idxList.innerHTML = items.map(({p,i})=>`
+    <div class="idxcard ${primaryCat(p)}" data-i="${i}">
       <div class="chead">
         <span class="title">📝 ${p.title}</span>
         ${p.pid?`<span class="pid">${p.pid}</span>`:''}
         <span class="type">${p.type}</span>
-        <span class="badges">${badges}</span>
+        <span class="badges">${badgesFor(p)}</span>
+      </div>
+      <div class="idxmeta">共 <b>${p.blanks.length}</b> 個錯 · <span class="go">點我進入複習 →</span></div>
+    </div>`).join('') || `<div class="foot">此類別沒有篇目。</div>`;
+}
+idxList.addEventListener('click', e=>{
+  const c = e.target.closest('.idxcard'); if(!c) return;
+  openDetail(+c.dataset.i);
+});
+
+// ---------- 單篇複習頁 ----------
+function renderDetail(){
+  const p = DATA[current];
+  const quiz = document.body.classList.contains('quiz');
+  posEl.textContent = `第 ${current+1} / ${DATA.length} 篇`;
+  const ex = p.blanks.map((b,i)=>`
+    <li><span class="exn">${i+1}.</span><b class="r">${b.right}</b><s class="w">${b.wrong}</s>
+    <span class="badge b-${b.cat}">${CAT[b.cat].name}</span>
+    <span class="wy">${b.why}</span></li>`).join('');
+  detailBody.innerHTML = `<div class="card ${primaryCat(p)}">
+      <div class="chead">
+        <span class="title">📝 ${p.title}</span>
+        ${p.pid?`<span class="pid">${p.pid}</span>`:''}
+        <span class="type">${p.type}</span>
+        <span class="badges">${badgesFor(p)}</span>
       </div>
       <div class="passage">${passageHTML(p, quiz)}</div>
       <span class="reveal" onclick="this.closest('.card').classList.add('open')">👁 顯示修改與解析</span>
       <ol class="ex">${ex}</ol>
     </div>`;
-  }).join('');
+  document.getElementById('prevBtn').disabled = current===0;
+  document.getElementById('nextBtn').disabled = current===DATA.length-1;
 }
-render();
+function openDetail(i){
+  current = i;
+  indexView.style.display = 'none';
+  detailView.style.display = '';
+  renderDetail();
+  window.scrollTo(0,0);
+}
+function backToIndex(){
+  detailView.style.display = 'none';
+  indexView.style.display = '';
+  renderIndex();
+  window.scrollTo(0,0);
+}
+function go(delta){
+  const n = current+delta;
+  if(n<0 || n>=DATA.length) return;
+  current = n; renderDetail(); window.scrollTo(0,0);
+}
+document.getElementById('backBtn').onclick = backToIndex;
+document.getElementById('prevBtn').onclick = ()=>go(-1);
+document.getElementById('nextBtn').onclick = ()=>go(1);
+document.addEventListener('keydown', e=>{
+  if(detailView.style.display==='none') return;
+  if(e.key==='ArrowLeft') go(-1);
+  else if(e.key==='ArrowRight') go(1);
+  else if(e.key==='Escape') backToIndex();
+});
 
+// ---------- 篩選 + 自測 ----------
 pillBox.addEventListener('click', e=>{
   const p = e.target.closest('.pill'); if(!p) return;
   pillBox.querySelectorAll('.pill').forEach(x=>x.classList.remove('active'));
-  p.classList.add('active'); filter = p.dataset.k; render();
+  p.classList.add('active'); filter = p.dataset.k; renderIndex();
 });
 
 const qBtn = document.getElementById('quizBtn');
@@ -299,10 +381,12 @@ function setQuiz(on){
   qBtn.classList.toggle('off', !on);
   qBtn.textContent = `🎯 自測模式：${on?'開':'關'}`;
   localStorage.setItem('we_quiz', on?'1':'0');
-  render();
+  if(detailView.style.display!=='none') renderDetail();
 }
 qBtn.addEventListener('click', ()=> setQuiz(!document.body.classList.contains('quiz')));
 setQuiz(localStorage.getItem('we_quiz')==='1');
+
+renderIndex();
 </script>
 </body>
 </html>
