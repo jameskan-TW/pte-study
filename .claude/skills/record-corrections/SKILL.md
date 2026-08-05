@@ -17,6 +17,7 @@ James 會定期丟訂正素材（通常是 ptefighter 網站的答題截圖，�
 | 類型 | 檔案 | 側欄連結 | 狀態 |
 |------|------|----------|------|
 | 閱讀訂正 | `閱讀訂正.html` | index.html → Reading 下方「🩺 閱讀訂正」 | ✅ 已上線 |
+| WFD 訂正 | `WFD_訂正.html` | index.html → 閱讀訂正下方「✍️ WFD 訂正」 | ✅ 已上線（架構，待資料） |
 | 大作文修正 | `大作文修正.html` | index.html → Writing 下方「🩺 大作文修正」 | ✅ 已上線 |
 
 新增訂正時**優先 append 到既有頁面的 `DATA` 陣列**，不要重建整頁。
@@ -73,6 +74,37 @@ unzip -o -q doc.docx -d doc_extracted
 - 用 preview/Browser 開 `閱讀訂正.html`，確認原文、標紅、診斷數字、篩選、自測模式都正常。
 - 側欄連結已在 `index.html`（Reading 下方），新增頁面才需要動它。
 - Git：**先 `git pull --rebase origin main`**（James 有 Mac／Windows 兩台，遠端常有新 commit），再 commit＋push。commit 訊息用 `feat(Reading): …`。
+
+---
+
+## WFD 訂正流程（頁面已上線，持續 append）
+
+`WFD_訂正.html` 用閱讀訂正同一套引擎，診斷/pill/篩選自動重算。收到聽寫訂正就 append 物件。
+
+類別（依 James 實際錯法定案，5 類）：
+
+| key | 名稱 | 判斷訊號 | 實例 |
+|-----|------|----------|------|
+| `spell` | 拼字 | 漏／多字母、字母顛倒、難拼字 | mechanics（他四次沒一次對）、mathematics、despite、漏 r |
+| `form` | 字尾字形 | 字尾變化、字形選錯 | sometimes 漏 s、classical vs classic、-ing 去 e、過去式 -ed |
+| `word` | 多字／漏字 | 多打或漏打整個字（多為功能字） | 多打 be（is considered 被動不用 be）、漏 a/the |
+| `s3` | 第三人稱單數 +s | 主詞第三單、動詞漏 s（**頭號罩門**） | he concludes |
+| `plural` | 單複數／冠詞 | 名詞該複數沒加 s、冠詞錯 | experiments |
+
+判斷小抄：**字母層級錯 → spell；字尾/字形選錯 → form；整個字多/少 → word**。
+
+DATA 物件格式（`text` 是完整正確句，`[[n]]` 標第 n 個錯字位置；多字/漏字用「你打的短語 → 正確短語」呈現）：
+```js
+{ title:"Classical mechanics 古典力學", pid:"", type:"WFD",
+  text:`[[1]] [[2]] is [[3]] [[4]] as a branch of applied [[5]].`,
+  blanks:[
+    { wrong:"machenics", right:"mechanics", cat:"spell",
+      why:`拼字：<span class="en">me·cha·nics</span>，逐音節確認。` },
+    { wrong:"be considered", right:"considered", cat:"word",
+      why:`被動 <span class="en">is considered</span>，is + 過去分詞就夠，別多打 be。` },
+  ]},
+```
+`why` 繁中一句話；英文字詞包 `<span class="en">`、重點用 `<b>`。全對的句子不進 DATA。同一句練多次、每次錯不同字 → 彙整成**一張卡**，標出反覆踩的字。
 
 ---
 

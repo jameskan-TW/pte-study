@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WFD 訂正 — 聽寫錯字＋根因複習</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, "Noto Sans TC", sans-serif; background: #f7f7f5; color: #37352f; font-size: 15px; line-height: 1.7; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 40px 24px 120px; }
+  h1 { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+  .sub { color: #787774; margin-bottom: 22px; }
+  .sub b { color:#37352f; }
+
+  /* diagnosis */
+  .diag { background:#fff; border:1px solid #e9e9e7; border-radius:12px; padding:18px 20px; margin-bottom:22px; }
+  .diag h3 { font-size:14px; font-weight:700; margin-bottom:12px; }
+  .diag h3 .em { color:#c0392b; }
+  .barrow { display:flex; height:26px; border-radius:6px; overflow:hidden; margin-bottom:12px; font-size:11px; font-weight:700; }
+  .barrow > span { display:flex; align-items:center; justify-content:center; color:#fff; min-width:0; }
+  .legend { display:flex; flex-wrap:wrap; gap:6px 16px; font-size:12.5px; color:#555; }
+  .legend i { display:inline-block; width:10px; height:10px; border-radius:3px; margin-right:5px; vertical-align:middle; }
+  .take { margin-top:12px; font-size:13.5px; background:#fff8e6; border-left:3px solid #e0a500; border-radius:0 6px 6px 0; padding:9px 12px; color:#5a4a00; }
+
+  .c-spell{background:#1f7a45;} .c-form{background:#2383e2;} .c-word{background:#7a3fb0;}
+  .c-s3{background:#b03050;} .c-plural{background:#b0561f;}
+
+  /* toolbar */
+  .bar { position: sticky; top: 0; background: rgba(247,247,245,.96); backdrop-filter: blur(6px); padding: 12px 0; border-bottom: 1px solid #e9e9e7; z-index: 20; margin-bottom: 20px; }
+  .lbl { font-size: 11px; font-weight: 700; color: #9b9a97; letter-spacing: .04em; margin: 0 6px 5px; }
+  .pills { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 8px; }
+  .pill { border: 1px solid #e0e0dd; background: #fff; border-radius: 20px; padding: 4px 13px; font-size: 13px; cursor: pointer; user-select: none; white-space: nowrap; }
+  .pill:hover { background: #f0f0ee; }
+  .pill.active { background: #37352f; color: #fff; border-color: #37352f; }
+  .pill .n { opacity: .55; margin-left: 4px; font-size: 12px; }
+  .actions { display:flex; gap:8px; align-items:center; margin-top:4px; }
+  .toggle { border:1px solid #2a7d3f; background:#e7f6ec; color:#1f7a45; border-radius:6px; padding:5px 13px; font-size:13px; cursor:pointer; font-weight:600; }
+  .toggle.off { border-color:#d0d0cc; background:#fff; color:#37352f; font-weight:500; }
+  .cnt { margin-left:auto; font-size:13px; color:#9b9a97; }
+
+  /* sentence card */
+  .card { background:#fff; border:1px solid #e9e9e7; border-radius:10px; padding:16px 20px; margin-bottom:14px; border-left:4px solid #e9e9e7; }
+  .card.spell{border-left-color:#1f7a45;} .card.form{border-left-color:#2383e2;}
+  .card.word{border-left-color:#7a3fb0;} .card.s3{border-left-color:#b03050;}
+  .card.plural{border-left-color:#b0561f;}
+  .chead { display:flex; align-items:baseline; gap:9px; margin-bottom:11px; flex-wrap:wrap; }
+  .title { font-size:16px; font-weight:700; }
+  .pid { font-size:12px; font-weight:600; color:#9b9a97; }
+  .type { font-size:11px; color:#9b9a97; border:1px solid #e0e0dd; border-radius:4px; padding:1px 6px; }
+  .badges { margin-left:auto; display:flex; gap:5px; flex-wrap:wrap; }
+  .badge { font-size:11px; font-weight:700; padding:2px 9px; border-radius:5px; color:#fff; }
+  .b-spell{background:#1f7a45;} .b-form{background:#2383e2;} .b-word{background:#7a3fb0;}
+  .b-s3{background:#b03050;} .b-plural{background:#b0561f;}
+
+  .passage { font-size:15.5px; line-height:2.05; color:#2f2f2c; }
+  .g { white-space:nowrap; }
+  .g sup { font-weight:700; color:#c0392b; margin-right:1px; font-size:12px; }
+  .g s { color:#c0392b; opacity:.72; margin:0 2px; text-decoration-thickness:1px; }
+  .g b { color:#1f7a45; background:#e7f6ec; padding:0 5px; border-radius:4px; }
+  .blk { display:inline-block; min-width:70px; border-bottom:2px solid #b9b9b6; text-align:center; }
+
+  .reveal { display:inline-block; margin-top:12px; font-size:13px; color:#2383e2; cursor:pointer; user-select:none; font-weight:600; }
+  .reveal:hover { text-decoration:underline; }
+
+  /* explanation list */
+  .ex { margin:14px 0 0; padding:13px 16px; background:#fafaf8; border-radius:8px; list-style:none; }
+  .ex li { font-size:13.5px; color:#555; padding:5px 0; border-top:1px dashed #e5e5e2; }
+  .ex li:first-child { border-top:none; }
+  .ex .exn { font-weight:700; color:#37352f; margin-right:6px; }
+  .ex .r { color:#1f7a45; font-weight:700; }
+  .ex .w { color:#c0392b; opacity:.75; margin:0 6px; }
+  .ex .badge { margin-left:4px; }
+  .ex .wy { display:block; margin-top:3px; color:#666; }
+  .ex .en { font-family:"SF Mono",Menlo,Consolas,monospace; font-size:12px; background:#eef0f2; padding:1px 5px; border-radius:4px; color:#2b4a6b; }
+
+  /* quiz mode */
+  body.quiz .ex { display:none; }
+  body:not(.quiz) .reveal { display:none; }
+  .card.open .ex { display:block; }
+  .card.open .reveal { display:none; }
+
+  .empty { background:#fff; border:1px dashed #d0d0cc; border-radius:10px; padding:34px 24px; text-align:center; color:#9b9a97; font-size:14px; }
+  .empty b { color:#37352f; }
+  .foot { color:#9b9a97; font-size:12.5px; margin-top:26px; text-align:center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>✍️ WFD 訂正 — 聽寫錯字＋根因複習</h1>
+  <p class="sub">來源：PTE 聽力 Write From Dictation 訂正。每句附<b>完整正確句</b>，打錯的字標成 <s style="color:#c0392b">你打</s> <b style="color:#1f7a45;background:#e7f6ec;padding:0 4px;border-radius:3px">正解</b>，並貼上<b>根因類別</b>。可篩選、可開<b>自測模式</b>把答案藏起來自己想。</p>
+
+  <div class="diag">
+    <h3 id="diagHead"></h3>
+    <div class="barrow" id="diagBar"></div>
+    <div class="legend">
+      <span><i class="c-spell"></i>拼字（漏／多字母・字母顛倒・mechanics・despite）</span>
+      <span><i class="c-form"></i>字尾字形（sometimes 的 s・classical 的 -al・-ing 去 e）</span>
+      <span><i class="c-word"></i>多字／漏字（多打 be・漏 a／the）</span>
+      <span><i class="c-s3"></i>第三人稱單數 +s（頭號罩門）</span>
+      <span><i class="c-plural"></i>單複數／冠詞</span>
+    </div>
+    <div class="take">💡 <b>複習策略：</b>①長難字放慢拼，盯 <b>mechanics／mathematics／further</b> 別漏或顛倒字母 ②被動 <b>is considered</b> 不要多打 be ③副詞 <b>sometimes</b> 記得有 s ④動詞先問「主詞第三單？→ 補 s」 ⑤交卷前數一次字數防多字／漏字。</div>
+  </div>
+
+  <div class="bar">
+    <div class="lbl">依根因篩選（顯示含該類錯字的句子）</div>
+    <div class="pills" id="pills"></div>
+    <div class="actions">
+      <button class="toggle" id="quizBtn">🎯 自測模式：關</button>
+      <span class="cnt" id="cnt"></span>
+    </div>
+  </div>
+
+  <div id="list"></div>
+
+  <div class="foot">錯一次是意外，錯兩次是模式。下次聽寫前掃一遍這頁的紅字。</div>
+</div>
+
+<script>
+const CAT = {
+  spell: {name:"拼字",       cls:"spell"},
+  form:  {name:"字尾字形",   cls:"form"},
+  word:  {name:"多字漏字",   cls:"word"},
+  s3:    {name:"第三人稱+s", cls:"s3"},
+  plural:{name:"單複數冠詞", cls:"plural"},
+};
+const CIRC = ['①','②','③','④','⑤','⑥','⑦','⑧'];
+
+// Each sentence: text 是完整正確句，[[n]] 標第 n 個錯字位置（依序）。
+// blanks: { wrong:"你打的", right:"正解", cat:"s3|spell|form|plural|miss", why:"繁中一句話" }
+const DATA = [
+  { title:"Classical mechanics 古典力學", pid:"", type:"WFD",
+    text:`[[1]] [[2]] is [[3]] [[4]] as a branch of applied [[5]].`,
+    blanks:[
+      { wrong:"Classic", right:"Classical", cat:"form",
+        why:`固定搭配 <span class="en">classical mechanics</span>（古典力學），是形容詞 <span class="en">classical</span> 不是 classic。` },
+      { wrong:"machenics", right:"mechanics", cat:"spell",
+        why:`拼字：<span class="en">me·cha·nics</span>。你打過 machenics／methmatics／phisyics <b>四次沒一次對</b> — 這字慢慢拼、逐音節確認。` },
+      { wrong:"sometime", right:"sometimes", cat:"form",
+        why:`副詞是 <span class="en">sometimes</span>（有時候，帶 s）；sometime 是「某時／改天」意思不同。` },
+      { wrong:"be considered", right:"considered", cat:"word",
+        why:`被動語態 <span class="en">is considered</span>＝被認為，<b>is + 過去分詞就夠</b>，不要多打一個 be。` },
+      { wrong:"mathmatics", right:"mathematics", cat:"spell",
+        why:`拼字：<span class="en">ma·the·ma·tics</span>，the 後面有 <b>e</b>，別寫成 mathmatics。` },
+    ]},
+];
+
+// ---------- render ----------
+const list = document.getElementById('list');
+const pillBox = document.getElementById('pills');
+const cnt = document.getElementById('cnt');
+let filter = 'all';
+
+const allBlanks = DATA.flatMap(p => p.blanks);
+const catCount = {}; allBlanks.forEach(b => catCount[b.cat] = (catCount[b.cat]||0)+1);
+const total = allBlanks.length;
+
+// diagnosis (dynamic)
+if(total === 0){
+  document.getElementById('diagHead').innerHTML = `🩺 弱點診斷 — 尚無訂正資料`;
+  document.getElementById('diagBar').innerHTML = `<span style="background:#e0e0dd;color:#9b9a97;flex:1">還沒有紀錄</span>`;
+} else {
+  const top = Object.keys(catCount).sort((a,b)=>catCount[b]-catCount[a])[0];
+  const pct = Math.round(catCount[top]/total*100);
+  document.getElementById('diagHead').innerHTML =
+    `🩺 弱點診斷 — 做過 ${DATA.length} 句、共 ${total} 個錯字：最常犯 <span class="em">${CAT[top].name} ${catCount[top]} 個 (${pct}%)</span>`;
+  document.getElementById('diagBar').innerHTML =
+    Object.keys(CAT).map(k => {
+      const n = catCount[k]||0; if(!n) return '';
+      return `<span class="c-${k}" style="flex:${n}" title="${CAT[k].name} ${n}">${CAT[k].name.slice(0,3)} ${n}</span>`;
+    }).join('');
+}
+
+// pills
+function pill(key,label,n){ return `<div class="pill" data-k="${key}">${label}<span class="n">${n}</span></div>`; }
+let ph = pill('all','全部', DATA.length);
+Object.keys(CAT).forEach(k => ph += pill(k, CAT[k].name, catCount[k]||0));
+pillBox.innerHTML = ph;
+pillBox.querySelector('[data-k="all"]').classList.add('active');
+
+function blankInline(b, i, quiz){
+  const n = CIRC[i];
+  if(quiz) return `<span class="g q"><sup>${n}</sup><span class="blk">＿＿</span></span>`;
+  return `<span class="g"><sup>${n}</sup><s>${b.wrong}</s><b>${b.right}</b></span>`;
+}
+function passageHTML(p, quiz){
+  let html = p.text;
+  p.blanks.forEach((b,i)=> html = html.replace(`[[${i+1}]]`, blankInline(b,i,quiz)));
+  return html;
+}
+function primaryCat(p){ return p.blanks[0].cat; }
+
+function render(){
+  if(DATA.length === 0){
+    list.innerHTML = `<div class="empty">📭 <b>還沒有 WFD 訂正紀錄</b><br>丟一份聽寫訂正（截圖／文字）過來，我把錯字整理進來，這頁的診斷與篩選會自動更新。</div>`;
+    cnt.textContent = '';
+    return;
+  }
+  const quiz = document.body.classList.contains('quiz');
+  const items = DATA.filter(p => filter==='all' || p.blanks.some(b=>b.cat===filter));
+  cnt.textContent = `${items.length} 句 / ${items.reduce((s,p)=>s+p.blanks.length,0)} 字`;
+  list.innerHTML = items.map(p=>{
+    const cls = primaryCat(p);
+    const cats = [...new Set(p.blanks.map(b=>b.cat))];
+    const badges = cats.map(c=>`<span class="badge b-${c}">${CAT[c].name}</span>`).join('');
+    const ex = p.blanks.map((b,i)=>`
+      <li><span class="exn">${CIRC[i]}</span><b class="r">${b.right}</b><s class="w">${b.wrong}</s>
+      <span class="badge b-${b.cat}">${CAT[b.cat].name}</span>
+      <span class="wy">${b.why}</span></li>`).join('');
+    return `<div class="card ${cls}">
+      <div class="chead">
+        <span class="title">📄 ${p.title}</span>
+        ${p.pid?`<span class="pid">${p.pid}</span>`:''}
+        <span class="type">${p.type||'WFD'}</span>
+        <span class="badges">${badges}</span>
+      </div>
+      <div class="passage">${passageHTML(p, quiz)}</div>
+      <span class="reveal" onclick="this.closest('.card').classList.add('open')">👁 顯示答案與解析</span>
+      <ol class="ex">${ex}</ol>
+    </div>`;
+  }).join('');
+}
+render();
+
+pillBox.addEventListener('click', e=>{
+  const p = e.target.closest('.pill'); if(!p) return;
+  pillBox.querySelectorAll('.pill').forEach(x=>x.classList.remove('active'));
+  p.classList.add('active'); filter = p.dataset.k; render();
+});
+
+const qBtn = document.getElementById('quizBtn');
+function setQuiz(on){
+  document.body.classList.toggle('quiz', on);
+  qBtn.classList.toggle('off', !on);
+  qBtn.textContent = `🎯 自測模式：${on?'開':'關'}`;
+  localStorage.setItem('wfdc_quiz', on?'1':'0');
+  render();
+}
+qBtn.addEventListener('click', ()=> setQuiz(!document.body.classList.contains('quiz')));
+setQuiz(localStorage.getItem('wfdc_quiz')==='1');
+</script>
+</body>
+</html>
