@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>錯句重寫練習 — 改你自己的破句</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, "Noto Sans TC", sans-serif; background: #f7f7f5; color: #37352f; font-size: 15px; line-height: 1.7; }
+  .wrap { max-width: 820px; margin: 0 auto; padding: 40px 24px 100px; }
+  h1 { font-size: 26px; font-weight: 700; margin-bottom: 6px; }
+  .sub { color: #787774; margin-bottom: 20px; }
+  .sub b { color:#37352f; }
+
+  .bar { display:flex; align-items:center; gap:12px; background:#fff; border:1px solid #e9e9e7; border-radius:10px; padding:11px 16px; margin-bottom:20px; }
+  .bar .lbl { font-size:13px; color:#666; }
+  .btn { border:1px solid #d0d0cc; background:#fff; border-radius:6px; padding:6px 13px; font-size:13px; cursor:pointer; }
+  .btn:hover { background:#f0f0ee; }
+  .cnt { margin-left:auto; font-size:13px; color:#9b9a97; }
+
+  .card { background:#fff; border:1px solid #e9e9e7; border-radius:12px; padding:16px 20px; margin-bottom:14px; border-left:4px solid #b0561f; }
+  .num { font-size:12px; font-weight:700; color:#9b9a97; }
+  .orig { font-size:15.5px; margin:6px 0 12px; line-height:1.9; }
+  .orig s { color:#c0392b; opacity:.8; text-decoration-thickness:1px; }
+  .tags { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px; }
+  .tag { font-size:11px; font-weight:700; color:#fff; border-radius:5px; padding:2px 9px; }
+  .t-mech{background:#b03050;} .t-gram{background:#7a3fb0;} .t-word{background:#2383e2;} .t-stru{background:#b0561f;}
+  textarea { width:100%; font-family:inherit; font-size:15px; border:1px solid #d8d8d4; border-radius:8px; padding:10px 12px; resize:vertical; min-height:56px; outline:none; background:#fcfcfb; }
+  textarea:focus { border-color:#2383e2; background:#fff; }
+  .row { display:flex; gap:8px; margin-top:10px; align-items:center; }
+  .show { border:1px solid #2383e2; background:#2383e2; color:#fff; border-radius:6px; padding:6px 14px; font-size:13px; cursor:pointer; font-weight:600; }
+  .show:hover { background:#1a6fc0; }
+  .model { display:none; margin-top:12px; background:#f4fbf6; border:1px solid #cde9d6; border-radius:9px; padding:12px 15px; }
+  .card.open .model { display:block; }
+  .model .mh { font-size:12px; font-weight:700; color:#1f7a45; margin-bottom:5px; }
+  .model .mtext { font-size:15.5px; color:#1f4a2c; line-height:1.9; }
+  .model .mtext b { background:#e7f6ec; padding:0 4px; border-radius:4px; }
+  .fixes { margin:10px 0 0; padding-left:18px; font-size:13px; color:#555; }
+  .fixes li { margin:3px 0; }
+  .en { font-family:"SF Mono",Menlo,Consolas,monospace; font-size:12.5px; background:#eef0f2; padding:1px 5px; border-radius:4px; color:#2b4a6b; }
+  .foot { color:#9b9a97; font-size:12.5px; margin-top:24px; text-align:center; }
+  .legend { font-size:12px; color:#888; margin-bottom:18px; }
+  .legend .tag { display:inline-block; margin:0 2px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>✍️ 錯句重寫練習</h1>
+  <p class="sub">全部取自<b>你自己這篇 WE</b> 的破句。先在框裡把它改對，再按「顯示參考修改」對答案。<b>改自己的錯，比做新題有效 3 倍。</b></p>
+  <div class="legend">類別：
+    <span class="tag t-mech">拼字</span>
+    <span class="tag t-gram">文法</span>
+    <span class="tag t-word">用字</span>
+    <span class="tag t-stru">句構</span>
+  </div>
+
+  <div class="bar">
+    <span class="lbl">改完一句就對一句答案。全對之前不要往下滑。</span>
+    <button class="btn" id="revealAll">全部顯示</button>
+    <button class="btn" id="hideAll">全部收起</button>
+    <span class="cnt" id="cnt"></span>
+  </div>
+
+  <div id="list"></div>
+  <div class="foot">同樣的洞你會一錯再錯，直到你親手改對它三次。</div>
+</div>
+
+<script>
+const ITEMS = [
+  { orig:`Some people are of the opinion that children <s>is</s> an <s>individual</s>, who should take <s>it's</s> own <s>responsible</s>.`,
+    tags:["gram","word"],
+    model:`Some people are of the opinion that children <b>are individuals</b>, who should take <b>their own responsibility</b>.`,
+    fixes:[`children <b>are</b>（主謂一致，複數）`, `an individual → <b>individuals</b>（補語跟主詞一起複數）`, `it's → <b>their</b>（指 children）`, `responsible → <b>responsibility</b>（take 後接名詞）`] },
+
+  { orig:`If children grow up to 18 years, then they must take the <s>resposible</s> for <s>themself</s>, in turn leading to <s>become</s> a fully mature adult.`,
+    tags:["gram","mech"],
+    model:`...they must take <b>responsibility</b> for <b>themselves</b>, in turn leading to <b>becoming</b> a fully mature adult.`,
+    fixes:[`resposible → <b>responsibility</b>（拼字＋詞形，且泛指不加 the）`, `themself → <b>themselves</b>`, `leading to <b>becoming</b>（to 是介系詞，動詞加 ing）`] },
+
+  { orig:`...all the <s>bahaviors</s> <s>from</s> child need their parents to take <s>the</s> responsibility.`,
+    tags:["mech","gram"],
+    model:`...all the <b>behaviours of a</b> child need their parents to take responsibility.`,
+    fixes:[`bahaviors → <b>behaviours</b>（拼字）`, `from child → <b>of a</b> child（介系詞＋冠詞）`, `take <b>responsibility</b>（泛指不加 the）`] },
+
+  { orig:`I firmly believe that parents <s>shuld held</s> legally responsible for their children <s>in different level</s>.`,
+    tags:["gram","mech"],
+    model:`I firmly believe that parents <b>should be held</b> legally responsible for their children <b>at different levels</b>.`,
+    fixes:[`shuld → <b>should</b>（拼字）`, `should <b>be held</b>（被動要 be + p.p.）`, `in different level → <b>at different levels</b>（介系詞＋複數）`] },
+
+  { orig:`A pertinent case in point is James, who works at <s>world</s>-renowned and prestigious firm.`,
+    tags:["gram"],
+    model:`...James, who works at <b>a</b> world-renowned and prestigious firm.`,
+    fixes:[`firm 是單數可數名詞，前面要冠詞 → <b>a</b> world-renowned ... firm`] },
+
+  { orig:`As James <s>has a great parents taught</s> him <s>a good manner</s> when he was a child, he <s>is able to know</s> how to interact with people.`,
+    tags:["stru","gram"],
+    model:`As James's <b>great parents taught</b> him <b>good manners</b> when he was a child, he <b>knows</b> how to interact with people.`,
+    fixes:[`「has a great parents taught」句構垮了：改所有格 <b>James's great parents taught…</b>（或 great parents <b>who</b> taught）`, `a great parents → 去掉 a（parents 是複數）`, `a good manner → <b>good manners</b>（禮貌固定複數）`, `is able to know → <b>knows</b>（別堆冗字）`] },
+
+  { orig:`In other words he has the ability to cooperate with different people, <s>this good manner makes him become</s> a <s>succsesful</s> business man.`,
+    tags:["stru","mech"],
+    model:`In other words, he can cooperate with different people. <b>These good manners have made him</b> a <b>successful businessman</b>.`,
+    fixes:[`逗號黏兩句（comma splice）→ 用<b>句號</b>斷開`, `makes him become → <b>have made him</b>（make sb + 名詞，不要多一個 become）`, `succsesful → <b>successful</b>；business man → <b>businessman</b>`] },
+
+  { orig:`I <s>beleive</s> that parents have responsibility <s>to</s> their children, <s>it is crucial that</s> parents should <s>take</s> more attention <s>on</s> teaching their children.`,
+    tags:["word","mech","stru"],
+    model:`I <b>believe</b> that parents have <b>a</b> responsibility <b>for</b> their children<b>;</b> it is crucial that they <b>pay</b> more attention <b>to</b> teaching their children.`,
+    fixes:[`beleive → <b>believe</b>（拼字）`, `responsibility <b>for</b>（搭配）`, `逗號黏兩句 → 用<b>分號</b>或句號`, `take attention → <b>pay</b> attention <b>to</b>（固定搭配）`] },
+];
+
+const TAGNAME = { mech:"拼字", gram:"文法", word:"用字", stru:"句構" };
+const list = document.getElementById('list');
+document.getElementById('cnt').textContent = ITEMS.length + " 句";
+list.innerHTML = ITEMS.map((it,i)=>`
+  <div class="card">
+    <div class="num">第 ${i+1} 句 / ${ITEMS.length}</div>
+    <div class="tags">${it.tags.map(t=>`<span class="tag t-${t}">${TAGNAME[t]}</span>`).join('')}</div>
+    <div class="orig">📝 你的原句：${it.orig}</div>
+    <textarea placeholder="在這裡把它改對…"></textarea>
+    <div class="row"><button class="show">👁 顯示參考修改</button></div>
+    <div class="model">
+      <div class="mh">參考修改</div>
+      <div class="mtext">${it.model}</div>
+      <ul class="fixes">${it.fixes.map(f=>`<li>${f}</li>`).join('')}</ul>
+    </div>
+  </div>`).join('');
+
+list.addEventListener('click', e=>{
+  if(e.target.classList.contains('show')) e.target.closest('.card').classList.add('open');
+});
+document.getElementById('revealAll').addEventListener('click', ()=>
+  document.querySelectorAll('.card').forEach(c=>c.classList.add('open')));
+document.getElementById('hideAll').addEventListener('click', ()=>
+  document.querySelectorAll('.card').forEach(c=>c.classList.remove('open')));
+</script>
+</body>
+</html>
