@@ -21,6 +21,10 @@
   .legend i { display:inline-block; width:10px; height:10px; border-radius:3px; margin-right:5px; vertical-align:middle; }
   .take { margin-top:12px; font-size:13.5px; background:#fff8e6; border-left:3px solid #e0a500; border-radius:0 6px 6px 0; padding:9px 12px; color:#5a4a00; }
   .take b { color:#5a4a00; }
+  .trend { margin-top:12px; padding-top:12px; border-top:1px dashed #e5e5e2; display:flex; flex-wrap:wrap; gap:6px 16px; font-size:12.5px; color:#555; }
+  .trend .th { font-weight:700; color:#37352f; width:100%; margin-bottom:2px; }
+  .trend .tg i { display:inline-block; width:9px; height:9px; border-radius:3px; margin-right:5px; vertical-align:middle; }
+  .trend .tg b { font-family:"SF Mono",Menlo,Consolas,monospace; color:#37352f; }
 
   .c-mech{background:#b03050;} .c-gram{background:#7a3fb0;} .c-word{background:#2383e2;}
   .c-stru{background:#b0561f;} .c-task{background:#1f7a45;}
@@ -95,10 +99,11 @@
       <span><i class="c-stru"></i>結構／句構</span>
       <span><i class="c-task"></i>切題</span>
     </div>
+    <div class="trend" id="trend"></div>
     <div class="take" id="take"></div>
   </div>
 
-  <div class="good">💪 <b>先說做對的：</b>這篇<b>內容與結構其實到位</b> —— 有清楚立場、讓步段（It has to be admitted…）、具體例子（James）、結論收尾，模板完整。分數卡住的<b>不是想法，是拼字和基礎文法的準確度</b>。把紅字修乾淨，這篇就能上一個檔次。</div>
+  <div class="good">💪 <b>你的強項：</b>模板用得很熟 —— 立場、讓步段、James 例子、結論都齊全，<b>內容和結構不是問題</b>。分數卡住的一直是<b>拼字和基礎文法的準確度</b>。這是好消息：準確度靠檢查清單就能練起來，把紅字修乾淨就能上一個檔次。</div>
 
   <div class="bar">
     <div class="lbl">依根因篩選</div>
@@ -110,7 +115,7 @@
   </div>
 
   <div id="list"></div>
-  <div class="foot">拼字黑名單天天默：responsible / responsibility・children・become・controversy・believe・conclusion・interact・cooperate・successful・mentor・behaviour。</div>
+  <div class="foot">拼字黑名單天天默：responsible / responsibility・children・become・controversy・believe・conclusion・interact・cooperate・successful・mentor・behaviour・build・environment・vehicles・system・gasoline・source・government・traffic。</div>
 </div>
 
 <script>
@@ -162,6 +167,35 @@ const DATA = [
       { wrong:"on", right:"to", cat:"word", why:`搭配：pay attention <span class="en">to</span> …（注意力放在…）。` },
       { wrong:"childern", right:"children", cat:"mech", why:`拼字：<span class="en">children</span>（本篇第 2 次錯）。` },
     ]},
+
+  { title:"政府該蓋更多路，還是改善大眾運輸？", pid:"2026/08/05", type:"WE",
+    text:`<p>It is generally true that governments should build more roads or improve public transportation has become a matter of concern over the years. It has caused great controversy and captured public attention. Some people are of the opinion that [[1]] more roads can [[2]], while others hold the view that [[3]] public transportation is more eco-friendly. I tend to [[4]] more with the latter, and will discuss this further below.</p>
+<p>It has to be admitted that [[5]] more roads can let drivers save more time during the peak time, and one argument in favor of this can be that time is money. If [[6]] then drivers can save a lot of time, in turn leading to having more time on their work to earn more money. As a result, it is unsurprising that some people keep [[7]] build more roads.</p>
+<p>On the other hand, I firmly believe that [[8]] public transportation is the way to develop [[9]] [[10]] the [[11]], and one compelling reason is that [[12]] are the main source of air pollution. A pertinent case in point is James, who works at a world-renowned and prestigious firm. As James chose to take the MRT [[13]] to work, rather [[14]] driving [[15]], he is able to [[16]] a lot of money on [[17]]. In other words, James is no longer the [[18]] of air pollution by [[19]] the MRT to work.</p>
+<p>In conclusion, despite the fact that, the counterargument may hold true in many cases. I believe that governments need to improve public transportation. It is crucial that every citizen [[20]] to protect the [[21]].</p>`,
+    blanks:[
+      { wrong:"bulid", right:"build", cat:"mech", why:`拼字：<span class="en">build</span>。` },
+      { wrong:"the trafic time", right:"travel time", cat:"word", why:`拼字 traffic；且 <span class="en">reduce travel time</span>／<span class="en">ease traffic congestion</span> 才道地，「decrease the traffic time」不自然。` },
+      { wrong:"improve", right:"improving", cat:"gram", why:`動詞當主詞要變動名詞：<span class="en">improving</span> public transportation is…。動詞原形不能直接當主詞。` },
+      { wrong:"be agree", right:"agree", cat:"gram", why:`agree 本身就是動詞，別加 be。<span class="en">I tend to agree</span>。` },
+      { wrong:"build", right:"building", cat:"gram", why:`同上：作主詞用動名詞 <span class="en">building</span> more roads can…（本篇動詞主詞錯第 2 次）。` },
+      { wrong:"less trafic issues", right:"there are fewer traffic problems", cat:"gram", why:`issues 可數用 <span class="en">fewer</span> 不是 less；if 子句要有主詞動詞（there are）；拼字 traffic。` },
+      { wrong:"urging that govenment to", right:"urging the government to", cat:"gram", why:`<span class="en">urge sb to do</span>：不用 that，government 前要 the；拼字 government。` },
+      { wrong:"improve", right:"improving", cat:"gram", why:`作主詞用動名詞（本篇動詞主詞錯第 3 次——這是你這篇最大文法漏洞）。` },
+      { wrong:"economic", right:"the economy", cat:"word", why:`develop 後接名詞 <span class="en">the economy</span>；economic 是形容詞，不能當受詞。` },
+      { wrong:"also tp protect", right:"and also to protect", cat:"stru", why:`兩個動作要用連接詞 <span class="en">and</span> 串起來；tp→to。` },
+      { wrong:"enviroment", right:"environment", cat:"mech", why:`拼字：<span class="en">environment</span>（本篇錯 2 次）。` },
+      { wrong:"viechls", right:"vehicles", cat:"mech", why:`拼字：<span class="en">vehicles</span>。` },
+      { wrong:"systme", right:"system", cat:"mech", why:`拼字：<span class="en">system</span>。` },
+      { wrong:"then", right:"than", cat:"word", why:`比較用 <span class="en">than</span>（rather than）；then 是「然後」，別搞混。` },
+      { wrong:"to company", right:"to work", cat:"word", why:`慣用 <span class="en">drive to work</span>；「to company」缺冠詞又不道地。` },
+      { wrong:"saving", right:"save", cat:"gram", why:`<span class="en">be able to + 原形動詞</span>：able to save。` },
+      { wrong:"gaslion", right:"gasoline", cat:"mech", why:`拼字：<span class="en">gasoline</span>（英式 petrol）。` },
+      { wrong:"soucre", right:"source", cat:"mech", why:`拼字：<span class="en">source</span>。` },
+      { wrong:"take", right:"taking", cat:"gram", why:`介系詞 by 後接動名詞：<span class="en">by taking</span> the MRT。` },
+      { wrong:"have the action", right:"takes action", cat:"gram", why:`主謂一致 every citizen <span class="en">takes</span>；搭配 <span class="en">take action</span>（不加 the）。` },
+      { wrong:"enviroment", right:"environment", cat:"mech", why:`拼字：<span class="en">environment</span>（本篇第 2 次）。` },
+    ]},
 ];
 
 // ---------- render ----------
@@ -180,13 +214,26 @@ let maxK = order[0]; order.forEach(k => { if((catCount[k]||0) > (catCount[maxK]|
 const maxN = catCount[maxK]||0, maxPct = Math.round(maxN/total*100);
 const basic = (catCount.mech||0)+(catCount.gram||0);
 const basicPct = Math.round(basic/total*100);
+const essayWord = DATA.length>1 ? `累積 ${DATA.length} 篇、` : '這篇';
 document.getElementById('diagHead').innerHTML =
-  `🩺 弱點診斷 — 這篇共 ${total} 個錯，最大破口是「<span class="em">${CAT[maxK].name} ${maxN} 個 (${maxPct}%)</span>」`;
+  `🩺 弱點診斷 — ${essayWord}共 ${total} 個錯，最大破口是「<span class="em">${CAT[maxK].name} ${maxN} 個 (${maxPct}%)</span>」`;
 document.getElementById('diagBar').innerHTML =
   order.map(k => { const n = catCount[k]||0; if(!n) return '';
     return `<span class="c-${k}" style="flex:${n}" title="${CAT[k].name} ${n}">${CAT[k].name.slice(0,2)} ${n}</span>`; }).join('');
+
+// per-essay trend (only when >1 essay)
+if(DATA.length>1){
+  const perEssay = DATA.map(p => { const c={}; p.blanks.forEach(b=>c[b.cat]=(c[b.cat]||0)+1); return c; });
+  const trendHTML = order.filter(k => (catCount[k]||0)>0).map(k=>{
+    const seq = perEssay.map(c=>c[k]||0).join('→');
+    return `<span class="tg"><i class="c-${k}"></i>${CAT[k].name} <b>${seq}</b></span>`;
+  }).join('');
+  document.getElementById('trend').innerHTML =
+    `<span class="th">📈 跨篇趨勢（第1篇→第2篇…，數字越低越好）</span>${trendHTML}`;
+}
+
 document.getElementById('take').innerHTML =
-  `💡 <b>複習策略：</b>拼字＋文法屬於「基礎準確度」，本篇就佔了 <b>${basic}/${total}（${basicPct}%）</b>，是 PTE 獨立扣分的地方。①拼字：把頁尾黑名單天天默寫 ②文法盯五樣：主謂一致、單複數、冠詞 a/the、被動 be+p.p.、leading to + <span class="en">Ving</span> ③用字：<span class="en">pay attention to</span>、<span class="en">responsibility for</span>。`;
+  `💡 <b>複習策略：</b>拼字＋文法屬於「基礎準確度」，佔了 <b>${basic}/${total}（${basicPct}%）</b>，是 PTE 獨立扣分的地方。①拼字：頁尾黑名單天天默寫 ②文法盯：主謂一致、單複數、冠詞 a/the、被動 be+p.p.、以及<b>動詞形式</b>（作主詞用 <span class="en">Ving</span>、able to+原形、by/介系詞+<span class="en">Ving</span>）③用字搭配：<span class="en">pay attention to</span>、<span class="en">develop the economy</span>、rather <span class="en">than</span>。`;
 
 function pill(key,label,n){ return `<div class="pill" data-k="${key}">${label}<span class="n">${n}</span></div>`; }
 let ph = pill('all','全部', total);

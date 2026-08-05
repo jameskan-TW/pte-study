@@ -46,7 +46,7 @@
 <body>
 <div class="wrap">
   <h1>✍️ 錯句重寫練習</h1>
-  <p class="sub">全部取自<b>你自己這篇 WE</b> 的破句。先在框裡把它改對，再按「顯示參考修改」對答案。<b>改自己的錯，比做新題有效 3 倍。</b></p>
+  <p class="sub">全部取自<b>你自己的 WE</b> 破句（標了第幾篇）。先在框裡把它改對，再按「顯示參考修改」對答案。<b>改自己的錯，比做新題有效 3 倍。</b></p>
   <div class="legend">類別：
     <span class="tag t-mech">拼字</span>
     <span class="tag t-gram">文法</span>
@@ -106,6 +106,41 @@ const ITEMS = [
     tags:["word","mech","stru"],
     model:`I <b>believe</b> that parents have <b>a</b> responsibility <b>for</b> their children<b>;</b> it is crucial that they <b>pay</b> more attention <b>to</b> teaching their children.`,
     fixes:[`beleive → <b>believe</b>（拼字）`, `responsibility <b>for</b>（搭配）`, `逗號黏兩句 → 用<b>分號</b>或句號`, `take attention → <b>pay</b> attention <b>to</b>（固定搭配）`] },
+
+  { src:"#2", orig:`It is generally true that governments should build more roads <s>or improve public transportation has become</s> a matter of concern over the years.`,
+    tags:["stru"],
+    model:`<b>Whether</b> governments should build more roads or improve public transportation <b>has become</b> a matter of concern over the years.`,
+    fixes:[`「A or B has become…」黏成一句、句子沒主詞：開頭加 <b>Whether</b>（把整個議題當主詞），刪掉「It is generally true that」`, `這是你兩篇都犯的<b>模板黏句</b>老毛病——寫完檢查每句是否只有一組主詞＋動詞`] },
+
+  { src:"#2", orig:`Others hold the view that <s>improve</s> public transportation is more eco-friendly. I tend to <s>be agree</s> more with the latter.`,
+    tags:["gram"],
+    model:`Others hold the view that <b>improving</b> public transportation is more eco-friendly. I tend to <b>agree</b> more with the latter.`,
+    fixes:[`動詞當主詞 → 動名詞 <b>improving</b>`, `<b>agree</b> 本身是動詞，別加 be（去掉 be agree 的 be）`] },
+
+  { src:"#2", orig:`It has to be admitted that <s>build</s> more roads can let drivers save more time during the peak time.`,
+    tags:["gram"],
+    model:`It has to be admitted that <b>building</b> more roads can let drivers save more time during peak hours.`,
+    fixes:[`作主詞用動名詞 <b>building</b>（你這篇動詞主詞錯了 3 次，要特別盯）`, `the peak time → <b>peak hours</b> 更自然`] },
+
+  { src:"#2", orig:`I firmly believe that <s>improve</s> public transportation is the way to develop <s>economic</s> <s>also tp protect</s> the <s>enviroment</s>.`,
+    tags:["gram","word","mech"],
+    model:`I firmly believe that <b>improving</b> public transportation is a way to develop <b>the economy and also</b> protect the <b>environment</b>.`,
+    fixes:[`improve → <b>improving</b>（主詞動名詞）`, `develop <b>the economy</b>（economic 是形容詞，要用名詞）`, `兩個動作要用 <b>and</b> 連接；tp → to`, `enviroment → <b>environment</b>（拼字）`] },
+
+  { src:"#2", orig:`As James chose to take the MRT <s>systme</s> to work, rather <s>then</s> driving <s>to company</s>, he is able to <s>saving</s> a lot of money on <s>gaslion</s>.`,
+    tags:["mech","word","gram"],
+    model:`As James chose to take the MRT <b>system</b> to work rather <b>than</b> driving <b>to work</b>, he is able to <b>save</b> a lot of money on <b>gasoline</b>.`,
+    fixes:[`systme → <b>system</b>；gaslion → <b>gasoline</b>（拼字）`, `rather <b>than</b>（比較，不是 then）`, `drive <b>to work</b>（慣用）`, `be able to <b>save</b>（able to + 原形）`] },
+
+  { src:"#2", orig:`In other words, James is no longer the <s>soucre</s> of air pollution by <s>take</s> the MRT to work.`,
+    tags:["mech","gram"],
+    model:`In other words, James is no longer a <b>source</b> of air pollution, because he takes the MRT to work.`,
+    fixes:[`soucre → <b>source</b>（拼字）`, `by <b>taking</b>（介系詞 by + 動名詞）；或改成 because 子句更清楚`] },
+
+  { src:"#2", orig:`It is crucial that every citizen <s>have the action</s> to protect the <s>enviroment</s>.`,
+    tags:["gram","mech"],
+    model:`It is crucial that every citizen <b>takes action</b> to protect the <b>environment</b>.`,
+    fixes:[`every citizen <b>takes</b>（主謂一致，every + 單數）`, `<b>take action</b>（採取行動，不加 the、不是 have）`, `enviroment → <b>environment</b>`] },
 ];
 
 const TAGNAME = { mech:"拼字", gram:"文法", word:"用字", stru:"句構" };
@@ -113,7 +148,7 @@ const list = document.getElementById('list');
 document.getElementById('cnt').textContent = ITEMS.length + " 句";
 list.innerHTML = ITEMS.map((it,i)=>`
   <div class="card">
-    <div class="num">第 ${i+1} 句 / ${ITEMS.length}</div>
+    <div class="num">第 ${i+1} 句 / ${ITEMS.length} <span style="color:#b0561f;border:1px solid #e6cbb0;border-radius:4px;padding:0 5px;margin-left:4px">第 ${(it.src||'#1').replace('#','')} 篇</span></div>
     <div class="tags">${it.tags.map(t=>`<span class="tag t-${t}">${TAGNAME[t]}</span>`).join('')}</div>
     <div class="orig">📝 你的原句：${it.orig}</div>
     <textarea placeholder="在這裡把它改對…"></textarea>
