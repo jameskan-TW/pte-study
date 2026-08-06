@@ -135,7 +135,7 @@
 
     <div id="idxList"></div>
 
-    <div class="done">✅ <b>已全對（做過、沒錯）：</b>Mass Extinction 大規模滅絕 <span class="pid">#080350</span> — published / previously / causes / Instead 全對。</div>
+    <div class="done">✅ <b>已全對（做過、沒錯）：</b>Mass Extinction 大規模滅絕 <span class="pid">#080350</span> — published / previously / causes / Instead 全對；Low Fertility 低生育率 <span class="pid">#110188</span> — comparisons / patterns / postponing / associations / explored 全對。</div>
 
     <div class="foot">錯一次是意外，錯兩次是模式。下次做題前掃一遍這頁的紅字。</div>
   </div>
@@ -278,6 +278,27 @@ const DATA = [
     blanks:[
       { wrong:"standard", right:"tone", cat:"col", why:`固定搭配 <span class="en">set the tone</span>（定調、奠定基調）。<span class="en">set the standard</span> 語意（設立標準）不合此處。` },
       { wrong:"integration", right:"investigation", cat:"sem", why:`語意：對未來雇主「做點<b>調查了解</b>」→ <span class="en">investigation</span>。<span class="en">integration</span>（整合）意思不對。` },
+    ]},
+
+  { title:"An Artist's Life 藝術家的生活", pid:"#110196", type:"FIB-DD",
+    text:`The [[1]] decades of an artist's life do not generally make the biographer's heart beat faster, but Claude Monet is one of a handful of painters who bucks the pattern of an [[2]] old age. While it's true that by the time he was 73 he had ${ok('accumulated')} all the usual dragging baggage - ${ok('outhouses')} full of fancy cars, a taste for expensive wine and a sprawl of dependents – it was also now that he produced career-defining work.`,
+    blanks:[
+      { wrong:"final", right:"closing", cat:"col", why:`固定搭配 <span class="en">the closing decades / years</span>＝人生/生涯的<b>晚期</b>。final 意思雖近，但機經正解用慣用的 closing 收尾。` },
+      { wrong:"unimportant", right:"irrelevant", cat:"sem", why:`語意：多數藝術家晚年會<b>淡出、失去影響力</b>→ <span class="en">an irrelevant old age</span>（無足輕重的晚年），Monet 打破這模式。unimportant 太籠統。` },
+    ]},
+
+  { title:"Quake-resistant Structures 抗震結構", pid:"#110206", type:"FIB-DD",
+    text:`In the past, making structures quake-resistant meant firm yet ${ok('flexible')} materials, such as steel and wood, that bend without breaking. Later, people tried to lift a building off its foundation, and insert rubber and steel between the building and its foundation to [[1]] the impact of ground vibrations. The most [[2]] designs give buildings brains as well as concrete and steel supports, called smart buildings, the structures respond like living organisms to an earthquake's vibrations. When ground shakes and the building tips forward, the computer would [[3]] the building to shift in the opposite direction. The new designs should offer even greater ${ok('security')} to cities where earthquakes often take place.`,
+    blanks:[
+      { wrong:"force", right:"reduce", cat:"col", why:`固定搭配 <span class="en">reduce the impact</span>＝<b>減弱</b>衝擊。你把 force 錯放這格；這裡要「削弱地震震動」→ reduce。` },
+      { wrong:"latest", right:"recent", cat:"col", why:`慣用 <span class="en">the most recent designs</span>＝最新設計。英文不說 <span class="en">most latest</span>（latest 本身已含最高級意味）。` },
+      { wrong:"secure", right:"force", cat:"sem", why:`語意：電腦「<b>迫使</b>」建築往反方向移動→ <span class="en">force the building to shift</span>。secure（固定住）與「移動」矛盾。` },
+    ]},
+
+  { title:"Botswana 博茨瓦納", pid:"#110201", type:"FIB-DD",
+    text:`Although Botswana is rich in diamonds, it has high unemployment and stratified socioeconomic classes. In 1999, the nation ${ok('suffered')} its first budget deficit in 16 years ${ok('because')} of a slump in the international diamond market. Yet Botswana ${ok('remains')} one of the wealthiest and most stable countries on the African [[1]].`,
+    blanks:[
+      { wrong:"region", right:"continent", cat:"sem", why:`語意/常識：非洲是一塊<b>大陸</b>→ <span class="en">the African continent</span>。region（地區）範圍較小、指大陸內的一部分，用字不精準。` },
     ]},
 ];
 
