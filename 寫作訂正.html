@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>寫作訂正 — 看根因・動手改・考前掃</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, "Noto Sans TC", sans-serif; background: #f7f7f5; color: #37352f; font-size: 15px; line-height: 1.7; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 28px 24px 120px; }
+  h1 { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+  .sub { color: #787774; margin-bottom: 18px; }
+  .sub b { color:#37352f; }
+
+  /* ===== 分頁籤 ===== */
+  .tabs { position:sticky; top:0; z-index:30; display:flex; gap:8px; background:rgba(247,247,245,.97); backdrop-filter:blur(6px); padding:10px 0 12px; border-bottom:1px solid #e9e9e7; margin-bottom:20px; }
+  .tab { flex:1; text-align:center; border:1px solid #e0e0dd; background:#fff; border-radius:9px; padding:9px 6px; font-size:14px; font-weight:600; cursor:pointer; user-select:none; color:#787774; }
+  .tab small { display:block; font-size:11px; font-weight:400; color:#9b9a97; margin-top:1px; }
+  .tab:hover { background:#f0f0ee; }
+  .tab.active { background:#37352f; color:#fff; border-color:#37352f; }
+  .tab.active small { color:#c8c7c4; }
+
+  /* ===== ① 看根因（大作文修正）===== */
+  .diag { background:#fff; border:1px solid #e9e9e7; border-radius:12px; padding:18px 20px; margin-bottom:22px; }
+  .diag h3 { font-size:14px; font-weight:700; margin-bottom:12px; }
+  .diag h3 .em { color:#c0392b; }
+  .barrow { display:flex; height:26px; border-radius:6px; overflow:hidden; margin-bottom:12px; font-size:11px; font-weight:700; }
+  .barrow > span { display:flex; align-items:center; justify-content:center; color:#fff; min-width:0; }
+  .legend { display:flex; flex-wrap:wrap; gap:6px 16px; font-size:12.5px; color:#555; }
+  .legend i { display:inline-block; width:10px; height:10px; border-radius:3px; margin-right:5px; vertical-align:middle; }
+  .take { margin-top:12px; font-size:13.5px; background:#fff8e6; border-left:3px solid #e0a500; border-radius:0 6px 6px 0; padding:9px 12px; color:#5a4a00; }
+  .take b { color:#5a4a00; }
+  .trend { margin-top:12px; padding-top:12px; border-top:1px dashed #e5e5e2; display:flex; flex-wrap:wrap; gap:6px 16px; font-size:12.5px; color:#555; }
+  .trend .th { font-weight:700; color:#37352f; width:100%; margin-bottom:2px; }
+  .trend .tg i { display:inline-block; width:9px; height:9px; border-radius:3px; margin-right:5px; vertical-align:middle; }
+  .trend .tg b { font-family:"SF Mono",Menlo,Consolas,monospace; color:#37352f; }
+
+  .c-mech{background:#b03050;} .c-gram{background:#7a3fb0;} .c-word{background:#2383e2;}
+  .c-stru{background:#b0561f;} .c-task{background:#1f7a45;}
+
+  .bar { position: sticky; top: 62px; background: rgba(247,247,245,.96); backdrop-filter: blur(6px); padding: 12px 0; border-bottom: 1px solid #e9e9e7; z-index: 20; margin-bottom: 20px; }
+  .lbl { font-size: 11px; font-weight: 700; color: #9b9a97; letter-spacing: .04em; margin: 0 6px 5px; }
+  .pills { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 8px; }
+  .pill { border: 1px solid #e0e0dd; background: #fff; border-radius: 20px; padding: 4px 13px; font-size: 13px; cursor: pointer; user-select: none; white-space: nowrap; }
+  .pill:hover { background: #f0f0ee; }
+  .pill.active { background: #37352f; color: #fff; border-color: #37352f; }
+  .pill .n { opacity: .55; margin-left: 4px; font-size: 12px; }
+  .actions { display:flex; gap:8px; align-items:center; margin-top:4px; }
+  .toggle { border:1px solid #2a7d3f; background:#e7f6ec; color:#1f7a45; border-radius:6px; padding:5px 13px; font-size:13px; cursor:pointer; font-weight:600; }
+  .toggle.off { border-color:#d0d0cc; background:#fff; color:#37352f; font-weight:500; }
+  .cnt { margin-left:auto; font-size:13px; color:#9b9a97; }
+
+  .card { background:#fff; border:1px solid #e9e9e7; border-radius:10px; padding:16px 20px; margin-bottom:14px; border-left:4px solid #e9e9e7; }
+  .card.mech{border-left-color:#b03050;} .card.gram{border-left-color:#7a3fb0;}
+  .card.word{border-left-color:#2383e2;} .card.stru{border-left-color:#b0561f;} .card.task{border-left-color:#1f7a45;}
+  .chead { display:flex; align-items:baseline; gap:9px; margin-bottom:11px; flex-wrap:wrap; }
+  .title { font-size:16px; font-weight:700; }
+  .pid { font-size:12px; font-weight:600; color:#9b9a97; }
+  .type { font-size:11px; color:#9b9a97; border:1px solid #e0e0dd; border-radius:4px; padding:1px 6px; }
+  .badges { margin-left:auto; display:flex; gap:5px; flex-wrap:wrap; }
+  .badge { font-size:11px; font-weight:700; padding:2px 9px; border-radius:5px; color:#fff; }
+  .b-mech{background:#b03050;} .b-gram{background:#7a3fb0;} .b-word{background:#2383e2;}
+  .b-stru{background:#b0561f;} .b-task{background:#1f7a45;}
+
+  .passage { font-size:15.5px; line-height:2.15; color:#2f2f2c; }
+  .passage p { margin:0 0 12px; }
+  .g { white-space:normal; }
+  .g sup { font-weight:700; color:#c0392b; margin-right:1px; font-size:12px; }
+  .g s { color:#c0392b; opacity:.72; margin:0 2px; text-decoration-thickness:1px; }
+  .g b { color:#1f7a45; background:#e7f6ec; padding:0 5px; border-radius:4px; }
+  .blk { display:inline-block; min-width:60px; border-bottom:2px solid #b9b9b6; }
+
+  .reveal { display:inline-block; margin-top:12px; font-size:13px; color:#2383e2; cursor:pointer; user-select:none; font-weight:600; }
+  .reveal:hover { text-decoration:underline; }
+
+  .ex { margin:14px 0 0; padding:13px 16px; background:#fafaf8; border-radius:8px; list-style:none; }
+  .ex li { font-size:13.5px; color:#555; padding:5px 0; border-top:1px dashed #e5e5e2; }
+  .ex li:first-child { border-top:none; }
+  .ex .exn { font-weight:700; color:#37352f; margin-right:6px; }
+  .ex .r { color:#1f7a45; font-weight:700; }
+  .ex .w { color:#c0392b; opacity:.75; margin:0 6px; text-decoration:line-through; }
+  .ex .badge { margin-left:4px; }
+  .ex .wy { display:block; margin-top:3px; color:#666; }
+  .en { font-family:"SF Mono",Menlo,Consolas,monospace; font-size:12px; background:#eef0f2; padding:1px 5px; border-radius:4px; color:#2b4a6b; }
+
+  body.quiz .ex { display:none; }
+  body:not(.quiz) .reveal { display:none; }
+  .card.open .ex { display:block; }
+  .card.open .reveal { display:none; }
+
+  .good { background:#eef8f1; border:1px solid #cde9d6; border-radius:10px; padding:13px 18px; margin-bottom:14px; font-size:13.5px; color:#2a6a41; border-left:4px solid #1f7a45; }
+  .good b { color:#1f7a45; }
+  .foot { color:#9b9a97; font-size:12.5px; margin-top:26px; text-align:center; }
+
+  .idxcard { background:#fff; border:1px solid #e9e9e7; border-radius:10px; padding:14px 18px; margin-bottom:12px; border-left:4px solid #e9e9e7; cursor:pointer; transition:box-shadow .12s, transform .12s; }
+  .idxcard:hover { box-shadow:0 4px 16px rgba(0,0,0,.09); transform:translateY(-1px); }
+  .idxcard.mech{border-left-color:#b03050;} .idxcard.gram{border-left-color:#7a3fb0;}
+  .idxcard.word{border-left-color:#2383e2;} .idxcard.stru{border-left-color:#b0561f;} .idxcard.task{border-left-color:#1f7a45;}
+  .idxmeta { font-size:12.5px; color:#9b9a97; margin-top:8px; }
+  .idxmeta b { color:#c0392b; }
+  .idxmeta .go { color:#2383e2; font-weight:600; }
+
+  .dnav { position:sticky; top:62px; z-index:20; display:flex; align-items:center; gap:8px; flex-wrap:wrap; background:rgba(247,247,245,.96); backdrop-filter:blur(6px); padding:12px 0; border-bottom:1px solid #e9e9e7; margin-bottom:20px; }
+  .navbtn { border:1px solid #e0e0dd; background:#fff; border-radius:7px; padding:6px 13px; font-size:13px; cursor:pointer; font-weight:600; color:#37352f; }
+  .navbtn:hover:not(:disabled){ background:#f0f0ee; }
+  .navbtn:disabled { opacity:.35; cursor:default; }
+  .navbtn.back { background:#37352f; color:#fff; border-color:#37352f; }
+  .pos { font-size:13px; color:#787774; font-weight:600; }
+  .dnav .toggle { margin-left:auto; }
+
+  /* ===== ② 動手改（錯句重寫）===== */
+  #tab-rewrite .rwbar { display:flex; align-items:center; gap:12px; background:#fff; border:1px solid #e9e9e7; border-radius:10px; padding:11px 16px; margin-bottom:20px; }
+  #tab-rewrite .rwbar .lbl2 { font-size:13px; color:#666; }
+  #tab-rewrite .btn { border:1px solid #d0d0cc; background:#fff; border-radius:6px; padding:6px 13px; font-size:13px; cursor:pointer; }
+  #tab-rewrite .btn:hover { background:#f0f0ee; }
+  #tab-rewrite .rwcnt { margin-left:auto; font-size:13px; color:#9b9a97; }
+  #tab-rewrite .rwcard { background:#fff; border:1px solid #e9e9e7; border-radius:12px; padding:16px 20px; margin-bottom:14px; border-left:4px solid #b0561f; }
+  #tab-rewrite .num { font-size:12px; font-weight:700; color:#9b9a97; }
+  #tab-rewrite .orig { font-size:15.5px; margin:6px 0 12px; line-height:1.9; }
+  #tab-rewrite .orig s { color:#c0392b; opacity:.8; text-decoration-thickness:1px; }
+  #tab-rewrite .tags { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px; }
+  #tab-rewrite .tag { font-size:11px; font-weight:700; color:#fff; border-radius:5px; padding:2px 9px; }
+  #tab-rewrite .t-mech{background:#b03050;} #tab-rewrite .t-gram{background:#7a3fb0;}
+  #tab-rewrite .t-word{background:#2383e2;} #tab-rewrite .t-stru{background:#b0561f;}
+  #tab-rewrite textarea { width:100%; font-family:inherit; font-size:15px; border:1px solid #d8d8d4; border-radius:8px; padding:10px 12px; resize:vertical; min-height:56px; outline:none; background:#fcfcfb; }
+  #tab-rewrite textarea:focus { border-color:#2383e2; background:#fff; }
+  #tab-rewrite .row { display:flex; gap:8px; margin-top:10px; align-items:center; }
+  #tab-rewrite .show { border:1px solid #2383e2; background:#2383e2; color:#fff; border-radius:6px; padding:6px 14px; font-size:13px; cursor:pointer; font-weight:600; }
+  #tab-rewrite .show:hover { background:#1a6fc0; }
+  #tab-rewrite .model { display:none; margin-top:12px; background:#f4fbf6; border:1px solid #cde9d6; border-radius:9px; padding:12px 15px; }
+  #tab-rewrite .rwcard.open .model { display:block; }
+  #tab-rewrite .model .mh { font-size:12px; font-weight:700; color:#1f7a45; margin-bottom:5px; }
+  #tab-rewrite .model .mtext { font-size:15.5px; color:#1f4a2c; line-height:1.9; }
+  #tab-rewrite .model .mtext b { background:#e7f6ec; padding:0 4px; border-radius:4px; }
+  #tab-rewrite .fixes { margin:10px 0 0; padding-left:18px; font-size:13px; color:#555; }
+  #tab-rewrite .fixes li { margin:3px 0; }
+  #tab-rewrite .rwlegend { font-size:12px; color:#888; margin-bottom:18px; }
+  #tab-rewrite .rwlegend .tag { display:inline-block; margin:0 2px; }
+
+  /* ===== ③ 考前掃（文法自檢卡）===== */
+  #tab-check .ckbar { display:flex; align-items:center; gap:12px; background:#fff; border:1px solid #e9e9e7; border-radius:10px; padding:12px 16px; margin-bottom:20px; position:sticky; top:66px; z-index:10; }
+  #tab-check .prog { font-size:15px; font-weight:700; }
+  #tab-check .prog b { color:#1f7a45; }
+  #tab-check .track { flex:1; height:8px; background:#eee; border-radius:5px; overflow:hidden; }
+  #tab-check .fill { height:100%; width:0; background:#1f7a45; transition:width .2s; }
+  #tab-check .btn { border:1px solid #d0d0cc; background:#fff; border-radius:6px; padding:6px 13px; font-size:13px; cursor:pointer; }
+  #tab-check .btn:hover { background:#f0f0ee; }
+  #tab-check .ckcard { background:#fff; border:1px solid #e9e9e7; border-radius:12px; padding:16px 18px; margin-bottom:13px; border-left:5px solid #7a3fb0; display:flex; gap:14px; align-items:flex-start; cursor:pointer; transition:.15s; }
+  #tab-check .ckcard:hover { background:#fcfbff; }
+  #tab-check .ckcard.done { border-left-color:#1f7a45; background:#f4fbf6; }
+  #tab-check .chk { flex-shrink:0; width:26px; height:26px; border:2px solid #cdbde8; border-radius:7px; display:flex; align-items:center; justify-content:center; font-size:16px; color:#fff; margin-top:2px; }
+  #tab-check .ckcard.done .chk { background:#1f7a45; border-color:#1f7a45; }
+  #tab-check .body2 { flex:1; }
+  #tab-check .q2 { font-size:16px; font-weight:700; margin-bottom:8px; }
+  #tab-check .q2 .no { color:#7a3fb0; margin-right:7px; }
+  #tab-check .ckcard.done .q2 .no { color:#1f7a45; }
+  #tab-check .eg { font-size:14px; margin:5px 0; }
+  #tab-check .eg s { color:#c0392b; opacity:.8; text-decoration-thickness:1px; }
+  #tab-check .eg b { color:#1f7a45; background:#e7f6ec; padding:0 5px; border-radius:4px; }
+  #tab-check .tip { font-size:13px; color:#666; margin-top:7px; background:#faf9f7; border-radius:7px; padding:8px 11px; }
+  #tab-check .tip b { color:#37352f; }
+  #tab-check .spell { background:#fff; border:1px solid #e9e9e7; border-radius:12px; padding:16px 18px; margin-top:22px; border-left:5px solid #b03050; }
+  #tab-check .spell h3 { font-size:15px; margin-bottom:10px; }
+  #tab-check .spell h3 .em { color:#b03050; }
+  #tab-check .words { display:flex; flex-wrap:wrap; gap:8px; }
+  #tab-check .w2 { font-family:"SF Mono",Menlo,Consolas,monospace; font-size:13px; background:#fbe9ee; color:#b03050; border-radius:6px; padding:4px 10px; }
+  #tab-check .done-msg { text-align:center; color:#1f7a45; font-weight:700; padding:14px; display:none; }
+  #tab-check .done-msg.show { display:block; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>✍️ 寫作訂正</h1>
+  <p class="sub">你自己 WE 的錯，一條龍複習：<b>① 看根因</b>（整篇錯在哪）→ <b>② 動手改</b>（親手把破句改對）→ <b>③ 考前掃</b>（交卷前 2 分鐘檢查清單）。</p>
+
+  <div class="tabs">
+    <div class="tab" data-t="review">① 看根因<small>整篇錯誤複習</small></div>
+    <div class="tab" data-t="rewrite">② 動手改<small>錯句重寫練習</small></div>
+    <div class="tab" data-t="check">③ 考前掃<small>文法自檢 5 條</small></div>
+  </div>
+
+  <!-- ══════════════ ① 看根因（大作文修正）══════════════ -->
+  <div id="tab-review">
+    <div id="indexView">
+      <div class="diag">
+        <h3 id="diagHead"></h3>
+        <div class="barrow" id="diagBar"></div>
+        <div class="legend">
+          <span><i class="c-mech"></i>拼字／標點（mechanics）</span>
+          <span><i class="c-gram"></i>文法（主謂・單複數・冠詞・時態）</span>
+          <span><i class="c-word"></i>用字／搭配</span>
+          <span><i class="c-stru"></i>結構／句構</span>
+          <span><i class="c-task"></i>切題</span>
+        </div>
+        <div class="trend" id="trend"></div>
+        <div class="take" id="take"></div>
+      </div>
+
+      <div class="good">💪 <b>你的強項：</b>模板用得很熟 —— 立場、讓步段、James 例子、結論都齊全，<b>內容和結構不是問題</b>。分數卡住的一直是<b>拼字和基礎文法的準確度</b>。這是好消息：準確度靠檢查清單就能練起來，把紅字修乾淨就能上一個檔次。</div>
+
+      <div class="bar">
+        <div class="lbl">依根因篩選（點下方篇目進入複習）</div>
+        <div class="pills" id="pills"></div>
+        <div class="actions">
+          <span class="cnt" id="cnt"></span>
+        </div>
+      </div>
+
+      <div id="idxList"></div>
+      <div class="foot" id="blFoot"></div>
+    </div>
+
+    <div id="detailView" style="display:none">
+      <div class="dnav">
+        <button class="navbtn back" id="backBtn">← 目錄</button>
+        <button class="navbtn" id="prevBtn">← 上一篇</button>
+        <span class="pos" id="pos"></span>
+        <button class="navbtn" id="nextBtn">下一篇 →</button>
+        <button class="toggle" id="quizBtn">🎯 自測模式：關</button>
+      </div>
+      <div id="detailBody"></div>
+    </div>
+  </div>
+
+  <!-- ══════════════ ② 動手改（錯句重寫）══════════════ -->
+  <div id="tab-rewrite" style="display:none">
+    <p class="sub">全部取自<b>你自己的 WE</b> 破句（標了第幾篇）。先在框裡把它改對，再按「顯示參考修改」對答案。<b>改自己的錯，比做新題有效 3 倍。</b></p>
+    <div class="rwlegend">類別：
+      <span class="tag t-mech">拼字</span>
+      <span class="tag t-gram">文法</span>
+      <span class="tag t-word">用字</span>
+      <span class="tag t-stru">句構</span>
+    </div>
+
+    <div class="rwbar">
+      <span class="lbl2">改完一句就對一句答案。全對之前不要往下滑。</span>
+      <button class="btn" id="revealAll">全部顯示</button>
+      <button class="btn" id="hideAll">全部收起</button>
+      <span class="rwcnt" id="rwCnt"></span>
+    </div>
+
+    <div id="rwList"></div>
+    <div class="foot">同樣的洞你會一錯再錯，直到你親手改對它三次。</div>
+  </div>
+
+  <!-- ══════════════ ③ 考前掃（文法自檢卡）══════════════ -->
+  <div id="tab-check" style="display:none">
+    <p class="sub">寫完 WE / SWT，<b>留最後 2 分鐘只做一件事</b>：不重讀內容，照這 5 條逐項掃。這 5 條就是<b>你反覆漏的洞</b>。點卡片打勾。</p>
+
+    <div class="ckbar">
+      <span class="prog"><b id="ckN">0</b>/5</span>
+      <div class="track"><div class="fill" id="ckFill"></div></div>
+      <button class="btn" id="ckReset">↺ 重置</button>
+    </div>
+
+    <div id="ckCards"></div>
+    <div class="done-msg" id="doneMsg">✅ 5 條都掃過了 — 交卷！</div>
+
+    <div class="spell">
+      <h3>🔴 順手清 <span class="em">拼字黑名單</span>（這些你拼錯過，會被判進 mechanics）</h3>
+      <div class="words" id="ckWords"></div>
+    </div>
+
+    <div class="foot">正確 &gt; 複雜。沒把握的長句，拆成兩句短的。</div>
+  </div>
+</div>
+
+<script>
+/* ═══════════ 共用：拼字黑名單（唯一一份，①頁尾與③都吃這裡）═══════════ */
+const BLACKLIST = [
+  "responsible","responsibility","children","become","becoming","controversy",
+  "believe","conclusion","interact","cooperate","successful","mentor","behaviour",
+  "individuals","themselves","environment","vehicles","system","gasoline","source",
+  "government","traffic","easily","planning","dangerous","people","should","true",
+  "concern","view","cause","firmly","drawbacks","despite","further","large"
+];
+
+/* ═══════════ 分頁切換（支援 #review / #rewrite / #check 直達）═══════════ */
+(function(){
+  const tabs = document.querySelectorAll('.tab');
+  const panes = { review:document.getElementById('tab-review'),
+                  rewrite:document.getElementById('tab-rewrite'),
+                  check:document.getElementById('tab-check') };
+  function switchTo(t){
+    if(!panes[t]) t = 'review';
+    tabs.forEach(x=>x.classList.toggle('active', x.dataset.t===t));
+    Object.keys(panes).forEach(k=>panes[k].style.display = (k===t)?'':'none');
+    localStorage.setItem('wc_tab', t);
+    if(history.replaceState) history.replaceState(null,'','#'+t);
+    window.scrollTo(0,0);
+  }
+  tabs.forEach(x=>x.addEventListener('click', ()=>switchTo(x.dataset.t)));
+  window.addEventListener('hashchange', ()=>switchTo(location.hash.replace('#','')));
+  const initial = location.hash ? location.hash.replace('#','') : (localStorage.getItem('wc_tab')||'review');
+  switchTo(initial);
+})();
+
+/* ═══════════ ① 看根因（大作文修正）═══════════ */
+(function(){
+const CAT = {
+  mech:{name:"拼字標點", cls:"mech"},
+  gram:{name:"文法",     cls:"gram"},
+  word:{name:"用字搭配", cls:"word"},
+  stru:{name:"結構句構", cls:"stru"},
+  task:{name:"切題",     cls:"task"},
+};
+
+// Each essay: text uses [[n]] where the n-th error goes (in appearance order).
+const DATA = [
+  { title:"父母該為孩子的行為負法律責任嗎？", pid:"2026/08/04", type:"WE",
+    text:`<p>It is generally true that parents should be held legally [[1]] for their children's [[2]]. It has [[3]] a matter of concern over the [[4]] caused great [[5]] and captured public attention. Some people are of the opinion that children [[6]] an [[7]], who should take [[8]] own [[9]], while others hold the view that parents should take the [[10]] for [[11]]. I tend to agree more with the latter, and will discuss this further below.</p>
+<p>It has to be admitted that parents cannot take all the responsibility for their child, and one argument of this view can be that parents will not always stay with their children. If children grow up to 18 years, then they must take the [[12]] for [[13]], in turn leading to [[14]] a fully mature adult. As a result, it is unsurprising that people don't think that all the [[15]] from child need their parents to take [[16]].</p>
+<p>On the other hand, I firmly believe that parents [[17]] [[18]] legally responsible for their children in different level, and one compelling reason is that parents are the first [[19]] for children. A pertinent case in point is James, who works at [[20]]-renowned and prestigious firm. As James has [[21]] him [[22]] when he was a child, he is able to know how to [[23]] with different people from various ages and backgrounds. In other words he has the ability to [[24]] with different people, this good manner makes him become a [[25]] business man.</p>
+<p>In [[26]], despite the fact that the counterargument may hold true in many cases, I [[27]] that parents have responsibility [[28]] their children, it is crucial that parents should [[29]] more attention [[30]] teaching their [[31]].</p>`,
+    blanks:[
+      { wrong:"reponsible", right:"responsible", cat:"mech", why:`拼字。這個字全文拼錯 3 次（responsible / responsibility）——最該優先攻下的字。` },
+      { wrong:"act", right:"actions", cat:"word", why:`children's <span class="en">actions</span>（行為，複數）較自然；act 單數在此偏「單一動作/法案」。` },
+      { wrong:"becmoe", right:"become", cat:"mech", why:`拼字：<span class="en">become</span>。` },
+      { wrong:"years, it has", right:"years. It has", cat:"stru", why:`<b>逗號連接兩個完整句（comma splice）</b>：用句號或 and 斷開。這個毛病本篇出現不只一次，要特別留意。` },
+      { wrong:"controvesy", right:"controversy", cat:"mech", why:`拼字：<span class="en">controversy</span>。` },
+      { wrong:"is", right:"are", cat:"gram", why:`主謂一致：主詞 children（複數）→ <span class="en">are</span>。` },
+      { wrong:"individual", right:"individuals", cat:"gram", why:`單複數：children are <span class="en">individuals</span>（主詞複數，補語也複數）。` },
+      { wrong:"it's", right:"their", cat:"gram", why:`代名詞：指 children（複數）用 <span class="en">their</span>；而且 it's = it is，用法錯。` },
+      { wrong:"responsible", right:"responsibility", cat:"word", why:`詞形：take <span class="en">responsibility</span>（名詞）。responsible 是形容詞。` },
+      { wrong:"resposible", right:"responsibility", cat:"mech", why:`拼字＋詞形：<span class="en">responsibility</span>。` },
+      { wrong:"childern", right:"children", cat:"mech", why:`拼字：<span class="en">children</span>（本篇錯 2 次）。` },
+      { wrong:"resposible", right:"responsibility", cat:"mech", why:`拼字＋詞形：<span class="en">responsibility</span>。` },
+      { wrong:"themself", right:"themselves", cat:"gram", why:`反身代名詞複數：<span class="en">themselves</span>。themself 非標準。` },
+      { wrong:"become", right:"becoming", cat:"gram", why:`<span class="en">leading to</span> 後接動名詞：leading to <span class="en">becoming</span>。to 是介系詞不是不定詞。` },
+      { wrong:"bahaviors", right:"behaviours", cat:"mech", why:`拼字：<span class="en">behaviour(s)</span>（英式；美式 behaviors 亦可，但別拼成 baha-）。` },
+      { wrong:"the responsibility", right:"responsibility", cat:"gram", why:`冠詞：泛指責任時 take <span class="en">responsibility</span>，不加 the。` },
+      { wrong:"shuld", right:"should", cat:"mech", why:`拼字：<span class="en">should</span>。` },
+      { wrong:"held", right:"be held", cat:"gram", why:`被動語態：should <span class="en">be held</span> responsible（父母「被」要求負責）。漏了 be。` },
+      { wrong:"montor", right:"mentor", cat:"mech", why:`拼字：<span class="en">mentor</span>（導師）。` },
+      { wrong:"world", right:"a world", cat:"gram", why:`冠詞：works at <span class="en">a</span> world-renowned firm（單數可數名詞 firm 前要冠詞）。` },
+      { wrong:"a great parents taught", right:"great parents who taught", cat:"stru", why:`句構斷裂＋冠詞：a 不接複數 parents；且需關係代名詞。改 <span class="en">great parents who taught him…</span>。` },
+      { wrong:"a good manner", right:"good manners", cat:"gram", why:`固定用複數：<span class="en">good manners</span>＝禮貌／教養；且不加 a。` },
+      { wrong:"enteract", right:"interact", cat:"mech", why:`拼字：<span class="en">interact</span>。` },
+      { wrong:"coperate", right:"cooperate", cat:"mech", why:`拼字：<span class="en">cooperate</span>（雙 o）。` },
+      { wrong:"succsesful", right:"successful", cat:"mech", why:`拼字：<span class="en">successful</span>（雙 c、雙 s）。` },
+      { wrong:"conclsion", right:"conclusion", cat:"mech", why:`拼字：<span class="en">conclusion</span>。片語 <span class="en">In conclusion</span> 是結論固定開頭。` },
+      { wrong:"beleive", right:"believe", cat:"mech", why:`拼字：<span class="en">believe</span>（i before e）。` },
+      { wrong:"to", right:"for", cat:"word", why:`搭配：responsibility <span class="en">for</span> their children（對…的責任）。` },
+      { wrong:"take", right:"pay", cat:"word", why:`搭配：<span class="en">pay</span> attention（付出注意力），不用 take。` },
+      { wrong:"on", right:"to", cat:"word", why:`搭配：pay attention <span class="en">to</span> …（注意力放在…）。` },
+      { wrong:"childern", right:"children", cat:"mech", why:`拼字：<span class="en">children</span>（本篇第 2 次錯）。` },
+    ]},
+
+  { title:"政府該蓋更多路，還是改善大眾運輸？", pid:"2026/08/05", type:"WE",
+    text:`<p>It is generally true that governments should build more roads or improve public transportation has become a matter of concern over the years. It has caused great controversy and captured public attention. Some people are of the opinion that [[1]] more roads can [[2]], while others hold the view that [[3]] public transportation is more eco-friendly. I tend to [[4]] more with the latter, and will discuss this further below.</p>
+<p>It has to be admitted that [[5]] more roads can let drivers save more time during the peak time, and one argument in favor of this can be that time is money. If [[6]] then drivers can save a lot of time, in turn leading to having more time on their work to earn more money. As a result, it is unsurprising that some people keep [[7]] build more roads.</p>
+<p>On the other hand, I firmly believe that [[8]] public transportation is the way to develop [[9]] [[10]] the [[11]], and one compelling reason is that [[12]] are the main source of air pollution. A pertinent case in point is James, who works at a world-renowned and prestigious firm. As James chose to take the MRT [[13]] to work, rather [[14]] driving [[15]], he is able to [[16]] a lot of money on [[17]]. In other words, James is no longer the [[18]] of air pollution by [[19]] the MRT to work.</p>
+<p>In conclusion, despite the fact that, the counterargument may hold true in many cases. I believe that governments need to improve public transportation. It is crucial that every citizen [[20]] to protect the [[21]].</p>`,
+    blanks:[
+      { wrong:"bulid", right:"build", cat:"mech", why:`拼字：<span class="en">build</span>。` },
+      { wrong:"decrease the trafic time", right:"reduce travel time", cat:"word", why:`拼字 traffic；且 <span class="en">reduce travel time</span>／<span class="en">ease traffic congestion</span> 才道地，「decrease the traffic time」不自然（decrease→reduce）。` },
+      { wrong:"improve", right:"improving", cat:"gram", why:`動詞當主詞要變動名詞：<span class="en">improving</span> public transportation is…。動詞原形不能直接當主詞。` },
+      { wrong:"be agree", right:"agree", cat:"gram", why:`agree 本身就是動詞，別加 be。<span class="en">I tend to agree</span>。` },
+      { wrong:"build", right:"building", cat:"gram", why:`同上：作主詞用動名詞 <span class="en">building</span> more roads can…（本篇動詞主詞錯第 2 次）。` },
+      { wrong:"less trafic issues", right:"there are fewer traffic problems", cat:"gram", why:`issues 可數用 <span class="en">fewer</span> 不是 less；if 子句要有主詞動詞（there are）；拼字 traffic。` },
+      { wrong:"urging that govenment to", right:"urging the government to", cat:"gram", why:`<span class="en">urge sb to do</span>：不用 that，government 前要 the；拼字 government。` },
+      { wrong:"improve", right:"improving", cat:"gram", why:`作主詞用動名詞（本篇動詞主詞錯第 3 次——這是你這篇最大文法漏洞）。` },
+      { wrong:"economic", right:"the economy", cat:"word", why:`develop 後接名詞 <span class="en">the economy</span>；economic 是形容詞，不能當受詞。` },
+      { wrong:"also tp protect", right:"and also to protect", cat:"stru", why:`兩個動作要用連接詞 <span class="en">and</span> 串起來；tp→to。` },
+      { wrong:"enviroment", right:"environment", cat:"mech", why:`拼字：<span class="en">environment</span>（本篇錯 2 次）。` },
+      { wrong:"viechls", right:"vehicles", cat:"mech", why:`拼字：<span class="en">vehicles</span>。` },
+      { wrong:"systme", right:"system", cat:"mech", why:`拼字：<span class="en">system</span>。` },
+      { wrong:"then", right:"than", cat:"word", why:`比較用 <span class="en">than</span>（rather than）；then 是「然後」，別搞混。` },
+      { wrong:"to company", right:"to work", cat:"word", why:`慣用 <span class="en">drive to work</span>；「to company」缺冠詞又不道地。` },
+      { wrong:"saving", right:"save", cat:"gram", why:`<span class="en">be able to + 原形動詞</span>：able to save。` },
+      { wrong:"gaslion", right:"gasoline", cat:"mech", why:`拼字：<span class="en">gasoline</span>（英式 petrol）。` },
+      { wrong:"soucre", right:"source", cat:"mech", why:`拼字：<span class="en">source</span>。` },
+      { wrong:"take", right:"taking", cat:"gram", why:`介系詞 by 後接動名詞：<span class="en">by taking</span> the MRT。` },
+      { wrong:"have the action", right:"takes action", cat:"gram", why:`主謂一致 every citizen <span class="en">takes</span>；搭配 <span class="en">take action</span>（不加 the）。` },
+      { wrong:"enviroment", right:"environment", cat:"mech", why:`拼字：<span class="en">environment</span>（本篇第 2 次）。` },
+    ]},
+
+  { title:"無現金社會 — 信用卡優缺點", pid:"#070004", type:"WE",
+    text:`<p>It is generally true that cashless society has become a matter of concern over the years. It has caused great controversy and captured public attention. Some people are of the opinion that credit card let people spend money without [[1]], while others hold the view that credit card is good to track [[2]] tend to agree more with the latter, and will discuss this further below.</p>
+<p>It has to be admitted that people [[3]] more [[4]] have emotional purchasing by [[5]] credit [[6]], and one argument of this view can be that young people spend [[7]] much money without clear [[8]]. [[9]] young people cannot afford the bill from the [[10]] to losing their credit. As a result, it is unsurprising that people think credit cards are [[11]] [[12]] product.</p>
+<p>On the other hand, I firmly believe that credit cards bring more [[13]], and one compelling reason is that people can track their spending [[14]]. A pertinent case in point is James, who works at a world-renowned and prestigious firm. [[15]] to buy everything he [[16]], he is able to count each spending carefully by the credit card bill. In other words, if [[17]] know how to control their spending behaviors, credit cards [[18]] people to manage their wealth.</p>
+<p>In conclusion, despite [[19]] counterargument may hold [[20]] in many [[21]], I believe that credit cards bring more benefit than [[22]] to [[23]]. It is crucial that [[24]] [[25]] keep [[26]] the [[27]] policy.</p>`,
+    blanks:[
+      { wrong:"plan", right:"a plan", cat:"gram", why:`冠詞：泛指「沒有計畫地花錢」→ spend money without <span class="en">a plan</span>（或 without <span class="en">planning</span>）。` },
+      { wrong:"the spending, I", right:"the spending. I", cat:"stru", why:`<b>逗號連接兩個完整句（comma splice）</b>：要用句號斷開。這是你的老毛病，模板本來就獨立成句：<span class="en">... track the spending. I tend to agree ...</span>` },
+      { wrong:"are", right:"（刪掉 are）", cat:"gram", why:`一句只能有一個主要動詞。這裡動詞是 <span class="en">have</span>，前面別加 are → <span class="en">people more easily have ...</span>` },
+      { wrong:"easlity", right:"easily", cat:"mech", why:`拼字：<span class="en">eas·i·ly</span>（本篇錯 2 次，反覆卡）。` },
+      { wrong:"useing", right:"using", cat:"mech", why:`拼字：use + ing 要<b>去 e</b> → <span class="en">using</span>（你的罩門）。` },
+      { wrong:"card", right:"cards", cat:"gram", why:`單複數：泛指信用卡用複數 <span class="en">credit cards</span>。` },
+      { wrong:"to", right:"too", cat:"word", why:`<span class="en">too much</span>＝太多（兩個 o）；<span class="en">to</span> 是介系詞，別搞混。` },
+      { wrong:"planing", right:"planning", cat:"mech", why:`拼字：plan 重複 n → <span class="en">plan·ning</span>（單 n 的 planing 是「刨平」）。` },
+      { wrong:"If the spending without plan then", right:"If they spend without a plan, then", cat:"gram", why:`if 子句要有<b>主詞＋動詞</b>：<span class="en">If they spend without a plan, then ...</span>；原句只有名詞沒動詞。` },
+      { wrong:"bank. In turn leading", right:"bank, in turn leading", cat:"stru", why:`<span class="en">in turn leading to ...</span> 是接前句的，不能斷成片段：用逗號接上 <span class="en">..., in turn leading to losing their credit.</span>` },
+      { wrong:"the", right:"a", cat:"gram", why:`冠詞：泛指「一種危險的東西」用 <span class="en">a dangerous product</span>（或複數 <span class="en">dangerous products</span>）；the 是特指。` },
+      { wrong:"dangerious", right:"dangerous", cat:"mech", why:`拼字：<span class="en">dan·ger·ous</span>，沒有 i。` },
+      { wrong:"benefit", right:"benefits", cat:"gram", why:`單複數：<span class="en">bring more benefits</span>（好處不只一個，用複數）。` },
+      { wrong:"easliy", right:"easily", cat:"mech", why:`拼字：<span class="en">eas·i·ly</span>（同一個字第 2 次錯，列進黑名單天天默）。` },
+      { wrong:"As James, use credit card", right:"As James uses a credit card", cat:"gram", why:`三處：①<b>第三人稱＋s</b>（頭號罩門）James <span class="en">uses</span> ②James 後不要逗號 ③加冠詞 <span class="en">a credit card</span>。` },
+      { wrong:"needed", right:"needs", cat:"gram", why:`時態：講習慣動作用現在式，且與 uses 一致：<span class="en">buy everything he needs</span>。` },
+      { wrong:"individaul", right:"individuals", cat:"mech", why:`拼字＋單複數：<span class="en">in·di·vid·u·als</span>；後面是 their，主詞要複數。` },
+      { wrong:"are help", right:"help", cat:"gram", why:`兩個動詞衝突：主要動詞是 <span class="en">help</span>，前面別加 are → <span class="en">credit cards help people ...</span>` },
+      { wrong:"the fact the", right:"the fact that the", cat:"gram", why:`模板固定句：<span class="en">despite the fact <b>that</b> the counterargument ...</span>，漏了 that。` },
+      { wrong:"ture", right:"true", cat:"mech", why:`拼字（<b>字母顛倒</b>）：<span class="en">true</span>；片語 <span class="en">hold true</span>＝站得住腳。` },
+      { wrong:"case", right:"cases", cat:"gram", why:`單複數：<span class="en">in many cases</span>（many 後面要複數）。` },
+      { wrong:"shortage", right:"drawbacks", cat:"word", why:`用字：反面說「壞處」用 <span class="en">drawbacks</span>／<span class="en">problems</span>；shortage 是「短缺」，意思不對。` },
+      { wrong:"peopele", right:"people", cat:"mech", why:`拼字：<span class="en">peo·ple</span>（中間多打了一個 e）。` },
+      { wrong:"government", right:"the government", cat:"gram", why:`冠詞：特指政府要加 <span class="en">the government</span>（或用複數 governments）。` },
+      { wrong:"shuould", right:"should", cat:"mech", why:`拼字：<span class="en">should</span>（sh-ou-ld，別多打 u）。` },
+      { wrong:"develop", right:"developing", cat:"gram", why:`<span class="en">keep + Ving</span>：keep <span class="en">developing</span>（持續做某事）。` },
+      { wrong:"relative", right:"relevant", cat:"word", why:`用字：相關的政策用 <span class="en">relevant</span>／<span class="en">related</span>；relative 是「親戚／相對的」。` },
+    ]},
+
+  { title:"延長人類壽命是福還是禍？", pid:"2026/08/06", type:"WE",
+    text:`<p>It is generally true that life expectancy of people has become a matter of concern over the years. It has caused great controversy and captured public attention. Some people are of the opinion that life expectancy is a curse, while others hold the view that life expectancy is a blessing. I tend to agree more with the latter and will discuss this further below.</p>
+<p>It has to be admitted that life expectancy is a curse, and one argument of this view can be that people with [[1]] but only rely on [[2]]. If the body is no longer well-functional then [[3]] cannot live like a [[4]] [[5]]. [[6]] to living without [[7]]. As a result, it is unsurprising that some people think this kind of unhappy living is a curse.</p>
+<p>On the other hand, I firmly believe that life expectancy is a blessing. And one compelling reason is that [[8]] can [[9]]. A pertinent case in point is James who [[10]] world-renowned and prestigious firm. As James [[11]] [[12]] [[13]] his own body and [[14]] [[15]] annually, he is able to maintain his body healthy and well-functional. In other words, more [[16]] [[17]] can stay in his family.</p>
+<p>In conclusion, despite the fact that the counterargument may hold true in many [[18]] that [[19]] people's life expectancy is a blessing. It is crucial that everyone [[20]] to pay attention to their own [[21]].</p>`,
+    blanks:[
+      { wrong:"unhealthy body", right:"an unhealthy body", cat:"gram", why:`冠詞：body 是可數單數，前面要冠詞 → <span class="en">an unhealthy body</span>。` },
+      { wrong:"the medical support", right:"medical support", cat:"gram", why:`冠詞：泛指醫療支援不加 the → <span class="en">rely on medical support</span>。（順帶：語序 <span class="en">rely only on</span> 較順）` },
+      { wrong:"individual", right:"an individual", cat:"gram", why:`冠詞：individual 是可數單數，前要 <span class="en">an</span>（或用複數 individuals）。` },
+      { wrong:"normoal", right:"normal", cat:"mech", why:`拼字：<span class="en">normal</span>，別多打一個 o。` },
+      { wrong:"people", right:"person", cat:"gram", why:`單複數：<span class="en">a</span> 後面接單數 → <span class="en">a normal person</span>；a…people 不合。` },
+      { wrong:"In turn leading", right:"This in turn leads", cat:"stru", why:`句子破碎：<span class="en">In turn leading…</span> 沒主詞沒動詞，是片段。補上主詞＋動詞 → <span class="en">This in turn leads to…</span>。` },
+      { wrong:"respectiveness", right:"dignity", cat:"word", why:`用字：有尊嚴地活著 → living without <span class="en">dignity</span>；respectiveness 不是英文字。` },
+      { wrong:"individual", right:"individuals", cat:"gram", why:`單複數：後面接 <span class="en">their</span>，主詞就要用複數 <span class="en">individuals</span>。` },
+      { wrong:"stay with their family or lovers more time", right:"spend more time with their family or loved ones", cat:"word", why:`搭配：<span class="en">spend more time with</span>（花更多時間陪…）；lovers 是「情人」，親人用 <span class="en">loved ones</span>。「stay…more time」不道地。` },
+      { wrong:"works a", right:"works at a", cat:"word", why:`介系詞：<span class="en">work at a firm</span>（在…公司工作），漏了 at。（第 1 篇也錯過同一處）` },
+      { wrong:"take", right:"takes", cat:"gram", why:`<b>第三人稱＋s（頭號罩門）</b>：主詞 James → <span class="en">takes</span>。` },
+      { wrong:"a good care", right:"good care", cat:"gram", why:`冠詞：<span class="en">take good care</span> 是固定用法，不加 a。` },
+      { wrong:"about", right:"of", cat:"word", why:`搭配：<span class="en">take care of</span>（照顧），介系詞是 of 不是 about。` },
+      { wrong:"get", right:"gets", cat:"gram", why:`<b>第三人稱＋s</b>：與 takes 並列，James → <span class="en">gets</span>。` },
+      { wrong:"the medical inspection", right:"a medical check-up", cat:"word", why:`用字：健康檢查是 <span class="en">a medical check-up</span>；inspection 多指檢查物品／建築，泛指一次檢查用 a。` },
+      { wrong:"happines", right:"happy", cat:"word", why:`用字：更多快樂回憶 → <span class="en">more happy memories</span>。（happiness 名詞要雙 s，但這裡用形容詞 happy 更順）` },
+      { wrong:"memory", right:"memories", cat:"gram", why:`單複數：回憶不只一個 → <span class="en">memories</span>（複數）。` },
+      { wrong:"cases. I believe", right:"cases, I believe", cat:"stru", why:`<b>逗號連接（老毛病）</b>：<span class="en">despite the fact… in many cases, I believe…</span> 是同一句，中間用逗號不是句號。` },
+      { wrong:"improve", right:"improving", cat:"gram", why:`動詞當主詞要變動名詞：<span class="en">improving</span> people's life expectancy is…（第 2 篇也錯過同型）。` },
+      { wrong:"need", right:"needs", cat:"gram", why:`<b>第三人稱＋s（頭號罩門）</b>：everyone 視為單數 → <span class="en">needs</span>。` },
+      { wrong:"healthy", right:"health", cat:"word", why:`詞形：介系詞 to 後接名詞 → pay attention to their own <span class="en">health</span>（名詞），不是 healthy（形容詞）。` },
+    ]},
+
+  { title:"該在完成學業前結婚嗎？", pid:"2026/08/07", type:"WE",
+    text:`<p>It is generally true that [[1]] getting married before completing studies has become a matter of [[2]] over the years. It has caused great controversy and [[3]] public attention. Some people are of the opinion that students [[4]] married before finishing studies has more advantages, while others hold the [[5]] that getting [[6]] too early can [[7]] more drawbacks. I tend to agree more with the latter and will discuss this further below.</p>
+<p>It has to be admitted that people are willing to get married before completing studies, and one argument in favor of this can be that people can stay with their friends and family [[8]]. If people get married early then this can help improve family [[9]] [[10]] feeling of belonging. As a result, it is unsurprising that people can get higher levels of emotional and physical wellbeing.</p>
+<p>On the other hand, I [[11]] believe that getting [[12]] [[13]] early has more disadvantages, and one compelling reason can be that [[14]] to stress and anxiety. A pertinent case in point is James who studies at a world-renowned and prestigious university. As James gets married early, he feels frustrated and isolated because he finds it's difficult to achieve work-life balance. In other words, he suffers from [[15]] like depression and autism.</p>
+<p>In conclusion, despite the fact that the counterargument may hold true in many cases, I believe that getting married [[16]] early has more [[17]]. It is crucial that college students should finish their studies before they get married.</p>`,
+    blanks:[
+      { wrong:"if", right:"（刪掉 if）", cat:"stru", why:`模板固定句 <span class="en">It is generally true that [主題] has become...</span>，主詞直接接，別多一個 <span class="en">if</span>。` },
+      { wrong:"conern", right:"concern", cat:"mech", why:`拼字：<span class="en">con·cern</span>。` },
+      { wrong:"captures", right:"captured", cat:"gram", why:`時態：模板是 <span class="en">has caused... and captured</span>（過去分詞並列），用 <span class="en">captured</span>。` },
+      { wrong:"get", right:"getting", cat:"gram", why:`動名詞當主詞：<span class="en">students getting married... has more advantages</span>，動詞原形不能當主詞（第 2、4 篇也錯過同型）。` },
+      { wrong:"viwe", right:"view", cat:"mech", why:`拼字（<b>字母顛倒</b>）：<span class="en">view</span>。` },
+      { wrong:"marriage", right:"married", cat:"word", why:`詞形：<span class="en">get married</span>（married 是形容詞/過去分詞）；marriage 是名詞「婚姻」。` },
+      { wrong:"casue", right:"cause", cat:"mech", why:`拼字（<b>字母顛倒</b>）：<span class="en">cause</span>。` },
+      { wrong:"more closer", right:"closer", cat:"gram", why:`比較級不能疊字：<span class="en">closer</span> 已是比較級，別再加 more（more closer 是<b>雙重比較</b>）。` },
+      { wrong:"relationships. In turn leading to let people have", right:"relationships, in turn leading to people having", cat:"stru", why:`兩個問題：①<span class="en">in turn leading to...</span> 是接前句的，用逗號別斷成片段（<b>你的老毛病</b>）②<span class="en">leading to</span> 後接動名詞、且別多 <span class="en">let</span> → <span class="en">leading to people having</span>。` },
+      { wrong:"stronger", right:"a stronger", cat:"gram", why:`冠詞：feeling 可數單數，前要 <span class="en">a</span> → <span class="en">a stronger feeling of belonging</span>。` },
+      { wrong:"frimly", right:"firmly", cat:"mech", why:`拼字（<b>字母顛倒</b>）：<span class="en">firm·ly</span>。` },
+      { wrong:"marriage", right:"married", cat:"word", why:`詞形：<span class="en">getting married too early</span>（本篇第 2 次，marriage→married）。` },
+      { wrong:"to", right:"too", cat:"word", why:`<span class="en">too early</span>＝太早（兩個 o）；<span class="en">to</span> 是介系詞，別搞混（第 3 篇也錯過）。` },
+      { wrong:"lead", right:"it leads", cat:"gram", why:`缺主詞＋第三單：<span class="en">one compelling reason... is that it leads to stress</span>（補主詞 it，動詞加 s）。` },
+      { wrong:"a serious mental health issue like depression and autism", right:"serious mental health issues like depression and anxiety", cat:"gram", why:`①冠詞＋複數：<span class="en">serious mental health issues</span>（不加 a、用複數）②內容：<span class="en">autism</span>（自閉症）是先天疾病、跟早婚無關，改 <span class="en">anxiety</span>（焦慮）才切題。` },
+      { wrong:"to", right:"too", cat:"word", why:`<span class="en">too early</span>（本篇第 2 次 to→too，列入黑名單）。` },
+      { wrong:"drawbaks", right:"drawbacks", cat:"mech", why:`拼字：<span class="en">draw·backs</span>（缺 c）。` },
+    ]},
+];
+
+// ---------- state ----------
+const pillBox = document.getElementById('pills');
+const cnt = document.getElementById('cnt');
+const idxList = document.getElementById('idxList');
+const indexView = document.getElementById('indexView');
+const detailView = document.getElementById('detailView');
+const detailBody = document.getElementById('detailBody');
+const posEl = document.getElementById('pos');
+let filter = 'all';
+let current = 0;
+
+const allErr = DATA.flatMap(p => p.blanks);
+const catCount = {}; allErr.forEach(b => catCount[b.cat] = (catCount[b.cat]||0)+1);
+const total = allErr.length;
+
+// diagnosis (dynamic): biggest bucket + basic-accuracy framing
+const order = Object.keys(CAT);
+let maxK = order[0]; order.forEach(k => { if((catCount[k]||0) > (catCount[maxK]||0)) maxK = k; });
+const maxN = catCount[maxK]||0, maxPct = Math.round(maxN/total*100);
+const basic = (catCount.mech||0)+(catCount.gram||0);
+const basicPct = Math.round(basic/total*100);
+const essayWord = DATA.length>1 ? `累積 ${DATA.length} 篇、` : '這篇';
+document.getElementById('diagHead').innerHTML =
+  `🩺 弱點診斷 — ${essayWord}共 ${total} 個錯，最大破口是「<span class="em">${CAT[maxK].name} ${maxN} 個 (${maxPct}%)</span>」`;
+document.getElementById('diagBar').innerHTML =
+  order.map(k => { const n = catCount[k]||0; if(!n) return '';
+    return `<span class="c-${k}" style="flex:${n}" title="${CAT[k].name} ${n}">${CAT[k].name.slice(0,2)} ${n}</span>`; }).join('');
+
+// per-essay trend (only when >1 essay)
+if(DATA.length>1){
+  const perEssay = DATA.map(p => { const c={}; p.blanks.forEach(b=>c[b.cat]=(c[b.cat]||0)+1); return c; });
+  const trendHTML = order.filter(k => (catCount[k]||0)>0).map(k=>{
+    const seq = perEssay.map(c=>c[k]||0).join('→');
+    return `<span class="tg"><i class="c-${k}"></i>${CAT[k].name} <b>${seq}</b></span>`;
+  }).join('');
+  document.getElementById('trend').innerHTML =
+    `<span class="th">📈 跨篇趨勢（第1篇→第2篇…，數字越低越好）</span>${trendHTML}`;
+}
+
+document.getElementById('take').innerHTML =
+  `💡 <b>複習策略：</b>拼字＋文法屬於「基礎準確度」，佔了 <b>${basic}/${total}（${basicPct}%）</b>，是 PTE 獨立扣分的地方。①拼字：頁尾黑名單天天默寫 ②文法盯：主謂一致、單複數、冠詞 a/the、被動 be+p.p.、以及<b>動詞形式</b>（作主詞用 <span class="en">Ving</span>、able to+原形、by/介系詞+<span class="en">Ving</span>）③用字搭配：<span class="en">pay attention to</span>、<span class="en">develop the economy</span>、rather <span class="en">than</span>。改完根因後 → 到「② 動手改」親手改破句 → 考前用「③ 考前掃」。`;
+
+// 頁尾黑名單（吃共用 BLACKLIST，唯一一份）
+document.getElementById('blFoot').textContent = '拼字黑名單天天默：' + BLACKLIST.join('・') + '。';
+
+function pill(key,label,n){ return `<div class="pill" data-k="${key}">${label}<span class="n">${n}</span></div>`; }
+let ph = pill('all','全部', total);
+order.forEach(k => ph += pill(k, CAT[k].name, catCount[k]||0));
+pillBox.innerHTML = ph;
+pillBox.querySelector('[data-k="all"]').classList.add('active');
+
+function blankInline(b, i, quiz){
+  const n = i+1;
+  if(quiz) return `<span class="g q"><sup>${n}</sup><span class="blk">＿＿</span></span>`;
+  return `<span class="g"><sup>${n}</sup><s>${b.wrong}</s><b>${b.right}</b></span>`;
+}
+function passageHTML(p, quiz){
+  let html = p.text;
+  p.blanks.forEach((b,i)=> html = html.replace(`[[${i+1}]]`, blankInline(b,i,quiz)));
+  return html;
+}
+function primaryCat(p){
+  const c={}; p.blanks.forEach(b=>c[b.cat]=(c[b.cat]||0)+1);
+  return Object.keys(c).sort((a,b)=>c[b]-c[a])[0];
+}
+function badgesFor(p){
+  return order.filter(k=>p.blanks.some(b=>b.cat===k))
+    .map(k=>`<span class="badge b-${k}">${CAT[k].name} ${p.blanks.filter(b=>b.cat===k).length}</span>`).join('');
+}
+
+// ---------- 目錄頁 ----------
+function renderIndex(){
+  const items = DATA.map((p,i)=>({p,i})).filter(o => filter==='all' || o.p.blanks.some(b=>b.cat===filter));
+  cnt.textContent = `${items.length} 篇 / ${items.reduce((s,o)=>s+o.p.blanks.length,0)} 錯`;
+  idxList.innerHTML = items.map(({p,i})=>`
+    <div class="idxcard ${primaryCat(p)}" data-i="${i}">
+      <div class="chead">
+        <span class="title">📝 ${p.title}</span>
+        ${p.pid?`<span class="pid">${p.pid}</span>`:''}
+        <span class="type">${p.type}</span>
+        <span class="badges">${badgesFor(p)}</span>
+      </div>
+      <div class="idxmeta">共 <b>${p.blanks.length}</b> 個錯 · <span class="go">點我進入複習 →</span></div>
+    </div>`).join('') || `<div class="foot">此類別沒有篇目。</div>`;
+}
+idxList.addEventListener('click', e=>{
+  const c = e.target.closest('.idxcard'); if(!c) return;
+  openDetail(+c.dataset.i);
+});
+
+// ---------- 單篇複習頁 ----------
+function renderDetail(){
+  const p = DATA[current];
+  const quiz = document.body.classList.contains('quiz');
+  posEl.textContent = `第 ${current+1} / ${DATA.length} 篇`;
+  const ex = p.blanks.map((b,i)=>`
+    <li><span class="exn">${i+1}.</span><b class="r">${b.right}</b><s class="w">${b.wrong}</s>
+    <span class="badge b-${b.cat}">${CAT[b.cat].name}</span>
+    <span class="wy">${b.why}</span></li>`).join('');
+  detailBody.innerHTML = `<div class="card ${primaryCat(p)}">
+      <div class="chead">
+        <span class="title">📝 ${p.title}</span>
+        ${p.pid?`<span class="pid">${p.pid}</span>`:''}
+        <span class="type">${p.type}</span>
+        <span class="badges">${badgesFor(p)}</span>
+      </div>
+      <div class="passage">${passageHTML(p, quiz)}</div>
+      <span class="reveal" onclick="this.closest('.card').classList.add('open')">👁 顯示修改與解析</span>
+      <ol class="ex">${ex}</ol>
+    </div>`;
+  document.getElementById('prevBtn').disabled = current===0;
+  document.getElementById('nextBtn').disabled = current===DATA.length-1;
+}
+function openDetail(i){
+  current = i;
+  indexView.style.display = 'none';
+  detailView.style.display = '';
+  renderDetail();
+  window.scrollTo(0,0);
+}
+function backToIndex(){
+  detailView.style.display = 'none';
+  indexView.style.display = '';
+  renderIndex();
+  window.scrollTo(0,0);
+}
+function go(delta){
+  const n = current+delta;
+  if(n<0 || n>=DATA.length) return;
+  current = n; renderDetail(); window.scrollTo(0,0);
+}
+document.getElementById('backBtn').onclick = backToIndex;
+document.getElementById('prevBtn').onclick = ()=>go(-1);
+document.getElementById('nextBtn').onclick = ()=>go(1);
+document.addEventListener('keydown', e=>{
+  if(document.getElementById('tab-review').style.display==='none') return;
+  if(detailView.style.display==='none') return;
+  if(e.key==='ArrowLeft') go(-1);
+  else if(e.key==='ArrowRight') go(1);
+  else if(e.key==='Escape') backToIndex();
+});
+
+// ---------- 篩選 + 自測 ----------
+pillBox.addEventListener('click', e=>{
+  const p = e.target.closest('.pill'); if(!p) return;
+  pillBox.querySelectorAll('.pill').forEach(x=>x.classList.remove('active'));
+  p.classList.add('active'); filter = p.dataset.k; renderIndex();
+});
+
+const qBtn = document.getElementById('quizBtn');
+function setQuiz(on){
+  document.body.classList.toggle('quiz', on);
+  qBtn.classList.toggle('off', !on);
+  qBtn.textContent = `🎯 自測模式：${on?'開':'關'}`;
+  localStorage.setItem('we_quiz', on?'1':'0');
+  if(detailView.style.display!=='none') renderDetail();
+}
+qBtn.addEventListener('click', ()=> setQuiz(!document.body.classList.contains('quiz')));
+setQuiz(localStorage.getItem('we_quiz')==='1');
+
+renderIndex();
+})();
+
+/* ═══════════ ② 動手改（錯句重寫）═══════════ */
+(function(){
+const ITEMS = [
+  { orig:`Some people are of the opinion that children <s>is</s> an <s>individual</s>, who should take <s>it's</s> own <s>responsible</s>.`,
+    tags:["gram","word"],
+    model:`Some people are of the opinion that children <b>are individuals</b>, who should take <b>their own responsibility</b>.`,
+    fixes:[`children <b>are</b>（主謂一致，複數）`, `an individual → <b>individuals</b>（補語跟主詞一起複數）`, `it's → <b>their</b>（指 children）`, `responsible → <b>responsibility</b>（take 後接名詞）`] },
+
+  { orig:`If children grow up to 18 years, then they must take the <s>resposible</s> for <s>themself</s>, in turn leading to <s>become</s> a fully mature adult.`,
+    tags:["gram","mech"],
+    model:`...they must take <b>responsibility</b> for <b>themselves</b>, in turn leading to <b>becoming</b> a fully mature adult.`,
+    fixes:[`resposible → <b>responsibility</b>（拼字＋詞形，且泛指不加 the）`, `themself → <b>themselves</b>`, `leading to <b>becoming</b>（to 是介系詞，動詞加 ing）`] },
+
+  { orig:`...all the <s>bahaviors</s> <s>from</s> child need their parents to take <s>the</s> responsibility.`,
+    tags:["mech","gram"],
+    model:`...all the <b>behaviours of a</b> child need their parents to take responsibility.`,
+    fixes:[`bahaviors → <b>behaviours</b>（拼字）`, `from child → <b>of a</b> child（介系詞＋冠詞）`, `take <b>responsibility</b>（泛指不加 the）`] },
+
+  { orig:`I firmly believe that parents <s>shuld held</s> legally responsible for their children <s>in different level</s>.`,
+    tags:["gram","mech"],
+    model:`I firmly believe that parents <b>should be held</b> legally responsible for their children <b>at different levels</b>.`,
+    fixes:[`shuld → <b>should</b>（拼字）`, `should <b>be held</b>（被動要 be + p.p.）`, `in different level → <b>at different levels</b>（介系詞＋複數）`] },
+
+  { orig:`A pertinent case in point is James, who works at <s>world</s>-renowned and prestigious firm.`,
+    tags:["gram"],
+    model:`...James, who works at <b>a</b> world-renowned and prestigious firm.`,
+    fixes:[`firm 是單數可數名詞，前面要冠詞 → <b>a</b> world-renowned ... firm`] },
+
+  { orig:`As James <s>has a great parents taught</s> him <s>a good manner</s> when he was a child, he <s>is able to know</s> how to interact with people.`,
+    tags:["stru","gram"],
+    model:`As James's <b>great parents taught</b> him <b>good manners</b> when he was a child, he <b>knows</b> how to interact with people.`,
+    fixes:[`「has a great parents taught」句構垮了：改所有格 <b>James's great parents taught…</b>（或 great parents <b>who</b> taught）`, `a great parents → 去掉 a（parents 是複數）`, `a good manner → <b>good manners</b>（禮貌固定複數）`, `is able to know → <b>knows</b>（別堆冗字）`] },
+
+  { orig:`In other words he has the ability to cooperate with different people, <s>this good manner makes him become</s> a <s>succsesful</s> business man.`,
+    tags:["stru","mech"],
+    model:`In other words, he can cooperate with different people. <b>These good manners have made him</b> a <b>successful businessman</b>.`,
+    fixes:[`逗號黏兩句（comma splice）→ 用<b>句號</b>斷開`, `makes him become → <b>have made him</b>（make sb + 名詞，不要多一個 become）`, `succsesful → <b>successful</b>；business man → <b>businessman</b>`] },
+
+  { orig:`I <s>beleive</s> that parents have responsibility <s>to</s> their children, <s>it is crucial that</s> parents should <s>take</s> more attention <s>on</s> teaching their children.`,
+    tags:["word","mech","stru"],
+    model:`I <b>believe</b> that parents have <b>a</b> responsibility <b>for</b> their children<b>;</b> it is crucial that they <b>pay</b> more attention <b>to</b> teaching their children.`,
+    fixes:[`beleive → <b>believe</b>（拼字）`, `responsibility <b>for</b>（搭配）`, `逗號黏兩句 → 用<b>分號</b>或句號`, `take attention → <b>pay</b> attention <b>to</b>（固定搭配）`] },
+
+  { src:"#2", orig:`It is generally true that governments should build more roads <s>or improve public transportation has become</s> a matter of concern over the years.`,
+    tags:["stru"],
+    model:`<b>Whether</b> governments should build more roads or improve public transportation <b>has become</b> a matter of concern over the years.`,
+    fixes:[`「A or B has become…」黏成一句、句子沒主詞：開頭加 <b>Whether</b>（把整個議題當主詞），刪掉「It is generally true that」`, `這是你兩篇都犯的<b>模板黏句</b>老毛病——寫完檢查每句是否只有一組主詞＋動詞`] },
+
+  { src:"#2", orig:`Others hold the view that <s>improve</s> public transportation is more eco-friendly. I tend to <s>be agree</s> more with the latter.`,
+    tags:["gram"],
+    model:`Others hold the view that <b>improving</b> public transportation is more eco-friendly. I tend to <b>agree</b> more with the latter.`,
+    fixes:[`動詞當主詞 → 動名詞 <b>improving</b>`, `<b>agree</b> 本身是動詞，別加 be（去掉 be agree 的 be）`] },
+
+  { src:"#2", orig:`It has to be admitted that <s>build</s> more roads can let drivers save more time during the peak time.`,
+    tags:["gram"],
+    model:`It has to be admitted that <b>building</b> more roads can let drivers save more time during peak hours.`,
+    fixes:[`作主詞用動名詞 <b>building</b>（你這篇動詞主詞錯了 3 次，要特別盯）`, `the peak time → <b>peak hours</b> 更自然`] },
+
+  { src:"#2", orig:`I firmly believe that <s>improve</s> public transportation is the way to develop <s>economic</s> <s>also tp protect</s> the <s>enviroment</s>.`,
+    tags:["gram","word","mech"],
+    model:`I firmly believe that <b>improving</b> public transportation is a way to develop <b>the economy and also</b> protect the <b>environment</b>.`,
+    fixes:[`improve → <b>improving</b>（主詞動名詞）`, `develop <b>the economy</b>（economic 是形容詞，要用名詞）`, `兩個動作要用 <b>and</b> 連接；tp → to`, `enviroment → <b>environment</b>（拼字）`] },
+
+  { src:"#2", orig:`As James chose to take the MRT <s>systme</s> to work, rather <s>then</s> driving <s>to company</s>, he is able to <s>saving</s> a lot of money on <s>gaslion</s>.`,
+    tags:["mech","word","gram"],
+    model:`As James chose to take the MRT <b>system</b> to work rather <b>than</b> driving <b>to work</b>, he is able to <b>save</b> a lot of money on <b>gasoline</b>.`,
+    fixes:[`systme → <b>system</b>；gaslion → <b>gasoline</b>（拼字）`, `rather <b>than</b>（比較，不是 then）`, `drive <b>to work</b>（慣用）`, `be able to <b>save</b>（able to + 原形）`] },
+
+  { src:"#2", orig:`In other words, James is no longer the <s>soucre</s> of air pollution by <s>take</s> the MRT to work.`,
+    tags:["mech","gram"],
+    model:`In other words, James is no longer a <b>source</b> of air pollution, because he takes the MRT to work.`,
+    fixes:[`soucre → <b>source</b>（拼字）`, `by <b>taking</b>（介系詞 by + 動名詞）；或改成 because 子句更清楚`] },
+
+  { src:"#2", orig:`It is crucial that every citizen <s>have the action</s> to protect the <s>enviroment</s>.`,
+    tags:["gram","mech"],
+    model:`It is crucial that every citizen <b>takes action</b> to protect the <b>environment</b>.`,
+    fixes:[`every citizen <b>takes</b>（主謂一致，every + 單數）`, `<b>take action</b>（採取行動，不加 the、不是 have）`, `enviroment → <b>environment</b>`] },
+];
+
+const TAGNAME = { mech:"拼字", gram:"文法", word:"用字", stru:"句構" };
+const list = document.getElementById('rwList');
+document.getElementById('rwCnt').textContent = ITEMS.length + " 句";
+list.innerHTML = ITEMS.map((it,i)=>`
+  <div class="rwcard">
+    <div class="num">第 ${i+1} 句 / ${ITEMS.length} <span style="color:#b0561f;border:1px solid #e6cbb0;border-radius:4px;padding:0 5px;margin-left:4px">第 ${(it.src||'#1').replace('#','')} 篇</span></div>
+    <div class="tags">${it.tags.map(t=>`<span class="tag t-${t}">${TAGNAME[t]}</span>`).join('')}</div>
+    <div class="orig">📝 你的原句：${it.orig}</div>
+    <textarea placeholder="在這裡把它改對…"></textarea>
+    <div class="row"><button class="show">👁 顯示參考修改</button></div>
+    <div class="model">
+      <div class="mh">參考修改</div>
+      <div class="mtext">${it.model}</div>
+      <ul class="fixes">${it.fixes.map(f=>`<li>${f}</li>`).join('')}</ul>
+    </div>
+  </div>`).join('');
+
+list.addEventListener('click', e=>{
+  if(e.target.classList.contains('show')) e.target.closest('.rwcard').classList.add('open');
+});
+document.getElementById('revealAll').addEventListener('click', ()=>
+  list.querySelectorAll('.rwcard').forEach(c=>c.classList.add('open')));
+document.getElementById('hideAll').addEventListener('click', ()=>
+  list.querySelectorAll('.rwcard').forEach(c=>c.classList.remove('open')));
+})();
+
+/* ═══════════ ③ 考前掃（文法自檢卡）═══════════ */
+(function(){
+const RULES = [
+  { q:"主詞 → 動詞，單複數對嗎？",
+    egW:"children <s>is</s>", egR:"children <b>are</b>",
+    tip:`主詞複數→動詞複數。尤其 people / children / parents 這種<b>沒 s 但是複數</b>的字最容易漏。第三人稱單數（James / everyone / the camera）動詞要 <span class="en">+s</span> — 頭號罩門。` },
+  { q:"每個可數名詞 → 有沒有 s 或 a / the？",
+    egW:"<s>a</s> good <s>manner</s> ・ works at <s>world</s>-renowned firm",
+    egR:"good <b>manners</b> ・ at <b>a</b> world-renowned firm",
+    tip:`單數可數名詞前一定要有 <span class="en">a/an/the</span> 或所有格；該複數的要加 <span class="en">s</span>。manners（禮貌）固定用複數。` },
+  { q:"被動語態 → 有沒有 be？",
+    egW:"parents should <s>held</s> responsible",
+    egR:"parents should <b>be held</b> responsible",
+    tip:`「被…」= <span class="en">be + 過去分詞</span>。少了 be 就不是被動。be held / be given / be considered。` },
+  { q:"介系詞後面的動詞 → 有沒有變 ing？",
+    egW:"leading to <s>become</s>",
+    egR:"leading to <b>becoming</b>",
+    tip:`介系詞（to / in / of / by / for）後接動詞一律 <span class="en">-ing</span>。動詞當主詞也要 <span class="en">-ing</span>（<span class="en">improving</span> public transportation is...）。注意 <span class="en">to</span> 有時是介系詞不是不定詞：look forward to doing、lead to doing。` },
+  { q:"兩個完整句 → 是不是被逗號黏住了？",
+    egW:"…over the years<s>,</s> it has caused…",
+    egR:"…over the years<b>.</b> It has caused…",
+    tip:`兩句能各自獨立 = 不能只用逗號（comma splice）。改用<b>句號</b>、分號，或加 <span class="en">and / but / because / which</span>。` },
+];
+
+const cardsEl = document.getElementById('ckCards');
+cardsEl.innerHTML = RULES.map((r,i)=>`
+  <div class="ckcard" data-i="${i}">
+    <div class="chk">✓</div>
+    <div class="body2">
+      <div class="q2"><span class="no">${i+1}</span>${r.q}</div>
+      <div class="eg">❌ ${r.egW}</div>
+      <div class="eg">✅ ${r.egR}</div>
+      <div class="tip">💡 ${r.tip}</div>
+    </div>
+  </div>`).join('');
+
+// 黑名單吃共用 BLACKLIST（唯一一份）
+document.getElementById('ckWords').innerHTML = BLACKLIST.map(w=>`<span class="w2">${w}</span>`).join('');
+
+const nEl = document.getElementById('ckN'), fillEl = document.getElementById('ckFill'), doneMsg = document.getElementById('doneMsg');
+function refresh(){
+  const done = cardsEl.querySelectorAll('.ckcard.done').length;
+  nEl.textContent = done;
+  fillEl.style.width = (done/RULES.length*100)+'%';
+  doneMsg.classList.toggle('show', done===RULES.length);
+}
+cardsEl.addEventListener('click', e=>{
+  const c = e.target.closest('.ckcard'); if(!c) return;
+  c.classList.toggle('done'); refresh();
+});
+document.getElementById('ckReset').addEventListener('click', ()=>{
+  cardsEl.querySelectorAll('.ckcard.done').forEach(c=>c.classList.remove('done')); refresh();
+});
+refresh();
+})();
+</script>
+</body>
+</html>

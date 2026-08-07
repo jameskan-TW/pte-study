@@ -92,12 +92,36 @@
   .empty { background:#fff; border:1px dashed #d0d0cc; border-radius:10px; padding:34px 24px; text-align:center; color:#9b9a97; font-size:14px; }
   .empty b { color:#37352f; }
   .foot { color:#9b9a97; font-size:12.5px; margin-top:26px; text-align:center; }
+
+  /* ===== 易錯單字默拼測驗（原 WFD_易錯單字庫 併入）===== */
+  #vquiz { margin-top:34px; }
+  #vquiz h2 { font-size:20px; font-weight:700; margin-bottom:4px; }
+  #vquiz .vqsub { color:#787774; font-size:13.5px; margin-bottom:14px; }
+  #vquiz .vqbar { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:14px; }
+  #vquiz .vqbtn { border:1px solid #d0d0cc; background:#fff; border-radius:7px; padding:6px 13px; font-size:13px; cursor:pointer; }
+  #vquiz .vqbtn:hover { border-color:#2383e2; color:#2383e2; }
+  #vquiz .vqcount { margin-left:auto; color:#9b9a97; font-size:13px; }
+  #vquiz .vitem { background:#fff; border:1px solid #e9e9e7; border-radius:10px; padding:13px 16px; margin-bottom:10px; }
+  #vquiz .vtop { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px; }
+  #vquiz .vzh { font-size:15px; font-weight:700; }
+  #vquiz .vt { font-size:10.5px; color:#787774; background:#f1efe8; border-radius:4px; padding:1px 7px; }
+  #vquiz .vsrc { font-size:13px; color:#787774; margin:2px 0 8px; }
+  #vquiz .vsrc .blk { min-width:60px; border-bottom:2px solid #2383e2; }
+  #vquiz input { font-family:inherit; font-size:15px; padding:6px 10px; border:1px solid #d8d8d4; border-radius:7px; width:240px; max-width:60%; outline:none; }
+  #vquiz input:focus { border-color:#2383e2; }
+  #vquiz input.ok { border-color:#1f7a45; background:#e7f6ec; }
+  #vquiz input.bad { border-color:#c0392b; background:#fdedec; }
+  #vquiz .vchk { margin-left:6px; border:1px solid #d0d0cc; background:#fff; border-radius:6px; padding:6px 12px; font-size:13px; cursor:pointer; }
+  #vquiz .vtrap { font-size:13px; color:#b03050; background:#fdedec; border-radius:7px; padding:6px 10px; margin-top:8px; display:none; }
+  #vquiz .vans { font-size:14px; margin-top:7px; display:none; }
+  #vquiz .vans b { color:#1f7a45; font-size:15px; letter-spacing:.02em; }
+  #vquiz .vadd { background:#e6f1fb; border:1px dashed #2383e2; border-radius:10px; padding:13px 16px; color:#185fa5; font-size:13px; margin-top:14px; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <h1>✍️ WFD 訂正 — 聽寫錯字＋根因複習</h1>
-  <p class="sub">來源：PTE 聽力 Write From Dictation 訂正。每句附<b>完整正確句</b>，打錯的字標成 <s style="color:#c0392b">你打</s> <b style="color:#1f7a45;background:#e7f6ec;padding:0 4px;border-radius:3px">正解</b>，並貼上<b>根因類別</b>。可篩選、可開<b>自測模式</b>把答案藏起來自己想。</p>
+  <p class="sub">來源：PTE 聽力 Write From Dictation 訂正。每句附<b>完整正確句</b>，打錯的字標成 <s style="color:#c0392b">你打</s> <b style="color:#1f7a45;background:#e7f6ec;padding:0 4px;border-radius:3px">正解</b>，並貼上<b>根因類別</b>。可篩選、可開<b>自測模式</b>把答案藏起來自己想。頁面最下方是 <a href="#vquiz" style="color:#2383e2;font-weight:600">🔠 易錯單字默拼測驗</a>（WFD＋WE 罩門字合併字庫）。</p>
 
   <div class="diag">
     <h3 id="diagHead"></h3>
@@ -126,6 +150,20 @@
   <div id="list"></div>
 
   <div class="foot">錯一次是意外，錯兩次是模式。下次聽寫前掃一遍這頁的紅字。</div>
+
+  <!-- ============ 易錯單字默拼測驗（原 WFD_易錯單字庫 併入） ============ -->
+  <div id="vquiz">
+    <h2>🔠 易錯單字默拼測驗</h2>
+    <p class="vqsub">你的專屬拼字庫（WFD ＋ WE 罩門字）· 看中文＋句子默拼，按「對答案」檢查 · 可持續累積</p>
+    <div class="vqbar">
+      <button class="vqbtn" id="vqHint">顯示陷阱提示</button>
+      <button class="vqbtn" id="vqReveal">全部解答</button>
+      <button class="vqbtn" id="vqReset">清空重練</button>
+      <span class="vqcount" id="vqCount"></span>
+    </div>
+    <div id="vqList"></div>
+    <div class="vadd"><b>要加新字？</b> 練 WFD 時把沒把握的字貼給我，我會補進這頁（每個字附中文＋拼錯陷阱＋來源句）。</div>
+  </div>
 </div>
 
 <script>
@@ -363,6 +401,104 @@ function setQuiz(on){
 }
 qBtn.addEventListener('click', ()=> setQuiz(!document.body.classList.contains('quiz')));
 setQuiz(localStorage.getItem('wfdc_quiz')==='1');
+
+/* ═══════════ 易錯單字默拼測驗（原 WFD_易錯單字庫 併入） ═══════════ */
+(function(){
+const VQ=[
+  {w:'tutorials',zh:'輔導課 / 個別教學',tag:'WFD',trap:'tu·tor·i·als — 字尾 -ials，別漏中間的 i；單數 tutorial 加 s',src:'____ are scheduled in the final week of the term.'},
+  {w:'scheduled',zh:'排定、安排（被動）',tag:'WFD',trap:'sch- 開頭有 h（不是 sk-）；字尾 = schedule + d',src:'Tutorials are ____ in the final week of the term.'},
+  {w:'toughest',zh:'最艱難的',tag:'WFD',trap:'tough = t·o·u·g·h（gh 不發音）；最高級 tough + est。別多一個 t（不是 toughtest），別漏 h（不是 tougest）',src:'The ____ part of postgraduate education is funding.'},
+  {w:'inadequately',zh:'不足地、不充分地',tag:'WFD',trap:'in + adequate + ly。adequate = a·de·quate（有 qu）；-ly 前保留 e → adequately（別拼 inadaquately / inadequatly）',src:'...the educational reforms have been ____ implemented'},
+  {w:'implemented',zh:'實施、執行（被動）',tag:'WFD',trap:'im·ple·ment·ed — 中段是 ple（e 不是 i，別拼成 implimented）；+ ed',src:'...the educational reforms have been inadequately ____'},
+  {w:'scientists',zh:'科學家（複數）',tag:'WFD',trap:'sci·en·tists — sc 開頭（c 不發音）；字尾 -tists = tist + s，別漏中間的 t（不是 scientits / sciencists）',src:'Most ____ believe that climate change threatens the lives on earth.'},
+  {w:'captivity',zh:'圈養、囚禁',tag:'WFD',trap:'captive 去 e + ity → cap·tiv·i·ty；字尾 -ity（不是 -ety，別拼 captivety）',src:'Animals raised in ____ behave differently than their wild counterparts.'},
+  {w:'counterparts',zh:'對應的人/物（複數）',tag:'WFD',trap:'counter（有 ou，同「櫃台/相反」字根）+ parts；別漏 ou、別拼成 counterpards',src:'Animals raised in captivity behave differently than their wild ____.'},
+  {w:'principles',zh:'原則（複數）',tag:'WFD',trap:'prin·ci·ples（-ci- 發 s 音）；principle（原則，-le）≠ principal（校長/主要，-pal）；+ s',src:'certain scientific ____ must be learned verbally or by logical deduction.'},
+  {w:'verbally',zh:'口頭地、用言語地',tag:'WFD',trap:'verbal + ly → 兩個 l（verbally），別只寫一個 l',src:'certain scientific principles must be learned ____ or by logical deduction.'},
+  {w:'deduction',zh:'推論、演繹',tag:'WFD',trap:'deduce → de·duc·tion；-ction 結尾（別漏 c：不是 deduion）',src:'...must be learned verbally or by logical ____.'},
+  {w:'examined',zh:'檢視、審查（被動）',tag:'WFD',trap:'examine + d → e·xam·ined；保留 e 後加 d，別漏 i（不是 examind / examed）',src:'the economic status of the early Roman republic will be ____.'},
+  {w:'failure',zh:'失敗',tag:'WFD',trap:'fail + ure → fail·ure；字尾 -ure（不是 -er，別拼 failer / failiure）',src:'organizational ____ is considered from various perspectives in academic literature.'},
+  {w:'various',zh:'各種的',tag:'WFD',trap:'var·i·ous；字尾 -ious，別漏 i（不是 varous / variuos）',src:'...is considered from ____ perspectives in academic literature.'},
+  {w:'perspectives',zh:'觀點（複數）',tag:'WFD',trap:'per·spec·tives — per（不是 pro！）+ spec + tives；別漏中間的 s',src:'...is considered from various ____ in academic literature.'},
+  {w:'literature',zh:'文獻、文學',tag:'WFD',trap:'lit·er·a·ture — e/a/u 三個母音都要（別拼 litrature）；字尾 -ture',src:'...from various perspectives in academic ____.'},
+  {w:'participants',zh:'參與者（複數）',tag:'WFD',trap:'par·ti·ci·pants — ti-ci 中間別漏 i（不是 particpants / participents）；+ s',src:'____ initially select from a range of foundation subjects.'},
+  {w:'initially',zh:'起初、最初',tag:'WFD',trap:'initial + ly → 兩個 l（initially）；in·i·tial 別漏第二個 i（不是 intially / initialy）',src:'Participants ____ select from a range of foundation subjects.'},
+  {w:'foundation',zh:'基礎、地基',tag:'WFD',trap:'found（有 ou）+ ation → foun·da·tion；別漏 ou（不是 fondation）',src:'Participants initially select from a range of ____ subjects.'},
+  {w:'stewardship',zh:'管理職、管家職責',tag:'WFD',trap:'steward（stew + ard）+ ship → stew·ard·ship；別拼 stewartship',src:'...the prestigious election of ____ has strict eligibility criteria.'},
+  {w:'strict',zh:'嚴格的',tag:'WFD',trap:'str·ict — 字尾 -ct，別漏 c（不是 strit）、別寫 strick',src:'...has ____ eligibility criteria.'},
+  {w:'eligibility',zh:'資格、合格',tag:'WFD',trap:'eligible → e·li·gi·bil·i·ty 幾乎全是 i（別寫 elegibility / eligability）；g 發 j 音',src:'...has strict ____ criteria.'},
+  {w:'criteria',zh:'標準（複數，單數 criterion）',tag:'WFD',trap:'cri·te·ri·a — 字尾 -ria；本身已是複數，別加 s（單數才是 criterion）',src:'...has strict eligibility ____.'},
+  {w:'circumstances',zh:'情況、環境（複數）',tag:'WFD',trap:'circum（circ + um，不是 -om-）+ stances → cir·cum·stances；字尾 -stances 用 c（不是 -stanses）',src:'statistical results should be expressed in different ways depending on the ____.'},
+  {w:'mechanics',zh:'力學、機械學',tag:'WFD',trap:'me·chan·ics — ch 發 k 音，別漏 h（不是 mecanics）；mech 是 e（不是 machanics）',src:'classical ____ is sometimes considered as a branch of applied mathematics.'},
+  {w:'applied',zh:'應用的',tag:'WFD',trap:'apply → applied（y 變 ied）；兩個 p（別寫 aplied / applyed）',src:'...considered as a branch of ____ mathematics.'},
+  {w:'mathematics',zh:'數學',tag:'WFD',trap:'ma·the·ma·tics — 中間有 e 別漏（不是 mathmatics）；字尾 -ics 別漏 s',src:'...as a branch of applied ____.'},
+  {w:'accommodation',zh:'住宿、膳宿',tag:'WFD·雙寫',trap:'ac·com·mo·da·tion — cc 雙寫 + mm 雙寫，但 mm 後直接 o-dation，沒有 n（你曾拼 accommondation）',src:'Students are encouraged to think carefully about their ____ needs.'},
+  {w:'recklessness',zh:'魯莽、不顧後果',tag:'WFD',trap:'reck + less + ness — reck 有 k（別漏）；字尾 -ness（你曾拼 reclessnious）',src:'Some people regard it as reforming zeal, while others regard it as ____.'},
+  {w:'sophisticated',zh:'精密的、複雜的',tag:'WFD·反覆卡',trap:'so·phis·ti·ca·ted 五段 — 關鍵中段 phis 之後只有一個 i 再接 cated；別多 i 也別漏 i',src:'We have ____ ways of studying the brain in action.'},
+  {w:'geographical',zh:'地理的（形容詞）',tag:'WFD·詞性',trap:'geography 去 y + ical → geograph+ical；句子要形容詞別只寫名詞 geography',src:'Photography can be very useful to ____ research.'},
+  {w:'correlation',zh:'相關性、關聯',tag:'WFD·雙寫',trap:'co + relate → 雙 r（correlation）；別只寫一個 r（corelation）',src:'Studies showed there is a positive ____ between the two variables.'},
+  {w:'punctuality',zh:'守時、準時',tag:'WFD',trap:'punc + tu + ality — 字根 punct（同 point），不是 punch（你曾拼 punchuality）',src:'When attending a job interview, ____ is the key.'},
+  {w:'architectural',zh:'建築的（形容詞）',tag:'WFD',trap:'architect（archi+tect，tect 有 e）+ ural；別亂序（你曾拼 architrctural）',src:'A good ____ structure should be useful, durable and beautiful.'},
+  {w:'nutritional',zh:'營養的（形容詞）',tag:'WFD·詞性',trap:'nutrition + al；句子要形容詞別只寫名詞 nutrition',src:'Foods containing too much sugar and calories have little or no ____ value.'},
+  {w:'characteristics',zh:'特徵、特性（複數）',tag:'WFD·母音',trap:'char+ac+ter+is+tics — charac 是 a（非 e）、ter 是 e（非 o）；句子 share certain ___ 要複數 s（你曾拼 charectoristic）',src:'Despite their differences, all forms of life share certain ____.'},
+  {w:'communicable',zh:'可傳達的、可溝通的',tag:'WFD',trap:'communicate 去 e + able → communic+able；不是 communicational',src:'The massive accumulation of data was converted into a ____ argument.'},
+  {w:'incorporating',zh:'逐步納入、整合（進行式）',tag:'WFD',trap:'in + corporate 去 e + ing → in·cor·por·at·ing（同 corporation 字根 corpor）',src:'Academic libraries across the world are steadily ____ social media.'},
+  {w:'unsustainable',zh:'無法永續的（形容詞）',tag:'WFD·母音',trap:'un + sus + tain（有 i）+ able；別把 sus→sas、tain→tan（你曾拼 unsastanable）',src:'The marine environment has been destroyed by pollution and ____ practices.'},
+  {w:'collaboration',zh:'合作、協作',tag:'WFD·雙寫',trap:'co + labor + ation → 雙 l（collaboration）；別跟 corporation（公司）搞混',src:'____ between departments is a feature of successful companies.'},
+  {w:'experimental',zh:'實驗的（形容詞）',tag:'WFD',trap:'ex + peri（有 e，p-e-r-i）+ mental；別漏 e 拼成 exprimental',src:'All ____ procedures are outlined in the laboratory manual.'},
+  {w:'further',zh:'進一步、更遠',tag:'WE罩門·漏r',trap:'fur·ther — 漏子音前的 r（你曾拼 futher / furthur）',src:'and will discuss this ____ below'},
+  {w:'large',zh:'大的',tag:'WE罩門·漏r',trap:'lar·ge — 別漏 r（曾拼 lage）',src:'WE 練習'},
+  {w:'despite',zh:'儘管',tag:'WE罩門',trap:'de·spite — 不是 dispect！這個你連錯多次',src:'In conclusion, ____ the fact...'},
+  {w:'convenient',zh:'方便的',tag:'WE罩門',trap:'con·ven·ient（曾拼 convinent）',src:'WE 練習'},
+  {w:'especially',zh:'尤其',tag:'WE罩門',trap:'e·spe·cial·ly（曾拼 espacially）',src:'WE 練習'},
+  {w:'simultaneously',zh:'同時地',tag:'WE罩門',trap:'si·mul·ta·neous·ly（曾拼 simotaniously）',src:'WE 練習'},
+  {w:'evolving',zh:'演進中',tag:'WE罩門·去e',trap:'evolve → evolv + ing，去 e（曾拼 evoloing）',src:'WE 練習'},
+  {w:'irreplaceable',zh:'無可取代的',tag:'WE罩門',trap:'ir·replace·able（曾拼 unreplaceble）',src:'WE 練習'},
+  {w:'renowned',zh:'著名的',tag:'WE罩門',trap:'re·nowned（曾拼 renowing）；模板 world-renowned',src:'who works at a world-____ and prestigious firm'},
+  {w:'people',zh:'人們',tag:'WE罩門·顛倒',trap:'peo·ple — 字母別顛倒（曾拼 poeple / peopel）',src:'WE 練習'},
+  {w:'digital',zh:'數位的',tag:'WE罩門',trap:'di·gi·tal（曾拼 digitial）',src:'WE 練習'},
+  {w:'upgrading',zh:'升級',tag:'WE罩門·顛倒',trap:'up·grad·ing — a/r 別顛倒（曾拼 upgarding）',src:'WE 練習'},
+  {w:'materials',zh:'材料',tag:'WE罩門',trap:'ma·te·ri·als（曾拼 materilas）',src:'WE 練習'},
+  {w:'remotely',zh:'遠端地',tag:'WE罩門',trap:'remote + ly（曾拼 remotly）',src:'WE 練習'},
+  {w:'groceries',zh:'食品雜貨',tag:'WE罩門',trap:'gro·cer·ies（曾拼 grossary）',src:'WE 練習'},
+  {w:'surfing',zh:'瀏覽、衝浪',tag:'WE罩門',trap:'單 f：surf + ing（曾拼 surffing）',src:'WE 練習'}
+];
+
+const vqList=document.getElementById('vqList');
+VQ.forEach((d,i)=>{
+  const el=document.createElement('div');el.className='vitem';
+  el.innerHTML=
+    '<div class="vtop"><span class="vzh">'+d.zh+'</span><span class="vt">'+d.tag+'</span></div>'+
+    '<p class="vsrc">'+d.src.replace('____','<span class="blk"></span>')+'</p>'+
+    '<input id="vqin'+i+'" autocomplete="off" spellcheck="false" placeholder="拼拼看…">'+
+    '<button class="vchk" data-i="'+i+'">對答案</button>'+
+    '<p class="vtrap" id="vqtp'+i+'"><i>陷阱：</i>'+d.trap+'</p>'+
+    '<p class="vans" id="vqan'+i+'"></p>';
+  vqList.appendChild(el);
+});
+
+function vqCheck(i){
+  const inp=document.getElementById('vqin'+i);
+  const ans=document.getElementById('vqan'+i);
+  const correct=inp.value.trim().toLowerCase()===VQ[i].w.toLowerCase();
+  inp.classList.remove('ok','bad');
+  inp.classList.add(correct?'ok':'bad');
+  ans.style.display='block';
+  ans.innerHTML=correct?'<span style="color:#1f7a45">✓ 正確</span>':'正解：<b>'+VQ[i].w+'</b>';
+  document.getElementById('vqtp'+i).style.display='block';
+  vqCount();
+}
+function vqCount(){
+  let ok=0,done=0;
+  VQ.forEach((d,i)=>{const v=document.getElementById('vqin'+i).value.trim();if(v){done++;if(v.toLowerCase()===d.w.toLowerCase())ok++;}});
+  document.getElementById('vqCount').textContent=done?('已測 '+done+'/'+VQ.length+' · 對 '+ok):('共 '+VQ.length+' 字');
+}
+vqList.querySelectorAll('.vchk').forEach(b=>b.onclick=()=>vqCheck(+b.dataset.i));
+document.getElementById('vqHint').onclick=()=>vqList.querySelectorAll('.vtrap').forEach(t=>t.style.display=t.style.display==='block'?'none':'block');
+document.getElementById('vqReveal').onclick=()=>VQ.forEach((d,i)=>{document.getElementById('vqin'+i).value=d.w;vqCheck(i);});
+document.getElementById('vqReset').onclick=()=>VQ.forEach((d,i)=>{const inp=document.getElementById('vqin'+i);inp.value='';inp.classList.remove('ok','bad');document.getElementById('vqan'+i).style.display='none';document.getElementById('vqtp'+i).style.display='none';vqCount();});
+vqCount();
+})();
 </script>
 </body>
 </html>
