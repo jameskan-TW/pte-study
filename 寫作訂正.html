@@ -88,6 +88,15 @@
   .card.open .ex { display:block; }
   .card.open .reveal { display:none; }
 
+  /* 本篇難字＝論點鏈 */
+  .vocab { display:flex; flex-wrap:wrap; align-items:center; gap:6px; background:#f3f6fa; border:1px solid #dde6f0; border-radius:8px; padding:10px 12px; margin-bottom:14px; }
+  .vocab .vt { width:100%; font-size:12px; font-weight:700; color:#2b4a6b; margin-bottom:2px; }
+  .vseg { font-size:11px; font-weight:700; color:#fff; background:#8a97a8; border-radius:4px; padding:2px 7px; }
+  .vw { background:#fff; border:1px solid #d8e2ee; border-radius:6px; padding:3px 9px; font-size:13px; cursor:pointer; user-select:none; }
+  .vw b { font-family:"SF Mono",Menlo,Consolas,monospace; font-size:12.5px; color:#2b4a6b; font-weight:700; }
+  .vw i { font-style:normal; color:#787774; font-size:12px; margin-left:6px; }
+  body.quiz .vw:not(.on) b { color:transparent; background:#dcdcd8; border-radius:4px; }
+
   .good { background:#eef8f1; border:1px solid #cde9d6; border-radius:10px; padding:13px 18px; margin-bottom:14px; font-size:13.5px; color:#2a6a41; border-left:4px solid #1f7a45; }
   .good b { color:#1f7a45; }
   .foot { color:#9b9a97; font-size:12.5px; margin-top:26px; text-align:center; }
@@ -346,6 +355,12 @@ const DATA = [
       { wrong:"take", right:"pay", cat:"word", why:`搭配：<span class="en">pay</span> attention（付出注意力），不用 take。` },
       { wrong:"on", right:"to", cat:"word", why:`搭配：pay attention <span class="en">to</span> …（注意力放在…）。` },
       { wrong:"childern", right:"children", cat:"mech", why:`拼字：<span class="en">children</span>（本篇第 2 次錯）。` },
+    ],
+    vocab:[
+      {seg:"開頭"}, {w:"legally responsible",zh:"負法律責任"}, {w:"children's actions",zh:"孩子的行為"}, {w:"controversy",zh:"爭議"},
+      {seg:"讓步：孩子是獨立個體"}, {w:"individuals",zh:"獨立個體"}, {w:"take responsibility",zh:"承擔責任（不加 the）"}, {w:"themselves",zh:"他們自己"}, {w:"a fully mature adult",zh:"完全成熟的大人"}, {w:"behaviours",zh:"行為"},
+      {seg:"主論：父母是第一導師"}, {w:"mentor",zh:"人生導師"}, {w:"good manners",zh:"好教養（固定複數）"}, {w:"interact",zh:"互動"}, {w:"cooperate",zh:"合作（雙 o）"}, {w:"successful",zh:"成功的"},
+      {seg:"結尾"}, {w:"pay attention to",zh:"多關注"},
     ]},
 
   { title:"政府該蓋更多路，還是改善大眾運輸？", pid:"2026/08/05", type:"WE",
@@ -375,6 +390,11 @@ const DATA = [
       { wrong:"take", right:"taking", cat:"gram", why:`介系詞 by 後接動名詞：<span class="en">by taking</span> the MRT。` },
       { wrong:"have the action", right:"takes action", cat:"gram", why:`主謂一致 every citizen <span class="en">takes</span>；搭配 <span class="en">take action</span>（不加 the）。` },
       { wrong:"enviroment", right:"environment", cat:"mech", why:`拼字：<span class="en">environment</span>（本篇第 2 次）。` },
+    ],
+    vocab:[
+      {seg:"讓步：蓋路省時"}, {w:"build more roads",zh:"蓋更多路"}, {w:"reduce travel time",zh:"減少通勤時間"}, {w:"traffic problems",zh:"交通問題（fewer）"}, {w:"urge the government to",zh:"敦促政府"},
+      {seg:"主論：環保"}, {w:"public transportation",zh:"大眾運輸"}, {w:"eco-friendly",zh:"環保的"}, {w:"vehicles",zh:"車輛"}, {w:"source of air pollution",zh:"空污來源"}, {w:"gasoline",zh:"汽油"}, {w:"develop the economy",zh:"發展經濟（名詞）"}, {w:"environment",zh:"環境"},
+      {seg:"結尾"}, {w:"take action",zh:"採取行動（不加 the）"}, {w:"protect",zh:"保護"},
     ]},
 
   { title:"無現金社會 — 信用卡優缺點", pid:"#070004", type:"WE",
@@ -410,6 +430,12 @@ const DATA = [
       { wrong:"shuould", right:"should", cat:"mech", why:`拼字：<span class="en">should</span>（sh-ou-ld，別多打 u）。` },
       { wrong:"develop", right:"developing", cat:"gram", why:`<span class="en">keep + Ving</span>：keep <span class="en">developing</span>（持續做某事）。` },
       { wrong:"relative", right:"relevant", cat:"word", why:`用字：相關的政策用 <span class="en">relevant</span>／<span class="en">related</span>；relative 是「親戚／相對的」。` },
+    ],
+    vocab:[
+      {seg:"開頭"}, {w:"cashless society",zh:"無現金社會"},
+      {seg:"讓步：亂花錢"}, {w:"emotional purchasing",zh:"情緒性消費"}, {w:"without a plan",zh:"沒有規劃"}, {w:"afford the bill",zh:"付得起帳單"}, {w:"a dangerous product",zh:"危險的東西"},
+      {seg:"主論：財務線"}, {w:"benefits",zh:"好處（複數）"}, {w:"track their spending",zh:"追蹤消費"}, {w:"manage their wealth",zh:"管理財富"},
+      {seg:"結尾"}, {w:"drawbacks",zh:"壞處"}, {w:"relevant policy",zh:"相關政策"},
     ]},
 
   { title:"延長人類壽命是福還是禍？", pid:"2026/08/06", type:"WE",
@@ -439,6 +465,12 @@ const DATA = [
       { wrong:"improve", right:"improving", cat:"gram", why:`動詞當主詞要變動名詞：<span class="en">improving</span> people's life expectancy is…（第 2 篇也錯過同型）。` },
       { wrong:"need", right:"needs", cat:"gram", why:`<b>第三人稱＋s（頭號罩門）</b>：everyone 視為單數 → <span class="en">needs</span>。` },
       { wrong:"healthy", right:"health", cat:"word", why:`詞形：介系詞 to 後接名詞 → pay attention to their own <span class="en">health</span>（名詞），不是 healthy（形容詞）。` },
+    ],
+    vocab:[
+      {seg:"開頭"}, {w:"life expectancy",zh:"壽命"}, {w:"a curse",zh:"詛咒"}, {w:"a blessing",zh:"祝福"},
+      {seg:"讓步：不健康地活著"}, {w:"an unhealthy body",zh:"不健康的身體"}, {w:"rely on medical support",zh:"依賴醫療支援"}, {w:"dignity",zh:"尊嚴"},
+      {seg:"主論：家庭線"}, {w:"spend more time with",zh:"花更多時間陪"}, {w:"loved ones",zh:"摯愛的家人"}, {w:"take good care of",zh:"照顧好（不加 a）"}, {w:"a medical check-up",zh:"健康檢查"}, {w:"happy memories",zh:"快樂回憶（複數）"},
+      {seg:"結尾"}, {w:"their own health",zh:"自身健康（名詞）"},
     ]},
 
   { title:"該在完成學業前結婚嗎？", pid:"2026/08/07", type:"WE",
@@ -464,6 +496,12 @@ const DATA = [
       { wrong:"a serious mental health issue like depression and autism", right:"serious mental health issues like depression and anxiety", cat:"gram", why:`①冠詞＋複數：<span class="en">serious mental health issues</span>（不加 a、用複數）②內容：<span class="en">autism</span>（自閉症）是先天疾病、跟早婚無關，改 <span class="en">anxiety</span>（焦慮）才切題。` },
       { wrong:"to", right:"too", cat:"word", why:`<span class="en">too early</span>（本篇第 2 次 to→too，列入黑名單）。` },
       { wrong:"drawbaks", right:"drawbacks", cat:"mech", why:`拼字：<span class="en">draw·backs</span>（缺 c）。` },
+    ],
+    vocab:[
+      {seg:"開頭"}, {w:"getting married",zh:"結婚（動名詞主詞）"}, {w:"completing studies",zh:"完成學業"},
+      {seg:"讓步：早婚的好處"}, {w:"a stronger feeling of belonging",zh:"更強的歸屬感"}, {w:"emotional and physical wellbeing",zh:"身心健康"},
+      {seg:"主論：減壓線反用"}, {w:"stress and anxiety",zh:"壓力與焦慮"}, {w:"frustrated",zh:"沮喪的"}, {w:"isolated",zh:"孤立的"}, {w:"work-life balance",zh:"工作與生活平衡"}, {w:"depression",zh:"憂鬱"},
+      {seg:"結尾"}, {w:"more drawbacks",zh:"更多壞處"},
     ]},
 
   { title:"體驗式學習 vs 正規教育，哪個對學習者更好？", pid:"2026/08/10", type:"WE",
@@ -497,6 +535,12 @@ const DATA = [
       { wrong:"schools", right:"school", cat:"gram", why:`<span class="en">every</span> 後面一定接單數：<span class="en">every school</span>。` },
       { wrong:"pay", right:"pays", cat:"gram", why:`<b>第三人稱＋s（頭號罩門）</b>：every school 視為單數 → <span class="en">pays</span>。` },
       { wrong:"lecture", right:"lectures", cat:"gram", why:`單複數：可數名詞泛指用複數 → <span class="en">formal lectures</span>。` },
+    ],
+    vocab:[
+      {seg:"開頭"}, {w:"experiential learning",zh:"體驗式學習"}, {w:"formal education",zh:"正規教育（不可數）"},
+      {seg:"讓步：效率線"}, {w:"improve efficiency",zh:"提升效率"}, {w:"boost productivity",zh:"提高生產力（名詞）"}, {w:"retain more information",zh:"記住更多資訊"}, {w:"saving significant time",zh:"省下大量時間"},
+      {seg:"主論：理論＋實務"}, {w:"theoretical",zh:"理論的"}, {w:"practical knowledge",zh:"實務知識"}, {w:"a traditional classroom setting",zh:"傳統課堂環境"}, {w:"concentrate",zh:"專注"}, {w:"stay focused",zh:"保持專注（形容詞）"}, {w:"academic performance",zh:"學業表現"}, {w:"future prospects",zh:"未來前景"},
+      {seg:"結尾"}, {w:"tangible",zh:"有形的"}, {w:"intangible",zh:"無形的"}, {w:"formal lectures",zh:"正規課堂（複數）"},
     ]},
 ];
 
@@ -589,6 +633,9 @@ idxList.addEventListener('click', e=>{
   const c = e.target.closest('.idxcard'); if(!c) return;
   openDetail(+c.dataset.i);
 });
+detailBody.addEventListener('click', e=>{
+  const v = e.target.closest('.vw'); if(v) v.classList.toggle('on');
+});
 
 // ---------- 單篇複習頁 ----------
 function renderDetail(){
@@ -599,6 +646,12 @@ function renderDetail(){
     <li><span class="exn">${i+1}.</span><b class="r">${b.right}</b><s class="w">${b.wrong}</s>
     <span class="badge b-${b.cat}">${CAT[b.cat].name}</span>
     <span class="wy">${b.why}</span></li>`).join('');
+  const vocab = (p.vocab||[]).length ? `<div class="vocab">
+      <span class="vt">📚 本篇難字＝論點鏈（照順序掃一遍就是複習論點；自測模式遮英文，點卡片翻開）</span>
+      ${p.vocab.map(x => x.seg
+        ? `<span class="vseg">${x.seg}</span>`
+        : `<span class="vw"><b>${x.w}</b><i>${x.zh}</i></span>`).join('')}
+    </div>` : '';
   detailBody.innerHTML = `<div class="card ${primaryCat(p)}">
       <div class="chead">
         <span class="title">📝 ${p.title}</span>
@@ -606,6 +659,7 @@ function renderDetail(){
         <span class="type">${p.type}</span>
         <span class="badges">${badgesFor(p)}</span>
       </div>
+      ${vocab}
       <div class="passage">${passageHTML(p, quiz)}</div>
       <span class="reveal" onclick="this.closest('.card').classList.add('open')">👁 顯示修改與解析</span>
       <ol class="ex">${ex}</ol>
