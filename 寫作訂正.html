@@ -272,7 +272,9 @@ const BLACKLIST = [
   "believe","conclusion","interact","cooperate","successful","mentor","behaviour",
   "individuals","themselves","environment","vehicles","system","gasoline","source",
   "government","traffic","easily","planning","dangerous","people","should","true",
-  "concern","view","cause","firmly","drawbacks","despite","further","large"
+  "concern","view","cause","firmly","drawbacks","despite","further","large",
+  "discuss","better","theoretical","prefer","classroom","setting","concentrate",
+  "tangible","intangible","prospects"
 ];
 
 /* ═══════════ 分頁切換（支援 #review / #rewrite / #check 直達）═══════════ */
@@ -462,6 +464,39 @@ const DATA = [
       { wrong:"a serious mental health issue like depression and autism", right:"serious mental health issues like depression and anxiety", cat:"gram", why:`①冠詞＋複數：<span class="en">serious mental health issues</span>（不加 a、用複數）②內容：<span class="en">autism</span>（自閉症）是先天疾病、跟早婚無關，改 <span class="en">anxiety</span>（焦慮）才切題。` },
       { wrong:"to", right:"too", cat:"word", why:`<span class="en">too early</span>（本篇第 2 次 to→too，列入黑名單）。` },
       { wrong:"drawbaks", right:"drawbacks", cat:"mech", why:`拼字：<span class="en">draw·backs</span>（缺 c）。` },
+    ]},
+
+  { title:"體驗式學習 vs 正規教育，哪個對學習者更好？", pid:"2026/08/10", type:"WE",
+    text:`<p>It is generally true that [[1]] experiential learning can work better than formal education has become a matter of concern over the [[2]] caused great controversy and captured public attention. Some people are of the opinion that experiential learning has more benefits, while others hold the view that formal education is a better way for learners. I tend to agree more with the latter and will [[3]] this further below.</p>
+<p>It has to be admitted that experiential learning has some advantages and one argument in favor of this view can be that experiential learning can improve efficiency and boost [[4]]. If we adopt experiential learning then the learners can retain [[5]], in turn leading to [[6]]. As a result, it is unsurprising that more parents [[7]] experiential learning.</p>
+<p>On the other hand, I firmly believe that formal education is a [[8]] way for learners and one compelling reason is that it helps students to learn [[9]] and practical knowledge. A pertinent case in point is James, who studies at a world-renowned and prestigious university. As James [[10]] [[11]] [[12]] [[13]] is able to [[14]] on the materials and stay [[15]] in the lecture. In other words, he has outstanding academic performance and [[16]] better future [[17]].</p>
+<p>In conclusion, despite the fact that the counterargument may hold true in many cases, I believe that formal [[18]] [[19]] more [[20]] and [[21]] [[22]] is crucial that every [[23]] still [[24]] attention to formal [[25]].</p>`,
+    blanks:[
+      { wrong:"if", right:"whether", cat:"stru", why:`主詞子句是「A 是否比 B 好」→ 用 <span class="en">whether</span> 開頭：<span class="en">whether experiential learning works better than formal education has become...</span>；if 子句不能當主詞（上一篇才多打過 if，同一個坑）。` },
+      { wrong:"years, it has", right:"years. It has", cat:"stru", why:`<b>逗號黏兩句（comma splice，老毛病）</b>：模板本來就是兩句 —— <span class="en">...over the years. It has caused...</span>。第 1 篇在一模一樣的位置錯過。` },
+      { wrong:"disscuss", right:"discuss", cat:"mech", why:`拼字：<span class="en">dis·cuss</span>，dis 只有一個 s（結尾才是雙 s）。` },
+      { wrong:"productively", right:"productivity", cat:"word", why:`詞形：boost 後接名詞 → <span class="en">boost productivity</span>（效率線進階句 <span class="en">improve efficiency and boost productivity</span>）；productively 是副詞。` },
+      { wrong:"more information better", right:"more information", cat:"word", why:`一句別堆兩個比較詞：<span class="en">retain more information</span> 或 <span class="en">retain information better</span> 擇一。` },
+      { wrong:"result significant time-save", right:"saving significant time", cat:"gram", why:`<span class="en">leading to</span> 後接動名詞（to 是介系詞，老規則）→ <span class="en">leading to saving significant time</span>；另外 <span class="en">time-save</span> 不是英文字，動詞片語是 <span class="en">save time</span>。` },
+      { wrong:"accept to", right:"accept", cat:"word", why:`<span class="en">accept</span> 是及物動詞，直接接受詞：<span class="en">accept experiential learning</span>；別跟 <span class="en">agree to</span> 混。` },
+      { wrong:"batter", right:"better", cat:"mech", why:`拼字：<span class="en">bet·ter</span>，第一個母音是 e；<span class="en">batter</span> 是「麵糊」，是另一個字。` },
+      { wrong:"theoratical", right:"theoretical", cat:"mech", why:`拼字：<span class="en">the·o·ret·i·cal</span>（theory → theoretical，中間是 ret 不是 rat）。` },
+      { wrong:"preffers", right:"prefers", cat:"mech", why:`拼字：<span class="en">pre·fer</span> 只有一個 f。（第三人稱 +s 你有記得，讚）` },
+      { wrong:"traditional", right:"a traditional", cat:"gram", why:`冠詞：setting 是可數單數 → <span class="en">a traditional classroom setting</span>（冠詞是你的固定罩門）。` },
+      { wrong:"classrom", right:"classroom", cat:"mech", why:`拼字：<span class="en">class + room</span>，room 兩個 o。` },
+      { wrong:"seeting he", right:"setting, he", cat:"mech", why:`①拼字：<span class="en">set·ting</span>（e 只有一個；<span class="en">classroom setting</span>＝課堂環境）②<span class="en">As</span> 子句結束要加逗號再接主句。` },
+      { wrong:"concrate", right:"concentrate", cat:"mech", why:`拼字：<span class="en">con·cen·trate</span>，中間的 cen 別吞掉。` },
+      { wrong:"focus", right:"focused", cat:"gram", why:`<span class="en">stay + 形容詞</span>：<span class="en">stay focused</span>（保持專注）；focus 是動詞。` },
+      { wrong:"have", right:"has", cat:"gram", why:`<b>第三人稱＋s（頭號罩門）</b>：主詞 he，與前面 <span class="en">has outstanding...</span> 並列 → <span class="en">and has better...</span>。` },
+      { wrong:"prosepectives", right:"prospects", cat:"word", why:`用字：「前景」是 <span class="en">prospects</span> → <span class="en">better future prospects</span>；prosepectives 不是英文字（<span class="en">perspectives</span> 是「觀點」，在這裡也不對）。` },
+      { wrong:"educations", right:"education", cat:"gram", why:`education 泛指「教育」不可數，不加 s。` },
+      { wrong:"have", right:"has", cat:"gram", why:`主謂一致：<span class="en">formal education</span>（單數）→ <span class="en">has</span>（本篇第 2 次 have/has 錯）。` },
+      { wrong:"tangiable", right:"tangible", cat:"mech", why:`拼字：<span class="en">tan·gi·ble</span>，結尾 -gible 不是 -giable。` },
+      { wrong:"intangiasble", right:"intangible", cat:"mech", why:`拼字：<span class="en">in + tangible</span>，中間多塞了 as。` },
+      { wrong:"benefits, it", right:"benefits. It", cat:"stru", why:`<b>逗號黏兩句（本篇第 2 次）</b>：<span class="en">...benefits. It is crucial that...</span> 模板就是獨立兩句。` },
+      { wrong:"schools", right:"school", cat:"gram", why:`<span class="en">every</span> 後面一定接單數：<span class="en">every school</span>。` },
+      { wrong:"pay", right:"pays", cat:"gram", why:`<b>第三人稱＋s（頭號罩門）</b>：every school 視為單數 → <span class="en">pays</span>。` },
+      { wrong:"lecture", right:"lectures", cat:"gram", why:`單複數：可數名詞泛指用複數 → <span class="en">formal lectures</span>。` },
     ]},
 ];
 
