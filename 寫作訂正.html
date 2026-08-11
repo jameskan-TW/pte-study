@@ -327,7 +327,7 @@ const DATA = [
       { wrong:"reponsible", right:"responsible", cat:"mech", why:`拼字。這個字全文拼錯 3 次（responsible / responsibility）——最該優先攻下的字。` },
       { wrong:"act", right:"actions", cat:"word", why:`children's <span class="en">actions</span>（行為，複數）較自然；act 單數在此偏「單一動作/法案」。` },
       { wrong:"becmoe", right:"become", cat:"mech", why:`拼字：<span class="en">become</span>。` },
-      { wrong:"years, it has", right:"years. It has", cat:"stru", why:`<b>逗號連接兩個完整句（comma splice）</b>：用句號或 and 斷開。這個毛病本篇出現不只一次，要特別留意。` },
+      { wrong:"years, it has", right:"years, and it has", cat:"stru", why:`<b>逗號連接兩個完整句（comma splice）</b>：光逗號不能連兩句，要補 <span class="en">and</span>（或改句號）。模板開頭本來就有 and：<span class="en">...over the years, and this has caused...</span>。這個毛病本篇出現不只一次，要特別留意。` },
       { wrong:"controvesy", right:"controversy", cat:"mech", why:`拼字：<span class="en">controversy</span>。` },
       { wrong:"is", right:"are", cat:"gram", why:`主謂一致：主詞 children（複數）→ <span class="en">are</span>。` },
       { wrong:"individual", right:"individuals", cat:"gram", why:`單複數：children are <span class="en">individuals</span>（主詞複數，補語也複數）。` },
@@ -475,9 +475,9 @@ const DATA = [
 
   { title:"該在完成學業前結婚嗎？", pid:"2026/08/07", type:"WE",
     text:`<p>It is generally true that [[1]] getting married before completing studies has become a matter of [[2]] over the years. It has caused great controversy and [[3]] public attention. Some people are of the opinion that students [[4]] married before finishing studies has more advantages, while others hold the [[5]] that getting [[6]] too early can [[7]] more drawbacks. I tend to agree more with the latter and will discuss this further below.</p>
-<p>It has to be admitted that people are willing to get married before completing studies, and one argument in favor of this can be that people can stay with their friends and family [[8]]. If people get married early then this can help improve family [[9]] [[10]] feeling of belonging. As a result, it is unsurprising that people can get higher levels of emotional and physical wellbeing.</p>
-<p>On the other hand, I [[11]] believe that getting [[12]] [[13]] early has more disadvantages, and one compelling reason can be that [[14]] to stress and anxiety. A pertinent case in point is James who studies at a world-renowned and prestigious university. As James gets married early, he feels frustrated and isolated because he finds it's difficult to achieve work-life balance. In other words, he suffers from [[15]] like depression and autism.</p>
-<p>In conclusion, despite the fact that the counterargument may hold true in many cases, I believe that getting married [[16]] early has more [[17]]. It is crucial that college students should finish their studies before they get married.</p>`,
+<p>It has to be admitted that [[8]], and one argument in favor of this can be that people can stay [[9]]. If people get married early then this can help improve family [[10]] [[11]] feeling of belonging. As a result, it is unsurprising that people can get higher levels of emotional and physical wellbeing.</p>
+<p>On the other hand, I [[12]] believe that getting [[13]] [[14]] early has more disadvantages, and one compelling reason can be that [[15]] to stress and anxiety. A pertinent case in point is James who studies at a world-renowned and prestigious university. As James gets married early, he feels frustrated and isolated because he finds it's difficult to achieve work-life balance. In other words, he suffers from [[16]] like depression and autism.</p>
+<p>In conclusion, despite the fact that the counterargument may hold true in many cases, I believe that getting married [[17]] early has more [[18]]. It is crucial that college students should finish their studies before they get married.</p>`,
     blanks:[
       { wrong:"if", right:"（刪掉 if）", cat:"stru", why:`模板固定句 <span class="en">It is generally true that [主題] has become...</span>，主詞直接接，別多一個 <span class="en">if</span>。` },
       { wrong:"conern", right:"concern", cat:"mech", why:`拼字：<span class="en">con·cern</span>。` },
@@ -486,13 +486,14 @@ const DATA = [
       { wrong:"viwe", right:"view", cat:"mech", why:`拼字（<b>字母顛倒</b>）：<span class="en">view</span>。` },
       { wrong:"marriage", right:"married", cat:"word", why:`詞形：<span class="en">get married</span>（married 是形容詞/過去分詞）；marriage 是名詞「婚姻」。` },
       { wrong:"casue", right:"cause", cat:"mech", why:`拼字（<b>字母顛倒</b>）：<span class="en">cause</span>。` },
-      { wrong:"more closer", right:"closer", cat:"gram", why:`比較級不能疊字：<span class="en">closer</span> 已是比較級，別再加 more（more closer 是<b>雙重比較</b>）。` },
+      { wrong:"people are willing to get married before completing studies", right:"getting married before completing studies has some advantages", cat:"stru", why:`讓步段要對齊模板：<span class="en">It has to be admitted that [對方立場] has some advantages</span>。「people are willing to...」跟模板句型接不上（老師改法：照模板寫就不會錯）。` },
+      { wrong:"with their friends and family more closer", right:"closer with their friends and family", cat:"gram", why:`①比較級不能疊字：<span class="en">closer</span> 已是比較級，別再加 more（<b>雙重比較</b>）②語序：closer 要放 stay 後面 → <span class="en">stay closer with their friends and family</span>（老師版）。` },
       { wrong:"relationships. In turn leading to let people have", right:"relationships, in turn leading to people having", cat:"stru", why:`兩個問題：①<span class="en">in turn leading to...</span> 是接前句的，用逗號別斷成片段（<b>你的老毛病</b>）②<span class="en">leading to</span> 後接動名詞、且別多 <span class="en">let</span> → <span class="en">leading to people having</span>。` },
       { wrong:"stronger", right:"a stronger", cat:"gram", why:`冠詞：feeling 可數單數，前要 <span class="en">a</span> → <span class="en">a stronger feeling of belonging</span>。` },
       { wrong:"frimly", right:"firmly", cat:"mech", why:`拼字（<b>字母顛倒</b>）：<span class="en">firm·ly</span>。` },
       { wrong:"marriage", right:"married", cat:"word", why:`詞形：<span class="en">getting married too early</span>（本篇第 2 次，marriage→married）。` },
       { wrong:"to", right:"too", cat:"word", why:`<span class="en">too early</span>＝太早（兩個 o）；<span class="en">to</span> 是介系詞，別搞混（第 3 篇也錯過）。` },
-      { wrong:"lead", right:"it leads", cat:"gram", why:`缺主詞＋第三單：<span class="en">one compelling reason... is that it leads to stress</span>（補主詞 it，動詞加 s）。` },
+      { wrong:"lead", right:"this could lead", cat:"gram", why:`缺主詞：that 子句要有主詞，補 <span class="en">this</span>（指「太早結婚」這件事，比 it 指涉清楚）；<span class="en">could</span> 跟前面 <span class="en">can be that</span> 的推測語氣一致（老師版）→ <span class="en">reason can be that this could lead to stress</span>。` },
       { wrong:"a serious mental health issue like depression and autism", right:"serious mental health issues like depression and anxiety", cat:"gram", why:`①冠詞＋複數：<span class="en">serious mental health issues</span>（不加 a、用複數）②內容：<span class="en">autism</span>（自閉症）是先天疾病、跟早婚無關，改 <span class="en">anxiety</span>（焦慮）才切題。` },
       { wrong:"to", right:"too", cat:"word", why:`<span class="en">too early</span>（本篇第 2 次 to→too，列入黑名單）。` },
       { wrong:"drawbaks", right:"drawbacks", cat:"mech", why:`拼字：<span class="en">draw·backs</span>（缺 c）。` },
@@ -511,7 +512,7 @@ const DATA = [
 <p>In conclusion, despite the fact that the counterargument may hold true in many cases, I believe that formal [[18]] [[19]] more [[20]] and [[21]] [[22]] is crucial that every [[23]] still [[24]] attention to formal [[25]].</p>`,
     blanks:[
       { wrong:"if", right:"whether", cat:"stru", why:`主詞子句是「A 是否比 B 好」→ 用 <span class="en">whether</span> 開頭：<span class="en">whether experiential learning works better than formal education has become...</span>；if 子句不能當主詞（上一篇才多打過 if，同一個坑）。` },
-      { wrong:"years, it has", right:"years. It has", cat:"stru", why:`<b>逗號黏兩句（comma splice，老毛病）</b>：模板本來就是兩句 —— <span class="en">...over the years. It has caused...</span>。第 1 篇在一模一樣的位置錯過。` },
+      { wrong:"years, it has", right:"years, and it has", cat:"stru", why:`<b>逗號黏兩句（comma splice，老毛病）</b>：差一個連接詞——模板開頭是 <span class="en">...over the years, and this has caused...</span>，有 <span class="en">and</span> 才能用逗號連。第 1 篇在一模一樣的位置錯過。` },
       { wrong:"disscuss", right:"discuss", cat:"mech", why:`拼字：<span class="en">dis·cuss</span>，dis 只有一個 s（結尾才是雙 s）。` },
       { wrong:"productively", right:"productivity", cat:"word", why:`詞形：boost 後接名詞 → <span class="en">boost productivity</span>（效率線進階句 <span class="en">improve efficiency and boost productivity</span>）；productively 是副詞。` },
       { wrong:"more information better", right:"more information", cat:"word", why:`一句別堆兩個比較詞：<span class="en">retain more information</span> 或 <span class="en">retain information better</span> 擇一。` },
@@ -531,7 +532,7 @@ const DATA = [
       { wrong:"have", right:"has", cat:"gram", why:`主謂一致：<span class="en">formal education</span>（單數）→ <span class="en">has</span>（本篇第 2 次 have/has 錯）。` },
       { wrong:"tangiable", right:"tangible", cat:"mech", why:`拼字：<span class="en">tan·gi·ble</span>，結尾 -gible 不是 -giable。` },
       { wrong:"intangiasble", right:"intangible", cat:"mech", why:`拼字：<span class="en">in + tangible</span>，中間多塞了 as。` },
-      { wrong:"benefits, it", right:"benefits. It", cat:"stru", why:`<b>逗號黏兩句（本篇第 2 次）</b>：<span class="en">...benefits. It is crucial that...</span> 模板就是獨立兩句。` },
+      { wrong:"benefits, it", right:"benefits, and it", cat:"stru", why:`<b>逗號黏兩句（本篇第 2 次）</b>：補 <span class="en">and</span> 才能連。結尾模板已改成 <span class="en">...benefits, and it is crucial that...</span>（2026/08/11 起），照模板背就不會黏。` },
       { wrong:"schools", right:"school", cat:"gram", why:`<span class="en">every</span> 後面一定接單數：<span class="en">every school</span>。` },
       { wrong:"pay", right:"pays", cat:"gram", why:`<b>第三人稱＋s（頭號罩門）</b>：every school 視為單數 → <span class="en">pays</span>。` },
       { wrong:"lecture", right:"lectures", cat:"gram", why:`單複數：可數名詞泛指用複數 → <span class="en">formal lectures</span>。` },

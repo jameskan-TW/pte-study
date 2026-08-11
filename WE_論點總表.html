@@ -163,7 +163,7 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
       <p><span class="tpl-label">P3 主論段</span>
       <span class="tpl">On the other hand, I firmly believe that</span> <span class="slot">我的立場</span><span class="tpl">, and one compelling reason is that</span> <span class="slot">理由</span>. <span class="tpl">A pertinent case in point is James, who</span> <span class="slot">works／studies</span> <span class="tpl">at a world-renowned and prestigious</span> <span class="slot">firm／university</span>. <span class="tpl">As James</span> <span class="slot">做了什麼</span><span class="tpl">, he is able to</span> <span class="slot">結果（原形動詞）</span>. <span class="tpl">In other words,</span> <span class="slot">含義</span>.</p>
       <p><span class="tpl-label">P4 結論</span>
-      <span class="tpl">In conclusion, despite the fact that the counterargument may hold true in many cases, I believe that</span> <span class="slot">最終立場</span>. <span class="tpl">It is crucial that</span> <span class="slot">建議（原形動詞）</span>.</p>
+      <span class="tpl">In conclusion, despite the fact that the counterargument may hold true in many cases, I believe that</span> <span class="slot">最終立場</span><span class="tpl">, and it is crucial that</span> <span class="slot">建議（原形動詞）</span>.</p>
     </div>
   </div>
 </div>
@@ -934,7 +934,7 @@ function buildEssay(e){
   const p1 = `${T('It is generally true that')} ${e.topic} ${T('has become a matter of concern over the years, and this has caused great controversy and captured public attention. Some people are of the opinion that')} ${e.va}${T(', while others hold the view that')} ${e.vb}. ${T('I tend to agree more with the latter and will discuss this further below.')}`;
   const p2 = `${T('It has to be admitted that')} ${e.con}${T(', and one argument in favor of this view can be that')} ${e.conR}. ${T('If')} ${e.cond}${T(', then')} ${e.subj} ${T('can')} ${e.resA}${T(', in turn leading to')} ${e.resB}. ${T('As a result, it is unsurprising that')} ${e.concl}.`;
   const p3 = `${T('On the other hand, I firmly believe that')} ${e.stance}${T(', and one compelling reason is that')} ${e.reason}. ${T(`A pertinent case in point is James, who ${e.jv} at a world-renowned and prestigious ${e.jn}. As James`)} ${e.does}${T(', he is able to')} ${e.result}. ${T('In other words,')} ${e.impl}.`;
-  const p4 = `${T('In conclusion, despite the fact that the counterargument may hold true in many cases, I believe that')} ${e.final}. ${T('It is crucial that')} ${e.rec}.`;
+  const p4 = `${T('In conclusion, despite the fact that the counterargument may hold true in many cases, I believe that')} ${e.final}${T(', and it is crucial that')} ${e.rec}.`;
   return [p1,p2,p3,p4];
 }
 
