@@ -135,7 +135,7 @@
 
     <div id="idxList"></div>
 
-    <div class="done">✅ <b>已全對（做過、沒錯）：</b>Mass Extinction 大規模滅絕 <span class="pid">#080350</span> — published / previously / causes / Instead 全對；Low Fertility 低生育率 <span class="pid">#110188</span> — comparisons / patterns / postponing / associations / explored 全對。</div>
+    <div class="done">✅ <b>已全對（做過、沒錯）：</b>Mass Extinction 大規模滅絕 <span class="pid">#080350</span> — published / previously / causes / Instead 全對；Low Fertility 低生育率 <span class="pid">#110188</span> — comparisons / patterns / postponing / associations / explored 全對；Mind-reading 讀心術（Tomkins 與 Ekman）— century / dense / legendary / extended 全對；Financial Crisis 金融危機 <span class="pid">#080349</span> — explanations / function / incompetence / understanding 全對。</div>
 
     <div class="foot">錯一次是意外，錯兩次是模式。下次做題前掃一遍這頁的紅字。</div>
   </div>
@@ -299,6 +299,45 @@ const DATA = [
     text:`Although Botswana is rich in diamonds, it has high unemployment and stratified socioeconomic classes. In 1999, the nation ${ok('suffered')} its first budget deficit in 16 years ${ok('because')} of a slump in the international diamond market. Yet Botswana ${ok('remains')} one of the wealthiest and most stable countries on the African [[1]].`,
     blanks:[
       { wrong:"region", right:"continent", cat:"sem", why:`語意/常識：非洲是一塊<b>大陸</b>→ <span class="en">the African continent</span>。region（地區）範圍較小、指大陸內的一部分，用字不精準。` },
+    ]},
+
+  { title:"Taylor's Restaurant 學生經營餐廳", pid:"", type:"FIB-D",
+    text:`The rest of Taylor's restaurant is student-run. Students in quantity food production and service management [[1]] make the articulate and detailed dishes. "We teach students to understand where a product comes from and to respect that product," Garmy said. Skeptics might doubt the ${ok('quality')} of a student-run restaurant, but one visit to Taylor's will immediately change their outlook. Dishes such as orecchiette and butternut squash, pappardelle with duck and bistro chicken will please any appetite while imparting the need to [[2]] for a second taste. Students are taught to use ratios and proportions rather than recipes when creating dishes. "Understanding ratios and proportions when creating dishes instead of recipes makes students think and ${ok('actually')} teaches them how to cook, rather than just reading a recipe and not learning from it," Garmy said. Garmy said he believes in using all aspects of a product, which Taylor's ${ok('menu')} reflects.`,
+    blanks:[
+      { wrong:"disciplines", right:"classes", cat:"sem", why:`線索是「學生做菜」→ 是修「量化食品製作與服務管理<b>課</b>」的學生：<span class="en">students in ... classes</span>。<span class="en">disciplines</span>（學科領域）是抽象領域，不是上課的班。` },
+      { wrong:"review", right:"return", cat:"sem", why:`語意：菜好吃到讓人想「<b>回來</b>再嚐一次」→ <span class="en">return for a second taste</span>。<span class="en">review</span>（評論）跟 second taste 接不起來。` },
+    ]},
+
+  { title:"Walt Disney World 華特迪士尼世界", pid:"#110122", type:"FIB-DD",
+    text:`Walt Disney World has become a pilgrimage site partly because of the luminosity of its cross culture and marketing and partly because its [[1]] aspects appeal powerfully to real needs in the capitalist ${ok('society')}. Disney's marketing is unique because it captured the symbolic essence of [[2]] but the company has gained access to all public shows, comic books, dolls, apparels, and [[3]] film strips all point to the parks and each other.`,
+    blanks:[
+      { wrong:"childhood", right:"utopian", cat:"sem", why:`「___ aspects 呼應資本主義社會的<b>真實需求</b>」→ 烏托邦式想像 <span class="en">utopian aspects</span>。childhood 是下一格的答案——放錯位置引發<b>連鎖錯</b>（拖拉題先想全局再放字）。` },
+      { wrong:"illusion", right:"childhood", cat:"sem", why:`<span class="en">captured the symbolic essence of childhood</span>＝抓住<b>童年</b>的象徵本質（迪士尼的核心）。illusion（幻覺）語意偏掉。` },
+      { wrong:"adults", right:"educational", cat:"sem", why:`並列清單全是兒童產品（comic books、dolls、apparels）→ <span class="en">educational film strips</span>（教育影片）；而且這格要<b>形容詞</b>修飾 film strips，adults 是名詞。` },
+    ]},
+
+  { title:"Integrate Sales Activities 整合銷售活動", pid:"#080040", type:"FIB-D",
+    text:`Organisations need to integrate their sales activities more both internally and with customers' needs according to a new book co-authored by an academic at the University of East Anglia. The book ${ok('addresses')} how sales can help organisations to become more customer oriented and considers how they are responding to challenges such as increasing competition, more [[1]] customers and a more complex selling environment. Many organisations are facing escalating costs and a growth in customer power, [[2]] makes it necessary to allocate resources more strategically. The sales function can provide critical customer and market knowledge to help inform both innovation and marketing. However, the authors say that within the industry [[3]] is still uncertainty about the shape a future sales team should take, how it should be managed, and how it [[4]] into their organisations business model.`,
+    blanks:[
+      { wrong:"considerable", right:"demanding", cat:"col", why:`固定搭配 <span class="en">demanding customers</span>＝<b>要求高的</b>顧客（跟 increasing competition、complex environment 並列的挑戰）。considerable（相當大的）不能拿來形容顧客難搞。` },
+      { wrong:"that", right:"which", cat:"pos", why:`逗號後的非限定關係子句只能用 <span class="en">which</span>（指前面整件事）：<span class="en">..., which makes it necessary...</span>。<b>that 不能接在逗號後面</b>。` },
+      { wrong:"that", right:"there", cat:"pos", why:`存在句：<span class="en">there is still uncertainty</span>＝「業界仍存在不確定性」。that is uncertainty 不成句。` },
+      { wrong:"adapts", right:"fits", cat:"col", why:`固定搭配 <span class="en">fit into</span>＝融入 → <span class="en">how it fits into their business model</span>。adapt 的搭配是 <span class="en">adapt to</span>，不接 into。` },
+    ]},
+
+  { title:"Zika Virus 茲卡病毒", pid:"", type:"FIB-D",
+    text:`Zika is more pernicious than public health officials anticipated. At present, it is circulating in more than 50 countries. And as of mid-May, seven countries or territories have reported cases of microcephaly or other serious birth defects linked to the virus, which ${ok('is transmitted')} by mosquito bite, blood transfusion or sexual contact with an infected human. It can also be passed from mother to fetus during pregnancy. Despite Zika's vast [[1]] over almost 70 years, there is little genetic difference among the various strains, according to an analysis by researchers at the University of Texas Medical Branch at Galveston. For example, the strain currently in the Americas and another previously detected in French Polynesia are practically ${ok('indistinguishable')} from each other. If the virus has changed so little over time, why is it rearing its ugly head now? Scientists are not sure yet, but new experimental work in mosquitoes suggests that the virus was capable of ${ok('causing')} detrimental health effects and outbreaks all along. Therefore, it is unlikely mutations enabled new abilities. Instead public health officials probably did not understand Zika's potential because the virus [[2]] mostly in remote locations until recently.`,
+    blanks:[
+      { wrong:"immutability", right:"range", cat:"log", why:`<span class="en">Despite</span> 轉折：「儘管分布<b>範圍</b>廣、流行近 70 年，基因差異卻很小」→ <span class="en">vast range</span>。填 immutability（不變性）跟後半「差異小」<b>同方向</b>，Despite 就轉不起來。` },
+      { wrong:"are circulated", right:"circulated", cat:"ten", why:`<span class="en">circulate</span>（流行、傳播）在這裡是<b>不及物</b>動詞，用主動過去式：<span class="en">the virus circulated mostly in remote locations</span>。不用被動、也不是現在式。` },
+    ]},
+
+  { title:"Imperial Control 帝國控制", pid:"#080035", type:"FIB-D",
+    text:`In the southern cone especially, from Venezuela to Argentina, the region is rising to overthrow the legacy of external [[1]] of the past centuries and the cruel and destructive social forms that they have helped to establish. The ${ok('mechanisms')} of imperial control-violence and economic warfare, hardly a distant memory in Latin America-are losing their effectiveness, a sign of the shift toward independence. Washington is now compelled to tolerate governments that in the past would have drawn intervention or reprisal. Throughout the region a vibrant [[2]] of popular movements provide the basis for a meaningful democracy. The indigenous populations, as if in a rediscovery of their pre-Columbian legacy, are much more active and influential, particularly in Bolivia and Ecuador. These developments are in part the result of a phenomenon that has been observed for some years in Latin America: As the elected governments become more formally democratic, citizens ${ok('expressed')} an increasing disillusionment with democratic institutions. They have sought to construct democratic systems based on popular participation rather than elite and foreign [[3]].`,
+    blanks:[
+      { wrong:"invasion", right:"domination", cat:"sem", why:`<span class="en">external domination of the past centuries</span>＝數世紀的外部<b>支配</b>（長期狀態，才「幫忙建立了社會形態」）。invasion（入侵）是單次事件，接不上 of the past centuries。` },
+      { wrong:"group", right:"array", cat:"col", why:`固定搭配 <span class="en">an array of</span>＝一系列、林林總總 → <span class="en">a vibrant array of popular movements</span>。group 語氣太弱也不慣用。` },
+      { wrong:"suppression", right:"domination", cat:"sem", why:`呼應開頭的 <span class="en">external domination</span>——同一篇文章常<b>重複同一個字</b>當線索：<span class="en">elite and foreign domination</span>。suppression（鎮壓）偏離「菁英／外國主導」的語意。` },
     ]},
 ];
 
