@@ -283,7 +283,7 @@ const BLACKLIST = [
   "government","traffic","easily","planning","dangerous","people","should","true",
   "concern","view","cause","firmly","drawbacks","despite","further","large",
   "discuss","better","theoretical","prefer","classroom","setting","concentrate",
-  "tangible","intangible","prospects"
+  "tangible","intangible","prospects","definitely","afraid","since","honesty","orderly"
 ];
 
 /* ═══════════ 分頁切換（支援 #review / #rewrite / #check 直達）═══════════ */
@@ -542,6 +542,48 @@ const DATA = [
       {seg:"讓步：效率線"}, {w:"improve efficiency",zh:"提升效率"}, {w:"boost productivity",zh:"提高生產力（名詞）"}, {w:"retain more information",zh:"記住更多資訊"}, {w:"saving significant time",zh:"省下大量時間"},
       {seg:"主論：理論＋實務"}, {w:"theoretical",zh:"理論的"}, {w:"practical knowledge",zh:"實務知識"}, {w:"a traditional classroom setting",zh:"傳統課堂環境"}, {w:"concentrate",zh:"專注"}, {w:"stay focused",zh:"保持專注（形容詞）"}, {w:"academic performance",zh:"學業表現"}, {w:"future prospects",zh:"未來前景"},
       {seg:"結尾"}, {w:"tangible",zh:"有形的"}, {w:"intangible",zh:"無形的"}, {w:"formal lectures",zh:"正規課堂（複數）"},
+    ]},
+
+  { title:"法律能否限制人類行為？", pid:"2026/08/11", type:"WE",
+    text:`<p>It is generally true that whether human behaviors can be limited by laws has become a matter of concern over the years, and [[1]] has caused great controversy and captured public attention. Some people are of the opinion that human behaviors [[2]] can be limited by law, while others hold the view that people cannot be limited by laws. I tend to agree more with the latter and will discuss this further below.</p>
+<p>It has to be admitted that people can be limited by law and one argument in favor of [[3]] can be that people are [[4]] of [[5]] punished. If [[6]] breaks [[7]] law then [[8]] will catch [[9]] and let the judge put him into jail, in turn leading to an [[10]] society. As a result, [[11]] is unsurprising that people may be limited by law.</p>
+<p>On the other hand, I firmly believe that people cannot be limited by laws, and one compelling reason is that [[12]] behaviors are [[13]] by their own [[14]]. A pertinent case in point is James, who works at a world-renowned and prestigious firm. As James's parents taught him [[15]] [[16]] he was a child, he is able to be honest even [[17]] one [[18]] him. In other words, his [[19]] makes him get [[20]] by his boss and have [[21]] future prospects.</p>
+<p>In conclusion, despite the fact that the counterargument may hold [[22]] in many [[23]] I believe that people cannot be limited by [[24]], [[25]] is crucial that parents and teachers let [[26]] know [[27]] for their [[28]].</p>`,
+    blanks:[
+      { wrong:"it", right:"this", cat:"word", why:`模板固定寫法是 <span class="en">and this has caused</span>（封關卡罩門）：<span class="en">this</span> 指代前面整個主題，比 it 清楚。and 你這次有寫，讚。` },
+      { wrong:"defenitely", right:"definitely", cat:"mech", why:`拼字：<span class="en">def·i·nite·ly</span>——中間藏著 <span class="en">finite</span>，不是 defen-。語序更自然是 <span class="en">can definitely be limited</span>（副詞放助動詞後）。` },
+      { wrong:"this", right:"this view", cat:"word", why:`<b>頭號罩門 view 又漏了（第 6 次）</b>：<span class="en">in favor of this view</span>。打到這裡手指停一下確認。` },
+      { wrong:"affaried", right:"afraid", cat:"mech", why:`拼字：<span class="en">a·fraid</span> 只有 6 個字母，別多塞——字母顛倒是你的固定罩門。` },
+      { wrong:"get", right:"getting", cat:"gram", why:`<span class="en">afraid of</span> 的 of 是介系詞，後接動名詞 → <span class="en">afraid of getting punished</span>（或 being punished）。` },
+      { wrong:"individual", right:"an individual", cat:"gram", why:`冠詞：individual 是可數單數，前面要 <span class="en">an</span>（冠詞是固定罩門）。` },
+      { wrong:"he", right:"the", cat:"mech", why:`手滑：<span class="en">breaks the law</span>。the 打成 he——交卷前掃小字。` },
+      { wrong:"police", right:"the police", cat:"gram", why:`慣用：<span class="en">the police</span> 固定加 the（且視為複數：the police catch）。` },
+      { wrong:"hime", right:"him", cat:"mech", why:`拼字：<span class="en">him</span> 沒有 e，別跟 time/home 的手感混了。` },
+      { wrong:"order", right:"orderly", cat:"word", nv:true, why:`詞形：「有秩序的」是形容詞 <span class="en">orderly</span> → <span class="en">an orderly society</span>；order 是名詞。新字，收進黑名單。` },
+      { wrong:"It", right:"it", cat:"mech", why:`大小寫：<span class="en">As a result,</span> 後面句子還在繼續，逗號後不大寫 → <span class="en">it is unsurprising</span>。` },
+      { wrong:"peoples'", right:"people's", cat:"gram", why:`所有格：people 本身就是複數 → <span class="en">people's</span>；peoples 是「各民族」，撇號位置錯。` },
+      { wrong:"follow", right:"decided", cat:"gram", why:`被動要 <span class="en">be + 過去分詞</span>，follow 原形不行；且語意是「由價值觀<b>決定</b>」→ <span class="en">are decided by</span>（follow 意思也不對）。` },
+      { wrong:"value", right:"values", cat:"gram", why:`單複數：「價值觀」慣用複數 <span class="en">values</span> → <span class="en">their own values</span>。` },
+      { wrong:"with a good value", right:"good values", cat:"word", why:`搭配：<span class="en">teach sb sth</span> 雙受詞，不用 with → <span class="en">taught him good values</span>（values 複數）。` },
+      { wrong:"science", right:"since", cat:"mech", why:`拼錯成「科學」了：「自從」是 <span class="en">since</span> → <span class="en">since he was a child</span>。` },
+      { wrong:"no", right:"when no", cat:"stru", why:`even 後面要接完整子句：<span class="en">even when no one is watching him</span>，漏了 <span class="en">when</span> 句子就斷了。` },
+      { wrong:"watching", right:"is watching", cat:"gram", why:`進行式要有 be 動詞：<span class="en">no one is watching</span>。` },
+      { wrong:"honest", right:"honesty", cat:"word", why:`詞形：his 後接名詞 → <span class="en">his honesty</span>；honest 是形容詞。` },
+      { wrong:"trust", right:"trusted", cat:"gram", why:`get + 過去分詞表被動：<span class="en">get trusted by his boss</span>（更道地：<span class="en">win trust from his boss</span>）。` },
+      { wrong:"a great", right:"great", cat:"gram", why:`冠詞：prospects 是複數（黑名單字），前面不能加 a → <span class="en">great future prospects</span>。` },
+      { wrong:"ture", right:"true", cat:"mech", why:`字母顛倒（黑名單字）：<span class="en">true</span> → <span class="en">hold true</span>。封關卡罩門，交卷前專掃。` },
+      { wrong:"cases.", right:"cases,", cat:"stru", why:`<span class="en">despite the fact that...</span> 是附屬子句，句號切斷就變 fragment（沒有主句）。結尾模板整段是一句：<span class="en">...in many cases, I believe that...</span>` },
+      { wrong:"the laws", right:"laws", cat:"gram", why:`泛指法律不加 the：<span class="en">limited by laws</span>（跟開頭你自己寫對的版本一致）。` },
+      { wrong:"it", right:"and it", cat:"stru", why:`<b>逗號黏兩句（老毛病）</b>：結尾模板 8/11 剛改成 <span class="en">..., and it is crucial that...</span>，有 and 才能用逗號連。` },
+      { wrong:"childen", right:"children", cat:"mech", why:`黑名單字又錯：<span class="en">chil·dren</span>，d 後面是 dren 不是 den。` },
+      { wrong:"what is the good value", right:"what good values are", cat:"gram", why:`wh- 名詞子句用敘述語序（what + 主詞 + 動詞）→ <span class="en">know what good values are</span>；泛指價值觀用複數、不加 the。` },
+      { wrong:"life", right:"lives", cat:"gram", why:`單複數：their（很多人）→ <span class="en">their lives</span>。` },
+    ],
+    vocab:[
+      {seg:"開頭"}, {w:"can definitely be limited",zh:"絕對能被限制（definitely 拼字＋語序）"},
+      {seg:"讓步：怕罰"}, {w:"afraid of getting punished",zh:"怕被罰（of 後 +ing）"}, {w:"break the law",zh:"違法（the）"}, {w:"the police",zh:"警察（固定加 the）"}, {w:"an orderly society",zh:"有秩序的社會（orderly 形容詞）"},
+      {seg:"主論：家教→家庭"}, {w:"people's behaviors",zh:"人們的行為（people's 所有格）"}, {w:"be decided by their own values",zh:"由自身價值觀決定（values 複數）"}, {w:"taught him good values",zh:"教他好價值觀（不用 with）"}, {w:"since he was a child",zh:"從小（since 別拼成 science）"}, {w:"even when no one is watching",zh:"即使沒人看著"}, {w:"honesty",zh:"誠實（名詞）"}, {w:"win trust from his boss",zh:"贏得老闆信任"}, {w:"future prospects",zh:"未來前景（複數，不加 a）"},
+      {seg:"結尾"}, {w:"hold true",zh:"成立（true 別打 ture）"}, {w:"what good values are",zh:"什麼是好價值觀（wh- 語序）"},
     ]},
 ];
 
