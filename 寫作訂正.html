@@ -283,7 +283,8 @@ const BLACKLIST = [
   "government","traffic","easily","planning","dangerous","people","should","true",
   "concern","view","cause","firmly","drawbacks","despite","further","large",
   "discuss","better","theoretical","prefer","classroom","setting","concentrate",
-  "tangible","intangible","prospects","definitely","afraid","since","honesty"
+  "tangible","intangible","prospects","definitely","afraid","since","honesty",
+  "depend","differences","disadvantaged","important","point","income"
 ];
 
 /* ═══════════ 分頁切換（支援 #review / #rewrite / #check 直達）═══════════ */
@@ -584,6 +585,47 @@ const DATA = [
       {seg:"讓步：怕罰"}, {w:"afraid of getting punished",zh:"怕被罰（of 後 +ing）"}, {w:"break the law",zh:"違法（the）"}, {w:"the police",zh:"警察（固定加 the）"}, {w:"a society with great order",zh:"有秩序的社會（全基礎字，order 名詞）"},
       {seg:"主論：家教→家庭"}, {w:"people's behaviors",zh:"人們的行為（people's 所有格）"}, {w:"be decided by their own values",zh:"由自身價值觀決定（values 複數）"}, {w:"taught him good values",zh:"教他好價值觀（不用 with）"}, {w:"since he was a child",zh:"從小（since 別拼成 science）"}, {w:"even when no one is watching",zh:"即使沒人看著"}, {w:"honesty",zh:"誠實（名詞）"}, {w:"earn his boss's trust",zh:"贏得老闆信任（earn＋所有格）"}, {w:"future prospects",zh:"未來前景（複數，不加 a）"},
       {seg:"結尾"}, {w:"hold true",zh:"成立（true 別打 ture）"}, {w:"what good values are",zh:"什麼是好價值觀（wh- 語序）"},
+    ]},
+  { title:"成長地與成就 — 環境 vs 個性？", pid:"2026/08/12", type:"WE",
+    text:`<p>It is generally true that whether environments will impact people's accomplishments has become a matter of concern over the years, and [[1]] has caused great controversy and captured public attention. Some people are of the opinion that the [[2]] [[3]] the [[4]], while others hold the view that the accomplishments [[5]] a person [[6]] depend on the place [[7]] brought up. I tend to agree more with [[8]] and will discuss this further below.</p>
+<p>It has to be admitted that environments can [[9]] a person, and one argument in favor of this view can be [[10]] educational resources. If individuals [[11]] then [[12]] cannot afford the high cost of education, in turn leading to [[13]] to work [[14]] a young age. As a result, it is unsurprising that the accomplishments of people are [[15]] affected by the environment.</p>
+<p>On the other hand, I [[16]] believe that [[17]] environments are not the only factor to decide a person's success, and one compelling reason is that good [[18]]. A pertinent [[19]] is James, [[20]] at a world-renowned and prestigious firm. As James's parents [[21]] him [[22]], he is able to be [[23]] man in his work and [[24]]. In other words, he has a [[25]] and has better future prospects.</p>
+<p>In conclusion, despite the fact that the counterargument may hold true in many [[26]] I believe that [[27]] more important than the place where a person was brought up, and it is crucial that people give their children good values rather than just [[28]] good resources.</p>`,
+    blanks:[
+      { wrong:"it", right:"this", cat:"word", why:`模板固定寫法是 <span class="en">and this has caused</span>——<b>0811 才訂正過，第 2 次</b>。this 指代前面整個主題。` },
+      { wrong:"successed of a people", right:"success of a person", cat:"word", why:`①名詞是 <span class="en">success</span>（successed 不存在）②一個人是 <span class="en">a person</span>；people 是複數。` },
+      { wrong:"is depent on", right:"depends on", cat:"gram", why:`①拼字：<span class="en">de·pend</span>，結尾 -nd ②動詞不要 is＋原形，直接用 <span class="en">depends on</span>（第三人稱 +s）。` },
+      { wrong:"environments", right:"environment", cat:"gram", why:`泛指環境用單數：<span class="en">the environment</span>。` },
+      { wrong:"for", right:"of", cat:"word", why:`所屬用 of：<span class="en">the accomplishments of a person</span>。` },
+      { wrong:"is not", right:"do not", cat:"gram", why:`主詞 <span class="en">accomplishments</span> 複數 → <span class="en">do not depend</span>。` },
+      { wrong:"he", right:"where he was", cat:"stru", why:`關係副詞＋被動：<span class="en">the place where he was brought up</span>——他是「被」養大，was 不能少。` },
+      { wrong:"latter", right:"the latter", cat:"gram", why:`模板固定 <span class="en">the latter</span>，the 不能掉。` },
+      { wrong:"effect", right:"affect", cat:"word", why:`動詞是 <span class="en">affect</span>；effect 是名詞「效果」。` },
+      { wrong:"that the differneces between", right:"the differences in", cat:"stru", why:`①<span class="en">can be that</span> 後面要接完整子句，這裡只是名詞片語 → that 刪掉 ②拼字：<span class="en">diffe·ren·ces</span> ③「資源上的差異」用 <span class="en">in</span>。` },
+      { wrong:"have a disadvantage environment", right:"live in a disadvantaged environment", cat:"word", nv:true, why:`①環境用 <span class="en">live in</span> 不用 have ②形容詞要 -ed：<span class="en">disadvantaged</span>（新雷字）。` },
+      { wrong:"he", right:"they", cat:"gram", why:`主詞 <span class="en">individuals</span> 複數 → they。` },
+      { wrong:"stopping his learning and have", right:"stopping their learning and having", cat:"gram", why:`①his → <span class="en">their</span>（跟 individuals 一致）②<span class="en">leading to</span> 後並列都要 Ving → <span class="en">having</span> to work。` },
+      { wrong:"in", right:"at", cat:"word", why:`固定搭配：<span class="en">at a young age</span>。` },
+      { wrong:"easliy be", right:"easily", cat:"mech", why:`①黑名單字又字母顛倒：<span class="en">eas·i·ly</span> ②<span class="en">are...affected</span> 已是被動，be 多餘。` },
+      { wrong:"fimly", right:"firmly", cat:"mech", why:`黑名單字：上次 frimly、這次 fimly——<b>漏 r 是固定罩門</b>：<span class="en">firm·ly</span>。` },
+      { wrong:"disadvantange", right:"disadvantaged", cat:"mech", nv:true, why:`多塞了 n：<span class="en">dis·ad·van·taged</span>（本篇同字第 2 種錯法）。` },
+      { wrong:"value is more impotrant", right:"values are more important", cat:"gram", why:`①<b>價值觀慣用複數 values——0811 才錯過，本篇連錯 3 處</b> ②複數配 are ③字母顛倒：<span class="en">im·por·tant</span>。` },
+      { wrong:"cases in piont", right:"case in point", cat:"gram", why:`①<span class="en">a</span>＋單數 → <span class="en">a pertinent case</span> ②字母顛倒：<span class="en">point</span>。` },
+      { wrong:"who works", right:"who grew up in a poor family but works", cat:"task", why:`<b>題眼漏了</b>：本篇設計是「同樣壞起點、不同結局」的反差，主論段必須先講 James 出身差，<span class="en">but</span> 才能把反差立起來；漏了這句，整篇「環境不是決定因素」的證明就散了。` },
+      { wrong:"teach", right:"taught", cat:"gram", why:`時態：從小教的事用過去式 <span class="en">taught</span>。` },
+      { wrong:"a good value", right:"good values", cat:"gram", why:`不加 a、用複數 <span class="en">good values</span>——0811 同一條鏈同一個錯，第 2 次。` },
+      { wrong:"a honesty", right:"an honest", cat:"word", why:`①<span class="en">honest</span> 形容詞修飾 man（honesty 是名詞；0811 是反向錯）②h 不發音，用 <span class="en">an</span>。` },
+      { wrong:"get the trust from his boss", right:"earn his boss's trust", cat:"word", why:`0811 老師版固定句第 2 次：<span class="en">earn his boss's trust</span>——整句背，不要重組。` },
+      { wrong:"well imcome", right:"good income", cat:"word", nv:true, why:`①well 是副詞不能修飾名詞 → <span class="en">a good income</span> ②拼字：<span class="en">in·come</span>，是 in- 不是 im-。` },
+      { wrong:"cases.", right:"cases,", cat:"stru", why:`<span class="en">despite the fact that...</span> 子句句號切斷變 fragment——<b>0811 同錯，第 2 次</b>：<span class="en">...in many cases, I believe...</span>` },
+      { wrong:"the good value of one person is", right:"a person's good values are", cat:"gram", why:`values 複數（本篇第 3 處）＋所有格較順：<span class="en">a person's good values are</span>。` },
+      { wrong:"the", right:"（刪掉 the）", cat:"gram", why:`泛指不加 the：<span class="en">rather than just good resources</span>。` },
+    ],
+    vocab:[
+      {seg:"開頭"}, {w:"people's accomplishments",zh:"人們的成就（複數）"}, {w:"depends on the environment",zh:"取決於環境（depends +s、環境單數）"},
+      {seg:"讓步：環境限制（財務線反向）"}, {w:"affect a person",zh:"影響（動詞 affect；effect 是名詞）"}, {w:"the differences in educational resources",zh:"教育資源的差異（in）"}, {w:"live in a disadvantaged environment",zh:"住在劣勢環境（live in；-ed）"}, {w:"cannot afford the high cost",zh:"付不起高費用"}, {w:"work at a young age",zh:"年紀輕輕就工作（at）"}, {w:"easily affected",zh:"容易受影響（easily 黑名單；不多 be）"},
+      {seg:"主論：家庭價值觀線"}, {w:"good values",zh:"好價值觀（慣用複數，本篇錯 3 次）"}, {w:"grew up in a poor family but…",zh:"題眼：出身窮但成功，反差全靠 but"}, {w:"taught him good values",zh:"教他好價值觀（過去式；不加 a）"}, {w:"an honest man",zh:"誠實的人（an；honest 形容詞）"}, {w:"earn his boss's trust",zh:"贏得老闆信任（0811 固定句）"}, {w:"a good income",zh:"好收入（good；in- 不是 im-）"},
+      {seg:"結尾：家庭和諧"}, {w:"give their children good values rather than just good resources",zh:"給孩子價值觀而非只給資源（泛指不加 the）"},
     ]},
 ];
 
