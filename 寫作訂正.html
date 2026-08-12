@@ -283,7 +283,7 @@ const BLACKLIST = [
   "government","traffic","easily","planning","dangerous","people","should","true",
   "concern","view","cause","firmly","drawbacks","despite","further","large",
   "discuss","better","theoretical","prefer","classroom","setting","concentrate",
-  "tangible","intangible","prospects","definitely","afraid","since","honesty","orderly"
+  "tangible","intangible","prospects","definitely","afraid","since","honesty"
 ];
 
 /* ═══════════ 分頁切換（支援 #review / #rewrite / #check 直達）═══════════ */
@@ -546,8 +546,8 @@ const DATA = [
 
   { title:"法律能否限制人類行為？", pid:"2026/08/11", type:"WE",
     text:`<p>It is generally true that whether human behaviors can be limited by laws has become a matter of concern over the years, and [[1]] has caused great controversy and captured public attention. Some people are of the opinion that human behaviors [[2]] can be limited by law, while others hold the view that people cannot be limited by laws. I tend to agree more with the latter and will discuss this further below.</p>
-<p>It has to be admitted that people can be limited by law and one argument in favor of [[3]] can be that people are [[4]] of [[5]] punished. If [[6]] breaks [[7]] law then [[8]] will catch [[9]] and let the judge put him into jail, in turn leading to an [[10]] society. As a result, [[11]] is unsurprising that people may be limited by law.</p>
-<p>On the other hand, I firmly believe that people cannot be limited by laws, and one compelling reason is that [[12]] behaviors are [[13]] by their own [[14]]. A pertinent case in point is James, who works at a world-renowned and prestigious firm. As James's parents taught him [[15]] [[16]] he was a child, he is able to be honest even [[17]] one [[18]] him. In other words, his [[19]] makes him get [[20]] by his boss and have [[21]] future prospects.</p>
+<p>It has to be admitted that people can be limited by law and one argument in favor of [[3]] can be that people are [[4]] of [[5]] punished. If [[6]] breaks [[7]] law then [[8]] will catch [[9]] and let the judge put him into jail, in turn leading to [[10]]. As a result, [[11]] is unsurprising that people may be limited by law.</p>
+<p>On the other hand, I firmly believe that people cannot be limited by laws, and one compelling reason is that [[12]] behaviors are [[13]] by their own [[14]]. A pertinent case in point is James, who works at a world-renowned and prestigious firm. As James's parents taught him [[15]] [[16]] he was a child, he is able to be honest even [[17]] one [[18]] him. In other words, his [[19]] makes him [[20]] and have [[21]] future prospects.</p>
 <p>In conclusion, despite the fact that the counterargument may hold [[22]] in many [[23]] I believe that people cannot be limited by [[24]], [[25]] is crucial that parents and teachers let [[26]] know [[27]] for their [[28]].</p>`,
     blanks:[
       { wrong:"it", right:"this", cat:"word", why:`模板固定寫法是 <span class="en">and this has caused</span>（封關卡罩門）：<span class="en">this</span> 指代前面整個主題，比 it 清楚。and 你這次有寫，讚。` },
@@ -559,7 +559,7 @@ const DATA = [
       { wrong:"he", right:"the", cat:"mech", why:`手滑：<span class="en">breaks the law</span>。the 打成 he——交卷前掃小字。` },
       { wrong:"police", right:"the police", cat:"gram", why:`慣用：<span class="en">the police</span> 固定加 the（且視為複數：the police catch）。` },
       { wrong:"hime", right:"him", cat:"mech", why:`拼字：<span class="en">him</span> 沒有 e，別跟 time/home 的手感混了。` },
-      { wrong:"order", right:"orderly", cat:"word", nv:true, why:`詞形：「有秩序的」是形容詞 <span class="en">orderly</span> → <span class="en">an orderly society</span>；order 是名詞。新字，收進黑名單。` },
+      { wrong:"an order society", right:"a society with great order", cat:"word", why:`order 是名詞不能直接修飾 society。老師版全用基礎字：<span class="en">a society with great order</span>（order 當名詞「秩序」）——不用背新字 orderly，採用這版。` },
       { wrong:"It", right:"it", cat:"mech", why:`大小寫：<span class="en">As a result,</span> 後面句子還在繼續，逗號後不大寫 → <span class="en">it is unsurprising</span>。` },
       { wrong:"peoples'", right:"people's", cat:"gram", why:`所有格：people 本身就是複數 → <span class="en">people's</span>；peoples 是「各民族」，撇號位置錯。` },
       { wrong:"follow", right:"decided", cat:"gram", why:`被動要 <span class="en">be + 過去分詞</span>，follow 原形不行；且語意是「由價值觀<b>決定</b>」→ <span class="en">are decided by</span>（follow 意思也不對）。` },
@@ -569,7 +569,7 @@ const DATA = [
       { wrong:"no", right:"when no", cat:"stru", why:`even 後面要接完整子句：<span class="en">even when no one is watching him</span>，漏了 <span class="en">when</span> 句子就斷了。` },
       { wrong:"watching", right:"is watching", cat:"gram", why:`進行式要有 be 動詞：<span class="en">no one is watching</span>。` },
       { wrong:"honest", right:"honesty", cat:"word", why:`詞形：his 後接名詞 → <span class="en">his honesty</span>；honest 是形容詞。` },
-      { wrong:"trust", right:"trusted", cat:"gram", why:`get + 過去分詞表被動：<span class="en">get trusted by his boss</span>（更道地：<span class="en">win trust from his boss</span>）。` },
+      { wrong:"get trust by his boss", right:"earn his boss's trust", cat:"gram", why:`你原句要被動得寫 <span class="en">get trusted by</span>（get＋過去分詞）；老師版更好背：<span class="en">earn his boss's trust</span>——earn 簡單、主動、不用想被動，採用這版。` },
       { wrong:"a great", right:"great", cat:"gram", why:`冠詞：prospects 是複數（黑名單字），前面不能加 a → <span class="en">great future prospects</span>。` },
       { wrong:"ture", right:"true", cat:"mech", why:`字母顛倒（黑名單字）：<span class="en">true</span> → <span class="en">hold true</span>。封關卡罩門，交卷前專掃。` },
       { wrong:"cases.", right:"cases,", cat:"stru", why:`<span class="en">despite the fact that...</span> 是附屬子句，句號切斷就變 fragment（沒有主句）。結尾模板整段是一句：<span class="en">...in many cases, I believe that...</span>` },
@@ -581,8 +581,8 @@ const DATA = [
     ],
     vocab:[
       {seg:"開頭"}, {w:"can definitely be limited",zh:"絕對能被限制（definitely 拼字＋語序）"},
-      {seg:"讓步：怕罰"}, {w:"afraid of getting punished",zh:"怕被罰（of 後 +ing）"}, {w:"break the law",zh:"違法（the）"}, {w:"the police",zh:"警察（固定加 the）"}, {w:"an orderly society",zh:"有秩序的社會（orderly 形容詞）"},
-      {seg:"主論：家教→家庭"}, {w:"people's behaviors",zh:"人們的行為（people's 所有格）"}, {w:"be decided by their own values",zh:"由自身價值觀決定（values 複數）"}, {w:"taught him good values",zh:"教他好價值觀（不用 with）"}, {w:"since he was a child",zh:"從小（since 別拼成 science）"}, {w:"even when no one is watching",zh:"即使沒人看著"}, {w:"honesty",zh:"誠實（名詞）"}, {w:"win trust from his boss",zh:"贏得老闆信任"}, {w:"future prospects",zh:"未來前景（複數，不加 a）"},
+      {seg:"讓步：怕罰"}, {w:"afraid of getting punished",zh:"怕被罰（of 後 +ing）"}, {w:"break the law",zh:"違法（the）"}, {w:"the police",zh:"警察（固定加 the）"}, {w:"a society with great order",zh:"有秩序的社會（全基礎字，order 名詞）"},
+      {seg:"主論：家教→家庭"}, {w:"people's behaviors",zh:"人們的行為（people's 所有格）"}, {w:"be decided by their own values",zh:"由自身價值觀決定（values 複數）"}, {w:"taught him good values",zh:"教他好價值觀（不用 with）"}, {w:"since he was a child",zh:"從小（since 別拼成 science）"}, {w:"even when no one is watching",zh:"即使沒人看著"}, {w:"honesty",zh:"誠實（名詞）"}, {w:"earn his boss's trust",zh:"贏得老闆信任（earn＋所有格）"}, {w:"future prospects",zh:"未來前景（複數，不加 a）"},
       {seg:"結尾"}, {w:"hold true",zh:"成立（true 別打 ture）"}, {w:"what good values are",zh:"什麼是好價值觀（wh- 語序）"},
     ]},
 ];

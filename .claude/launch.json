@@ -3,6 +3,12 @@
   "configurations": [
     {
       "name": "pte-study",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "3333"],
+      "port": 3333
+    },
+    {
+      "name": "pte-study-mac",
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "3333", "--directory", "/Users/nn/Documents/claude/pte-study"],
       "port": 3333
