@@ -284,7 +284,8 @@ const BLACKLIST = [
   "concern","view","cause","firmly","drawbacks","despite","further","large",
   "discuss","better","theoretical","prefer","classroom","setting","concentrate",
   "tangible","intangible","prospects","definitely","afraid","since","honesty",
-  "depend","differences","disadvantaged","important","point","income"
+  "depend","differences","disadvantaged","important","point","income",
+  "countries","foreign","tourism","natural"
 ];
 
 /* ═══════════ 分頁切換（支援 #review / #rewrite / #check 直達）═══════════ */
@@ -626,6 +627,48 @@ const DATA = [
       {seg:"讓步：環境限制（財務線反向）"}, {w:"affect a person",zh:"影響（動詞 affect；effect 是名詞）"}, {w:"the differences in educational resources",zh:"教育資源的差異（in）"}, {w:"live in a disadvantaged environment",zh:"住在劣勢環境（live in；-ed）"}, {w:"cannot afford the high cost",zh:"付不起高費用"}, {w:"work at a young age",zh:"年紀輕輕就工作（at）"}, {w:"easily affected",zh:"容易受影響（easily 黑名單；不多 be）"},
       {seg:"主論：家庭價值觀線"}, {w:"good values",zh:"好價值觀（慣用複數，本篇錯 3 次）"}, {w:"grew up in a poor family but…",zh:"題眼：出身窮但成功，反差全靠 but"}, {w:"taught him good values",zh:"教他好價值觀（過去式；不加 a）"}, {w:"an honest man",zh:"誠實的人（an；honest 形容詞）"}, {w:"earn his boss's trust",zh:"贏得老闆信任（0811 固定句）"}, {w:"a good income",zh:"好收入（good；in- 不是 im-）"},
       {seg:"結尾：家庭和諧"}, {w:"give their children good values rather than just good resources",zh:"給孩子價值觀而非只給資源（泛指不加 the）"},
+    ]},
+  { title:"低度開發國家：發展觀光 vs 保護環境？", pid:"2026/08/13", type:"WE",
+    text:`<p>It is generally true that tourism in less developed [[1]] has become a matter of concern over the years, and [[2]] has caused great controversy and captured public attention. Some people are of the opinion that [[3]] should [[4]] [[5]], while others hold the view that [[6]] must [[7]] their natural [[8]]. I tend to agree more with the latter, and will discuss this [[9]] below.</p>
+<p>It has to be admitted that developing tourism has some advantages, and one argument in favor of [[10]] can be that tourism can facilitate economic growth and reduce poverty. If more [[11]] come to [[12]] then this can create more [[13]] in [[14]] industry, in turn leading to [[15]] a huge increase in [[16]] currency. As a result, [[17]] is unsurprising that GDP and national income keep growing.</p>
+<p>On the other hand, I firmly believe that developing [[18]] industry can cause damage to the natural environment, and one compelling reason [[19]] of [[20]] into the atmosphere. A pertinent case in point is James, who works at a world-renowned NGO for [[21]] protection. As James keeps [[22]] harmful damage from carbon dioxide to his homeland, he is able to stop a lot of business [[23]] projects for [[24]] industry. In other words, his country [[25]] the most [[26]] environment.</p>
+<p>In conclusion, despite the fact that the counterargument may hold true in many cases, I believe that [[27]] environment cannot be [[28]]. It is crucial that governments stop developing tourism which can cause damage to [[29]].</p>`,
+    blanks:[
+      { wrong:"contries", right:"countries", cat:"mech", why:`拼字：<span class="en">coun·tries</span>——country 複數 y→ies，中間的 oun 別吞成 on。收進黑名單。` },
+      { wrong:"it", right:"this", cat:"word", why:`模板固定寫法 <span class="en">and this has caused</span>——<b>0811、0812 才訂正過，第 3 次</b>。this 指代前面整個主題。` },
+      { wrong:"less development", right:"less developed countries", cat:"word", why:`詞形：「低度開發國家」是 <span class="en">less developed countries</span>——<span class="en">developed</span> 是形容詞修飾 countries；<span class="en">development</span> 是名詞「發展」，不能當「國家」用。題目字直接照抄最保險。` },
+      { wrong:"developing", right:"develop", cat:"gram", why:`<b>0813 新坑：情態動詞（should / must / can）後接原形</b> → <span class="en">should develop</span>。本篇同型連錯 2 次（還有 must protecting）。` },
+      { wrong:"tourist industry", right:"the tourism industry", cat:"word", why:`慣用 <span class="en">the tourism industry</span>：①產業名用 <span class="en">tourism</span>（觀光業），<span class="en">tourist</span> 是觀光客 ②特指整個產業要加 the——本篇這組合漏 3 次。` },
+      { wrong:"less development country", right:"less developed countries", cat:"gram", why:`同 [[3]]：<span class="en">developed</span> 形容詞；且後面接 their，主詞要複數 <span class="en">countries</span>。` },
+      { wrong:"protecting", right:"protect", cat:"gram", why:`must 後接原形：<span class="en">must protect</span>（本篇情態動詞＋原形第 2 次——新坑要記住）。` },
+      { wrong:"enviroment", right:"environment", cat:"mech", why:`黑名單字又錯：<span class="en">en·vi·ron·ment</span>，中間有 ron。` },
+      { wrong:"furthr", right:"further", cat:"mech", why:`黑名單字又錯：<span class="en">fur·ther</span>——少打了 e，f-u-r-t-h-e-r。` },
+      { wrong:"this", right:"this view", cat:"word", why:`<b>頭號罩門 view 又漏了（第 7 次）</b>：<span class="en">in favor of this view</span>。打到這裡手指停一下確認。` },
+      { wrong:"tourist", right:"tourists", cat:"gram", why:`單複數：more 後接複數 → <span class="en">more tourists</span>。` },
+      { wrong:"this country", right:"these countries", cat:"gram", why:`指代一致：前面講的是 less developed <b>countries</b>（複數）→ <span class="en">these countries</span>。` },
+      { wrong:"job", right:"jobs", cat:"gram", why:`單複數：<span class="en">create more jobs</span>（可數複數）。` },
+      { wrong:"tourism", right:"the tourism", cat:"gram", why:`冠詞：<span class="en">in the tourism industry</span>（本篇漏這個 the 第 2 處）。` },
+      { wrong:"having", right:"（刪掉 having）", cat:"word", why:`<span class="en">leading to</span> 後面接「結果」名詞片語就好：<span class="en">leading to a huge increase</span>；有動作才用 Ving（如 leading to <span class="en">saving</span> time）。having 是多餘的。` },
+      { wrong:"forigen", right:"foreign", cat:"mech", nv:true, why:`拼字：<span class="en">for·eign</span>——結尾是 <b>eign</b>（跟 foreigner 同家族），不是 igen。新雷字，收進黑名單。` },
+      { wrong:"It", right:"it", cat:"mech", why:`大小寫：<span class="en">As a result,</span> 逗號後句子還在繼續，不大寫——<b>0811 同錯第 2 次</b>。` },
+      { wrong:"tourism", right:"the tourism", cat:"gram", why:`冠詞：<span class="en">the tourism industry</span>（本篇第 3 處——今天最大的洞就是 the）。` },
+      { wrong:"is that huge emission", right:"is the huge emission", cat:"stru", why:`<span class="en">that</span> 後面要接完整子句（主詞＋動詞）；只有名詞片語就把 that 拿掉 → <span class="en">reason is the huge emission of...</span>——<b>0812 同型錯第 2 次</b>。` },
+      { wrong:"the carbon dioxide", right:"carbon dioxide", cat:"gram", why:`冠詞：物質名詞泛指不加 the → <span class="en">emission of carbon dioxide</span>。` },
+      { wrong:"environment", right:"environmental", cat:"word", why:`詞形：修飾 protection 用形容詞 → <span class="en">environmental protection</span>。` },
+      { wrong:"warning the", right:"warning people about the", cat:"gram", why:`<span class="en">warn</span> 要先接「被警告的人」，事情用 about 接：<span class="en">warn people about...</span>；warn 不能直接接事情。` },
+      { wrong:"developing", right:"development", cat:"word", why:`詞形：<span class="en">business development projects</span>（商業開發案）——development 名詞組複合名詞；developing 是動詞形。` },
+      { wrong:"toursim", right:"the tourism", cat:"mech", why:`①字母顛倒（固定罩門）：<span class="en">tour·ism</span>，s 在 i 前面 ②<span class="en">the</span> tourism industry 的 the 又漏了（本篇第 3 次）。` },
+      { wrong:"remain", right:"keeps", cat:"gram", why:`①<b>第三人稱＋s（頭號罩門）</b>：his country → <span class="en">keeps</span> ②「保有環境」用 <span class="en">keep</span>；remain 是「維持某狀態」，後面接形容詞才順（remain natural）。` },
+      { wrong:"natrual", right:"natural", cat:"mech", why:`字母顛倒（固定罩門）：<span class="en">nat·u·ral</span>，u 在 r 後面。收進黑名單。` },
+      { wrong:"natural", right:"the natural", cat:"gram", why:`冠詞：<span class="en">the natural environment</span> 固定加 the。` },
+      { wrong:"recover", right:"recovered", cat:"gram", why:`被動 <span class="en">be＋過去分詞</span>：cannot <span class="en">be recovered</span>——少了 -ed 就不是被動（考前掃第 3 條）。` },
+      { wrong:"the nature", right:"nature", cat:"gram", why:`冠詞：nature 泛指大自然不加 the → <span class="en">damage to nature</span>。` },
+    ],
+    vocab:[
+      {seg:"開頭"}, {w:"less developed countries",zh:"低度開發國家（developed 形容詞＋複數）"}, {w:"the tourism industry",zh:"觀光業（tourism＋固定加 the，本篇漏 3 次）"}, {w:"protect their natural environment",zh:"保護自然環境（must＋原形）"},
+      {seg:"讓步：財務線（觀光賺錢）"}, {w:"facilitate economic growth",zh:"促進經濟成長（這句全對，讚）"}, {w:"reduce poverty",zh:"減少貧窮"}, {w:"create more jobs",zh:"創造工作機會（複數）"}, {w:"a huge increase in foreign currency",zh:"外匯大增（foreign：eign 結尾）"},
+      {seg:"主論：環保線"}, {w:"cause damage to the natural environment",zh:"破壞自然環境（the）"}, {w:"the huge emission of carbon dioxide",zh:"大量二氧化碳排放（CO2 不加 the）"}, {w:"environmental protection",zh:"環境保護（environmental 形容詞）"}, {w:"warn people about",zh:"警告世人（warn＋人＋about）"}, {w:"business development projects",zh:"商業開發案（development 名詞）"}, {w:"keeps the most natural environment",zh:"保有最自然的環境（keeps +s）"},
+      {seg:"結尾"}, {w:"cannot be recovered",zh:"無法復原（被動 be＋p.p.）"}, {w:"damage to nature",zh:"對大自然的傷害（nature 不加 the）"},
     ]},
 ];
 
