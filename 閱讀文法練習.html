@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>閱讀文法練習 — 互動出題（四選一＋逗號判斷）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, "Noto Sans TC", sans-serif; background: #f7f7f5; color: #37352f; font-size: 15px; line-height: 1.7; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 40px 24px 120px; }
+  h1 { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+  h2 { font-size: 20px; font-weight: 700; margin: 34px 0 4px; }
+  .sub { color: #787774; margin-bottom: 18px; }
+  .sub b { color:#37352f; }
+  .score { font-size: 13.5px; color: #555; background:#fff; border:1px solid #e9e9e7; border-radius:8px; padding:7px 14px; display:inline-block; margin-bottom:14px; }
+  .score b { color:#1f7a45; }
+
+  .card { background:#fff; border:1px solid #e9e9e7; border-radius:10px; padding:16px 20px; margin-bottom:14px; border-left:4px solid #e9e9e7; }
+  .card.right { border-left-color:#1f7a45; }
+  .card.wrong { border-left-color:#c0392b; }
+  .qsrc { font-size:12px; font-weight:600; color:#9b9a97; margin-bottom:6px; }
+  .qtext { font-size:15.5px; line-height:1.95; margin-bottom:12px; }
+  .qtext u { text-decoration:none; border-bottom:2px solid #b9b9b6; padding:0 14px; font-weight:700; color:#c0392b; white-space:nowrap; }
+  .opts { display:flex; flex-wrap:wrap; gap:8px; }
+  .opt { border:1px solid #e0e0dd; background:#fff; border-radius:8px; padding:6px 16px; font-size:14px; cursor:pointer; user-select:none; }
+  .opt:hover { background:#f0f0ee; }
+  .opt.ok { background:#e7f6ec; border-color:#2a7d3f; color:#1f7a45; font-weight:700; }
+  .opt.no { background:#fdeeee; border-color:#d99; color:#c0392b; text-decoration:line-through; }
+  .opt.dim { opacity:.45; pointer-events:none; }
+  .why { display:none; margin-top:12px; font-size:13.5px; background:#fafaf8; border-radius:8px; padding:11px 14px; color:#555; }
+  .why.show { display:block; }
+  .why b { color:#37352f; }
+  .why .en { font-family: Georgia, serif; font-style: italic; color:#2f6b46; }
+  .tagline { font-size:12px; font-weight:700; padding:1px 8px; border-radius:5px; color:#fff; margin-left:6px; vertical-align:1px; }
+  .t1 { background:#1f7a45; } .t2 { background:#c0392b; }
+
+  .judge .opts .opt { min-width:130px; text-align:center; }
+  .fix { margin-top:6px; }
+
+  .rules { background:#fff; border:1px solid #e9e9e7; border-radius:12px; padding:6px 20px 16px; }
+  .rules table { width:100%; border-collapse:collapse; margin-top:10px; }
+  .rules th, .rules td { text-align:left; font-size:13.5px; padding:8px 10px; border-top:1px solid #eee; vertical-align:top; }
+  .rules th { color:#9b9a97; font-size:12px; border-top:none; }
+  .rules .en { font-family: Georgia, serif; font-style: italic; color:#2f6b46; }
+
+  .btn { border:1px solid #37352f; background:#37352f; color:#fff; border-radius:8px; padding:8px 20px; font-size:14px; cursor:pointer; font-weight:600; margin-top:6px; }
+  .btn:hover { opacity:.85; }
+  .note { font-size:13px; color:#9b9a97; margin:8px 0 16px; }
+  .back { font-size:13px; margin-bottom:14px; display:inline-block; color:#2383e2; text-decoration:none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="index.html">← 回 PTE Study Hub</a>
+  <h1>🧩 閱讀文法練習</h1>
+  <p class="sub">出自<b>閱讀訂正的文法錯格</b>（詞性/詞形＋時態/語態）＋ 2026-08-13 互動複習加練的變體題。<br>
+  每次載入<b>順序都會重洗</b>；答錯可以繼續點到對，但只有<b>第一下就對</b>才計分。做完滾到最下面看口訣表。</p>
+
+  <h2>Ⅰ. 四選一（考場同款）</h2>
+  <div class="score" id="scoreA">第一次就答對：0 / 0</div>
+  <div id="secA"></div>
+
+  <h2>Ⅱ. 逗號判斷：✅ 合法還是 ❌ comma splice？</h2>
+  <p class="note">是 ❌ 的話，解釋裡有修法。記住：分詞片語（-ing 開頭沒主詞）合法；however 是副詞不能連句。</p>
+  <div class="score" id="scoreB">第一次就答對：0 / 0</div>
+  <div id="secB"></div>
+
+  <button class="btn" onclick="location.reload()">🔄 重洗一輪再練</button>
+
+  <h2>Ⅲ. 口訣表（考前掃這裡）</h2>
+  <div class="rules">
+    <table>
+      <tr><th>情境</th><th>口訣</th></tr>
+      <tr><td>逗號＋____＋動詞回指前句</td><td>只能 <b>which</b>；that／it／this 都是陷阱（it 會變 comma splice）</td></tr>
+      <tr><td>「有」還是「很」</td><td>「有」＋<b>名詞</b> → <span class="en">there is</span>；「很／是…的」＋<b>形容詞</b> → <span class="en">it is</span></td></tr>
+      <tr><td>and 前後</td><td><b>對齊詞性</b>：<span class="en">the production and dissemination of</span>（名詞配名詞）；分號並列動詞也對齊時態</td></tr>
+      <tr><td>人的感受 vs 事物性質</td><td><b>-ed 是「感到」、-ing 是「令人」</b>：<span class="en">people concerned</span>／<span class="en">the trend is concerning</span></td></tr>
+      <tr><td>名詞後面直接接 V-ed/V-ing</td><td>先<b>數動詞</b>：真動詞另有其人 → 這是省略關代的分詞修飾；名詞主動做 → -ing、被動/感到 → -ed</td></tr>
+      <tr><td>光桿 -ing</td><td><b>-ing 自己不能當真動詞</b>：進行式要 <span class="en">be＋Ving</span>（no one <b>is</b> watching）</td></tr>
+      <tr><td>選動詞形</td><td>三關卡：<b>單複數</b>（the virus→單）→ <b>主/被動</b>（中文加「被」通不通）→ <b>時態</b>（until recently→過去）</td></tr>
+      <tr><td>comma splice 修法四件套</td><td>句號／加連接詞 and·but·so／改 <b>which</b>／前半降級（As...）。<b>however 前面要句號或分號</b></td></tr>
+    </table>
+  </div>
+</div>
+
+<script>
+/* ───── Ⅰ. 四選一 ───── */
+const QA = [
+  { src:"Integrate Sales Activities（原題）", q:`Many organisations are facing escalating costs and a growth in customer power, <u>　</u> makes it necessary to allocate resources more strategically.`,
+    opts:["that","which","it","what"], ans:1,
+    why:`逗號後回指「前面整件事」只能用 <b>which</b>。<span class="en">that</span> 不能接在逗號後；<span class="en">it</span> 會變兩個完整句用逗號黏（comma splice）；<span class="en">what</span> 不是關係代名詞。` },
+  { src:"Integrate Sales Activities（原題）", q:`However, the authors say that within the industry <u>　</u> is still uncertainty about the shape a future sales team should take.`,
+    opts:["that","it","there","this"], ans:2,
+    why:`「有」＋名詞 → <b>there is</b>：<span class="en">there is still uncertainty</span>。對照：如果句尾是形容詞 <span class="en">uncertain</span>，就用 <span class="en">it is still uncertain</span>。看空格後面是名詞還是形容詞。` },
+  { src:"Radioactivity（原題）", q:`Nevertheless, we understand quite well the radiation levels to which people can be <u>　</u> without harm.`,
+    opts:["exposure","exposed","exposing","expose"], ans:1,
+    why:`be＋過去分詞＝被動：人「被暴露」→ <span class="en">can be <b>exposed</b></span>。搭配 <span class="en">expose sb to sth → be exposed to</span>，to 被關係子句搬到前面變 <span class="en">to which</span>。` },
+  { src:"Exponential Growth of the Internet（原題）", q:`For people <u>　</u> about African development, it seemed to offer the possibility of leapfrogging over the technology gap.`,
+    opts:["concerning","concerned","concern","concerns"], ans:1,
+    why:`縮減關係子句：<span class="en">people <b>(who are) concerned</b> about...</span>。先數動詞——真動詞是 seemed，所以空格是修飾語；人「感到」關心用 <b>-ed</b>（-ed 感到、-ing 令人）。` },
+  { src:"Exponential Growth of the Internet（原題）", q:`The exponential growth of the Internet was heralded, in the 1990s, as revolutionizing the production and <u>　</u> of information.`,
+    opts:["democratizing","dissemination","disseminating","distributed"], ans:1,
+    why:`<b>and 前後對齊詞性</b>：and 前是名詞 production、框架是 <span class="en">the ___ and ___ of</span> → 名詞 <span class="en"><b>dissemination</b></span>（傳播）。democratizing 是同篇下一格的答案，放錯格會連環錯。` },
+  { src:"Teenage Daughter（原題）", q:`"It's a paradoxical time of <u>　</u>. These are people with very sharp brains, but they're not quite sure what to do with them."`,
+    opts:["growing","grown","development","develops"], ans:2,
+    why:`of 後面接名詞：<span class="en">a time of <b>development</b></span>。growing 平常當形容詞用（<span class="en">a growing number</span>），單獨掛在 of 後面不自然。` },
+  { src:"Teenage Daughter（原題）", q:`...according to two physicians who have been <u>　</u> the unique structure and chemistry of the adolescent brain.`,
+    opts:["explored","exploring","explores","explore"], ans:1,
+    why:`空格後面緊跟<b>受詞</b>（the unique structure）→ 一定主動：<span class="en">have been <b>exploring</b></span>（現在完成進行，一直在研究）。<span class="en">have been explored</span> 是被動，後面不能再接受詞。` },
+  { src:"Zika Virus（原題）", q:`Public health officials probably did not understand Zika's potential because the virus <u>　</u> mostly in remote locations until recently.`,
+    opts:["are circulated","circulated","is circulated","circulating"], ans:1,
+    why:`三關卡：①the virus <b>單數</b>（are 出局）②病毒<b>自己</b>流傳（「被流傳」不通→主動）③<span class="en">until recently</span>＋<span class="en">did not</span> → <b>過去式</b>。circulating 是光桿 -ing，不能當真動詞。` },
+  { src:"The Bridge to Pop（原題）", q:`Jasper Johns <u>　</u> iconic imagery like the American flag; Robert Rauschenberg employed silk-screen printings; and Larry Rivers used images of mass-produced goods.`,
+    opts:["have been reimagining","reimagined","has reimagined","reimagining"], ans:1,
+    why:`分號並列三個藝術家：employed／used 都是<b>過去簡單式</b> → 對齊 <span class="en"><b>reimagined</b></span>。have 還多踩主謂一致（Johns 單數）。` },
+  { src:"變體題（which）", q:`The company lost its biggest client last year, <u>　</u> forced it to cut costs.`,
+    opts:["that","which","it","this"], ans:1,
+    why:`同款：逗號後回指「失去大客戶這件事」→ <b>which</b>。選 it 就是 comma splice——你 WE 的老毛病搬進閱讀。` },
+  { src:"變體題（which）", q:`He missed the deadline, <u>　</u> made his boss very angry.`,
+    opts:["it","that","which","this"], ans:2,
+    why:`<b>which</b> 指「錯過截止日這件事」。逗號＋it/that/this＋動詞回指前句 → 全是陷阱。` },
+  { src:"變體題（there/it）", q:`<u>　</u> is still a big gap between the rich and the poor.`,
+    opts:["It","There","That","This"], ans:1,
+    why:`gap 是<b>名詞</b>、意思是「有落差」→ <span class="en"><b>There</b> is</span>。` },
+  { src:"變體題（there/it）", q:`<u>　</u> is important that children learn good values.`,
+    opts:["There","It","That","This"], ans:1,
+    why:`important 是<b>形容詞</b> → <span class="en"><b>It</b> is important that...</span>（你的模板句 <span class="en">it is crucial that</span> 同款）。` },
+  { src:"變體題（-ed/-ing）", q:`Parents <u>　</u> about screen time should set clear rules for their children.`,
+    opts:["concerning","concerned","concern","concerns"], ans:1,
+    why:`真動詞是 should set → 空格是分詞修飾；人「感到」關心 → <b>concerned</b>（省略了 who are）。` },
+  { src:"變體題（and 對齊）", q:`The report focuses on the collection and <u>　</u> of data.`,
+    opts:["analyzing","analysis","analyzed","analyzes"], ans:1,
+    why:`and 前是名詞 collection、框架 <span class="en">the ___ and ___ of</span> → 名詞 <span class="en"><b>analysis</b></span>（資料的蒐集與分析）。` },
+  { src:"變體題（and 對齊）", q:`The course covers the production and <u>　</u> of energy.`,
+    opts:["consuming","consumption","consumed","consumes"], ans:1,
+    why:`名詞配名詞：<span class="en">the production and <b>consumption</b> of energy</span>（能源的生產與消耗）。` },
+  { src:"變體題（真動詞）", q:`Until recently, the disease <u>　</u> only in small villages.`,
+    opts:["is spread","spread","are spread","spreading"], ans:1,
+    why:`整句沒有別的動詞 → 空格要<b>真動詞</b>；<span class="en">until recently</span> → 過去式；疾病自己傳播 → 主動 → <span class="en"><b>spread</b></span>（三態同形）。spreading 是光桿 -ing；要「正在」得寫 <span class="en">was spreading</span>（be＋Ving）。` },
+  { src:"變體題（真動詞）", q:`Until last year, the small shop <u>　</u> only cash.`,
+    opts:["accepting","accepted","is accepted","accepts"], ans:1,
+    why:`過去（until last year）＋主動（店家收現金）→ <span class="en"><b>accepted</b></span>。` },
+];
+
+/* ───── Ⅱ. 逗號判斷 ───── */
+const QB = [
+  { s:`The rain stopped, we went outside.`, splice:true,
+    why:`兩個完整句＋光逗號。修法：<span class="en">The rain stopped<b>, so</b> we went outside.</span> 或句號斷開。` },
+  { s:`As the rain stopped, we went outside.`, splice:false,
+    why:`<b>As</b> 把前半降級成附屬子句 → 逗號合法。` },
+  { s:`The rain stopped, so we went outside.`, splice:false,
+    why:`連接詞 <b>so</b> 在場 → 合法。` },
+  { s:`Cities are getting worse on these measures, the statistics on chronic disease and rising congestion paint a bleak future.`, splice:true,
+    why:`兩邊都是完整句。修法：句號；或 <span class="en"><b>As</b> cities are getting worse..., the statistics... paint...</span>（降級前半）。` },
+  { s:`As James studies at a world-renowned university, he is able to concentrate on the materials, staying focused in every lecture.`, splice:false,
+    why:`最後的 <span class="en">, staying focused...</span> 是<b>分詞片語</b>（沒有自己的主詞，不是完整句）→ 合法。跟模板的 <span class="en">, in turn leading to...</span> 同款。` },
+  { s:`The Internet was heralded as revolutionizing the production and dissemination of information, however, many people in remote areas still had no access to it.`, splice:true,
+    why:`<b>however 是副詞不是連接詞</b>，沒有連接力 → 照樣 comma splice。修法：<span class="en">...information<b>. However,</b> many people...</span>（句號或分號）。` },
+  { s:`Getting married before completing studies has some advantages, it can help people stay closer with their friends and family.`, splice:true,
+    why:`逗號＋it＋動詞 → comma splice。修法：<span class="en">..., <b>and</b> it can help...</span>（你結尾模板的修法）。` },
+  { s:`The virus circulated mostly in remote locations for decades, which explains why health officials underestimated its potential.`, splice:false,
+    why:`<b>which</b> 把後半降級成子句 → 合法。` },
+  { s:`If people get married early then this can help improve family relationships, in turn leading to people having a stronger feeling of belonging.`, splice:false,
+    why:`<span class="en">, in turn leading to...</span> 是分詞片語 → 合法。模板本人。` },
+  { s:`Volcanoes blast more than 100 million tons of carbon dioxide into the atmosphere every year, the gas usually spreads out and is not concentrated in one spot.`, splice:true,
+    why:`兩個完整句。修法：補連接詞——文法上 <b>and</b> 可以，語意是轉折（噴很多「但」會散開）所以 <b>but</b> 更好（原文就用 but）。` },
+];
+
+/* ───── engine ───── */
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+const LETTERS = ["A","B","C","D"];
+let aFirst=0, aDone=0, bFirst=0, bDone=0;
+
+shuffle(QA).forEach((it,qi) => {
+  const card = document.createElement('div'); card.className='card';
+  const shuffledOpts = shuffle(it.opts.map((t,i)=>({t, ok:i===it.ans})));
+  card.innerHTML = `<div class="qsrc">第 ${qi+1} 題 · ${it.src}</div><div class="qtext">${it.q}</div>
+    <div class="opts">${shuffledOpts.map((o,i)=>`<span class="opt" data-ok="${o.ok?1:0}">${LETTERS[i]}. ${o.t}</span>`).join('')}</div>
+    <div class="why">${it.why}</div>`;
+  let tried=false, solved=false;
+  card.querySelectorAll('.opt').forEach(op => op.onclick = () => {
+    if(solved) return;
+    if(op.dataset.ok==="1"){
+      solved=true; op.classList.add('ok');
+      card.classList.add(tried?'wrong':'right');
+      card.querySelector('.why').classList.add('show');
+      card.querySelectorAll('.opt').forEach(o=>{ if(o!==op) o.classList.add('dim'); });
+      aDone++; if(!tried) aFirst++;
+      document.getElementById('scoreA').innerHTML = `第一次就答對：<b>${aFirst}</b> / ${aDone}`;
+    } else {
+      tried=true; op.classList.add('no');
+    }
+  });
+  document.getElementById('secA').appendChild(card);
+});
+
+shuffle(QB).forEach((it,qi) => {
+  const card = document.createElement('div'); card.className='card judge';
+  card.innerHTML = `<div class="qsrc">判斷 ${qi+1}</div><div class="qtext"><span class="en">${it.s}</span></div>
+    <div class="opts"><span class="opt" data-v="0">✅ 合法</span><span class="opt" data-v="1">❌ comma splice</span></div>
+    <div class="why">${it.why}</div>`;
+  let tried=false, solved=false;
+  card.querySelectorAll('.opt').forEach(op => op.onclick = () => {
+    if(solved) return;
+    const pick = op.dataset.v==="1";
+    if(pick === it.splice){
+      solved=true; op.classList.add('ok');
+      card.classList.add(tried?'wrong':'right');
+      card.querySelector('.why').classList.add('show');
+      card.querySelectorAll('.opt').forEach(o=>{ if(o!==op) o.classList.add('dim'); });
+      bDone++; if(!tried) bFirst++;
+      document.getElementById('scoreB').innerHTML = `第一次就答對：<b>${bFirst}</b> / ${bDone}`;
+    } else {
+      tried=true; op.classList.add('no');
+    }
+  });
+  document.getElementById('secB').appendChild(card);
+});
+</script>
+</body>
+</html>
