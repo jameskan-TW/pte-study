@@ -285,7 +285,8 @@ const BLACKLIST = [
   "discuss","better","theoretical","prefer","classroom","setting","concentrate",
   "tangible","intangible","prospects","definitely","afraid","since","honesty",
   "depend","differences","disadvantaged","important","point","income",
-  "countries","foreign","tourism","natural"
+  "countries","foreign","tourism","natural","decision","process","benefits",
+  "anxiety","frustrated"
 ];
 
 /* ═══════════ 分頁切換（支援 #review / #rewrite / #check 直達）═══════════ */
@@ -669,6 +670,44 @@ const DATA = [
       {seg:"讓步：財務線（觀光賺錢）"}, {w:"facilitate economic growth",zh:"促進經濟成長（這句全對，讚）"}, {w:"reduce poverty",zh:"減少貧窮"}, {w:"create more jobs",zh:"創造工作機會（複數）"}, {w:"a huge increase in foreign currency",zh:"外匯大增（foreign：eign 結尾）"},
       {seg:"主論：環保線"}, {w:"cause damage to the natural environment",zh:"破壞自然環境（the）"}, {w:"the huge emission of carbon dioxide",zh:"大量二氧化碳排放（CO2 不加 the）"}, {w:"environmental protection",zh:"環境保護（environmental 形容詞）"}, {w:"warn people about",zh:"警告世人（warn＋人＋about）"}, {w:"business development projects",zh:"商業開發案（development 名詞）"}, {w:"keeps the most natural environment",zh:"保有最自然的環境（keeps +s）"},
       {seg:"結尾"}, {w:"cannot be recovered",zh:"無法復原（被動 be＋p.p.）"}, {w:"damage to nature",zh:"對大自然的傷害（nature 不加 the）"},
+    ]},
+  { title:"員工參與決策：好 or 壞？", pid:"2026/08/14", type:"WE",
+    text:`<p>It is [[1]] true that whether employees should join the decision-making process has become a matter of concern over the years, and it has [[2]] great controversy and captured public attention. Some people are of the opinion that employees [[3]] [[4]] is a bad idea, while others hold the view that more people [[5]] the discussion is a great policy. I tend to agree more with the [[6]] and will discuss this further below.</p>
+<p>It has to [[7]] that involving employees in the decision-making process may bring some disadvantages, and one argument in favor of this view can be [[8]] to stress and [[9]]. If an employee's idea was not accepted then he [[10]] be [[11]] and isolated, in turn leading to developing serious mental health [[12]]. As a result, it is unsurprising that he [[13]] his job eventually.</p>
+<p>On the other hand, I firmly believe that more people [[14]] the [[15]]-making [[16]] can bring more [[17]], and one compelling reason is [[18]] improve efficiency and [[19]]. A pertinent case in point is James, who works at a world-renowned and prestigious firm. As James's boss invites [[20]] the decision-making process, he is able to [[21]] his opinion directly and reduce the [[22]] cost. In other words, the company may [[23]] and improve their profit margin.</p>
+<p>In conclusion, despite the fact that the counterargument may hold true in many cases, I believe that employees [[24]] the [[25]] process has more benefits. It is crucial that all companies should consider this policy.</p>`,
+    blanks:[
+      { wrong:"general", right:"generally", cat:"word", why:`模板第一句：<span class="en">It is generally true</span>——修飾形容詞 true 要用副詞 <span class="en">generally</span>。模板句內的錯，多默幾次。` },
+      { wrong:"cuased", right:"caused", cat:"mech", why:`字母顛倒（固定罩門）：<span class="en">cau·sed</span>，是 au 不是 ua。<b>黑名單字 cause 又錯</b>。` },
+      { wrong:"employees join", right:"employees joining", cat:"gram", why:`<b>0814 新坑：動名詞當主詞</b>——「員工參與決策」整件事當主詞 → <span class="en">employees joining ... is a bad idea</span>。本篇同型錯 <b>4 次</b>，今天最大的洞。` },
+      { wrong:"decision-making proces", right:"the decision-making process", cat:"mech", why:`①拼字：<span class="en">pro·cess</span> 結尾兩個 s ②特指這個流程要加 the。本篇 process 拼錯 2 次（proces／procees），收黑名單。` },
+      { wrong:"people join", right:"people joining", cat:"gram", why:`同 [[3]]：<span class="en">more people joining the discussion is a great policy</span>（動名詞主詞第 2 次）。` },
+      { wrong:"later", right:"latter", cat:"word", why:`模板字：<span class="en">the latter</span>（後者，兩個 t）；<span class="en">later</span> 是「較晚」。批改沒標紅，自查抓到的。` },
+      { wrong:"to admitted", right:"to be admitted", cat:"gram", why:`<b>模板句被動漏 be</b>：<span class="en">It has to be admitted</span>——考前掃第 3 條 be＋p.p.，0813 才錯過 cannot be recovered 同型。` },
+      { wrong:"that lead", right:"that it can lead", cat:"stru", why:`<span class="en">that</span> 後面要完整子句（主詞＋動詞）——<b>0812、0813 各中一次，本篇又中 2 次</b>（另見 [[18]]）。補主詞 → <span class="en">that it can lead to</span>。` },
+      { wrong:"anxity", right:"anxiety", cat:"mech", nv:true, why:`拼字：<span class="en">anx·i·e·ty</span>——xiety 有三個母音 i-e-y，別吞。新雷字，收進黑名單。` },
+      { wrong:"will", right:"would", cat:"gram", why:`if 子句用了過去式（<span class="en">was not accepted</span>），主句要配 <span class="en">would</span> → <span class="en">he would be frustrated</span>。0814 新坑：if 過去式配 would。` },
+      { wrong:"frustarted", right:"frustrated", cat:"mech", nv:true, why:`字母顛倒（固定罩門）：<span class="en">frus·tra·ted</span>——是 tra 不是 tar。新雷字，收進黑名單。` },
+      { wrong:"problem", right:"problems", cat:"gram", why:`單複數：<span class="en">serious mental health problems</span>（可數複數）。` },
+      { wrong:"quited", right:"quit", cat:"gram", why:`<span class="en">quit</span> 是不規則動詞，過去式同形（quit–quit–quit），沒有 quited。` },
+      { wrong:"people join", right:"people joining", cat:"gram", why:`動名詞主詞第 3 次：<span class="en">more people joining ... can bring</span>。` },
+      { wrong:"decission", right:"decision", cat:"mech", why:`拼字：<span class="en">de·ci·sion</span> 只有一個 s。本篇 decision 錯 2 次，收黑名單。` },
+      { wrong:"procees", right:"process", cat:"mech", why:`拼字：<span class="en">pro·cess</span>——ce 後面兩個 s。本篇第 2 種錯法（proces／procees 都出現）。` },
+      { wrong:"benifits", right:"benefits", cat:"mech", why:`拼字：<span class="en">ben·e·fits</span>——中間是 e 不是 i。收進黑名單。` },
+      { wrong:"that can", right:"that it can", cat:"stru", why:`同 [[8]]：that 後要完整子句，補主詞 → <span class="en">that it can improve</span>。` },
+      { wrong:"productivly", right:"productivity", cat:"word", why:`詞性：improve 的受詞用名詞 → <span class="en">efficiency and productivity</span>（並列名詞）。0810 就收過 boost productivity。` },
+      { wrong:"him join", right:"him to join", cat:"gram", why:`<span class="en">invite sb to do</span>：<span class="en">invites him to join</span>。0814 新坑：invite＋to＋原形。` },
+      { wrong:"expresses", right:"express", cat:"gram", why:`to 後接原形：<span class="en">is able to express</span>——跟 0813「情態動詞後原形」同家族（should／must／to 後面都原形）。` },
+      { wrong:"communicat", right:"communication", cat:"word", why:`詞形：<span class="en">communication cost</span> 用名詞；communicat 不是字。批改沒標紅，自查抓到的。` },
+      { wrong:"result in time-saving", right:"save time", cat:"word", why:`<span class="en">result in</span> 的主詞要是「事情」（this can result in time-saving）；主詞是 the company 就直接 <span class="en">save time</span>。批改沒標紅，自查抓到的。` },
+      { wrong:"employees join", right:"employees joining", cat:"gram", why:`動名詞主詞第 4 次：<span class="en">employees joining ... has more benefits</span>——這型今天要練到反射。` },
+      { wrong:"decission-maling", right:"decision-making", cat:"mech", why:`①decission 第 2 次（只有一個 s）②手滑：<span class="en">making</span> 打成 maling。` },
+    ],
+    vocab:[
+      {seg:"開頭"}, {w:"employees joining the decision-making process",zh:"員工參與決策（動名詞當主詞，本篇錯 4 次）"}, {w:"generally true",zh:"模板：generally 副詞修飾 true"}, {w:"the latter",zh:"後者（兩個 t；later 是較晚）"},
+      {seg:"讓步：壓力線（點子被拒）"}, {w:"lead to stress and anxiety",zh:"造成壓力和焦慮（anx·i·e·ty）"}, {w:"he would be frustrated and isolated",zh:"沮喪又孤立（if 過去式配 would；frus·tra·ted）"}, {w:"mental health problems",zh:"心理健康問題（複數）"}, {w:"quit his job",zh:"辭職（quit 過去式同形）"},
+      {seg:"主論：效率線"}, {w:"improve efficiency and productivity",zh:"提升效率與生產力（並列名詞）"}, {w:"invites him to join",zh:"邀請他參與（invite＋to＋原形）"}, {w:"is able to express his opinion",zh:"表達意見（to 後原形）"}, {w:"reduce the communication cost",zh:"降低溝通成本（communication 名詞）"}, {w:"save time and improve their profit margin",zh:"省時＋提高利潤（公司當主詞用 save time）"},
+      {seg:"結尾"}, {w:"has more benefits",zh:"好處更多（ben·e·fits）"},
     ]},
 ];
 
