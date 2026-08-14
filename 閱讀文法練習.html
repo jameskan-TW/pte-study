@@ -79,6 +79,7 @@
       <tr><td>光桿 -ing</td><td><b>-ing 自己不能當真動詞</b>：進行式要 <span class="en">be＋Ving</span>（no one <b>is</b> watching）</td></tr>
       <tr><td>選動詞形</td><td>三關卡：<b>單複數</b>（the virus→單）→ <b>主/被動</b>（中文加「被」通不通）→ <b>時態</b>（until recently→過去）</td></tr>
       <tr><td>comma splice 修法四件套</td><td>句號／加連接詞 and·but·so／改 <b>which</b>／前半降級（As...）。<b>however 前面要句號或分號</b></td></tr>
+      <tr><td>介系詞＋關代（0814 標註）</td><td><b>介系詞一出現，格就變</b>：人 who→<b>whom</b>、物用 <b>which</b>；<b>that／where 出局</b>。<span class="en">for whom she posed</span>／<span class="en">to which people are exposed</span>／<span class="en">in which</span> ≒ where</td></tr>
     </table>
   </div>
 </div>
@@ -140,6 +141,18 @@ const QA = [
   { src:"變體題（真動詞）", q:`Until last year, the small shop <u>　</u> only cash.`,
     opts:["accepting","accepted","is accepted","accepts"], ans:1,
     why:`過去（until last year）＋主動（店家收現金）→ <span class="en"><b>accepted</b></span>。` },
+  { src:"Thea Proctor（原題延伸·0814 標註：介系詞＋關代）", q:`She studied in the company of George Lambert, for <u>　</u> she often posed.`,
+    opts:["who","whom","which","that"], ans:1,
+    why:`你的 0814 標註「to whom / in which——<b>詞性（格）變了</b>」：關代跟在<b>介系詞後面</b>要用<b>受格</b>——人用 <span class="en"><b>whom</b></span>（who 是主格，放介系詞後不行），物用 which，<b>that 完全不能跟在介系詞後</b>。這句出自你做過的 Thea Proctor：<span class="en">for whom she often posed</span>（她常為他擺姿勢作畫）。` },
+  { src:"Radioactivity（原題延伸·介系詞＋關代）", q:`We understand quite well the radiation levels to <u>　</u> people can be exposed without harm.`,
+    opts:["that","which","whom","where"], ans:1,
+    why:`<span class="en">levels</span> 是<b>物</b> → 介系詞後用 <span class="en"><b>which</b></span>：<span class="en">the radiation levels <b>to which</b> people can be exposed</span>（＝people can be exposed <b>to</b> the levels，to 被搬到關代前面）。that 不能跟在介系詞後；whom 是人。` },
+  { src:"變體題（介系詞＋關代）", q:`The professor to <u>　</u> the letter was addressed has already retired.`,
+    opts:["who","which","whom","that"], ans:2,
+    why:`介系詞 to ＋<b>人</b> → 受格 <span class="en"><b>whom</b></span>（＝the letter was addressed <b>to</b> the professor）。口訣：<b>介系詞一出現，who 變 whom、that 出局</b>。` },
+  { src:"變體題（介系詞＋關代）", q:`The house in <u>　</u> he was born is now a museum.`,
+    opts:["where","which","that","whom"], ans:1,
+    why:`已經有介系詞 <span class="en">in</span> → 接<b>物的受格 which</b>：<span class="en">in which</span> ≒ <span class="en">where</span>。兩個只能挑一個——<b>有 in 就不能再用 where</b>（where 本身已含「在…」）。` },
 ];
 
 /* ───── Ⅱ. 逗號判斷 ───── */
