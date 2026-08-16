@@ -135,7 +135,7 @@
 
     <div id="idxList"></div>
 
-    <div class="done">✅ <b>已全對（做過、沒錯）：</b>Mass Extinction 大規模滅絕 <span class="pid">#080350</span> — published / previously / causes / Instead 全對；Low Fertility 低生育率 <span class="pid">#110188</span> — comparisons / patterns / postponing / associations / explored 全對；Mind-reading 讀心術（Tomkins 與 Ekman）— century / dense / legendary / extended 全對；Financial Crisis 金融危機 <span class="pid">#080349</span> — explanations / function / incompetence / understanding 全對。</div>
+    <div class="done">✅ <b>已全對（做過、沒錯）：</b>Mass Extinction 大規模滅絕 <span class="pid">#080350</span> — published / previously / causes / Instead 全對；Low Fertility 低生育率 <span class="pid">#110188</span> — comparisons / patterns / postponing / associations / explored 全對；Mind-reading 讀心術（Tomkins 與 Ekman）— century / dense / legendary / extended 全對；Financial Crisis 金融危機 <span class="pid">#080349</span> — explanations / function / incompetence / understanding 全對；Modern Healthcare 現代醫療（醫師像執行長）— medicine / able / staff / decisions 全對。</div>
 
     <div class="foot">錯一次是意外，錯兩次是模式。下次做題前掃一遍這頁的紅字。</div>
   </div>
@@ -376,6 +376,28 @@ const DATA = [
       { wrong:"cut off", right:"cut in", cat:"col", why:`片語動詞 <span class="en">cut in</span>＝<b>插話</b>（對話中聽者隨時能插進來）；<span class="en">cut off</span>＝切斷／打斷別人，是及物、後面要接受詞。` },
       { wrong:"cut in", right:"converging", cat:"col", why:`固定搭配 <span class="en">converge on ~</span>＝從不同方向<b>聚焦</b>於：<span class="en">by converging on ideas from different directions</span>。cut in 後面接不了 on。` },
       { wrong:"intonation", right:"tone", cat:"sem", why:`印刷文字缺的是說話者身體的<b>語氣 (tone)</b> 與強調：<span class="en">physical tone and emphasis</span>。intonation 專指聲音高低起伏，這裡泛指語氣、與 physical 搭配用 tone。` },
+    ]},
+
+  { title:"DNA sequence 猛獁象基因組（3 格全錯）", pid:"#080042", type:"FIB-D",
+    text:`The recipe for making any creature is written in its DNA. So last November when geneticists published the near-complete DNA sequence of the long-extinct woolly mammoth, there was much speculation about whether we could bring this behemoth back to life. Creating a living, breathing creature from a genome sequence that exists only in a computer's memory is not possible right now. But someone someday is sure to try it, [[1]] Stephan Schuster, a [[2]] biologist at Pennsylvania State University, University Park, and a [[3]] force behind the mammoth genome project.`,
+    blanks:[
+      { wrong:"foresees", right:"predicts", cat:"col", why:`這是<b>引述動詞</b>（「…，某某人如此預測」）：<span class="en">"...," predicts Stephan Schuster</span> 是新聞體固定寫法。<span class="en">foresee</span> 幾乎只接名詞受詞（foresee problems／foresee a change），不拿來當引述動詞插在句尾。` },
+      { wrong:"molecule", right:"molecular", cat:"pos", why:`空格後面是名詞 <span class="en">biologist</span>，前面要<b>形容詞</b>：<span class="en">a molecular biologist</span>＝分子生物學家（固定職稱）。molecule 是名詞（分子），名詞疊名詞不通。<b>看到「a ___ 名詞」先問詞性</b>。` },
+      { wrong:"carrying", right:"driving", cat:"col", why:`固定搭配 <span class="en">a driving force behind ~</span>＝背後的<b>推動力／主導者</b>。carrying force 不是英文說法。` },
+    ]},
+
+  { title:"Agrarian Parties 農民政黨", pid:"", type:"FIB-DD",
+    text:`Agrarian parties are political parties chiefly representing the interests of peasants or, more broadly, the rural sector of society. The extent to ${ok('which')} they are important, or whether they even exist, depends mainly ${ok('on')} two factors. One, obviously, is the size of an identifiable peasantry, or the size of the rural relative to the urban population. The other is a matter of social integration: [[1]] agrarian parties to be important, the representation of countryside or peasantry must not be integrated with the other major sections of society. [[2]], a country might possess a sizeable rural population, but have an economic system in which the interests of the voters were predominantly related to their incomes, ${ok('rather')} than their occupations or location; and in such a country the political system would be unlikely to include an important agrarian party.`,
+    blanks:[
+      { wrong:"although", right:"for", cat:"pos", why:`空格後是「名詞＋<span class="en">to be</span>」不是完整子句 → 只能用 <span class="en">For + 受詞 + to V</span>（＝「要讓…，就必須…」）。<span class="en">although</span> 是連接詞，後面一定要接<b>主詞＋動詞</b>的完整子句，接不上 <span class="en">agrarian parties to be important</span>。<b>選連接詞前先看後面是子句還是不定詞片語。</b>` },
+      { wrong:"After all", right:"Thus", cat:"log", why:`前一句立下條件「農民必須<b>沒有</b>被整合進社會其他部門」，這一句是<b>順著推</b>出的反例（有大量農村人口，但選民利益按收入分 → 不會有農民政黨）→ 用 <span class="en">Thus</span>（因此）。<span class="en">After all</span>＝「畢竟」，是補理由、不是推結論。` },
+    ]},
+
+  { title:"Northern Spotted Owls 北方斑點鴞", pid:"", type:"FIB-DD",
+    text:`Our analysis of the genetic structure of northern spotted owls across most of the range of the subspecies allowed us to test for genetic discontinuities and identify landscape features that influence the subspecies' genetic structure. Although no ${ok('distinct')} genetic breaks were found in northern spotted owls, ${ok('several')} landscape features were important in structuring genetic variation. Dry, low elevation valleys and the high elevation Cascade and Olympic Mountains restricted gene flow, while the lower Oregon Coast Range [[1]] gene flow, acting as a "genetic corridor." The Columbia River did not act as a barrier, [[2]] owls readily fly over this large river. Thus, even in taxa such as northern spotted owls with potential for long-distance dispersal, landscape features can have an important impact on gene flow and genetic structure.`,
+    blanks:[
+      { wrong:"prevented", right:"facilitated", cat:"log", why:`<span class="en">while</span> 在這裡是<b>對比</b>：前半「山谷與高山 <span class="en">restricted</span> 基因流」→ 後半必須<b>反向</b>＝<span class="en">facilitated</span>（促進）。同句還有第二個線索：<span class="en">acting as a "genetic corridor"</span>——走廊是讓東西<b>通過</b>的。你填 prevented 等於跟 restricted 同向，把對比抹掉了。` },
+      { wrong:"proving", right:"suggesting", cat:"sem", why:`學術寫作的<b>推論語氣</b>：只觀察到「河沒形成屏障」，只能<span class="en">suggesting</span>（顯示、推測）貓頭鷹會飛越，不能 <span class="en">proving</span>（證明）。論文類文章看到單一觀察推結論，一律選<b>弱語氣</b>的 suggest／indicate。` },
     ]},
 ];
 
