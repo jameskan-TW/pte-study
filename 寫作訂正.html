@@ -205,7 +205,7 @@
         <div class="take" id="take"></div>
       </div>
 
-      <div class="good">💪 <b>你的強項：</b>模板用得很熟 —— 立場、讓步段、James 例子、結論都齊全，<b>內容和結構不是問題</b>。分數卡住的一直是<b>拼字和基礎文法的準確度</b>。這是好消息：準確度靠檢查清單就能練起來，把紅字修乾淨就能上一個檔次。</div>
+      <div class="good">💪 <b>你的強項：</b>模板用得很熟 —— 立場、讓步段、James 例子、結論都齊全，<b>內容和結構不是問題</b>。分數卡住的一直是<b>拼字和基礎文法的準確度</b>。這是好消息：準確度靠檢查清單就能練起來，把紅字修乾淨就能上一個檔次。<br>📊 兩軌計錯：0814 基本 23＋新字 2 → <b>0818 基本 36＋新字 5</b>（本篇拼字 20 個是主因，模板熱區 it→this／view／As James +s／漏 and 全數又中——先到 <a href="WE_模板熱力圖.html">熱力圖</a> 掃前五大）。</div>
 
       <div class="bar">
         <div class="lbl">依根因篩選（點下方篇目進入複習）</div>
@@ -286,7 +286,9 @@ const BLACKLIST = [
   "tangible","intangible","prospects","definitely","afraid","since","honesty",
   "depend","differences","disadvantaged","important","point","income",
   "countries","foreign","tourism","natural","decision","process","benefits",
-  "anxiety","frustrated"
+  "anxiety","frustrated","celebrities","privacy","spotlight","bargain",
+  "disadvantages","negative","performance","carefully","crucial","losing",
+  "everything","famous","attention","before","brings"
 ];
 
 /* ═══════════ 分頁切換（支援 #review / #rewrite / #check 直達）═══════════ */
@@ -708,6 +710,61 @@ const DATA = [
       {seg:"讓步：壓力線（點子被拒）"}, {w:"lead to stress and anxiety",zh:"造成壓力和焦慮（anx·i·e·ty）"}, {w:"he would be frustrated and isolated",zh:"沮喪又孤立（if 過去式配 would；frus·tra·ted）"}, {w:"mental health problems",zh:"心理健康問題（複數）"}, {w:"quit his job",zh:"辭職（quit 過去式同形）"},
       {seg:"主論：效率線"}, {w:"improve efficiency and productivity",zh:"提升效率與生產力（並列名詞）"}, {w:"invites him to join",zh:"邀請他參與（invite＋to＋原形）"}, {w:"is able to express his opinion",zh:"表達意見（to 後原形）"}, {w:"reduce the communication cost",zh:"降低溝通成本（communication 名詞）"}, {w:"save time and improve their profit margin",zh:"省時＋提高利潤（公司當主詞用 save time）"},
       {seg:"結尾"}, {w:"has more benefits",zh:"好處更多（ben·e·fits）"},
+    ]},
+
+  { title:"名人該放棄隱私權嗎？", pid:"2026/08/18", type:"WE",
+    text:`<p>It is generally true that celebrities [[1]] their right [[2]] privacy has become a matter of concern [[3]] years, and [[4]] has caused great controversy and captured public [[5]]. Some people are of the opinion that it [[6]] [[7]] to [[8]], while others hold the view that it actually gives them a lot of benefits. I tend to agree more with the latter and will discuss this further below.</p>
+<p>It has to be admitted that [[9]] privacy brings [[10]] drawbacks, and one argument in favor of [[11]] can be that [[12]] privacy may reduce [[13]]. If people can know [[14]] about [[15]]' lives then they cannot [[16]] on their [[17]], in turn leading to tangible or intangible [[18]] influence. As a result, it is unsurprising that some celebrities lose their creativity and [[19]] [[20]].</p>
+<p>On the other hand, I firmly believe that famous people [[21]] their right [[22]] privacy can bring some benefits, and one compelling reason is that [[23]] get more attention [[24]] public. A pertinent case in point is Lebron James, who is the most [[25]] basketball player in the world. As James rarely [[26]] any [[27]], he is able to get [[28]] the [[29]] all the time. In other words, he [[30]] more popular and [[31]] good future prospects.</p>
+<p>In [[32]], despite the fact [[33]] counterargument may hold true in many cases, I believe that [[34]] [[35]] [[36]] for famous people is a good [[37]] for their [[38]] is [[39]] that people think [[40]] [[41]] they become a celebrity.</p>`,
+    blanks:[
+      { wrong:"given up", right:"giving up", cat:"gram", why:`<b>動名詞當主詞</b>：「名人放棄隱私」整件事當主詞 → <span class="en">celebrities giving up their right to privacy has become…</span>。0814 的動名詞主詞坑同型，本篇錯 2 次（另見 [[21]]）。` },
+      { wrong:"of", right:"to", cat:"word", why:`固定搭配：<span class="en">the right to privacy</span>——「對…的權利」用 to。本篇兩處都寫成 of（另見 [[22]]）。` },
+      { wrong:"the", right:"over the", cat:"gram", why:`<b>模板句吞小字</b>：<span class="en">a matter of concern over the years</span>——over 被吞掉。吞小字名單新成員。` },
+      { wrong:"it", right:"this", cat:"word", why:`模板句：<span class="en">and this has caused</span>——this 指代主題比較清楚。<b>0811／0812／0813 各錯一次，本篇第 4 次</b>，熱力圖頭號熱區。` },
+      { wrong:"attenion", right:"attention", cat:"mech", why:`模板字拼字：<span class="en">at·ten·tion</span>——ten 後面還有個 t。` },
+      { wrong:"brins", right:"brings", cat:"mech", why:`拼字：<span class="en">brings</span>——漏 g（手快吞字母）。` },
+      { wrong:"disadventages", right:"disadvantages", cat:"mech", why:`拼字：<span class="en">dis·ad·van·ta·ges</span>——中間是 van 不是 ven。收黑名單。` },
+      { wrong:"the celebrities", right:"celebrities", cat:"gram", why:`泛指名人整群不加 the（同 0812「rather than just the good resources」刪 the）。` },
+      { wrong:"lossing", right:"losing", cat:"mech", why:`拼字：<span class="en">lose → lo·sing</span>——去 e 加 ing，只有一個 s。本篇 losing 錯 2 種寫法（lossing／loosing，另見 [[34]]）。` },
+      { wrong:"a lot", right:"a lot of", cat:"gram", why:`<span class="en">a lot <b>of</b> + 名詞</span>——of 被吞。` },
+      { wrong:"this", right:"this view", cat:"word", why:`<b>模板句漏 view</b>：<span class="en">in favor of this view</span>——0811／0813 各漏一次，本篇第 3 次；加上封關卡紀錄這是頭號罩門，打到這裡手指停一下。` },
+      { wrong:"without", right:"living without", cat:"stru", why:`<span class="en">that</span> 後面要完整子句：介系詞片語不能當主詞 → <span class="en">that living without privacy may reduce…</span>（動名詞當主詞）。` },
+      { wrong:"the productive", right:"their productivity", cat:"word", why:`詞形：reduce 的受詞用名詞 <span class="en">productivity</span>——0810（productively）、0814（productivly）都栽過，<b>第 3 次</b>。` },
+      { wrong:"everthing", right:"everything", cat:"mech", why:`拼字：<span class="en">every·thing</span>——every 的 y 別吞。` },
+      { wrong:"celeberties", right:"celebrities", cat:"mech", nv:true, why:`題目字拼字：<span class="en">ce·leb·ri·ties</span>——是 bri 不是 ber。新雷字，收黑名單。` },
+      { wrong:"concentrat", right:"concentrate", cat:"mech", why:`拼字：<span class="en">con·cen·trate</span>——結尾的 e 被吞。<b>黑名單已有的字又錯</b>。` },
+      { wrong:"performace", right:"performance", cat:"mech", why:`拼字：<span class="en">per·for·mance</span>——man 的 n 別吞。本篇錯 2 次（另見 [[20]]）。` },
+      { wrong:"nagative", right:"negative", cat:"mech", why:`拼字：<span class="en">neg·a·tive</span>——開頭是 neg 不是 nag。收黑名單。` },
+      { wrong:"well", right:"good", cat:"word", why:`well 是副詞不能修飾名詞 → <span class="en">good performance</span>——0812「well imcome→good income」同型第 2 次。` },
+      { wrong:"performace", right:"performance", cat:"mech", why:`拼字：<span class="en">performance</span> 本篇第 2 次，同一個 n 被吞。` },
+      { wrong:"given", right:"giving up", cat:"gram", why:`動名詞主詞第 2 次（同 [[1]]）：<span class="en">famous people giving up their right to privacy can bring…</span>；up 也別漏。` },
+      { wrong:"of", right:"to", cat:"word", why:`<span class="en">right to privacy</span> 本篇第 2 處。` },
+      { wrong:"can", right:"they can", cat:"stru", why:`<b><span class="en">that</span> 後漏主詞</b>：<span class="en">that they can get…</span>——0812／0813／0814 各中過，這型要練到反射。` },
+      { wrong:"on", right:"from the", cat:"word", why:`搭配：<span class="en">get attention from the public</span>（從大眾那裡得到關注）。` },
+      { wrong:"famouse", right:"famous", cat:"mech", why:`拼字：<span class="en">fa·mous</span>——結尾 mous，沒有 e。` },
+      { wrong:"have", right:"has", cat:"gram", why:`<b>As James 句第三人稱 +s（頭號罩門）</b>：<span class="en">As James rarely has any privacy</span>——熱力圖 As James 熱區第 6 次。` },
+      { wrong:"pricacy", right:"privacy", cat:"mech", nv:true, why:`題目字拼字：<span class="en">pri·va·cy</span>——中間是 va 不是 ca。本篇 2 種錯法（另見 [[36]]），收黑名單。` },
+      { wrong:"on", right:"in", cat:"word", why:`搭配：<span class="en">in the spotlight</span>（在鎂光燈「裡」）。` },
+      { wrong:"sptlight", right:"spotlight", cat:"mech", nv:true, why:`拼字：<span class="en">spot·light</span>——spot 的 o 被吞。新雷字，收黑名單。` },
+      { wrong:"become", right:"becomes", cat:"gram", why:`第三人稱 +s：<span class="en">he becomes more popular</span>——<b>黑名單字 become 又中</b>，In other words 句內連兩個動詞都漏 s。` },
+      { wrong:"have", right:"has", cat:"gram", why:`並列動詞也要 +s：<span class="en">becomes … and has good future prospects</span>——0810「and have→has」同型第 2 次。` },
+      { wrong:"conculsion", right:"conclusion", cat:"mech", why:`模板字拼字：<span class="en">con·clu·sion</span>——是 clu 不是 cul。<b>0804 錯 conclsion，本篇第 2 次</b>，黑名單字。` },
+      { wrong:"the", right:"that the", cat:"gram", why:`模板句：<span class="en">despite the fact <b>that</b></span>——that 被吞。070004 同錯，第 2 次。` },
+      { wrong:"loosing", right:"losing", cat:"mech", why:`拼字：<span class="en">losing</span> 本篇第 2 種錯法——loose（鬆的）是別的字，lose 去 e 加 ing。` },
+      { wrong:"the", right:"（刪掉 the）", cat:"gram", why:`泛指不加 the：<span class="en">losing privacy … is a good bargain</span>。` },
+      { wrong:"prviacy", right:"privacy", cat:"mech", nv:true, why:`<span class="en">privacy</span> 本篇第 2 種錯法（pricacy／prviacy）——字母顛倒罩門，pri 三個字母先站穩。` },
+      { wrong:"bargin", right:"bargain", cat:"mech", nv:true, why:`拼字：<span class="en">bar·gain</span>——gain 有 a。新雷字，收黑名單。` },
+      { wrong:"career. It", right:"career, and it", cat:"stru", why:`<b>模板句漏 and</b>：<span class="en">…, and it is crucial that</span>——0810／0811 各中一次，<b>第 3 次</b>。句號斷開＝熱區老毛病。` },
+      { wrong:"crucail", right:"crucial", cat:"mech", why:`模板字字母顛倒：<span class="en">cru·cial</span>——是 cial 不是 cail。收黑名單。` },
+      { wrong:"carfully", right:"carefully", cat:"mech", why:`拼字：<span class="en">care·fully</span>——care 的 e 別吞（-ing 才去 e，-fully 不去）。` },
+      { wrong:"befroe", right:"before", cat:"mech", why:`字母顛倒（固定罩門）：<span class="en">be·fore</span>——是 fore 不是 froe。` },
+    ],
+    vocab:[
+      {seg:"開頭"}, {w:"giving up the right to privacy",zh:"放棄隱私權（動名詞主詞＋right to）"}, {w:"celebrities",zh:"名人（ce·leb·ri·ties）"}, {w:"bring disadvantages",zh:"帶來壞處（dis·ad·van·tages）"},
+      {seg:"讓步：失去隱私的代價"}, {w:"losing privacy",zh:"失去隱私（一個 s、去 e 加 ing、不加 the）"}, {w:"a lot of drawbacks",zh:"很多缺點（別漏 of）"}, {w:"reduce their productivity",zh:"降低生產力（名詞，第 3 次）"}, {w:"concentrate on their performance",zh:"專注在表現上（黑名單字＋per·for·mance）"}, {w:"negative influence",zh:"負面影響（neg·a·tive）"},
+      {seg:"主論：曝光→人氣→前景"}, {w:"get attention from the public",zh:"獲得大眾關注（from the）"}, {w:"the most famous basketball player",zh:"最有名的籃球員（fa·mous 沒有 e）"}, {w:"in the spotlight",zh:"在鎂光燈下（in＋spot·light）"}, {w:"becomes more popular and has",zh:"變更紅（兩個動詞都 +s）"},
+      {seg:"結尾"}, {w:"a good bargain",zh:"划算的交易（bar·gain）"}, {w:"think carefully before",zh:"想清楚再做（care·fully；be·fore）"},
     ]},
 ];
 
