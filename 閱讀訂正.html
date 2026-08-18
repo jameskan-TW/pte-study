@@ -399,6 +399,46 @@ const DATA = [
       { wrong:"prevented", right:"facilitated", cat:"log", why:`<span class="en">while</span> 在這裡是<b>對比</b>：前半「山谷與高山 <span class="en">restricted</span> 基因流」→ 後半必須<b>反向</b>＝<span class="en">facilitated</span>（促進）。同句還有第二個線索：<span class="en">acting as a "genetic corridor"</span>——走廊是讓東西<b>通過</b>的。你填 prevented 等於跟 restricted 同向，把對比抹掉了。` },
       { wrong:"proving", right:"suggesting", cat:"sem", why:`學術寫作的<b>推論語氣</b>：只觀察到「河沒形成屏障」，只能<span class="en">suggesting</span>（顯示、推測）貓頭鷹會飛越，不能 <span class="en">proving</span>（證明）。論文類文章看到單一觀察推結論，一律選<b>弱語氣</b>的 suggest／indicate。` },
     ]},
+  { title:"Farming 農事（Bennett 批評政府）", pid:"#080011", type:"FIB-DD",
+    text:`In the last years of the wheat boom, Bennett had become increasingly ${ok('frustrated')} at how the government seemed to be encouraging an ${ok('exploitative')} farming binge. He went directly after the Department of Agriculture for ${ok('misleading')} people. Farmers on the Great Plains were working [[1]] nature, he [[2]] in speeches.`,
+    blanks:[
+      { wrong:"with", right:"against", cat:"sem",
+        why:`整段的語氣是<b>批評</b>：frustrated（不滿）、exploitative（剝削式的）、went directly after（開砲）、misleading（誤導）。所以農民是<span class="en">working <b>against</b> nature</span>（違逆自然）。<span class="en">work with nature</span>（順應自然）是<b>褒義</b>，跟前面四個負面詞全部打架。<b>先讀完整段定調性，再選字。</b>` },
+      { wrong:"praised", right:"thundered", cat:"sem",
+        why:`<span class="en">thunder</span>（打雷）當動詞＝<b>怒吼、疾言厲色地說</b>，跟批評的調性一致。<span class="en">praised</span>（讚揚）方向完全相反——他正在罵農業部，不可能在讚美。<b>這是本篇同一個坑踩第二次</b>：兩格都是沒跟著段落調性走。` },
+    ]},
+  { title:"Stress 壓力（跨國調查）", pid:"#080013", type:"FIB-DD",
+    text:`Stress is tense feeling often connected to having too [[1]] to do, too many bills to pay and ${ok('not enough')} time or money — is a common emotion that knows few borders. About three-fourths of people in the United States, Australia, Canada, France, Germany, Italy, South Korea and Britain reported experiencing stress on a daily basis, according to AP-Ipsos ${ok('polling')}. Anxious feelings were more ${ok('intense')} during the holidays. Germans feel stress more ${ok('intensely')} than those in other countries polled. People in the United States cited financial pressures as the top worry. About half the people polled in Britain said they frequently or ${ok('sometimes')} felt that life was beyond their control, the highest level in the 10 countries surveyed.`,
+    blanks:[
+      { wrong:"many", right:"much", cat:"pos",
+        why:`<span class="en">too <b>much</b> to do</span>＝要做的事太多——這裡沒有名詞，<b>to do 是不可數的「事情量」</b>，所以用 much。旁邊的 <span class="en">too <b>many</b> bills</span> 才是 many（bills 可數複數）。<b>同一句擺了 much 和 many 兩種用法在比你</b>：後面接可數名詞用 many，接抽象量／不接名詞用 much。` },
+    ]},
+  { title:"Nutrition scientists 營養科學家（藝術也是科學）", pid:"#080014", type:"FIB-DD",
+    text:`Since nutrition scientists are constantly making new discoveries, we need to revise our [[1]] for healthy eating from time to time. However, nutrition is an art as well as a [[2]]. It's an art because it requires creativity to develop a healthy eating plan for people who differ in their food preferences, beliefs and culture, let alone in their nutritional needs according to their genes and life stage. As we discover more about how our genes and our environment ${ok('interact')}, it's becoming increasingly difficult to provide a single set of dietary recommendations that will be ${ok('suitable')} for everyone.`,
+    blanks:[
+      { wrong:"conjecture", right:"recommendations", cat:"sem",
+        why:`<b>答案就寫在文章最後一句</b>：<span class="en">a single set of dietary <b>recommendations</b></span>——同一篇重複出現的字幾乎一定是答案。<span class="en">conjecture</span>（臆測）是「還沒證實的猜想」，不會拿來給大眾「修訂」。<b>FIB 遇到不確定，先掃全文有沒有同一個字再出現。</b>` },
+      { wrong:"theme", right:"science", cat:"col",
+        why:`<span class="en">an art as well as a <b>science</b></span> 是<b>固定對照組</b>（藝術 vs 科學），英文寫作最常見的成對講法。而且下一句 <span class="en">It's an art because...</span> 只解釋了 art 那一半，另一半必須是能跟 art 對立的字。<span class="en">theme</span>（主題）跟 art 不成對。` },
+    ]},
+  { title:"Pinker 平克（演化心理學，3 格全錯）", pid:"#080015", type:"FIB-DD",
+    text:`In a sequence of bestsellers, including The Language Instinct and How the Mind Works, Pinker has argued the swathes of our mental, social and emotional lives may have ${ok('originated')} as evolutionary adaptations, well suited to the lives our ancestors eked out on the Pleistocene savannah. Sometimes it seems as if nothing is [[1]] from being explained this way. Road rage, adultery, marriage, altruism, our tendency to reward senior executives with corner offices on the top floor, and the smaller number of women who become mechanical engineers—all may have their [[2]] in natural selection, Pinker claims. The controversial implications are obvious: that men and women might ${ok('differ')} in their inborn abilities at performing certain tasks, for example, or that parenting may have [[3]] influence on personality.`,
+    blanks:[
+      { wrong:"deducted", right:"immune", cat:"col",
+        why:`<span class="en"><b>immune from</b> ~</span>＝免疫於、不受…影響，是固定搭配。整句 <span class="en">nothing is immune from being explained this way</span>＝「沒有什麼能逃過這種解釋」。<span class="en">deducted</span>（被扣除）是會計用字，跟 from being explained 完全接不起來。<b>看到空格後面是 from，先想 immune from／free from／far from。</b>` },
+      { wrong:"origins", right:"roots", cat:"col",
+        why:`<b>意思你抓對了，錯在固定搭配</b>：<span class="en">have their <b>roots</b> in ~</span>（根源於…）是慣用語；origins 要講會是 <span class="en">have their origins in</span>——但 FIB-DD 是選項題，兩個都在選項裡時<b>選最固定的那個搭配</b>。記 <span class="en">roots in</span>（樹根扎在土裡）這個畫面。` },
+      { wrong:"plenty", right:"little", cat:"sem",
+        why:`兩個理由。<b>語意</b>：這句在講 <span class="en">controversial implications</span>（有爭議的推論）——「男女天生能力有別」「教養對人格影響<b>很小</b>」才是會惹議的主張，parenting 影響大反而是常識。<b>用法</b>：plenty 當「大量」要接 of（<span class="en">plenty <b>of</b> influence</span>），這裡後面直接是名詞，plenty 塞不進去。` },
+    ]},
+  { title:"Definition of Country 國家的定義", pid:"#080050", type:"FIB-DD",
+    text:`What is a country, and how is a country defined? When people ask how many countries there are in the world, they expect a simple answer. After all, we've explored the ${ok('whole')} planet, we have international travel, satellite navigation and plenty of global organizations like the United Nations [[1]] we should really know how many countries there are! However, the answer to the question varies according to whom you ask. ${ok('Most')} people say there are 192 countries, but others point out that there could be more like 260 of them. ${ok('So')} why isn't there a straightforward answer? The problem arises because there isn't a universally agreed definition of 'country' and because, for political reasons, some countries find it convenient to recognize or not recognize [[2]] countries.`,
+    blanks:[
+      { wrong:"although", right:"so", cat:"log",
+        why:`前半列了一堆<b>有利條件</b>（探索完地球、國際旅行、衛星導航、聯合國）→ 後半「我們理應知道有幾個國家」是<b>順接的結論</b>，用 <span class="en">so</span>。<span class="en">although</span> 是逆接，會變成「雖然有這些條件，我們理應知道」——邏輯不通。<b>轉折詞先問自己：前後同向還是反向？</b>下一句的 However 才是真正的轉折點。` },
+      { wrong:"these", right:"other", cat:"sem",
+        why:`<span class="en">recognize or not recognize <b>other</b> countries</span>＝承認或不承認<b>別的</b>國家（主詞是 some countries，對象要是「其他國家」才講得通）。<span class="en">these</span> 是指示詞，<b>前文沒有具體指到哪些國家</b>，指代落空。<b>選 these／those 之前，先回頭找它指的是誰。</b>` },
+    ]},
 ];
 
 // ---------- state ----------
