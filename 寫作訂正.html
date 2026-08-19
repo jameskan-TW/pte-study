@@ -205,7 +205,7 @@
         <div class="take" id="take"></div>
       </div>
 
-      <div class="good">💪 <b>你的強項：</b>模板用得很熟 —— 立場、讓步段、James 例子、結論都齊全，<b>內容和結構不是問題</b>。分數卡住的一直是<b>拼字和基礎文法的準確度</b>。這是好消息：準確度靠檢查清單就能練起來，把紅字修乾淨就能上一個檔次。<br>📊 兩軌計錯：0814 基本 23＋新字 2 → <b>0818 基本 36＋新字 5</b>（本篇拼字 20 個是主因，模板熱區 it→this／view／As James +s／漏 and 全數又中——先到 <a href="WE_模板熱力圖.html">熱力圖</a> 掃前五大）。</div>
+      <div class="good">💪 <b>你的強項：</b>模板用得很熟 —— 立場、讓步段、James 例子、結論都齊全，<b>內容和結構不是問題</b>。分數卡住的一直是<b>拼字和基礎文法的準確度</b>。這是好消息：準確度靠檢查清單就能練起來，把紅字修乾淨就能上一個檔次。<br>📊 兩軌計錯：0818 基本 36＋新字 5 → <b>0819 基本 15＋新字 0</b>（企業聲譽題）、<b>0819 名人題重寫 基本 12＋新字 0</b>。<b>兩篇加起來 27 個錯字裡拼字只有 3 個</b>（can not／Lebron／oof），0818 的 20 個拼字錯清光了——現在最大的洞換成<b>文法</b>：第三單 +s、可數名詞漏 s、the 該加不加。⚠️ 前提是你今天在 Word 裡打的（有自動拼字檢查）；<b>真實考場沒有紅蚯蚓，拼字仍要照黑名單練</b>。</div>
 
       <div class="bar">
         <div class="lbl">依根因篩選（點下方篇目進入複習）</div>
@@ -765,6 +765,59 @@ const DATA = [
       {seg:"讓步：失去隱私的代價"}, {w:"losing privacy",zh:"失去隱私（一個 s、去 e 加 ing、不加 the）"}, {w:"a lot of drawbacks",zh:"很多缺點（別漏 of）"}, {w:"reduce their productivity",zh:"降低生產力（名詞，第 3 次）"}, {w:"concentrate on their performance",zh:"專注在表現上（黑名單字＋per·for·mance）"}, {w:"negative influence",zh:"負面影響（neg·a·tive）"},
       {seg:"主論：曝光→人氣→前景"}, {w:"get attention from the public",zh:"獲得大眾關注（from the）"}, {w:"the most famous basketball player",zh:"最有名的籃球員（fa·mous 沒有 e）"}, {w:"in the spotlight",zh:"在鎂光燈下（in＋spot·light）"}, {w:"becomes more popular and has",zh:"變更紅（兩個動詞都 +s）"},
       {seg:"結尾"}, {w:"a good bargain",zh:"划算的交易（bar·gain）"}, {w:"think carefully before",zh:"想清楚再做（care·fully；be·fore）"},
+    ]},
+  { title:"企業該重聲譽，還是拚短期策略？", pid:"2026/08/19", type:"WE",
+    text:`<p>It is generally true that whether companies should focus on reputation marketing or [[1]] strategies has become a matter of concern over the years, and this has caused great controversy and captured public attention. Some people are of the opinion that companies should [[2]] short-term strategies, while others hold the view that companies' reputation is more important. I tend to agree more with the latter and will discuss this further below.</p>
+<p>It has to be admitted that short-term strategies [[3]] some benefits, and one argument in favor of this view can be that [[4]]. If a store [[5]] then customers will [[6]] more products, in turn leading to [[7]] short-term profits. As a result, it is unsurprising that the store can maintain [[8]] profit margin.</p>
+<p>On the other hand, I firmly believe that companies' reputation is more vital, and one compelling reason is that a good reputation can generate continuous revenues. A pertinent case in point is Apple, a world-renowned and prestigious firm. As Apple is famous for [[9]] products and services, [[10]] is able to set [[11]] than other brands. In other words, Apple can have [[12]] in the long run [[13]] people are willing to spend more because of [[14]] good reputation.</p>
+<p>In conclusion, despite the fact that the counterargument may hold true in many cases, I believe that companies' reputation is more important, and it is crucial that [[15]] should make the right decision.</p>`,
+    blanks:[
+      { wrong:"short term", right:"short-term", cat:"mech", why:`<b>複合形容詞要連字號</b>：<span class="en">short-term strategies</span>——兩個字合起來修飾名詞就要用 <b>-</b> 連起來。你後面三處都寫對了 <span class="en">short-term</span>，<b>只有第一次漏掉</b>，是手快不是不會。<b>同型還有 [[9]] high quality</b>。` },
+      { wrong:"pay more attention on", right:"pay more attention to", cat:"word", why:`固定搭配 <span class="en">pay attention <b>to</b> ~</span>＝重視某事，<b>介系詞永遠是 to</b>（不是 on、不是 for）。中文「把注意力放『在』…上」會把你帶去 on——記英文原句：<span class="en">pay more attention <b>to</b> short-term strategies</span>。` },
+      { wrong:"brings", right:"bring", cat:"gram", why:`<b>主謂一致，方向相反的罩門</b>：主詞 <span class="en">short-term strategie<b>s</b></span> 是<b>複數</b> → 動詞<b>不加 s</b>，是 <span class="en">bring</span>。你平常是漏 +s，這次反而多加——<b>不是「動詞一律加 s」，是「主詞單數才加」</b>。打完動詞先回頭看主詞尾巴有沒有 s。` },
+      { wrong:"it boosts the sales figures", right:"they boost sales figures", cat:"gram", why:`三個一起修：①代名詞指的是複數的 <span class="en">strategies</span> → <b>they</b> 不是 it ②複數主詞動詞不加 s → <span class="en">boost</span>（同 [[3]]，一句內連錯兩次）③泛指業績不加 the → <span class="en">boost sales figures</span>。<b>整句記成一塊：<span class="en">they boost sales figures</span>。</b>` },
+      { wrong:"keeps the discounting policy", right:"keeps offering discounts", cat:"word", why:`<span class="en">discounting policy</span> 不是英文講法（policy 搭 adopt／follow，而且 discount 當形容詞不加 ing）。<b>用你會的基礎字改寫最安全</b>：<span class="en">keeps <b>offering discounts</b></span>＝持續打折。<span class="en">keep + Ving</span>＝一直做某事，這個結構你已經很熟。` },
+      { wrong:"have more interest to buy", right:"be more willing to buy", cat:"word", why:`<span class="en">have interest to V</span> 不通——<b>interest 的固定用法是 <span class="en">be interested <b>in</b> Ving</span></b>（介系詞 in ＋動名詞）。這句最簡單的改法是換掉整個結構：<span class="en">customers will be more <b>willing to</b> buy</span>＝更願意買。<b>不確定搭配時，換成你有把握的說法，不要硬拼。</b>（另外原句 more interest…more products 一句兩個 more，也重複了。）` },
+      { wrong:"creating（多餘）", right:"（刪掉 creating）", cat:"stru", why:`<span class="en">lead to</span> 後面接<b>名詞</b>就夠了：<span class="en">leading to short-term profits</span>。你多塞一個 creating 變成「導致創造利潤」，語意重複。<b>lead to ＋ Ving 只在後面是「動作」時才用</b>（leading to losing customers），這裡 profits 本身就是名詞。` },
+      { wrong:"the profit margin", right:"its profit margin", cat:"gram", why:`前面主詞是 <span class="en">the store</span>，這裡講的是<b>那家店自己的</b>利潤率 → 用所有格 <span class="en"><b>its</b> profit margin</span>。<span class="en">the</span> 會變成「那個（大家都知道的）利潤率」，指代落空。<b>提到某人／某公司的東西，先想 his／its／their。</b>` },
+      { wrong:"high quality", right:"high-quality", cat:"mech", why:`<b>複合形容詞連字號，本篇第 2 次</b>（同 [[1]] short-term）：<span class="en">high-quality products</span>。判斷法：<b>兩個字一起擺在名詞前面修飾它 → 加 -</b>。（放在動詞後面才不用：<span class="en">the products are of high quality</span>。）` },
+      { wrong:"Apple（第 2 次）", right:"it", cat:"stru", why:`一句話裡 <span class="en">Apple</span> 出現兩次很卡：<span class="en">As Apple is famous for…, <b>it</b> is able to set…</span>——<b>第二次提到同一個主詞就換代名詞</b>。這是拿結構分的小動作，也讓句子讀起來更順。` },
+      { wrong:"higher price", right:"higher prices", cat:"gram", why:`<span class="en">price</span> 是<b>可數名詞</b>，單數就一定要冠詞（a higher price）；這裡講「一整套定價比別人高」→ 用<b>複數</b> <span class="en">higher price<b>s</b></span> 最自然。<b>可數名詞不能光溜溜站著</b>——不是加 a/the 就是變複數。<b>同型見 [[12]]。</b>` },
+      { wrong:"higher profit", right:"higher profits", cat:"gram", why:`同 [[11]]：<span class="en">profit</span> 講「賺到的錢」時慣用複數 <span class="en">profit<b>s</b></span>。<b>本篇可數名詞漏 s 第 2 次</b>——結尾檢查時把所有名詞掃一遍問「這個要不要 s」。` },
+      { wrong:"because … because of（一句兩個）", right:"as … because of", cat:"stru", why:`<b>同一句出現兩個 because，因果會打架</b>：<span class="en">…in the long run <b>as</b> people are willing to spend more <b>because of</b> its good reputation.</span>——前面換成 <span class="en">as</span>（也是「因為」，你模板裡的 As James 就是這個用法）。<b>連接詞在一句裡不重複，是最好拿的結構分。</b>` },
+      { wrong:"their", right:"its", cat:"gram", why:`<b>指代一致</b>：主詞是 <span class="en">Apple</span>（一家公司＝單數）→ 所有格用 <span class="en"><b>its</b></span>，不是 their。你前面 <span class="en">Apple is famous / is able</span> 都用單數，到這裡卻跳成複數——<b>一個主詞從頭到尾用同一組人稱</b>。` },
+      { wrong:"the owner", right:"company owners", cat:"word", why:`<span class="en">the owner</span>＝「那位老闆」，但<b>前文沒提過任何一位老闆</b>，the 指代落空。整篇談的是企業界通則 → 泛指用<b>複數不加 the</b>：<span class="en">company owners should make the right decision</span>。<b>結尾模板要收回題目的主角，主角是誰就寫誰。</b>` },
+    ],
+    vocab:[
+      {seg:"開頭"}, {w:"reputation marketing",zh:"聲譽行銷"}, {w:"short-term strategies",zh:"短期策略（連字號！本篇漏 1 次）"}, {w:"pay attention to",zh:"重視（永遠是 to，不是 on）"},
+      {seg:"讓步：效率線（衝業績）"}, {w:"they boost sales figures",zh:"衝高銷售數字（複數主詞不加 s、不加 the）"}, {w:"keep offering discounts",zh:"持續打折（keep + Ving）"}, {w:"be willing to buy",zh:"願意買（取代不通的 have interest to）"}, {w:"lead to short-term profits",zh:"帶來短期利潤（後面直接接名詞）"}, {w:"maintain its profit margin",zh:"維持利潤率（its 不是 the）"},
+      {seg:"主論：財務線（聲譽→長期收入）"}, {w:"generate continuous revenues",zh:"創造持續收入"}, {w:"world-renowned and prestigious",zh:"世界知名又有聲望（world-renowned 有連字號）"}, {w:"famous for high-quality products",zh:"以高品質產品著稱（high-quality 連字號）"}, {w:"set higher prices",zh:"訂較高的價格（可數名詞要複數）"}, {w:"in the long run",zh:"長期來看"}, {w:"because of its good reputation",zh:"因為它的好聲譽（its，公司是單數）"},
+      {seg:"結尾"}, {w:"company owners",zh:"公司經營者（泛指用複數不加 the）"},
+    ]},
+  { title:"名人該放棄隱私權嗎？（0819 重寫｜41 錯 → 12 錯，拼字掛零）", pid:"2026/08/19", type:"WE",
+    text:`<p>It is generally true that celebrities giving up their right [[1]] privacy has become a matter of concern over the years, and this has caused great controversy and captured public attention. Some people are of the opinion that it brings disadvantages to [[2]], while others hold the view that it actually gives them a lot of benefits. I tend to agree more with the latter and will discuss this further below.</p>
+<p>It has to be admitted that losing privacy brings [[3]] drawbacks, and one argument in favor of this view can be that losing privacy may cause [[4]] to become less productive. If people can know everything about celebrities' lives then they cannot concentrate on their performance, in turn leading to tangible or intangible negative influence. As a result, it is unsurprising that some celebrities lose their creativity and [[5]] perform well on stage.</p>
+<p>On the other hand, I firmly believe that famous people giving up their right [[6]] privacy can bring some benefits, and one compelling reason is that they can get more attention from the public. A pertinent case in point is [[7]] James, who is the most famous basketball player in the world. As LeBron James rarely [[8]] any privacy, he is able to get [[9]] the spotlight all the time. In other words, he [[10]] more popular and [[11]] good future prospects because [[12]] his popularity.</p>
+<p>In conclusion, despite the fact that the counterargument may hold true in many cases, I believe that losing privacy for famous people is a good bargain for their career, and it is crucial that people think carefully before they become a celebrity.</p>`,
+    blanks:[
+      { wrong:"of", right:"to", cat:"word", why:`<span class="en">the right <b>to</b> privacy</span>＝隱私權，<b>right 後面固定接 to</b>（同 the right to vote／to speak）。<b>0818 這篇兩處都錯，今天重寫兩處還是錯</b>（另見 [[6]]）——這是本篇唯一「完全沒改掉」的搭配，寫進封關卡。` },
+      { wrong:"the celebrities", right:"celebrities", cat:"gram", why:`泛指「名人這群人」<b>不加 the</b>：<span class="en">brings disadvantages to celebrities</span>。<b>0818 同錯，今天第 2 天又中</b>（另見 [[4]]）。判斷法：句子講的是<b>全體</b>還是<b>特定某幾個</b>？講全體就把 the 拿掉。` },
+      { wrong:"a lot", right:"a lot of", cat:"gram", why:`<span class="en">a lot <b>of</b> ＋ 名詞</span>——<b>of 又被吞了</b>，0818 一模一樣的位置錯過。<b>a lot of 是三個字一組，永遠一起打</b>，中間不要停。` },
+      { wrong:"the celebrities", right:"celebrities", cat:"gram", why:`同 [[2]]，<b>本篇第 2 次多打 the</b>：<span class="en">may cause celebrities to become less productive</span>。<br>💡 亮點：這句你把 0818 錯的 <span class="en">reduce the productive</span> 整個換成 <span class="en">cause … to become less productive</span>，<b>繞開了 productivity 這個連錯 3 次的字，是聰明的自保</b>。` },
+      { wrong:"can not", right:"cannot", cat:"mech", why:`<span class="en"><b>cannot</b></span> 是<b>一個字</b>，不分開寫（不像 do not／will not）。分開的 <span class="en">can not</span> 只在 <span class="en">not only… but…</span> 之類的特殊句才出現，一般否定一律 cannot。<b>你同一篇第二段的 they cannot concentrate 就寫對了</b>——同一篇兩種寫法，統一用 cannot。` },
+      { wrong:"of", right:"to", cat:"word", why:`<span class="en">right <b>to</b> privacy</span> 本篇第 2 處（同 [[1]]）。<b>兩天四次全錯</b>——把 <span class="en">the right to privacy</span> 當成一個單字背。` },
+      { wrong:"Lebron", right:"LeBron", cat:"mech", why:`人名大小寫：<span class="en">Le<b>B</b>ron James</span>——中間的 <b>B 要大寫</b>。你下一句寫的 LeBron 是對的，<b>同一篇兩種寫法會被看成筆誤</b>。名字既然是你固定的例子，一次記死。` },
+      { wrong:"have", right:"has", cat:"gram", why:`<b>第三人稱 +s，頭號罩門</b>：主詞 <span class="en">LeBron James</span> 單數 → <span class="en">ha<b>s</b></span>。<b>「As James…」這個位置 0818 就錯過</b>——<a href="WE_模板熱力圖.html">熱力圖</a> 的第一名熱區，打到 As 就先提醒自己。` },
+      { wrong:"on", right:"in", cat:"word", why:`<span class="en"><b>in</b> the spotlight</span>＝在鎂光燈「裡」被照著，介系詞固定 in。<b>0818 同錯，今天又中</b>。記畫面：人站<b>在光圈之內</b> → in。` },
+      { wrong:"become", right:"becomes", cat:"gram", why:`第三人稱 +s：<span class="en">he become<b>s</b> more popular</span>。<b>become 是黑名單字，0818 同一句錯過，今天再中</b>——<span class="en">In other words, he</span> 之後接的動詞要停一下想 +s。` },
+      { wrong:"have", right:"has", cat:"gram", why:`<b>並列動詞也要 +s</b>：<span class="en">he becomes … and <b>has</b> good future prospects</span>——and 後面的動詞主詞還是 he。<b>0810／0818 同型，本篇第 3 個漏 s</b>（[[8]]／[[10]]／[[11]] 全是同一條）。` },
+      { wrong:"oof", right:"of", cat:"mech", why:`手滑多打一個 o：<span class="en">because <b>of</b> his popularity</span>。這是純打字失誤，<b>但 WE 一樣扣拼字分</b>——交卷前 2 分鐘掃一遍就能撿回來。` },
+    ],
+    vocab:[
+      {seg:"⚠️ 兩天都沒改掉的 4 個"}, {w:"the right to privacy",zh:"隱私權（to！兩天四次全錯）"}, {w:"celebrities（不加 the）",zh:"泛指名人整群，本篇又中 2 次"}, {w:"in the spotlight",zh:"在鎂光燈下（in 不是 on）"}, {w:"a lot of drawbacks",zh:"很多缺點（of 別吞）"},
+      {seg:"⚠️ 第三單 +s（本篇 3 次）"}, {w:"As LeBron James rarely has",zh:"模板熱區，兩天都中"}, {w:"he becomes more popular",zh:"become 是黑名單字"}, {w:"and has good future prospects",zh:"and 後面主詞還是 he"},
+      {seg:"✅ 昨天錯、今天全拼對（別鬆手）"}, {w:"celebrities / privacy / spotlight",zh:"昨天各兩種錯法，今天零錯"}, {w:"disadvantages / negative / performance",zh:"昨天全錯，今天全對"}, {w:"concentrate / everything / famous",zh:"黑名單字，今天全對"}, {w:"conclusion / bargain / crucial / carefully / before",zh:"結尾整段零錯"},
+      {seg:"✅ 昨天錯、今天改對的文法"}, {w:"giving up（動名詞主詞）",zh:"兩處都對了"}, {w:"that they can get",zh:"that 後面補主詞，對了"}, {w:"attention from the public",zh:"from the，對了"}, {w:"…career, and it is crucial",zh:"漏 and 的老毛病，這次沒犯"},
     ]},
 ];
 
