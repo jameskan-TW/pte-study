@@ -105,6 +105,11 @@
   #vquiz .vtop { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px; }
   #vquiz .vzh { font-size:15px; font-weight:700; }
   #vquiz .vt { font-size:10.5px; color:#787774; background:#f1efe8; border-radius:4px; padding:1px 7px; }
+  #vquiz .vt.hot { color:#b3261e; background:#fdeceb; font-weight:700; }
+  #vquiz .vitem.hot { border-left:3px solid #b3261e; }
+  #vquiz .vhead { margin:18px 0 10px; font-size:13px; font-weight:700; color:#37352f; border-top:1px dashed #e5e5e2; padding-top:14px; }
+  #vquiz .vhead:first-child { border-top:none; padding-top:0; margin-top:0; }
+  #vquiz .vhead small { display:block; font-weight:400; color:#787774; margin-top:2px; }
   #vquiz .vsrc { font-size:13px; color:#787774; margin:2px 0 8px; }
   #vquiz .vsrc .blk { min-width:60px; border-bottom:2px solid #2383e2; }
   #vquiz input { font-family:inherit; font-size:15px; padding:6px 10px; border:1px solid #d8d8d4; border-radius:7px; width:240px; max-width:60%; outline:none; }
@@ -154,7 +159,7 @@
   <!-- ============ 易錯單字默拼測驗（原 WFD_易錯單字庫 併入） ============ -->
   <div id="vquiz">
     <h2>🔠 易錯單字默拼測驗</h2>
-    <p class="vqsub">你的專屬拼字庫（WFD ＋ WE 罩門字）· 看中文＋句子默拼，按「對答案」檢查 · 可持續累積</p>
+    <p class="vqsub">你的專屬拼字庫（WFD ＋ WE 罩門字）· 看中文＋句子默拼，按「對答案」檢查 · 可持續累積<br><b style="color:#b3261e">🔴 開頭 9 個是 0819 對話默拼沒過的字</b>——其中 5 個打出<b>跟上次一字不差的錯法</b>（錯的版本已定型），先掃這區再往下。</p>
     <div class="vqbar">
       <button class="vqbtn" id="vqHint">顯示陷阱提示</button>
       <button class="vqbtn" id="vqReveal">全部解答</button>
@@ -1487,7 +1492,7 @@ const VQ=[
   {w:'surfing',zh:'瀏覽、衝浪',tag:'WE罩門',trap:'單 f：surf + ing（曾拼 surffing）',src:'WE 練習'},
   {w:'qualified',zh:'有資格的、合格的',tag:'WFD·0807·顛倒·反覆卡',trap:'qual·i·fied — qua 開頭別顛倒（你拼 qaulified）；qualify → y 變 ied；0818 又拼 qualafied、qaulified 兩輪——qu 永遠連寫、中間是 i',src:'Several candidates would be ____ as the greatest scientists of all time.'},
   {w:'pharmacy',zh:'藥局',tag:'WFD·0807·反覆卡',trap:'phar·ma·cy — phar 有 r（你拼 phamercy / phamarcy 錯 2 次）；ph 發 f 音；0818 拼 phamrcy、pharmecy 兩輪——累計 4 次，phar 的 r＋ma，考前必掃',src:'There is a ____ on campus near the bookstore.'},
-  {w:'thorough',zh:'透徹的、徹底的',tag:'WFD·0807·反覆卡',trap:'thor·ough ≠ through（穿過）！前段是 thor（你打過 through / throught）',src:'The other book isn\'t ____ but it\'s more insightful.'},
+  {w:'thorough',zh:'透徹的、徹底的',tag:'🔴錯法已定型',trap:'⚠️ 0807 打 through，0819 默拼又打 through — 一字不差，錯的版本已定型。改寫路徑：thor + ough（先寫 thor 站穩，再接 ough）。through 是 1 音節「穿過」，thorough 是 2 音節 tho-rough「透徹」',src:'The other book isn\'t ____ but it\'s more insightful.'},
   {w:'examination',zh:'考試',tag:'WFD·0807',trap:'e·xam·i·na·tion — exam 後面有 i（你拼 examnation 漏 i）；0810 打成 examining（要名詞）',src:'Calculators may not be used during the ____.'},
   {w:'techniques',zh:'技術、技法（複數）',tag:'WFD·0807',trap:'tech·niques — 字尾 -ques（法文式），不是 -cs（你拼 technics）',src:'New materials and ____ are changing the modern style of architecture.'},
   {w:'elaborated',zh:'精心製作的',tag:'WFD·0807',trap:'e·lab·o·rat·ed — 中段是 lab（你拼 elebarate）',src:'The dance department stages ____ performances each semester.'},
@@ -1520,7 +1525,7 @@ const VQ=[
   {w:'criticised',zh:'被批評（被動）',tag:'WFD·0815',trap:'crit·i·cised = critic + ise — 中間 ic 別吞（0815 拼 critized）；be criticised for 原因；0818 拼 critisised（critic 的 c）',src:'Social media is often ____ for causing Internet addiction.'},
   {w:'laboratory',zh:'實驗室',tag:'WFD·0815·反覆卡',trap:'la·bo·ra·to·ry — 五個音節逐個唸，中間別吞（0815 拼 labortry）；0818 拼 laboratroy、labortory 兩輪——拆 labor＋a＋tory',src:'Protective clothing must always be worn in the ____.'},
   {w:'distance',zh:'距離、遠距',tag:'WFD·0815',trap:'dis·tance — 字尾 -tance（0815 拼 distand、distent 兩種錯法）',src:'____ learning allows you to develop a career around your commitments.'},
-  {w:'commitments',zh:'（既有的）責任、承諾（複數）',tag:'WFD·0815',trap:'com·mit·ments — mm＋單 t＋ments（0815 拼 committments、committeements 三輪三種錯法）',src:'Distance learning allows you to develop a career around your ____.'},
+  {w:'commitments',zh:'（既有的）責任、承諾（複數）',tag:'🔴漏字母',trap:'⚠️ 0819 默拼打 commitmend — 字尾是名詞的 -ment 不是 -mend。拆成 commit + ment + s（mm 雙寫、t 單寫）。0815 三輪三種錯法（committments／committeements）',src:'Distance learning allows you to develop a career around your ____.'},
   {w:'steadily',zh:'穩定地、逐步地',tag:'WFD·0815',trap:'steady → stead·i·ly（y 變 ily），中間 i 別漏（0815 拼 steadly）',src:'Academic libraries across the world are ____ incorporating social media.'},
   {w:'temperature',zh:'溫度',tag:'WFD·反覆卡',trap:'tem·per·a·ture — 中間是 per（同 person）不是 par（0805 拼 temparature，0816 一模一樣再錯）',src:'The rising sea ____ is a sign of climate change.'},
   {w:'university',zh:'大學',tag:'WFD·0816·顛倒',trap:'u·ni·ver·si·ty — si 別顛倒成 sti（0816 拼 universtiy）；university lectures 前面那個字不加 s',src:'Many ____ lectures can now be viewed on the Internet.'},
@@ -1561,18 +1566,33 @@ const VQ=[
   {w:'museum',zh:'博物館',tag:'WFD·0817',trap:'mu·se·um — 中間是 se（同 see 的 se）不是 si（0817 拼 musium）；字尾 -eum 三個母音連著',src:'The ____ is closed on the third Monday of every month.'},
   {w:'third',zh:'第三（序數）',tag:'WFD·0817·顛倒',trap:'three 拿掉 e、r 和 i 對調（thr→thir）+ d；五個字母就結束，中間沒有 e（0817 拼 thired）',src:'The museum is closed on the ____ Monday of every month.'},
   {w:'prize',zh:'獎、獎品',tag:'WFD·0818·同音',trap:'prize（獎，z）≠ price（價格，c）！頒獎情境一定是 prize；記「prize 有 z，獎盃亮晶晶」（0818 拼 price）',src:'There was a ____ for the best student presentation.'},
-  {w:'habitats',zh:'棲地（複數）',tag:'WFD·0818',trap:'hab·i·tat + s — 字尾是 -tats，沒有 e（0818 拼 habitates，被 habitated 帶偏）',src:'The area has a number of underwater species and ____.'},
+  {w:'habitats',zh:'棲地（複數）',tag:'🔴錯法已定型',trap:'⚠️ 0818 打 habitates，0819 默拼又打 habitates — 一字不差，錯的版本已定型。改寫路徑：habi + tats（字尾就是 -tats，沒有 e）',src:'The area has a number of underwater species and ____.'},
   {w:'underwater',zh:'水下的',tag:'WFD·0818·漏字',trap:'under + water 合成一個字，不分寫；弱讀的 under- 很容易漏聽（0818 只打 water）',src:'The area has a number of ____ species and habitats.'},
-  {w:'industrial',zh:'工業的（形容詞）',tag:'WFD·0818·反覆卡',trap:'in·dus·tri·al — 修飾名詞要形容詞（不是 industry）；字尾 -trial（同 trial 審判），別寫成 -trail 步道；0818 五輪錯 3 次（Industry、Industrail、Industrai）',src:'The ____ Revolution in Europe was driven by steam technology.'},
-  {w:'revolution',zh:'革命',tag:'WFD·0818·反覆卡',trap:'rev·o·lu·tion — 中間是 o（想 re-volve 旋轉），不是 e 也不是 a；母音順序 e→o→u；0818 五輪錯 3 次（Revelution、Revalotion、Revalution）',src:'The Industrial ____ in Europe was driven by steam technology.'},
-  {w:'driven',zh:'被推動（過去分詞）',tag:'WFD·0818·詞形',trap:'drive-drove-driven；was ____ by ~ 是被動，要過去分詞不是 driving（0818 兩輪都打 driving）',src:'The Industrial Revolution in Europe was ____ by steam technology.'}
+  {w:'industrial',zh:'工業的（形容詞）',tag:'🔴錯法已定型',trap:'⚠️ 0818 打 Industrail，0819 默拼又打 industrail — 一字不差，錯的版本已定型。改寫路徑：in-dus-trial，字尾唸成「trial 審判」再寫（不是 trail 步道）。0818 五輪錯 3 次',src:'The ____ Revolution in Europe was driven by steam technology.'},
+  {w:'revolution',zh:'革命',tag:'🔴錯法已定型',trap:'⚠️ 0818 打 Revalution，0819 默拼又打 revalution — 一字不差，錯的版本已定型。改寫路徑：先寫 re-volve（旋轉）再改成 revolu-tion，中間永遠是 o。0818 五輪錯 3 次，同一個母音累計 4 次',src:'The Industrial ____ in Europe was driven by steam technology.'},
+  {w:'driven',zh:'被推動（過去分詞）',tag:'WFD·0818·詞形',trap:'drive-drove-driven；was ____ by ~ 是被動，要過去分詞不是 driving（0818 兩輪都打 driving）',src:'The Industrial Revolution in Europe was ____ by steam technology.'},
+  {w:'concentrate',zh:'專注（___ on）',tag:'🔴選錯字',trap:'⚠️ 0819 默拼答成 focused — 但同一句句尾已經有 stay focused 了。concentrate on ~＝專注在…（黑名單字）；0810 拼 concrate、0818 拼 concentrat（字尾 e 被吞）。拆解 con·cen·trate',src:'…he is able to ____ on the materials and stay focused in the lecture.'},
+  {w:'performance',zh:'表現（名詞）',tag:'🔴漏字母',trap:'⚠️ 0819 默拼打 perfomace — r 和 n 都漏。改寫路徑：先把 perform 整個拼出來（perfo-r-m）再加 -ance。0818 打 performace（漏 n）兩次 → 這次連 r 也漏，退步了',src:'…they cannot concentrate on their ____, in turn leading to negative influence.'},
+  {w:'bargain',zh:'划算的交易',tag:'🔴漏字母',trap:'⚠️ 0818 打 bargin（漏 a）、0819 默拼打 bargan（漏 i）— 兩次都是把 gain 拼壞。改寫路徑：bar + gain（獲得），後半就是 gain 這個完整的字',src:'…losing privacy for famous people is a good ____ for their career…'},
+  {w:'celebrities',zh:'名人（複數）',tag:'🔴錯法已定型',trap:'⚠️ 0818 打 celeberties，0819 默拼又打 celeberties — 一字不差，錯的版本已定型。改寫路徑：celeb（名人的縮寫）+ ri + ties，b 後面接 ri 不是 er',src:'…it brings disadvantages to ____, while others hold the view…'}
 ];
 
 const vqList=document.getElementById('vqList');
+const isHot=d=>/\u{1F534}/u.test(d.tag);
+VQ.sort((a,b)=>(isHot(b)?1:0)-(isHot(a)?1:0));
+let vqHeaded={};
 VQ.forEach((d,i)=>{
-  const el=document.createElement('div');el.className='vitem';
+  const hot=isHot(d);
+  const grp=hot?'hot':'rest';
+  if(!vqHeaded[grp]){vqHeaded[grp]=1;
+    const h=document.createElement('div');h.className='vhead';
+    h.innerHTML=hot
+      ?'🔴 優先區 — 0819 對話默拼沒過的 9 個<small>「錯法已定型」＝上次和這次打出一字不差的錯字，光多看沒用，照陷阱欄的「改寫路徑」重建拼法。</small>'
+      :'📚 其餘字庫（依日期累積）<small>WFD 聽寫錯字 ＋ WE 作文罩門字。</small>';
+    vqList.appendChild(h);}
+  const el=document.createElement('div');el.className='vitem'+(hot?' hot':'');
   el.innerHTML=
-    '<div class="vtop"><span class="vzh">'+d.zh+'</span><span class="vt">'+d.tag+'</span></div>'+
+    '<div class="vtop"><span class="vzh">'+d.zh+'</span><span class="vt'+(hot?' hot':'')+'">'+d.tag+'</span></div>'+
     '<p class="vsrc">'+d.src.replace('____','<span class="blk"></span>')+'</p>'+
     '<input id="vqin'+i+'" autocomplete="off" spellcheck="false" placeholder="拼拼看…">'+
     '<button class="vchk" data-i="'+i+'">對答案</button>'+
