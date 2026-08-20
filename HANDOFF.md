@@ -27,17 +27,20 @@
 - **`git add -A` 前先看 `git status`**：repo 內可能有別的未提交檔案（例如 SST 翻譯），別把無關檔案掃進 WE 的 commit
 - **SSH 走 port 443**：James 的網路擋 port 22，已在 `~/.ssh/config` 設 github.com → ssh.github.com:443。push 失敗先確認是不是網路
 
-## 3. 五大論據（James 個人化推論鏈，已定稿）
+## 3. 四大論據（2026-08-21 v3 換血：以 James 12 題實戰句為底，取代六月版）
 
 | # | 論點句 | 推論鏈 | 終點 |
 |---|--------|--------|------|
-| ① 效率 | save time and work better（進階 improve efficiency and boost productivity） | finish work faster → spend more quality time with their families → closer and happier | 家人 |
-| ② 學業 | achieve outstanding academic performance | good habits such as self-discipline → keep learning and growing → a better future | 個人成長 |
-| ③ 壓力(反面) | lead to stress and anxiety | feel upset and angry → lose their temper → hurts family relationships（正面版：feel relaxed and enjoy peace of mind） | 家人 |
-| ④ 視野 | gain a broader view of life | learn things they cannot find in books → more interesting and confident when they talk → get along with people from different backgrounds | 個人成長 |
-| ⑤ 財務 | a good job and a steady income（進階 financial stability） | do not need to worry about money → enjoy peace of mind → a warm and stable home | 家人 |
+| ① 效率 | improve efficiency and boost productivity（James 實戰句；簡版 save time and work better） | save a lot of time → spend more quality time with their families → closer and happier | 家人 |
+| ③ 壓力(反面) | lead to stress and anxiety | feel frustrated and isolated → serious mental health problems → cannot take good care of their families（正面版讓步用：feel relaxed and enjoy peace of mind——peace of mind 只屬③） | 家人 |
+| ④ 視野 | learn things they cannot find in books（因果起點，v2 的 broader view 降為第二步） | gain a broader view of life → get along with people from different backgrounds → earn trust and have better future prospects；家庭教育版（父母/品格題）：parents teach good values → honest → earn trust → future prospects | 信任前途（要收家庭借⑤尾） |
+| ⑤ 財務 | a good job and a steady income（進階 financial stability） | do not need to worry about money → a warm and stable home（兩步收尾；學生題開頭墊 outstanding academic performance） | 家人 |
 
-記憶法：①③⑤ 終點＝家人；②④ 終點＝個人成長。
+- ② 學業線已除役併入⑤（學生題墊一步 outstanding academic performance）。
+- 記憶法：①③⑤ 收家人；④ 收信任前途。讓步三選一：對方比較爽（③正面版）／對方比較賺（⑤）／對方長見識（④），① 盡量留給自己當主論。
+- P4 萬用加分句：I believe that [X] brings more tangible and intangible benefits than drawbacks（地雷拼字 tangible/intangible 已入 WFD_訂正 #vquiz）。
+- ③ 地雷字 anxiety（曾拼 anxity）、frustrated（曾拼 frustarted）也已入默拼。
+- **注意：37 題 DATA 範文與 ZH 速記仍是 v2 鏈的版本**，改版策略＝James 練到哪換到哪（分批），不要一次全改。
 
 ## 4. 已完成的工程（全部已 commit + push）
 
