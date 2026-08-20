@@ -954,6 +954,196 @@ const GROUP_INFO = {
 };
 const GCOLOR = {1:'#2980b9',2:'#27ae60',3:'#e67e22',4:'#8e44ad',5:'#e74c3c'};
 
+// 中文論點速記：模板之外的 slot 內容全部用短中文整理，關鍵單字（）附英文。
+// 先讀中文記推論鏈，再對照下方英文範文。鍵＝題號 d.n。
+const ZH = {
+'①-1':{
+ p1:'反方：小店應被保護 (should be protected)；我方：這是正面趨勢 (a positive trend)',
+ p2:'小店對社區 (local area) 好——讓附近居民互相認識 (know each other)。若人們在小店消費 → 學到書本外的東西 → 成為不同背景相處融洽 (get along) 的地方。小結：很多人仍喜歡小店',
+ p3:'大商場適合現代生活 (modern life)——一站式購物 (one-stop shopping) 幫人省時 (save time)。例：James 在大商場採買 → 一次買齊 (buy everything in one place)＋更多優質時間陪家人 (quality time)。含義：大商場更適合忙碌生活 (busy life)',
+ p4:'大商場是正面趨勢；建議：城市保留 (keep space) 特色小店'},
+'①-2':{
+ p1:'反方：電視很有用 (very useful)；我方：弊大於利 (more harm than good)',
+ p2:'能從電視學東西 (learn from television)——好節目教我們認識世界 (teach us about the world)。若選優質節目 (quality programs) → 學到書本外的東西 → 更開闊的視野 (a broader view)。小結：很多人視電視為朋友 (a friend)',
+ p3:'電視弊大於利——佔據家庭時間 (takes up family time)，大家只是安靜坐著 (sits quietly)。例：James 晚餐時關電視 (turns off the TV) → 更多優質時間陪家人。含義：交談 (talking) 才讓家人更親密幸福，不是電視',
+ p4:'電視弊大於利；建議：家人關掉電視、多聊天 (talk more)'},
+'①-3':{
+ p1:'反方：手機弊大於利；我方：非常有用的發明 (a very useful invention)',
+ p2:'手機有些問題 (problems)——很多年輕人網路成癮 (addicted to the internet)。若學生一直滑手機 (keeps surfing) → 上課容易分心 (lose focus) → 成績差 (poor academic performance)。小結：有些父母不准孩子用手機',
+ p3:'手機非常有用——把通訊 (communication)、資訊 (information)、工作整合在一台裝置 (one device)。例：James 用手機管理工作與家庭群組 (manages work and family chats) → 更快完成工作 (finish work faster)＋隨時聯絡家人 (reach his family anytime)。含義：手機讓家人保持聯繫 (connected)、更親密幸福',
+ p4:'手機好處遠大於問題；建議：使用者養成健康數位習慣 (healthy digital habits)'},
+'①-4':{
+ p1:'反方：競爭會迫使工時更長 (longer hours)；我方：整體工時會變少 (fewer hours)',
+ p2:'未來可能會加班 (work overtime)——通訊工具 (communication tools) 太方便。若在家也能工作 (work from home) → 員工隨時隨地工作 (anywhere, anytime) → 沒時間陪家人 (no time to spend with families)。小結：勞工對未來擔憂 (worried)',
+ p3:'未來人們工時更少——AI 發展飛快 (developing very fast)。例：James 擅長用 AI (good at using AI) → 省下大量時間 (save a lot of time)。含義：準時完成工作 (finish on time)、整晚陪家人 (the whole evening)',
+ p4:'未來世代確實會工時更少；建議：每個人都學會用 AI (learn how to use AI)'},
+'③-1':{
+ p1:'反方：多修路能解決塞車 (solve traffic jams)；我方：提升大眾運輸 (public transport) 更好',
+ p2:'修路能暫時 (for a while) 緩解塞車——路更寬 (wider roads) 車流更順 (move smoothly)。若路變多 → 駕駛省下路上時間 (save time on the road) → 更多時間陪家人。小結：很多城市持續修路 (keep building roads)',
+ p3:'大眾運輸是更好的選擇——車變少 → 空污減少 (less air pollution)。例：James 每天搭捷運 (takes the metro) → 避開塞車壓力 (avoid traffic stress)、感到放鬆 (feel relaxed)。含義：大眾運輸讓人平靜 (calm) → 家人享有安心 (peace of mind)',
+ p4:'政府應優先發展大眾運輸 (put public transport first)；建議：更多預算投入捷運與公車系統 (metro and bus systems)'},
+'③-2':{
+ p1:'反方：活更久是沉重負擔 (a heavy burden)；我方：醫療進步是好事 (a good thing)',
+ p2:'長壽帶來財務負擔 (financial burdens)——高齡化社會 (an aging society) 需要更多錢和照護 (care)。若老年人口持續增加 → 醫療照護成本快速上升 (rise fast) → 家庭與政府的金錢憂慮 (money worries)。小結：有些人擔心未來',
+ p3:'醫療進步是好事——讓人活得更久更健康 (longer and healthier)。例：James 定期健檢 (regular check-ups) → 保持健康、多陪家人好幾年 (quality years)。含義：醫療進步顯然是好事',
+ p4:'長壽是好事；建議：社會準備好醫療 (healthcare) 與老人照護'},
+'③-3':{
+ p1:'反方：工作優先 (put work first)；我方：應保持工作與生活平衡 (keep a balance)',
+ p2:'現代人工作過量 (work too much)——想保住工作 (keep their jobs)、求升遷 (a better position)。若怕失業 (afraid of losing jobs) → 工時很長 (work very long hours) → 沒時間陪家人休息。小結：過勞已成常態 (become normal)',
+ p3:'平衡非常重要——讓人健康 (healthy)、家庭幸福 (happy)。例：James 一直保持工作家庭平衡 (keeps a good balance) → 減壓 (reduce stress)、放鬆安心 (peace of mind)、家人親密幸福。含義：好的平衡甚至讓人工作表現更好 (work better)',
+ p4:'平衡對每個人都重要；建議：公司給員工足夠的休息時間 (enough free time)'},
+'③-4':{
+ p1:'反方：成功需要長工時 (long working hours)；我方：過勞造成嚴重問題 (serious problems)',
+ p2:'過勞很普遍 (very common)——多數人相信工時長收入高 (higher income)。若認為工時多＝成功 (more success) → 放棄休閒時間 (give up free time) → 養成過勞習慣 (a habit)。小結：各行各業都看得到過勞',
+ p3:'過勞造成嚴重問題——導致壓力 (stress)，人們發脾氣 (lose their temper)、對家人說話粗魯 (speak rudely)。例：James 準時下班 (leaves the office on time) → 家人親密幸福。含義：忘了平衡會傷害健康與家庭 (hurts health and the family)',
+ p4:'過勞傷害家庭；建議：員工把工作與生活分開 (keep work and life apart)'},
+'③-5':{
+ p1:'反方：潔淨能源 (clean energy) 最值得研究；我方：氣溫上升 (rising temperatures) 最重要',
+ p2:'研究潔淨能源很誘人 (attractive)——是快速成長的產業 (fast-growing industry)。若研究者投入 → 好工作穩定收入 (a steady income) → 光明前途 (a bright career)。小結：很多學生選潔淨能源',
+ p3:'我會研究氣溫上升——高溫影響每個人的生活與情緒 (daily life and mood)。例：James 在擁擠城市度過炎夏 (hot summers) → 看到高溫讓人煩躁憤怒 (upset and angry)。含義：高溫傷害家庭關係 (hurts family relationships)，最需要研究',
+ p4:'我選氣溫上升；建議：科學家讓城市降溫 (cool our cities)、保護每個家庭'},
+'③-6':{
+ p1:'反方：法律對行為影響很小 (little effect)；我方：法律真能改變行為 (really change)',
+ p2:'法律有時沒效 (do not work well)——處罰太弱 (punishment is weak) 就有人違規。若處罰太輕 (too light) → 人們無視規則 (ignore the rules) → 一再違規與社會問題 (social problems)。小結：光靠法律不能解決一切',
+ p3:'法律真能約束行為——對處罰的恐懼 (fear of punishment) 維持社會安全 (keeps society safe)。例：James 住在交通法規嚴格 (strict traffic laws) 的城市 → 每天安全通勤 (travel safely)、安心 (peace of mind)。含義：法律保社會安全 → 每個家庭安心生活',
+ p4:'法律對引導行為 (guiding behaviors) 作用重大；建議：政府公平平等地 (fairly and equally) 使用法律'},
+'③-7':{
+ p1:'反方：好處更重要；我方：壞處更大 (bad points are greater)',
+ p2:'大眾媒體讓資訊容易取得 (easy to get)——幾秒就找到 (in seconds) 所需。若聰明使用 (use wisely) → 省時、工作更好 (save time and work better) → 更多時間陪家人。小結：很多人視為一大進步 (a big step forward)',
+ p3:'壞處更大——資訊過載 (too much information) 與假新聞 (fake news) 導致壓力焦慮 (stress and anxiety)。例：James 晚上關手機 (turns off his phone) → 放鬆安心。含義：無止盡的更新 (endless updates) 讓人發脾氣、傷害家庭關係',
+ p4:'弊大於利；建議：人們學會判斷新聞 (judge news)、限制螢幕時間 (limit screen time)'},
+'③-8':{
+ p1:'反方：個人與企業 (people and companies) 應主導；我方：政府 (governments) 應擔任主要角色 (the main role)',
+ p2:'個人與企業也有貢獻 (play a part)——日常小選擇 (small daily choices) 積少成多 (add up)。若大家節能 (saves energy)、企業環保 (go green) → 污染逐步下降 (go down step by step) → 效率上有意義的改善。小結：很多人支持個人行動 (personal action)',
+ p3:'政府應主導——只有政府有權立法 (make laws)、提供資金 (provide money)。例：James 住在推動綠能與綠色運輸 (green energy and transport) 的城市 → 生活在更乾淨的環境 (cleaner environment)。含義：由上而下的大改變 (big changes from the top) 讓每個家庭健康安心',
+ p4:'政府必須帶頭 (lead this fight)；建議：個人與企業在明確規範下 (under clear rules) 合作'},
+'③-9':{
+ p1:'反方：年齡限制 (age limits) 阻擋年輕人的自由；我方：開車應等到 18 歲 (wait until eighteen)',
+ p2:'年齡限制可能耽誤年輕人 (hold young people back)——才華不等年齡 (talent does not wait for age)。若有能力的年輕人被擋 → 錯過早期職涯機會 (miss early career opportunities) → 沮喪 (upset) 與浪費才華 (wasted talent)。小結：有些規定看來太嚴 (too strict)',
+ p3:'18 歲是開車的正確年齡——保護年輕人遠離過早的風險 (early risks)。例：James 18 歲受完正規訓練 (proper training) 才開車 → 安全駕駛 (drive safely)、全家安心。含義：年齡限制在對的時間保護年輕人',
+ p4:'18 歲是公平的 (fair) 最低年齡；建議：年輕駕駛先接受正規訓練 (proper training)'},
+'③-10':{
+ p1:'反方：城市生活 (city life) 是更好選擇；我方：住鄉村 (the countryside) 更好',
+ p2:'城市工作機會多 (many job chances)——大公司聚集 (big companies gather)、薪水好 (pay well)。若年輕人在大城市工作 → 好工作穩定收入 → 職涯成長更快 (faster career growth)。小結：很多年輕人搬去城市',
+ p3:'我偏好鄉村生活——步調平靜 (calm)、壓力小很多 (far less pressure)。例：James 在安靜鄉間的家遠端工作 (works online) → 放鬆、多陪家人。含義：鄉村生活帶來安心與家庭和諧 (family harmony)',
+ p4:'鄉村是我的選擇；建議：選擇時同時考量職涯與家庭 (career and family)'},
+'③-11':{
+ p1:'反方：成名就要付出隱私 (paid for with privacy)；我方：名人絕不該放棄隱私 (never give up privacy)',
+ p2:'名人確實影響大眾 (influence the public)——粉絲仰慕他們 (look up to them)。若粉絲緊追偶像 → 媒體報導 (media reports) 滿足大眾想知道的 → 覺得跟偶像更近 (closer to them)。小結：大眾對名人的興趣從不消退 (never fades)',
+ p3:'名人不該放棄隱私——時刻被注視 (being watched all the time) 導致壓力焦慮。例：James 下班享受私人時間 (private time) → 放鬆安心。含義：隱私保護家庭和諧，名氣 (fame) 不該奪走它',
+ p4:'隱私是名氣無法取代的權利 (a right)；建議：媒體尊重 (respect) 私人生活'},
+'③-12':{
+ p1:'反方：不該有薪資上限 (no maximum wage)；我方：設上限是好主意 (a good idea)',
+ p2:'高薪能激勵人努力 (push people to work hard)——無上限的薪水讓人才拼命。若頂尖人才追逐高薪 (chase higher pay) → 非常努力工作 → 新點子與企業成長 (business growth)。小結：很多公司用高薪留才 (keep talent)',
+ p3:'應該設薪資上限——薪水有頂 (pay has a top)，人們就不再無止盡加班 (endless overtime)。例：James 準時下班 → 多陪家人。含義：薪資上限用加班換來家庭和諧',
+ p4:'上限利大於弊 (more good than harm)；建議：人們把家庭時間看得跟錢一樣重 (value family time as much as money)'},
+'③-13':{
+ p1:'反方：現在的孩子日子更輕鬆 (easier lives)；我方：現在成長比以往更難 (harder than ever)',
+ p2:'現代孩子資源更多 (more resources)——科技開了很多門 (opens many doors)。若用線上學習 (online learning) → 學到書本外的東西 → 更開闊的視野。小結：某些方面生活確實更輕鬆',
+ p3:'現在成長更難——社群媒體 (social media) 與競爭 (competition) 太早帶來壓力焦慮。例：James（大學生版）限制社群使用 (limits his social media use) → 減壓，但仍感到壓力 (still feels the pressure)。含義：持續的壓力 (constant pressure) 甚至傷害家庭關係',
+ p4:'現在的孩子面對更大的問題；建議：家庭與學校教孩子處理壓力 (handle pressure)'},
+'④-1':{
+ p1:'反方：在本地讀 (studying locally) 一樣好；我方：海外學習 (studying overseas) 有本地給不了的東西',
+ p2:'本地讀比較省錢 (cheaper)——海外花費高很多 (costs far more)。若學生留在家 → 省學費與生活費 (school fees and living costs) → 家庭少為錢煩惱。小結：很多大學者從沒出國 (never study abroad)',
+ p3:'海外學習真的值得 (really worth it)——新環境打開心胸 (opens your mind)。例：James（大學生版）在國外與不同背景的人一起讀書 → 學到書本外的東西、講話變自信 (confident)。含義：開闊的視野之後帶來好職涯與穩定家庭',
+ p4:'海外學習的價值是真的 (the value is real)；建議：有機會就把握國際機會 (international chances)'},
+'④-2':{
+ p1:'反方：AI 翻譯讓學語言沒用 (useless)；我方：學外語仍然很重要 (still really important)',
+ p2:'AI 翻譯很方便 (convenient)——機器快又便宜 (work fast and cost little)。若用翻譯工具 → 立刻看懂外文 (understand right away) → 工作更快、成本更低。小結：很多人天天用 AI 翻譯',
+ p3:'學外語仍重要——語言承載文化 (language carries culture)，機器翻不出來。例：James 自己學外語 → 講話有自信、跟不同背景的客戶 (clients) 相處融洽。含義：真實交談 (real talking) 建立信任 (trust)、穩定工作、幸福家庭',
+ p4:'學外語仍然非常重要；建議：把 AI 當輔助工具就好 (a helper only)'},
+'④-3':{
+ p1:'反方：必修語言課只會增加壓力 (add pressure)；我方：外語應列必修 (a required subject)',
+ p2:'必修語言課增加壓力——學生課業已重 (heavy workloads)。若再硬塞一科 (forced on them) → 沮喪焦慮 (upset and anxious) → 學習興趣下降 (less interest)。小結：課程調整需要謹慎規劃 (careful planning)',
+ p3:'外語應列必修——語言打開通往其他文化與好機會的門 (opens the door)。例：James 在學校學過外語 → 跟不同背景的人相處融洽、講話更自信。含義：語言能力帶來好職涯 (good careers) 與穩定幸福的家庭',
+ p4:'學校應把外語列必修；建議：課程保持有趣實用 (fun and useful) 以減壓'},
+'⑤-1':{
+ p1:'反方：生活經驗 (life experience) 教得比學校多；我方：正規教育 (formal education) 更重要',
+ p2:'生活經驗有用——真實情境 (real situations) 考驗人是課堂做不到的。若從現實挑戰中學習 → 學到書本外的東西 → 更開闊的視野。小結：很多成功人士感謝生活經驗',
+ p3:'正規教育更重要——學校養成自律 (self-discipline) 等好習慣。例：James（大學生版）按部就班讀書 (a well-planned study program) → 好成績 (high grades)、好工作穩定收入。含義：正規教育帶來更好的未來與溫暖穩定的家 (a warm and stable home)',
+ p4:'正規教育比生活經驗重要；建議：年輕人先完成學業 (finish school first)'},
+'⑤-2':{
+ p1:'反方：學生可以邊讀邊工作 (study and work at the same time)；我方：學生應專心讀書 (focus on study)',
+ p2:'打工能學到有用的課 (useful lessons)——職場展現學校教不了的。若學生打工 (a part-time job) → 學到書本外的東西 → 更開闊的視野。小結：很多人稱讚工讀生 (working students)',
+ p3:'學生應專注學業——讀書需要時間與平靜的心 (a calm mind)。例：James（大學生版）全力讀書 (puts all his energy into study) → 好成績、好工作穩定收入。含義：今天的專注 (focus today) 打造明天溫暖穩定的家',
+ p4:'讀書優先 (study should come first)；建議：先完成學業再工作 (finish studies before taking a job)'},
+'⑤-3':{
+ p1:'反方：數位媒體讓圖書館過時 (out of date)；我方：圖書館的角色無可取代 (cannot be replaced)',
+ p2:'數位資料對學生很方便 (convenient)——任何裝置 (any digital device) 都能用。若要找資料 → 在裝置上輕鬆搜尋圖書館資料庫 (search the library database) → 短時間完成任務 (in a short time)。小結：學生更願意用數位資料',
+ p3:'在圖書館讀紙本教科書 (printed textbooks) 仍重要——安靜的圖書館 (a quiet library) 最適合深度學習 (deep learning)。例：James（大學生版）總是在安靜圖書館讀紙本書 → 靠自己吸收知識 (learn by himself)，不是快速滑過數位頁面。含義：建立自己的理解 (own understanding)、培養批判思考 (critical thinking)',
+ p4:'圖書館仍然很有用；建議：大學持續投資 (keep spending) 圖書館與教科書'},
+'⑤-4':{
+ p1:'反方：糟糕的設計有害 (harmful)；我方：好設計帶來好影響 (good effects)',
+ p2:'壞設計帶來壞影響——導致壓力焦慮。若住在陰暗狹小的房間 (dark and small rooms) → 煩躁憤怒 → 壞脾氣傷害家庭 (a bad temper)。小結：人們搬離那種地方 (move away)',
+ p3:'好設計帶來強烈的好影響——舒適的空間 (a comfortable space) 幫助專注 (focus)。例：James 在明亮、設計良好的辦公室 (bright well-designed office) 工作 → 保持專注、賺穩定收入。含義：好設計支撐職涯與溫暖穩定的家',
+ p4:'建築設計對人有正面影響；建議：設計師注重舒適 (comfort) 與空間的使用方式 (how people use the space)'},
+'⑤-5':{
+ p1:'反方：這責任對家長不公平 (unfair)；我方：家長應負法律責任 (legally responsible)',
+ p2:'這給家長沉重壓力 (heavy pressure)——孩子不會事事聽話 (do not always do what parents say)。若家長為每個錯被罰 (punished for every mistake) → 沮喪焦慮 → 壞脾氣傷家庭。小結：有人覺得規定太嚴 (too strict)',
+ p3:'家長應負法律責任——法律責任 (legal duty) 促使家長用心管教 (guide with care)。例：James 從小被父母細心引導 (carefully guided) → 認真讀書 (study hard)、好工作穩定收入。含義：用心的教養 (careful parenting) 讓全家和諧 (in harmony)',
+ p4:'這規定對孩子和社會都好；建議：法律同時提供育兒支援 (parenting support)'},
+'⑤-6':{
+ p1:'反方：這處罰對學生太嚴 (too strict)；我方：扣分公平且必要 (fair and necessary)',
+ p2:'某些情況扣分太嚴——學生可能有真實的困難 (real problems)。若學生生病 (fall ill) 或突發狀況 → 沮喪焦慮 → 不公平的結果 (unfair results)。小結：有人要求更彈性的規定 (flexible rules)',
+ p3:'扣分是公平的——期限 (deadlines) 養成自律等好習慣。例：James（大學生版）總是準時交作業 (submits assignments on time) → 好成績、好工作穩定收入。含義：期限帶來更好的未來與穩定的家',
+ p4:'這規定公平；建議：有正當理由 (good reasons) 學校給更多時間'},
+'⑤-7':{
+ p1:'反方：氣候變遷最需要關注；我方：失業 (unemployment) 是最嚴重的問題 (the most serious problem)',
+ p2:'失業重傷家庭 (hurt a family deeply)——失業的人失去穩定收入。若人們失業 (lose their jobs) → 天天擔心錢 (worry about money every day) → 全家壓力焦慮。小結：有人甚至罹患精神疾病 (mental illness)',
+ p3:'失業有實際解方 (real solutions)——政府能創造就業 (create jobs)、提供職訓 (offer training)。例：James 參加政府職訓計畫 (a government training program) → 賺穩定收入、建立溫暖穩定的家。含義：穩定工作 (a steady job) 給全家更光明的未來 (a brighter future)',
+ p4:'失業是最嚴重的問題；建議：政府投資職訓 (spend on training)、創造更多工作'},
+'⑤-8':{
+ p1:'反方：做中學 (learning by doing) 在學校很有效；我方：傳統教學 (traditional teaching) 最好',
+ p2:'做中學新鮮有趣 (fresh and fun)——動手做 (hands-on tasks) 展現事物運作原理。若學生做中學 → 學到書本外的東西 → 更開闊的視野。小結：很多學校加開實作課',
+ p3:'傳統教學仍是最好——一步步 (step by step) 建立知識。例：James（大學生版）跟著規劃好的課程 (well-planned courses) → 好成績、好工作穩定收入。含義：循序漸進的學習帶來溫暖穩定的家',
+ p4:'傳統教學效果更好；建議：學校以傳統教學為主 (as the main way)'},
+'⑤-9':{
+ p1:'反方：愛比時機重要 (love matters more than timing)；我方：婚姻應等事業穩定 (career is settled)',
+ p2:'早婚能給彼此支持 (support)——夫妻互相鼓勵 (encourage each other) 度過難關。若伴侶互相扶持 → 比較不孤單 (less lonely) → 困難時的安心。小結：有些早婚確實幸福 (do work well)',
+ p3:'學業與工作應優先 (come first)——穩定收入 (a stable income) 讓婚姻穩固 (keeps a marriage strong)。例：James 完成學業、找到工作後才結婚 (married after finishing) → 建立無金錢煩惱 (without money worries) 的溫暖穩定的家。含義：穩定職涯支撐幸福婚姻 (a happy marriage)',
+ p4:'太早結婚不明智 (unwise)；建議：年輕人先立業再成家 (build careers before starting a family)'},
+'⑤-10':{
+ p1:'反方：決策該留給主管 (left to managers alone)；我方：讓員工參與 (involving employees) 好處更多',
+ p2:'員工參與會拖慢速度 (slow things down)——廣泛討論很花時間 (takes time)。若每個決策都要全員同意 (everyone to agree) → 流程變慢 (become slow) → 效率降低 (lower efficiency)。小結：有些公司由高層決定 (decide at the top)',
+ p3:'好處遠大於壞處——參與讓員工覺得被重視 (feel important)、更想工作 (keen to work)。例：James 參與公司決策 (joins the decision-making process) → 感到被重視 (feel valued)、為家庭賺穩定收入。含義：快樂的員工把好心情帶回家 (brings home a good mood)，家庭幸福',
+ p4:'雇主應讓員工參與決策；建議：公司建立良好的參與機制 (good ways to take part)'},
+'⑤-11':{
+ p1:'反方：筆試 (written exams) 測不出真實能力 (true ability)；我方：筆試仍然公平 (still fair)',
+ p2:'筆試會造成問題——一切取決於一次表現 (a single performance)。若一試定生死 (one test decides everything) → 學生沮喪焦慮 → 表現低於真實水準 (below their true level)。小結：改革考試的討論不斷',
+ p3:'筆試仍公平——用公平的方式測驗知識 (test knowledge in a fair way)。例：James（大學生版）循序準備筆試 (prepares step by step) → 好成績、好工作穩定收入。含義：公平的考試帶來更好的未來與穩定的家',
+ p4:'筆試是測驗學生的好方法；建議：學校搭配其他評量方式 (together with other ways)'},
+'⑤-12':{
+ p1:'反方：壞處跟好處一樣大 (as big as)；我方：好處遠大於壞處 (much greater)',
+ p2:'旅遊業可能傷害在地文化 (harm local culture)——商業把文化變商品 (into a product)。若一個地方太向錢看 (too focused on money) → 在地傳統失去本色 (lose their real character) → 文化流失 (a loss of local culture)。小結：粗心的旅遊留下傷害 (leaves damage)',
+ p3:'好處遠大於壞處——旅遊業為在地人創造就業機會 (job opportunities)。例：James 替公司在欠發達國家開發旅遊行程 (develops travel programs) → 看到旅遊幫在地家庭賺穩定收入、建立溫暖的家。含義：旅遊業是發展 (development) 的一大助力',
+ p4:'旅遊業給欠發達國家利遠大於弊；建議：政府謹慎管理 (manage in a careful way) 旅遊業'},
+'⑤-13':{
+ p1:'反方：媒體對年輕人有益 (good for the young)；我方：弊大於利 (more harm than good)',
+ p2:'媒體能教新東西 (teach us new things)——好節目展現廣闊世界 (the wide world)。若年輕人看優質內容 (quality content) → 學到書本外的東西 → 更開闊的視野。小結：家長歡迎教育性節目 (educational programs)',
+ p3:'媒體對年輕人弊多 (mostly harms)——短影音 (short videos) 把學生從書本拉走 (pull students away)。例：James（大學生版）高中遠離社群媒體 (kept away from social media) → 專心學業、好成績。含義：今天的讀書時間 (study time) 決定明天的穩定收入與家庭',
+ p4:'媒體對年輕人主要是傷害；建議：家長為媒體使用設清楚界線 (set clear limits)'},
+'⑤-14':{
+ p1:'反方：折扣 (discounts) 最能吸客；我方：好名聲 (a good name) 才是行銷重點',
+ p2:'折扣快速衝銷量 (boost sales quickly)——低價 (a low price) 是強力購買理由。若降價 (prices drop) → 顧客立刻買 (buy right away) → 短期收益 (short-term money gains)。小結：折扣活動到處都是',
+ p3:'好名聲才是重點——建立顧客忠誠 (customer loyalty) 與長期獲利 (long-term profits)。例：James 幫公司維持品質好名聲 (good name for quality) → 看到忠實顧客年年回購 (return year after year)，帶來穩定收入。含義：好名聲創造折扣做不到的長期價值 (long-term value)。★唯一不收家庭的題',
+ p4:'名聲比短期折扣重要；建議：公司投資品質與顧客信任 (quality and customer trust)'},
+'⑤-15':{
+ p1:'反方：老戲劇值得放進學校 (deserve a place)；我方：問題大於好處 (problems are greater)',
+ p2:'老戲劇承載深厚文化 (deep culture)——老故事教歷史與人性 (history and human nature)。若學生研讀 → 學到書本外的東西 → 更開闊的視野。小結：有些學校稱讚戲劇課 (drama courses)',
+ p3:'問題大於好處——排練佔用主科時間 (takes hours from main subjects)。例：James（大學生版）高中專注主科 (focused on main subjects) → 好成績、進頂尖大學 (a top university)。含義：讀書時間決定未來與溫暖穩定的家',
+ p4:'戲劇課耗掉太多讀書時間；建議：戲劇只設選修 (an optional class)'},
+'⑤-16':{
+ p1:'反方：老建築花再多錢都值得 (worth any cost)；我方：公帑應先照顧民生 (daily needs first)',
+ p2:'老建築承載歷史文化 (history and culture)——訴說書本說不了的故事。若城市保留老建築 → 人們學到書本外的東西 → 更開闊的視野。小結：觀光客喜愛老街 (old streets)',
+ p3:'預算應先給住房與就業 (housing and jobs first)——日常生活比美麗的牆重要 (daily life matters more)。例：James 住在投資住房與醫院 (housing and hospitals) 的城市 → 安心養家 (raise his family with peace of mind)。含義：錢花在民生 (daily needs)，每個家庭都有溫暖穩定的家',
+ p4:'民生應優先於昂貴的老建築；建議：政府只保留最重要的建築 (the most important buildings)'},
+'⑤-17':{
+ p1:'反方：縮短工時能減少失業 (reduce unemployment)；我方：這主意問題大於好處 (more problems than benefits)',
+ p2:'工時短聽起來輕鬆 (sounds relaxing)——多休息、壓力小 (more rest and less pressure)。若員工工時變少 → 感到放鬆 (feel relaxed) → 安心。小結：這想法吸引很多勞工 (attracts many workers)',
+ p3:'縮短工時不是好解方——工時少＝薪水少 (fewer hours mean smaller pay)。例：James 整週全職工作 (works full weeks) 養家 → 為家人賺穩定收入。含義：砍工時就是砍薪水 (cutting hours cuts pay)，動搖穩定的家 (shakes a stable home)',
+ p4:'弊大於利；建議：政府改為創造新工作 (create new jobs instead)'}
+};
+
 let lastCat = 0;
 DATA.forEach(d=>{
   if (d.p3c !== lastCat) {
@@ -985,6 +1175,23 @@ DATA.forEach(d=>{
   <div class="q-body">
     <div class="q-en">${d.en}</div>
     <div class="stance"><b>立場：</b>${d.stance}</div>
+    ${ZH[d.n] ? `
+    <div class="row">
+      <div class="row-label">P1 立場</div>
+      <div class="row-zh">${ZH[d.n].p1}</div>
+    </div>
+    <div class="row">
+      <div class="row-label">P2 讓步 ${badge(d.p2c)}</div>
+      <div class="row-zh"><b>${d.p2zh}</b><br>${ZH[d.n].p2}</div>
+    </div>
+    <div class="row">
+      <div class="row-label">P3 主論 ${badge(d.p3c)}</div>
+      <div class="row-zh"><b>${d.p3zh}</b><br>${ZH[d.n].p3}</div>
+    </div>
+    <div class="row">
+      <div class="row-label">P4 結論</div>
+      <div class="row-zh">${ZH[d.n].p4}</div>
+    </div>` : `
     <div class="row">
       <div class="row-label">P2 讓步 ${badge(d.p2c)}</div>
       <div class="row-zh">${d.p2zh}</div>
@@ -992,7 +1199,7 @@ DATA.forEach(d=>{
     <div class="row">
       <div class="row-label">P3 主論 ${badge(d.p3c)}</div>
       <div class="row-zh">${d.p3zh}</div>
-    </div>
+    </div>`}
     <div class="row">
       <div class="row-label">完整範文</div>
       <div class="essay">${paras.map(p=>`<p>${p}</p>`).join('')}
