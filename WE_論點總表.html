@@ -20,7 +20,6 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
 .bg { display: inline-block; color: white; font-size: .78rem; font-weight: 700;
       padding: 2px 10px; border-radius: 10px; white-space: nowrap; }
 .bg1 { background: #2980b9; } /* 效率 */
-.bg2 { background: #27ae60; } /* 學業 */
 .bg3 { background: #e67e22; } /* 健康 */
 .bg4 { background: #8e44ad; } /* 視野 */
 .bg5 { background: #e74c3c; } /* 職涯 */
@@ -36,7 +35,6 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
 @media(max-width:700px){ .ref-grid { grid-template-columns: 1fr; } }
 .ref-item { border-radius: 6px; padding: 14px; display: flex; gap: 12px; }
 .rf1 { background: #eaf4fb; border-left: 4px solid #2980b9; }
-.rf2 { background: #eafaf1; border-left: 4px solid #27ae60; }
 .rf3 { background: #fef9e7; border-left: 4px solid #e67e22; }
 .rf4 { background: #f5eef8; border-left: 4px solid #8e44ad; }
 .rf5 { background: #fdedec; border-left: 4px solid #e74c3c; }
@@ -44,7 +42,7 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
 .ref-zh { font-size: 1rem; font-weight: 700; margin-bottom: 2px; }
 .ref-trigger { font-size: .75rem; color: #888; margin-bottom: 6px; }
 .ref-en { font-family: Georgia, serif; font-size: .88rem; color: #333; margin-bottom: 2px; line-height: 1.7; }
-.rf1 .ref-en b, .rf1 .ref-main b { color: #1a5d8c; } .rf2 .ref-en b, .rf2 .ref-main b { color: #1e7a45; }
+.rf1 .ref-en b, .rf1 .ref-main b { color: #1a5d8c; }
 .rf3 .ref-en b, .rf3 .ref-main b { color: #ad5e0a; } .rf4 .ref-en b, .rf4 .ref-main b { color: #6f3585; }
 .rf5 .ref-en b, .rf5 .ref-main b { color: #b03a2e; }
 .ref-main { font-family: Georgia, serif; font-size: .9rem; font-weight: 600; color: #222;
@@ -96,7 +94,6 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
 .essay .tpl { color: #5b9bd5; }
 .essay i, .ref-grid i, .sum-table i { font-style: normal; font-weight: 700; padding: 0 3px; border-radius: 3px; }
 .a1 { color: #1a5d8c; background: #d6eaf8; }
-.a2 { color: #1e7a45; background: #d5f5e3; }
 .a3 { color: #ad5e0a; background: #fdebd0; }
 .a4 { color: #6f3585; background: #ebdef0; }
 .a5 { color: #b03a2e; background: #fadbd8; }
@@ -130,7 +127,7 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
 <body>
 <header>
   <h1>📋 WE 37題 論點總表 + 完整範文</h1>
-  <p>每題：立場 · P2 讓步 · P3 主論 · 完整範文（模板句 / 五大論據 上色）</p>
+  <p>每題：立場 · P2 讓步 · P3 主論 · 完整範文（模板句 / 四大論據 上色）</p>
   <div class="search-bar"><input id="search" type="text" placeholder="搜尋題目…"></div>
 </header>
 <div class="container">
@@ -142,7 +139,7 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
     <span>黑字 = 依題目填的內容</span>
   </div>
   <div class="legend-row">
-    <b>四大論據（範文內高亮；② 學業已併入 ⑤）：</b>
+    <b>四大論據（範文內高亮）：</b>
     <span class="bg bg1">① 效率 &amp; 時間</span>
     <span class="bg bg3">③ 健康 &amp; 壓力</span>
     <span class="bg bg4">④ 視野 &amp; 文化</span>
@@ -210,7 +207,7 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
 
 <div class="sum-card open" id="refcard">
   <div class="sum-header" onclick="this.closest('.sum-card').classList.toggle('open')">
-    <span>📚 五大論據英文句（背熟這些，37 題通吃）</span><span>▼</span>
+    <span>📚 四大論據英文句（背熟這些，37 題通吃）</span><span>▼</span>
   </div>
   <div class="sum-body">
     <div class="ref-grid">
@@ -224,14 +221,6 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
           <div class="ref-sub"><span class="zh-tag">B. 陪家人：</span>they can <i class="a1">spend more quality time with their families</i></div>
           <div class="ref-sub"><span class="zh-tag">C. 關鍵影響：</span>this makes the family <i class="a1">closer and happier</i></div>
           <div class="ref-sub"><span class="zh-tag">防錯：</span>If 句主詞固定用 people／they（複數，免三單 +s）</div>
-        </div>
-      </div>
-      <div class="ref-item rf2" style="opacity:.65">
-        <div class="ref-num">②</div>
-        <div>
-          <div class="ref-zh">學業（已併入 ⑤ 財務線）</div>
-          <div class="ref-trigger">學校／考試／讀書類題目改走 ⑤：認真讀書 → 好成績 → 好工作穩定收入 → 溫暖的家</div>
-          <div class="ref-sub"><span class="zh-tag">保留用詞：</span>outstanding academic performance（你的實戰句）／good habits such as self-discipline（當 ⑤ 鏈學生題的開頭用）</div>
         </div>
       </div>
       <div class="ref-item rf3">
@@ -268,7 +257,7 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
           <div class="ref-main"><span class="zh-tag">論點：</span>[X] can bring people <i class="a5">a good job and a steady income</i>（進階：<i class="a5">financial stability</i>）</div>
           <div class="ref-sub"><span class="zh-tag">A. 不擔心錢：</span>they <i class="a5">do not need to worry about money</i></div>
           <div class="ref-sub"><span class="zh-tag">B. 關鍵影響：</span>this creates <i class="a5">a warm and stable home for the whole family</i></div>
-          <div class="ref-sub"><span class="zh-tag">學生題開頭墊一步：</span><i class="a5">outstanding academic performance</i>（你的實戰句）→ 好工作穩定收入</div>
+          <div class="ref-sub"><span class="zh-tag">學生題開頭墊一步（二選一）：</span><i class="a5">outstanding academic performance</i>（你的實戰句）／school builds <i class="a5">good habits such as self-discipline</i>（正規教育、遲交扣分題用）→ 好工作穩定收入</div>
         </div>
       </div>
       <div class="ref-item" style="background:#fffbea;border-left:4px solid #f1c40f;grid-column:1/-1">
@@ -298,13 +287,6 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
       <tr><td style="font-family:Georgia,serif"><i class="a1">quality time</i></td><td>高品質陪伴</td><td>qua-li-ty</td></tr>
       <tr><td style="font-family:Georgia,serif"><i class="a1">closer and happier</i></td><td>更親密更快樂</td><td>—</td></tr>
       <tr><td style="font-family:Georgia,serif">★ <i class="a1">efficiency / productivity</i>（進階）</td><td>效率／生產力</td><td>ef-fi-cien-cy、pro-duc-ti-vi-ty</td></tr>
-      <tr><td rowspan="6"><span class="bg bg2">② 讀書（併⑤）</span></td>
-          <td style="font-family:Georgia,serif">★ <i class="a2">achieve</i></td><td>達成</td><td>a-<b>chie</b>-ve（i 在 e 前）</td></tr>
-      <tr><td style="font-family:Georgia,serif">★ <i class="a2">academic performance</i></td><td>學業表現</td><td>a-ca-de-mic、per-for-mance</td></tr>
-      <tr><td style="font-family:Georgia,serif"><i class="a2">good habits</i></td><td>好習慣</td><td>ha-bits（一個 b）</td></tr>
-      <tr><td style="font-family:Georgia,serif">★ <i class="a2">self-discipline</i></td><td>自律</td><td>dis-<b>sci</b>-pline（中間藏 sci）</td></tr>
-      <tr><td style="font-family:Georgia,serif"><i class="a2">keep learning and growing</i></td><td>持續學習成長</td><td>—</td></tr>
-      <tr><td style="font-family:Georgia,serif"><i class="a2">a better future</i></td><td>更好的未來</td><td>—</td></tr>
       <tr><td rowspan="7"><span class="bg bg3">③ 壓力</span></td>
           <td style="font-family:Georgia,serif"><i class="a3">stress</i></td><td>壓力</td><td>—</td></tr>
       <tr><td style="font-family:Georgia,serif">★ <i class="a3">anxiety</i></td><td>焦慮</td><td>an-xi-e-ty</td></tr>
@@ -325,6 +307,13 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
       <tr><td style="font-family:Georgia,serif"><i class="a5">peace of mind</i></td><td>內心平靜</td><td>跟 ③ 共用</td></tr>
       <tr><td style="font-family:Georgia,serif"><i class="a5">a warm and stable home</i></td><td>溫暖穩定的家</td><td>—</td></tr>
       <tr><td style="font-family:Georgia,serif">★ <i class="a5">financial stability</i>（進階）</td><td>財務穩定</td><td>fi-nan-cial、sta-bi-li-ty</td></tr>
+      <tr><td rowspan="6"><span class="bg bg5">⑤ 讀書鏈（學生題）</span></td>
+          <td style="font-family:Georgia,serif">★ <i class="a5">achieve</i></td><td>達成</td><td>a-<b>chie</b>-ve（i 在 e 前）</td></tr>
+      <tr><td style="font-family:Georgia,serif">★ <i class="a5">academic performance</i></td><td>學業表現</td><td>a-ca-de-mic、per-for-mance</td></tr>
+      <tr><td style="font-family:Georgia,serif"><i class="a5">good habits</i></td><td>好習慣</td><td>ha-bits（一個 b）</td></tr>
+      <tr><td style="font-family:Georgia,serif">★ <i class="a5">self-discipline</i></td><td>自律</td><td>dis-<b>sci</b>-pline（中間藏 sci）</td></tr>
+      <tr><td style="font-family:Georgia,serif"><i class="a5">keep learning and growing</i></td><td>持續學習成長</td><td>—</td></tr>
+      <tr><td style="font-family:Georgia,serif"><i class="a5">a better future</i></td><td>更好的未來</td><td>—</td></tr>
     </table>
     <div style="font-size:.82rem;color:#888;margin-top:10px;line-height:1.7">
       背誦優先順序：<b>粗體片語</b>（quality time、lose their temper、peace of mind、get along with）最優先——固定搭配有 vocabulary 分又不容易錯；★ 的字每天默寫一次；其他都是基本字，唸過就好。
@@ -348,7 +337,7 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
 </div>
 <script>
 const CAT = {
-  1: ['bg1','① 效率'], 2: ['bg2','② 學業'], 3: ['bg3','③ 健康'],
+  1: ['bg1','① 效率'], 3: ['bg3','③ 健康'],
   4: ['bg4','④ 視野'], 5: ['bg5','⑤ 職涯']
 };
 
@@ -405,11 +394,11 @@ const DATA = [
  final:'television brings more harm than good', rec:'families turn off the TV and talk more'}},
 
 {n:'①-3', o:26, t:'一項科技發明帶來的好處或壞處（Report）', en:'Recently, in our technological world, the number of new inventions has been evolving on a daily basis. Please describe a new invention and explain the impact, either beneficial or detrimental, that you feel it has had on society.',
- stance:'選擇：智慧型手機，好處為主', p2c:2, p2zh:'讓步：成癮 → 上課不專注 → 成績差', p3c:1, p3zh:'主論：省時聯絡方便 → 陪家人 → 更親近',
+ stance:'選擇：智慧型手機，好處為主', p2c:5, p2zh:'讓步：成癮 → 上課不專注 → 成績差', p3c:1, p3zh:'主論：省時聯絡方便 → 陪家人 → 更親近',
  es:{topic:'the smartphone as a new invention',
  va:'smartphones do more harm than good', vb:'it is a very useful invention',
  con:'smartphones have some problems', conR:'many young people get addicted to the internet',
- cond:'a student keeps surfing the internet on his phone', subj:'he', resA:'easily <i class="a2">lose focus in class</i>', resB:'<i class="a2">poor academic performance</i>',
+ cond:'a student keeps surfing the internet on his phone', subj:'he', resA:'easily <i class="a5">lose focus in class</i>', resB:'<i class="a5">poor academic performance</i>',
  concl:'some parents do not allow their children to use cell phones',
  stance:'the smartphone is a very useful invention', reason:'it puts communication, information and work in one device',
  jv:'works', jn:'firm', does:'manages work and family chats on his smartphone',
@@ -703,16 +692,16 @@ const DATA = [
  final:'study should come first', rec:'students finish their studies before taking a job'}},
 
 {n:'⑤-3', o:3, t:'數字媒體 vs 圖書館', en:'With the increase of digital media available online, the role of the library has become obsolete. Universities should only procure digital materials rather than constantly upgrading textbooks. Discuss both the advantages and disadvantages of this position and give your own point of view.',
- stance:'不同意 — 圖書館沒有過時', p2c:1, p2zh:'讓步：數位資料方便，用裝置查資料庫 → 快速完成', p3c:2, p3zh:'主論：圖書館安靜專注 → 靠自己吸收 → 建立見解與批判思考',
+ stance:'不同意 — 圖書館沒有過時', p2c:1, p2zh:'讓步：數位資料方便，用裝置查資料庫 → 快速完成', p3c:4, p3zh:'主論：圖書館安靜專注 → 靠自己吸收 → 建立見解與批判思考',
  es:{topic:'the role of the library',
  va:'online digital media has made libraries out of date', vb:'libraries still play a role that cannot be replaced',
  con:'digital materials are very convenient for students', conR:'they can be used on any digital device',
  cond:'students need to find the resources they need', subj:'they', resA:'easily search the library database on their devices', resB:'<i class="a1">finishing tasks in a short time</i>',
  concl:'students are more willing to use digital materials',
- stance:'studying with textbooks in the library still plays an important role', reason:'a quiet library is the best place for <i class="a2">deep learning</i>',
+ stance:'studying with textbooks in the library still plays an important role', reason:'a quiet library is the best place for <i class="a4">deep learning</i>',
  jv:'studies', jn:'university', does:'always studies with printed textbooks in the quiet library',
- result:'<i class="a2">learn knowledge by himself</i> instead of quickly reading digital pages',
- impl:'he can <i class="a2">build his own understanding and develop critical thinking</i>',
+ result:'<i class="a4">learn knowledge by himself</i> instead of quickly reading digital pages',
+ impl:'he can <i class="a4">build his own understanding and develop critical thinking</i>',
  final:'libraries are still very useful', rec:'universities keep spending on libraries and textbooks'},
  mistakes:{
   spell:[
