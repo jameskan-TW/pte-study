@@ -29,17 +29,19 @@
 
 ## 3. 四大論據（2026-08-21 v3 換血：以 James 12 題實戰句為底，取代六月版）
 
+> **⚠ 2026-08-26 重編號**：舊 ①③④⑤ → 新 **①②③④**（①效率不變、③健康→②、④視野→③、⑤職涯→④）。因舊②學業線除役後編號跳號，James 要求改成連號。全站學習頁（總表、WFD_訂正）已同步；`立場盤點_進度.md`、`WE_中文翻譯.html` 是歷史紀錄保留舊編號。本檔 §4/§6 的歷史敘述亦保留當時編號。
+
 | # | 論點句 | 推論鏈 | 終點 |
 |---|--------|--------|------|
 | ① 效率 | improve efficiency and boost productivity（James 實戰句；簡版 save time and work better） | save a lot of time → spend more quality time with their families → closer and happier | 家人 |
-| ③ 壓力(反面) | lead to stress and anxiety | feel frustrated and isolated → serious mental health problems → cannot take good care of their families（正面版讓步用：feel relaxed and enjoy peace of mind——peace of mind 只屬③） | 家人 |
-| ④ 視野 | learn things they cannot find in books（因果起點，v2 的 broader view 降為第二步） | gain a broader view of life → get along with people from different backgrounds → earn trust and have better future prospects；家庭教育版（父母/品格題）：parents teach good values → honest → earn trust → future prospects | 信任前途（要收家庭借⑤尾） |
-| ⑤ 財務 | a good job and a steady income（進階 financial stability） | do not need to worry about money → a warm and stable home（兩步收尾；學生題開頭墊 outstanding academic performance） | 家人 |
+| ② 健康壓力(反面) | lead to stress and anxiety | feel frustrated and isolated → serious mental health problems → cannot take good care of their families（正面版讓步用：feel relaxed and enjoy peace of mind——peace of mind 只屬②） | 家人 |
+| ③ 視野 | learn things they cannot find in books（因果起點，v2 的 broader view 降為第二步） | gain a broader view of life → get along with people from different backgrounds → earn trust and have better future prospects；家庭教育版（父母/品格題）：parents teach good values → honest → earn trust → future prospects | 信任前途（要收家庭借④尾） |
+| ④ 職涯財務 | a good job and a steady income（進階 financial stability） | do not need to worry about money → a warm and stable home（兩步收尾；學生題開頭墊 outstanding academic performance） | 家人 |
 
-- ② 學業線已除役併入⑤（學生題墊一步 outstanding academic performance）。
-- 記憶法：①③⑤ 收家人；④ 收信任前途。讓步三選一：對方比較爽（③正面版）／對方比較賺（⑤）／對方長見識（④），① 盡量留給自己當主論。
+- 舊②學業線已除役併入職涯線（學生題墊一步 outstanding academic performance）。
+- 記憶法：①②④ 收家人；③ 收信任前途。讓步看對方強項：對方省時方便（①）／比較爽（②正面版）／長見識（③）／比較賺（④）；政策題對方沒強項→②反面版（承認我方給人壓力）。
 - P4 萬用加分句：I believe that [X] brings more tangible and intangible benefits than drawbacks（地雷拼字 tangible/intangible 已入 WFD_訂正 #vquiz）。
-- ③ 地雷字 anxiety（曾拼 anxity）、frustrated（曾拼 frustarted）也已入默拼。
+- ② 地雷字 anxiety（曾拼 anxity）、frustrated（曾拼 frustarted）也已入默拼。
 - **注意：37 題 DATA 範文與 ZH 速記仍是 v2 鏈的版本**，改版策略＝James 練到哪換到哪（分批），不要一次全改。
 
 ## 4. 已完成的工程（全部已 commit + push）
@@ -91,13 +93,13 @@
 | ①-1 大商場（原#6） | ✔ | — |
 | ①-3 手機（原#26） | ✔ | ✔ P2 |
 | ①-4 工時（原#36） | ✔ | ✔ P2+P3 |
-| ⑤-3 圖書館（原#3；2026-08-25 ② 學業卡刪除後，主論 chip 改標 ④ 視野） | ✔ | ✔ P2+P3 |
+| ③-3 圖書館（原#3；2026-08-25 舊②學業卡刪除後主論 chip 改標視野線；2026-08-26 重編號後題號 ⑤-3→③-3） | ✔ | ✔ P2+P3 |
 
-前四篇都是主論①/②。**下一步建議**：換主論③/④/⑤ 的題目練，讓五條鏈都熟。或 James 想針對拼字罩門做默寫訓練。
+前四篇都是主論①（圖書館現歸③視野組）。**下一步建議**：換主論②/③/④ 的題目練，讓四條鏈都熟。或 James 想針對拼字罩門做默寫訓練。
 
 ## 7. 已教過的兩個策略工具
 
-1. **讓牌口訣**：選論據前列兩欄牌——兩邊都能講的論據送給 P2 讓步，只有我方能講的留給 P3 主論。例：修路 vs 大眾運輸都搶「效率」→ 效率送讓步，主論用大眾運輸獨有的③健康
+1. **讓牌口訣**：選論據前列兩欄牌——兩邊都能講的論據送給 P2 讓步，只有我方能講的留給 P3 主論。例：修路 vs 大眾運輸都搶「效率」→ 效率送讓步，主論用大眾運輸獨有的②健康
 2. **人設**（注意是「範文人設」反推自立場，不等於 James 本人）：顧家務實上班族。但實務上 James 的真實立場常跟它不同，**以 James 當下直覺為準**
 
 ## 8. 技術範本
