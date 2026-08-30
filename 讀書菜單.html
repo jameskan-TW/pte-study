@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>21 天讀書菜單（9/1–9/21）</title>
+<style>
+  :root{--ink:#1a1a2e;--sub:#5a5a72;--line:#d9d9e3;--bg:#f6f6fa;--card:#fff;
+        --accent:#3b2fa0;--accent-bg:#ececf6;--done:#0a7a4b;--warn:#b3261e;--today:#fff7e6}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.65;
+       font-family:"PingFang TC","Microsoft JhengHei","Noto Sans TC",sans-serif;font-size:16px}
+  .wrap{max-width:860px;margin:0 auto;padding:24px 16px 64px}
+  h1{font-size:24px;margin:0 0 4px}
+  .sub{color:var(--sub);font-size:14px;margin-bottom:16px}
+  .goal{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 20px}
+  .goal div{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 14px;font-size:14.5px}
+  .goal b{color:var(--accent)}
+  .progress{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:20px}
+  .pbar{height:12px;background:var(--accent-bg);border-radius:6px;overflow:hidden;margin-top:6px}
+  .pfill{height:100%;background:var(--accent);width:0;transition:width .3s}
+  details.std{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin-bottom:20px}
+  details.std summary{font-weight:700;cursor:pointer}
+  table{border-collapse:collapse;width:100%;margin:10px 0;font-size:14.5px}
+  th,td{border:1px solid var(--line);padding:6px 9px;text-align:left}
+  th{background:var(--accent-bg)}
+  .day{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:10px 0}
+  .day.today{background:var(--today);border-color:#e0b95a;border-width:2px}
+  .day.done{opacity:.62}
+  .dhead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .dnum{font-weight:800;color:var(--accent);font-size:17px}
+  .ddate{color:var(--sub);font-size:14px}
+  .dwe{font-size:14.5px;margin:6px 0;padding:7px 10px;background:var(--accent-bg);border-radius:7px}
+  .dwe b{color:var(--accent)}
+  ul.chk{list-style:none;margin:8px 0 0;padding:0}
+  ul.chk li{margin:5px 0;display:flex;gap:8px;align-items:flex-start;font-size:15px}
+  ul.chk input{margin-top:4px;width:16px;height:16px;accent-color:var(--accent);flex:none}
+  ul.chk li.checked span{color:var(--sub);text-decoration:line-through}
+  .min{color:var(--sub);font-size:13px}
+  .tagx{display:inline-block;font-size:12px;background:#fdeceb;color:var(--warn);border-radius:8px;padding:0 8px;margin-left:6px}
+  .back{font-size:14px;margin-bottom:10px;display:inline-block}
+  .rule{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:20px 0;font-size:14.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="index.html">← 回首頁</a>
+<h1>21 天讀書菜單</h1>
+<div class="sub">2026/9/1（二）– 9/21（一）｜每天約 2 小時｜37 題 WE slot 全過三輪</div>
+
+<div class="goal">
+  <div>目標 <b>四科 70／寫作 75</b></div>
+  <div>現況 L64 · R71 · S71 · <b>W58</b></div>
+  <div>優先序 <b>WE ＞ SGD/RL ＞ SST ＞ FIB ＞ WFD保溫</b></div>
+</div>
+
+<div class="progress">
+  <b>總進度</b> <span id="pText" class="min"></span>
+  <div class="pbar"><div class="pfill" id="pFill"></div></div>
+</div>
+
+<details class="std">
+  <summary>標準日課表（116 分，點開看）</summary>
+  <table>
+    <tr><th>#</th><th>項目</th><th>分</th><th>做法</th></tr>
+    <tr><td>1</td><td>口說 DI/RL/SGD 輪流</td><td>20</td><td>暖身 2-3 句 RS；勻速講滿、不停頓、不重講</td></tr>
+    <tr><td>2</td><td>WE 模板盲打 1 回</td><td>6</td><td><a href="WE_打字練習.html">WE_打字練習</a>，每天唯一一次碰模板</td></tr>
+    <tr><td>3</td><td>WE slot 練習</td><td>45</td><td>先重打昨日錯 slot，再做當日新題（10 秒決策→默打全部 slot→<a href="WE_論點總表.html">論點總表</a>核對→錯的標記）</td></tr>
+    <tr><td>4</td><td>SST 擬答</td><td>10</td><td>背 1-2 篇（<a href="SST_擬答.html">SST_擬答</a>）</td></tr>
+    <tr><td>5</td><td>FIB 文法</td><td>15</td><td>做題日（新 10-15 格＋錯題歸因）／速看日（<a href="FIB-RW_固定搭配速看表.html">搭配表</a>＋重做錯格）輪流</td></tr>
+    <tr><td>6</td><td>WFD 保溫</td><td>15</td><td><a href="WFD_訂正.html">WFD_訂正</a>抽寫＋易錯字默拼</td></tr>
+    <tr><td>7</td><td>拼字黑名單掃</td><td>5</td><td><a href="寫作訂正.html">寫作訂正</a> ③ 收尾</td></tr>
+  </table>
+  <div class="min">時間只剩 1 小時的日子：只做 #2 #3 #6，WE 新題進度是唯一不能欠的債。</div>
+</details>
+
+<div id="days"></div>
+
+<div class="rule">
+  <b>三輪設計</b>：第 1-2 週新題（每題 slot 全默）→ 週複習（只重打錯 slot）→ 第 3 週混線抽考＋rapid-fire。
+  D20 的計時實戰是三週唯一一次整篇，寫完貼給 Claude 批改。
+</div>
+
+<script>
+const DAYS=[
+ {d:1, date:'9/1 二', we:'新題 ①-1 商場、①-2 電視', min:35, light:1},
+ {d:2, date:'9/2 三', we:'新題 ①-3 新發明、①-4 未來工時', min:35, light:1},
+ {d:3, date:'9/3 四', we:'新題 ②-1 修路vs大眾運輸、②-2 醫療壽命、②-3 工作平衡', min:50},
+ {d:4, date:'9/4 五', we:'新題 ②-4 私人時間、②-5 氣候研究、②-6 法律限制', min:50},
+ {d:5, date:'9/5 六', we:'新題 ②-7 資訊革命、②-8 氣候誰負責、②-9 年齡限制', min:50},
+ {d:6, date:'9/6 日', we:'新題 ②-10 城市鄉村、②-11 名人隱私、②-12 最高薪資、②-13 21世紀小孩', min:60, heavy:1},
+ {d:7, date:'9/7 一', we:'週複習：①②線 17 題錯 slot 重打＋每題 10 秒決策再跑一次', min:50, review:1},
+ {d:8, date:'9/8 二', we:'新題 ③-1 海外留學、③-2 學外語、③-3 外語必修', min:50},
+ {d:9, date:'9/9 三', we:'新題 ④-1 經驗vs學校、④-2 打工學業、④-3 圖書館', min:50},
+ {d:10,date:'9/10 四', we:'新題 ④-4 建築設計、④-5 父母責任、④-6 遲交扣分', min:50},
+ {d:11,date:'9/11 五', we:'新題 ④-7 迫切議題、④-8 做中學、④-9 學業前結婚', min:50},
+ {d:12,date:'9/12 六', we:'新題 ④-10 員工決策、④-11 筆試、④-12 觀光利弊', min:50},
+ {d:13,date:'9/13 日', we:'新題 ④-13 媒體影響、④-14 行銷策略、④-15 學戲劇', min:50},
+ {d:14,date:'9/14 一', we:'新題 ④-16 老建築、④-17 縮短工時＋③④線錯 slot 週複習', min:55, review:1},
+ {d:15,date:'9/15 二', we:'混線抽考前 19 題：每題 10 秒決策＋讓步段 slot', min:80, heavy:1},
+ {d:16,date:'9/16 三', we:'混線抽考後 18 題：每題 10 秒決策＋讓步段 slot', min:80, heavy:1},
+ {d:17,date:'9/17 四', we:'累計錯最多的 slot 集中重打', min:40, review:1},
+ {d:18,date:'9/18 五', we:'全 37 題 10 秒決策 rapid-fire（一題 30 秒，只答題型/立場/主論/讓步）', min:35, review:1},
+ {d:19,date:'9/19 六', we:'特殊題型六型專攻：同線/行銷/自選/問題方案/雙問句/誰負責（決策卡速查表）', min:40, review:1},
+ {d:20,date:'9/20 日', we:'驗收：計時 40 分整篇實戰 1 篇（37 題內抽）→貼給 Claude 批→錯句重打', min:60, exam:1},
+ {d:21,date:'9/21 一', we:'封關：錯最多 5 題最後一輪＋WE_封關卡＋寫作訂正 #check', min:40, review:1},
+];
+const STD=[
+ ['口說 DI/RL/SGD 20 分','sp'],
+ ['WE 模板盲打 1 回','tp'],
+ ['WE 當日進度','we'],
+ ['SST 擬答 1-2 篇','sst'],
+ ['FIB 文法 15 分','fib'],
+ ['WFD 保溫＋默拼 15 分','wfd'],
+ ['拼字黑名單掃','bl'],
+];
+const KEY='menu21_v1';
+let state={};
+try{state=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){state={}}
+
+function todayStr(){
+  const n=new Date();
+  return (n.getMonth()+1)+'/'+n.getDate();
+}
+function items(day){
+  let it=STD.map(x=>x.slice());
+  if(day.heavy){ it=it.filter(x=>x[1]!=='sst'&&x[1]!=='fib'); it[0][0]='口說 DI/RL/SGD 15 分（重日縮短）'; }
+  if(day.exam){ it=it.filter(x=>x[1]!=='fib'); }
+  return it;
+}
+function render(){
+  const box=document.getElementById('days');
+  const td=todayStr();
+  box.innerHTML='';
+  let total=0,doneN=0;
+  DAYS.forEach(day=>{
+    const it=items(day);
+    const dayDone=it.every((x,i)=>state[day.d+'_'+i]);
+    it.forEach((x,i)=>{total++;if(state[day.d+'_'+i])doneN++;});
+    const div=document.createElement('div');
+    div.className='day'+(day.date.split(' ')[0]===td?' today':'')+(dayDone?' done':'');
+    let tag='';
+    if(day.heavy)tag='<span class="tagx">重日</span>';
+    if(day.exam)tag='<span class="tagx">驗收日</span>';
+    div.innerHTML='<div class="dhead"><span class="dnum">D'+day.d+'</span>'+
+      '<span class="ddate">'+day.date+'</span>'+tag+
+      '<span class="min">約 '+(day.min+(day.heavy?35:day.exam?50:65))+' 分</span></div>'+
+      '<div class="dwe"><b>WE：</b>'+day.we+'</div>'+
+      '<ul class="chk">'+it.map((x,i)=>{
+        const k=day.d+'_'+i, c=state[k]?'checked':'';
+        return '<li class="'+c+'"><input type="checkbox" '+(state[k]?'checked':'')+
+          ' onchange="tog(\''+k+'\',this.checked)"><span>'+x[0]+'</span></li>';
+      }).join('')+'</ul>';
+    box.appendChild(div);
+  });
+  const pct=total?Math.round(doneN/total*100):0;
+  document.getElementById('pFill').style.width=pct+'%';
+  document.getElementById('pText').textContent=doneN+' / '+total+' 項（'+pct+'%）';
+}
+function tog(k,v){
+  if(v)state[k]=1;else delete state[k];
+  try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}
+  render();
+}
+render();
+</script>
+</div>
+</body>
+</html>
