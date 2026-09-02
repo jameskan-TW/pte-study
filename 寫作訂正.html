@@ -289,7 +289,8 @@ const BLACKLIST = [
   "anxiety","frustrated","celebrities","privacy","spotlight","bargain",
   "disadvantages","negative","performance","carefully","crucial","losing",
   "everything","famous","attention","before","brings","financial",
-  "neighbors","convenient","protected","world","prestigious","family","among"
+  "neighbors","convenient","protected","world","prestigious","family","among",
+  "learning"
 ];
 
 /* ═══════════ 分頁切換（支援 #review / #rewrite / #check 直達）═══════════ */
@@ -976,6 +977,12 @@ const DATA = [
       {seg:"讓步：健康減壓線"}, {w:"sounds relaxing",zh:"sound＋形容詞（relax 是動詞）"}, {w:"If governments shorten…, then",zh:"if 子句要有主詞"}, {w:"a more relaxing life",zh:"a 不能省"}, {w:"good mental health",zh:"mental 在 health 前、不加 a"},
       {seg:"主論：職涯財務線（薪水變少）"}, {w:"cut working time and get less pay",zh:"薪水變少（本篇寫對的關鍵句）"}, {w:"world-renowned and prestigious",zh:"wor-ld、pre-sti-gious（模板字雙殺，都進黑名單）"}, {w:"works every weekday",zh:"every＋單數"}, {w:"a stable income",zh:"a 要加（income 黑名單字，這次改錯冠詞）"}, {w:"many families will be affected",zh:"many＋複數；被動 be affected（不是 get effect）"}, {w:"cutting",zh:"cut＋tt＋ing 疊字尾"},
       {seg:"結尾"}, {w:"more harm than benefits",zh:"harm 不可數；be-ne-fits 黑名單老字"}, {w:"among",zh:"a-mong 沒有 u（開頭寫對、結尾手滑）"},
+    ]},
+  { title:"SWT：活化先備知識（Prior Knowledge）", pid:"2026/09/02", type:"SWT",
+    text:`<p>Prior knowledge or pre-existing knowledge [[1]] available before the [[2]] activity, and it is considered to be valuable to go through a process of what has been called 'activating prior knowledge', which is to do with activating particular schemas.</p>`,
+    blanks:[
+      { wrong:"are", right:"is", cat:"gram", why:`<b>A or B 的動詞跟「最近的主詞」一致</b>：<span class="en">knowledge</span> 不可數單數 → <span class="en">prior knowledge or pre-existing knowledge <b>is</b> available</span>。or 不是 and，兩個單數用 or 連起來還是單數。` },
+      { wrong:"learing", right:"learning", cat:"mech", why:`<b>吞字母（跟漏 r 的 large／further 同款罩門）</b>：<span class="en">lear<b>n</b>ing</span>——先寫完整的 <span class="en">learn</span>，再加 ing，n 不能丟。收進黑名單。<br>（另：<span class="en">pre-existing</span> 沒有錯，檢查器誤判；<span class="en">which is to do with</span> 可以，但 <span class="en">which <b>has</b> to do with</span> 更保險。）` },
     ]},
 ];
 
