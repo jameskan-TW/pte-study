@@ -461,17 +461,17 @@ const DATA = [
  }},
 
 {n:'①-2', o:23, t:'電視是生活中重要的一部分（Report）', en:'Television serves many useful functions. It helps people to relax. We can learn from television and it can also be seen as a companion for the lonely. To What extent do you agree with this? Explain why with your own experiences.',
- stance:'不同意 — 電視吃掉家人時間', p2c:3, p2zh:'讓步：從電視能學東西', p3c:1, p3zh:'主論：關電視 → 真互動 → 家人更親',
- es:{topic:'the role of television',
- va:'television is very useful', vb:'it does more harm than good',
- con:'we can learn from television', conR:'good programs teach us about the world',
- cond:'people choose quality programs', subj:'they', resA:'<i class="a3">learn things they cannot find in books</i>', resB:'<i class="a3">a broader view of life</i>',
- concl:'many see television as a friend',
- stance:'television does more harm than good', reason:'it takes up family time, and everyone just sits quietly',
- jv:'works', jn:'firm', does:'turns off the TV at dinner time',
- result:'<i class="a1">spend more quality time with his family</i>',
- impl:'talking, not television, makes a family <i class="a1">closer and happier</i>',
- final:'television brings more harm than good', rec:'families turn off the TV and talk more'}},
+ stance:'部分同意 — 電視能陪伴、解決部分孤單，但不是真正的陪伴，家人才是', p2c:2, p2zh:'讓步：電視陪孤獨的人 → 少一點孤單 → 心情好', p3c:1, p3zh:'主論：電視不會跟你說話 → 關電視 → 真互動 → 家人更親',
+ es:{topic:'whether television is a good companion for people',
+ va:'television helps people relax, teaches them many things and keeps lonely people company', vb:'television brings more harm than good',
+ con:'television can be a companion for the lonely', conR:'people who live alone can hear voices and see faces on television',
+ cond:'old people who live alone watch their favorite programs every day', subj:'they', resA:'<i class="a2">feel less lonely</i>', resB:'<i class="a2">a better mood</i>',
+ concl:'many lonely people see television as a friend',
+ stance:'television is not a real companion', reason:'television cannot talk with you or listen to you',
+ jv:'works', jn:'firm', does:'always turns off the television during dinner',
+ result:'<i class="a1">have more conversations with his family</i>',
+ impl:'James has more quality time to spend with his family and makes family relationships <i class="a1">stronger</i>',
+ final:'television brings more harm than good', rec:'people turn off the television and spend time with their families and friends'}},
 
 {n:'①-3', o:26, t:'一項科技發明帶來的好處或壞處（Report）', en:'Recently, in our technological world, the number of new inventions has been evolving on a daily basis. Please describe a new invention and explain the impact, either beneficial or detrimental, that you feel it has had on society.',
  stance:'選擇：智慧型手機，好處為主', p2c:4, p2zh:'讓步：成癮 → 上課不專注 → 成績差', p3c:1, p3zh:'主論：省時聯絡方便 → 陪家人 → 更親近',
@@ -484,7 +484,8 @@ const DATA = [
  jv:'works', jn:'firm', does:'manages work and family chats on his smartphone',
  result:'<i class="a1">finish his work faster</i> and reach his family anytime',
  impl:'it keeps families connected and <i class="a1">closer and happier</i>',
- final:'the good points of the smartphone are much greater than its problems', rec:'users build healthy digital habits'},
+ final:'the good points of the smartphone are much greater than its problems', rec:'users build healthy digital habits',
+ p1end:'I firmly believe that the smartphone is the greatest invention of all time and will discuss this further below.'},
  mistakes:{
   spell:[
    {x:'evoloing', o:'evolving', nt:'演進'},
@@ -1005,7 +1006,7 @@ function renderMistakes(mk){
 function T(s){ return `<span class="tpl">${s}</span>`; }
 
 function buildEssay(e){
-  const p1 = `${T('It is generally true that')} ${e.topic} ${T('has become a matter of concern over the years, and this has caused great controversy and captured public attention. Some people are of the opinion that')} ${e.va}${T(', while others hold the view that')} ${e.vb}. ${T('I tend to agree more with the latter and will discuss this further below.')}`;
+  const p1 = `${T('It is generally true that')} ${e.topic} ${T('has become a matter of concern over the years, and this has caused great controversy and captured public attention. Some people are of the opinion that')} ${e.va}${T(', while others hold the view that')} ${e.vb}. ${T(e.p1end || 'I tend to agree more with the latter and will discuss this further below.')}`;
   const p2 = `${T('It has to be admitted that')} ${e.con}${T(', and one argument in favor of this view can be that')} ${e.conR}. ${T('If')} ${e.cond}${T(', then')} ${e.subj} ${T('can')} ${e.resA}${T(', in turn leading to')} ${e.resB}. ${T('As a result, it is unsurprising that')} ${e.concl}.`;
   const p3 = `${T('On the other hand, I firmly believe that')} ${e.stance}${T(', and one compelling reason is that')} ${e.reason}. ${T(`A pertinent case in point is James, who ${e.jv} at a world-renowned and prestigious ${e.jn}. As James`)} ${e.does}${T(', he is able to')} ${e.result}. ${T('In other words,')} ${e.impl}.`;
   const p4 = `${T('In conclusion, despite the fact that the counterargument may hold true in many cases, I believe that')} ${e.final}${T(', and it is crucial that')} ${e.rec}.`;
