@@ -185,7 +185,7 @@
   <div class="tabs">
     <div class="tab" data-t="review">① 看根因<small>整篇錯誤複習</small></div>
     <div class="tab" data-t="rewrite">② 動手改<small>錯句重寫練習</small></div>
-    <div class="tab" data-t="check">③ 考前掃<small>文法自檢 5 條</small></div>
+    <div class="tab" data-t="check">③ 考前掃<small>文法自檢 9 條</small></div>
   </div>
 
   <!-- ══════════════ ① 看根因（大作文修正）══════════════ -->
@@ -254,16 +254,16 @@
 
   <!-- ══════════════ ③ 考前掃（文法自檢卡）══════════════ -->
   <div id="tab-check" style="display:none">
-    <p class="sub">寫完 WE / SWT，<b>留最後 2 分鐘只做一件事</b>：不重讀內容，照這 5 條逐項掃。這 5 條就是<b>你反覆漏的洞</b>。點卡片打勾。</p>
+    <p class="sub">寫完 WE / SWT，<b>留最後 2 分鐘只做一件事</b>：不重讀內容，照這 9 條逐項掃。這 9 條就是<b>你反覆漏的洞</b>。點卡片打勾。</p>
 
     <div class="ckbar">
-      <span class="prog"><b id="ckN">0</b>/5</span>
+      <span class="prog"><b id="ckN">0</b>/9</span>
       <div class="track"><div class="fill" id="ckFill"></div></div>
       <button class="btn" id="ckReset">↺ 重置</button>
     </div>
 
     <div id="ckCards"></div>
-    <div class="done-msg" id="doneMsg">✅ 5 條都掃過了 — 交卷！</div>
+    <div class="done-msg" id="doneMsg">✅ 9 條都掃過了 — 交卷！</div>
 
     <div class="spell">
       <h3>🔴 順手清 <span class="em">拼字黑名單</span>（這些你拼錯過，會被判進 mechanics）</h3>
@@ -1292,6 +1292,36 @@ const ITEMS = [
     tags:["gram","mech"],
     model:`It is crucial that every citizen <b>takes action</b> to protect the <b>environment</b>.`,
     fixes:[`every citizen <b>takes</b>（主謂一致，every + 單數）`, `<b>take action</b>（採取行動，不加 the、不是 have）`, `enviroment → <b>environment</b>`] },
+
+  { src:"#20", orig:`If people watch these quality programs, then they can learn many things that <s>can not</s> find in books, in turn leading to having <s>broder</s> perspectives.`,
+    tags:["stru","mech"],
+    model:`If people watch these quality programs, then they can learn many things that <b>they cannot</b> find in books, in turn leading to having <b>broader</b> perspectives.`,
+    fixes:[`that 子句要有自己的主詞：things that <b>they</b> cannot find（that 是 find 的受詞，不是主詞）`, `cannot 寫<b>一個字</b>`, `broder → <b>broader</b>（br-oa-d 跟 road 同尾巴）`] },
+
+  { src:"#20", orig:`As James always turns off the television during <s>the</s> dinner, he is able to have more conversations with <s>his families</s>. In other words, James has more quality time to spend <s>on his families</s> and makes <s>families relation more</s> stronger.`,
+    tags:["gram","word"],
+    model:`As James always turns off the television during <b>dinner</b>, he is able to have more conversations with <b>his family</b>. In other words, James has more quality time to spend <b>with his family</b> and makes <b>family relationships</b> stronger.`,
+    fixes:[`三餐名不加 the：during <b>dinner</b>`, `一個人 <b>his family</b>（單數）；一群人才 their families`, `跟人共度時間 spend time <b>with</b>（on 是花在事情上）`, `family 當形容詞用單數 → <b>family relationships</b>（人與人的關係用 relationship）`, `stronger 已是比較級，<b>不加 more</b>`] },
+
+  { src:"#21", orig:`It is generally true that the invention of <s>smartphone</s> has become a matter of concern over the years. Some people are of the opinion that <s>smartphone do</s> more harm than good.`,
+    tags:["gram"],
+    model:`It is generally true that the invention of <b>the smartphone</b> has become a matter of concern over the years. Some people are of the opinion that <b>smartphones do</b> more harm than good.`,
+    fixes:[`smartphone 可數，單數不能光溜溜：<b>the smartphone</b>（這項發明）或 <b>smartphones</b>（泛指）`, `寫 smartphones 後動詞用 do；寫 the smartphone 就要 does。<b>主詞和動詞一起動</b>`, `重打時踩的坑：the invention of smartphones <b>has</b>——主詞是 invention（單數），不是 of 後面的 smartphones`] },
+
+  { src:"#21", orig:`If students keep <s>surfing on the internet</s>, then <s>he</s> cannot concentrate <s>in the class</s>, in turn leading to having poor academic <s>performances</s>. As a result, it is unsurprising that many parents <s>are not allow</s> their children to use <s>smartphone</s>.`,
+    tags:["gram","word"],
+    model:`If students keep <b>surfing the internet</b>, then <b>they</b> cannot concentrate <b>in class</b>, in turn leading to poor academic <b>performance</b>. As a result, it is unsurprising that many parents <b>do not allow</b> their children to use <b>smartphones</b>.`,
+    fixes:[`surf 是及物：surf <b>the internet</b>，不加 on（on the internet 是地點：find information on the internet）`, `students 複數 → <b>they</b>`, `講「上課中」這個活動不加 the：<b>in class</b>（同款 at school / at work / in bed）`, `performance「表現」不可數，<b>沒有 s</b>（有 s 是「演出」）`, `一般動詞否定借 do：<b>do not allow</b>；are not 後面只能接 -ing 或形容詞`, `use <b>smartphones</b>（複數）`] },
+
+  { src:"#21", orig:`I firmly believe that <s>smartphone has</s> many useful functions, and one compelling reason is that <s>it brings communicatoin</s>, information and <s>works in</s> one device.`,
+    tags:["gram","mech","word"],
+    model:`I firmly believe that <b>smartphones have</b> many useful functions, and one compelling reason is that <b>they bring communication</b>, information and <b>work into</b> one device.`,
+    fixes:[`smartphone<b>s have</b>；後面代名詞跟著改 <b>they bring</b>（名詞一改單複數，代名詞和動詞一路跟著改）`, `communicatoin → communica<b>tion</b>（-tion 字母顛倒；同句 information 你就寫對了）`, `work「工作」不可數 <b>沒有 s</b>（works 是作品）`, `bring 有放進去的動作 → <b>into</b> one device`] },
+
+  { src:"#21", orig:`As James can finish <s>all the works in</s> his smartphone, and <s>communicates</s> with his boss directly<s>.</s> He is able to come back home earlier every day.`,
+    tags:["stru","gram"],
+    model:`As James can finish <b>all his work on</b> his smartphone and <b>communicate</b> with his boss directly<b>, he</b> is able to come back home earlier every day.`,
+    fixes:[`<b>As 子句後面一定要接主句</b>：directly 後用逗號接 he is able，不能打句號（打了句號整句沒主句，是殘句）`, `can 後面兩個動作用 and 並列，<b>都是原形</b>：can finish … and communicate（and 前後動詞穿同一套衣服）`, `work 不可數：all his <b>work</b>（不加 the、不加 s）`, `用手機做事是 <b>on</b> his smartphone`] },
 ];
 
 const TAGNAME = { mech:"拼字", gram:"文法", word:"用字", stru:"句構" };
@@ -1342,6 +1372,22 @@ const RULES = [
     egW:"…over the years<s>,</s> it has caused…",
     egR:"…over the years<b>.</b> It has caused…",
     tip:`兩句能各自獨立 = 不能只用逗號（comma splice）。改用<b>句號</b>、分號，或加 <span class="en">and / but / because / which</span>。` },
+  { q:"not 前面 → 是 be 還是一般動詞？",
+    egW:"parents <s>are not allow</s> their children",
+    egR:"parents <b>do not allow</b> their children",
+    tip:`否定分兩套：動詞是 <span class="en">be</span>（am/is/are）→ 直接 be not；動詞是<b>一般動詞</b>（allow / like / want）→ 借 <span class="en">do / does / did</span> 扛 not，動詞回<b>原形</b>。are not allow 是兩套混在一起。中文「不允許」沒有 do 這個字，手會直接打 are not——看到 not 先回頭確認前面那個是不是一般動詞。` },
+  { q:"can／will／should 後面 → 動詞原形了嗎？and 後面那個也是嗎？",
+    egW:"James can finish… and <s>communicates</s>",
+    egR:"James can finish… and <b>communicate</b>",
+    tip:`助動詞後面的動詞<b>一律原形</b>，第三人稱也不加 s（can finish、will come、should turn off）——扛時態的是助動詞。用 <span class="en">and</span> 連的第二個動詞<b>共用同一個 can</b>，所以也是原形。判斷法：<b>and 前後的動詞穿同一套衣服</b>——前面有助動詞就都原形；前面是 works（+s）後面就 rests（+s）；前面是 to work 後面就 rest。` },
+  { q:"As／If／Because 開頭 → 逗號後面有主句嗎？子句有主詞嗎？",
+    egW:"As James can finish… directly<s>.</s> He is able… ・ things that <s>can not</s> find",
+    egR:"As James can finish… directly<b>, he</b> is able… ・ things that <b>they cannot</b> find",
+    tip:`As / If / Because / Although 開頭的是<b>從屬子句</b>，不能自己當一句：逗號後面一定要接主句（As…, he is able…）。在 directly 打句號整句就沒主句，是殘句（fragment）。同一家族：<b>子句永遠要有主詞＋動詞</b>——If <b>governments</b> shorten…、things that <b>they</b> cannot find（that 是 find 的受詞，不是主詞）。` },
+  { q:"the → 是不是多手加了？",
+    egW:"concentrate <s>in the</s> class ・ during <s>the</s> dinner ・ <s>the</s> internet addiction",
+    egR:"in <b>class</b> ・ during <b>dinner</b> ・ addicted to <b>the</b> internet",
+    tip:`三種<b>不加 the</b>：①講「在那裡做的活動」的場所名詞——in class / at school / at work / in bed（加了 the 變成具體那個地方）②三餐——during dinner / after lunch ③抽象不可數泛指——solve unemployment / a matter of concern / good mental health。你的冠詞錯八成是<b>多加</b>不是漏加。反過來 <span class="en">the internet</span> 固定要 the。` },
 ];
 
 const cardsEl = document.getElementById('ckCards');
