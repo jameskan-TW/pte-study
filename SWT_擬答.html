@@ -29,6 +29,7 @@ header p{font-size:.8rem;opacity:.8;margin-top:4px}
 .ans .sw{color:#16a34a;font-weight:700}
 .ans .og{color:#9ca3af;font-size:.82em;font-weight:400}
 body.hideog .ans .og{display:none}
+.zh{font-size:.9rem;color:#374151;line-height:1.8;padding:6px 12px;margin-top:4px;border-left:3px solid #cbd5e1}
 .src{font-family:Georgia,serif;font-size:.88rem;color:#4b5563;line-height:1.7}
 .src li{margin:4px 0 4px 1.3em}
 .src s{color:#b0b7c3}
@@ -61,6 +62,7 @@ const DATA = [
  src:['~~On a field trip to the Amazon~~ in 1807, ~~19th-century~~ explorer Alexander von Humboldt witnessed a group of horses lead through a muddy pool filled with electric eels, which he described as ~~dramatically~~ leaping up to attack the intruders.',
       'But scientists have doubted the story.',
       'Catania found the eels leapt to attack, ~~rather than receded,~~ more often when the water in the aquarium was lower.'],
+ zh:'1807 年，探險家亞歷山大·馮·洪堡看到一群馬被牽過一個滿是電鰻的泥水池，他描述電鰻跳起來攻擊入侵者，但科學家們懷疑這個故事，而卡塔尼亞發現當水族箱水位較低時，電鰻更常躍起攻擊。',
  note:'原文 horses <b>lead</b> through 是機經錯字，作答寫 <b>led</b>。難字：intruders、aquarium（題目可抄）'},
 {num:2, title:'Double blind (雙盲測試法)', code:'#060002',
  full:"The feature of being \"double blind\", where neither patients nor physicians are aware of who receives the experimental treatment, is almost universally trumpeted as being a virtue of clinical trials. Hence, trials that fail to remain successfully double blind are regarded as providing inferior evidential support. The rationale for this view is unobjectionable: double blinding rules out the potential confounding influences of patient and physician beliefs. Nonetheless, viewing double blind trial as necessarily superior is problematic. For one, it leads to the paradox that very effective experimental treatments will not be supportable by best evidence. If a new drug were to make even the most severe symptoms of the common cold disappear within seconds, most participants and investigators would correctly identify it as the latest wonder drug and not the control (i·e· placebo) treatment. Any trial testing the effectiveness of this wonder drug will therefore fail to remain double blind. Similar problems arise for treatments, such as exercise and most surgical techniques, whose nature makes them resistant to being tested in double blind conditions. It seems strange that an account of evidence should make priori judgments that certain claims can never be supported by ‘best evidence’. It would be different if the claims at issue were pseudoscientific – untestable. But so far as treatments with large effects go, the claim that they are effective is highly testable and intuitively they should receive greater support from the evidence than do claims about treatments with moderate effects.",
@@ -68,6 +70,7 @@ const DATA = [
  src:['The feature of being "double blind", where neither patients nor physicians are aware of who receives the experimental treatment, is almost universally trumpeted as ~~being~~ a virtue of clinical trials.',
       '~~Nonetheless,~~ viewing double blind trial as necessarily superior is problematic.',
       '~~For one,~~ it leads to the paradox that very effective experimental treatments will not be supportable by best evidence.'],
+ zh:'雙盲的特點是病人和醫生都不知道誰接受實驗性治療，這幾乎被普遍吹捧為臨床試驗的優點，但把雙盲試驗視為必然較優是有問題的，而且這會導致一個矛盾：非常有效的實驗性治療反而無法得到最佳證據的支持。',
  note:'難字：universally、trumpeted、paradox、supportable（題目可抄，拼字盯緊）'},
 {num:3, title:'Australian Education (澳洲教育)', code:'#060003',
  full:"When Australians engage in debate about educational quality or equity, they often seem to accept that a country cannot achieve both at the same time. Curriculum reforms intended to improve equity often fail to do so because they increase breadth or differentiation in offerings in a way that increases differences in quality. Further, these differences in quality often reflect differences in students’ social backgrounds because the ‘new’ offerings are typically taken up by relatively disadvantaged students who are not served well them. Evidence from New South Wales will be used to illustrate this point. The need to improve the quality of education is well accepted across OECD and other countries as they seek to strengthen their human capital to underpin their modern, knowledge economies. Improved equity is also important for this purpose, since the demand for high level skills is widespread and the opportunities for the low skilled are diminishing. Improved equity in education is also important for social cohesion. There are countries in which the education system seems primarily to reproduce existing social arrangements, conferring privilege where it already exists and denying it where it does not. Even in countries where the diagnosis might be less extreme, the capacity of schooling to build social cohesion is often diminished by the way in which schools separate individuals and groups.",
@@ -76,6 +79,7 @@ const DATA = [
       'Curriculum reforms intended to improve equity often fail ~~to do so~~ because they increase ~~breadth or differentiation in offerings in a way that increases~~ differences in quality.',
       'The need to improve the quality of education is well accepted ~~across OECD and other countries as they seek to strengthen their human capital to underpin their modern, knowledge economies~~.',
       'Improved equity ~~in education~~ is also important for social cohesion.'],
+ zh:'澳洲人在討論教育品質或公平時，常認為一個國家無法兩者兼得，而旨在改善公平的課程改革常常失敗，因為它們拉大了品質差異，但提升教育品質的必要性已被廣泛接受，而且改善公平對社會凝聚也很重要。',
  note:'難字：equity、curriculum、cohesion（題目可抄）'}
 ];
 
@@ -109,8 +113,9 @@ document.getElementById('list').innerHTML = DATA.map(d=>`
   <div class="art-body">
     <div class="lab">【原文】黃底＝挑出來的句子，刪除線＝拼接時刪掉的部分</div>
     <div class="full">${renderFull(d)}</div>
-    <div class="lab">【擬答】</div>
+    <div class="lab">【擬答】${wc(d.ans)} 字</div>
     <div class="ans">${renderAns(d.ans)}</div>
+    <div class="zh">${d.zh||''}</div>
     <div class="lab">【用了哪幾句紅字句】</div>
     <ol class="src">${d.src.map(s=>'<li>'+renderSrc(s)+'</li>').join('')}</ol>
     ${d.note?'<div class="foot">'+d.note+'</div>':''}
