@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SWT 擬答（原句拼接版）</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans TC','Microsoft JhengHei',sans-serif;background:#f4f6f9;color:#333;line-height:1.7}
+header{background:#1a3a5c;color:#fff;padding:18px 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+header h1{font-size:1.3rem}
+header p{font-size:.8rem;opacity:.8;margin-top:4px}
+.bar{margin-top:10px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.bar input{padding:6px 12px;border:none;border-radius:4px;width:260px;font-size:.88rem}
+.bar button{padding:6px 12px;border:none;border-radius:4px;font-size:.82rem;cursor:pointer;background:rgba(255,255,255,.18);color:#fff}
+.bar button.on{background:#f59e0b;color:#1a3a5c;font-weight:700}
+.container{max-width:820px;margin:0 auto;padding:18px 12px}
+.tip{background:#fffbeb;border-left:4px solid #f59e0b;border-radius:0 6px 6px 0;padding:10px 14px;margin-bottom:18px;font-size:.85rem;color:#92400e}
+.article{background:#fff;border-radius:8px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.08);overflow:hidden}
+.art-hdr{background:#1a3a5c;color:#fff;padding:11px 16px;cursor:pointer;display:flex;align-items:baseline;gap:10px}
+.art-num{font-size:.78rem;opacity:.65}
+.art-title{font-size:.98rem;font-weight:700}
+.art-code{font-size:.74rem;opacity:.55}
+.art-wc{font-size:.74rem;opacity:.85;margin-left:auto;background:rgba(255,255,255,.18);padding:2px 8px;border-radius:10px}
+.art-body{padding:14px 16px;display:none}
+.article.open .art-body{display:block}
+.lab{font-size:.72rem;font-weight:700;margin:12px 0 4px;letter-spacing:.03em;color:#1a3a5c}
+.lab:first-child{margin-top:0}
+.ans{font-family:Georgia,serif;font-size:1.02rem;color:#1f2937;line-height:1.9;padding:8px 12px;background:#f8fafc;border-radius:6px}
+.ans .cj{color:#c0392b;font-weight:700}
+.ans .sw{color:#16a34a;font-weight:700}
+.ans .og{color:#9ca3af;font-size:.82em;font-weight:400}
+body.hideog .ans .og{display:none}
+.src{font-family:Georgia,serif;font-size:.88rem;color:#4b5563;line-height:1.7}
+.src li{margin:4px 0 4px 1.3em}
+.src s{color:#b0b7c3}
+.foot{margin-top:12px;padding-top:9px;border-top:1px dashed #e5e7eb;font-size:.78rem;color:#6b7280}
+.foot b{color:#374151}
+</style></head>
+<body>
+<header>
+  <h1>📄 SWT 擬答（原句拼接版）</h1>
+  <p>從紅字句挑 3–4 句、只刪不改，用 <b>and / but</b> 拼成一句 · 目標 50–60 字 · 每題換 3–4 個單字防複製貼上</p>
+  <div class="bar">
+    <input id="search" type="text" placeholder="搜尋文章…">
+    <button id="togOg">隱藏（原字）</button>
+    <button id="togAll">全部展開</button>
+  </div>
+</header>
+<div class="container">
+  <div class="tip">顏色：<span style="color:#c0392b;font-weight:700">紅</span>＝連接詞 and / but　<span style="color:#16a34a;font-weight:700">綠</span>＝換過的字，後面灰色括弧是原字　<s style="color:#b0b7c3">刪除線</s>＝原句被刪掉的部分。換字只挑一定會的基礎字，一字換一字。</div>
+  <div id="list"></div>
+</div>
+<script>
+// 標記語法：{and} {but} = 連接詞；[換字|原字] = 換過的單字；來源句 ~~...~~ = 刪掉的部分
+const DATA = [
+{num:1, title:'Electric eels (電鰻)', code:'#060001',
+ ans:'In 1807, explorer Alexander von Humboldt [saw|witnessed] a group of horses led through a muddy pool filled with electric eels, which he described as [jumping|leaping] up to attack the intruders, {but} scientists have doubted the story, {and} Catania found the eels leapt to attack more often when the water in the aquarium was [low|lower].',
+ src:['~~On a field trip to the Amazon~~ in 1807, ~~19th-century~~ explorer Alexander von Humboldt witnessed a group of horses lead through a muddy pool filled with electric eels, which he described as ~~dramatically~~ leaping up to attack the intruders.',
+      'But scientists have doubted the story.',
+      'Catania found the eels leapt to attack, ~~rather than receded,~~ more often when the water in the aquarium was lower.'],
+ note:'原文 horses <b>lead</b> through 是機經錯字，作答寫 <b>led</b>。難字：intruders、aquarium（題目可抄）'},
+{num:2, title:'Double blind (雙盲測試法)', code:'#060002',
+ ans:'The feature of being double blind, where neither patients nor [doctors|physicians] are aware of who [gets|receives] the experimental treatment, is almost universally trumpeted as a [strength|virtue] of clinical trials, {but} viewing double blind trial as necessarily [better|superior] is problematic, {and} it leads to the paradox that very effective experimental treatments will not be supportable by best evidence.',
+ src:['The feature of being "double blind", where neither patients nor physicians are aware of who receives the experimental treatment, is almost universally trumpeted as ~~being~~ a virtue of clinical trials.',
+      '~~Nonetheless,~~ viewing double blind trial as necessarily superior is problematic.',
+      '~~For one,~~ it leads to the paradox that very effective experimental treatments will not be supportable by best evidence.'],
+ note:'難字：universally、trumpeted、paradox、supportable（題目可抄，拼字盯緊）'},
+{num:3, title:'Australian Education (澳洲教育)', code:'#060003',
+ ans:'When Australians engage in debate about educational quality or equity, they often seem to [believe|accept] that a country cannot [have|achieve] both, {and} curriculum reforms [meant|intended] to improve equity often fail because they increase differences in quality, {but} the need to improve the quality of education is [widely|well] accepted, {and} improved equity is also important for social cohesion.',
+ src:['When Australians engage in debate about educational quality or equity, they often seem to accept that a country cannot achieve both ~~at the same time~~.',
+      'Curriculum reforms intended to improve equity often fail ~~to do so~~ because they increase ~~breadth or differentiation in offerings in a way that increases~~ differences in quality.',
+      'The need to improve the quality of education is well accepted ~~across OECD and other countries~~.',
+      'Improved equity ~~in education~~ is also important for social cohesion.'],
+ note:'難字：equity、curriculum、cohesion（題目可抄）'}
+];
+
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function plain(a){return a.replace(/\[([^|\]]+)\|[^\]]+\]/g,'$1').replace(/\{(and|but)\}/g,'$1');}
+function wc(a){return plain(a).trim().split(/\s+/).length;}
+function renderAns(a){
+  return esc(a)
+    .replace(/\[([^|\]]+)\|([^\]]+)\]/g,'<span class="sw">$1</span><span class="og">($2)</span>')
+    .replace(/\{(and|but)\}/g,'<span class="cj">$1</span>');
+}
+function renderSrc(s){return esc(s).replace(/~~(.+?)~~/g,'<s>$1</s>');}
+
+document.getElementById('list').innerHTML = DATA.map(d=>`
+<div class="article" id="a${d.num}">
+  <div class="art-hdr">
+    <span class="art-num">#${d.num}</span>
+    <span class="art-title">${d.title}</span>
+    <span class="art-code">${d.code}</span>
+    <span class="art-wc">${wc(d.ans)} 字</span>
+  </div>
+  <div class="art-body">
+    <div class="lab">【擬答】</div>
+    <div class="ans">${renderAns(d.ans)}</div>
+    <div class="lab">【用了哪幾句紅字句】</div>
+    <ol class="src">${d.src.map(s=>'<li>'+renderSrc(s)+'</li>').join('')}</ol>
+    ${d.note?'<div class="foot">'+d.note+'</div>':''}
+  </div>
+</div>`).join('');
+
+document.querySelectorAll('.art-hdr').forEach(h=>h.addEventListener('click',()=>h.closest('.article').classList.toggle('open')));
+document.querySelector('.article').classList.add('open');
+
+document.getElementById('search').addEventListener('input',function(){
+  const q=this.value.toLowerCase();
+  document.querySelectorAll('.article').forEach(a=>{a.style.display=a.textContent.toLowerCase().includes(q)?'':'none';});
+});
+document.getElementById('togOg').addEventListener('click',function(){
+  document.body.classList.toggle('hideog');
+  this.classList.toggle('on');
+  this.textContent=document.body.classList.contains('hideog')?'顯示（原字）':'隱藏（原字）';
+});
+document.getElementById('togAll').addEventListener('click',function(){
+  const all=[...document.querySelectorAll('.article')];
+  const open=all.every(a=>a.classList.contains('open'));
+  all.forEach(a=>a.classList.toggle('open',!open));
+  this.textContent=open?'全部展開':'全部收合';
+});
+</script>
+</body>
+</html>
