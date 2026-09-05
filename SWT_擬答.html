@@ -32,6 +32,9 @@ body.hideog .ans .og{display:none}
 .src{font-family:Georgia,serif;font-size:.88rem;color:#4b5563;line-height:1.7}
 .src li{margin:4px 0 4px 1.3em}
 .src s{color:#b0b7c3}
+.full{font-family:Georgia,serif;font-size:.9rem;color:#4b5563;line-height:1.8;padding:8px 12px;border:1px solid #e5e7eb;border-radius:6px}
+.full mark{background:#fef08a;color:#1f2937;padding:1px 0}
+.full mark s{color:#9ca3af}
 .foot{margin-top:12px;padding-top:9px;border-top:1px dashed #e5e7eb;font-size:.78rem;color:#6b7280}
 .foot b{color:#374151}
 </style></head>
@@ -46,29 +49,32 @@ body.hideog .ans .og{display:none}
   </div>
 </header>
 <div class="container">
-  <div class="tip">顏色：<span style="color:#c0392b;font-weight:700">紅</span>＝連接詞 and / but　<span style="color:#16a34a;font-weight:700">綠</span>＝換過的字，後面灰色括弧是原字　<s style="color:#b0b7c3">刪除線</s>＝原句被刪掉的部分。換字只挑一定會的基礎字，一字換一字。</div>
+  <div class="tip">顏色：<span style="color:#c0392b;font-weight:700">紅</span>＝連接詞 and / but　<span style="color:#16a34a;font-weight:700">綠</span>＝換過的字，後面灰色括弧是原字　<mark style="background:#fef08a">黃底</mark>＝原文中挑出來的句子　<s style="color:#b0b7c3">刪除線</s>＝被刪掉的部分。換字只挑一定會的基礎字，一字換一字。</div>
   <div id="list"></div>
 </div>
 <script>
 // 標記語法：{and} {but} = 連接詞；[換字|原字] = 換過的單字；來源句 ~~...~~ = 刪掉的部分
 const DATA = [
 {num:1, title:'Electric eels (電鰻)', code:'#060001',
+ full:"On a field trip to the Amazon in 1807, 19th-century explorer Alexander von Humboldt witnessed a group of horses lead through a muddy pool filled with electric eels, which he described as dramatically leaping up to attack the intruders. But scientists have doubted the story. An illustration of Alexander von Humboldt's story of the battle between the horses and electric eels. \"The first time I read von Humboldt's tale, I thought it was completely bizarre,\" Catania says. \"Why would the eels attack the horses instead of swimming away?\" But then he observed the same behavior by accident as he transferred the eels in his lab from one tank to another using a metal-rimmed net. Instead of swimming away, larger eels attacked the net by leaping out of the water. Catania tracked the strength of the eels’ electric shock by attaching a voltmeter to an aluminum plate, or conductive metal strips to \"predator\" objects such as a crocodile head replica. The zap a submerged eel distributes through the water is relatively weak when it reaches the target. But when an eel touches it with its electricity-generating chin, the current travels directly to the target and has to travel through its body before it gets back to the water, Catania reported in Proceedings of the National Academy of Sciences. \"This allows the eels to deliver shocks with a maximum amount of power to partially submerged land animals that invade their territory,\" Catania explains. \"It also allows them to electrify a much larger portion of the invader's body.\" Catania found the eels leapt to attack, rather than receded, more often when the water in the aquarium was lower. He argues the attack lets electric eels better defend themselves during the Amazonian dry season, when they’re cornered in small pools and make easy prey.",
  ans:'In 1807, explorer Alexander von Humboldt [saw|witnessed] a group of horses led through a muddy pool filled with electric eels, which he described as [jumping|leaping] up to attack the intruders, {but} scientists have doubted the story, {and} Catania found the eels leapt to attack more often when the water in the aquarium was [low|lower].',
  src:['~~On a field trip to the Amazon~~ in 1807, ~~19th-century~~ explorer Alexander von Humboldt witnessed a group of horses lead through a muddy pool filled with electric eels, which he described as ~~dramatically~~ leaping up to attack the intruders.',
       'But scientists have doubted the story.',
       'Catania found the eels leapt to attack, ~~rather than receded,~~ more often when the water in the aquarium was lower.'],
  note:'原文 horses <b>lead</b> through 是機經錯字，作答寫 <b>led</b>。難字：intruders、aquarium（題目可抄）'},
 {num:2, title:'Double blind (雙盲測試法)', code:'#060002',
+ full:"The feature of being \"double blind\", where neither patients nor physicians are aware of who receives the experimental treatment, is almost universally trumpeted as being a virtue of clinical trials. Hence, trials that fail to remain successfully double blind are regarded as providing inferior evidential support. The rationale for this view is unobjectionable: double blinding rules out the potential confounding influences of patient and physician beliefs. Nonetheless, viewing double blind trial as necessarily superior is problematic. For one, it leads to the paradox that very effective experimental treatments will not be supportable by best evidence. If a new drug were to make even the most severe symptoms of the common cold disappear within seconds, most participants and investigators would correctly identify it as the latest wonder drug and not the control (i·e· placebo) treatment. Any trial testing the effectiveness of this wonder drug will therefore fail to remain double blind. Similar problems arise for treatments, such as exercise and most surgical techniques, whose nature makes them resistant to being tested in double blind conditions. It seems strange that an account of evidence should make priori judgments that certain claims can never be supported by ‘best evidence’. It would be different if the claims at issue were pseudoscientific – untestable. But so far as treatments with large effects go, the claim that they are effective is highly testable and intuitively they should receive greater support from the evidence than do claims about treatments with moderate effects.",
  ans:'The feature of being double blind, where neither patients nor [doctors|physicians] are aware of who [gets|receives] the experimental treatment, is almost universally trumpeted as a [strength|virtue] of clinical trials, {but} viewing double blind trial as necessarily [better|superior] is problematic, {and} it leads to the paradox that very effective experimental treatments will not be supportable by best evidence.',
  src:['The feature of being "double blind", where neither patients nor physicians are aware of who receives the experimental treatment, is almost universally trumpeted as ~~being~~ a virtue of clinical trials.',
       '~~Nonetheless,~~ viewing double blind trial as necessarily superior is problematic.',
       '~~For one,~~ it leads to the paradox that very effective experimental treatments will not be supportable by best evidence.'],
  note:'難字：universally、trumpeted、paradox、supportable（題目可抄，拼字盯緊）'},
 {num:3, title:'Australian Education (澳洲教育)', code:'#060003',
+ full:"When Australians engage in debate about educational quality or equity, they often seem to accept that a country cannot achieve both at the same time. Curriculum reforms intended to improve equity often fail to do so because they increase breadth or differentiation in offerings in a way that increases differences in quality. Further, these differences in quality often reflect differences in students’ social backgrounds because the ‘new’ offerings are typically taken up by relatively disadvantaged students who are not served well them. Evidence from New South Wales will be used to illustrate this point. The need to improve the quality of education is well accepted across OECD and other countries as they seek to strengthen their human capital to underpin their modern, knowledge economies. Improved equity is also important for this purpose, since the demand for high level skills is widespread and the opportunities for the low skilled are diminishing. Improved equity in education is also important for social cohesion. There are countries in which the education system seems primarily to reproduce existing social arrangements, conferring privilege where it already exists and denying it where it does not. Even in countries where the diagnosis might be less extreme, the capacity of schooling to build social cohesion is often diminished by the way in which schools separate individuals and groups.",
  ans:'When Australians engage in debate about educational quality or equity, they often seem to [believe|accept] that a country cannot [have|achieve] both, {and} curriculum reforms [meant|intended] to improve equity often fail because they increase differences in quality, {but} the need to improve the quality of education is [widely|well] accepted, {and} improved equity is also important for social cohesion.',
  src:['When Australians engage in debate about educational quality or equity, they often seem to accept that a country cannot achieve both ~~at the same time~~.',
       'Curriculum reforms intended to improve equity often fail ~~to do so~~ because they increase ~~breadth or differentiation in offerings in a way that increases~~ differences in quality.',
-      'The need to improve the quality of education is well accepted ~~across OECD and other countries~~.',
+      'The need to improve the quality of education is well accepted ~~across OECD and other countries as they seek to strengthen their human capital to underpin their modern, knowledge economies~~.',
       'Improved equity ~~in education~~ is also important for social cohesion.'],
  note:'難字：equity、curriculum、cohesion（題目可抄）'}
 ];
@@ -82,6 +88,15 @@ function renderAns(a){
     .replace(/\{(and|but)\}/g,'<span class="cj">$1</span>');
 }
 function renderSrc(s){return esc(s).replace(/~~(.+?)~~/g,'<s>$1</s>');}
+function renderFull(d){
+  let f=esc(d.full);
+  d.src.forEach(x=>{
+    const plain=esc(x.replace(/~~/g,''));
+    if(!f.includes(plain)) console.warn('來源句對不上 #'+d.num, x);
+    f=f.replace(plain,'<mark>'+renderSrc(x)+'</mark>');
+  });
+  return f;
+}
 
 document.getElementById('list').innerHTML = DATA.map(d=>`
 <div class="article" id="a${d.num}">
@@ -92,6 +107,8 @@ document.getElementById('list').innerHTML = DATA.map(d=>`
     <span class="art-wc">${wc(d.ans)} 字</span>
   </div>
   <div class="art-body">
+    <div class="lab">【原文】黃底＝挑出來的句子，刪除線＝拼接時刪掉的部分</div>
+    <div class="full">${renderFull(d)}</div>
     <div class="lab">【擬答】</div>
     <div class="ans">${renderAns(d.ans)}</div>
     <div class="lab">【用了哪幾句紅字句】</div>
