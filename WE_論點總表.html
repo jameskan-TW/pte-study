@@ -553,7 +553,7 @@ const DATA = [
 
 {n:'②-2', o:8, t:'醫療進步增加壽命 — 福還是禍', en:'Medical advances can improve people’s life expectancy. Do you believe that it is a blessing or a curse?',
  stance:'是福（blessing）', p2c:4, p2zh:'讓步：父母高齡 → 子女醫療費 → 家庭財務壓力', p3c:2, p3zh:'主論：健康長壽 → 家庭時光 → 幸福感',
- es:{topic:'medical advances and longer life',
+ es:{topic:'living longer thanks to medical advances',
  va:'living longer is a heavy burden', vb:'living longer is a blessing',
  con:'living longer can bring <i class="a4">financial burdens</i>', conR:'old people need more medical care',
  cond:'old parents live longer', subj:'their children', resA:'spend a lot more money on doctors, medicine and daily care', resB:'<i class="a4">financial pressure</i> on the whole family',
@@ -562,7 +562,30 @@ const DATA = [
  jv:'works', jn:'firm', does:'receives regular check-ups',
  result:'stay healthy and <i class="a1">spend more quality years with his family</i>',
  impl:'a longer and healthier life brings more happiness to the whole family',
- final:'living longer is a blessing', rec:'families save money early to care for their parents'}},
+ final:'living longer is a blessing', rec:'families save money early to care for their parents'},
+ mistakes:{
+  spell:[
+   {x:'Medical（句中大寫）', o:'medical'},
+   {x:'peopele', o:'people', nt:'黑名單老字第三種錯法（poeple／peopel／peopele）'},
+   {x:'heathy', o:'healthy', nt:'漏 l：heal-thy'},
+   {x:'anual', o:'annual', nt:'雙 n'},
+   {x:'cheks-up', o:'check-ups', nt:'check 有 c；複數 s 加在 check 上'},
+  ],
+  grammar:[
+   {x:'medical advances and longer life has become', o:'living longer thanks to medical advances has become', nt:'複數主詞配 has 錯；題目改單數，模板 has 不動'},
+   {x:'cause heavy financial burden', o:'cause a heavy financial burden', nt:'burden 可數要 a'},
+   {x:'spend more budget on', o:'spend more money on', nt:'budget 是預算，花的是 money'},
+   {x:'financial burden for the whole family', o:'financial pressure on the whole family', nt:'pressure 不可數免冠詞；介系詞 on'},
+   {x:'young people are worry about', o:'young people worry about', nt:'worry 是動詞；①-4 工時篇同錯'},
+   {x:'time so spend with', o:'time to spend with', nt:'time to + 原形'},
+   {x:'keeps stay healthy', o:'stays healthy', nt:'keep 後不接動詞；keeps healthy／stays healthy 二選一'},
+   {x:'does the annual check-up', o:'has annual check-ups', nt:'健檢用 has；泛指不加 the'},
+   {x:'his family get closer', o:'his family gets closer', nt:'第三人稱 +s：一個家 family 單數；0905 his families enjoy 同型'},
+   {x:'medical advances and longer life is a blessing', o:'living longer is a blessing', nt:'複數主詞要 are；結論照抄 P1 立場句'},
+   {x:'crucial that old people should to stay', o:'crucial that old people stay', nt:'crucial that + 原形，沒 should 沒 to'},
+  ],
+  note:'2026-09-07 重寫（08/06 首戰 21 錯 → 16 錯，檢查器只標 8 個）。模板全對；錯集中在動詞形態（are worry／keeps stay／should to／family get）＋冠詞。'
+ }},
 
 {n:'②-3', o:11, t:'平衡工作和家庭娛樂生活（重要性與成因）', en:'It is important to maintain this balance between work and other aspects of one’s life such as family and leisure activities. Please give your opinion about how important to maintain the balance and why some people think it is hard to achieve it?',
  stance:'平衡至關重要', p2c:4, p2zh:'成因：競爭、怕失業、求升遷 → 過度加班', p3c:2, p3zh:'重要性：平衡 → 減壓 → 身心健康',
