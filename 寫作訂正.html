@@ -291,7 +291,8 @@ const BLACKLIST = [
   "everything","famous","attention","before","brings","financial",
   "neighbors","convenient","protected","world","prestigious","family","among",
   "learning","broader","communication","remotely","period",
-  "transportation","quality","metro","healthy","annual","check-up"
+  "transportation","quality","metro","healthy","annual","check-up",
+  "lose","succeed"
 ];
 
 /* ═══════════ 分頁切換（支援 #review / #rewrite / #check 直達）═══════════ */
@@ -1125,6 +1126,35 @@ const DATA = [
       {seg:"主論：健康線（家庭時光）"}, {w:"people have more time to spend with their family",zh:"peo-ple；time to + 動詞"}, {w:"James stays healthy and has annual check-ups",zh:"stays 加 s；heal-thy 有 l；an-nu-al 雙 n；has check-ups"}, {w:"his family gets closer",zh:"一個家 family 單數 → gets"},
       {seg:"結尾"}, {w:"living longer is a blessing",zh:"照抄 P1 立場句，避開複數主詞"}, {w:"it is crucial that old people stay healthy",zh:"crucial that + 原形，沒 should 沒 to"},
     ]},
+  { title:"平衡工作與家庭娛樂生活——重要性與成因（0907 首戰｜15 錯，檢查器標 9 個）", pid:"2026/09/07", type:"WE",
+    text:`<p>It is generally true that work-life balance has become a matter of concern over the years, and this has caused great controversy and captured public attention. Some people are of the opinion that people should [[1]] more [[2]] [[3]] their work, while others hold the view that work-life balance [[4]] more important. I tend to agree more with the latter and will discuss this further below.</p>
+<p>It has to be admitted that [[5]] work-life balance is very difficult for people in this generation, and one argument in favor of this view can be that working environments [[6]]. If people work harder, then they can [[7]], in turn leading to less time with their family. As a result, it is unsurprising that some people [[8]] but [[9]] their family [[10]].</p>
+<p>On the other hand, I firmly believe that work-life balance is the first priority, and one compelling reason is that [[11]]. A pertinent case in point is James, who works at a world-renowned and prestigious firm. As James now spends more time with his family, he is able to stay [[12]] in body and [[13]]. In other words, a good balance makes him more efficient and [[14]] productivity at work.</p>
+<p>In conclusion, despite the fact that the counterargument may hold true in many cases, I believe that work-life balance is important, and it is crucial that people stop [[15]] overtime and spend more time with their family.</p>`,
+    blanks:[
+      { wrong:"put", right:"pay", cat:"word", why:`固定片語是 <span class="en"><b>pay</b> attention <b>to</b></span>（注意力是「付」出去的），不是 put … on。三個字一起背：<span class="en">pay attention to</span>。` },
+      { wrong:"attentoin", right:"attention", cat:"mech", why:`<b>黑名單老字</b>，字母顛倒：-tion 結尾的 t-i-o-n（跟 08/05 的 communicatoin 同型）。打完 -tion 字回頭看一眼。` },
+      { wrong:"on", right:"to", cat:"gram", why:`<span class="en">pay attention <b>to</b></span>。同上，整個片語一起記。` },
+      { wrong:"in", right:"is", cat:"gram", why:`<span class="en">work-life balance <b>is</b> more important</span>。應該是手滑（n 和 s 都在鍵盤下排），但句子沒動詞就是文法錯——句子打完掃一眼「有沒有動詞」。` },
+      { wrong:"keep", right:"keeping", cat:"gram", why:`動詞當主詞要加 -ing：<span class="en"><b>keeping</b> work-life balance is difficult</span>。（0907 醫療篇 P1 你就寫對了 <span class="en">living longer is a blessing</span>，同一條規則。）` },
+      { wrong:"are stress and anxiety", right:"are full of stress and anxiety", cat:"gram", why:`<span class="en">stress / anxiety</span> 是名詞，不能直接當「環境是…」的補語。要嘛 <span class="en">are <b>full of</b> stress and anxiety</span>，要嘛用你②線的固定句 <span class="en">working environments <b>lead to</b> stress and anxiety</span>。` },
+      { wrong:"get promotion and get higher income", right:"get a promotion and a higher income", cat:"gram", why:`兩個冠詞漏掉：<span class="en">promotion</span>、<span class="en">income</span> 都可數，單數要 a → <span class="en">get <b>a</b> promotion and <b>a</b> higher income</span>（第二個 get 可省）。` },
+      { wrong:"are successed in career", right:"succeed in their careers", cat:"gram", why:`<b>沒有 successed 這個字</b>。三兄弟：<span class="en">success</span>（名詞）／<span class="en">succeed</span>（動詞）／<span class="en">successful</span>（形容詞）。動詞直接用 <span class="en">people <b>succeed</b> in</span>；要用 are 就接形容詞 <span class="en">are successful in</span>（跟 are worry→worry 同一個坑）。<span class="en">career</span> 可數：<span class="en">their career<b>s</b></span>。` },
+      { wrong:"loose", right:"lose", cat:"mech", why:`<span class="en">lose</span>（失去）只有一個 o；<span class="en">loose</span> 是「鬆的」。黑名單已有 losing，補 lose。` },
+      { wrong:"relation", right:"relationships", cat:"word", why:`講感情關係用 <span class="en">relationship<b>s</b></span>（複數）：<span class="en">lose their family relationships</span>。更自然的說法是 <span class="en"><b>hurt</b> their family relationships</span>。` },
+      { wrong:"people cannot buy family relation", right:"money cannot buy a happy family", cat:"word", why:`原句「人買不到家庭關係」主詞怪、relation 又錯。換成好拼好背的 <span class="en"><b>money cannot buy a happy family</b></span>，意思一樣、字全是基礎字。` },
+      { wrong:"heathy", right:"healthy", cat:"mech", why:`<b>今天第二次</b>（0907 醫療篇同錯）：漏 l，<span class="en">heal·thy</span>。已在黑名單，考前掃一定要看。` },
+      { wrong:"mental", right:"mind", cat:"word", why:`<span class="en">mental</span> 是形容詞（精神的），<span class="en">in body and</span> 後面要名詞 → 固定片語 <span class="en">healthy <b>in body and mind</b></span>。` },
+      { wrong:"boost", right:"boosts", cat:"gram", why:`<b>頭號罩門 第三人稱 +s</b>：主詞是 <span class="en">a good balance</span>，<span class="en">makes</span> 你加了 s，and 後面的第二個動詞也要 → <span class="en">makes him more efficient and <b>boosts</b> productivity</span>（and 前後動詞穿同一套衣服）。` },
+      { wrong:"work", right:"working", cat:"gram", why:`<span class="en">stop</span> 後面接 -ing：<span class="en">stop <b>working</b> overtime</span>。（stop to work 是「停下來去工作」，意思相反。）` },
+    ],
+    vocab:[
+      {seg:"🔴 本篇頭號根因"}, {w:"名詞／動詞／形容詞穿錯衣服",zh:"are stress・are successed・in body and mental——3 個錯同一件事：be 動詞後面接形容詞或名詞片語，不是光禿禿的名詞；動詞就直接用動詞（succeed）"},
+      {seg:"開頭"}, {w:"pay attention to",zh:"pay 不是 put；to 不是 on；atten-tion"}, {w:"work-life balance is more important",zh:"is 不是 in，句子要有動詞"},
+      {seg:"讓步：職涯財務線（升遷加薪）"}, {w:"keeping work-life balance is difficult",zh:"動詞當主詞加 -ing"}, {w:"working environments are full of stress and anxiety",zh:"full of＋名詞；或 lead to stress and anxiety"}, {w:"get a promotion and a higher income",zh:"兩個 a"}, {w:"succeed in their careers",zh:"succeed 是動詞；careers 複數"}, {w:"lose their family relationships",zh:"lose 一個 o；relationships 複數"},
+      {seg:"主論：健康線（陪家人）"}, {w:"money cannot buy a happy family",zh:"全基礎字版"}, {w:"stay healthy in body and mind",zh:"heal-thy 有 l；mind 名詞"}, {w:"makes him more efficient and boosts productivity",zh:"and 後第二個動詞也 +s"},
+      {seg:"結尾"}, {w:"stop working overtime",zh:"stop + -ing"},
+    ]},
 ];
 
 // ---------- state ----------
@@ -1419,6 +1449,14 @@ const ITEMS = [
     tags:["gram","mech"],
     model:`As James <b>takes the metro</b> to work every day, he is able to feel less stress on the road. In other words, he comes home <b>in a better mood</b>, so <b>his family enjoys</b> more harmony.`,
     fixes:[`James 第三人稱單數 → take<b>s</b>（頭號罩門，連三篇掛零後回來）`, `me-<b>t</b>-r-o；特定那套捷運要 <b>the</b> metro，system 多餘`, `心情好是 <b>in a</b> better mood（in＋a），不是 with`, `一個人一個家：<b>his family enjoys</b>（單數＋s）；一群人才是 their families`] },
+  { src:"#25", orig:`As a result, it is unsurprising that some people <s>are successed in career</s> but <s>loose</s> their family <s>relation</s>.`,
+    tags:["gram","mech","word"],
+    model:`As a result, it is unsurprising that some people <b>succeed in their careers</b> but <b>lose</b> their family <b>relationships</b>.`,
+    fixes:[`沒有 successed：動詞是 <b>succeed</b>，直接用（不加 are）；形容詞才是 successful`, `career 可數 → their <b>careers</b>`, `lo<b>s</b>e 一個 o（loose 是鬆的）`, `感情關係 <b>relationships</b>，複數`] },
+  { src:"#25", orig:`As James now spends more time with his family, he is able to stay <s>heathy</s> in body and <s>mental</s>. In other words, a good balance makes him more efficient and <s>boost</s> productivity at work.`,
+    tags:["mech","word","gram"],
+    model:`As James now spends more time with his family, he is able to stay <b>healthy</b> in body and <b>mind</b>. In other words, a good balance makes him more efficient and <b>boosts</b> productivity at work.`,
+    fixes:[`hea<b>l</b>thy 今天第二次漏 l`, `固定片語 in body and <b>mind</b>（mental 是形容詞）`, `makes … and <b>boosts</b>：and 後面第二個動詞也要 +s（頭號罩門）`] },
 ];
 
 const TAGNAME = { mech:"拼字", gram:"文法", word:"用字", stru:"句構" };
