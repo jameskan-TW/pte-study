@@ -639,15 +639,15 @@ const DATA = [
  final:'working too much harms families', rec:'people stop working overtime and spend more time with their family'}},
 
 {n:'②-5', o:16, t:'你會選擇學習氣候變化哪些方面？（Report）', en:'You need to study climate change, which aspect of climate change will you choose and why? Use examples.',
- stance:'選擇：氣候成因（照範文段落，無讓步）', p2c:2, p2zh:'成因鏈：溫室氣體 → 汽車工廠 → 極端天氣 → 政府行動', p3c:2, p3zh:'為何重要：暖化惡化 → 海平面／極端天氣 → 找成因才能擋住',
- es:{topic:'climate change',
+ stance:'選擇：氣候成因（照範文段落，無讓步）', p2c:2, p2zh:'成因鏈：溫室氣體 → 汽車工廠 → 極端天氣 → 政府行動', p3c:2, p3zh:'為何重要：傷環境和人 → James 公司被大水沖走 → 找成因才能擋住',
+ es:{topic:'climate change', modal:'would',
  va:'the effects of climate change are the best topic', vb:'the causes are the best topic',
  con:'global warming is caused by too much greenhouse gas', conR:'most of this gas comes from cars and factories',
  cond:'people drive cars every day', subj:'they', resA:'put more and more greenhouse gas into the air', resB:'more and more <i class="a2">extreme weather</i>',
  concl:'governments all over the world take action',
  stance:'finding the causes is very important', reason:'climate change <i class="a2">harms both the environment and people</i>',
- jv:'works', jn:'media company', does:'sees hotter summers and more floods in the news every day',
- result:'know that climate change is getting worse',
+ jv:'works', jn:'firm', does:'saw his firm washed away by a big flood last year',
+ result:'see how serious climate change is',
  impl:'finding the causes is the only way to stop these problems',
  final:'the causes are the most important aspect to study', rec:'governments study the causes and <i class="a1">protect every family</i>'}},
 
@@ -678,16 +678,16 @@ const DATA = [
  final:'it brings more harm than good', rec:'people learn to judge news and limit screen time'}},
 
 {n:'②-8', o:25, t:'氣候變化誰應負責？（Report）', en:'In terms of climate change, who should be responsible, individuals, organizations or governments?',
- stance:'政府主責（與 #16 共用字）', p2c:2, p2zh:'讓步：個人少開車、工廠用潔淨能源 → 空氣變乾淨', p3c:2, p3zh:'主論：只有政府能立法給錢 → 嚴管汽車工廠 → 保護每個家庭',
- es:{topic:'who should deal with climate change',
+ stance:'政府主責（與 #16 共用字）', p2c:2, p2zh:'讓步：個人少開車、工廠用潔淨能源 → 空氣變乾淨', p3c:2, p3zh:'主論：只有政府能立法給錢 → 公司被嚴管 → 保護每個家庭',
+ es:{topic:'who should deal with climate change', modal:'would',
  va:'people and companies should take the lead', vb:'governments should take the main role',
  con:'people and companies also play a part', conR:'most greenhouse gas comes from cars and factories',
  cond:'people drive less and factories use clean energy', subj:'they', resA:'put less greenhouse gas into the air', resB:'<i class="a2">cleaner air for everyone</i>',
  concl:'many people support personal action',
  stance:'governments should take the main role', reason:'only governments have the power to make laws and provide money',
- jv:'works', jn:'firm', does:'lives in a city with strict rules on cars and factories',
- result:'breathe <i class="a2">cleaner air and stay healthy</i>',
- impl:'only big changes from the top can <i class="a1">protect every family</i>',
+ jv:'works', jn:'firm', does:'works for a firm that must follow strict government rules on greenhouse gas',
+ result:'breathe <i class="a2">cleaner air and stay healthy</i> at work',
+ impl:'only strict laws can make companies change and <i class="a1">protect every family</i>',
  final:'governments must take the main role', rec:'governments make strict laws and people and companies follow them'}},
 
 {n:'②-9', o:29, t:'年齡限制（Report）', en:'Age restrictions can be seen everywhere. It is believed that people should not do things until they reach the right age, such as marriage, and driving. Select one activity and state the minimum age that you think. Support with your own experiences.',
@@ -1055,7 +1055,7 @@ function T(s){ return `<span class="tpl">${s}</span>`; }
 
 function buildEssay(e){
   const p1 = `${T('It is generally true that')} ${e.topic} ${T('has become a matter of concern over the years, and this has caused great controversy and captured public attention. Some people are of the opinion that')} ${e.va}${T(', while others hold the view that')} ${e.vb}. ${T(e.p1end || 'I tend to agree more with the latter and will discuss this further below.')}`;
-  const p2 = `${T('It has to be admitted that')} ${e.con}${T(', and one argument in favor of this view can be that')} ${e.conR}. ${T('If')} ${e.cond}${T(', then')} ${e.subj} ${T('can')} ${e.resA}${T(', in turn leading to')} ${e.resB}. ${T('As a result, it is unsurprising that')} ${e.concl}.`;
+  const p2 = `${T('It has to be admitted that')} ${e.con}${T(', and one argument in favor of this view can be that')} ${e.conR}. ${T('If')} ${e.cond}${T(', then')} ${e.subj} ${T(e.modal||'can')} ${e.resA}${T(', in turn leading to')} ${e.resB}. ${T('As a result, it is unsurprising that')} ${e.concl}.`;
   const p3 = `${T('On the other hand, I firmly believe that')} ${e.stance}${T(', and one compelling reason is that')} ${e.reason}. ${T(`A pertinent case in point is James, who ${e.jv} at a world-renowned and prestigious ${e.jn}. As James`)} ${e.does}${T(', he is able to')} ${e.result}. ${T('In other words,')} ${e.impl}.`;
   const p4 = `${T('In conclusion, despite the fact that the counterargument may hold true in many cases, I believe that')} ${e.final}${T(', and it is crucial that')} ${e.rec}.`;
   return [p1,p2,p3,p4];
@@ -1123,7 +1123,7 @@ const ZH = {
 '②-5':{
  p1:'反方：研究氣候的影響 (the effects) 最好；我方：研究成因 (the causes) 最好',
  p2:'成因是什麼——暖化是溫室氣體太多造成 (caused by too much greenhouse gas)，大多來自汽車和工廠 (cars and factories)。若人們每天開車 (drive cars every day) → 越來越多溫室氣體排到空氣中 (put more greenhouse gas into the air) → 越來越多極端天氣 (more and more extreme weather)。小結：世界各國政府都在採取行動 (take action)',
- p3:'為什麼要研究成因——氣候變遷同時傷害環境和人 (harms both the environment and people)。例：James 在媒體公司工作 (media company)，每天在新聞裡看到夏天更熱、水災更多 (sees hotter summers and more floods in the news) → 知道氣候變遷越來越糟 (getting worse)。含義：找出成因是阻止這些問題的唯一方法 (the only way to stop these problems)',
+ p3:'為什麼要研究成因——氣候變遷同時傷害環境和人 (harms both the environment and people)。例：James 去年親眼看到公司被大水沖走 (saw his firm washed away by a big flood) → 看出氣候變遷有多嚴重 (how serious climate change is)（老師 0908：例子要有具體結局）。含義：找出成因是阻止這些問題的唯一方法 (the only way to stop these problems)',
  p4:'成因是最重要的面向 (the most important aspect)；建議：政府研究成因、保護每個家庭 (protect every family)'},
 '②-6':{
  p1:'反方：法律對行為影響很小 (little effect)；我方：法律真能改變行為 (really change)',
@@ -1138,7 +1138,7 @@ const ZH = {
 '②-8':{
  p1:'反方：個人與企業 (people and companies) 應主導 (take the lead)；我方：政府 (governments) 應擔任主要角色 (the main role)',
  p2:'個人與企業也有貢獻 (play a part)——大多數溫室氣體來自汽車和工廠 (greenhouse gas from cars and factories)。若大家少開車 (drive less)、工廠用潔淨能源 (use clean energy) → 排較少溫室氣體 → 大家都有更乾淨的空氣 (cleaner air for everyone)。小結：很多人支持個人行動 (personal action)',
- p3:'政府應主導——只有政府有權立法 (make laws)、提供資金 (provide money)。例：James 住在嚴管汽車工廠 (strict rules on cars and factories) 的城市 → 呼吸乾淨空氣、保持健康 (breathe cleaner air and stay healthy)。含義：只有由上而下的大改變 (big changes from the top) 能保護每個家庭 (protect every family)',
+ p3:'政府應主導——只有政府有權立法 (make laws)、提供資金 (provide money)。例：James 的公司必須遵守政府對溫室氣體的嚴格規定 (must follow strict government rules on greenhouse gas) → 在公司呼吸乾淨空氣、保持健康 (breathe cleaner air and stay healthy at work)。含義：只有嚴格的法律 (strict laws) 能讓公司改變、保護每個家庭 (protect every family)（老師 0908：結局要跟公司有關）',
  p4:'政府必須擔主角；建議：政府訂嚴格法律 (strict laws)，個人與企業遵守 (follow them)'},
 '②-9':{
  p1:'反方：年齡限制 (age limits) 阻擋年輕人的自由；我方：開車應等到 18 歲 (wait until eighteen)',
