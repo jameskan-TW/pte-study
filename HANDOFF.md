@@ -99,6 +99,8 @@
 | ②-5 氣候面向（原#16；2026-09-08 James 決定「特別記這篇」：照機經範文段落，P2 成因鏈、P3 後果，無讓步） | — | ✔ 範文簡化版 |
 | ②-8 氣候誰負責（原#25；2026-09-08 與 #16 共用一套環境字：greenhouse gas／cars and factories／hotter summers and more floods／make laws／protect every family） | — | ✔ 共用字版 |
 
+> 2026-09-08 老師看過 WE_訂正定稿 第 6–11 篇（Word 檔 WE_給老師_20260908.docx），改了 5 處已全部同步：②-2 小結補 would；②-3 小結改 put money first and ignore their family；②-4 resB 改 better future prospects；#16/#25 If-then 改 would、James 例子改具體公司事件（firm washed away／factory cut greenhouse gas after a new law）。
+
 前四篇都是主論①（圖書館現歸③視野組）。**下一步建議**：換主論②/③/④ 的題目練，讓四條鏈都熟。或 James 想針對拼字罩門做默寫訓練。
 
 ## 7. 已教過的兩個策略工具
@@ -124,5 +126,6 @@ const buildEssay = vm.runInContext('buildEssay', ctx); // 組範文
 ### 改完一定驗證
 - 37 題解析正常、`buildEssay()` 組裝正常、字數 ~250（範圍 200-300）
 - slot 文法：`then ${subj} can ${resA}` → resA 要原形動詞開頭；`It is crucial that ${rec}` → 原形（虛擬語氣）
+- `es.modal`（2026-09-08 新增）可覆寫 If/then 句的 `can`：#16／#25 環境題設 `modal:'would'`（老師要求假設語氣），其他題不設維持 can；模板卡藍字不受影響
 - 序列化 DATA 用單引號跳脫、保持欄位順序、entry 間空一行
 - 改完 commit 訊息照本 repo 慣例（feat/fix(WE):），結尾 `Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>`
