@@ -292,7 +292,7 @@ const BLACKLIST = [
   "neighbors","convenient","protected","world","prestigious","family","among",
   "learning","broader","communication","remotely","period",
   "transportation","quality","metro","healthy","annual","check-up",
-  "lose","succeed"
+  "lose","succeed","weather","produce"
 ];
 
 /* ═══════════ 分頁切換（支援 #review / #rewrite / #check 直達）═══════════ */
@@ -1155,6 +1155,37 @@ const DATA = [
       {seg:"主論：健康線（陪家人）"}, {w:"money cannot buy a happy family",zh:"全基礎字版"}, {w:"stay healthy in body and mind",zh:"heal-thy 有 l；mind 名詞"}, {w:"makes him more efficient and boosts productivity",zh:"and 後第二個動詞也 +s"},
       {seg:"結尾"}, {w:"stop working overtime",zh:"stop + -ing"},
     ]},
+  { title:"研究氣候變遷會選哪個面向？（0908 首戰｜16 錯＋模板拼字 2，檢查器標 18 處）", pid:"2026/09/08", type:"WE",
+    text:`<p>It is generally true that climate change has become a matter of concern over the years, and this has caused great controversy and captured public attention. Some people are of the opinion that the effects of climate change [[1]] the most important topic, while others hold the view that the causes of climate change [[2]] the most crucial topic. I tend to agree more with the latter and will discuss this further below.</p>
+<p>It has to be admitted that global warming is caused by [[3]] greenhouse gas, and one argument in favor of this view can be that cars and factories [[4]]. If people drive cars every day, then [[5]], in turn leading to more extreme [[6]]. As a result, it is unsurprising that [[7]] governments all over the world take action.</p>
+<p>On the other hand, I firmly believe that studying the causes of climate change is the most important topic, and one compelling reason is that climate change harms [[8]] and [[9]] the most. A pertinent case in point is James, who works at a world-renowned and prestigious firm. As James saw his company [[10]] by [[11]] heavy flood, he is able to [[12]]. In other words, finding the causes is the only way to stop these problems.</p>
+<p>In conclusion, despite the fact that the counterargument may hold true in many cases, I believe that [[13]] the causes of climate change is important, and it is crucial that [[14]] governments [[15]] more [[16]] in this research.</p>`,
+    blanks:[
+      { wrong:"is", right:"are", cat:"gram", why:`主詞是 <span class="en">the effect<b>s</b></span>（複數），動詞要 <span class="en">are</span>。of climate change 是修飾語，動詞看前面的 effects。` },
+      { wrong:"is", right:"are", cat:"gram", why:`同上：<span class="en">the cause<b>s</b> … are</span>。一句裡兩個都錯，代表你看的是 climate change（單數）不是 causes。<b>找主詞要跳過 of 後面的字</b>。` },
+      { wrong:"the", right:"（刪掉 the）", cat:"gram", why:`泛指的溫室氣體<b>不加 the</b>：<span class="en">caused by too much greenhouse gas</span>。考前掃第 9 條。` },
+      { wrong:"are the main causes to product greenhouse gas", right:"produce most greenhouse gas", cat:"word", why:`<span class="en">product</span> 是名詞（產品），動詞是 <span class="en">produ<b>ce</b></span>。而且 <span class="en">causes to product</span> 結構不通，直接說 <span class="en">cars and factories <b>produce most</b> greenhouse gas</span>。定稿用 <span class="en">most of this gas comes from cars and factories</span>。` },
+      { wrong:"more greenhouse would come into air", right:"more greenhouse gas would go into the air", cat:"gram", why:`兩個坑：① <span class="en">greenhouse</span> 是「溫室」，漏了 <span class="en">gas</span> 意思就變了；② <span class="en">the air</span> 固定加 the（空氣只有一個）。<span class="en">would</span> 用對了 ✅（老師要的假設語氣）。` },
+      { wrong:"wheather", right:"weather", cat:"mech", why:`<b>全篇拼錯 2 次</b>：<span class="en">wea·ther</span>，沒有 h 在 w 後面（<span class="en">whether</span> 是「是否」）。收進黑名單。` },
+      { wrong:"the", right:"（刪掉 the）", cat:"gram", why:`泛指各國政府不加 the：<span class="en">governments all over the world</span>。本篇 the 多加 3 次（the greenhouse gas／the governments／all the governments）。` },
+      { wrong:"peopele", right:"people", cat:"mech", why:`<b>黑名單老字第四種錯法</b>（poeple／peopel／peopele／peopele）。<span class="en">peo·ple</span> 6 個字母，e 只在最後。這個字打完一定回頭看。` },
+      { wrong:"environment", right:"the environment", cat:"gram", why:`<span class="en">the environment</span>（自然環境）固定加 the，跟 the air、the world 一樣是「只有一個」的東西。` },
+      { wrong:"washed out", right:"washed away", cat:"word", why:`「沖走」是 <span class="en">washed <b>away</b></span>；<span class="en">washed out</span> 是「褪色／取消」。定稿句：<span class="en">saw his firm washed away by a big flood last year</span>。` },
+      { wrong:"the", right:"a", cat:"gram", why:`第一次提到這場水災，用 <span class="en"><b>a</b> heavy flood</span>；the 是「你知道我知道的那一場」。` },
+      { wrong:"see the how the extreme weather is", right:"see how serious climate change is", cat:"stru", why:`<span class="en">how</span> 前面不加 the，<span class="en">how</span> 後面要接形容詞才完整：<span class="en">how <b>serious</b> … is</span>。定稿用 <span class="en">see how serious climate change is</span>。` },
+      { wrong:"study", right:"studying", cat:"gram", why:`<b>0907 平衡篇同錯（keep → keeping）</b>：動詞當主詞加 -ing，<span class="en"><b>studying</b> the causes … is important</span>。` },
+      { wrong:"all the", right:"all", cat:"gram", why:`泛指所有政府：<span class="en">all governments</span>，不加 the。` },
+      { wrong:"start invest", right:"invest", cat:"gram", why:`<span class="en">start</span> 後面要 -ing（<span class="en">start investing</span>），但直接 <span class="en">invest</span> 更省事。<span class="en">crucial that</span> + 原形。` },
+      { wrong:"research budget", right:"money", cat:"word", why:`<b>0907 醫療篇同錯（budget → money）</b>：投入的是 <span class="en">money</span>，<span class="en">budget</span> 是規劃的額度。<span class="en">invest more money in this research</span>。` },
+    ],
+    vocab:[
+      {seg:"🔴 本篇頭號根因"}, {w:"the 多加／該加沒加",zh:"多加 3 次（the greenhouse gas／the governments／all the governments）、該加沒加 2 次（the air／the environment）。規則：泛指不加；空氣、環境、世界這種「只有一個」的加"},
+      {seg:"模板拼字（練默寫卡，不進錯題本）"}, {w:"generally",zh:"gen-er-al-ly，你打成 gererally"}, {w:"attention",zh:"atten-tion，你打成 attenion（漏 t）"}, {w:"逗號",zh:"gas, and one argument／every day, then——模板兩個逗號都漏"},
+      {seg:"開頭"}, {w:"the effects of climate change are",zh:"主詞 effects 複數 → are"}, {w:"the causes are the best topic",zh:"同上"},
+      {seg:"成因鏈"}, {w:"too much greenhouse gas",zh:"不加 the"}, {w:"most of this gas comes from cars and factories",zh:"不用 product／produce"}, {w:"put more and more greenhouse gas into the air",zh:"gas 不能漏；the air"}, {w:"more and more extreme weather",zh:"wea-ther"}, {w:"governments all over the world",zh:"不加 the"},
+      {seg:"為何要研究"}, {w:"harms both the environment and people",zh:"the environment；peo-ple"}, {w:"saw his firm washed away by a big flood last year",zh:"away 不是 out；a 不是 the"}, {w:"see how serious climate change is",zh:"how + 形容詞"},
+      {seg:"結尾"}, {w:"studying the causes is important",zh:"動詞當主詞 -ing"}, {w:"governments invest more money in this research",zh:"all governments 不加 the；money 不是 budget；crucial that + 原形"},
+    ]},
 ];
 
 // ---------- state ----------
@@ -1457,6 +1488,14 @@ const ITEMS = [
     tags:["mech","word","gram"],
     model:`As James now spends more time with his family, he is able to stay <b>healthy</b> in body and <b>mind</b>. In other words, a good balance makes him more efficient and <b>boosts</b> productivity at work.`,
     fixes:[`hea<b>l</b>thy 今天第二次漏 l`, `固定片語 in body and <b>mind</b>（mental 是形容詞）`, `makes … and <b>boosts</b>：and 後面第二個動詞也要 +s（頭號罩門）`] },
+  { src:"#26", orig:`If people drive cars every day then more <s>greenhouse</s> would come into <s>air</s>, in turn leading to more extreme <s>wheather</s>.`,
+    tags:["gram","mech"],
+    model:`If people drive cars every day, then more <b>greenhouse gas</b> would go into <b>the air</b>, in turn leading to more extreme <b>weather</b>.`,
+    fixes:[`greenhouse 是「溫室」，要說溫室氣體一定帶 <b>gas</b>`, `空氣只有一個：<b>the</b> air`, `wea-<b>ther</b>，w 後面沒有 h`, `then 前面補逗號（模板）`] },
+  { src:"#26", orig:`As James saw his company <s>washed out</s> by <s>the</s> heavy flood, he is able to see <s>the how the</s> extreme <s>wheather is</s>.`,
+    tags:["word","gram","stru"],
+    model:`As James saw his company <b>washed away</b> by <b>a</b> heavy flood, he is able to see <b>how serious</b> climate change <b>is</b>.`,
+    fixes:[`沖走是 washed <b>away</b>`, `第一次提到的水災用 <b>a</b>`, `how 前面不加 the，後面要接形容詞：how <b>serious</b> … is`] },
 ];
 
 const TAGNAME = { mech:"拼字", gram:"文法", word:"用字", stru:"句構" };

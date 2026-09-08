@@ -649,7 +649,27 @@ const DATA = [
  jv:'works', jn:'firm', does:'saw his firm washed away by a big flood last year',
  result:'see how serious climate change is',
  impl:'finding the causes is the only way to stop these problems',
- final:'the causes are the most important aspect to study', rec:'governments study the causes and <i class="a1">protect every family</i>'}},
+ final:'the causes are the most important aspect to study', rec:'governments study the causes and <i class="a1">protect every family</i>'},
+ mistakes:{
+  spell:[
+   {x:'wheather（×2）', o:'weather', nt:'wea-ther，w 後沒有 h'},
+   {x:'peopele', o:'people', nt:'黑名單老字第四種錯法'},
+  ],
+  grammar:[
+   {x:'the effects of climate change is', o:'the effects of climate change are', nt:'主詞 effects 複數；找主詞跳過 of 後面'},
+   {x:'the causes of climate change is', o:'the causes of climate change are', nt:'同上'},
+   {x:'caused by the greenhouse gas', o:'caused by too much greenhouse gas', nt:'泛指不加 the'},
+   {x:'are the main causes to product greenhouse gas', o:'produce most greenhouse gas', nt:'product 名詞／produce 動詞；結構不通'},
+   {x:'more greenhouse would come into air', o:'more greenhouse gas would go into the air', nt:'漏 gas；the air'},
+   {x:'the governments all over the world', o:'governments all over the world', nt:'泛指不加 the'},
+   {x:'harms people and environment', o:'harms both the environment and people', nt:'the environment 固定加 the'},
+   {x:'washed out by the heavy flood', o:'washed away by a heavy flood', nt:'沖走是 away；第一次提到用 a'},
+   {x:'see the how the extreme weather is', o:'see how serious climate change is', nt:'how 前不加 the，後接形容詞'},
+   {x:'study the causes … is important', o:'studying the causes … is important', nt:'動詞當主詞 -ing；0907 keep→keeping 同型'},
+   {x:'all the governments start invest more research budget', o:'governments invest more money in this research', nt:'all the→all；start 後 -ing 或直接 invest；budget→money（0907 同錯）'},
+  ],
+  note:'2026-09-08 首戰 16 錯＋模板拼字 2（gererally／attenion 練默寫卡）。根因：the 多加少加共 5 處；主詞複數配 is 兩次；動詞當主詞沒 -ing 再犯。would、washed by flood 的例子都有用上。'
+ }},
 
 {n:'②-6', o:17, t:'法律對人類行為的影響', en:'Some people think human behaviors can be limited by laws, others think laws have little effect. What is your opinion?',
  stance:'法律能有效約束行為', p2c:2, p2zh:'讓步：罰則太輕時效果有限', p3c:2, p3zh:'主論：法律威懾 → 社會安全 → 安心生活',

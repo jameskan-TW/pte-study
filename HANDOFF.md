@@ -96,7 +96,7 @@
 | ③-3 圖書館（原#3；2026-08-25 舊②學業卡刪除後主論 chip 改標視野線；2026-08-26 重編號後題號 ⑤-3→③-3） | ✔ | ✔ P2+P3 |
 | ②-2 醫療長壽（原#8；08/06 首戰 21 錯、09/07 重寫 16 錯） | ✔ | ✔ P2 家庭版 + P3/P4 James 版（2026-09-07） |
 | ②-3 平衡工作（原#11；09/07 首戰 15 錯） | ✔ | ✔ 全篇 James 修正版（2026-09-07；範文版曾短暫上線同日換掉） |
-| ②-5 氣候面向（原#16；2026-09-08 James 決定「特別記這篇」：照機經範文段落，P2 成因鏈、P3 後果，無讓步） | — | ✔ 範文簡化版 |
+| ②-5 氣候面向（原#16；2026-09-08 James 決定「特別記這篇」：照機經範文段落，P2 成因鏈、P3 後果，無讓步；同日首戰 16 錯） | ✔ | ✔ 範文簡化版（老師 0908 改過） |
 | ②-8 氣候誰負責（原#25；2026-09-08 與 #16 共用一套環境字：greenhouse gas／cars and factories／hotter summers and more floods／make laws／protect every family） | — | ✔ 共用字版 |
 
 > 2026-09-08 老師看過 WE_訂正定稿 第 6–11 篇（Word 檔 WE_給老師_20260908.docx），改了 5 處已全部同步：②-2 小結補 would；②-3 小結改 put money first and ignore their family；②-4 resB 改 better future prospects；#16/#25 If-then 改 would、James 例子改具體公司事件（firm washed away／factory cut greenhouse gas after a new law）。
