@@ -208,8 +208,12 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
         <td style="padding:5px 10px;border-bottom:1px solid #eee">唯一不收家人，收「公司長期穩定經營」</td>
       </tr>
       <tr>
-        <td style="padding:5px 10px;border-bottom:1px solid #eee">自選題（#16 氣候面向／#26 科技發明）</td>
+        <td style="padding:5px 10px;border-bottom:1px solid #eee">自選題（#26 科技發明）</td>
         <td style="padding:5px 10px;border-bottom:1px solid #eee">自己出兩個選項：<b>一個給家人（主論）、一個給錢（讓步）</b></td>
+      </tr>
+      <tr>
+        <td style="padding:5px 10px;border-bottom:1px solid #eee">照範文題（#16 氣候面向）</td>
+        <td style="padding:5px 10px;border-bottom:1px solid #eee"><b>特例，沒有讓步</b>：P2 講「我選成因、成因鏈是什麼」、P3 講「後果多嚴重 → 所以要研究成因」，模板句照用</td>
       </tr>
       <tr>
         <td style="padding:5px 10px;border-bottom:1px solid #eee">問題類自選（#10 政府最緊迫問題）</td>
@@ -635,17 +639,17 @@ const DATA = [
  final:'working too much harms families', rec:'people stop working overtime and spend more time with their family'}},
 
 {n:'②-5', o:16, t:'你會選擇學習氣候變化哪些方面？（Report）', en:'You need to study climate change, which aspect of climate change will you choose and why? Use examples.',
- stance:'選擇：氣溫上升', p2c:4, p2zh:'讓步：研究再生能源有錢景', p3c:2, p3zh:'主論：天氣熱 → 煩躁發脾氣 → 家庭不和諧',
- es:{topic:'which aspect of climate change to study',
- va:'clean energy is the best topic to study', vb:'rising temperatures are the most important topic',
- con:'studying clean energy sounds attractive', conR:'it is a fast-growing industry',
- cond:'researchers enter this field', subj:'they', resA:'find <i class="a4">a good job and a steady income</i>', resB:'a bright career',
- concl:'many students choose clean energy',
- stance:'I would study rising temperatures', reason:'heat affects everyone’s daily life and mood',
- jv:'works', jn:'firm', does:'lives through hot summers in a crowded city',
- result:'see how heat makes people <i class="a2">feel upset and angry</i>',
- impl:'heat <i class="a2">hurts family relationships</i>, so it needs the most study',
- final:'rising temperatures are my choice', rec:'scientists cool our cities and protect every family'}},
+ stance:'選擇：氣候成因（照範文段落，無讓步）', p2c:2, p2zh:'成因鏈：溫室氣體 → 開車排碳 → 傷害社會 → 政府行動', p3c:2, p3zh:'為何重要：暖化惡化 → 海平面／極端天氣 → 找成因才能擋住',
+ es:{topic:'climate change',
+ va:'the effects of climate change are the best topic to study', vb:'the causes of climate change are the best topic to study',
+ con:'global warming is caused by too much greenhouse gas', conR:'most of this gas comes from cars and factories',
+ cond:'people drive private cars every day', subj:'they', resA:'send a lot of carbon dioxide into the air', resB:'<i class="a2">tangible and intangible harm</i> to the whole society',
+ concl:'governments all over the world take action on this problem',
+ stance:'finding the causes of climate change is very important', reason:'climate change <i class="a2">harms both the environment and people</i>',
+ jv:'works', jn:'firm', does:'has seen hotter summers and more floods in recent years',
+ result:'see that climate change is getting worse and worse',
+ impl:'finding the causes is the only way to stop these problems from getting worse',
+ final:'the causes of climate change are the most important aspect to study', rec:'governments study the causes of climate change and <i class="a1">protect every family</i>'}},
 
 {n:'②-6', o:17, t:'法律對人類行為的影響', en:'Some people think human behaviors can be limited by laws, others think laws have little effect. What is your opinion?',
  stance:'法律能有效約束行為', p2c:2, p2zh:'讓步：罰則太輕時效果有限', p3c:2, p3zh:'主論：法律威懾 → 社會安全 → 安心生活',
@@ -1117,10 +1121,10 @@ const ZH = {
  p3:'過勞造成嚴重問題——有人事業成功 (succeed in their careers) 卻失去家庭關係 (lose their family relationships)。例：James 不再加班、多陪家人 (stops working overtime, spends more time with his family) → 身心健康 (healthy in body and mind)、家人親密幸福。含義：錢買不到幸福家庭 (money cannot buy a happy family)，平衡還讓他更有效率 (more efficient, boosts productivity)',
  p4:'過勞傷害家庭 (harms families)；建議：大家別再加班、多陪家人 (stop working overtime)'},
 '②-5':{
- p1:'反方：潔淨能源 (clean energy) 最值得研究；我方：氣溫上升 (rising temperatures) 最重要',
- p2:'研究潔淨能源很誘人 (attractive)——是快速成長的產業 (fast-growing industry)。若研究者投入 → 好工作穩定收入 (a steady income) → 光明前途 (a bright career)。小結：很多學生選潔淨能源',
- p3:'我會研究氣溫上升——高溫影響每個人的生活與情緒 (daily life and mood)。例：James 在擁擠城市度過炎夏 (hot summers) → 看到高溫讓人煩躁憤怒 (upset and angry)。含義：高溫傷害家庭關係 (hurts family relationships)，最需要研究',
- p4:'我選氣溫上升；建議：科學家讓城市降溫 (cool our cities)、保護每個家庭'},
+ p1:'反方：研究氣候的影響 (the effects) 最好；我方：研究成因 (the causes) 最好',
+ p2:'成因是什麼——暖化是溫室氣體太多造成 (caused by too much greenhouse gas)，大多來自汽車和工廠 (cars and factories)。若人們每天開私家車 (drive private cars every day) → 排大量二氧化碳到空氣中 (send carbon dioxide into the air) → 對整個社會有形無形的傷害 (tangible and intangible harm)。小結：世界各國政府都在採取行動 (take action)',
+ p3:'為什麼要研究成因——氣候變遷同時傷害環境和人 (harms both the environment and people)。例：James 近年看到夏天更熱、水災更多 (hotter summers, more floods) → 看出氣候變遷越來越糟 (getting worse and worse)。含義：找出成因是阻止問題惡化的唯一方法 (the only way to stop these problems)',
+ p4:'成因是最重要的面向 (the most important aspect)；建議：政府研究成因、保護每個家庭 (protect every family)'},
 '②-6':{
  p1:'反方：法律對行為影響很小 (little effect)；我方：法律真能改變行為 (really change)',
  p2:'法律有時沒效 (do not work well)——處罰太弱 (punishment is weak) 就有人違規。若處罰太輕 (too light) → 人們無視規則 (ignore the rules) → 一再違規與社會問題 (social problems)。小結：光靠法律不能解決一切',
