@@ -101,6 +101,8 @@
 
 > 2026-09-08 老師看過 WE_訂正定稿 第 6–11 篇（Word 檔 WE_給老師_20260908.docx），改了 5 處已全部同步：②-2 小結補 would；②-3 小結改 put money first and ignore their family；②-4 resB 改 better future prospects；#16/#25 If-then 改 would、James 例子改具體公司事件（firm washed away／factory cut greenhouse gas after a new law）。
 
+> 2026-09-10 老師看過 ③ 視野線三篇範文（Word 檔 WE_給老師_20260910.docx，只放三篇英文全文）。這三題**尚未實戰練習**，是先送範文審閱。改了 4 處已同步：③-1 resB 改 less pressure from money（James 提的，避開 less worry／fewer worries 之爭）、concl 改 never studied abroad、impl 加 and strong confidence（主詞變複數，helps→**help**）；③-2 resB 改 great efficiency and lower costs、impl 改 real talks build。③-3（#37）老師表示不用動。
+
 前四篇都是主論①（圖書館現歸③視野組）。**下一步建議**：換主論②/③/④ 的題目練，讓四條鏈都熟。或 James 想針對拼字罩門做默寫訓練。
 
 ## 7. 已教過的兩個策略工具
