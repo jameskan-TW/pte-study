@@ -479,7 +479,7 @@ const DATA = [
 
 {n:'①-3', o:26, t:'一項科技發明帶來的好處或壞處（Report）', en:'Recently, in our technological world, the number of new inventions has been evolving on a daily basis. Please describe a new invention and explain the impact, either beneficial or detrimental, that you feel it has had on society.',
  stance:'選擇：智慧型手機，好處為主', p2c:4, p2zh:'讓步：成癮 → 上課不專注 → 成績差', p3c:1, p3zh:'主論：省時聯絡方便 → 陪家人 → 更親近',
- es:{topic:'the smartphone as a new invention',
+ es:{topic:'the impact of the smartphone',
  va:'the smartphone does more harm than good', vb:'it is a very useful invention',
  con:'smartphones have some problems', conR:'many young people get addicted to the internet',
  cond:'a student keeps surfing the internet on his phone', subj:'he', resA:'easily <i class="a4">lose focus in class</i>', resB:'<i class="a4">poor academic performance</i>',
@@ -681,7 +681,7 @@ const DATA = [
  stance:'laws can really limit human behaviors', reason:'the fear of punishment keeps society safe',
  jv:'works', jn:'firm', does:'lives in a city with strict traffic laws',
  result:'travel safely every day and <i class="a2">enjoy peace of mind</i>',
- impl:'laws keep society safe, so every family can live with <i class="a2">peace of mind</i>',
+ impl:'laws keep every family safe',
  final:'laws play a big role in guiding human behaviors', rec:'governments use laws fairly and equally'}},
 
 {n:'②-7', o:21, t:'大眾媒體帶來信息革命的影響', en:'“The information revolution by modern mass media has both positive and negative consequences for individuals and for society.” To what extent do you agree?',
@@ -694,7 +694,7 @@ const DATA = [
  stance:'the bad points are greater', reason:'too much information and fake news <i class="a2">lead to stress and anxiety</i>',
  jv:'works', jn:'firm', does:'turns off his phone in the evening',
  result:'<i class="a2">feel relaxed and enjoy peace of mind</i>',
- impl:'endless updates make people <i class="a2">lose their temper</i> and <i class="a2">hurt family relationships</i>',
+ impl:'turning off the noise keeps his family in harmony',
  final:'it brings more harm than good', rec:'people learn to judge news and limit screen time'}},
 
 {n:'②-8', o:25, t:'氣候變化誰應負責？（Report）', en:'In terms of climate change, who should be responsible, individuals, organizations or governments?',
@@ -730,7 +730,7 @@ const DATA = [
  con:'cities offer many job chances', conR:'big companies gather there and pay well',
  cond:'young people work in big cities', subj:'they', resA:'find <i class="a4">a good job and a steady income</i>', resB:'faster career growth',
  concl:'many young people move to cities',
- stance:'I prefer living in the countryside', reason:'life there is calm with far less pressure',
+ stance:'country life is the better choice', reason:'life there is calm with far less pressure',
  jv:'works', jn:'firm', does:'works online from his quiet country home',
  result:'<i class="a2">feel relaxed</i> and <i class="a1">spend more quality time with his family</i>',
  impl:'country life brings <i class="a2">peace of mind</i> and family harmony',
@@ -771,8 +771,8 @@ const DATA = [
  concl:'life is easier in some ways',
  stance:'growing up today is harder', reason:'social media and competition <i class="a2">lead to stress and anxiety</i> early',
  jv:'studies', jn:'university', does:'limits his social media use',
- result:'reduce stress, yet still feels the pressure',
- impl:'constant pressure even <i class="a2">hurts family relationships</i>',
+ result:'<i class="a2">feel relaxed</i> and <i class="a1">spend more quality time with his family</i>',
+ impl:'children today have to fight the pressure just to keep a happy family life',
  final:'children today face bigger problems', rec:'families and schools teach children to handle pressure'}},
 
 {n:'③-1', o:15, t:'海外學習 vs 本地學習', en:'It is often argued that studying overseas is overrated. There are many scholars who study locally. Is travel a necessary component of quality education?',
@@ -845,7 +845,7 @@ const DATA = [
  es:{topic:'the role of the library',
  va:'online digital media has made libraries out of date', vb:'libraries still play a role that cannot be replaced',
  con:'digital materials are very convenient for students', conR:'they can be used on any digital device',
- cond:'students need to find the resources they need', subj:'they', resA:'easily search the library database on their devices', resB:'<i class="a1">finishing tasks in a short time</i>',
+ cond:'students need to find the resources they need', subj:'they', resA:'easily search online databases', resB:'<i class="a1">finishing tasks in a short time</i>',
  concl:'students are more willing to use digital materials',
  stance:'studying with textbooks in the library still plays an important role', reason:'a quiet library is the best place for <i class="a3">deep learning</i>',
  jv:'studies', jn:'university', does:'always studies with printed textbooks in the quiet library',
@@ -1058,7 +1058,7 @@ const DATA = [
  jv:'works', jn:'firm', does:'works full weeks to support his family',
  result:'earn <i class="a4">a steady income</i> for his family',
  impl:'cutting hours cuts pay and shakes <i class="a4">a stable home</i>',
- final:'its bad points are greater than the benefits', rec:'governments create new jobs instead'}}
+ final:'its bad points are greater than the benefits', rec:'governments create new jobs for both young people and the whole workforce'}}
 ];
 
 function badge(c){ const [cls,txt]=CAT[c]; return `<span class="bg ${cls}">${txt}</span>`; }
@@ -1212,7 +1212,7 @@ const ZH = {
  p4:'讀書優先 (study should come first)；建議：先完成學業再工作 (finish studies before taking a job)'},
 '④-3':{
  p1:'反方：數位媒體讓圖書館過時 (out of date)；我方：圖書館的角色無可取代 (cannot be replaced)',
- p2:'數位資料對學生很方便 (convenient)——任何裝置 (any digital device) 都能用。若要找資料 → 在裝置上輕鬆搜尋圖書館資料庫 (search the library database) → 短時間完成任務 (in a short time)。小結：學生更願意用數位資料',
+ p2:'數位資料對學生很方便 (convenient)——任何裝置 (any digital device) 都能用。若要找資料 → 輕鬆搜尋線上資料庫 (search online databases) → 短時間完成任務 (in a short time)。小結：學生更願意用數位資料',
  p3:'在圖書館讀紙本教科書 (printed textbooks) 仍重要——安靜的圖書館 (a quiet library) 最適合深度學習 (deep learning)。例：James（大學生版）總是在安靜圖書館讀紙本書 → 靠自己吸收知識 (learn by himself)，不是快速滑過數位頁面。含義：建立自己的理解 (own understanding)、培養批判思考 (critical thinking) → 好成績 → 溫暖穩定的家 (a warm and stable home)',
  p4:'圖書館仍然很有用；建議：大學持續投資 (keep spending) 圖書館與教科書'},
 '④-4':{
