@@ -103,6 +103,8 @@
 
 > 2026-09-10 老師看過 ③ 視野線三篇範文（Word 檔 WE_給老師_20260910.docx，只放三篇英文全文）。這三題**尚未實戰練習**，是先送範文審閱。改了 4 處已同步：③-1 resB 改 less pressure from money（James 提的，避開 less worry／fewer worries 之爭）、concl 改 never studied abroad、impl 加 and strong confidence（主詞變複數，helps→**help**）；③-2 resB 改 great efficiency and lower costs、impl 改 real talks build。③-3（#37）老師表示不用動。
 
+> 2026-09-11 **模板風險盤點**（37 題逐篇看 slot 跟題目合不合）。已做：5 處文法小修（#36 topic／#26 va／#1 resA／#27 impl／#6 resB）；#10 失業題改照 #16 走法（P1 反方「失業太難解」、P2 問題嚴重性、P3 職訓解方＋James 朋友例）；#29 年齡限制從「開車 18」改「結婚 25」全套字共用 #14。**待處理**（下個 session 接續，順序照風險）：🔴 #35 James 句 `able to reduce stress, yet still feels the pressure` 自打臉→改正面收家人；🟡 #26 topic `the smartphone as a new invention has become a matter of concern` 改 `the impact of the smartphone`；#31 P4 rec 補 `for both young people and the whole workforce`（題目有問）；🟢 一個 slot 就好：#30 stance `I firmly believe that I prefer`→`country life is the better choice`、#17 impl 跟 James 句重複 peace of mind→`laws keep every family safe`、#3 讓步例子 `search the library database`→`search online databases`、#21 impl 沒承接 James 關手機→`turning off the noise keeps his family in harmony`。#12／#4 是描述題硬套辯論框，內容有答到，James 未要求改。
+
 前四篇都是主論①（圖書館現歸③視野組）。**下一步建議**：換主論②/③/④ 的題目練，讓四條鏈都熟。或 James 想針對拼字罩門做默寫訓練。
 
 ## 7. 已教過的兩個策略工具
