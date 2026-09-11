@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SWT 打字練習</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+body{font-family:'Noto Sans TC','Microsoft JhengHei',sans-serif;background:#f4f6f9;color:#333;line-height:1.7}
+header{background:#1a3a5c;color:#fff;padding:14px 20px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+header h1{font-size:1.2rem}
+header p{font-size:.78rem;opacity:.8;margin-top:2px}
+header a{color:#fcd34d}
+.bar{margin-top:8px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.bar select{padding:5px 8px;border:none;border-radius:4px;font-size:.85rem;max-width:300px}
+.bar button{padding:5px 11px;border:none;border-radius:4px;font-size:.82rem;cursor:pointer;background:rgba(255,255,255,.18);color:#fff}
+.bar button.on{background:#f59e0b;color:#1a3a5c;font-weight:700}
+#prog{font-size:.78rem;opacity:.85;margin-left:auto}
+.container{max-width:820px;margin:0 auto;padding:16px 12px 60px}
+.tip{background:#fffbeb;border-left:4px solid #f59e0b;border-radius:0 6px 6px 0;padding:10px 14px;margin-bottom:16px;font-size:.85rem;color:#92400e}
+.card{background:#fff;border-radius:8px;margin-bottom:14px;box-shadow:0 1px 4px rgba(0,0,0,.08);overflow:hidden}
+.q-hdr{background:#1a3a5c;color:#fff;padding:10px 16px;display:flex;align-items:baseline;gap:10px}
+.q-num{font-size:.78rem;opacity:.65}
+.q-title{font-size:.98rem;font-weight:700}
+.q-code{font-size:.74rem;opacity:.55}
+.timer{margin-left:auto;font-family:Consolas,monospace;font-size:.95rem;background:rgba(255,255,255,.18);padding:1px 10px;border-radius:10px}
+.timer.warn{background:#f59e0b;color:#1a3a5c;font-weight:700}
+.timer.over{background:#dc2626;color:#fff;font-weight:700}
+.pad{padding:14px 16px}
+.passage{font-family:Georgia,serif;font-size:.95rem;color:#374151;line-height:1.85}
+.passage mark{background:#fef08a;color:#1f2937;padding:1px 0}
+.passage mark s{color:#9ca3af}
+.recite{font-size:.9rem;color:#6b7280}
+.lab{font-size:.72rem;font-weight:700;margin:14px 0 4px;letter-spacing:.03em;color:#1a3a5c}
+.lab:first-child{margin-top:0}
+textarea{width:100%;min-height:150px;font-family:Georgia,serif;font-size:1.05rem;line-height:1.8;padding:10px 12px;border:2px solid #cbd5e1;border-radius:6px;resize:vertical;color:#1f2937}
+textarea:focus{outline:none;border-color:#1a3a5c}
+.meta{display:flex;gap:10px;align-items:center;margin-top:8px;font-size:.82rem;flex-wrap:wrap}
+.meta .sp{flex:1}
+.meta button{padding:6px 14px;border:1px solid #cbd5e1;border-radius:5px;background:#fff;cursor:pointer;font-size:.85rem}
+.meta button.primary{background:#1a3a5c;color:#fff;border-color:#1a3a5c;font-weight:700}
+.wc{font-weight:700;padding:1px 8px;border-radius:10px;background:#f1f5f9}
+.wc.good{background:#dcfce7;color:#166534}
+.wc.ok{background:#fef3c7;color:#92400e}
+.wc.bad{background:#fee2e2;color:#991b1b}
+.score{font-size:1.05rem;font-weight:700;color:#1a3a5c}
+.score .big{font-size:1.5rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{font-size:.78rem;padding:2px 9px;border-radius:10px;background:#f1f5f9;color:#374151}
+.chip.g{background:#dcfce7;color:#166534}
+.chip.r{background:#fee2e2;color:#991b1b}
+.chip.y{background:#fef3c7;color:#92400e}
+.mine,.ans{font-family:Georgia,serif;font-size:1.02rem;color:#1f2937;line-height:2;padding:8px 12px;border-radius:6px}
+.mine{border:1px solid #e5e7eb}
+.ans{background:#f8fafc}
+.mine .ty{background:#fee2e2;color:#991b1b;border-radius:3px;padding:0 2px;cursor:help}
+.mine .ex{color:#c2410c;text-decoration:line-through;text-decoration-thickness:2px}
+.ans .cj{color:#c0392b;font-weight:700}
+.ans .sw{color:#16a34a;font-weight:700}
+.ans .og{color:#9ca3af;font-size:.82em;font-weight:400}
+.ans .miss{text-decoration:underline wavy #dc2626;text-underline-offset:4px;background:#fef2f2}
+.ans .tyA{text-decoration:underline #f59e0b 3px;text-underline-offset:4px}
+.zh{font-size:.9rem;color:#374151;line-height:1.8;padding:6px 12px;margin-top:6px;border-left:3px solid #cbd5e1}
+.foot{margin-top:12px;padding-top:9px;border-top:1px dashed #e5e7eb;font-size:.8rem;color:#6b7280}
+.foot b{color:#374151}
+.drill{margin-top:14px;padding:10px 12px;background:#fff7ed;border-radius:6px}
+.drill .row{display:flex;align-items:center;gap:8px;margin:5px 0;font-family:Georgia,serif;flex-wrap:wrap}
+.drill s{color:#9ca3af}
+.drill b{color:#1a3a5c}
+.drill input{font-family:Georgia,serif;font-size:1rem;padding:3px 8px;border:2px solid #fdba74;border-radius:4px;width:190px}
+.drill input.done{border-color:#16a34a;background:#dcfce7}
+.legend{font-size:.76rem;color:#6b7280;margin-top:4px}
+</style></head>
+<body>
+<header>
+  <h1>✍️ SWT 打字練習（179 題）</h1>
+  <p>讀原文 → 打一句摘要 → 對答案，逐字比對 <a href="SWT_擬答.html" target="_blank">SWT 擬答</a>（換字、原字都算對）· 真實考試 10 分鐘、沒有拼字檢查</p>
+  <div class="bar">
+    <button id="prev" title="上一題">◀</button>
+    <select id="pick"></select>
+    <button id="next" title="下一題">▶</button>
+    <button id="rand">🎲 隨機未做</button>
+    <button id="togHint" title="原文標出擬答挑的句子">💡 提示黃底</button>
+    <button id="togRecite" title="隱藏原文，憑記憶默寫擬答">🙈 默寫模式</button>
+    <span id="prog"></span>
+  </div>
+</header>
+<div class="container">
+  <div id="loading" class="tip">載入題庫中…</div>
+  <div id="app" hidden>
+    <div class="card">
+      <div class="q-hdr"><span class="q-num" id="qNum"></span><span class="q-title" id="qTitle"></span><span class="q-code" id="qCode"></span><span class="timer" id="timer">10:00</span></div>
+      <div class="pad">
+        <div class="passage" id="passage"></div>
+        <div class="recite" id="recite" hidden>🙈 默寫模式：原文已隱藏，憑記憶把擬答打出來。</div>
+      </div>
+    </div>
+    <div class="card"><div class="pad">
+      <div class="lab">【你的摘要】一句話 · 目標 50–60 字 · Ctrl+Enter 對答案</div>
+      <textarea id="input" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="在這裡打… 開始打字就會計時"></textarea>
+      <div class="meta">
+        <span class="wc" id="wc">0 字</span><span id="cjc"></span>
+        <span class="sp"></span>
+        <button id="clear">重打</button>
+        <button id="check" class="primary">對答案</button>
+      </div>
+    </div></div>
+    <div class="card" id="result" hidden><div class="pad" id="resBody"></div></div>
+  </div>
+</div>
+<script>
+// 題庫直接從 SWT_擬答.html 讀 DATA（單一來源：改擬答那頁，這頁自動跟上）
+let DATA = [], cur = 0, timer = null, t0 = 0;
+const $ = id => document.getElementById(id);
+const REC_KEY = 'swt_prac_v1', OPT_KEY = 'swt_prac_opt';
+function load(k, d){ try{ return JSON.parse(localStorage.getItem(k)) || d; }catch(e){ return d; } }
+function save(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+let REC = load(REC_KEY, {}), OPT = load(OPT_KEY, {hint:false, recite:false});
+
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function plain(a){ return a.replace(/\[([^|\]]+)\|[^\]]+\]/g,'$1').replace(/\{(and|but)\}/g,'$1'); }
+function wcOf(s){ s = s.trim(); return s ? s.split(/\s+/).length : 0; }
+function renderSrc(s){ return esc(s).replace(/~~(.+?)~~/g,'<s>$1</s>'); }
+function renderFull(d, hint){
+  let f = esc(d.full);
+  if(hint) d.src.forEach(x => { f = f.replace(esc(x.replace(/~~/g,'')), '<mark>'+renderSrc(x)+'</mark>'); });
+  return f;
+}
+
+// ---------- 比對 ----------
+function norm(w){
+  w = w.toLowerCase().replace(/[’‘`]/g,"'");
+  if(w === '&') return 'and';
+  return w.replace(/[^a-z0-9'&\-]/g,'').replace(/^['\-]+|['\-]+$/g,'');
+}
+function bare(w){ return w.replace(/^[^A-Za-z0-9]+|[^A-Za-z0-9]+$/g,''); }
+function lev(a, b){
+  const d = Array.from({length:a.length+1}, (_, i) => [i]);
+  for(let j=1;j<=b.length;j++) d[0][j] = j;
+  for(let i=1;i<=a.length;i++) for(let j=1;j<=b.length;j++)
+    d[i][j] = Math.min(d[i-1][j]+1, d[i][j-1]+1, d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));
+  return d[a.length][b.length];
+}
+function nearMiss(u, c){
+  if(!u || u === c) return false;
+  const thr = c.length <= 4 ? 1 : c.length <= 7 ? 2 : 3, x = lev(u, c);
+  return x <= thr && x < c.length;
+}
+// 擬答標記 → 片段（保留標點與空白，顯示用）
+function parseAns(a){
+  const re = /\[([^|\]]+)\|([^\]]+)\]|\{(and|but)\}|([^\s\[{]+)/g, out = [];
+  let m;
+  while((m = re.exec(a))){
+    const sp = m.index > 0 && /\s/.test(a[m.index-1]);
+    if(m[1] !== undefined) out.push({t:'sw', sw:m[1], og:m[2], sp});
+    else if(m[3]) out.push({t:'cj', w:m[3], sp});
+    else out.push({t:'w', w:m[4], sp});
+  }
+  return out;
+}
+function compare(text, d){
+  const U = text.trim().split(/\s+/).filter(Boolean).map(raw => ({raw, w:norm(raw)}));
+  const Uc = U.filter(u => u.w);
+  const ustr = ' ' + Uc.map(u => u.w).join(' ') + ' ';
+  const P = parseAns(d.ans), A = [];
+  P.forEach((p, pi) => {
+    if(p.t === 'sw'){
+      const s = p.sw.split(/\s+/), o = p.og.split(/\s+/);
+      if(s.length === 1 && o.length === 1){   // 單字換字：兩個都算對
+        A.push({pi, w:norm(s[0]), alt:[norm(s[0]), norm(o[0])], altRaw:[bare(s[0]), bare(o[0])]});
+      } else {                                // 片語換字：看使用者用哪一組
+        const has = arr => ustr.includes(' ' + arr.map(norm).join(' ') + ' ');
+        const use = has(o) && (!has(s) || o.length > s.length) ? o : s;
+        use.forEach(x => A.push({pi, w:norm(x), raw:bare(x)}));
+      }
+    } else {
+      const w = norm(p.w);
+      if(w) A.push({pi, w, raw:bare(p.w)});
+    }
+  });
+  const eq = (u, a) => a.alt ? a.alt.includes(u.w) : a.w === u.w;
+  const n = Uc.length, m = A.length;
+  const L = Array.from({length:n+1}, () => new Int16Array(m+1));
+  for(let i=n-1;i>=0;i--) for(let j=m-1;j>=0;j--)
+    L[i][j] = eq(Uc[i], A[j]) ? L[i+1][j+1]+1 : Math.max(L[i+1][j], L[i][j+1]);
+  let i = 0, j = 0, ins = [], del = [], matched = 0;
+  const typos = [];
+  const flush = () => {
+    let start = 0;
+    ins.forEach(ui => {
+      const u = Uc[ui];
+      for(let k=start;k<del.length;k++){
+        const a = A[del[k]], cands = a.alt || [a.w];
+        const ci = cands.findIndex(c => nearMiss(u.w, c));
+        if(ci >= 0){
+          const right = a.alt ? a.altRaw[ci] : a.raw;
+          u.typo = right; a.typo = true; typos.push({wrong:bare(u.raw), right});
+          start = k+1; return;
+        }
+      }
+      u.extra = true;
+    });
+    del.forEach(k => { if(!A[k].typo) A[k].miss = true; });
+    ins = []; del = [];
+  };
+  while(i < n && j < m){
+    if(eq(Uc[i], A[j])){ flush(); matched++; i++; j++; }
+    else if(L[i+1][j] >= L[i][j+1]) ins.push(i++);
+    else del.push(j++);
+  }
+  while(i < n) ins.push(i++);
+  while(j < m) del.push(j++);
+  flush();
+  P.forEach((p, pi) => {
+    const toks = A.filter(a => a.pi === pi);
+    p.miss = toks.some(a => a.miss); p.typo = toks.some(a => a.typo);
+  });
+  return {U, P, A, matched, total:A.length, typos,
+          extra:Uc.filter(u => u.extra).map(u => bare(u.raw)),
+          miss:A.filter(a => a.miss).map(a => a.alt ? a.altRaw[0] : a.raw)};
+}
+
+// ---------- 畫面 ----------
+function renderMine(U){
+  return U.map(u => {
+    if(u.typo) return `<span class="ty" title="應為 ${esc(u.typo)}">${esc(u.raw)}</span>`;
+    if(u.extra) return `<span class="ex">${esc(u.raw)}</span>`;
+    return esc(u.raw);
+  }).join(' ');
+}
+function renderAnsDiff(P){
+  return P.map(p => {
+    const cls = p.miss ? ' miss' : p.typo ? ' tyA' : '';
+    let h;
+    if(p.t === 'sw') h = `<span class="${cls.trim()}"><span class="sw">${esc(p.sw)}</span><span class="og">(${esc(p.og)})</span></span>`;
+    else if(p.t === 'cj') h = `<span class="cj${cls}">${esc(p.w)}</span>`;
+    else h = cls ? `<span class="${cls.trim()}">${esc(p.w)}</span>` : esc(p.w);
+    return (p.sp ? ' ' : '') + h;
+  }).join('');
+}
+function fmtTime(s){ s = Math.max(0, Math.round(s)); return Math.floor(s/60) + ':' + String(s%60).padStart(2,'0'); }
+
+function updateCount(){
+  const v = $('input').value, n = wcOf(v);
+  const el = $('wc');
+  el.textContent = n + ' 字';
+  el.className = 'wc' + (n === 0 ? '' : (n >= 50 && n <= 60) ? ' good' : (n >= 5 && n <= 75) ? ' ok' : ' bad');
+  const c = (v.match(/\b(and|but)\b/gi) || []).length;
+  $('cjc').textContent = n ? `and/but × ${c}` : '';
+}
+function tick(){
+  const left = 600 - (Date.now() - t0) / 1000, el = $('timer');
+  el.textContent = left >= 0 ? fmtTime(left) : '超時 ' + fmtTime(-left);
+  el.className = 'timer' + (left < 0 ? ' over' : left < 60 ? ' warn' : '');
+}
+function stopTimer(){ clearInterval(timer); timer = null; }
+function resetTimer(){ stopTimer(); t0 = 0; $('timer').textContent = '10:00'; $('timer').className = 'timer'; }
+
+function fillPick(){
+  const sel = $('pick'), v = sel.value;
+  sel.innerHTML = DATA.map((d, i) => {
+    const r = REC[d.num];
+    return `<option value="${i}">#${d.num} ${r ? '✓' + r.best + '% ' : ''}${esc(d.title)}</option>`;
+  }).join('');
+  sel.value = v || cur;
+  const done = DATA.filter(d => REC[d.num]).length;
+  $('prog').textContent = `已練 ${done} / ${DATA.length}`;
+}
+function renderPassage(){
+  const d = DATA[cur];
+  $('passage').innerHTML = renderFull(d, OPT.hint);
+  $('passage').hidden = OPT.recite;
+  $('recite').hidden = !OPT.recite;
+  $('togHint').classList.toggle('on', OPT.hint);
+  $('togRecite').classList.toggle('on', OPT.recite);
+}
+function show(i){
+  cur = (i + DATA.length) % DATA.length;
+  const d = DATA[cur];
+  $('qNum').textContent = '#' + d.num;
+  $('qTitle').textContent = d.title;
+  $('qCode').textContent = d.code || '';
+  $('pick').value = cur;
+  renderPassage();
+  $('input').value = '';
+  $('result').hidden = true;
+  updateCount(); resetTimer();
+  history.replaceState(null, '', '#' + d.num);
+  save(OPT_KEY, Object.assign(OPT, {last:d.num}));
+  window.scrollTo(0, 0);
+}
+
+function check(){
+  const d = DATA[cur], text = $('input').value;
+  if(!text.trim()){ $('input').focus(); return; }
+  const used = t0 ? (Date.now() - t0) / 1000 : 0;
+  stopTimer();
+  const r = compare(text, d), pct = r.total ? Math.round(r.matched / r.total * 100) : 0;
+  const n = wcOf(text), t = text.trim();
+  const chip = (ok, s, warn) => `<span class="chip ${ok ? 'g' : warn ? 'y' : 'r'}">${ok ? '✅' : '⚠️'} ${s}</span>`;
+  const multi = /[.!?;]\s+[A-Za-z]/.test(t.replace(/\b(e\.g|i\.e|U\.S|Dr|Mr|Mrs|Ms|St|vs)\./g, '$1'));
+  const chips = [
+    chip(n >= 50 && n <= 60, `${n} 字（目標 50–60）`, n >= 5 && n <= 75),
+    chip(!multi, multi ? '好像不只一句（句號／分號後又開新句）' : '一句話'),
+    chip(/^[A-Z0-9"']/.test(t), '開頭大寫', true),
+    chip(/\.["']?$/.test(t), '句點結尾', true),
+    chip(!r.typos.length, `打錯字 ${r.typos.length}`),
+    chip(!r.miss.length, `漏掉 ${r.miss.length}`, true),
+    chip(!r.extra.length, `多出 ${r.extra.length}`, true)
+  ].join('');
+  const drill = r.typos.length ? `<div class="drill"><div class="lab" style="margin-top:0">↻ 錯字再練一遍（打對會變綠）</div>${
+    r.typos.map(x => `<div class="row"><s>${esc(x.wrong)}</s> → <b>${esc(x.right)}</b> <input data-w="${esc(x.right.toLowerCase())}" spellcheck="false" autocomplete="off" autocapitalize="off"></div>`).join('')
+  }</div>` : '';
+  $('resBody').innerHTML = `
+    <div class="score"><span class="big">${pct}%</span>　跟擬答對上 ${r.matched} / ${r.total} 字${used ? '　· 用時 ' + fmtTime(used) : ''}</div>
+    <div class="chips">${chips}</div>
+    <div class="lab">【你打的】</div>
+    <div class="mine">${renderMine(r.U)}</div>
+    <div class="legend"><span style="background:#fee2e2;color:#991b1b;padding:0 3px;border-radius:3px">紅底</span>＝打錯（滑鼠移上去看正確拼法）　<span style="color:#c2410c;text-decoration:line-through">橘刪除線</span>＝擬答沒有的字</div>
+    <div class="lab">【擬答】</div>
+    <div class="ans">${renderAnsDiff(r.P)}</div>
+    <div class="legend"><span style="text-decoration:underline wavy #dc2626">紅波浪</span>＝你漏掉　<span style="text-decoration:underline #f59e0b 3px">橘底線</span>＝你打錯的那個字　<span style="color:#16a34a;font-weight:700">綠</span>＝換過的字（灰括弧原字，兩個都算對）</div>
+    <div class="zh">${d.zh || ''}</div>
+    ${d.note ? '<div class="foot">' + d.note + '</div>' : ''}
+    ${drill}`;
+  $('result').hidden = false;
+  $('resBody').querySelectorAll('.drill input').forEach(inp => inp.addEventListener('input', () => {
+    inp.classList.toggle('done', inp.value.trim().toLowerCase() === inp.dataset.w);
+  }));
+  const prev = REC[d.num] || {best:0, n:0};
+  REC[d.num] = {best:Math.max(prev.best, pct), n:prev.n + 1, last:pct, t:Date.now()};
+  save(REC_KEY, REC);
+  fillPick();
+  $('result').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// ---------- 事件 ----------
+$('input').addEventListener('input', () => {
+  updateCount();
+  if(!t0 && $('input').value.trim()){ t0 = Date.now(); timer = setInterval(tick, 1000); tick(); }
+});
+$('input').addEventListener('keydown', e => { if(e.key === 'Enter' && (e.ctrlKey || e.metaKey)){ e.preventDefault(); check(); } });
+$('check').addEventListener('click', check);
+$('clear').addEventListener('click', () => { $('input').value = ''; $('result').hidden = true; updateCount(); resetTimer(); $('input').focus(); });
+$('prev').addEventListener('click', () => show(cur - 1));
+$('next').addEventListener('click', () => show(cur + 1));
+$('pick').addEventListener('change', e => show(+e.target.value));
+$('rand').addEventListener('click', () => {
+  let pool = DATA.map((d, i) => i).filter(i => !REC[DATA[i].num] && i !== cur);
+  if(!pool.length) pool = DATA.map((d, i) => i).filter(i => i !== cur);
+  show(pool[Math.floor(Math.random() * pool.length)]);
+});
+$('togHint').addEventListener('click', () => { OPT.hint = !OPT.hint; save(OPT_KEY, OPT); renderPassage(); });
+$('togRecite').addEventListener('click', () => { OPT.recite = !OPT.recite; save(OPT_KEY, OPT); renderPassage(); });
+
+fetch('SWT_擬答.html').then(r => { if(!r.ok) throw new Error(r.status); return r.text(); }).then(t => {
+  const i = t.indexOf('const DATA = ['), j = t.indexOf('\n];', i);
+  DATA = new Function('return ' + t.slice(t.indexOf('[', i), j + 2))();
+  $('loading').hidden = true; $('app').hidden = false;
+  fillPick();
+  const h = parseInt(location.hash.slice(1)), want = h || OPT.last;
+  const idx = DATA.findIndex(d => d.num === want);
+  show(idx >= 0 ? idx : 0);
+}).catch(err => {
+  $('loading').innerHTML = '題庫載入失敗（' + esc(err.message) + '）。<br>本機直接雙擊開 HTML 會被瀏覽器擋，請用網站網址開：<b>jameskan-tw.github.io/pte-study/SWT_練習.html</b>';
+});
+</script>
+</body>
+</html>
