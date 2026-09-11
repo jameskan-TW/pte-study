@@ -292,7 +292,8 @@ const BLACKLIST = [
   "neighbors","convenient","protected","world","prestigious","family","among",
   "learning","broader","communication","remotely","period",
   "transportation","quality","metro","healthy","annual","check-up",
-  "lose","succeed","weather","produce"
+  "lose","succeed","weather","produce",
+  "failing","leading","really"
 ];
 
 /* ═══════════ 分頁切換（支援 #review / #rewrite / #check 直達）═══════════ */
@@ -1185,6 +1186,38 @@ const DATA = [
       {seg:"成因鏈"}, {w:"too much greenhouse gas",zh:"不加 the"}, {w:"most of this gas comes from cars and factories",zh:"不用 product／produce"}, {w:"put more and more greenhouse gas into the air",zh:"gas 不能漏；the air"}, {w:"more and more extreme weather",zh:"wea-ther"}, {w:"governments all over the world",zh:"不加 the"},
       {seg:"為何要研究"}, {w:"harms both the environment and people",zh:"the environment；peo-ple"}, {w:"saw his firm washed away by a big flood last year",zh:"away 不是 out；a 不是 the"}, {w:"see how serious climate change is",zh:"how + 形容詞"},
       {seg:"結尾"}, {w:"studying the causes is important",zh:"動詞當主詞 -ing"}, {w:"governments invest more money in this research",zh:"all governments 不加 the；money 不是 budget；crucial that + 原形"},
+    ]},
+  { title:"遲交作業扣分——該扣嗎？（09 月首戰｜15 錯＋3 處不自然，模板背錯 2 處練默寫卡）", pid:"2026/09", type:"WE",
+    text:`<p>It is generally true that late submission has become a matter of [[1]] over the schools, and it has caused great controversy and captured public attention. Some people are of the opinion that this is not [[2]] issue, while others hold the view that this is a serious problem. I tend to agree more with the latter and will discuss this further below.</p>
+<p>It has to be admitted that [[3]] is not a big issue, and one argument in favor of this can be that everyone may have an accident. If [[4]] has a car accident, then he cannot [[5]] on time, in turn [[6]] to [[7]] [[8]]. It is too harsh [[9]] [[10]][[11]] every person may have an accident.</p>
+<p>On the other hand, I firmly believe that late submission is a serious problem. One compelling reason is that [[12]]. A pertinent case in point is James, who studies at a world-renowned and prestigious university. As James always submits his report on time, he is able to get [[13]]. In other words, if students can submit the report [[14]] and still get [[15]] good [[16]] [[17]] unfair to James.</p>
+<p>In conclusion, despite the fact that the counterargument may hold true in many cases, I believe that students should get some punishment if they submit the report late. It is crucial that [[18]] should set a clear policy for late submission.</p>`,
+    blanks:[
+      { wrong:"concenr", right:"concern", cat:"mech", why:`<b>黑名單老字</b>，字母顛倒：<span class="en">con·cern</span>，r 在 n 前面。模板第一句的字，打完回頭看一眼。` },
+      { wrong:"big", right:"a big", cat:"gram", why:`<span class="en">issue</span> 可數單數要冠詞：<span class="en">not <b>a</b> big issue</span>。同一篇後面你寫對了 <span class="en">not a big issue</span>，前後要一致。` },
+      { wrong:"one time late submission", right:"being late once", cat:"word", why:`不算錯但不自然：<span class="en">one time</span> 當形容詞要寫 one-time。改成好拼的 <span class="en"><b>being late once</b></span>（動詞當主詞加 -ing）。` },
+      { wrong:"student", right:"a student", cat:"gram", why:`可數單數要冠詞：<span class="en">If <b>a</b> student has a car accident</span>。後面接 he，所以是單數一個人。` },
+      { wrong:"give the task", right:"submit his work", cat:"word", why:`不算錯但不自然：交作業是 <span class="en"><b>submit</b></span>（你 P3 就用對了 submits his report），不是 give the task。` },
+      { wrong:"leadind", right:"leading", cat:"mech", why:`模板固定片語 <span class="en">in turn <b>leading</b> to</span>，字尾 -ing 的 g 打成 d（d 和 g 不相鄰，是拼字不是手滑）。` },
+      { wrong:"failling", right:"failing", cat:"mech", why:`<span class="en">fail</span> 的 ai 是兩個母音，不重複 l → <span class="en">fail<b>ing</b></span>。（重複子音只在「單母音＋單子音」時：stop→stopping。）` },
+      { wrong:"on this course", right:"the course", cat:"word", why:`<span class="en">fail</span> 是及物動詞直接接受詞：<span class="en">fail<b>ing the course</b></span>，不加 on。` },
+      { wrong:"for", right:"on", cat:"word", why:`固定介系詞：<span class="en">harsh <b>on</b> students</span>（對某人嚴苛）。跟 strict on 同一組。` },
+      { wrong:"student", right:"students", cat:"gram", why:`泛指學生用複數：<span class="en">too harsh on student<b>s</b></span>。` },
+      { wrong:". Because", right:", because", cat:"stru", why:`<b>不完整句</b>：<span class="en">Because every person may have an accident.</span> 單獨成句沒有主句。要接在前一句後面：<span class="en">…harsh on students<b>, because</b> every person…</span>。考前掃：Because／If 開頭 → 句號前有沒有主句？` },
+      { wrong:"students may think it is unfair", right:"it is unfair to students who submit on time", cat:"word", why:`不算錯但 <span class="en">it</span> 指什麼不清楚。直接說對誰不公平：<span class="en">it is unfair <b>to students who submit on time</b></span>。` },
+      { wrong:"the good score on time", right:"good scores", cat:"gram", why:`泛指分數用複數不加 the：<span class="en">get <b>good scores</b></span>。另外 <span class="en">on time</span> 前半句已經說了，這裡多餘。` },
+      { wrong:"for a few days late", right:"a few days late", cat:"word", why:`<span class="en">a few days late</span> 本身就是副詞片語（晚幾天），前面不加 for。` },
+      { wrong:"the", right:"", cat:"gram", why:`泛指分數不加 the：<span class="en">still get good scores</span>。本篇 the 多加 2 次＋冠詞漏 2 次，冠詞是頭號根因。` },
+      { wrong:"scores. It is", right:"scores, it is", cat:"stru", why:`<b>不完整句</b>：<span class="en">if students can … good scores.</span> 只有 if 子句就句號了。逗號接主句：<span class="en">…good scores<b>, it is</b> really unfair to James</span>。` },
+      { wrong:"reaally", right:"really", cat:"mech", why:`<span class="en">real</span> + ly，a 只有一個。手滑也算拼字錯，打完看一眼。` },
+      { wrong:"school", right:"schools", cat:"gram", why:`泛指學校用複數：<span class="en">it is crucial that <b>schools</b> set a clear policy</span>（crucial that 後面用原形 set，不用 should）。` },
+    ],
+    vocab:[
+      {seg:"🔴 本篇頭號根因"}, {w:"冠詞／單複數 6 處",zh:"a big issue・a student・students・good scores（×2）・schools——可數名詞：單數要 a，泛指要 s"}, {w:"不完整句 2 處",zh:"Because…／if… 單獨成句；句號前要有主句（考前掃第 8 條）"},
+      {seg:"開頭"}, {w:"a matter of concern",zh:"con-cern，r 在 n 前；模板字"},
+      {seg:"讓步：突發狀況"}, {w:"being late once",zh:"動詞當主詞加 -ing"}, {w:"submit his work on time",zh:"交作業用 submit"}, {w:"in turn leading to failing the course",zh:"lead-ing g 不是 d；fail-ing 一個 l；fail 直接接受詞"}, {w:"too harsh on students",zh:"harsh on；students 複數"},
+      {seg:"主論：公平"}, {w:"unfair to students who submit on time",zh:"對誰不公平要說出來"}, {w:"get good scores",zh:"泛指不加 the，複數"}, {w:"a few days late",zh:"不加 for"}, {w:"really",zh:"real + ly"},
+      {seg:"結尾"}, {w:"lose some marks",zh:"訂正版改用 lose marks（扣分），比 get punishment 貼題"}, {w:"schools set a clear policy",zh:"schools 複數；crucial that + 原形"},
     ]},
 ];
 
