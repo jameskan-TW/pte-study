@@ -19,22 +19,23 @@ main{max-width:1100px;margin:0 auto;padding:12px}
 .title .n{display:inline-block;background:var(--c);color:#fff;border-radius:4px;padding:1px 8px;font-weight:700;margin-right:8px}
 .title .en{font-size:.85rem;color:#555;margin-top:4px}
 .title .st{font-size:.85rem;margin-top:4px}
-.row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:10px;position:relative}
+.row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:10px}
 .row.one{grid-template-columns:1fr}
 .plabel{grid-column:1/-1;font-size:.8rem;font-weight:700;color:#fff;background:var(--c);display:inline-block;width:max-content;padding:2px 10px;border-radius:12px;margin-bottom:-4px}
-.panel{background:var(--paper);border:3px solid var(--line);border-radius:4px;padding:8px 10px 10px;box-shadow:4px 4px 0 #222;display:flex;flex-direction:column;min-height:190px;cursor:pointer;user-select:none}
+.panel{background:var(--paper);border:3px solid var(--line);border-radius:4px;padding:6px 8px 10px;box-shadow:4px 4px 0 #222;display:flex;flex-direction:column;cursor:pointer;user-select:none}
 .panel .num{font-size:.7rem;font-weight:700;color:#888;letter-spacing:1px}
-.panel .pic{margin:4px 0 2px;text-align:center}.panel .pic svg{width:100%;max-width:260px;height:auto;display:block;margin:0 auto}
-.panel .cap{font-size:.85rem;text-align:center;color:#444;margin-bottom:6px;min-height:1.2em}
+.panel .pic{margin:2px 0 4px}.panel .pic svg{width:100%;height:auto;display:block;border:1.5px solid #bbb;border-radius:3px;background:#fff}
+.row.one .panel .pic svg{max-width:420px;margin:0 auto}
+.panel .cap{font-size:.85rem;text-align:center;color:#444;margin-bottom:6px}
 .panel .cap b{color:var(--c)}
-.bubble{position:relative;background:#fff;border:2px solid var(--line);border-radius:14px;padding:8px 10px;font-size:.92rem;line-height:1.5;margin-top:auto}
+.bubble{position:relative;background:#fff;border:2px solid var(--line);border-radius:14px;padding:8px 12px;font-size:1rem;line-height:1.5;margin-top:auto;font-weight:600}
 .bubble::before{content:'';position:absolute;top:-12px;left:22px;border:6px solid transparent;border-bottom-color:var(--line);border-top:0}
-.bubble .t{color:#999;font-size:.8rem}
-.bubble .s{font-weight:600}
+.bubble .s{display:block}
+.bubble .s+.s{margin-top:4px;padding-top:4px;border-top:1px dashed #ccc}
 .bubble i.a1{color:var(--g1);font-style:normal}.bubble i.a2{color:var(--g2);font-style:normal}.bubble i.a3{color:var(--g3);font-style:normal}.bubble i.a4{color:var(--g4);font-style:normal}
-.bubble .s .h{display:none;color:#999;font-weight:400;letter-spacing:2px;background:#eee;border-radius:3px;padding:0 4px}
-body.hide .panel:not(.open) .bubble .s .f{display:none}
-body.hide .panel:not(.open) .bubble .s .h{display:inline}
+.bubble .h{display:none;color:#999;font-weight:400;letter-spacing:2px;background:#eee;border-radius:3px;padding:0 4px}
+body.hide .panel:not(.open) .bubble .f{display:none}
+body.hide .panel:not(.open) .bubble .h{display:inline}
 body.nocap .panel .cap{display:none}
 .zh{background:#fff;border:2px dashed #aaa;border-radius:6px;padding:8px 12px;font-size:.85rem;color:#555;margin:-2px 0 14px}
 .nav{display:flex;justify-content:space-between;margin:10px 0 30px}
@@ -42,7 +43,7 @@ body.nocap .panel .cap{display:none}
 .note{font-size:.78rem;color:#888;text-align:center;margin-bottom:20px}
 #loading{padding:40px;text-align:center;color:#888}
 .err{color:#c0392b}
-@media(max-width:640px){.row{grid-template-columns:repeat(2,1fr);gap:8px}.panel{min-height:160px}.panel .pic svg{max-width:100%}.bubble{font-size:.85rem}}
+@media(max-width:640px){.row{grid-template-columns:repeat(2,1fr);gap:8px}.bubble{font-size:.9rem}}
 </style>
 </head>
 <body>
@@ -58,126 +59,188 @@ body.nocap .panel .cap{display:none}
   <div id="app" hidden></div>
 </main>
 <script>
-// ---------- 十格對應（每題固定，這是「漫畫分鏡」） ----------
-// 段落  格  內容 slot
-// P1    1  topic        場景：這題在講什麼
-//       2  va           反方說
-//       3  vb (+p1end)  我方說
-// P2    4  con + conR   讓步：承認對方有理
-//       5  cond → resA  如果…就會…
-//       6  resB → concl 進而導致…所以很多人…
-// P3    7  stance+reason我方主張＋理由
-//       8  does         James 做了什麼
-//       9  result+impl  結果 → 帶回家庭
-// P4   10  final+rec    結論＋建議
+// ---------- 十格分鏡（每題固定）----------
+// P1 1 topic ／ 2 va ／ 3 vb(+p1end)
+// P2 4 con+conR ／ 5 cond+resA ／ 6 resB+concl
+// P3 7 stance+reason ／ 8 does ／ 9 result+impl
+// P4 10 final+rec
 const FRAMES = [
- {p:1,k:'topic', cap:'這題在講…', t:'It is generally true that', keys:['topic']},
- {p:1,k:'va',    cap:'反方說', t:'Some people are of the opinion that', keys:['va']},
- {p:1,k:'vb',    cap:'我方說', t:'while others hold the view that', keys:['vb']},
- {p:2,k:'con',   cap:'先承認：<b>對方有理</b>', t:'It has to be admitted that … one argument in favor of this view can be that', keys:['con','conR']},
- {p:2,k:'cond',  cap:'如果…就會…', t:'If … then', keys:['cond','resA']},
- {p:2,k:'resB',  cap:'進而導致 → 難怪', t:'in turn leading to … As a result, it is unsurprising that', keys:['resB','concl']},
- {p:3,k:'stance',cap:'我方主張＋理由', t:'On the other hand, I firmly believe that … one compelling reason is that', keys:['stance','reason']},
- {p:3,k:'does',  cap:'James 做了什麼', t:'A pertinent case in point is James, who … As James', keys:['does']},
- {p:3,k:'result',cap:'結果 → <b>帶回家</b>', t:'he is able to … In other words,', keys:['result','impl']},
- {p:4,k:'final', cap:'結論＋建議', t:'In conclusion … I believe that … and it is crucial that', keys:['final','rec']},
+ {p:1,cap:'這題在講…', keys:['topic']},
+ {p:1,cap:'反方說', keys:['va']},
+ {p:1,cap:'我方說', keys:['vb','p1end']},
+ {p:2,cap:'先承認：<b>對方有理</b>', keys:['con','conR']},
+ {p:2,cap:'如果…就會…', keys:['cond','resA']},
+ {p:2,cap:'進而導致 → 難怪', keys:['resB','concl']},
+ {p:3,cap:'我方主張＋理由', keys:['stance','reason']},
+ {p:3,cap:'James 做了什麼', keys:['does']},
+ {p:3,cap:'結果 → <b>帶回家</b>', keys:['result','impl']},
+ {p:4,cap:'結論＋建議', keys:['final','rec']},
 ];
 const PNAME = {1:'P1 開場（立場）',2:'P2 讓步（承認對方）',3:'P3 主論（James 的故事）',4:'P4 結論'};
 const GCOLOR = {1:'#2980b9',2:'#e67e22',3:'#8e44ad',4:'#e74c3c'};
 
-// ---------- 線稿元件庫（每個都是 100×100 的黑線稿）----------
-const ST = 'stroke="#222" stroke-width="3.5" fill="#fff" stroke-linecap="round" stroke-linejoin="round"';
-const SPR = {
-person:`<circle cx="50" cy="22" r="11" ${ST}/><path d="M50 33v32M50 45l-16 14M50 45l16 14M50 65l-13 28M50 65l13 28" ${ST}/>`,
-james:`<circle cx="50" cy="22" r="11" ${ST}/><path d="M50 33v32M50 45l-16 14M50 45l16 14M50 65l-13 28M50 65l13 28" ${ST}/><path d="M46 34l4 8 4-8z" fill="#e74c3c" stroke="#222" stroke-width="2"/><text x="50" y="27" font-size="11" text-anchor="middle" font-weight="700" fill="#222">J</text>`,
-old:`<circle cx="50" cy="26" r="11" ${ST}/><path d="M50 37v30M50 50l-14 12M50 50l14 12M50 67l-11 26M50 67l11 26M66 60v33" ${ST}/><path d="M40 20q10-8 20 0" ${ST}/>`,
-family:`<circle cx="25" cy="24" r="9" ${ST}/><path d="M25 33v28M25 43l-12 10M25 43l12 10M25 61l-9 22M25 61l9 22" ${ST}/><circle cx="75" cy="24" r="9" ${ST}/><path d="M75 33v28M75 43l-12 10M75 43l12 10M75 61l-9 22M75 61l9 22" ${ST}/><circle cx="50" cy="48" r="7" ${ST}/><path d="M50 55v18M50 62l-8 7M50 62l8 7M50 73l-6 12M50 73l6 12" ${ST}/>`,
-two:`<circle cx="30" cy="24" r="10" ${ST}/><path d="M30 34v30M30 45l-14 12M30 45l14 8M30 64l-11 26M30 64l11 26" ${ST}/><circle cx="70" cy="24" r="10" ${ST}/><path d="M70 34v30M70 45l14 12M70 45l-14 8M70 64l-11 26M70 64l11 26" ${ST}/>`,
-house:`<path d="M15 50L50 18l35 32" ${ST}/><path d="M24 46v42h52V46" ${ST}/><rect x="42" y="62" width="16" height="26" ${ST}/><rect x="60" y="54" width="10" height="10" ${ST}/>`,
-mall:`<rect x="10" y="30" width="80" height="58" ${ST}/><path d="M10 30l8-14h64l8 14" ${ST}/><path d="M20 45h12v10H20zM44 45h12v10H44zM68 45h12v10H68zM20 65h12v10H20zM68 65h12v10H68z" ${ST}/><rect x="42" y="66" width="16" height="22" ${ST}/><text x="50" y="27" font-size="11" text-anchor="middle" font-weight="700" fill="#222">MALL</text>`,
-shop:`<rect x="20" y="45" width="60" height="43" ${ST}/><path d="M14 45l6-14h60l6 14z" ${ST}/><path d="M14 45q7 8 14 0q7 8 14 0q7 8 14 0q7 8 14 0q7 8 14 0" ${ST}/><rect x="42" y="64" width="16" height="24" ${ST}/><rect x="26" y="56" width="10" height="10" ${ST}/>`,
-tv:`<rect x="14" y="26" width="72" height="50" rx="4" ${ST}/><path d="M50 26l-10-14M50 26l10-14M36 84h28M50 76v8" ${ST}/>`,
-tvoff:`<rect x="14" y="26" width="72" height="50" rx="4" ${ST}/><path d="M50 26l-10-14M50 26l10-14M36 84h28M50 76v8" ${ST}/><path d="M24 36l52 30M76 36L24 66" stroke="#e74c3c" stroke-width="5" stroke-linecap="round"/>`,
-plug:`<path d="M20 80q20 0 30-20t30-20" ${ST}/><rect x="72" y="30" width="20" height="18" rx="3" ${ST}/><path d="M92 35h6M92 43h6" ${ST}/>`,
-clock:`<circle cx="50" cy="50" r="34" ${ST}/><path d="M50 26v24l16 10" ${ST}/><path d="M50 18v5M50 77v5M18 50h5M77 50h5" ${ST}/>`,
-money:`<rect x="10" y="30" width="80" height="44" rx="4" ${ST}/><circle cx="50" cy="52" r="13" ${ST}/><text x="50" y="58" font-size="18" text-anchor="middle" font-weight="700" fill="#222">$</text>`,
-heart:`<path d="M50 84L20 54q-12-14 0-26t30 4q18-16 30-4t0 26z" stroke="#222" stroke-width="3.5" fill="#f9c" stroke-linejoin="round"/>`,
-check:`<path d="M20 55l20 20 40-45" stroke="#27ae60" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
-cross:`<path d="M25 25l50 50M75 25L25 75" stroke="#e74c3c" stroke-width="9" stroke-linecap="round"/>`,
-arrow:`<path d="M15 50h60M55 32l22 18-22 18" stroke="#222" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
-vs:`<path d="M15 50h30M65 50h30M30 36l-14 14 14 14M80 36l14 14-14 14" stroke="#222" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
-q:`<text x="50" y="80" font-size="90" text-anchor="middle" font-weight="700" fill="#222">?</text>`,
-speech:`<path d="M15 20h70v40H45L30 75V60H15z" ${ST}/><path d="M30 40h40" stroke="#222" stroke-width="3.5" stroke-linecap="round"/>`,
-nospeech:`<path d="M15 20h70v40H45L30 75V60H15z" ${ST}/><path d="M22 22l56 44" stroke="#e74c3c" stroke-width="5" stroke-linecap="round"/>`,
-cart:`<path d="M10 25h12l10 40h44l8-28H30" ${ST}/><circle cx="38" cy="78" r="6" ${ST}/><circle cx="70" cy="78" r="6" ${ST}/>`,
-sofa:`<rect x="10" y="45" width="80" height="30" rx="6" ${ST}/><rect x="20" y="30" width="60" height="20" rx="4" ${ST}/><path d="M16 75v10M84 75v10" ${ST}/>`,
-table:`<ellipse cx="50" cy="50" rx="35" ry="6" ${ST}/><path d="M25 52v33M75 52v33" ${ST}/><circle cx="40" cy="44" r="6" ${ST}/><circle cx="62" cy="44" r="6" ${ST}/>`,
-smile:`<circle cx="50" cy="50" r="34" ${ST}/><circle cx="37" cy="42" r="3" fill="#222"/><circle cx="63" cy="42" r="3" fill="#222"/><path d="M33 60q17 16 34 0" ${ST}/>`,
-sad:`<circle cx="50" cy="50" r="34" ${ST}/><circle cx="37" cy="42" r="3" fill="#222"/><circle cx="63" cy="42" r="3" fill="#222"/><path d="M33 68q17-14 34 0" ${ST}/>`,
-globe:`<circle cx="50" cy="50" r="34" ${ST}/><ellipse cx="50" cy="50" rx="14" ry="34" ${ST}/><path d="M16 50h68M22 32h56M22 68h56" stroke="#222" stroke-width="3"/>`,
-building:`<rect x="20" y="15" width="60" height="75" ${ST}/><path d="M30 25h10v10H30zM45 25h10v10H45zM60 25h10v10H60zM30 45h10v10H30zM45 45h10v10H45zM60 45h10v10H60zM30 65h10v10H30zM60 65h10v10H60z" ${ST}/><rect x="44" y="70" width="12" height="20" ${ST}/>`,
-book:`<path d="M15 25q17-6 35 4q18-10 35-4v55q-17-6-35 4q-18-10-35-4z" ${ST}/><path d="M50 29v55" stroke="#222" stroke-width="3"/>`,
-phone:`<rect x="32" y="10" width="36" height="80" rx="6" ${ST}/><path d="M44 18h12" stroke="#222" stroke-width="3.5" stroke-linecap="round"/><circle cx="50" cy="82" r="2.5" fill="#222"/>`,
-shield:`<path d="M50 12l32 10v28q0 26-32 40Q18 76 18 50V22z" ${ST}/><path d="M36 50l10 10 18-20" stroke="#222" stroke-width="4" fill="none"/>`,
-flag:`<path d="M25 90V15" ${ST}/><path d="M25 18h50l-10 14 10 14H25z" stroke="#222" stroke-width="3.5" fill="#f1c40f"/>`,
-target:`<circle cx="50" cy="50" r="34" ${ST}/><circle cx="50" cy="50" r="20" ${ST}/><circle cx="50" cy="50" r="6" fill="#e74c3c" stroke="#222" stroke-width="3"/>`,
-bulb:`<path d="M35 60q-15-12-8-30t23-14q16 4 23 14t-8 30v8H35z" ${ST}/><path d="M38 78h24M42 88h16" ${ST}/>`,
+// ---------- 線稿元件庫 ----------
+// 每個元件畫在 100×100 內，腳站在 y=100。scene() 用 x,y,s 擺到 300×150 的畫布上。
+const K = 'stroke="#222" stroke-width="3" fill="#fff" stroke-linecap="round" stroke-linejoin="round"';
+const KN = 'stroke="#222" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"';
+// 臉：表情 happy / sad / flat / wow
+const face = (m) => `<circle cx="50" cy="22" r="13" ${K}/>` +
+  `<circle cx="45" cy="20" r="1.8" fill="#222"/><circle cx="55" cy="20" r="1.8" fill="#222"/>` +
+  (m==='sad' ? `<path d="M44 30q6-5 12 0" ${KN}/>` : m==='wow' ? `<ellipse cx="50" cy="29" rx="3" ry="4" ${K}/>` :
+   m==='flat' ? `<path d="M45 29h10" ${KN}/>` : `<path d="M44 27q6 6 12 0" ${KN}/>`);
+// 身體：pose stand / walk / up / point / sit / push / wave
+const body = (pose) => {
+  const arms = {stand:'M50 38l-14 16M50 38l14 16', up:'M50 38l-16-10M50 38l16-10', point:'M50 38l-14 16M50 38l20-6',
+    push:'M50 38l18 10M50 38l18 10', sit:'M50 38l-12 14M50 38l12 14', wave:'M50 38l-14 16M50 38l14-14'}[pose] || 'M50 38l-14 16M50 38l14 16';
+  const legs = pose==='sit' ? 'M50 66l-14 6v18M50 66l14 6v18' : pose==='walk' || pose==='push' ? 'M50 66l-14 30M50 66l12 30' : 'M50 66l-9 32M50 66l9 32';
+  return `<path d="M50 35v31" ${KN}/><path d="${arms}" ${KN}/><path d="${legs}" ${KN}/>`;
 };
-// 場景 = 一排元件（由左到右）。畫布 300×110。
-function scene(items){
-  const n = items.length, w = 300 / n;
-  let h = `<svg viewBox="0 0 300 110" xmlns="http://www.w3.org/2000/svg">`;
-  items.forEach((name, i) => {
-    const sz = Math.min(w, 100), x = w * i + (w - sz) / 2, y = (110 - sz) / 2;
-    h += `<g transform="translate(${x} ${y}) scale(${sz/100})">${SPR[name] || SPR.q}</g>`;
+const hair = `<path d="M38 16q4-12 14-10q8-2 12 8" ${KN}/>`;
+const tie = `<path d="M47 36l3 7 3-7z" fill="#e74c3c" stroke="#222" stroke-width="1.5"/>`;
+const bun = `<circle cx="50" cy="8" r="5" ${K}/>`;
+const bow = `<path d="M40 8l6 4-6 4zM60 8l-6 4 6 4z" fill="#e67e22" stroke="#222" stroke-width="1.5"/>`;
+const SPR = {
+ // 人物
+ james:      face('happy') + hair + body('stand') + tie + `<text x="63" y="14" font-size="9" font-weight="700" fill="#222">J</text>`,
+ jamesWalk:  face('happy') + hair + body('walk') + tie,
+ jamesPush:  face('happy') + hair + body('push') + tie,
+ jamesUp:    face('happy') + hair + body('up') + tie,
+ jamesPoint: face('happy') + hair + body('point') + tie,
+ jamesSit:   face('happy') + hair + body('sit') + tie,
+ jamesSad:   face('sad') + hair + body('stand') + tie,
+ man:        face('happy') + body('stand'),
+ manSad:     face('sad') + body('stand'),
+ manWave:    face('happy') + body('wave'),
+ manSit:     face('happy') + body('sit'),
+ manFlat:    face('flat') + body('stand'),
+ woman:      face('happy') + bun + body('stand'),
+ womanWave:  face('happy') + bun + body('wave'),
+ womanSit:   face('happy') + bun + body('sit'),
+ womanSad:   face('sad') + bun + body('stand'),
+ oldSit:     face('flat') + bun + body('sit') + `<path d="M40 14h20" ${KN}/>`,
+ oldSad:     face('sad') + bun + body('stand') + `<path d="M40 14h20M70 60v38" ${KN}/>`,
+ oldHappy:   face('happy') + bun + body('sit') + `<path d="M40 14h20" ${KN}/>`,
+ kid:        `<g transform="translate(20 40) scale(.6)">${face('happy') + bow + body('stand')}</g>`,
+ kidUp:      `<g transform="translate(20 40) scale(.6)">${face('happy') + bow + body('up')}</g>`,
+ kidSit:     `<g transform="translate(20 40) scale(.6)">${face('happy') + bow + body('sit')}</g>`,
+ // 建築、家具
+ mall: `<rect x="5" y="30" width="90" height="70" ${K}/><path d="M5 30l8-16h74l8 16z" ${K}/>` +
+       `<path d="M15 42h14v12H15zM43 42h14v12H43zM71 42h14v12H71zM15 64h14v12H15zM71 64h12v12H71z" ${K}/>` +
+       `<rect x="40" y="70" width="20" height="30" ${K}/><path d="M50 70v30" ${KN}/>` +
+       `<text x="50" y="26" font-size="12" text-anchor="middle" font-weight="700" fill="#222">MALL</text>`,
+ shop: `<rect x="15" y="50" width="70" height="50" ${K}/><path d="M8 50l7-16h70l7 16z" ${K}/>` +
+       `<path d="M8 50q7 9 14 0q7 9 14 0q7 9 14 0q7 9 14 0q7 9 14 0q7 9 14 0" ${K}/>` +
+       `<rect x="42" y="72" width="16" height="28" ${K}/><rect x="20" y="60" width="14" height="14" ${K}/><rect x="66" y="60" width="14" height="14" ${K}/>` +
+       `<text x="50" y="46" font-size="10" text-anchor="middle" font-weight="700" fill="#222">SHOP</text>`,
+ house: `<path d="M10 55L50 20l40 35" ${K}/><path d="M20 50v50h60V50" ${K}/><rect x="42" y="70" width="16" height="30" ${K}/>` +
+        `<rect x="26" y="60" width="12" height="12" ${K}/><rect x="62" y="60" width="12" height="12" ${K}/><path d="M70 30v-10h8v18" ${K}/>`,
+ tv: `<rect x="10" y="30" width="80" height="55" rx="4" ${K}/><rect x="16" y="36" width="68" height="43" fill="#dfe9f3" stroke="#222" stroke-width="2"/>` +
+     `<path d="M50 30l-12-14M50 30l12-14M35 95h30M50 85v10" ${KN}/>`,
+ tvFace: `<rect x="10" y="30" width="80" height="55" rx="4" ${K}/><rect x="16" y="36" width="68" height="43" fill="#dfe9f3" stroke="#222" stroke-width="2"/>` +
+     `<path d="M50 30l-12-14M50 30l12-14M35 95h30M50 85v10" ${KN}/><circle cx="50" cy="56" r="12" ${K}/><circle cx="45" cy="54" r="1.5" fill="#222"/><circle cx="55" cy="54" r="1.5" fill="#222"/><path d="M45 60q5 5 10 0" ${KN}/>`,
+ tvOff: `<rect x="10" y="30" width="80" height="55" rx="4" ${K}/><rect x="16" y="36" width="68" height="43" fill="#555" stroke="#222" stroke-width="2"/>` +
+     `<path d="M50 30l-12-14M50 30l12-14M35 95h30M50 85v10" ${KN}/>`,
+ sofa: `<rect x="5" y="55" width="90" height="30" rx="6" ${K}/><rect x="15" y="40" width="70" height="20" rx="4" ${K}/><path d="M10 85v12M90 85v12" ${KN}/>`,
+ table: `<ellipse cx="50" cy="60" rx="45" ry="8" ${K}/><path d="M15 64v34M85 64v34" ${KN}/>` +
+        `<circle cx="32" cy="58" r="7" ${K}/><circle cx="50" cy="58" r="7" ${K}/><circle cx="68" cy="58" r="7" ${K}/>`,
+ cart: `<path d="M8 30h12l10 40h46l9-30H30" ${K}/><circle cx="38" cy="82" r="6" ${K}/><circle cx="70" cy="82" r="6" ${K}/>` +
+       `<rect x="36" y="44" width="10" height="12" ${K}/><rect x="50" y="40" width="10" height="16" ${K}/><rect x="64" y="46" width="8" height="10" ${K}/>`,
+ cartFull: `<path d="M8 30h12l10 40h46l9-30H30" ${K}/><circle cx="38" cy="82" r="6" ${K}/><circle cx="70" cy="82" r="6" ${K}/>` +
+       `<rect x="34" y="20" width="12" height="36" ${K}/><rect x="48" y="14" width="12" height="42" ${K}/><rect x="62" y="24" width="10" height="32" ${K}/>`,
+ plug: `<path d="M5 90q25 0 35-25t30-25" ${KN}/><rect x="70" y="30" width="20" height="18" rx="3" ${K}/><path d="M90 35h7M90 43h7" ${KN}/>`,
+ socket: `<rect x="30" y="30" width="40" height="40" rx="4" ${K}/><path d="M43 45v10M57 45v10" stroke="#222" stroke-width="4"/>`,
+ // 道具、符號
+ clock: `<circle cx="50" cy="50" r="36" ${K}/><path d="M50 22v28l18 10" ${KN}/><path d="M50 14v6M50 80v6M14 50h6M80 50h6" ${KN}/>`,
+ clockFast: `<circle cx="50" cy="50" r="36" ${K}/><path d="M50 22v28l18 10" ${KN}/><path d="M92 40l6-6M94 55h8M92 70l6 6" ${KN}/>`,
+ list: `<rect x="25" y="10" width="50" height="80" rx="3" ${K}/><path d="M33 30h34M33 45h34M33 60h34M33 75h34" stroke="#bbb" stroke-width="2"/>` +
+       `<path d="M30 28l3 3 5-6M30 43l3 3 5-6M30 58l3 3 5-6M30 73l3 3 5-6" stroke="#27ae60" stroke-width="2.5" fill="none"/>`,
+ sign: `<path d="M50 100V50" ${KN}/><rect x="15" y="15" width="70" height="35" rx="3" ${K}/>`,
+ heart: `<path d="M50 90L18 58q-13-15 0-28t32 5q19-18 32-5t0 28z" stroke="#222" stroke-width="3" fill="#f9c" stroke-linejoin="round"/>`,
+ heartS: `<path d="M50 70L30 50q-8-9 0-17t20 3q12-11 20-3t0 17z" stroke="#222" stroke-width="2.5" fill="#f9c"/>`,
+ check: `<path d="M20 55l20 20 40-45" stroke="#27ae60" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+ cross: `<path d="M25 25l50 50M75 25L25 75" stroke="#e74c3c" stroke-width="10" stroke-linecap="round"/>`,
+ arrow: `<path d="M10 50h65M55 30l25 20-25 20" stroke="#222" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+ bubble: `<path d="M10 15h80v50H40L25 85V65H10z" ${K}/>`,
+ bubbleHeart: `<path d="M10 15h80v50H40L25 85V65H10z" ${K}/><path d="M50 58L36 44q-6-7 0-13t14 3q8-9 14-3t0 13z" fill="#f9c" stroke="#222" stroke-width="2"/>`,
+ bubbleTalk: `<path d="M10 15h80v50H40L25 85V65H10z" ${K}/><path d="M25 32h50M25 45h35" ${KN}/>`,
+ bubbleNo: `<path d="M10 15h80v50H40L25 85V65H10z" ${K}/><path d="M25 32h50M25 45h35" ${KN}/><path d="M18 20l64 44" stroke="#e74c3c" stroke-width="5" stroke-linecap="round"/>`,
+ zzz: `<text x="20" y="70" font-size="34" font-weight="700" fill="#222">z</text><text x="45" y="50" font-size="26" font-weight="700" fill="#222">z</text><text x="65" y="32" font-size="18" font-weight="700" fill="#222">z</text>`,
+ sweat: `<path d="M50 20q-14 24 0 36q14-12 0-36z" ${K}/>`,
+ lines: `<path d="M10 30h30M5 50h35M10 70h30" ${KN}/>`,
+ globe: `<circle cx="50" cy="50" r="36" ${K}/><ellipse cx="50" cy="50" rx="15" ry="36" ${K}/><path d="M14 50h72M20 32h60M20 68h60" stroke="#222" stroke-width="2.5"/>`,
+ sprout: `<path d="M50 100V60" ${KN}/><path d="M50 70q-25-5-25-30q25 5 25 30zM50 60q25-5 25-30q-25 5-25 30z" fill="#a5d6a7" stroke="#222" stroke-width="3"/>`,
+ shield: `<path d="M50 10l34 10v30q0 28-34 42Q16 78 16 50V20z" ${K}/><path d="M36 50l10 10 20-22" stroke="#27ae60" stroke-width="5" fill="none"/>`,
+ flag: `<path d="M25 100V12" ${KN}/><path d="M25 15h52l-12 15 12 15H25z" stroke="#222" stroke-width="3" fill="#f1c40f"/>`,
+ hi: `<text x="50" y="62" font-size="30" text-anchor="middle" font-weight="700" fill="#222">Hi!</text>`,
+ q: `<text x="50" y="80" font-size="80" text-anchor="middle" font-weight="700" fill="#222">?</text>`,
+ // 背景（畫在 300×150 整張）
+ bgStreet: `<path d="M0 132h300" ${KN}/><path d="M0 132q30-8 60 0" stroke="#bbb" stroke-width="2" fill="none"/>`,
+ bgRoom: `<path d="M0 132h300" ${KN}/><rect x="215" y="18" width="60" height="45" ${K}/><path d="M245 18v45M215 40h60" ${KN}/>`,
+ bgHome: `<path d="M0 132h300" ${KN}/><rect x="20" y="18" width="55" height="45" ${K}/><path d="M47 18v45M20 40h55" ${KN}/><path d="M28 66q0-8 8-8h20q8 0 8 8" ${KN}/>`,
+ bgMall: `<path d="M0 132h300" ${KN}/><path d="M20 20h260" ${KN}/><rect x="40" y="35" width="40" height="60" ${K}/><rect x="220" y="35" width="40" height="60" ${K}/><path d="M40 55h40M40 75h40M220 55h40M220 75h40" stroke="#bbb" stroke-width="2"/>`,
+};
+// 場景：[bg 名稱, [元件, x, y, 縮放, 選項]...]。座標是元件左上角在 300×150 畫布上的位置；縮放 1 = 100px 高。
+// 選項：{flip:1} 左右翻轉、{t:'文字'} 元件上寫字（sign / bubble 用）。
+function scene(sc){
+  let h = `<svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">`;
+  const [bg, ...items] = sc;
+  if (bg) h += SPR[bg] || '';
+  items.forEach(([name, x, y, s = 1, o = {}]) => {
+    const tf = o.flip ? `translate(${x + 100*s} ${y}) scale(${-s} ${s})` : `translate(${x} ${y}) scale(${s})`;
+    h += `<g transform="${tf}">${SPR[name] || SPR.q}`;
+    if (o.t) h += `<text x="50" y="${o.ty || 38}" font-size="${o.fs || 14}" text-anchor="middle" font-weight="700" fill="${o.fc || '#222'}">${o.t}</text>`;
+    h += `</g>`;
   });
   return h + `</svg>`;
 }
-// ---------- 每題專屬的 10 格分鏡（元件名稱串起來）----------
-// 只做了 #1、#2 當原型；其他題先用 GENERIC 通用分鏡。
+
+// ---------- 每題 10 格分鏡 ----------
+// 原型：①-1、①-2；其餘先用 GENERIC。
 const PIC = {
-'①-1':[['mall','vs','shop'], ['shop','shield'], ['mall','check'],
-       ['shop','two','speech'], ['cart','shop','two'], ['globe','two','heart'],
-       ['mall','clock','arrow','family'], ['james','cart','mall'], ['clock','arrow','family','house'],
-       ['mall','check','shop']],
-'①-2':[['tv','q'], ['old','sofa','tv','heart'], ['tv','cross'],
-       ['old','tv'], ['old','tv','smile'], ['smile','heart'],
-       ['tv','nospeech'], ['james','tvoff','plug'], ['family','table','speech','heart'],
-       ['tvoff','arrow','family','house']],
+'①-1':[
+ ['bgStreet', ['mall',5,32,1], ['arrow',100,60,.5], ['shop',140,52,.8], ['manWave',205,62,.7,{flip:1}], ['womanWave',240,62,.7]],
+ ['bgStreet', ['shop',20,32,1], ['manSad',125,52,.8], ['sign',185,42,.9,{t:'SAVE!',fs:16}], ['heartS',235,20,.5]],
+ ['bgStreet', ['mall',10,32,1], ['jamesUp',120,52,.8], ['check',200,40,.8], ['bubbleHeart',215,5,.5]],
+ ['bgStreet', ['shop',10,32,1], ['manWave',115,52,.8], ['womanWave',185,52,.8,{flip:1}], ['bubbleTalk',140,0,.5], ['bubbleTalk',205,0,.5]],
+ ['bgStreet', ['shop',10,32,1], ['man',110,52,.8], ['hi',150,10,.6], ['woman',200,52,.8,{flip:1}], ['cart',255,70,.45]],
+ ['bgStreet', ['globe',5,2,.45], ['man',50,52,.8], ['woman',110,52,.8], ['man',170,52,.8], ['kid',215,52,.8], ['heartS',250,10,.5], ['shop',240,72,.6]],
+ ['bgMall', ['jamesPoint',80,52,.8], ['list',140,45,.7], ['clockFast',210,30,.7]],
+ ['bgMall', ['jamesPush',60,52,.8], ['cartFull',120,52,.8], ['lines',20,60,.5]],
+ ['bgHome', ['clock',100,0,.4], ['jamesSit',105,52,.8], ['womanSit',155,52,.8], ['kidSit',200,52,.8], ['heart',150,0,.4], ['heart',230,10,.3], ['table',100,70,.9]],
+ ['bgStreet', ['mall',10,32,1], ['check',85,10,.45], ['shop',160,52,.8], ['sprout',245,72,.6], ['heartS',235,20,.4]],
+],
+'①-2':[
+ ['bgRoom', ['sofa',20,55,.9], ['manSit',45,52,.8], ['tvFace',150,42,.9], ['q',95,-2,.5]],
+ ['bgRoom', ['sofa',10,55,.9], ['oldHappy',35,52,.8], ['tvFace',140,42,.9], ['heartS',100,10,.45], ['zzz',250,72,.35]],
+ ['bgRoom', ['tv',20,42,.9], ['cross',40,40,.7], ['jamesPoint',125,52,.8], ['bubbleNo',150,-2,.5]],
+ ['bgRoom', ['sofa',10,55,.9], ['oldSit',35,52,.8], ['tvFace',150,42,.9], ['bubbleTalk',160,0,.45]],
+ ['bgRoom', ['sofa',10,55,.9], ['oldHappy',35,52,.8], ['tvFace',150,42,.9], ['heartS',90,5,.45], ['heartS',115,20,.35]],
+ ['bgRoom', ['sofa',5,55,.9], ['oldHappy',30,52,.8], ['heart',120,20,.6], ['bubbleHeart',200,10,.5], ['tv',215,62,.55]],
+ ['bgRoom', ['tvFace',20,42,.9], ['bubbleNo',105,5,.5], ['manFlat',195,52,.8], ['bubbleTalk',150,-2,.45]],
+ ['bgHome', ['table',130,70,.9], ['jamesSit',150,52,.8], ['tvOff',225,45,.7], ['plug',175,70,.6], ['socket',270,90,.35]],
+ ['bgHome', ['table',90,70,1], ['jamesSit',95,52,.8], ['womanSit',150,52,.8], ['kidSit',195,52,.8], ['bubbleTalk',100,0,.45], ['bubbleTalk',175,0,.45], ['heart',245,15,.4]],
+ ['bgHome', ['tvOff',15,45,.7], ['cross',20,40,.6], ['arrow',95,60,.4], ['jamesUp',140,52,.8], ['womanWave',185,52,.8], ['kidUp',225,52,.8], ['heart',245,5,.4]],
+],
 };
-const GENERIC = [['q'], ['two','speech'], ['person','check'], ['two','heart'], ['arrow'], ['arrow','arrow'], ['target','bulb'], ['james','building'], ['family','house','heart'], ['flag']];
+const GENERIC = [
+ ['bgStreet', ['q',110,20,.8]],
+ ['bgStreet', ['man',80,52,.8], ['bubbleTalk',120,0,.55], ['woman',170,52,.8,{flip:1}]],
+ ['bgStreet', ['jamesUp',110,52,.8], ['check',190,40,.7]],
+ ['bgStreet', ['manWave',80,52,.8], ['womanWave',170,52,.8,{flip:1}], ['heartS',125,10,.5]],
+ ['bgStreet', ['man',60,52,.8], ['arrow',130,60,.5], ['man',200,52,.8]],
+ ['bgStreet', ['arrow',60,60,.5], ['arrow',130,60,.5], ['man',200,52,.8]],
+ ['bgStreet', ['jamesPoint',100,52,.8], ['bubbleTalk',150,0,.6]],
+ ['bgMall', ['jamesWalk',110,52,.8]],
+ ['bgHome', ['table',90,70,1], ['jamesSit',95,52,.8], ['womanSit',150,52,.8], ['kidSit',195,52,.8], ['heart',245,15,.4]],
+ ['bgStreet', ['flag',110,32,1], ['jamesUp',170,52,.8]],
+];
 
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
 let DATA = [], ZH = {}, cur = 0;
 
-function hint(html){ // 首字母提示：每個字只留第一個字母
-  const txt = html.replace(/<[^>]+>/g,'');
-  return txt.split(/\s+/).map(w => w[0] || '').join(' ');
-}
-function slotText(e, keys, fr){
-  const parts = keys.map(k => {
-    let v = e[k] || '';
-    if (k === 'cond' && e.subj) v = v; // 主詞在模板灰字裡
-    return `<span class="s"><span class="f">${v}</span><span class="h">${esc(hint(v))}</span></span>`;
-  });
-  // 連接灰字
-  const glue = {
-    'con':' , <span class="t">and one argument in favor of this view can be that</span> ',
-    'cond':` , <span class="t">then ${esc(e.subj||'they')} ${esc(e.modal||'can')}</span> `,
-    'resB':' . <span class="t">As a result, it is unsurprising that</span> ',
-    'stance':' , <span class="t">and one compelling reason is that</span> ',
-    'result':' . <span class="t">In other words,</span> ',
-    'final':' , <span class="t">and it is crucial that</span> ',
-  }[fr.k] || ' ';
-  return parts.join(glue);
-}
-function lead(fr, e){
-  if (fr.k === 'does') return `<span class="t">James, who ${esc(e.jv||'works')} at a … ${esc(e.jn||'firm')}. As James</span> `;
-  if (fr.k === 'result') return `<span class="t">, ${esc(e.able||'he is able to')}</span> `;
-  if (fr.k === 'vb' && e.p1end) return '<span class="t">while others hold the view that</span> ';
-  return `<span class="t">${esc(fr.t.split(' … ')[0])}</span> `;
-}
+function hint(html){ return html.replace(/<[^>]+>/g,'').split(/\s+/).map(w => w[0] || '').join(' '); }
+function slotHtml(v){ return `<span class="s"><span class="f">${v}</span><span class="h">${esc(hint(v))}</span></span>`; }
 
 function render(){
   const e = DATA[cur], es = e.es, c = GCOLOR[e.p3c] || '#7f8c8d';
@@ -192,23 +255,22 @@ function render(){
       h += `<div class="row${fr.p===4?' one':''}" style="--c:${c}"><div class="plabel">${PNAME[fr.p]}</div>`;
       lastP = fr.p;
     }
-    let extra = '';
-    if (fr.k === 'vb' && es.p1end) extra = ` . <span class="s"><span class="f">${es.p1end}</span><span class="h">${esc(hint(es.p1end))}</span></span>`;
-    h += `<div class="panel" style="--c:${c}" data-i="${i}">
+    const slots = fr.keys.filter(k => es[k]).map(k => slotHtml(es[k])).join('');
+    h += `<div class="panel" style="--c:${c}">
       <div class="num">${i+1} / 10</div>
       <div class="pic">${scene(pics[i])}</div>
       <div class="cap">${fr.cap}</div>
-      <div class="bubble">${lead(fr,es)}${slotText(es, fr.keys, fr)}${extra}</div>
+      <div class="bubble">${slots}</div>
     </div>`;
   });
   h += `</div>` + (z.p4 ? `<div class="zh">🗒️ ${esc(z.p4)}</div>` : '');
   h += `<div class="nav"><button id="prev">◀ 上一題</button><button id="next">下一題 ▶</button></div>`;
-  h += `<div class="note">${PIC[e.n] ? '這題有專屬分鏡圖' : '這題還是通用圖（原型階段只畫了 ①-1、①-2）'}｜開「默寫」後點格子揭開英文</div>`;
+  h += `<div class="note">${PIC[e.n] ? '這題有專屬分鏡' : '這題還是通用分鏡（原型階段只畫了 ①-1、①-2）'}｜開「默寫」後點格子揭開英文</div>`;
   $('app').innerHTML = h;
   $('prev').onclick = () => go(cur-1); $('next').onclick = () => go(cur+1);
   document.querySelectorAll('.panel').forEach(p => p.onclick = () => p.classList.toggle('open'));
   $('sel').value = cur;
-  location.hash = 'q' + (cur+1);
+  history.replaceState(null, '', '#q' + (cur+1));
   window.scrollTo(0,0);
 }
 function go(i){ cur = (i + DATA.length) % DATA.length; render(); }
