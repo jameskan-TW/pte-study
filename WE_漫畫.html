@@ -19,6 +19,8 @@ main{max-width:1100px;margin:0 auto;padding:12px}
 .title .n{display:inline-block;background:var(--c);color:#fff;border-radius:4px;padding:1px 8px;font-weight:700;margin-right:8px}
 .title .en{font-size:.85rem;color:#555;margin-top:4px}
 .title .st{font-size:.85rem;margin-top:4px}
+.title .grp{display:block;font-size:.75rem;color:#888;margin-bottom:4px}
+.title .diff{margin-top:8px;padding:6px 10px;background:#fff8e1;border-left:4px solid #f1c40f;font-size:.85rem;line-height:1.5}
 .row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:10px}
 .row.one{grid-template-columns:1fr}
 .plabel{grid-column:1/-1;font-size:.8rem;font-weight:700;color:#fff;background:var(--c);display:inline-block;width:max-content;padding:2px 10px;border-radius:12px;margin-bottom:-4px}
@@ -694,6 +696,67 @@ const PIC = {
 ],
 };
 
+
+// ---------- 閱讀順序：相似題放前後篇，每題註明「跟前一題差在哪」 ----------
+// 群名只是分類，順序才是重點：翻下一題就是最像的那題。diff 是跟「前一題」比。
+const ORDER = [
+ {g:'📱 手機／科技', items:[
+  ['①-3', '起點：手機是好發明（good >> bad）。讓步＝學生成癮分心；主論＝一機搞定工作＋家人'],
+  ['②-13', '同樣手機成癮，但立場反過來：成長更難（反面線 H）。讓步變成手機讓功課更快；James 是高中生滑手機無法專心'],
+  ['①-4', '科技換成 AI：未來工時更少。讓步＝通訊工具讓人隨時加班；主論＝James 會用 AI 省時陪家人'],
+ ]},
+ {g:'📺 電視／媒體', items:[
+  ['①-2', '電視弊大於利。讓步＝陪伴孤獨老人；主論＝電視不會跟你說話 → 晚餐關電視'],
+  ['④-13', '對象換成年輕人、媒體換成短影音：一樣弊大於利。讓步＝好節目開眼界（廣視野句）；主論＝短影音搶走讀書時間（學生線 A）'],
+  ['②-7', '媒體換成「資訊革命／新聞」：弊大於利。讓步＝秒知天下事（廣視野句）；主論＝假新聞太多 → 焦慮 → 無法放鬆（反面線 H）'],
+ ]},
+ {g:'⏰ 工時／工作', items:[
+  ['②-3', '工作與生活平衡「為什麼重要」。讓步＝拚命 → 升遷加薪 → 少陪家人；主論＝錢買不到幸福家庭'],
+  ['②-4', '幾乎同一題，改問「過勞的普遍性與後果」：讓步結尾改成 better future prospects（不是少陪家人）；主論理由改成 takes away time with family；結尾 harm > good'],
+  ['②-12', '換成「該不該設最高薪資」：讓步＝高薪推人努力 → 創新成長；主論＝薪資有上限就不會無止盡加班 → James 準時下班'],
+  ['④-17', '換成「縮短工時解決青年失業」，立場反過來：弊大於利。讓步＝多休息 → 放鬆安心；主論＝工時少＝薪水少（上班線 B）'],
+  ['④-10', '職場題但不是工時：員工參與決策好處多。讓步＝討論太慢 → 效率低；主論＝參與感 → 被重視 → 心情好回家'],
+ ]},
+ {g:'🌍 氣候／法律', items:[
+  ['②-5', '氣候變遷「該研究成因還是影響」→ 成因。讓步＝溫室氣體來自汽車工廠 → 極端天氣；主論＝James 親眼看公司被淹（見證線 G）'],
+  ['②-8', '同樣氣候，改問「誰該負責」→ 政府。讓步一模一樣（汽車工廠）但結尾變 cleaner air；主論＝只有政府能立法給錢，James 看工廠因新法減排（見證線 G）'],
+  ['②-6', '從環境法轉到「法律能否限制行為」→ 能。讓步＝處罰太輕沒人理；主論＝怕被罰 → 社會安全 → James 住嚴格交通法的城市（安心線 E）'],
+  ['④-5', '法律責任落到家長頭上：家長該負責。讓步＝孩子不聽話、家長被罰 → 煩躁焦慮 → 壞脾氣；主論＝法律責任逼家長用心教 → James 被好好教（學生線 A）'],
+ ]},
+ {g:'💍 婚姻', items:[
+  ['②-9', '結婚最低年齡 → 25 歲。讓步＝早婚互相扶持 → 不孤單 → 安心；主論＝25 歲已畢業有收入 → James 26 歲結婚（先立業線 C）'],
+  ['④-9', '幾乎同一題，改問「畢業／工作前結婚是否愚蠢」：讓步完全相同；主論理由改成 a steady income keeps a marriage strong；結尾 marrying too early is unwise'],
+ ]},
+ {g:'🗣️ 語言／海外', items:[
+  ['③-2', 'AI 翻譯時代還要學外語嗎 → 要。讓步＝AI 又快又便宜；主論＝自己開口才能跟外國人交流 → 自信（視野線 F）'],
+  ['③-3', '同樣外語，改問「該不該必修」→ 該。讓步換成課業壓力 → 煩躁焦慮 → 沒興趣；主論＝語言打開文化之門 → James 在校學外語 → 自信'],
+  ['③-1', '從語言擴大到「海外留學值不值」→ 值。讓步＝本地便宜省錢；主論＝新環境開眼界 → James 住國外跟不同背景的人相處 → 自信'],
+ ]},
+ {g:'🎓 教育／學校', items:[
+  ['④-1', '生活經驗 vs 正規教育 → 正規教育。讓步＝真實生活教學校教不了的（書本學不到＋廣視野）；主論＝學校養成自律 → 按部就班讀書（學生線 A）'],
+  ['④-2', '同樣「書本學不到＋廣視野」的讓步，題目換成「能否邊讀書邊打工」→ 專心讀書。主論理由＝讀書需要時間和平靜的心'],
+  ['④-8', '同樣讓步句，題目換成「做中學 vs 傳統教學」→ 傳統。主論理由＝一步一步累積知識（樓梯）'],
+  ['④-15', '同樣讓步句（古老戲劇教歷史），但立場反過來：弊大於利。主論＝排練吃掉主科時間 → James 把時間放主科'],
+  ['④-11', '學校題，讓步換成「一試定終身 → 煩躁焦慮 → 表現失常」：筆試仍公平。主論＝公平測驗知識 → 按部就班準備'],
+  ['④-6', '同樣「規定會不會太嚴」：遲交扣分公平。讓步＝出車禍交不出來 → 被當；主論＝截止日養成自律（跟 ④-1 理由同款）→ 準時交'],
+  ['④-3', '學校資源題：圖書館還有用。讓步＝數位資料任何裝置都能查 → 快；主論＝安靜圖書館才能深度學習 → James 讀紙本'],
+ ]},
+ {g:'🏙️ 城市／建築／交通', items:[
+  ['①-1', '大商場取代小店 → 利大於弊。讓步＝小店讓鄰居互相認識（不同背景相處句）；主論＝一站式購物省時 → 陪家人（陪家人線 D）'],
+  ['②-10', '城市 vs 鄉村 → 鄉村。讓步＝城市工作多薪水高 → 職涯快；主論＝鄉村步調慢壓力小 → James 在鄉下遠端工作 → 安心又陪家人'],
+  ['④-4', '建築設計影響 → 好處多。讓步＝又暗又小的房間 → 煩躁焦慮 → 壞脾氣；主論＝舒適空間助專注 → James 在明亮辦公室（上班線 B）'],
+  ['④-16', '同樣建築，改問「要不要花大錢保存老建築」→ 民生優先。讓步＝老建築是歷史（書本學不到＋廣視野）；主論＝住房醫院比漂亮牆重要（安心線 E）'],
+  ['②-1', '城市建設換成「修路 vs 公共運輸」→ 公共運輸。讓步＝路寬車順 → 省時陪家人；主論＝搭車能休息 → James 搭地鐵心情好回家'],
+ ]},
+ {g:'💰 錢／商業／社會', items:[
+  ['④-14', '行銷該重名聲還是折扣 → 名聲。讓步＝降價馬上買 → 短期獲利；主論＝忠誠客戶年年回頭 → 穩定收入（上班線 B）。唯一結尾不收家庭和諧的題'],
+  ['④-12', '商業題換成「落後國家旅遊業」→ 利大於弊。讓步＝文化變商品 → 失去特色；主論＝觀光創造在地工作 → 家庭穩定收入'],
+  ['④-7', '從「創造工作」接到「失業是最急迫問題」→ 職訓解決。讓步＝失業 → 天天擔心錢 → 全家焦慮；主論＝James 看朋友受訓後找到工作（見證線 G）'],
+  ['②-2', '社會題：壽命變長是福。讓步＝老人醫療花錢 → 全家財務壓力；主論＝多時間陪家人 → James 保持健康年年體檢'],
+  ['②-11', '名人該不該放棄隱私 → 不該。讓步＝曝光 → 人氣 → 高收入；主論＝一直被看著 → 焦慮 → James 下班享受私人時間（安心線 E）'],
+ ]},
+];
+const SEQ = ORDER.flatMap(g => g.items.map(it => ({n: it[0], diff: it[1], g: g.g})));
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
 let DATA = [], ZH = {}, cur = 0;
@@ -702,13 +765,14 @@ function hint(html){ return html.replace(/<[^>]+>/g,'').split(/\s+/).map(w => w[
 function slotHtml(v){ return `<span class="s"><span class="f">${v}</span><span class="h">${esc(hint(v))}</span></span>`; }
 
 function render(){
-  const e = DATA[cur], es = e.es, c = GCOLOR[e.p3c] || '#7f8c8d';
+  const sq = SEQ[cur], e = DATA.find(d => d.n === sq.n) || DATA[0], es = e.es, c = GCOLOR[e.p3c] || '#7f8c8d';
   const own = PIC[e.n] || [], ln = LINE[QLINE[e.n]] || LINE.D;
   const p8 = ln.p8;
   const pics = [own[0],own[1],own[2],own[3],own[4],own[5],own[6], p8, ln.p9, own[7]].map(x => x || [null, ['q',110,20,.8]]);
   const z = ZH[e.n] || {};
-  let h = `<div class="title" style="--c:${c}"><span class="n">${esc(e.n)}</span><b>${esc(e.t)}</b>
-    <div class="en">${esc(e.en)}</div><div class="st">立場：${esc(e.stance)}｜P2 ${esc(e.p2zh||'')}｜P3 ${esc(e.p3zh||'')}</div></div>`;
+  let h = `<div class="title" style="--c:${c}"><span class="grp">${esc(sq.g)}　${cur+1} / ${SEQ.length}</span><span class="n">${esc(e.n)}</span><b>${esc(e.t)}</b>
+    <div class="en">${esc(e.en)}</div><div class="st">立場：${esc(e.stance)}｜P2 ${esc(e.p2zh||'')}｜P3 ${esc(e.p3zh||'')}</div>
+    <div class="diff">🔀 ${esc(sq.diff)}</div></div>`;
   let lastP = 0;
   FRAMES.forEach((fr, i) => {
     if (fr.p !== lastP) {
@@ -736,7 +800,7 @@ function render(){
   history.replaceState(null, '', '#q' + (cur+1));
   window.scrollTo(0,0);
 }
-function go(i){ cur = (i + DATA.length) % DATA.length; render(); }
+function go(i){ cur = (i + SEQ.length) % SEQ.length; render(); }
 
 $('bHide').onclick = () => { document.body.classList.toggle('hide'); $('bHide').classList.toggle('on'); };
 $('bCap').onclick = () => { document.body.classList.toggle('nocap'); $('bCap').classList.toggle('on'); };
@@ -751,8 +815,9 @@ fetch('WE_論點總表.html').then(r => { if(!r.ok) throw new Error(r.status); r
     const zi = t.indexOf('const ZH = {'), zj = t.indexOf('\n};', zi);
     ZH = zi >= 0 && zj >= 0 ? new Function('return ' + t.slice(t.indexOf('{', zi), zj + 2))() : {};
   } catch (err) { $('loading').className='err'; $('loading').textContent = '總表 DATA 解析失敗：' + err.message; return; }
-  $('sel').innerHTML = DATA.map((e,i) => `<option value="${i}">${esc(e.n)} ${esc(e.t)}</option>`).join('');
-  const m = location.hash.match(/q(\d+)/); if (m) cur = Math.min(DATA.length-1, Math.max(0, +m[1]-1));
+  const byN = Object.fromEntries(DATA.map(d => [d.n, d]));
+  $('sel').innerHTML = ORDER.map(g => `<optgroup label="${esc(g.g)}">` + g.items.map(it => `<option value="${SEQ.findIndex(x => x.n === it[0])}">${esc(it[0])} ${esc((byN[it[0]]||{}).t||'')}</option>`).join('') + `</optgroup>`).join('');
+  const m = location.hash.match(/q(\d+)/); if (m) cur = Math.min(SEQ.length-1, Math.max(0, +m[1]-1));
   $('loading').hidden = true; $('app').hidden = false;
   render();
 }).catch(err => {
