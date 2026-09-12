@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WE 背誦地圖 — 片語庫＋獨有字</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+[hidden] { display: none !important; }
+body { font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+       background: #f5f5f5; color: #333; line-height: 1.8; }
+header { background: #1a3a5c; color: white; padding: 14px 24px 12px;
+         position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.3); }
+header h1 { font-size: 1.35rem; line-height: 1.4; }
+header p { font-size: .84rem; opacity: .85; margin-top: 2px; line-height: 1.5; }
+header p.hint { opacity: .65; font-size: .78rem; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; margin-top: 8px; font-size: .82rem; }
+.toolbar select, .toolbar input { padding: 4px 8px; border: none; border-radius: 4px; font-size: .85rem; font-family: inherit; }
+.toolbar input { flex: 1 1 140px; min-width: 120px; max-width: 320px; }
+.toolbar label.tog { display: inline-flex; align-items: center; gap: 4px; cursor: pointer;
+         background: rgba(255,255,255,.12); padding: 3px 10px; border-radius: 12px; white-space: nowrap; }
+.toolbar label.tog input { width: auto; flex: none; min-width: 0; }
+.mnote { display: none; }
+.htop { display: block; }
+@media(max-width:700px){
+  header { padding: 8px 10px 8px; }
+  header h1 { font-size: 1rem; display: inline-block; margin-right: 8px; }
+  header p { display: none; }
+  .htop { display: flex; align-items: center; justify-content: space-between; gap: 6px; flex-wrap: nowrap; }
+  .htop h1 { flex: 1 1 auto; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .htop .togs { display: flex; gap: 6px; flex: none; }
+  .toolbar { margin-top: 6px; gap: 5px 6px; flex-wrap: nowrap; }
+  .toolbar select { padding: 3px 2px; font-size: .78rem; flex: 0 1 auto; min-width: 0; max-width: 34%; }
+  .toolbar input { flex: 1 1 60px; min-width: 60px; padding: 3px 6px; font-size: .8rem; }
+  .toolbar label.tog { padding: 2px 8px; font-size: .78rem; }
+  .toolbar label.tog { display: none; }
+  .mnote { display: block; font-size: .8rem; color: #777; margin-bottom: 10px; line-height: 1.6; }
+}
+@media(min-width:701px){ .htop .togs { display: none; } }
+.container { max-width: 960px; margin: 0 auto; padding: 20px 16px; }
+
+/* 主線 badge */
+.bg { display: inline-block; color: white; font-size: .78rem; font-weight: 700;
+      padding: 2px 10px; border-radius: 10px; white-space: nowrap; }
+.bg1 { background: #2980b9; } /* 效率 */
+.bg2 { background: #e67e22; } /* 健康 */
+.bg3 { background: #8e44ad; } /* 視野 */
+.bg4 { background: #e74c3c; } /* 職涯 */
+.bg0 { background: #7f8c8d; } /* 立場句型 */
+.st { display: inline-block; font-size: .72rem; font-weight: 700; padding: 1px 8px; border-radius: 10px; white-space: nowrap; }
+.st1 { background: #eafaf1; color: #1e8449; border: 1px solid #a9dfbf; }
+.st2 { background: #eaf2fb; color: #1a5d8c; border: 1px solid #aed6f1; }
+.st3 { background: #f4f4f4; color: #777; border: 1px solid #ddd; }
+.ub { display: inline-block; font-size: .72rem; padding: 1px 8px; border-radius: 10px; white-space: nowrap;
+      background: rgba(255,255,255,.18); color: #fff; }
+
+/* 片語色（依主線）*/
+.ph { --pb: #eee; --pc: #444; background: var(--pb); color: var(--pc); padding: 0 3px; border-radius: 3px; font-weight: 600; }
+.ph.l4 { --pb: #fadbd8; --pc: #b03a2e; }
+.ph.l2 { --pb: #fdebd0; --pc: #ad5e0a; }
+.ph.l3 { --pb: #ebdef0; --pc: #6f3585; }
+.ph.l1 { --pb: #d6eaf8; --pc: #1a5d8c; }
+.ph.l0 { --pb: #e8e8e8; --pc: #555; }
+.hn, .blk { display: none; }   /* .hn＝默寫首字母提示（不用 .hint，免得撞到 header 的提示列）*/
+
+/* section title */
+.sec { background: #2e6da4; color: white; padding: 10px 18px; font-weight: 700; border-radius: 6px;
+       margin: 24px 0 12px; font-size: 1.05rem; }
+.sec small { font-weight: 400; opacity: .8; font-size: .8rem; margin-left: 8px; }
+.note { font-size: .82rem; color: #777; margin: -4px 0 12px; }
+
+/* 片語庫 */
+.pcard { background: white; border-radius: 8px; padding: 10px 14px; margin-bottom: 12px;
+         box-shadow: 0 1px 4px rgba(0,0,0,.08); border-left: 4px solid #bbb; }
+.pcard h3 { font-size: .95rem; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+.pcard h3 .cnt { font-size: .75rem; color: #999; font-weight: 400; }
+.prow { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; padding: 5px 0; border-bottom: 1px dashed #eee; }
+.prow:last-child { border-bottom: none; }
+.pen { font-family: Georgia, serif; font-size: .95rem; line-height: 1.7; }
+.pzh { font-size: .84rem; color: #555; }
+.pcnt { font-size: .72rem; font-weight: 700; color: #1a3a5c; background: #eaf2fb; padding: 0 8px; border-radius: 10px; white-space: nowrap; }
+.pmem { display: flex; flex-wrap: wrap; gap: 4px; }
+.pmem a, .mem a { font-size: .74rem; background: #f4f6f8; color: #1a5d8c; padding: 0 7px; border-radius: 10px;
+         text-decoration: none; cursor: pointer; border: 1px solid #dde3ea; white-space: nowrap; line-height: 1.6; }
+.pmem a:hover { background: #d6eaf8; }
+/* 手機：成員 chips 預設收起，點「N 題」才展開該列 */
+@media(max-width:700px){
+  .prow .pmem { display: none; flex-basis: 100%; }
+  .prow.open .pmem { display: flex; }
+  .pcnt { cursor: pointer; }
+  .pcnt::after { content: ' ▾'; font-size: .7em; }
+  .prow.open .pcnt::after { content: ' ▴'; }
+}
+
+/* table */
+.tbl-wrap { background: white; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,.08); overflow-x: auto; }
+.sum-table { width: 100%; border-collapse: collapse; font-size: .84rem; min-width: 720px; }
+.sum-table th { background: #f0f0f0; padding: 6px 10px; text-align: left; border-bottom: 2px solid #ddd; white-space: nowrap; }
+.sum-table th.sortable { cursor: pointer; }
+.sum-table th.sortable:hover { background: #e4e9ef; }
+.sum-table td { padding: 6px 10px; border-bottom: 1px solid #eee; vertical-align: top; }
+.sum-table tr:hover td { background: #f0f6fc; cursor: pointer; }
+.sum-table .stk { position: sticky; left: 0; background: white; white-space: nowrap; z-index: 1; }
+.sum-table .stk2 { position: sticky; left: var(--stk1w, 96px); background: white; z-index: 1; box-shadow: 2px 0 0 #eee; }
+.sum-table th.stk, .sum-table th.stk2 { background: #f0f0f0; }
+.sum-table tr:hover td.stk, .sum-table tr:hover td.stk2 { background: #f0f6fc; }
+.sum-table .en { font-family: Georgia, serif; color: #444; max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sum-table .stc { max-width: 180px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sum-table .num { text-align: right; white-space: nowrap; }
+.sum-table .num small { color: #aaa; font-weight: 400; }
+.sum-table .num b { color: #1a3a5c; }
+
+/* question card */
+.grp { color: white; font-weight: 700; padding: 10px 16px; border-radius: 6px; margin: 24px 0 12px; font-size: .95rem; }
+.q { background: white; border-radius: 8px; margin-bottom: 12px;
+     box-shadow: 0 1px 4px rgba(0,0,0,.08); overflow: hidden; }
+.q-header { background: #1a3a5c; color: white; padding: 9px 14px; cursor: pointer;
+            display: flex; align-items: center; gap: 6px 10px; flex-wrap: wrap; }
+.q-header:hover { background: #2e6da4; }
+.qh1 { display: flex; align-items: center; gap: 8px; flex: 1 1 200px; min-width: 0; }
+.qh2 { display: flex; align-items: center; gap: 6px; flex: none; }
+.q-num { font-size: .8rem; opacity: .75; white-space: nowrap; }
+.q-title { font-weight: bold; font-size: .98rem; flex: 1 1 auto; min-width: 0; }
+/* 手機：標題列固定兩行——第一行 題號＋標題（超長截尾），第二行三個 badge */
+@media(max-width:700px){
+  .q-header { padding: 8px 10px; flex-direction: column; align-items: stretch; gap: 4px; }
+  .qh1 { flex: none; gap: 6px; }
+  .q-title { font-size: .9rem; line-height: 1.4; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .qh2 { gap: 5px; overflow: hidden; }
+  .qh2 .bg, .qh2 .st, .qh2 .ub { font-size: .7rem; padding: 1px 7px; }
+}
+.q, .pcard, .tbl-wrap { scroll-margin-top: calc(var(--hh, 0px) + 10px); }
+.q-body { padding: 14px 16px; display: none; }
+.q.open .q-body { display: block; }
+.q-en { font-family: Georgia, serif; font-size: .9rem; color: #555; border-left: 3px solid #ccc;
+        padding: 6px 12px; margin-bottom: 10px; background: #fafafa; }
+.stance { background: #eafaf1; border-left: 3px solid #27ae60; padding: 4px 12px;
+          border-radius: 0 4px 4px 0; font-size: .9rem; margin-bottom: 12px; }
+.stance b { color: #1e8449; }
+.row { margin-bottom: 12px; }
+.row-label { font-size: .76rem; font-weight: 700; color: #888; margin-bottom: 3px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.chain { font-family: Georgia, serif; font-size: .92rem; line-height: 2.3; }
+.chain .tpl { font-size: .78rem; color: #999; margin: 0 4px; }
+.chain .arr { color: #bbb; margin: 0 5px; }
+.cell { display: inline; background: white; border: 1px solid #c9c9c9; border-radius: 4px; padding: 2px 6px;
+        color: #222; line-height: 1.7; -webkit-box-decoration-break: clone; box-decoration-break: clone; cursor: pointer; }
+.zh { font-size: .84rem; color: #555; margin-top: 1px; }
+.zh b { color: #333; }
+.zh.sub, .zh .sub { color: #888; }
+.q-foot { text-align: right; font-size: .82rem; margin-top: 4px; }
+.q-foot a { color: #2e6da4; }
+.mk { font-size: .95em; }
+
+/* 默寫遮罩：隱藏原文、顯示首字母提示（提示 #6b87a6 對底 #eaf2fb 對比 ≥ 3:1）*/
+.mask { cursor: pointer; }
+.mask.hidden { background: #eaf2fb; color: #6b87a6; border-color: #b9d0e6; }
+.mask.hidden .full { display: none; }
+.mask.hidden .hn { display: inline; font-family: Georgia, serif; letter-spacing: .04em; }
+.mask.hidden .ph { background: transparent; color: inherit; }
+.zm.mask { border-bottom: 1px dashed #9cc3e8; font-family: Georgia, serif; }
+.zm.mask.hidden { border-radius: 3px; padding: 0 3px; }
+/* 只看獨有字：題卡裡的片語縮成色塊 */
+body.uniq-only #qlist .ph .full, body.uniq-only #qlist .mask.hidden .ph .hn { display: none; }
+body.uniq-only #qlist .ph .blk { display: inline; font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif; font-size: .74rem; font-weight: 700; white-space: nowrap; }
+body.uniq-only #qlist .mask.hidden .ph { background: var(--pb); color: var(--pc); }
+
+/* toast */
+#toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); background: #1a3a5c; color: white;
+         padding: 8px 18px; border-radius: 20px; font-size: .85rem; box-shadow: 0 2px 8px rgba(0,0,0,.3);
+         opacity: 0; pointer-events: none; transition: opacity .3s; z-index: 200; }
+#toast.show { opacity: 1; }
+
+/* footer */
+.foot { background: white; border-radius: 8px; padding: 12px 18px; margin-top: 24px;
+        box-shadow: 0 1px 4px rgba(0,0,0,.08); font-size: .84rem; color: #555; }
+.foot b { color: #1a3a5c; }
+#loading { text-align: center; padding: 40px; color: #777; }
+#loading.err { color: #b03a2e; text-align: left; background: #fff7f5; border: 1px solid #f3c9bf; border-radius: 6px; padding: 14px 18px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="htop">
+    <h1>🧭 WE 背誦地圖</h1>
+    <div class="togs">
+      <label class="tog"><input type="checkbox" id="togMaskM">默寫</label>
+      <label class="tog"><input type="checkbox" id="togUniqM">獨有字</label>
+    </div>
+  </div>
+  <p>先背 44 個片語，每題只剩獨有字</p>
+  <p class="hint">默寫模式：英文遮住，點格子逐格揭開｜只看獨有字：片語縮成色塊</p>
+  <div class="toolbar">
+    <select id="fCat"><option value="">主線：全部</option><option value="4">④ 職涯財務</option><option value="2">② 健康減壓</option><option value="1">① 效率</option><option value="3">③ 視野</option></select>
+    <select id="fSt"><option value="">狀態：全部</option><option value="1">練過＋老師改過</option><option value="2">練過</option><option value="3">沒練過</option></select>
+    <input id="fKw" type="text" placeholder="搜尋：題號／標題／立場／英文">
+    <label class="tog"><input type="checkbox" id="togMask">默寫模式</label>
+    <label class="tog"><input type="checkbox" id="togUniq">只看獨有字</label>
+  </div>
+</header>
+<div class="container">
+<div id="loading">題庫載入中…</div>
+<div id="app" hidden>
+<div class="mnote">先背 44 個片語，每題只剩獨有字。默寫：英文遮住，點格子逐格揭開｜獨有字：片語縮成色塊。</div>
+
+<div class="sec">① 片語庫 <small><span id="nPh"></span> 個，依主線分組；點題號跳到題卡</small></div>
+<div class="note">色底＝片語（題卡同色）。列依出現題數排序；短片語含在長片語裡的題不重複計。手機點「N 題」展開題號。</div>
+<div id="phlib"></div>
+
+<div class="sec">② 37 題一頁表 <small>點列跳到題卡；點「獨有字」欄頭排序</small></div>
+<div class="tbl-wrap"><table class="sum-table" id="tbl">
+<thead><tr><th class="stk" id="thN">題號</th><th class="num sortable stk2" id="thU" title="點擊切換排序">獨有字 ⇅</th><th class="num">片語</th><th>題目</th><th>主線</th><th>立場</th><th>James 例子</th><th>狀態</th></tr></thead>
+<tbody></tbody></table></div>
+
+<div class="sec">③ 題卡 <small>依主線 ④→②→①→③；點標題展開</small></div>
+<div class="note">格子＝要背的字；色底＝片語；灰色小字＝模板句，不用背。</div>
+<div id="qlist"></div>
+
+<div class="foot" id="foot"></div>
+</div>
+</div>
+<div id="toast"></div>
+<script>
+// ===== 片語庫（改片語只改這裡；en 必須是總表 DATA 的逐字子字串）=====
+// line: 4=④職涯財務 紅、2=②健康減壓 橘、3=③視野 紫、1=①效率 藍、0=立場句型 灰
+const PHRASES = [{"en":"get high grades and find a good job and a steady income","zh":"拿高分 → 找到好工作和穩定收入","line":4},{"en":"find a good job and a steady income","zh":"找到好工作和穩定收入","line":4},{"en":"earn a steady income","zh":"賺穩定收入","line":4},{"en":"a steady income","zh":"穩定收入","line":4},{"en":"get high grades","zh":"拿高分","line":4},{"en":"build a warm and stable home without money worries","zh":"建立溫暖穩定的家、沒有錢的煩惱","line":4},{"en":"a warm and stable home","zh":"溫暖穩定的家","line":4},{"en":"lead to a better future and a stable home","zh":"通往更好的未來和穩定的家","line":4},{"en":"a stable home","zh":"穩定的家","line":4},{"en":"after finishing his studies and finding a job","zh":"唸完書、找到工作之後","line":4},{"en":"get a promotion and a higher income","zh":"升遷加薪","line":4},{"en":"good habits such as self-discipline","zh":"自律等好習慣","line":4},{"en":"stop working overtime and spend more time with their family","zh":"不加班、多陪家人","line":2},{"en":"spend more quality time with his family","zh":"多陪家人（優質時間）","line":2},{"en":"more quality time with their families","zh":"更多陪家人的時間","line":2},{"en":"money cannot buy a happy family","zh":"錢買不到幸福家庭","line":2},{"en":"stay healthy in body and mind","zh":"身心健康","line":2},{"en":"a bad temper that hurts families","zh":"壞脾氣傷害家庭","line":2},{"en":"feel upset and anxious","zh":"煩躁焦慮","line":2},{"en":"stress and anxiety","zh":"壓力和焦慮","line":2},{"en":"peace of mind","zh":"安心","line":2},{"en":"feel less lonely","zh":"不那麼孤單","line":2},{"en":"a happy family","zh":"幸福的家庭","line":2},{"en":"the whole family","zh":"全家","line":2},{"en":"protect every family","zh":"保護每個家庭","line":2},{"en":"greenhouse gas","zh":"溫室氣體","line":2},{"en":"cars and factories","zh":"汽車和工廠","line":2},{"en":"many young people get addicted to the internet","zh":"很多年輕人網路成癮","line":2},{"en":"keeps surfing the internet on his phone","zh":"一直滑手機上網","line":2},{"en":"build healthy digital habits","zh":"養成健康的數位習慣","line":2},{"en":"learn things they cannot find in books","zh":"學到書本裡找不到的東西","line":3},{"en":"cannot find in books","zh":"書本裡找不到","line":3},{"en":"a broader view of life","zh":"更開闊的人生視野","line":3},{"en":"people from different backgrounds","zh":"不同背景的人","line":3},{"en":"from different backgrounds","zh":"來自不同背景","line":3},{"en":"confident when he talks","zh":"說話有自信","line":3},{"en":"how people lived in the past","zh":"過去的人怎麼生活","line":3},{"en":"save time","zh":"省時間","line":1},{"en":"the good points are much greater than the bad points","zh":"好處遠大於壞處","line":0},{"en":"much greater","zh":"大得多","line":0},{"en":"more harm than good","zh":"弊大於利","line":0},{"en":"more good than harm","zh":"利大於弊","line":0},{"en":"greater than the benefits","zh":"比好處大","line":0},{"en":"matters more than","zh":"比…重要","line":0}];
+
+// ===== 練習狀態（手動維護）=====
+const STATUS = {1:[13,14,17,6,31,23,26,36,7,8,11,16], 2:[5,20,18,32,24,2,3,9], 3:[1,4,10,12,15,19,21,22,25,27,28,29,30,33,34,35,37]};
+const TEACHER_ONLY = [12,25,15,34,37];
+const ST_TXT = {1:'練過＋老師改過', 2:'練過', 3:'沒練過'};
+
+const CAT = { 1:['bg1','① 效率'], 2:['bg2','② 健康'], 3:['bg3','③ 視野'], 4:['bg4','④ 職涯'] };
+const LINE_NAME = { 4:'④ 職涯財務', 2:'② 健康減壓', 3:'③ 視野', 1:'① 效率', 0:'立場句型' };
+const LINE_ORDER = [4,2,3,1,0];
+// 組標題只放「線名｜辨識詞」（≤30 字）；推論鏈放 title
+const GROUP_INFO = {
+  1:'① 效率 & 時間｜辨識：科技、設備、商業模式讓生活更方便',
+  2:'② 健康 & 壓力｜辨識：壓力、平衡、保護、安全、環境',
+  3:'③ 視野 & 文化｜辨識：語言、文化、藝術、古蹟、海外',
+  4:'④ 職涯 & 財務｜辨識：工作、錢、婚姻、就業、學校、讀書、考試'
+};
+const GROUP_CHAIN = {
+  1:'更快做完 → 陪家人 → 更親密更幸福',
+  2:'放鬆 → 好心情 → 家人安心和諧（反面：煩躁 → 發脾氣 → 傷家人）',
+  3:'懂很多 → 不同背景相處 → 工作穩 → 家庭',
+  4:'認真讀書／工作 → 好工作穩定收入 → 溫暖的家'
+};
+const GCOLOR = {1:'#2980b9',2:'#e67e22',3:'#8e44ad',4:'#e74c3c',0:'#7f8c8d'};
+const GROUP_ORDER = [4,2,1,3];
+// 統計用的內容 slot（模板位置 subj／modal／jv／jn／able 與 p1end 只顯示不計）
+const SLOT_KEYS = ["topic","va","vb","con","conR","cond","resA","resB","concl","stance","reason","does","result","impl","final","rec"];
+// 模板連接詞（灰色小字，不用背）
+const TPL = {
+  p1c:'Some people are of the opinion that', p1d:'while others hold the view that',
+  p1e:'I tend to agree more with the latter and will discuss this further below',
+  con:'It has to be admitted that', conR:'and one argument in favor of this view can be that',
+  if_:'If', then:'then', lead:'in turn leading to', res:'As a result, it is unsurprising that',
+  p3s:'On the other hand, I firmly believe that', p3r:'and one compelling reason is that',
+  james:'A pertinent case in point is James, who', at:'at a world-renowned and prestigious',
+  as:'As James', able:'he is able to', iow:'In other words',
+  p4a:'In conclusion… I believe that', p4b:'and it is crucial that'
+};
+
+let DATA = [], ZH = {};
+const $ = id => document.getElementById(id);
+const strip = s => String(s == null ? '' : s).replace(/<[^>]+>/g,'').replace(/\s+/g,' ').trim();
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const wc = s => { const t = String(s).trim(); return t ? t.split(/\s+/).length : 0; };
+// 首字母提示：保留前後空白（遮住時相鄰片段才不會黏在一起）
+function hintOf(s){
+  const w = String(s).trim().split(/\s+/).filter(Boolean).map(x => x[0]).join(' ');
+  return (/^\s/.test(s) ? ' ' : '') + w + (/\s$/.test(s) ? ' ' : '');
+}
+const statusOf = o => STATUS[1].includes(o) ? 1 : STATUS[2].includes(o) ? 2 : 3;
+const nNum = n => parseInt(String(n).split('-')[1], 10) || 0;
+// 主線＝n 的首字（④-1 → 4）；總表有 3 題 n 首字≠p3c（#3／#29／#35），本頁以 n 為準
+const lineOf = d => ({'①':1,'②':2,'③':3,'④':4})[String(d.n)[0]] || d.p3c;
+
+// ===== 片語比對：長到短、不分大小寫、完整字邊界、已佔區間不再比 =====
+const SORTED = PHRASES.map((p, i) => Object.assign({ i }, p)).sort((a, b) => b.en.length - a.en.length);
+const isL = c => /[A-Za-z]/.test(c || '');
+function segsOf(text){
+  const lo = text.toLowerCase(), segs = [];
+  for (const p of SORTED){
+    const q = p.en.toLowerCase(); let from = 0;
+    while (true){
+      const k = lo.indexOf(q, from); if (k < 0) break;
+      const e = k + q.length;
+      if (!isL(lo[k - 1]) && !isL(lo[e]) && !segs.some(g => k < g.e && e > g.s)) segs.push({ s:k, e, p });
+      from = k + 1;
+    }
+  }
+  return segs.sort((a, b) => a.s - b.s);
+}
+// 每題統計＋片語成員
+const QS = {}, PM = PHRASES.map(() => new Set());
+function buildStats(){
+  DATA.forEach(d => {
+    let total = 0, covered = 0, nph = 0;
+    SLOT_KEYS.forEach(k => {
+      const txt = strip(d.es[k]); if (!txt) return;
+      total += wc(txt);
+      segsOf(txt).forEach(g => { covered += wc(txt.slice(g.s, g.e)); nph++; PM[g.p.i].add(d.o); });
+    });
+    QS[d.o] = { total, covered, unique: total - covered, nph };
+  });
+}
+
+// ===== 設定 =====
+const OPT_KEY = 'we_map_opt2';
+let OPT = { mask:false, uniq:false, cat:'', st:'' };
+let KW = '';
+try { Object.assign(OPT, JSON.parse(localStorage.getItem(OPT_KEY) || '{}')); } catch(e) {}
+function saveOpt(){ try { localStorage.setItem(OPT_KEY, JSON.stringify(OPT)); } catch(e) {} }
+
+// ===== render helpers =====
+function badge(c){ const [cls,txt] = CAT[c]; return `<span class="bg ${cls}">${txt}</span>`; }
+function stBadge(o){
+  const s = statusOf(o);
+  const tt = TEACHER_ONLY.includes(o) ? ' title="老師看過範文"' : '';
+  return `<span class="st st${s}"${tt}>${ST_TXT[s]}</span>`;
+}
+const run = s => s ? `<span class="run"><span class="full">${esc(s)}</span><span class="hn">${esc(hintOf(s))}</span></span>` : '';
+// 只看獨有字：色塊顯示片語中文（手機沒 hover，同色片語才分得出來；英文放 title）
+const phSpan = (g, s, blk) => `<span class="ph l${g.p.line}" title="${esc(g.p.zh)}"><span class="full">${esc(s)}</span><span class="hn">${esc(hintOf(s))}</span>${blk ? '<span class="blk" title="' + esc(g.p.en) + '">▮' + esc(g.p.zh) + '</span>' : ''}</span>`;
+// 格子：純文字切成「獨有字段」＋「片語段」，整格可遮
+function cell(raw, blk){
+  const text = strip(raw); if (!text) return '';
+  let h = '', pos = 0;
+  segsOf(text).forEach(g => { h += run(text.slice(pos, g.s)); h += phSpan(g, text.slice(g.s, g.e), blk !== false); pos = g.e; });
+  h += run(text.slice(pos));
+  return `<span class="cell mask">${h}</span>`;
+}
+// 中文速記裡的英文片段也可遮（默寫時答案不外露）
+const EN_RUN = /[A-Za-z][A-Za-z'’-]+(?:[ ,]+[A-Za-z][A-Za-z'’-]*)*/g;
+const EN_KEEP = /^(James|If|AI)$/;
+function maskEn(str){
+  return String(str == null ? '' : str).replace(EN_RUN, m => EN_KEEP.test(m) ? m
+    : `<span class="zm mask"><span class="full">${esc(m)}</span><span class="hn">${esc(hintOf(m))}</span></span>`);
+}
+const T = k => `<span class="tpl">${TPL[k]}</span>`;
+// 模板位置（subj／modal／jv／jn／able）：灰色小字，不包 .mask、不算獨有字
+const tplTxt = s => s ? `<span class="tpl">${esc(s)}</span>` : '';
+const ARR = '<span class="arr">→</span>';
+const memChip = o => { const d = DATA.find(x => x.o === o); return d ? `<a data-n="${esc(d.n)}">${d.n} #${o}</a>` : ''; };
+
+function phLib(){
+  let html = '';
+  LINE_ORDER.forEach(line => {
+    const rows = PHRASES.map((p, i) => ({ p, i, n: PM[i].size })).filter(r => r.p.line === line)
+      .sort((a, b) => b.n - a.n || a.p.en.length - b.p.en.length);
+    if (!rows.length) return;
+    html += `<div class="pcard" style="border-left-color:${GCOLOR[line]}"><h3><span class="bg bg${line}">${LINE_NAME[line]}</span><span class="cnt">${rows.length} 個片語</span></h3>`;
+    rows.forEach(r => {
+      const mem = [...PM[r.i]].sort((a, b) => a - b).map(memChip).join('');
+      html += `<div class="prow"><span class="pen"><span class="cell mask">${phSpan({ p:r.p }, r.p.en, false)}</span></span><span class="pzh">${r.p.zh}</span><span class="pcnt">${r.n} 題</span><span class="pmem">${mem}</span></div>`;
+    });
+    html += '</div>';
+  });
+  $('phlib').innerHTML = html;
+  $('nPh').textContent = PHRASES.length;
+}
+
+let sortMode = 0;   // 0=題號、1=獨有字少→多、2=獨有字多→少
+function renderTable(){
+  const rows = [...DATA];
+  if (sortMode === 1) rows.sort((a, b) => QS[a.o].unique - QS[b.o].unique || a.o - b.o);
+  else if (sortMode === 2) rows.sort((a, b) => QS[b.o].unique - QS[a.o].unique || a.o - b.o);
+  else rows.sort((a, b) => a.o - b.o);
+  $('thU').textContent = '獨有字 ' + (sortMode === 1 ? '▲' : sortMode === 2 ? '▼' : '⇅');
+  $('tbl').querySelector('tbody').innerHTML = rows.map(d => { const s = QS[d.o]; return `<tr data-o="${d.o}" data-n="${esc(d.n)}">
+    <td class="stk">${d.mistakes ? '📌' : ''}${d.n}<span style="color:#bbb;font-size:.75em"> #${d.o}</span></td>
+    <td class="num stk2"><b>${s.unique}</b> <small>/ ${s.total}</small></td><td class="num">${s.nph}</td>
+    <td>${d.t}</td><td>${badge(lineOf(d))}</td><td class="stc" title="${esc(d.stance)}">${d.stance}</td>
+    <td class="en" title="${esc(strip(d.es.does))}">${esc(strip(d.es.does))}</td><td>${stBadge(d.o)}</td></tr>`; }).join('');
+  document.querySelectorAll('#tbl tbody tr').forEach(tr => tr.onclick = () => gotoQ(tr.dataset.n));
+  setStk();
+  applyFilter();
+}
+// 第二個 sticky 欄（獨有字）的 left＝題號欄實際寬度
+function setStk(){
+  const th = $('thN'); if (!th) return;
+  $('tbl').style.setProperty('--stk1w', th.getBoundingClientRect().width + 'px');
+}
+
+function qCard(d){
+  const e = d.es, z = ZH[d.n] || {}, s = QS[d.o];
+  const p1end = e.p1end ? `<br><span class="tpl">P1 末句改成：</span>${cell(e.p1end)}` : `<br>${T('p1e')}`;
+  return `<div class="q" id="q${esc(d.n)}" data-o="${d.o}">
+  <div class="q-header" onclick="this.closest('.q').classList.toggle('open')">
+    <div class="qh1"><span class="q-num">${d.n} · #${d.o}</span>${d.mistakes ? '<span class="mk" title="總表有錯誤複習區">📌</span>' : ''}<span class="q-title" title="${esc(d.t)}">${d.t}</span></div>
+    <div class="qh2">${badge(lineOf(d))}<span class="ub">獨有 ${s.unique} 字</span>${stBadge(d.o)}</div>
+  </div>
+  <div class="q-body">
+    <div class="q-en">${d.en}</div>
+    <div class="stance"><b>立場：</b>${d.stance}</div>
+    <div class="row"><div class="row-label">P1 開頭</div>
+      <div class="chain">${cell(e.topic)}${ARR}${T('p1c')}${cell(e.va)}${T('p1d')}${cell(e.vb)}${p1end}</div>
+      ${z.p1 ? `<div class="zh sub">${maskEn(z.p1)}</div>` : ''}</div>
+    <div class="row"><div class="row-label">P2 讓步 ${badge(d.p2c)}</div>
+      <div class="chain">${T('con')}${cell(e.con)}${T('conR')}${cell(e.conR)}<br>${T('if_')}${cell(e.cond)}${T('then')}${tplTxt(strip(e.subj) + ' ' + strip(e.modal || 'can'))}${cell(e.resA)}${T('lead')}${cell(e.resB)}<br>${T('res')}${cell(e.concl)}</div>
+      <div class="zh"><b>${maskEn(d.p2zh)}</b>${z.p2 ? `<br><span class="sub">${maskEn(z.p2)}</span>` : ''}</div></div>
+    <div class="row"><div class="row-label">P3 主論 ${badge(d.p3c)}</div>
+      <div class="chain">${T('p3s')}${cell(e.stance)}${T('p3r')}${cell(e.reason)}<br>${T('james')}${tplTxt(strip(e.jv))}${T('at')}${tplTxt(strip(e.jn))}<br>${T('as')}${cell(e.does)}${e.able ? tplTxt(strip(e.able)) : T('able')}${cell(e.result)}<br>${T('iow')}${cell(e.impl)}</div>
+      <div class="zh"><b>${maskEn(d.p3zh)}</b>${z.p3 ? `<br><span class="sub">${maskEn(z.p3)}</span>` : ''}</div></div>
+    <div class="row"><div class="row-label">P4 結論</div>
+      <div class="chain">${T('p4a')}${cell(e.final)}${T('p4b')}${cell(e.rec)}</div>
+      ${z.p4 ? `<div class="zh sub">${maskEn(z.p4)}</div>` : ''}</div>
+    <div class="q-foot"><a href="WE_論點總表.html#q${encodeURIComponent(d.n)}" target="_blank">→ 論點總表看全文</a></div>
+  </div></div>`;
+}
+
+function render(){
+  buildStats();
+  phLib();
+  renderTable();
+  const sorted = [...DATA].sort((a, b) => GROUP_ORDER.indexOf(lineOf(a)) - GROUP_ORDER.indexOf(lineOf(b)) || nNum(a.n) - nNum(b.n));
+  let html = '';
+  GROUP_ORDER.forEach(c => {
+    html += `<div class="grp" style="background:${GCOLOR[c]}" data-cat="${c}" title="${esc(GROUP_CHAIN[c])}">${GROUP_INFO[c]}</div>`;
+    html += sorted.filter(d => lineOf(d) === c).map(qCard).join('');
+  });
+  $('qlist').innerHTML = html;
+  // 頁尾統計
+  let N = 0, M = 0;
+  DATA.forEach(d => { N += QS[d.o].total; M += QS[d.o].covered; });
+  $('foot').innerHTML = `<div>37 題 slot 共 <b>${N}</b> 字，片語覆蓋 <b>${M}</b> 字（${Math.round(M / N * 100)}%），獨有 <b>${N - M}</b> 字。</div>
+    <div>更新方式：改總表 DATA 這頁自動跟上；片語清單在本檔 PHRASES；練習狀態在本檔 STATUS。</div>`;
+  bind();
+  applyFilter();
+  setMask(OPT.mask);
+}
+
+let toastTimer = null;
+function toast(msg){
+  const el = $('toast'); el.textContent = msg; el.classList.add('show');
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove('show'), 2200);
+}
+function gotoQ(n){
+  const el = document.getElementById('q' + n);
+  if (!el) return;
+  const d = DATA.find(x => x.n === n);
+  if (d && !matchQ(d)) {   // 目標被篩選藏住 → 清掉篩選
+    OPT.cat = ''; OPT.st = ''; KW = '';
+    $('fCat').value = ''; $('fSt').value = ''; $('fKw').value = '';
+    saveOpt(); applyFilter(); toast('已清除篩選');
+  }
+  el.classList.add('open');
+  el.scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+function matchQ(d){
+  if (OPT.cat && String(lineOf(d)) !== OPT.cat) return false;
+  if (OPT.st && String(statusOf(d.o)) !== OPT.st) return false;
+  const kw = KW.trim().toLowerCase();
+  if (kw) {
+    const pool = [d.n, '#' + d.o, String(d.o), d.t, d.en, d.stance, ...Object.values(d.es).map(strip)].join(' ').toLowerCase();
+    if (!pool.includes(kw)) return false;
+  }
+  return true;
+}
+function applyFilter(){
+  const vis = {};
+  DATA.forEach(d => { vis[d.o] = matchQ(d); });
+  document.querySelectorAll('#tbl tbody tr, #qlist .q').forEach(el => { el.style.display = vis[el.dataset.o] ? '' : 'none'; });
+  document.querySelectorAll('#qlist .grp').forEach(g => {
+    const c = parseInt(g.dataset.cat, 10);
+    g.style.display = DATA.some(d => lineOf(d) === c && vis[d.o]) ? '' : 'none';
+  });
+  document.body.classList.toggle('uniq-only', OPT.uniq);
+}
+function setMask(on){ document.querySelectorAll('.mask').forEach(el => el.classList.toggle('hidden', on)); }
+
+function bind(){
+  document.querySelectorAll('.pmem a[data-n]').forEach(a => a.onclick = () => gotoQ(a.dataset.n));
+  document.querySelectorAll('.pcnt').forEach(el => el.onclick = () => el.closest('.prow').classList.toggle('open'));
+  document.querySelectorAll('.mask').forEach(el => el.onclick = ev => { ev.stopPropagation(); el.classList.toggle('hidden'); });
+}
+
+// sticky header 高度 → 捲動時不被蓋住
+function setHH(){
+  document.documentElement.style.setProperty('--hh', document.querySelector('header').offsetHeight + 'px');
+}
+setHH(); window.addEventListener('resize', () => { setHH(); setStk(); });
+
+// 工具列
+$('fCat').value = OPT.cat; $('fSt').value = OPT.st;
+[$('togMask'), $('togMaskM')].forEach(el => el.checked = OPT.mask);
+[$('togUniq'), $('togUniqM')].forEach(el => el.checked = OPT.uniq);
+$('fCat').onchange = function(){ OPT.cat = this.value; saveOpt(); applyFilter(); };
+$('fSt').onchange = function(){ OPT.st = this.value; saveOpt(); applyFilter(); };
+$('fKw').oninput = function(){ KW = this.value; applyFilter(); };
+[$('togMask'), $('togMaskM')].forEach(el => el.onchange = function(){ OPT.mask = this.checked; $('togMask').checked = $('togMaskM').checked = OPT.mask; saveOpt(); setMask(OPT.mask); });
+[$('togUniq'), $('togUniqM')].forEach(el => el.onchange = function(){ OPT.uniq = this.checked; $('togUniq').checked = $('togUniqM').checked = OPT.uniq; saveOpt(); applyFilter(); });
+$('thU').onclick = () => { sortMode = (sortMode + 1) % 3; renderTable(); };
+function goHash(){
+  const h = decodeURIComponent(location.hash.slice(1));
+  if (h && h[0] === 'q') gotoQ(h.slice(1));
+}
+window.addEventListener('hashchange', goHash);
+
+function showErr(msg){
+  const el = $('loading'); el.hidden = false; el.className = 'err'; el.innerHTML = msg;
+}
+
+// 載入總表 DATA / ZH（做法照 SWT_練習）
+fetch('WE_論點總表.html').then(r => { if(!r.ok) throw new Error(r.status); return r.text(); }).then(t => {
+  const i = t.indexOf('const DATA = ['), j = t.indexOf('\n];', i);
+  DATA = new Function('return ' + t.slice(t.indexOf('[', i), j + 2))();
+  const zi = t.indexOf('const ZH = {'), zj = t.indexOf('\n};', zi);
+  ZH = zi >= 0 ? new Function('return ' + t.slice(t.indexOf('{', zi), zj + 2))() : {};
+  try {
+    render();
+    $('loading').hidden = true; $('app').hidden = false;
+    setHH(); setStk();   // 表格顯示後才量得到題號欄寬
+    goHash();
+  } catch (err) {
+    showErr('頁面組裝失敗：' + esc(err.message));
+  }
+}).catch(err => {
+  showErr('題庫載入失敗（' + esc(err.message) + '）。<br>本機直接雙擊開 HTML 會被瀏覽器擋，請用網站網址開：<b>jameskan-tw.github.io/pte-study/WE_背誦地圖.html</b>');
+});
+</script>
+</body>
+</html>

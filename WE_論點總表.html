@@ -66,7 +66,8 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
 
 /* question card */
 .q { background: white; border-radius: 8px; margin-bottom: 20px;
-     box-shadow: 0 1px 4px rgba(0,0,0,.08); overflow: hidden; }
+     box-shadow: 0 1px 4px rgba(0,0,0,.08); overflow: hidden;
+     scroll-margin-top: calc(var(--hh, 0px) + 10px); }   /* header 是 sticky，錨點捲動留空（--hh 由 JS 設） */
 .q-header { background: #1a3a5c; color: white; padding: 12px 18px; cursor: pointer;
             display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .q-header:hover { background: #2e6da4; }
@@ -1373,6 +1374,18 @@ DATA.forEach(d=>{
   </div>`;
   qlist.appendChild(div);
 });
+
+// 外部連結帶 #q④-1 進來（背誦地圖／書籤）：展開該題卡並捲到定位；--hh = sticky header 高度，給 .q 的 scroll-margin-top 用
+(function(){
+  if (typeof window === 'undefined' || !window.location) return;   // node vm 驗證時跳過
+  const setHH = () => { const h = document.querySelector('header'); if (h) document.documentElement.style.setProperty('--hh', h.offsetHeight + 'px'); };
+  setHH(); window.addEventListener('resize', setHH);
+  try {
+    const h = decodeURIComponent(location.hash.slice(1));
+    const el = h && document.getElementById(h);
+    if (el && el.classList.contains('q')) { el.classList.add('open'); el.scrollIntoView(); }
+  } catch (e) { /* 畸形 hash 不能擋住後面的默寫卡 */ }
+})();
 
 // 模板默寫卡：複製完整模板，把藍字 .tpl 變成可遮蔽的方塊
 (function(){
