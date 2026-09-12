@@ -87,7 +87,7 @@ const KN = 'stroke="#222" stroke-width="3" fill="none" stroke-linecap="round" st
 const face = (m) => `<circle cx="50" cy="22" r="13" ${K}/>` +
   `<circle cx="45" cy="20" r="1.8" fill="#222"/><circle cx="55" cy="20" r="1.8" fill="#222"/>` +
   (m==='sad' ? `<path d="M44 30q6-5 12 0" ${KN}/>` : m==='wow' ? `<ellipse cx="50" cy="29" rx="3" ry="4" ${K}/>` :
-   m==='flat' ? `<path d="M45 29h10" ${KN}/>` : `<path d="M44 27q6 6 12 0" ${KN}/>`);
+   m==='flat' ? `<path d="M45 29h10" ${KN}/>` : m==='angry' ? `<path d="M40 13l8 4M60 13l-8 4" ${KN}/><path d="M44 31q6-5 12 0" ${KN}/>` : `<path d="M44 27q6 6 12 0" ${KN}/>`);
 // 身體：pose stand / walk / up / point / sit / push / wave
 const body = (pose) => {
   const arms = {stand:'M50 38l-14 16M50 38l14 16', up:'M50 38l-16-10M50 38l16-10', point:'M50 38l-14 16M50 38l20-6',
@@ -140,6 +140,79 @@ const SPR = {
  city:       `<path d="M2 100V55h16V35h14v20h10V25h18v30h10V45h14v55z" ${K}/><path d="M8 65h6M8 78h6M24 45h6M24 60h6M48 35h8M48 50h8M72 55h6M72 70h6" stroke="#222" stroke-width="2"/>`,
  basket:     `<path d="M15 45h70l-8 40H23z" ${K}/><path d="M30 45q20-30 40 0" ${KN}/><path d="M35 55v22M50 55v22M65 55v22" stroke="#222" stroke-width="2"/>`,
  crowd:      `<g transform="translate(-22 10) scale(.85)">${face('happy') + body('stand')}</g><g transform="translate(22 10) scale(.85)">${face('happy') + bun + body('stand')}</g><g transform="translate(0 0) scale(.85)">${face('happy') + body('up')}</g>`,
+ // ---- 第二批元件（37 題用）----
+ phone:      `<rect x="32" y="10" width="36" height="80" rx="6" ${K}/><rect x="36" y="20" width="28" height="56" fill="#dfe9f3" stroke="none"/><circle cx="50" cy="83" r="2.5" fill="#222"/>`,
+ vs:         `<path d="M15 50h30M65 50h30M30 36l-14 14 14 14M80 36l14 14-14 14" stroke="#222" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+ smile:      `<circle cx="50" cy="50" r="34" ${K}/><circle cx="37" cy="42" r="3" fill="#222"/><circle cx="63" cy="42" r="3" fill="#222"/><path d="M33 60q17 16 34 0" ${KN}/>`,
+ two:        `<g transform="translate(-20 0)">${face('happy') + body('stand')}</g><g transform="translate(20 0)">${face('happy') + bun + body('stand')}</g>`,
+ building:   `<rect x="20" y="15" width="60" height="85" ${K}/><path d="M30 25h10v10H30zM45 25h10v10H45zM60 25h10v10H60zM30 45h10v10H30zM45 45h10v10H45zM60 45h10v10H60zM30 65h10v10H30zM60 65h10v10H60z" ${K}/><rect x="44" y="78" width="12" height="22" ${K}/>`,
+ manAngry:   face('angry') + body('stand'),
+ womanAngry: face('angry') + bun + body('stand'),
+ kidSad:     `<g transform="translate(20 40) scale(.6)">${face('sad') + bow + body('stand')}</g>`,
+ kidPhone:   `<g transform="translate(20 40) scale(.6)">${face('flat') + bow + body('push')}</g><rect x="60" y="66" width="8" height="14" rx="2" ${K}/>`,
+ manRun:     face('flat') + body('walk') + `<path d="M50 38l16 4M50 38l-16 4" ${KN}/><path d="M10 50h14M6 62h14M10 74h14" ${KN}/>`,
+ manLie:     `<circle cx="22" cy="68" r="11" ${K}/><path d="M16 66q3-3 6 0M25 66q3-3 6 0" ${KN}/><path d="M18 73q4 3 8 0" ${KN}/><path d="M33 76h44M77 76l10 8M62 76l8 8M30 82q-6 4-4 12" ${KN}/>`,
+ moon:       `<path d="M60 15q-30 5-30 35t30 35q-20 5-35-10T25 40q5-20 35-25z" fill="#fff59d" stroke="#222" stroke-width="3"/>`,
+ sun:        `<circle cx="50" cy="50" r="18" fill="#f1c40f" stroke="#222" stroke-width="3"/><path d="M50 18v10M50 72v10M18 50h10M72 50h10M27 27l7 7M66 66l7 7M73 27l-7 7M34 66l-7 7" ${KN}/>`,
+ star:       `<path d="M50 10l12 28 30 2-23 19 8 29-27-17-27 17 8-29L8 40l30-2z" fill="#f1c40f" stroke="#222" stroke-width="3" stroke-linejoin="round"/>`,
+ robot:      `<rect x="25" y="30" width="50" height="40" rx="6" ${K}/><path d="M50 30V15M50 12h.1" ${KN}/><circle cx="50" cy="12" r="4" ${K}/><circle cx="40" cy="45" r="5" fill="#2980b9"/><circle cx="60" cy="45" r="5" fill="#2980b9"/><path d="M40 60h20" ${KN}/><rect x="30" y="72" width="40" height="26" rx="4" ${K}/><path d="M25 45h-8M75 45h8" ${KN}/><text x="50" y="92" font-size="10" text-anchor="middle" font-weight="700" fill="#222">AI</text>`,
+ desk:       `<rect x="2" y="60" width="96" height="8" ${K}/><path d="M10 68v32M90 68v32" ${KN}/>`,
+ laptop:     `<rect x="25" y="35" width="50" height="35" rx="3" ${K}/><rect x="30" y="40" width="40" height="25" fill="#dfe9f3" stroke="none"/><path d="M15 76h70l-6-6H21z" ${K}/>`,
+ books:      `<rect x="20" y="76" width="60" height="12" ${K}/><rect x="25" y="64" width="55" height="12" ${K}/><rect x="22" y="52" width="50" height="12" ${K}/>`,
+ gradCap:    `<path d="M8 42l42-16 42 16-42 16z" fill="#222" stroke="#222" stroke-width="3" stroke-linejoin="round"/><path d="M28 50v14q22 12 44 0V50" ${K}/><path d="M88 44v18" ${KN}/>`,
+ briefcase:  `<rect x="15" y="42" width="70" height="45" rx="4" ${K}/><path d="M38 42v-10h24v10M15 62h70" ${KN}/>`,
+ moneyBag:   `<path d="M35 32h30l10 15q15 25 0 48H25q-15-23 0-48z" ${K}/><path d="M40 32l-5-12h30l-5 12" ${K}/><text x="50" y="76" font-size="24" text-anchor="middle" font-weight="700" fill="#222">$</text>`,
+ ring:       `<circle cx="50" cy="62" r="22" stroke="#222" stroke-width="6" fill="none"/><path d="M38 38l12-16 12 16z" fill="#9be" stroke="#222" stroke-width="2.5"/>`,
+ eye:        `<path d="M6 50q44-46 88 0q-44 46-88 0z" ${K}/><circle cx="50" cy="50" r="15" ${K}/><circle cx="50" cy="50" r="7" fill="#222"/>`,
+ wave:       `<path d="M0 60q15-15 30 0t30 0t30 0t30 0v40H0z" fill="#bde" stroke="#222" stroke-width="3"/><path d="M0 82q15-15 30 0t30 0t30 0" stroke="#222" stroke-width="2.5" fill="none"/>`,
+ factory:    `<path d="M10 100V52l25 15V52l25 15V52l25 15v33z" ${K}/><rect x="14" y="20" width="12" height="36" ${K}/><path d="M20 16q-8-8 0-16M32 12q-8-8 0-16M44 16q-8-8 0-16" stroke="#888" stroke-width="3" fill="none"/>`,
+ factoryClean:`<path d="M10 100V52l25 15V52l25 15V52l25 15v33z" ${K}/><rect x="14" y="20" width="12" height="36" ${K}/><path d="M60 30q-25-5-25-30q25 5 25 30z" fill="#a5d6a7" stroke="#222" stroke-width="2.5"/>`,
+ co2:        `<path d="M25 70q-18 0-18-16t20-16q6-16 24-16t24 16q17 0 17 16t-18 16z" fill="#ccc" stroke="#222" stroke-width="3"/><text x="50" y="60" font-size="16" text-anchor="middle" font-weight="700" fill="#222">CO2</text>`,
+ storm:      `<path d="M25 58q-15 0-15-14t18-14q5-15 22-15t22 15q15 0 15 14t-15 14z" ${K}/><path d="M52 58l-12 20h14l-10 20" stroke="#f1c40f" stroke-width="5" fill="none" stroke-linejoin="round"/>`,
+ metro:      `<rect x="5" y="30" width="90" height="55" rx="10" ${K}/><rect x="14" y="42" width="20" height="18" fill="#dfe9f3" stroke="#222" stroke-width="2"/><rect x="40" y="42" width="20" height="18" fill="#dfe9f3" stroke="#222" stroke-width="2"/><rect x="66" y="42" width="20" height="18" fill="#dfe9f3" stroke="#222" stroke-width="2"/><circle cx="25" cy="90" r="6" ${K}/><circle cx="75" cy="90" r="6" ${K}/><path d="M0 98h100" ${KN}/>`,
+ car:        `<path d="M8 72V56l16-18h52l16 18v16z" ${K}/><rect x="28" y="44" width="18" height="12" fill="#dfe9f3" stroke="#222" stroke-width="2"/><rect x="54" y="44" width="18" height="12" fill="#dfe9f3" stroke="#222" stroke-width="2"/><circle cx="28" cy="76" r="8" ${K}/><circle cx="72" cy="76" r="8" ${K}/>`,
+ road:       `<path d="M5 98L38 18h24l33 80z" ${K}/><path d="M50 26v10M50 48v12M50 72v14" stroke="#222" stroke-width="3" stroke-dasharray="6 6"/>`,
+ hospital:   `<rect x="15" y="25" width="70" height="75" ${K}/><path d="M50 38v22M39 49h22" stroke="#e74c3c" stroke-width="7"/><rect x="42" y="78" width="16" height="22" ${K}/>`,
+ paperA:     `<rect x="22" y="8" width="56" height="84" ${K}/><path d="M30 26h40M30 38h40M30 50h25" stroke="#bbb" stroke-width="2"/><text x="64" y="82" font-size="24" font-weight="700" fill="#e74c3c">A+</text>`,
+ paperF:     `<rect x="22" y="8" width="56" height="84" ${K}/><path d="M30 26h40M30 38h40M30 50h25" stroke="#bbb" stroke-width="2"/><text x="64" y="82" font-size="26" font-weight="700" fill="#e74c3c">F</text>`,
+ paper:      `<rect x="22" y="8" width="56" height="84" ${K}/><path d="M30 26h40M30 38h40M30 50h40M30 62h25" stroke="#bbb" stroke-width="2"/>`,
+ mask:       `<path d="M20 25q30-15 60 0v35q0 30-30 35Q20 90 20 60z" ${K}/><path d="M32 45q6-5 12 0M56 45q6-5 12 0" ${KN}/><path d="M35 65q15 12 30 0" ${KN}/>`,
+ oldBuilding:`<path d="M6 42L50 14l44 28z" ${K}/><rect x="10" y="42" width="80" height="8" ${K}/><path d="M20 50v42M35 50v42M50 50v42M65 50v42M80 50v42" ${KN}/><rect x="6" y="92" width="88" height="8" ${K}/>`,
+ tree:       `<path d="M50 100V62" ${KN}/><circle cx="50" cy="42" r="26" fill="#a5d6a7" stroke="#222" stroke-width="3"/>`,
+ palm:       `<path d="M50 100q-6-40 6-62" ${KN}/><path d="M56 38q-25-14-42 2q22-6 42-2zM56 38q25-14 42 2q-22-6-42-2zM56 38q-18-22-8-38q9 12 8 38zM56 38q18-22 8-38q-9 12-8 38z" fill="#a5d6a7" stroke="#222" stroke-width="2.5"/>`,
+ umbrella:   `<path d="M4 56q46-48 92 0z" fill="#f9c" stroke="#222" stroke-width="3"/><path d="M50 56v38q0 6-7 6" ${KN}/>`,
+ trophy:     `<path d="M30 18h40v26q0 20-20 20T30 44z" fill="#f1c40f" stroke="#222" stroke-width="3"/><path d="M30 26H20q0 16 12 19M70 26h10q0 16-12 19" ${KN}/><path d="M50 64v16M34 84h32" ${KN}/>`,
+ chartUp:    `<path d="M10 90h82M10 90V8" ${KN}/><path d="M16 74l20-20 15 10 32-40" stroke="#27ae60" stroke-width="5" fill="none"/><path d="M70 24h13v13" stroke="#27ae60" stroke-width="5" fill="none"/>`,
+ chartDown:  `<path d="M10 90h82M10 90V8" ${KN}/><path d="M16 24l20 20 15-10 32 40" stroke="#e74c3c" stroke-width="5" fill="none"/><path d="M70 74h13V61" stroke="#e74c3c" stroke-width="5" fill="none"/>`,
+ lock:       `<rect x="22" y="46" width="56" height="46" rx="5" ${K}/><path d="M33 46V32q17-22 34 0v14" ${KN}/><circle cx="50" cy="68" r="5" fill="#222"/>`,
+ camera:     `<rect x="8" y="36" width="84" height="50" rx="5" ${K}/><circle cx="50" cy="61" r="15" ${K}/><rect x="34" y="26" width="32" height="10" ${K}/><path d="M78 30l12-14M84 34l14-6" stroke="#f1c40f" stroke-width="4"/>`,
+ news:       `<rect x="8" y="18" width="84" height="68" ${K}/><path d="M16 30h68M16 44h32M16 54h32M16 64h32M16 74h32" stroke="#222" stroke-width="3"/><rect x="56" y="44" width="28" height="30" fill="#ddd" stroke="#222" stroke-width="2"/>`,
+ newsFake:   `<rect x="8" y="18" width="84" height="68" ${K}/><path d="M16 30h68M16 44h32M16 54h32M16 64h32" stroke="#222" stroke-width="3"/><text x="70" y="70" font-size="14" text-anchor="middle" font-weight="700" fill="#e74c3c">FAKE</text><path d="M14 22l72 60" stroke="#e74c3c" stroke-width="4"/>`,
+ gavel:      `<g transform="rotate(-40 40 34)"><rect x="22" y="24" width="36" height="20" rx="3" ${K}/></g><path d="M44 48l34 34" stroke="#222" stroke-width="8" stroke-linecap="round"/><rect x="40" y="86" width="52" height="8" ${K}/>`,
+ hourglass:  `<path d="M25 8h50v10q0 20-20 32q20 12 20 32v10H25V82q0-20 20-32Q25 38 25 18z" ${K}/><path d="M35 82q15-10 30 0" fill="#f1c40f" stroke="none"/>`,
+ bed:        `<rect x="4" y="52" width="92" height="26" rx="4" ${K}/><rect x="10" y="40" width="26" height="14" rx="4" ${K}/><path d="M8 78v16M92 78v16" ${KN}/>`,
+ darkRoom:   `<rect x="12" y="16" width="76" height="80" fill="#666" stroke="#222" stroke-width="3"/><rect x="36" y="32" width="26" height="20" fill="#999" stroke="#222" stroke-width="2"/>`,
+ brightRoom: `<rect x="4" y="12" width="92" height="84" ${K}/><rect x="14" y="22" width="72" height="36" fill="#fff59d" stroke="#222" stroke-width="2"/><path d="M50 22v36M14 40h72" stroke="#222" stroke-width="2"/>`,
+ board:      `<rect x="8" y="16" width="84" height="56" fill="#2e7d5b" stroke="#222" stroke-width="3"/><path d="M50 72v26M28 98h44" ${KN}/><text x="50" y="50" font-size="18" text-anchor="middle" font-weight="700" fill="#fff">ABC</text>`,
+ airplane:   `<path d="M8 56l70-32 12 6-26 30 16 26-8 6-22-22-24 16-6-6 16-16-30-4z" ${K}/>`,
+ suitcase:   `<rect x="18" y="36" width="64" height="50" rx="5" ${K}/><path d="M38 36V26h24v10" ${KN}/><path d="M30 86v10M70 86v10" ${KN}/><path d="M18 56h64" ${KN}/>`,
+ door:       `<rect x="26" y="10" width="48" height="88" ${K}/><path d="M26 10l30 8v88l-30-8z" fill="#f5deb3" stroke="#222" stroke-width="3"/><circle cx="50" cy="58" r="3" fill="#222"/>`,
+ stairs:     `<path d="M5 98V78h20V58h20V38h20V18h30v80z" ${K}/>`,
+ search:     `<circle cx="42" cy="42" r="26" ${K}/><path d="M62 62l28 28" stroke="#222" stroke-width="8" stroke-linecap="round"/>`,
+ discount:   `<path d="M12 52L54 10h36v36L48 88z" ${K}/><circle cx="76" cy="24" r="5" ${K}/><text x="40" y="66" font-size="16" font-weight="700" fill="#e74c3c" transform="rotate(-45 40 60)">-50%</text>`,
+ medal:      `<path d="M38 8h24l6 28H32z" fill="#e74c3c" stroke="#222" stroke-width="2.5"/><circle cx="50" cy="60" r="26" fill="#f1c40f" stroke="#222" stroke-width="3"/><path d="M50 44l5 11 12 1-9 8 3 12-11-6-11 6 3-12-9-8 12-1z" fill="#fff" stroke="#222" stroke-width="2"/>`,
+ gear:       `<circle cx="50" cy="50" r="22" ${K}/><circle cx="50" cy="50" r="8" ${K}/><path d="M50 16v12M50 72v12M16 50h12M72 50h12M26 26l8 8M66 66l8 8M74 26l-8 8M34 66l-8 8" stroke="#222" stroke-width="6" stroke-linecap="round"/>`,
+ phonePlay:  `<rect x="32" y="10" width="36" height="80" rx="6" ${K}/><path d="M43 38l18 12-18 12z" fill="#e74c3c" stroke="#222" stroke-width="2"/>`,
+ chain:      `<path d="M10 60q0-12 12-12t12 12-12 12-12-12zM30 48q0-12 12-12t12 12-12 12-12-12zM50 60q0-12 12-12t12 12-12 12-12-12zM70 48q0-12 12-12t12 12-12 12-12-12z" ${KN}/>`,
+ pills:      `<rect x="10" y="40" width="46" height="22" rx="11" transform="rotate(-30 33 51)" ${K}/><path d="M22 60l20-12" stroke="#222" stroke-width="3"/><circle cx="72" cy="66" r="12" fill="#e74c3c" stroke="#222" stroke-width="3"/>`,
+ target:     `<circle cx="50" cy="50" r="34" ${K}/><circle cx="50" cy="50" r="20" ${K}/><circle cx="50" cy="50" r="6" fill="#e74c3c" stroke="#222" stroke-width="3"/>`,
+ scaleEven:  `<path d="M50 92V28M28 92h44" ${KN}/><path d="M10 34h80" ${KN}/><path d="M10 34L0 60M10 34l10 26M90 34l-10 26M90 34l10 26" ${KN}/><path d="M0 60q10 10 20 0" ${K}/><path d="M80 60q10 10 20 0" ${K}/>`,
+ dollarUp:   `<path d="M50 90V20M30 40l20-20 20 20" stroke="#27ae60" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+ dollarDown: `<path d="M50 10v70M30 60l20 20 20-20" stroke="#e74c3c" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+ // 背景 2
+ bgOffice:   `<path d="M0 132h300" ${KN}/><rect x="200" y="14" width="80" height="40" ${K}/><path d="M240 14v40M200 34h80" ${KN}/><circle cx="40" cy="30" r="14" ${K}/><path d="M40 20v10l6 4" ${KN}/>`,
+ bgSchool:   `<path d="M0 132h300" ${KN}/><rect x="90" y="10" width="120" height="50" fill="#2e7d5b" stroke="#222" stroke-width="3"/><text x="150" y="42" font-size="18" text-anchor="middle" font-weight="700" fill="#fff">1 + 1 = 2</text>`,
+ bgNight:    `<path d="M0 132h300" ${KN}/><path d="M270 20q-18 3-18 20t18 20q-12 3-21-6t-6-22q3-12 27-12z" fill="#fff59d" stroke="#222" stroke-width="2.5"/>`,
  // 建築、家具
  mall: `<rect x="5" y="30" width="90" height="70" ${K}/><path d="M5 30l8-16h74l8 16z" ${K}/>` +
        `<path d="M15 42h14v12H15zM43 42h14v12H43zM71 42h14v12H71zM15 64h14v12H15zM71 64h12v12H71z" ${K}/>` +
@@ -212,67 +285,414 @@ function scene(sc){
   return h + `</svg>`;
 }
 
-// ---------- 每題 10 格分鏡 ----------
-// 原型：①-1、①-2；其餘先用 GENERIC。
-const PIC = {
+// ---------- 分鏡小工具 ----------
+const L = (x, y, t) => ['lbl', x, y, 1, {t}];
+const UPSET  = x => [['manSad',x,52,.8], ['sweat',x+48,42,.35]];                 // 煩躁焦慮
+const TEMPER = x => [['manAngry',x,52,.8], ['womanSad',x+55,52,.8], ['kidSad',x+95,52,.8]]; // 壞脾氣傷家人
+const BOOKX  = x => [['book',x,48,.6], ['cross',x+10,48,.42], ['bulb',x+62,36,.55]]; // 書本學不到
+const VIEW   = x => [['globe',x,22,.6], ['eye',x+52,48,.5]];                     // 更開闊的視野
+const FAM    = x => [['jamesSit',x,52,.8], ['womanSit',x+45,52,.8], ['kidSit',x+90,52,.8], ['table',x-5,70,.9]]; // 全家餐桌
+const PARENTS= x => [['man',x,52,.8], ['woman',x+40,52,.8]];
+const GOV    = x => [['city',x,32,1]];
+
+// ---------- 8 條故事線：第 8、9 格共用畫面 ----------
+// 第 8 格＝James 在這條線上的固定動作；第 9 格＝結果 → 帶回家。同線題目看到同一張圖。
+const LINE = {
+ A: {name:'學生穩定收入線', p8:['bgSchool', ['desk',105,52,.9], ['jamesSit',115,32,.8], ['books',160,40,.5], ['bulb',20,50,.5], L(150,145,'James studies hard')],
+     p9:[null, ['paperA',5,20,.6], ['arrow',60,50,.35], ['briefcase',95,25,.55], ['arrow',145,50,.35], ['moneyBag',180,20,.6], ['house',232,72,.55], ['heartS',258,50,.35], L(100,125,'grades → job → income'), L(250,145,'stable home')]},
+ B: {name:'上班穩定收入線', p8:['bgOffice', ['desk',105,52,.9], ['jamesSit',115,32,.8], ['laptop',160,38,.5], L(150,145,'James works at his firm')],
+     p9:['bgHome', ['moneyBag',20,40,.7], ['arrow',95,60,.4], ...FAM(150), ['heart',250,5,.4], L(55,135,'steady income'), L(200,145,'warm & stable home')]},
+ C: {name:'先立業線', p8:['bgStreet', ['gradCap',10,20,.6], ['arrow',65,50,.35], ['briefcase',100,25,.55], ['arrow',150,50,.35], ['ring',185,22,.6], ['james',235,52,.8], L(150,130,'studies → job → married at 26')],
+     p9:['bgHome', ['james',100,52,.8], ['woman',145,52,.8], ['heart',120,0,.4], ['house',210,52,.8], ['moneyBag',30,45,.55], ['check',45,20,.4], L(55,135,'no money worries'), L(200,145,'warm & stable home')]},
+ D: {name:'陪家人線', p8:['bgOffice', ['clock',20,50,.6], ['check',40,25,.35], ['door',130,32,1], ['jamesWalk',180,52,.8], ['lines',250,60,.4], L(150,145,'leaves on time → home')],
+     p9:['bgHome', ['clock',85,0,.4], ...FAM(130), ['heart',250,5,.4], ['heart',235,30,.3], L(225,145,'quality time → harmony')]},
+ E: {name:'安心線', p8:['bgHome', ['sofa',90,55,.9], ['jamesSit',115,52,.8], ['cup',180,70,.4], ['shield',230,15,.55], L(150,145,'James feels safe & relaxed')],
+     p9:['bgStreet', ['umbrella',80,5,1.3], ['man',100,52,.8], ['woman',145,52,.8], ['kid',190,52,.8], ['heart',230,20,.35], ['smile',20,40,.45], L(60,140,'peace of mind'), L(200,145,'protect every family')]},
+ F: {name:'視野自信線', p8:['bgStreet', ['globe',10,10,.5], ['james',80,52,.8], ['bubbleTalk',115,0,.45], ['manHat',150,52,.8], ['womanScarf',200,52,.8], ['airplane',235,10,.5], L(150,145,'talks with different backgrounds')],
+     p9:[null, ['james',5,25,.8], ['bubbleTalk',50,-5,.5], ['check',60,40,.35], ['arrow',95,50,.35], ['briefcase',130,25,.55], ['arrow',180,50,.35], ['man',215,25,.7], ['woman',245,25,.7], ['heartS',232,0,.35], L(45,120,'confident'), L(150,120,'good career'), L(245,120,'happy family')]},
+ G: {name:'見證線', p8:['bgStreet', ['james',60,52,.8], ['eye',110,15,.7], ['storm',200,20,.55], ['factory',215,62,.7], L(150,145,'James SAW it with his own eyes')],
+     p9:['bgStreet', ['eye',10,25,.5], ['clockFast',60,25,.5], L(60,90,'see how fast / serious'), ['arrow',110,55,.35], ['umbrella',150,5,1.2], ['man',165,52,.8], ['woman',205,52,.8], ['kid',245,52,.8], L(210,145,'only X protects every family')]},
+ H: {name:'反面線', p8:['bgNight', ['sofa',80,55,.9], ['jamesSit',105,52,.8], ['phone',150,55,.45], ['lines',180,50,.35], ['zzz',200,20,.4], L(150,145,'keeps surfing all evening')],
+     p9:['bgHome', ['paperF',15,20,.6], ['cross',20,25,.45], ['arrow',85,55,.35], ['manAngry',130,52,.8], ['womanSad',175,52,.8], ['kidSad',215,52,.8], L(50,135,'unable to focus'), L(185,145,'hurts future & family')]},
+};
+const QLINE = {'①-1':'D','①-2':'D','①-3':'D','①-4':'D','②-1':'D','②-2':'D','②-3':'D','②-4':'D','②-5':'G','②-6':'E','②-7':'H','②-8':'G','②-9':'C','②-10':'D','②-11':'E','②-12':'D','②-13':'H','③-1':'F','③-2':'F','③-3':'F','④-1':'A','④-2':'A','④-3':'A','④-4':'B','④-5':'A','④-6':'A','④-7':'G','④-8':'A','④-9':'C','④-10':'B','④-11':'A','④-12':'B','④-13':'A','④-14':'B','④-15':'A','④-16':'E','④-17':'B'};
+// 第 8 格的題目專屬藍字：這題 James 做的事（畫面同線共用，字不同）
+const DOES = {'①-1':'shops at a large mall','①-2':'turns off the TV at dinner','①-3':'work + family chats on one phone','①-4':'good at using AI','②-1':'takes the metro every day','②-2':'stays healthy, annual check-ups','②-3':'spends more time with family','②-4':'stops working overtime','②-5':'saw his firm washed away by a flood','②-6':'city with strict traffic laws','②-7':'checks the news all evening','②-8':'saw his factory cut gas after a new law','②-9':'married at 26 after studies + job','②-10':'works online from his country home','②-11':'enjoys private time after work','②-12':'leaves on time: more hours ≠ more pay','②-13':'keeps surfing on his phone (high school)','③-1':'lives abroad','③-2':'learns languages himself','③-3':'learned a language at school','④-1':'follows a well-planned program','④-2':'all his energy into study','④-3':'printed textbooks in the quiet library','④-4':'bright, well-designed office','④-5':'carefully guided by his parents','④-6':'always submits on time','④-7':'saw a friend find a job after training','④-8':'follows well-planned courses','④-9':'married at 26 after studies + job','④-10':'joins decision-making at his firm','④-11':'prepares step by step for exams','④-12':'develops travel programs abroad','④-13':'keeps away from social media on school days','④-14':'keeps his firm’s good name','④-15':'all his time into main subjects','④-16':'city spends on housing + hospitals','④-17':'works full weeks'};
+
+// ---------- 每題 8 格（1-7、10）；第 8、9 格由 LINE 供應 ----------
 // 原則：每個 slot 的關鍵字都要在圖裡看得到，並用藍色小標籤釘住。
+const PIC = {
 '①-1':[
- // topic: large malls REPLACING small shops → 大商場推進來，小店被打叉
- ['bgStreet', ['mall',5,32,1], ['arrow',105,55,.5], ['shop',160,62,.7], ['cross',170,55,.55], ['lbl',195,22,1,{t:'replacing'}]],
- // va: small shops should be PROTECTED → 盾牌罩住小店＋SAVE 牌
- ['bgStreet', ['shop',30,42,.9], ['shield',45,5,.55], ['manSad',150,52,.8], ['sign',200,42,.9,{t:'SAVE!',fs:16}], ['lbl',75,145,1,{t:'protected'}]],
- // vb: does more GOOD than HARM → 天平 ✓ 那邊沉下去
- ['bgStreet', ['scaleGood',40,25,1], ['jamesUp',170,52,.8], ['lbl',90,145,1,{t:'good > harm'}]],
- // con: good for the LOCAL AREA／conR: help people who live NEARBY KNOW EACH OTHER → 房子＋小店＋鄰居握手
- ['bgStreet', ['house',5,72,.55], ['shop',60,42,.9], ['house',240,72,.55], ['shake',140,52,.8], ['lbl',185,22,1,{t:'know each other'}]],
- // cond: people SHOP at small stores／resA: get to know their NEIGHBORS → 提籃走出小店，鄰居打招呼
- ['bgStreet', ['shop',10,32,1], ['woman',100,52,.8], ['basket',125,80,.4], ['hi',175,5,.6], ['man',195,52,.8,{flip:1}], ['house',240,72,.55], ['lbl',245,22,1,{t:'neighbors'}]],
- // resB: people from DIFFERENT BACKGROUNDS get along／concl: MANY people still LIKE small shops → 戴不同帽子的人手牽手＋人群愛心小店
- ['bgStreet', ['manHat',20,52,.8], ['womanScarf',70,52,.8], ['man',120,52,.8], ['heartS',75,5,.5], ['lbl',85,22,1,{t:'different backgrounds'}], ['crowd',180,52,.8], ['shop',245,72,.55], ['heartS',255,30,.4]],
- // stance: good for MODERN LIFE／reason: ONE-STOP shopping → SAVE TIME → 商場掛 1 STOP、清單全勾、時鐘打勾
- ['bgMall', ['sign',30,20,.9,{t:'1 STOP',fs:15}], ['list',110,45,.7], ['clock',185,30,.7], ['check',215,20,.45], ['lbl',220,130,1,{t:'save time'}]],
- // does: SHOPS at a large mall → James 推滿車走在商場走道
- ['bgMall', ['jamesPush',70,52,.8], ['cartFull',130,52,.8], ['lines',30,60,.5], ['lbl',150,145,1,{t:'shops at a large mall'}]],
- // result: SAVE A LOT OF TIME＋QUALITY TIME with family／impl: fit our BUSY LIFE → 時鐘打勾＋全家餐桌＋愛心
- ['bgHome', ['clock',85,0,.4], ['check',105,-5,.3], ['lbl',105,58,1,{t:'time saved'}], ['table',130,70,.9], ['jamesSit',135,52,.8], ['womanSit',180,52,.8], ['kidSit',220,52,.8], ['heart',250,5,.4], ['lbl',225,145,1,{t:'quality time'}]],
- // final: good > harm／rec: cities KEEP SPACE for special small shops → 天平＋城市天際線裡留一間小店
- ['bgStreet', ['scaleGood',10,25,.9], ['lbl',55,145,1,{t:'good > harm'}], ['city',120,32,1], ['shop',215,62,.7], ['check',240,20,.4], ['lbl',245,145,1,{t:'keep space'}]],
+ ['bgStreet', ['mall',5,32,1], ['arrow',105,55,.5], ['shop',160,62,.7], ['cross',170,55,.55], L(195,22,'replacing')],
+ ['bgStreet', ['shop',30,42,.9], ['shield',45,5,.55], ['manSad',150,52,.8], ['sign',200,42,.9,{t:'SAVE!',fs:16}], L(75,145,'protected')],
+ ['bgStreet', ['scaleGood',40,25,1], ['jamesUp',170,52,.8], L(90,145,'good > harm')],
+ ['bgStreet', ['house',5,72,.55], ['shop',60,42,.9], ['house',240,72,.55], ['shake',140,52,.8], L(185,22,'know each other')],
+ ['bgStreet', ['shop',10,32,1], ['woman',100,52,.8], ['basket',125,80,.4], ['hi',175,5,.6], ['man',195,52,.8,{flip:1}], ['house',240,72,.55], L(245,22,'neighbors')],
+ ['bgStreet', ['manHat',20,52,.8], ['womanScarf',70,52,.8], ['man',120,52,.8], ['heartS',75,5,.5], L(85,22,'different backgrounds'), ['crowd',180,52,.8], ['shop',245,72,.55], ['heartS',255,30,.4]],
+ ['bgMall', ['sign',30,20,.9,{t:'1 STOP',fs:15}], ['list',110,45,.7], ['clock',185,30,.7], ['check',215,20,.45], L(220,130,'save time')],
+ ['bgStreet', ['scaleGood',10,25,.9], L(55,145,'good > harm'), ['city',120,32,1], ['shop',215,62,.7], ['check',240,20,.4], L(245,145,'keep space')],
 ],
 '①-2':[
- // topic: is TV a good COMPANION? → 一個人坐沙發對著會笑的電視，問號
- ['bgRoom', ['sofa',20,55,.9], ['manSit',45,52,.8], ['tvFace',150,42,.9], ['q',95,-2,.5], ['lbl',195,22,1,{t:'companion?'}]],
- // va: RELAX（躺著）／TEACHES（電視裡燈泡）／LONELY people COMPANY（老人＋電視）→ 三小格
- [null, ['lying',0,40,.6], ['lbl',30,125,1,{t:'relax'}], ['tvBulb',110,40,.6], ['lbl',140,125,1,{t:'teaches'}], ['oldHappy',195,55,.6], ['tvFace',240,60,.45], ['lbl',235,125,1,{t:'company'}]],
- // vb: does more HARM than GOOD → 天平 ✗ 那邊沉
- ['bgRoom', ['scaleHarm',30,25,1], ['tv',140,62,.5], ['jamesPoint',190,52,.8], ['lbl',80,145,1,{t:'harm > good'}]],
- // con: companion for the LONELY／conR: HEAR VOICES and SEE FACES → 老人一個人，電視有臉、有聲波
- ['bgRoom', ['sofa',10,55,.9], ['oldSit',35,52,.8], ['tvFace',140,42,.9], ['sound',215,45,.45], ['lbl',60,22,1,{t:'lonely'}], ['lbl',185,145,1,{t:'voices + faces'}]],
- // cond: old people who LIVE ALONE watch favorite programs EVERY DAY／resA: feel LESS LONELY → 月曆＋老人看電視笑
- ['bgRoom', ['sofa',10,55,.9], ['oldHappy',35,52,.8], ['tvFace',140,42,.9], ['calendar',5,0,.45], ['lbl',28,52,1,{t:'every day'}], ['heartS',100,5,.4], ['lbl',185,145,1,{t:'less lonely'}]],
- // resB: a BETTER MOOD／concl: lonely people see TV as a FRIEND → 老人笑＋愛心相連電視
- ['bgRoom', ['sofa',5,55,.9], ['oldHappy',30,52,.8], ['lbl',60,22,1,{t:'better mood'}], ['heart',115,30,.5], ['tvFace',175,42,.9], ['lbl',215,22,1,{t:'friend'}]],
- // stance: NOT a real companion／reason: CANNOT TALK with you or LISTEN to you → 電視嘴巴打叉、耳朵打叉，人講話沒回應
- ['bgRoom', ['tvNo',20,42,.9], ['earNo',100,20,.45], ['manFlat',195,52,.8], ['bubbleTalk',150,-2,.45], ['lbl',75,145,1,{t:'cannot talk / listen'}]],
- // does: always TURNS OFF the television DURING DINNER → James 在餐桌，電視黑掉插頭拔掉
- ['bgHome', ['table',130,70,.9], ['jamesSit',150,52,.8], ['tvOff',225,45,.7], ['plug',175,70,.6], ['socket',270,90,.35], ['lbl',150,145,1,{t:'turns off TV at dinner'}]],
- // result: more CONVERSATIONS with his family／impl: keeps the whole family IN HARMONY → 全家餐桌對話框＋愛心
- ['bgHome', ['table',90,70,1], ['jamesSit',95,52,.8], ['womanSit',150,52,.8], ['kidSit',195,52,.8], ['bubbleTalk',100,0,.45], ['bubbleTalk',175,0,.45], ['heart',245,15,.4], ['lbl',150,145,1,{t:'conversations → harmony'}]],
- // final: harm > good／rec: TURN OFF the TV and SPEND TIME with families and friends → 天平＋電視黑＋一家人和朋友揮手
- ['bgStreet', ['scaleHarm',5,25,.8], ['tvOff',95,72,.5], ['jamesUp',150,52,.8], ['womanWave',190,52,.8], ['kidUp',225,52,.8], ['manWave',255,52,.7,{flip:1}], ['heart',215,0,.35], ['lbl',45,145,1,{t:'harm > good'}], ['lbl',210,145,1,{t:'spend time together'}]],
+ ['bgRoom', ['sofa',20,55,.9], ['manSit',45,52,.8], ['tvFace',150,42,.9], ['q',95,-2,.5], L(195,22,'companion?')],
+ [null, ['lying',0,40,.6], L(30,125,'relax'), ['tvBulb',110,40,.6], L(140,125,'teaches'), ['oldHappy',195,55,.6], ['tvFace',240,60,.45], L(235,125,'company')],
+ ['bgRoom', ['scaleHarm',30,25,1], ['tv',140,62,.5], ['jamesPoint',190,52,.8], L(80,145,'harm > good')],
+ ['bgRoom', ['sofa',10,55,.9], ['oldSit',35,52,.8], ['tvFace',140,42,.9], ['sound',215,45,.45], L(60,22,'lonely'), L(185,145,'voices + faces')],
+ ['bgRoom', ['sofa',10,55,.9], ['oldHappy',35,52,.8], ['tvFace',140,42,.9], ['calendar',5,0,.45], L(28,52,'every day'), ['heartS',100,5,.4], L(185,145,'less lonely')],
+ ['bgRoom', ['sofa',5,55,.9], ['oldHappy',30,52,.8], L(60,22,'better mood'), ['heart',115,30,.5], ['tvFace',175,42,.9], L(215,22,'friend')],
+ ['bgRoom', ['tvNo',20,42,.9], ['earNo',100,20,.45], ['manFlat',195,52,.8], ['bubbleTalk',150,-2,.45], L(75,145,'cannot talk / listen')],
+ ['bgStreet', ['scaleHarm',5,25,.8], ['tvOff',95,72,.5], ['jamesUp',150,52,.8], ['womanWave',190,52,.8], ['kidUp',225,52,.8], ['manWave',255,52,.7,{flip:1}], ['heart',215,0,.35], L(45,145,'harm > good'), L(210,145,'spend time together')],
+],
+'①-3':[
+ ['bgStreet', ['phone',110,20,.9], ['bubbleTalk',30,20,.45], ['bulb',60,70,.45], ['heartS',200,20,.45], ['briefcase',215,65,.45], ['q',255,-5,.4], L(150,140,'impact of the smartphone')],
+ ['bgStreet', ['scaleHarm',40,25,1], ['phone',170,30,.7], L(90,145,'harm > good')],
+ ['bgStreet', ['phone',60,25,.8], ['bulb',110,10,.5], ['check',115,55,.5], ['jamesUp',190,52,.8], L(100,145,'very useful invention')],
+ ['bgNight', ['man',60,52,.8], ['phone',105,60,.4], ['chain',20,85,.5], ['lines',125,55,.3], ['zzz',150,15,.4], L(120,145,'addicted to the internet')],
+ ['bgSchool', ['desk',30,62,.8], ['kidPhone',30,42,1], ['q',60,10,.4], ['manFlat',230,52,.8], ['bubbleTalk',250,-2,.45], L(90,145,'lose focus in class')],
+ ['bgStreet', ['paperF',20,25,.65], L(50,140,'poor performance'), ['man',170,52,.8], ['woman',210,52,.8], ['phone',245,45,.45], ['cross',245,42,.45], L(220,140,'no phones')],
+ ['bgStreet', ['phone',110,15,1], ['bubbleTalk',30,20,.5], L(55,75,'communication'), ['news',30,70,.45], L(55,130,'information'), ['briefcase',215,40,.5], L(240,100,'work'), L(150,140,'one device')],
+ ['bgStreet', ['scaleGood',10,25,.9], L(55,145,'good >> bad'), ['phone',140,35,.6], ['clock',200,30,.6], ['check',230,15,.4], L(205,145,'healthy digital habits')],
+],
+'①-4':[
+ ['bgOffice', ['clock',40,30,.7], ['calendar',120,30,.65], ['briefcase',200,40,.6], ['q',255,10,.4], L(150,140,'working hours?')],
+ ['bgOffice', ['manRun',40,52,.8], ['manRun',90,52,.8], ['chartUp',160,25,.6], ['clock',225,30,.55], ['lines',245,60,.3], L(150,145,'competition → longer hours')],
+ ['bgOffice', ['clock',50,25,.8], ['dollarDown',105,25,.6], ['check',110,60,.4], ['jamesUp',190,52,.8], L(100,145,'fewer hours')],
+ ['bgNight', ['desk',60,52,.9], ['manSit',70,32,.8], ['laptop',115,38,.5], ['phone',190,50,.45], ['sweat',110,25,.3], L(150,145,'overtime: tools too easy')],
+ ['bgHome', ['sofa',90,55,.9], ['manSit',110,52,.8], ['laptop',150,62,.45], ['clock',20,20,.5], L(45,80,'24 h'), ['house',225,52,.7], L(150,145,'work anywhere, anytime')],
+ ['bgHome', ['womanSad',40,52,.8], ['kidSad',80,52,.8], ['cross',60,15,.4], ['clock',130,20,.5], L(150,80,'no time'), ['manSad',210,52,.8], ['sweat',255,40,.35], L(230,145,'worried')],
+ ['bgOffice', ['robot',40,30,.8], ['chartUp',130,25,.7], ['clockFast',215,30,.6], L(150,145,'AI is developing very fast')],
+ ['bgStreet', ['clock',20,25,.6], ['dollarDown',65,30,.5], ['crowd',130,52,.8], ['robot',215,32,.7], ['book',255,80,.4], L(150,145,'everyone learn how to use AI')],
+],
+'②-1':[
+ ['bgStreet', ['road',20,32,1], ['vs',110,50,.5], ['metro',170,32,1], L(150,145,'roads vs public transport')],
+ ['bgStreet', ['road',20,32,1], ['car',110,70,.5], ['car',150,70,.5], ['car',190,70,.5], ['check',240,20,.45], L(150,145,'more roads solve jams')],
+ ['bgStreet', ['metro',30,32,1], ['check',130,20,.5], ['jamesUp',190,52,.8], L(150,145,'public transport more important')],
+ ['bgStreet', ['road',60,32,1.1], ['car',110,60,.5], ['arrow',150,50,.4], ['lines',20,60,.4], L(150,145,'wider roads → move smoothly')],
+ ['bgStreet', ['road',20,32,1], ['clock',140,30,.7], ['check',175,15,.45], ['manWave',230,52,.8], L(150,145,'save time on the road')],
+ ['bgHome', ...FAM(20), ['heart',115,5,.4], L(60,145,'quality time'), ['city',180,32,1], ['road',245,72,.55], L(225,145,'cities keep building')],
+ ['bgStreet', ['metro',10,32,1.1], ['manSit',60,42,.55], ['zzz',130,10,.4], ['smile',200,30,.5], ['bed',230,70,.55], L(190,145,'rest during the ride')],
+ ['bgStreet', ['city',20,32,1], ['moneyBag',115,30,.7], ['arrow',175,55,.4], ['metro',210,42,.9], L(150,145,'governments invest in transport')],
+],
+'②-2':[
+ ['bgStreet', ['oldSad',40,52,.8], ['hospital',110,32,1], ['heart',215,20,.5], ['calendar',225,70,.45], L(150,145,'living longer')],
+ ['bgStreet', ['oldSad',40,52,.8], ['moneyBag',110,25,.8], ['manSad',190,52,.8], ['sweat',235,40,.35], L(150,145,'heavy burden')],
+ ['bgStreet', ['oldHappy',30,52,.8], ['man',80,52,.8], ['kid',115,52,.8], ['heart',110,0,.4], ['jamesUp',200,52,.8], ['check',245,20,.4], L(150,145,'blessing')],
+ ['bgStreet', ['hospital',20,32,1], ['oldSad',120,52,.8], ['pills',165,40,.5], ['moneyBag',215,30,.7], L(150,145,'more medical care')],
+ ['bgStreet', ['oldSad',20,52,.8], ['hospital',70,52,.8], ['pills',140,50,.5], ['moneyBag',185,30,.6], ['moneyBag',225,30,.6], ['moneyBag',265,30,.6], L(150,145,'doctors, medicine, daily care')],
+ ['bgHome', ['manSad',40,52,.8], ['womanSad',85,52,.8], ['kidSad',125,52,.8], ['moneyBag',80,0,.45], ['sweat',130,20,.3], L(80,145,'financial pressure'), ['man',210,52,.8], ['sweat',255,40,.35], ['q',255,70,.35], L(230,145,'worry about future')],
+ ['bgHome', ['oldHappy',40,52,.8], ...FAM(110), ['clock',15,5,.4], ['heart',250,5,.4], L(150,145,'more time with family')],
+ ['bgStreet', ['oldHappy',50,52,.8], ['heart',100,20,.4], ['check',130,50,.45], ['manRun',190,52,.8], ['sun',235,10,.45], L(150,145,'old people stay healthy')],
+],
+'②-3':[
+ ['bgStreet', ['scaleEven',80,25,1], ['briefcase',75,10,.4], ['house',155,10,.4], L(150,145,'work-life balance')],
+ ['bgOffice', ['briefcase',50,35,.7], ['chartUp',130,25,.6], ['man',215,52,.8], ['lines',180,60,.3], L(150,145,'work first')],
+ ['bgStreet', ['scaleEven',40,25,1], ['briefcase',35,10,.4], ['house',115,10,.4], ['check',130,50,.4], ['jamesUp',200,52,.8], L(150,145,'balance is more important')],
+ ['bgOffice', ...UPSET(60), ['desk',140,62,.7], ['laptop',150,45,.45], ['lines',230,60,.3], L(150,145,'stress and anxiety')],
+ ['bgOffice', ['manRun',40,52,.8], ['chartUp',120,25,.6], ['moneyBag',200,30,.7], L(150,145,'promotion + higher income')],
+ ['bgHome', ['moneyBag',20,30,.7], ['arrow',85,55,.4], ['womanSad',150,52,.8], ['kidSad',190,52,.8], ['cross',165,10,.4], ['clock',240,20,.45], L(150,145,'less time with family')],
+ ['bgHome', ['moneyBag',30,30,.7], ['cross',40,25,.6], ['arrow',110,55,.35], ['man',150,52,.8], ['woman',190,52,.8], ['kid',225,52,.8], ['heart',200,0,.4], L(150,145,'money cannot buy a happy family')],
+ ['bgNight', ['clock',20,25,.6], ['cross',30,20,.55], L(50,110,'no overtime'), ['arrow',95,55,.35], ...FAM(150), ['heart',250,5,.4], L(200,145,'time with family')],
+],
+'②-4':[
+ ['bgNight', ['desk',80,52,.9], ['manSit',90,32,.8], ['laptop',135,38,.5], ['sweat',80,20,.3], ['clock',20,20,.5], L(150,145,'working too much')],
+ ['bgOffice', ['briefcase',50,35,.7], ['chartUp',130,25,.6], ['man',215,52,.8], ['lines',180,60,.3], L(150,145,'work first')],
+ ['bgOffice', ...UPSET(60), ['cross',120,20,.5], ['jamesPoint',190,52,.8], L(150,145,'serious problems')],
+ ['bgOffice', ['crowd',40,52,.8], ['laptop',120,55,.45], ['arrow',165,55,.35], ['trophy',210,25,.7], L(150,145,'harder = success')],
+ ['bgOffice', ['manRun',40,52,.8], ['chartUp',120,25,.6], ['moneyBag',200,30,.7], L(150,145,'promotion + higher income')],
+ ['bgNight', ['chartUp',20,25,.55], L(45,110,'better prospects'), ['desk',110,62,.7], ['manSit',115,45,.65], ['desk',190,62,.7], ['manSit',195,45,.65], ['laptop',150,50,.35], L(180,145,'overtime in every job')],
+ ['bgHome', ['clock',20,25,.6], ['arrow',80,55,.35], ['womanSad',130,52,.8], ['kidSad',170,52,.8], ['cross',145,10,.4], ['manSad',225,52,.8], L(150,145,'takes away time with family')],
+ ['bgStreet', ['scaleHarm',5,25,.8], L(45,145,'harm > good'), ['clock',110,25,.5], ['cross',118,20,.45], ...FAM(160), ['heart',260,5,.35], L(210,145,'stop overtime')],
+],
+'②-5':[
+ ['bgStreet', ['globe',40,20,.8], ['storm',150,10,.7], ['wave',200,72,.6], L(150,145,'climate change')],
+ ['bgStreet', ['storm',30,10,.7], ['wave',100,62,.8], ['manSad',200,52,.8], ['sweat',245,40,.3], L(150,145,'effects')],
+ ['bgStreet', ['factory',20,52,.8], ['car',95,62,.6], ['co2',110,5,.55], ['jamesUp',190,52,.8], ['check',240,20,.4], L(150,145,'causes')],
+ ['bgStreet', ['car',20,62,.7], ['factory',110,42,.9], ['co2',50,0,.55], ['co2',180,0,.55], L(150,145,'greenhouse gas: cars + factories')],
+ ['bgStreet', ['calendar',10,20,.5], L(35,80,'every day'), ['car',80,62,.7], ['co2',110,0,.5], ['co2',160,10,.6], ['co2',215,0,.5], L(190,145,'more and more gas')],
+ ['bgStreet', ['storm',20,5,.7], ['wave',20,72,.6], L(55,145,'extreme weather'), ['city',150,32,1], ['gavel',235,35,.6], L(220,145,'governments take action')],
+ ['bgStreet', ['storm',20,5,.6], ['tree',90,42,.9], ['cross',100,42,.6], ['manSad',190,52,.8], ['sweat',235,40,.3], L(150,145,'harms environment + people')],
+ ['bgStreet', ['city',10,32,.9], ['book',95,35,.55], ['search',135,25,.45], L(105,110,'study the causes'), ['umbrella',180,10,1.1], ['man',190,52,.8], ['woman',230,52,.8], L(235,145,'protect every family')],
+],
+'②-6':[
+ ['bgStreet', ['gavel',40,25,.9], ['crowd',150,52,.8], ['q',240,10,.4], L(150,145,'can laws limit behavior?')],
+ ['bgStreet', ['gavel',40,25,.8], ['manFlat',150,52,.8], ['cross',190,15,.5], L(150,145,'little effect')],
+ ['bgStreet', ['gavel',40,25,.8], ['check',120,20,.5], ['jamesUp',190,52,.8], L(150,145,'laws really change behavior')],
+ ['bgStreet', ['gavel',30,45,.5], L(55,110,'weak punishment'), ['arrow',95,55,.35], ['sign',150,32,.9,{t:'RULES',fs:14}], ['manRun',230,52,.8], ['cross',235,15,.4], L(230,145,'break the rules')],
+ ['bgStreet', ['sign',40,32,.9,{t:'RULES',fs:14}], ['manFlat',150,52,.8,{flip:1}], ['lines',220,60,.35], L(150,145,'too light → ignore the rules')],
+ ['bgStreet', ['cross',20,20,.45], ['cross',60,20,.45], ['cross',100,20,.45], ['crowd',70,52,.8], L(70,145,'repeated rule-breaking'), ['gavel',200,30,.7], ['q',260,20,.4], L(225,145,'laws alone cannot')],
+ ['bgStreet', ['gavel',20,25,.7], ['manSad',100,52,.8], ['sweat',145,40,.35], L(100,145,'fear of punishment'), ['arrow',165,55,.3], ['shield',200,10,.55], ['city',215,72,.55], L(235,145,'society safe')],
+ ['bgStreet', ['gavel',20,25,.8], ['scaleEven',110,25,.9], ['crowd',210,52,.8], L(150,145,'fairly and equally')],
+],
+'②-7':[
+ ['bgStreet', ['news',20,25,.7], ['phone',115,30,.7], ['globe',190,20,.7], L(150,145,'information revolution')],
+ ['bgStreet', ['scaleGood',40,25,1], ['news',170,40,.6], L(90,145,'good >> bad')],
+ ['bgStreet', ['scaleHarm',30,25,1], ['news',140,55,.5], ['jamesPoint',190,52,.8], L(80,145,'bad > good')],
+ ['bgStreet', ['globe',20,20,.7], ['arrow',95,55,.35], ['news',140,30,.6], ['clockFast',215,25,.6], L(150,145,'world news in seconds')],
+ ['bgStreet', ['calendar',10,15,.5], L(35,75,'every day'), ['man',80,52,.8], ['phone',120,60,.4], ['globe',175,15,.55], ['bulb',235,25,.55], L(190,145,'learn what is happening')],
+ ['bgStreet', ...VIEW(20), L(70,145,'broader view'), ['arrow',150,55,.35], ['stairs',195,32,.9], L(240,145,'a big step forward')],
+ ['bgStreet', ['news',10,20,.5], ['news',45,30,.5], ['newsFake',85,15,.6], L(70,110,'too much + fake'), ['arrow',150,55,.3], ...UPSET(195), L(225,145,'stress and anxiety')],
+ ['bgStreet', ['scaleHarm',5,25,.8], L(45,145,'harm > good'), ['news',105,30,.55], ['check',115,20,.35], ['newsFake',150,30,.55], ['cross',160,25,.35], ['clock',225,30,.55], L(210,145,'judge news, limit screen time')],
+],
+'②-8':[
+ ['bgStreet', ['globe',40,20,.7], ['storm',120,5,.6], ['q',215,0,.6], L(150,145,'who should deal with it?')],
+ ['bgStreet', ['crowd',40,52,.8], ['factory',120,42,.9], ['arrow',210,55,.35], ['storm',240,10,.5], L(150,145,'people + companies lead')],
+ ['bgStreet', ['city',20,32,1], ['gavel',120,30,.7], ['jamesUp',200,52,.8], ['check',245,20,.4], L(150,145,'governments take the main role')],
+ ['bgStreet', ['car',20,62,.7], ['factory',110,42,.9], ['co2',50,0,.55], ['co2',180,0,.55], L(150,145,'greenhouse gas: cars + factories')],
+ ['bgStreet', ['car',20,62,.6], ['cross',30,60,.5], ['factoryClean',110,42,.9], ['sun',200,5,.5], ['co2',230,50,.45], ['dollarDown',255,50,.35], L(150,145,'drive less, clean energy → less gas')],
+ ['bgStreet', ['sun',20,5,.55], ['tree',80,42,.9], ['crowd',180,52,.8], ['smile',250,15,.4], L(150,145,'cleaner air for everyone')],
+ ['bgStreet', ['city',20,32,1], ['gavel',120,25,.7], ['moneyBag',195,25,.75], L(150,145,'power to make laws + give money')],
+ ['bgStreet', ['gavel',20,25,.8], L(55,110,'strict laws'), ['arrow',95,55,.35], ['crowd',140,52,.8], ['factoryClean',215,42,.8], ['check',250,10,.4], L(200,145,'people + companies follow')],
+],
+'②-9':[
+ ['bgStreet', ['ring',40,20,.8], ['calendar',140,20,.7], L(175,58,'25?'), ['q',240,0,.5], L(150,145,'minimum age for marriage')],
+ ['bgStreet', ['two',80,52,.8], ['heart',110,0,.5], ['calendar',210,30,.5], ['cross',220,25,.45], L(150,145,'love > age')],
+ ['bgStreet', ['ring',20,25,.7], ['hourglass',100,25,.7], L(135,110,'wait until 25'), ['jamesUp',200,52,.8], ['check',245,20,.4]],
+ ['bgStreet', ['shake',100,52,.8], ['heart',120,0,.45], ['storm',20,10,.5], L(150,145,'support: encourage each other')],
+ ['bgStreet', ['two',60,52,.8], ['ring',95,0,.45], ['heart',180,20,.5], ['smile',240,30,.45], L(150,145,'married young → less lonely')],
+ ['bgStreet', ['storm',20,5,.5], ['umbrella',90,10,1.1], ['two',110,52,.8], ['smile',230,25,.45], L(150,145,'peace of mind in hard times')],
+ ['bgStreet', ['gradCap',20,20,.7], ['arrow',85,55,.3], ['moneyBag',115,25,.7], ['arrow',180,55,.3], ['ring',215,20,.7], L(150,145,'finished school + steady income')],
+ ['bgStreet', ['gradCap',15,20,.65], ['arrow',75,55,.3], ['briefcase',110,25,.6], ['arrow',175,55,.3], ['ring',215,20,.65], ['check',255,10,.35], L(150,145,'studies → job → marriage')],
+],
+'②-10':[
+ ['bgStreet', ['city',20,32,1], ['vs',110,50,.5], ['tree',165,42,.9], ['house',215,52,.8], L(150,145,'country vs city')],
+ ['bgStreet', ['city',40,32,1], ['check',130,15,.5], ['crowd',190,52,.8], L(150,145,'city is better')],
+ ['bgStreet', ['tree',20,42,.9], ['house',70,52,.8], ['smile',150,20,.45], ['jamesUp',200,52,.8], L(150,145,'country → peace of mind')],
+ ['bgStreet', ['city',20,32,1], ['briefcase',120,30,.65], ['moneyBag',195,25,.75], L(150,145,'many jobs, big companies pay well')],
+ ['bgStreet', ['city',20,32,1], ['manRun',120,52,.8], ['briefcase',175,55,.45], ['moneyBag',215,25,.7], L(150,145,'good job + steady income')],
+ ['bgStreet', ['chartUp',20,25,.6], L(50,110,'faster career'), ['crowd',110,52,.8], ['arrow',180,55,.35], ['city',215,32,.85], L(210,145,'move to cities')],
+ ['bgStreet', ['sun',10,0,.45], ['tree',50,42,.9], ['house',100,52,.8], ['manLie',175,30,.9], L(150,145,'slow life, far less pressure')],
+ ['bgStreet', ['scaleEven',80,25,1], ['briefcase',75,10,.4], ['house',155,10,.4], L(150,145,'think about career + family')],
+],
+'②-11':[
+ ['bgStreet', ['star',30,15,.7], ['camera',110,30,.7], ['lock',200,25,.7], ['q',255,0,.4], L(150,145,'privacy?')],
+ ['bgStreet', ['star',30,15,.7], ['arrow',105,50,.35], ['lock',150,25,.7], ['cross',160,20,.6], L(150,145,'pay for fame with privacy')],
+ ['bgStreet', ['lock',40,25,.8], ['check',120,15,.5], ['jamesUp',190,52,.8], L(150,145,'never give up privacy')],
+ ['bgStreet', ['star',20,10,.6], ['moneyBag',75,25,.7], ['camera',150,30,.6], ['crowd',215,52,.8], L(150,145,'big money, media keeps them popular')],
+ ['bgStreet', ['news',20,25,.7], ['star',60,10,.4], ['arrow',105,55,.3], ['crowd',150,52,.8], ['heartS',200,10,.4], ['heartS',225,20,.35], L(150,145,'stay in the news → fans')],
+ ['bgStreet', ['moneyBag',20,25,.7], ['moneyBag',75,25,.7], L(70,110,'very high income'), ['arrow',140,55,.3], ['lock',185,25,.7], ['cross',195,20,.6], L(215,145,'give up privacy')],
+ ['bgStreet', ['eye',10,10,.5], ['eye',50,25,.5], ['camera',100,20,.6], ...UPSET(195), L(150,145,'watched all the time → stress')],
+ ['bgStreet', ['lock',20,25,.7], ['check',30,15,.4], ['camera',110,30,.6], ['cross',120,25,.5], ['house',215,52,.8], L(150,145,'media respect private life')],
+],
+'②-12':[
+ ['bgStreet', ['moneyBag',40,25,.8], ['sign',140,32,1,{t:'MAX',fs:18}], ['q',240,0,.5], L(150,145,'maximum wage?')],
+ ['bgStreet', ['moneyBag',30,25,.7], ['chartUp',100,25,.6], ['sign',190,32,.9,{t:'MAX',fs:16}], ['cross',200,25,.6], L(150,145,'no maximum wage')],
+ ['bgStreet', ['scaleGood',20,25,.9], ['sign',120,32,.8,{t:'MAX',fs:15}], ['jamesUp',200,52,.8], L(150,145,'good > harm')],
+ ['bgStreet', ['moneyBag',20,25,.7], ['manRun',100,52,.8], ['crowd',180,52,.8], ['moneyBag',250,45,.45], L(150,145,'everyone wants to earn more')],
+ ['bgStreet', ['manRun',60,52,.8], ['sweat',105,40,.3], ['arrow',125,55,.35], ['moneyBag',175,25,.75], ['moneyBag',230,40,.55], L(150,145,'chase higher pay → work very hard')],
+ ['bgStreet', ['bulb',20,20,.6], ['chartUp',85,25,.6], L(75,110,'new ideas, growth'), ['building',170,32,1], ['moneyBag',245,45,.55], L(220,145,'keep talent with high pay')],
+ ['bgNight', ['sign',20,32,.9,{t:'MAX',fs:16}], ['arrow',105,55,.3], ['clock',145,25,.6], ['cross',155,20,.5], L(160,110,'no endless overtime'), ['jamesWalk',230,52,.8]],
+ ['bgStreet', ['scaleGood',5,25,.8], L(45,145,'good > harm'), ['gavel',110,25,.7], ['sign',200,32,.9,{t:'MAX',fs:16}], ['check',235,15,.4], L(200,145,'fair limit on pay')],
+],
+'②-13':[
+ ['bgStreet', ['kid',60,52,.8], ['phone',100,55,.4], ['q',160,-5,.6], ['calendar',220,25,.6], L(150,145,'harder to grow up today?')],
+ ['bgStreet', ['kid',60,52,.8], ['phone',100,55,.4], ['bulb',150,20,.5], ['check',205,20,.5], L(150,145,'easier lives')],
+ ['bgStreet', ['kidSad',60,52,.8], ['sweat',110,50,.3], ['jamesPoint',190,52,.8], L(150,145,'harder than ever')],
+ ['bgSchool', ['phone',60,30,.8], ['bulb',110,10,.5], ['news',105,60,.4], L(150,145,'information + lessons in one device')],
+ ['bgSchool', ['kidPhone',30,42,1], ['desk',30,62,.8], ['paperA',150,25,.6], ['clockFast',215,25,.6], L(150,145,'homework faster')],
+ ['bgSchool', ['bulb',40,25,.6], ['arrow',100,55,.35], ['clockFast',150,25,.6], ['check',215,20,.5], L(150,145,'faster and easier way to learn')],
+ ['bgNight', ['kidPhone',40,42,1], ['chain',90,80,.5], ['lines',120,55,.3], ['zzz',170,10,.45], L(150,145,'addicted to the internet')],
+ ['bgSchool', ['man',30,52,.8], ['woman',70,52,.8], ['board',120,62,.6], ['kid',190,52,.8], ['phone',230,55,.35], ['clock',245,15,.4], ['check',265,40,.3], L(150,145,'families + schools: healthy digital habits')],
+],
+'③-1':[
+ ['bgStreet', ['airplane',30,15,.9], ['gradCap',140,25,.8], ['q',240,0,.5], L(150,145,'studying overseas?')],
+ ['bgStreet', ['house',30,52,.8], ['gradCap',110,25,.7], ['check',190,20,.5], L(150,145,'local is just as good')],
+ ['bgStreet', ['airplane',10,10,.6], ['globe',70,25,.6], ['bulb',135,15,.55], ['jamesUp',200,52,.8], L(150,145,'overseas gives something more')],
+ ['bgStreet', ['airplane',10,5,.5], ['moneyBag',40,45,.55], ['moneyBag',80,45,.55], ['moneyBag',120,45,.55], L(80,140,'overseas costs far more'), ['house',195,62,.65], ['moneyBag',245,60,.4], L(230,140,'local: cheaper')],
+ ['bgStreet', ['house',30,52,.8], ['moneyBag',120,25,.75], ['check',185,15,.45], ['gradCap',210,50,.6], L(150,145,'stay home → save fees')],
+ ['bgHome', ['man',20,52,.8], ['woman',60,52,.8], ['smile',50,5,.4], ['moneyBag',105,60,.45], L(70,145,'less money pressure'), ['gradCap',180,20,.6], ['trophy',235,20,.6], ['house',215,72,.55], L(225,145,'great scholars at home')],
+ ['bgStreet', ['globe',30,20,.7], ['bulb',110,10,.6], ['eye',185,35,.6], ['door',245,32,1], L(150,145,'a new place opens the mind')],
+ ['bgStreet', ['airplane',30,15,.8], ['check',120,15,.5], ['jamesUp',190,52,.8], L(150,145,'take international chances')],
+],
+'③-2':[
+ ['bgStreet', ['robot',30,32,.9], ['bubbleTalk',110,10,.5], ['book',185,30,.7], L(150,145,'languages in the AI age')],
+ ['bgStreet', ['robot',30,32,.9], ['arrow',110,55,.35], ['book',160,30,.7], ['cross',170,25,.6], L(150,145,'AI makes learning useless?')],
+ ['bgStreet', ['book',20,30,.7], ['hi',80,0,.6], ['check',110,20,.45], ['jamesUp',190,52,.8], L(150,145,'still really important')],
+ ['bgStreet', ['robot',30,32,.9], ['clockFast',130,25,.6], ['moneyBag',205,30,.6], ['dollarDown',255,35,.35], L(150,145,'fast + costs little')],
+ ['bgStreet', ['phone',30,25,.8], ['bubbleTalk',80,-5,.5], ['arrow',120,55,.3], ['bulb',165,20,.6], ['clockFast',225,25,.6], L(150,145,'understand right away')],
+ ['bgStreet', ['chartUp',20,25,.6], ['moneyBag',90,35,.5], ['dollarDown',125,35,.35], L(80,110,'efficiency, lower costs'), ['calendar',170,20,.55], ['robot',230,32,.8], L(220,145,'AI every day')],
+ ['bgStreet', ['robot',10,52,.6], ['cross',15,50,.5], ['james',85,52,.8], ['hi',130,-5,.55], ['manHat',165,52,.8], ['globe',215,10,.5], ['bubbleTalk',245,60,.4], L(150,145,'talk by ourselves')],
+ ['bgStreet', ['book',30,25,.9], ['check',110,15,.5], ['robot',190,52,.6], L(150,145,'AI as a helper only')],
+],
+'③-3':[
+ ['bgSchool', ['board',30,42,.9], ['gradCap',140,30,.7], ['q',230,0,.5], L(150,145,'required subject?')],
+ ['bgSchool', ['board',30,42,.9], ['cross',40,30,.6], ['kidSad',150,52,.8], ['sweat',200,50,.3], L(150,145,'do not force')],
+ ['bgSchool', ['board',30,42,.9], ['check',120,15,.5], ['jamesUp',190,52,.8], L(150,145,'foreign language required')],
+ ['bgSchool', ['kidSad',40,52,.8], ['books',100,32,1], ['books',150,20,1], ['sweat',95,40,.3], L(150,145,'heavy workloads')],
+ ['bgSchool', ['books',40,42,.9], ['lbl',115,50,1,{t:'+1'}], ['book',125,30,.5], ['arrow',165,55,.3], ...UPSET(205), L(150,145,'one more subject → upset and anxious')],
+ ['bgSchool', ['kidSad',40,52,.8], ['book',85,50,.5], ['cross',95,50,.4], L(80,145,'less interest'), ['list',180,35,.7], ['check',220,20,.4], L(225,145,'careful planning')],
+ ['bgStreet', ['book',20,30,.7], ['arrow',85,55,.3], ['door',125,32,1], ['globe',190,10,.5], ['mask',245,40,.5], L(150,145,'opens the door to other cultures')],
+ ['bgSchool', ['board',30,42,.9], ['smile',130,20,.5], ['check',185,15,.45], ['kid',230,52,.8], L(150,145,'fun + useful → less pressure')],
+],
+'④-1':[
+ ['bgStreet', ['road',20,32,1], ['vs',110,50,.5], ['gradCap',160,25,.8], ['board',230,52,.7], L(150,145,'life experience vs school')],
+ ['bgStreet', ['road',20,32,1], ['bulb',110,10,.6], ['man',190,52,.8], L(150,145,'life teaches more')],
+ ['bgSchool', ['gradCap',30,25,.8], ['check',120,15,.5], ['jamesUp',190,52,.8], L(150,145,'formal education more important')],
+ ['bgStreet', ['road',20,32,1], ['eye',110,25,.6], ['board',190,42,.7], ['cross',205,40,.5], L(150,145,'real life shows what schools cannot')],
+ ['bgStreet', ['man',30,52,.8], ['storm',60,0,.5], ['stairs',85,52,.8], ...BOOKX(180), L(150,145,'challenges → not in books')],
+ ['bgStreet', ...VIEW(20), L(70,145,'broader view'), ['trophy',175,20,.6], ['man',225,52,.8], L(225,145,'successful people say')],
+ ['bgSchool', ['calendar',30,25,.6], ['clock',110,25,.6], ['list',180,25,.7], ['check',235,15,.4], L(150,145,'self-discipline habits')],
+ ['bgStreet', ['gradCap',30,20,.7], ['check',95,15,.45], ['arrow',130,55,.35], ['briefcase',185,25,.65], L(150,145,'finish studies first')],
+],
+'④-2':[
+ ['bgStreet', ['books',30,32,.9], ['lbl',120,60,1,{t:'+'}], ['briefcase',140,25,.7], ['q',235,0,.5], L(150,145,'study + work at the same time?')],
+ ['bgStreet', ['books',30,32,.9], ['briefcase',120,25,.7], ['check',205,15,.5], L(150,145,'can do both')],
+ ['bgStreet', ['books',20,32,.9], ['check',60,10,.45], ['briefcase',115,35,.55], ['cross',125,30,.5], ['jamesUp',200,52,.8], L(150,145,'focus on study')],
+ ['bgStreet', ['shop',10,42,.9], ['eye',110,25,.6], ['board',190,42,.7], ['cross',205,40,.5], L(150,145,'workplace shows what schools cannot')],
+ ['bgStreet', ['man',20,52,.8], ['cart',60,70,.5], ['shop',80,62,.6], ...BOOKX(180), L(150,145,'part-time → not in books')],
+ ['bgStreet', ...VIEW(20), L(70,145,'broader view'), ['crowd',175,52,.8], ['trophy',245,20,.5], L(225,145,'praised')],
+ ['bgSchool', ['clock',30,25,.6], ['books',110,32,.9], ['smile',200,20,.5], L(150,145,'time + a calm mind')],
+ ['bgStreet', ['gradCap',30,20,.7], ['arrow',100,55,.35], ['briefcase',160,25,.65], ['check',230,15,.4], L(150,145,'study first, then job')],
+],
+'④-3':[
+ ['bgStreet', ['building',20,32,1], ['sign',60,0,.6,{t:'LIB',fs:14}], ['books',120,42,.8], ['laptop',200,40,.7], L(150,145,'the role of the library')],
+ ['bgStreet', ['laptop',30,30,.8], ['arrow',110,55,.35], ['building',160,32,1], ['cross',175,30,.7], L(150,145,'libraries out of date?')],
+ ['bgStreet', ['building',20,32,1], ['books',100,42,.7], ['check',150,10,.45], ['jamesUp',200,52,.8], L(150,145,'cannot be replaced')],
+ ['bgStreet', ['laptop',20,30,.7], ['phone',100,30,.6], ['laptop',150,45,.5], ['check',215,15,.5], L(150,145,'convenient: any device')],
+ ['bgStreet', ['laptop',30,30,.8], ['search',110,20,.6], ['arrow',170,55,.3], ['news',210,30,.55], L(150,145,'search online databases')],
+ ['bgStreet', ['clockFast',20,20,.6], ['check',75,10,.4], L(60,110,'short time'), ['crowd',150,52,.8], ['laptop',215,55,.45], L(220,145,'students prefer digital')],
+ ['bgStreet', ['building',10,32,1], ['sign',50,0,.6,{t:'shh',fs:14}], ['jamesSit',110,52,.8], ['desk',100,62,.9], ['books',140,45,.4], ['bulb',215,20,.6], L(215,145,'quiet → deep learning')],
+ ['bgStreet', ['building',20,32,1], ['moneyBag',115,25,.7], ['arrow',175,55,.3], ['books',210,42,.8], L(150,145,'keep spending on libraries')],
+],
+'④-4':[
+ ['bgStreet', ['building',30,32,1], ['bulb',130,10,.6], ['gear',200,30,.6], L(150,145,'the design of buildings')],
+ ['bgStreet', ['darkRoom',30,25,.9], ['manSad',150,52,.8], ['sweat',195,40,.3], L(150,145,'bad design is harmful')],
+ ['bgStreet', ['brightRoom',20,25,.9], ['smile',120,20,.5], ['jamesUp',200,52,.8], L(150,145,'good design → good effects')],
+ ['bgStreet', ['darkRoom',30,25,.9], ...UPSET(150), L(150,145,'stress and anxiety')],
+ ['bgStreet', ['darkRoom',30,25,.9], L(75,140,'dark and small rooms'), ...UPSET(180), L(215,145,'upset and anxious')],
+ ['bgStreet', ...TEMPER(20), L(80,145,'bad temper hurts families'), ['arrow',170,55,.3], ['house',215,52,.8], ['lines',185,70,.3], L(240,145,'move away')],
+ ['bgStreet', ['brightRoom',10,25,.9], ['desk',110,62,.8], ['jamesSit',120,45,.7], ['target',210,25,.65], L(150,145,'comfortable → focus')],
+ ['bgStreet', ['brightRoom',20,25,.9], ['sofa',130,60,.7], ['smile',215,20,.5], ['check',255,60,.3], L(150,145,'comfort + how people use the space')],
+],
+'④-5':[
+ ['bgStreet', ['gavel',30,25,.8], ...PARENTS(120), ['kid',200,52,.8], ['q',245,0,.5], L(150,145,'parents legally responsible?')],
+ ['bgStreet', ['gavel',30,25,.7], ['manSad',120,52,.8], ['womanSad',160,52,.8], ['cross',220,15,.5], L(150,145,'unfair to parents')],
+ ['bgStreet', ['gavel',20,25,.7], ...PARENTS(100), ['check',180,10,.4], ['jamesUp',225,52,.8], L(150,145,'held responsible')],
+ ['bgStreet', ['manSad',30,52,.8], ['womanSad',70,52,.8], ['sweat',110,40,.3], ['bubbleTalk',60,-2,.45], ['kid',190,52,.8,{flip:1}], ['lines',230,60,.35], ['cross',215,20,.35], L(150,145,'children do not always listen')],
+ ['bgStreet', ['gavel',20,25,.7], ['arrow',85,55,.3], ...UPSET(130), ['womanSad',185,52,.8], ['sweat',230,40,.3], L(150,145,'punished for every mistake')],
+ ['bgStreet', ...TEMPER(20), L(80,145,'bad temper hurts families'), ['sign',200,32,.9,{t:'STRICT',fs:13}], L(240,145,'too strict?')],
+ ['bgStreet', ['gavel',10,25,.6], ['arrow',65,55,.3], ['man',100,52,.8], ['kid',140,52,.8], ['woman',170,52,.8], ['heart',140,0,.4], ['shield',230,20,.55], L(150,145,'guide their children with care')],
+ ['bgStreet', ['scaleGood',5,25,.8], L(45,145,'good > harm'), ['gavel',110,30,.6], ['book',165,35,.55], ['man',215,52,.8], ['kid',250,52,.8], L(210,145,'parenting support')],
+],
+'④-6':[
+ ['bgSchool', ['paper',40,20,.8], ['clock',130,25,.7], ['lbl',215,60,1,{t:'−5'}], ['cross',215,30,.4], L(150,145,'marks off for late work')],
+ ['bgSchool', ['paper',40,20,.7], ['cross',50,20,.55], ['kidSad',150,52,.8], ['sweat',200,50,.3], L(150,145,'too strict on students')],
+ ['bgSchool', ['paper',20,20,.7], ['scaleEven',100,25,.8], ['check',170,10,.4], ['jamesUp',220,52,.8], L(150,145,'fair and necessary')],
+ ['bgStreet', ['car',40,62,.8], ['cross',55,55,.6], ['manSad',160,52,.8], ['sweat',205,40,.3], L(150,145,'everyone may have an accident')],
+ ['bgStreet', ['car',20,62,.7], ['cross',30,55,.5], ['arrow',100,55,.3], ['paper',140,20,.6], ['clock',200,25,.6], ['cross',210,20,.5], L(150,145,'accident → cannot submit on time')],
+ ['bgSchool', ['paperF',30,20,.7], L(65,140,'failing the course'), ['arrow',120,55,.3], ['sign',170,32,.9,{t:'FLEX?',fs:14}], ['crowd',235,62,.6], L(215,145,'more flexible rules?')],
+ ['bgSchool', ['calendar',30,25,.6], ['clock',110,25,.6], ['list',180,25,.7], ['check',235,15,.4], L(150,145,'deadlines → self-discipline')],
+ ['bgSchool', ['clock',40,25,.7], ['lbl',115,60,1.4,{t:'+'}], ['hourglass',140,25,.65], ['check',210,20,.5], L(150,145,'more time for good reasons')],
+],
+'④-7':[
+ ['bgStreet', ['manSad',60,52,.8], ['briefcase',110,55,.5], ['cross',120,50,.45], ['crowd',200,52,.8], L(150,145,'unemployment')],
+ ['bgStreet', ['crowd',60,52,.8], ['q',150,-5,.6], ['manSad',210,52,.8], ['sweat',255,40,.3], L(150,145,'too hard to solve?')],
+ ['bgSchool', ['board',30,42,.9], ['arrow',115,55,.3], ['briefcase',150,25,.6], ['check',200,10,.4], ['jamesUp',225,52,.8], L(150,145,'job training can solve it')],
+ ['bgStreet', ['moneyBag',40,25,.8], ['cross',50,20,.7], ['manSad',150,52,.8], ['sweat',195,40,.3], L(150,145,'lose their steady income')],
+ ['bgStreet', ['calendar',20,20,.55], ['moneyBag',90,25,.7], ['cross',100,20,.6], ...UPSET(190), L(150,145,'worry about money every day')],
+ ['bgHome', ['manSad',20,52,.8], ['womanSad',60,52,.8], ['kidSad',100,52,.8], ['sweat',95,15,.3], L(70,145,'stress and anxiety'), ['hospital',190,32,1], L(240,145,'mental illness')],
+ ['bgSchool', ['board',20,42,.9], ['gear',105,25,.6], ['arrow',160,55,.3], ['briefcase',200,25,.65], L(150,145,'skills → a new job')],
+ ['bgStreet', ['city',10,32,.9], ['moneyBag',95,30,.6], ['arrow',150,55,.3], ['board',180,52,.6], ['briefcase',240,45,.5], L(150,145,'spend on training, create jobs')],
+],
+'④-8':[
+ ['bgSchool', ['gear',40,25,.8], ['vs',120,50,.4], ['board',180,42,.9], L(150,145,'learning by doing?')],
+ ['bgSchool', ['gear',40,25,.8], ['smile',130,20,.5], ['check',200,15,.5], L(150,145,'hands-on works well')],
+ ['bgSchool', ['board',30,42,.9], ['check',120,15,.5], ['jamesUp',190,52,.8], L(150,145,'traditional is the best')],
+ ['bgSchool', ['gear',30,25,.7], ['bulb',105,10,.55], ['eye',175,35,.6], ['smile',245,20,.4], L(150,145,'shows how things work')],
+ ['bgSchool', ['gear',30,35,.7], ['man',100,52,.8], ...BOOKX(180), L(150,145,'learn by doing → not in books')],
+ ['bgSchool', ...VIEW(20), L(70,145,'broader view'), ['board',170,42,.8], ['gear',245,55,.45], L(225,145,'schools add hands-on')],
+ ['bgSchool', ['stairs',30,32,1], ['books',140,42,.8], ['arrow',210,55,.3], ['bulb',245,20,.55], L(150,145,'knowledge step by step')],
+ ['bgSchool', ['board',30,32,1.1], ['check',130,10,.5], ['gear',210,45,.5], ['lbl',245,90,1,{t:'option'}], L(150,145,'traditional as the main way')],
+],
+'④-9':[
+ ['bgStreet', ['ring',30,20,.7], ['gradCap',110,25,.7], ['briefcase',185,30,.6], ['q',250,0,.45], L(150,145,'marry before finishing?')],
+ ['bgStreet', ['two',80,52,.8], ['heart',110,0,.5], ['clock',210,30,.5], ['cross',220,25,.45], L(150,145,'love > timing')],
+ ['bgStreet', ['briefcase',20,30,.6], ['moneyBag',80,25,.65], ['arrow',140,55,.3], ['ring',175,25,.6], ['check',230,10,.4], ['jamesUp',245,62,.6], L(150,145,'wait until a steady job')],
+ ['bgStreet', ['shake',100,52,.8], ['heart',120,0,.45], ['storm',20,10,.5], L(150,145,'support: encourage each other')],
+ ['bgStreet', ['two',60,52,.8], ['ring',95,0,.45], ['heart',180,20,.5], ['smile',240,30,.45], L(150,145,'married young → less lonely')],
+ ['bgStreet', ['storm',20,5,.5], ['umbrella',90,10,1.1], ['two',110,52,.8], ['smile',230,25,.45], L(150,145,'peace of mind in hard times')],
+ ['bgStreet', ['moneyBag',30,25,.7], ['arrow',95,55,.3], ['ring',135,25,.6], ['heart',185,10,.5], ['shield',225,25,.6], L(150,145,'steady income keeps marriage strong')],
+ ['bgStreet', ['gradCap',15,20,.65], ['arrow',75,55,.3], ['briefcase',110,25,.6], ['arrow',175,55,.3], ['ring',215,20,.65], ['check',255,10,.35], L(150,145,'studies → job → marriage')],
+],
+'④-10':[
+ ['bgOffice', ['table',60,70,1], ['manSit',70,52,.8], ['womanSit',115,52,.8], ['manSit',160,52,.8], ['bubbleTalk',100,-2,.45], ['bubbleTalk',170,-2,.45], ['q',245,0,.45], L(150,145,'employees join decisions?')],
+ ['bgOffice', ['man',60,52,.8], ['sign',95,20,.7,{t:'BOSS',fs:14}], ['crowd',190,52,.8], ['cross',200,15,.5], L(150,145,'managers alone')],
+ ['bgOffice', ['scaleGood',20,25,.9], ['crowd',130,52,.8], ['jamesUp',215,52,.8], L(150,145,'good >> bad')],
+ ['bgOffice', ['table',30,70,1], ['manSit',40,52,.8], ['womanSit',85,52,.8], ['bubbleTalk',60,-2,.45], ['bubbleTalk',110,-2,.45], ['clock',170,25,.6], ['hourglass',235,30,.6], L(150,145,'discussion takes time')],
+ ['bgOffice', ['crowd',40,52,.8], ['bubbleTalk',60,-2,.4], ['bubbleTalk',100,-2,.4], ['bubbleTalk',140,-2,.4], L(90,145,'everyone must agree'), ['hourglass',200,25,.7], ['lines',250,60,.3], L(235,145,'slow')],
+ ['bgOffice', ['chartDown',20,25,.6], L(50,110,'lower efficiency'), ['building',130,32,1], ['sign',215,32,.8,{t:'BOSS',fs:14}], L(225,145,'decide at the top')],
+ ['bgOffice', ['jamesUp',60,52,.8], ['star',100,0,.45], ['heart',140,20,.4], ['smile',195,20,.5], ['briefcase',235,60,.45], L(150,145,'feel important, keen to work')],
+ ['bgOffice', ['scaleGood',5,25,.8], L(45,145,'good > harm'), ['table',120,70,1], ['manSit',130,52,.8], ['womanSit',175,52,.8], ['manSit',220,52,.8], ['check',250,10,.4], L(200,145,'ways to take part')],
+],
+'④-11':[
+ ['bgSchool', ['paper',50,20,.8], ['desk',130,62,.8], ['manSit',140,45,.7], L(150,145,'the written exam')],
+ ['bgSchool', ['paper',40,20,.7], ['cross',50,20,.55], ['manSad',150,52,.8], ['bulb',200,20,.5], ['q',245,20,.4], L(150,145,'fails to show true ability?')],
+ ['bgSchool', ['paper',20,20,.7], ['scaleEven',100,25,.8], ['check',170,10,.4], ['jamesUp',220,52,.8], L(150,145,'still fair')],
+ ['bgSchool', ['paper',60,20,.8], ['lbl',150,60,2,{t:'1'}], ['sweat',175,30,.35], ['manSad',210,52,.8], L(150,145,'everything on a single performance')],
+ ['bgSchool', ['paper',40,20,.7], ['arrow',110,55,.3], ...UPSET(160), L(150,145,'one test → upset and anxious')],
+ ['bgSchool', ['chartDown',20,25,.6], L(50,110,'below true level'), ['crowd',150,52,.8], ['bubbleTalk',170,-2,.45], ['bubbleTalk',215,-2,.45], L(215,145,'talk about changing exams')],
+ ['bgSchool', ['paper',30,20,.7], ['scaleEven',110,25,.8], ['bulb',210,15,.6], L(150,145,'tests knowledge in a fair way')],
+ ['bgSchool', ['paper',20,20,.65], ['lbl',85,60,1.4,{t:'+'}], ['gear',100,25,.6], ['bubbleTalk',160,15,.5], ['check',225,15,.45], L(150,145,'exams + other ways')],
+],
+'④-12':[
+ ['bgStreet', ['palm',30,32,1], ['suitcase',130,35,.6], ['airplane',210,10,.6], ['q',255,60,.4], L(150,145,'tourism in less developed countries')],
+ ['bgStreet', ['scaleEven',40,25,.9], ['palm',170,32,1], L(150,145,'bad as big as good?')],
+ ['bgStreet', ['scaleGood',20,25,.9], ['palm',120,32,.9], ['jamesUp',200,52,.8], L(150,145,'good >> bad')],
+ ['bgStreet', ['mask',30,25,.7], ['arrow',100,55,.3], ['discount',140,20,.7], ['moneyBag',215,30,.6], L(150,145,'culture turned into a product')],
+ ['bgStreet', ['moneyBag',20,25,.65], ['moneyBag',70,25,.65], ['arrow',130,55,.3], ['mask',170,25,.7], ['cross',180,20,.6], L(150,145,'too focused on money → lose character')],
+ ['bgStreet', ['oldBuilding',30,32,1], ['cross',45,30,.6], ['lines',130,60,.4], ['suitcase',200,45,.5], ['manFlat',240,52,.8,{flip:1}], L(150,145,'careless tourism leaves damage')],
+ ['bgStreet', ['palm',20,32,.9], ['briefcase',105,30,.55], ['crowd',165,52,.8], ['moneyBag',240,30,.6], L(150,145,'jobs for local people')],
+ ['bgStreet', ['scaleGood',5,25,.8], L(45,145,'good > harm'), ['palm',120,32,.9], ['list',200,25,.7], ['check',245,10,.4], L(215,145,'manage carefully')],
+],
+'④-13':[
+ ['bgRoom', ['tvFace',20,42,.9], ['phone',110,35,.6], ['kid',170,52,.8], ['q',230,0,.5], L(150,145,'mass media & the young')],
+ ['bgRoom', ['scaleGood',40,25,1], ['tv',170,50,.6], L(90,145,'good > harm')],
+ ['bgRoom', ['scaleHarm',30,25,1], ['tv',140,62,.5], ['jamesPoint',190,52,.8], L(80,145,'harm > good')],
+ ['bgRoom', ['tvBulb',20,42,.9], ['arrow',110,55,.3], ['globe',150,20,.7], ['eye',225,45,.5], L(150,145,'good programs show the wide world')],
+ ['bgRoom', ['tvFace',20,42,.9], ['check',35,30,.4], ...BOOKX(140), L(150,145,'quality content → not in books')],
+ ['bgRoom', ...VIEW(20), L(70,145,'broader view'), ['man',160,52,.8], ['woman',200,52,.8], ['smile',185,0,.4], ['tvBulb',235,62,.55], L(225,145,'educational programs')],
+ ['bgRoom', ['phonePlay',30,25,.8], ['arrow',95,55,.35], ['kid',150,52,.8], ['books',200,42,.7], ['cross',210,40,.5], L(150,145,'short videos pull away from books')],
+ ['bgRoom', ['scaleHarm',5,25,.8], L(45,145,'harm > good'), ['man',115,52,.8], ['woman',155,52,.8], ['sign',205,32,.9,{t:'LIMIT',fs:14}], ['phone',255,70,.35], L(215,145,'parents set clear limits')],
+],
+'④-14':[
+ ['bgStreet', ['medal',30,15,.8], ['vs',120,50,.4], ['discount',180,20,.8], L(150,145,'good name vs discounts')],
+ ['bgStreet', ['discount',30,20,.8], ['arrow',110,55,.3], ['crowd',160,52,.8], ['crowd',230,52,.7], L(150,145,'discounts attract customers')],
+ ['bgStreet', ['medal',40,15,.8], ['check',120,15,.5], ['jamesUp',190,52,.8], L(150,145,'a good name is the focus')],
+ ['bgStreet', ['discount',20,20,.7], ['chartUp',95,25,.6], ['clockFast',170,25,.6], ['cart',235,60,.5], L(150,145,'low price → quick sales')],
+ ['bgStreet', ['discount',20,20,.7], ['dollarDown',85,30,.4], ['arrow',120,55,.3], ['cartFull',160,42,.7], ['clockFast',230,20,.5], L(150,145,'prices drop → buy right away')],
+ ['bgStreet', ['moneyBag',20,30,.6], ['hourglass',75,25,.6], L(65,110,'short-term gains'), ['discount',150,20,.55], ['discount',200,30,.55], ['discount',245,20,.55], L(215,145,'campaigns everywhere')],
+ ['bgStreet', ['medal',20,15,.7], ['heart',80,20,.45], ['crowd',130,52,.8], ['calendar',200,20,.5], ['chartUp',245,25,.5], L(150,145,'loyalty → long-term profits')],
+ ['bgStreet', ['medal',20,15,.7], ['moneyBag',90,30,.6], ['arrow',150,55,.3], ['shake',190,52,.8], L(150,145,'spend on quality + trust')],
+],
+'④-15':[
+ ['bgSchool', ['mask',40,25,.8], ['board',150,42,.9], ['q',250,0,.45], L(150,145,'old plays at school?')],
+ ['bgSchool', ['mask',60,25,.8], ['check',150,15,.5], ['crowd',210,52,.8], L(150,145,'should be taught')],
+ ['bgSchool', ['scaleHarm',30,25,1], ['mask',140,55,.5], ['jamesPoint',190,52,.8], L(80,145,'bad > good')],
+ ['bgSchool', ['mask',20,25,.7], ['oldBuilding',95,32,.9], ['book',195,30,.65], L(150,145,'deep culture: history + human nature')],
+ ['bgSchool', ['mask',20,25,.65], ['eye',90,30,.6], ['oldBuilding',165,32,.9], ['man',245,72,.5], L(150,145,'see how people lived in the past')],
+ ['bgSchool', ...VIEW(20), L(70,145,'broader view'), ['mask',175,25,.65], ['trophy',240,20,.6], L(225,145,'schools praise drama')],
+ ['bgSchool', ['mask',20,25,.65], ['clock',90,25,.6], ['arrow',150,55,.3], ['books',190,42,.8], ['cross',200,40,.5], L(150,145,'practice takes hours from main subjects')],
+ ['bgSchool', ['scaleHarm',5,25,.8], L(45,145,'bad > good'), ['mask',120,25,.65], ['sign',195,32,.9,{t:'OPTION',fs:13}], L(215,145,'drama as an optional class')],
+],
+'④-16':[
+ ['bgStreet', ['oldBuilding',30,32,1], ['moneyBag',140,25,.7], ['moneyBag',195,40,.55], ['q',250,0,.45], L(150,145,'keep old buildings at any cost?')],
+ ['bgStreet', ['oldBuilding',20,32,1], ['moneyBag',120,25,.6], ['moneyBag',165,25,.6], ['moneyBag',210,25,.6], ['check',255,10,.35], L(150,145,'worth any cost')],
+ ['bgStreet', ['house',20,52,.8], ['hospital',90,32,1], ['check',180,10,.45], ['jamesUp',220,52,.8], L(150,145,'daily needs first')],
+ ['bgStreet', ['oldBuilding',20,32,1], ['book',120,30,.65], ['eye',195,35,.6], L(150,145,'part of our history')],
+ ['bgStreet', ['oldBuilding',20,32,1], ...BOOKX(140), L(150,145,'keep them → not in books')],
+ ['bgStreet', ...VIEW(20), L(70,145,'broader view'), ['crowd',160,52,.8], ['suitcase',215,60,.45], ['oldBuilding',240,62,.6], L(225,145,'tourists visit')],
+ ['bgStreet', ['house',20,52,.8], ['briefcase',90,40,.55], ['check',145,10,.45], L(90,145,'housing + jobs first'), ['oldBuilding',200,32,.9], ['cross',215,30,.6], L(240,145,'beautiful walls')],
+ ['bgStreet', ['oldBuilding',20,32,1], ['star',60,0,.4], ['check',120,15,.45], L(70,145,'only the most important'), ['city',180,32,1], L(230,145,'daily needs first')],
+],
+'④-17':[
+ ['bgOffice', ['clock',30,25,.7], ['calendar',110,25,.65], ['lbl',143,62,1.3,{t:'4?'}], ['crowd',200,52,.8], L(150,145,'shorter week for the young?')],
+ ['bgOffice', ['clock',30,25,.6], ['dollarDown',80,30,.4], ['arrow',115,55,.3], ['briefcase',155,30,.55], ['crowd',215,52,.8], L(150,145,'shorter week → more jobs?')],
+ ['bgOffice', ['scaleHarm',30,25,1], ['clock',140,60,.5], ['jamesPoint',190,52,.8], L(80,145,'bad > good')],
+ ['bgHome', ['bed',20,55,.9], ['smile',120,20,.5], ['sun',185,5,.45], ['lines',230,60,.3], L(150,145,'more rest, less pressure')],
+ ['bgHome', ['clock',20,20,.55], ['dollarDown',65,25,.35], ['arrow',95,55,.3], ['lying',130,35,.75], L(150,145,'fewer hours → feel relaxed')],
+ ['bgHome', ['smile',20,20,.5], ['shield',80,15,.6], L(70,110,'peace of mind'), ['crowd',175,52,.8], ['heartS',235,10,.45], L(220,145,'attracts many workers')],
+ ['bgOffice', ['clock',20,25,.6], ['dollarDown',70,30,.4], ['arrow',105,55,.3], ['moneyBag',150,45,.45], ['chartDown',210,25,.6], L(150,145,'fewer hours = smaller pay')],
+ ['bgStreet', ['scaleHarm',5,25,.8], L(45,145,'bad > good'), ['city',110,32,.9], ['briefcase',195,35,.5], ['briefcase',235,35,.5], ['crowd',245,72,.55], L(215,145,'create new jobs')],
 ],
 };
-const GENERIC = [
- ['bgStreet', ['q',110,20,.8]],
- ['bgStreet', ['man',80,52,.8], ['bubbleTalk',120,0,.55], ['woman',170,52,.8,{flip:1}]],
- ['bgStreet', ['jamesUp',110,52,.8], ['check',190,40,.7]],
- ['bgStreet', ['manWave',80,52,.8], ['womanWave',170,52,.8,{flip:1}], ['heartS',125,10,.5]],
- ['bgStreet', ['man',60,52,.8], ['arrow',130,60,.5], ['man',200,52,.8]],
- ['bgStreet', ['arrow',60,60,.5], ['arrow',130,60,.5], ['man',200,52,.8]],
- ['bgStreet', ['jamesPoint',100,52,.8], ['bubbleTalk',150,0,.6]],
- ['bgMall', ['jamesWalk',110,52,.8]],
- ['bgHome', ['table',90,70,1], ['jamesSit',95,52,.8], ['womanSit',150,52,.8], ['kidSit',195,52,.8], ['heart',245,15,.4]],
- ['bgStreet', ['flag',110,32,1], ['jamesUp',170,52,.8]],
-];
 
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
@@ -283,7 +703,9 @@ function slotHtml(v){ return `<span class="s"><span class="f">${v}</span><span c
 
 function render(){
   const e = DATA[cur], es = e.es, c = GCOLOR[e.p3c] || '#7f8c8d';
-  const pics = PIC[e.n] || GENERIC;
+  const own = PIC[e.n] || [], ln = LINE[QLINE[e.n]] || LINE.D;
+  const p8 = ln.p8;
+  const pics = [own[0],own[1],own[2],own[3],own[4],own[5],own[6], p8, ln.p9, own[7]].map(x => x || [null, ['q',110,20,.8]]);
   const z = ZH[e.n] || {};
   let h = `<div class="title" style="--c:${c}"><span class="n">${esc(e.n)}</span><b>${esc(e.t)}</b>
     <div class="en">${esc(e.en)}</div><div class="st">立場：${esc(e.stance)}｜P2 ${esc(e.p2zh||'')}｜P3 ${esc(e.p3zh||'')}</div></div>`;
@@ -295,16 +717,18 @@ function render(){
       lastP = fr.p;
     }
     const slots = fr.keys.filter(k => es[k]).map(k => slotHtml(es[k])).join('');
+    let cap = (i === 7 || i === 8) ? fr.cap + `<span style="color:${c};font-size:.75rem">（${esc(ln.name)}）</span>` : fr.cap;
+    if (i === 7) cap += `<div style="color:#2980b9;font-weight:700;font-size:.8rem">→ ${esc(DOES[e.n] || '')}</div>`;
     h += `<div class="panel" style="--c:${c}">
       <div class="num">${i+1} / 10</div>
       <div class="pic">${scene(pics[i])}</div>
-      <div class="cap">${fr.cap}</div>
+      <div class="cap">${cap}</div>
       <div class="bubble">${slots}</div>
     </div>`;
   });
   h += `</div>` + (z.p4 ? `<div class="zh">🗒️ ${esc(z.p4)}</div>` : '');
   h += `<div class="nav"><button id="prev">◀ 上一題</button><button id="next">下一題 ▶</button></div>`;
-  h += `<div class="note">${PIC[e.n] ? '這題有專屬分鏡' : '這題還是通用分鏡（原型階段只畫了 ①-1、①-2）'}｜開「默寫」後點格子揭開英文</div>`;
+  h += `<div class="note">第 8、9 格是「${esc(ln.name)}」共用畫面（同線題目看到同一張圖）｜開「默寫」後點格子揭開英文</div>`;
   $('app').innerHTML = h;
   $('prev').onclick = () => go(cur-1); $('next').onclick = () => go(cur+1);
   document.querySelectorAll('.panel').forEach(p => p.onclick = () => p.classList.toggle('open'));
