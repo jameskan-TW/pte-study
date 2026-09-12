@@ -61,6 +61,7 @@ header p.hint { opacity: .65; font-size: .78rem; }
 .ph.l3 { --pb: #ebdef0; --pc: #6f3585; }
 .ph.l1 { --pb: #d6eaf8; --pc: #1a5d8c; }
 .ph.l0 { --pb: #e8e8e8; --pc: #555; }
+#qlist .ph { font-weight: 400; }
 .hn, .blk { display: none; }   /* .hn＝默寫首字母提示（不用 .hint，免得撞到 header 的提示列）*/
 
 /* section title */
@@ -106,6 +107,7 @@ header p.hint { opacity: .65; font-size: .78rem; }
 .sum-table tr:hover td.stk, .sum-table tr:hover td.stk2 { background: #f0f6fc; }
 .sum-table .en { font-family: Georgia, serif; color: #444; max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .sum-table .stc { max-width: 180px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sum-table .tt { max-width: 220px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .sum-table .num { text-align: right; white-space: nowrap; }
 .sum-table .num small { color: #aaa; font-weight: 400; }
 .sum-table .num b { color: #1a3a5c; }
@@ -139,11 +141,13 @@ header p.hint { opacity: .65; font-size: .78rem; }
 .stance b { color: #1e8449; }
 .row { margin-bottom: 12px; }
 .row-label { font-size: .76rem; font-weight: 700; color: #888; margin-bottom: 3px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.chain { font-family: Georgia, serif; font-size: .92rem; line-height: 2.3; }
-.chain .tpl { font-size: .78rem; color: #999; margin: 0 4px; }
+.chain { font-family: Georgia, serif; font-size: .92rem; line-height: 2; }
+.chain .tpl { font-size: .78rem; color: #777; margin: 0 4px; }
 .chain .arr { color: #bbb; margin: 0 5px; }
-.cell { display: inline; background: white; border: 1px solid #c9c9c9; border-radius: 4px; padding: 2px 6px;
-        color: #222; line-height: 1.7; -webkit-box-decoration-break: clone; box-decoration-break: clone; cursor: pointer; }
+.cell { display: inline-block; max-width: 100%; vertical-align: top; background: white; border: 1px solid #c9c9c9; border-radius: 4px; padding: 1px 6px;
+        color: #222; line-height: 1.7; margin: 2px 0; }   /* inline-block：整格一起換行，不會被畫成兩個框 */
+.cell.aux { border-style: dashed; color: #555; font-size: .88em; }   /* 主詞／動詞位：每題不同但不算獨有字 */
+body.mask-on .mask { cursor: pointer; }
 .zh { font-size: .84rem; color: #555; margin-top: 1px; }
 .zh b { color: #333; }
 .zh.sub, .zh .sub { color: #888; }
@@ -152,7 +156,7 @@ header p.hint { opacity: .65; font-size: .78rem; }
 .mk { font-size: .95em; }
 
 /* 默寫遮罩：隱藏原文、顯示首字母提示（提示 #6b87a6 對底 #eaf2fb 對比 ≥ 3:1）*/
-.mask { cursor: pointer; }
+.mask { cursor: default; }
 .mask.hidden { background: #eaf2fb; color: #6b87a6; border-color: #b9d0e6; }
 .mask.hidden .full { display: none; }
 .mask.hidden .hn { display: inline; font-family: Georgia, serif; letter-spacing: .04em; }
@@ -200,10 +204,10 @@ body.uniq-only #qlist .mask.hidden .ph { background: var(--pb); color: var(--pc)
 <div class="container">
 <div id="loading">題庫載入中…</div>
 <div id="app" hidden>
-<div class="mnote">先背 44 個片語，每題只剩獨有字。默寫：英文遮住，點格子逐格揭開｜獨有字：片語縮成色塊。</div>
+<div class="mnote">先背片語，每題只剩獨有字。默寫：點格子逐格揭開。</div>
 
 <div class="sec">① 片語庫 <small><span id="nPh"></span> 個，依主線分組；點題號跳到題卡</small></div>
-<div class="note">色底＝片語（題卡同色）。列依出現題數排序；短片語含在長片語裡的題不重複計。手機點「N 題」展開題號。</div>
+<div class="note">色底＝片語（題卡同色）；「N 題」＝含這個片語的題數。手機點題數展開題號。</div>
 <div id="phlib"></div>
 
 <div class="sec">② 37 題一頁表 <small>點列跳到題卡；點「獨有字」欄頭排序</small></div>
@@ -212,7 +216,7 @@ body.uniq-only #qlist .mask.hidden .ph { background: var(--pb); color: var(--pc)
 <tbody></tbody></table></div>
 
 <div class="sec">③ 題卡 <small>依主線 ④→②→①→③；點標題展開</small></div>
-<div class="note">格子＝要背的字；色底＝片語；灰色小字＝模板句，不用背。</div>
+<div class="note">格子＝要背的字；色底＝片語；虛線格＝主詞／動詞位；灰色小字＝模板句。</div>
 <div id="qlist"></div>
 
 <div class="foot" id="foot"></div>
@@ -222,7 +226,7 @@ body.uniq-only #qlist .mask.hidden .ph { background: var(--pb); color: var(--pc)
 <script>
 // ===== 片語庫（改片語只改這裡；en 必須是總表 DATA 的逐字子字串）=====
 // line: 4=④職涯財務 紅、2=②健康減壓 橘、3=③視野 紫、1=①效率 藍、0=立場句型 灰
-const PHRASES = [{"en":"get high grades and find a good job and a steady income","zh":"拿高分 → 找到好工作和穩定收入","line":4},{"en":"find a good job and a steady income","zh":"找到好工作和穩定收入","line":4},{"en":"earn a steady income","zh":"賺穩定收入","line":4},{"en":"a steady income","zh":"穩定收入","line":4},{"en":"get high grades","zh":"拿高分","line":4},{"en":"build a warm and stable home without money worries","zh":"建立溫暖穩定的家、沒有錢的煩惱","line":4},{"en":"a warm and stable home","zh":"溫暖穩定的家","line":4},{"en":"lead to a better future and a stable home","zh":"通往更好的未來和穩定的家","line":4},{"en":"a stable home","zh":"穩定的家","line":4},{"en":"after finishing his studies and finding a job","zh":"唸完書、找到工作之後","line":4},{"en":"get a promotion and a higher income","zh":"升遷加薪","line":4},{"en":"good habits such as self-discipline","zh":"自律等好習慣","line":4},{"en":"stop working overtime and spend more time with their family","zh":"不加班、多陪家人","line":2},{"en":"spend more quality time with his family","zh":"多陪家人（優質時間）","line":2},{"en":"more quality time with their families","zh":"更多陪家人的時間","line":2},{"en":"money cannot buy a happy family","zh":"錢買不到幸福家庭","line":2},{"en":"stay healthy in body and mind","zh":"身心健康","line":2},{"en":"a bad temper that hurts families","zh":"壞脾氣傷害家庭","line":2},{"en":"feel upset and anxious","zh":"煩躁焦慮","line":2},{"en":"stress and anxiety","zh":"壓力和焦慮","line":2},{"en":"peace of mind","zh":"安心","line":2},{"en":"feel less lonely","zh":"不那麼孤單","line":2},{"en":"a happy family","zh":"幸福的家庭","line":2},{"en":"the whole family","zh":"全家","line":2},{"en":"protect every family","zh":"保護每個家庭","line":2},{"en":"greenhouse gas","zh":"溫室氣體","line":2},{"en":"cars and factories","zh":"汽車和工廠","line":2},{"en":"many young people get addicted to the internet","zh":"很多年輕人網路成癮","line":2},{"en":"keeps surfing the internet on his phone","zh":"一直滑手機上網","line":2},{"en":"build healthy digital habits","zh":"養成健康的數位習慣","line":2},{"en":"learn things they cannot find in books","zh":"學到書本裡找不到的東西","line":3},{"en":"cannot find in books","zh":"書本裡找不到","line":3},{"en":"a broader view of life","zh":"更開闊的人生視野","line":3},{"en":"people from different backgrounds","zh":"不同背景的人","line":3},{"en":"from different backgrounds","zh":"來自不同背景","line":3},{"en":"confident when he talks","zh":"說話有自信","line":3},{"en":"how people lived in the past","zh":"過去的人怎麼生活","line":3},{"en":"save time","zh":"省時間","line":1},{"en":"the good points are much greater than the bad points","zh":"好處遠大於壞處","line":0},{"en":"much greater","zh":"大得多","line":0},{"en":"more harm than good","zh":"弊大於利","line":0},{"en":"more good than harm","zh":"利大於弊","line":0},{"en":"greater than the benefits","zh":"比好處大","line":0},{"en":"matters more than","zh":"比…重要","line":0}];
+const PHRASES = [{"en":"get high grades and find a good job and a steady income","zh":"拿高分 → 找到好工作和穩定收入","line":4},{"en":"find a good job and a steady income","zh":"找到好工作和穩定收入","line":4},{"en":"earn a steady income","zh":"賺穩定收入","line":4},{"en":"a steady income","zh":"穩定收入","line":4},{"en":"get high grades","zh":"拿高分","line":4},{"en":"build a warm and stable home without money worries","zh":"建立溫暖穩定的家、沒有錢的煩惱","line":4},{"en":"a warm and stable home","zh":"溫暖穩定的家","line":4},{"en":"lead to a better future and a stable home","zh":"通往更好的未來和穩定的家","line":4},{"en":"a stable home","zh":"穩定的家","line":4},{"en":"after finishing his studies and finding a job","zh":"唸完書、找到工作之後","line":4},{"en":"get a promotion and a higher income","zh":"升遷加薪","line":4},{"en":"good habits such as self-discipline","zh":"自律等好習慣","line":4},{"en":"stop working overtime and spend more time with their family","zh":"不加班、多陪家人","line":2},{"en":"spend more quality time with his family","zh":"多陪家人（優質時間）","line":2},{"en":"more quality time","zh":"更多優質時間（陪家人）","line":2},{"en":"money cannot buy a happy family","zh":"錢買不到幸福家庭","line":2},{"en":"stay healthy in body and mind","zh":"身心健康","line":2},{"en":"a bad temper that hurts families","zh":"壞脾氣傷害家庭","line":2},{"en":"feel upset and anxious","zh":"煩躁焦慮","line":2},{"en":"stress and anxiety","zh":"壓力和焦慮","line":2},{"en":"peace of mind","zh":"安心","line":2},{"en":"feel less lonely","zh":"不那麼孤單","line":2},{"en":"a happy family","zh":"幸福的家庭","line":2},{"en":"the whole family","zh":"全家","line":2},{"en":"protect every family","zh":"保護每個家庭","line":2},{"en":"greenhouse gas","zh":"溫室氣體","line":2},{"en":"cars and factories","zh":"汽車和工廠","line":2},{"en":"many young people get addicted to the internet","zh":"很多年輕人網路成癮","line":2},{"en":"keeps surfing the internet on his phone","zh":"一直滑手機上網","line":2},{"en":"build healthy digital habits","zh":"養成健康的數位習慣","line":2},{"en":"learn things they cannot find in books","zh":"學到書本裡找不到的東西","line":3},{"en":"cannot find in books","zh":"書本裡找不到","line":3},{"en":"a broader view of life","zh":"更開闊的人生視野","line":3},{"en":"people from different backgrounds","zh":"不同背景的人","line":3},{"en":"from different backgrounds","zh":"來自不同背景","line":3},{"en":"confident when he talks","zh":"說話有自信","line":3},{"en":"how people lived in the past","zh":"過去的人怎麼生活","line":3},{"en":"save time","zh":"省時間","line":1},{"en":"the good points are much greater than the bad points","zh":"好處遠大於壞處","line":0},{"en":"much greater","zh":"大得多","line":0},{"en":"more harm than good","zh":"弊大於利","line":0},{"en":"more good than harm","zh":"利大於弊","line":0},{"en":"greater than the benefits","zh":"比好處大","line":0},{"en":"matters more than","zh":"比…重要","line":0}];
 
 // ===== 練習狀態（手動維護）=====
 const STATUS = {1:[13,14,17,6,31,23,26,36,7,8,11,16], 2:[5,20,18,32,24,2,3,9], 3:[1,4,10,12,15,19,21,22,25,27,28,29,30,33,34,35,37]};
@@ -268,7 +272,7 @@ const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>
 const wc = s => { const t = String(s).trim(); return t ? t.split(/\s+/).length : 0; };
 // 首字母提示：保留前後空白（遮住時相鄰片段才不會黏在一起）
 function hintOf(s){
-  const w = String(s).trim().split(/\s+/).filter(Boolean).map(x => x[0]).join(' ');
+  const w = String(s).trim().split(/\s+/).filter(x => /[A-Za-z0-9]/.test(x)).map(x => x[0]).join(' ');
   return (/^\s/.test(s) ? ' ' : '') + w + (/\s$/.test(s) ? ' ' : '');
 }
 const statusOf = o => STATUS[1].includes(o) ? 1 : STATUS[2].includes(o) ? 2 : 3;
@@ -294,13 +298,19 @@ function segsOf(text){
 }
 // 每題統計＋片語成員
 const QS = {}, PM = PHRASES.map(() => new Set());
+// 片語成員＝任一 slot 含這個片語的題（含在更長片語裡也算，跟統計的長優先切法分開）
+function hasPhrase(text, p){
+  const lo = text.toLowerCase(), q = p.en.toLowerCase(); let from = 0;
+  while (true){ const k = lo.indexOf(q, from); if (k < 0) return false; if (!isL(lo[k - 1]) && !isL(lo[k + q.length])) return true; from = k + 1; }
+}
 function buildStats(){
   DATA.forEach(d => {
     let total = 0, covered = 0, nph = 0;
     SLOT_KEYS.forEach(k => {
       const txt = strip(d.es[k]); if (!txt) return;
       total += wc(txt);
-      segsOf(txt).forEach(g => { covered += wc(txt.slice(g.s, g.e)); nph++; PM[g.p.i].add(d.o); });
+      segsOf(txt).forEach(g => { covered += wc(txt.slice(g.s, g.e)); nph++; });
+      PHRASES.forEach((p, i) => { if (hasPhrase(txt, p)) PM[i].add(d.o); });
     });
     QS[d.o] = { total, covered, unique: total - covered, nph };
   });
@@ -317,8 +327,8 @@ function saveOpt(){ try { localStorage.setItem(OPT_KEY, JSON.stringify(OPT)); } 
 function badge(c){ const [cls,txt] = CAT[c]; return `<span class="bg ${cls}">${txt}</span>`; }
 function stBadge(o){
   const s = statusOf(o);
-  const tt = TEACHER_ONLY.includes(o) ? ' title="老師看過範文"' : '';
-  return `<span class="st st${s}"${tt}>${ST_TXT[s]}</span>`;
+  const to = TEACHER_ONLY.includes(o);
+  return `<span class="st st${s}"${to ? ' title="老師看過範文"' : ''}>${ST_TXT[s]}${to ? '・老師看過' : ''}</span>`;
 }
 const run = s => s ? `<span class="run"><span class="full">${esc(s)}</span><span class="hn">${esc(hintOf(s))}</span></span>` : '';
 // 只看獨有字：色塊顯示片語中文（手機沒 hover，同色片語才分得出來；英文放 title）
@@ -339,8 +349,8 @@ function maskEn(str){
     : `<span class="zm mask"><span class="full">${esc(m)}</span><span class="hn">${esc(hintOf(m))}</span></span>`);
 }
 const T = k => `<span class="tpl">${TPL[k]}</span>`;
-// 模板位置（subj／modal／jv／jn／able）：灰色小字，不包 .mask、不算獨有字
-const tplTxt = s => s ? `<span class="tpl">${esc(s)}</span>` : '';
+// 主詞／動詞位（subj／modal／jv／jn／able）：虛線格，可默寫，不算獨有字
+const tplTxt = s => s ? `<span class="cell aux mask">${run(s)}</span>` : '';
 const ARR = '<span class="arr">→</span>';
 const memChip = o => { const d = DATA.find(x => x.o === o); return d ? `<a data-n="${esc(d.n)}">${d.n} #${o}</a>` : ''; };
 
@@ -369,9 +379,9 @@ function renderTable(){
   else rows.sort((a, b) => a.o - b.o);
   $('thU').textContent = '獨有字 ' + (sortMode === 1 ? '▲' : sortMode === 2 ? '▼' : '⇅');
   $('tbl').querySelector('tbody').innerHTML = rows.map(d => { const s = QS[d.o]; return `<tr data-o="${d.o}" data-n="${esc(d.n)}">
-    <td class="stk">${d.mistakes ? '📌' : ''}${d.n}<span style="color:#bbb;font-size:.75em"> #${d.o}</span></td>
+    <td class="stk">${d.mistakes ? '📌' : ''}${esc(d.n)}<span style="color:#bbb;font-size:.75em"> #${d.o}</span></td>
     <td class="num stk2"><b>${s.unique}</b> <small>/ ${s.total}</small></td><td class="num">${s.nph}</td>
-    <td>${d.t}</td><td>${badge(lineOf(d))}</td><td class="stc" title="${esc(d.stance)}">${d.stance}</td>
+    <td class="tt" title="${esc(d.t)}">${esc(d.t)}</td><td>${badge(lineOf(d))}</td><td class="stc" title="${esc(d.stance)}">${esc(d.stance)}</td>
     <td class="en" title="${esc(strip(d.es.does))}">${esc(strip(d.es.does))}</td><td>${stBadge(d.o)}</td></tr>`; }).join('');
   document.querySelectorAll('#tbl tbody tr').forEach(tr => tr.onclick = () => gotoQ(tr.dataset.n));
   setStk();
@@ -388,12 +398,12 @@ function qCard(d){
   const p1end = e.p1end ? `<br><span class="tpl">P1 末句改成：</span>${cell(e.p1end)}` : `<br>${T('p1e')}`;
   return `<div class="q" id="q${esc(d.n)}" data-o="${d.o}">
   <div class="q-header" onclick="this.closest('.q').classList.toggle('open')">
-    <div class="qh1"><span class="q-num">${d.n} · #${d.o}</span>${d.mistakes ? '<span class="mk" title="總表有錯誤複習區">📌</span>' : ''}<span class="q-title" title="${esc(d.t)}">${d.t}</span></div>
+    <div class="qh1"><span class="q-num">${d.n} · #${d.o}</span>${d.mistakes ? '<span class="mk" title="總表有錯誤複習區">📌</span>' : ''}<span class="q-title" title="${esc(d.t)}">${esc(d.t)}</span></div>
     <div class="qh2">${badge(lineOf(d))}<span class="ub">獨有 ${s.unique} 字</span>${stBadge(d.o)}</div>
   </div>
   <div class="q-body">
-    <div class="q-en">${d.en}</div>
-    <div class="stance"><b>立場：</b>${d.stance}</div>
+    <div class="q-en">${esc(d.en)}</div>
+    <div class="stance"><b>立場：</b>${esc(d.stance)}</div>
     <div class="row"><div class="row-label">P1 開頭</div>
       <div class="chain">${cell(e.topic)}${ARR}${T('p1c')}${cell(e.va)}${T('p1d')}${cell(e.vb)}${p1end}</div>
       ${z.p1 ? `<div class="zh sub">${maskEn(z.p1)}</div>` : ''}</div>
@@ -469,12 +479,12 @@ function applyFilter(){
   });
   document.body.classList.toggle('uniq-only', OPT.uniq);
 }
-function setMask(on){ document.querySelectorAll('.mask').forEach(el => el.classList.toggle('hidden', on)); }
+function setMask(on){ document.body.classList.toggle('mask-on', on); document.querySelectorAll('.mask').forEach(el => el.classList.toggle('hidden', on)); }
 
 function bind(){
   document.querySelectorAll('.pmem a[data-n]').forEach(a => a.onclick = () => gotoQ(a.dataset.n));
   document.querySelectorAll('.pcnt').forEach(el => el.onclick = () => el.closest('.prow').classList.toggle('open'));
-  document.querySelectorAll('.mask').forEach(el => el.onclick = ev => { ev.stopPropagation(); el.classList.toggle('hidden'); });
+  document.querySelectorAll('.mask').forEach(el => el.onclick = ev => { if (!OPT.mask) return; ev.stopPropagation(); el.classList.toggle('hidden'); });
 }
 
 // sticky header 高度 → 捲動時不被蓋住
@@ -494,8 +504,10 @@ $('fKw').oninput = function(){ KW = this.value; applyFilter(); };
 [$('togUniq'), $('togUniqM')].forEach(el => el.onchange = function(){ OPT.uniq = this.checked; $('togUniq').checked = $('togUniqM').checked = OPT.uniq; saveOpt(); applyFilter(); });
 $('thU').onclick = () => { sortMode = (sortMode + 1) % 3; renderTable(); };
 function goHash(){
-  const h = decodeURIComponent(location.hash.slice(1));
-  if (h && h[0] === 'q') gotoQ(h.slice(1));
+  try {
+    const h = decodeURIComponent(location.hash.slice(1));
+    if (h && h[0] === 'q') gotoQ(h.slice(1));
+  } catch (e) { /* 畸形 hash 略過 */ }
 }
 window.addEventListener('hashchange', goHash);
 
@@ -505,10 +517,13 @@ function showErr(msg){
 
 // 載入總表 DATA / ZH（做法照 SWT_練習）
 fetch('WE_論點總表.html').then(r => { if(!r.ok) throw new Error(r.status); return r.text(); }).then(t => {
-  const i = t.indexOf('const DATA = ['), j = t.indexOf('\n];', i);
-  DATA = new Function('return ' + t.slice(t.indexOf('[', i), j + 2))();
-  const zi = t.indexOf('const ZH = {'), zj = t.indexOf('\n};', zi);
-  ZH = zi >= 0 ? new Function('return ' + t.slice(t.indexOf('{', zi), zj + 2))() : {};
+  try {
+    const i = t.indexOf('const DATA = ['), j = t.indexOf('\n];', i);
+    if (i < 0 || j < 0) throw new Error('找不到 const DATA');
+    DATA = new Function('return ' + t.slice(t.indexOf('[', i), j + 2))();
+    const zi = t.indexOf('const ZH = {'), zj = t.indexOf('\n};', zi);
+    ZH = zi >= 0 && zj >= 0 ? new Function('return ' + t.slice(t.indexOf('{', zi), zj + 2))() : {};
+  } catch (err) { showErr('總表 DATA 解析失敗：' + esc(err.message)); return; }
   try {
     render();
     $('loading').hidden = true; $('app').hidden = false;
