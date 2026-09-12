@@ -84,6 +84,16 @@ header p.hint { opacity: .65; font-size: .78rem; }
 .pmem a, .mem a { font-size: .74rem; background: #f4f6f8; color: #1a5d8c; padding: 0 7px; border-radius: 10px;
          text-decoration: none; cursor: pointer; border: 1px solid #dde3ea; white-space: nowrap; line-height: 1.6; }
 .pmem a:hover { background: #d6eaf8; }
+/* 故事線卡 */
+.story h3 { flex-wrap: wrap; }
+.story .cue { font-size: .76rem; color: #888; font-weight: 400; }
+.story .kj { font-size: .9rem; color: #333; margin: 2px 0 4px; }
+.story .vlabel { font-size: .8rem; color: #555; font-weight: 700; margin-top: 8px; }
+.chainline { font-family: Georgia, serif; font-size: .92rem; line-height: 2.1; }
+.chainline .sl { font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif; font-size: .7rem; color: #999; margin-right: 3px; }
+.chainline .var { font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif; color: #777; font-size: .84rem; border: 1px dashed #ccc; border-radius: 4px; padding: 0 5px; }
+.smem { margin: 4px 0 0; display: flex; flex-wrap: wrap; gap: 4px; align-items: center; font-size: .76rem; color: #777; }
+.lnm { font-size: .74rem; color: #666; font-weight: 400; background: #f4f4f4; border-radius: 8px; padding: 0 7px; }
 /* 手機：成員 chips 預設收起，點「N 題」才展開該列 */
 @media(max-width:700px){
   .prow .pmem { display: none; flex-basis: 100%; }
@@ -95,7 +105,7 @@ header p.hint { opacity: .65; font-size: .78rem; }
 
 /* table */
 .tbl-wrap { background: white; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,.08); overflow-x: auto; }
-.sum-table { width: 100%; border-collapse: collapse; font-size: .84rem; min-width: 720px; }
+.sum-table { width: 100%; border-collapse: collapse; font-size: .84rem; min-width: 880px; }
 .sum-table th { background: #f0f0f0; padding: 6px 10px; text-align: left; border-bottom: 2px solid #ddd; white-space: nowrap; }
 .sum-table th.sortable { cursor: pointer; }
 .sum-table th.sortable:hover { background: #e4e9ef; }
@@ -191,7 +201,7 @@ body.uniq-only #qlist .mask.hidden .ph { background: var(--pb); color: var(--pc)
       <label class="tog"><input type="checkbox" id="togUniqM">獨有字</label>
     </div>
   </div>
-  <p>先背 52 個片語，每題只剩獨有字</p>
+  <p>先背 10 條故事線，每題只剩獨有字</p>
   <p class="hint">默寫模式：英文遮住，點格子逐格揭開｜只看獨有字：片語縮成色塊</p>
   <div class="toolbar">
     <select id="fCat"><option value="">主線：全部</option><option value="4">④ 職涯財務</option><option value="2">② 健康減壓</option><option value="1">① 效率</option><option value="3">③ 視野</option></select>
@@ -204,15 +214,15 @@ body.uniq-only #qlist .mask.hidden .ph { background: var(--pb); color: var(--pc)
 <div class="container">
 <div id="loading">題庫載入中…</div>
 <div id="app" hidden>
-<div class="mnote">先背片語，每題只剩獨有字。默寫：點格子逐格揭開。</div>
+<div class="mnote">先背 10 條故事線，每題只剩獨有字。默寫：點格子逐格揭開。</div>
 
-<div class="sec">① 片語庫 <small><span id="nPh"></span> 個，依主線分組；點題號跳到題卡</small></div>
-<div class="note">色底＝片語（題卡同色）；「N 題」＝含這個片語的題數。手機點題數展開題號。</div>
+<div class="sec">① 故事線 <small><span id="nPh"></span> 條：前 7 條主論（P3）、後 3 條讓步（P2）；點題號跳到題卡</small></div>
+<div class="note">色底＝固定片語（題卡同色）；灰虛線＝每題自己的字。最後一卡是立場句型與其他共用片語。</div>
 <div id="phlib"></div>
 
 <div class="sec">② 37 題一頁表 <small>點列跳到題卡；點「獨有字」欄頭排序</small></div>
 <div class="tbl-wrap"><table class="sum-table" id="tbl">
-<thead><tr><th class="stk" id="thN">題號</th><th class="num sortable stk2" id="thU" title="點擊切換排序">獨有字 ⇅</th><th class="num">片語</th><th>題目</th><th>主線</th><th>立場</th><th>James 例子</th><th>狀態</th></tr></thead>
+<thead><tr><th class="stk" id="thN">題號</th><th class="num sortable stk2" id="thU" title="點擊切換排序">獨有字 ⇅</th><th class="num">片語</th><th>題目</th><th>主線</th><th>主論線</th><th>讓步線</th><th>立場</th><th>James 例子</th><th>狀態</th></tr></thead>
 <tbody></tbody></table></div>
 
 <div class="sec">③ 題卡 <small>依主線 ④→②→①→③；點標題展開</small></div>
@@ -236,6 +246,10 @@ const ST_TXT = {1:'練過＋老師改過', 2:'練過', 3:'沒練過'};
 const CAT = { 1:['bg1','① 效率'], 2:['bg2','② 健康'], 3:['bg3','③ 視野'], 4:['bg4','④ 職涯'] };
 const LINE_NAME = { 4:'④ 職涯財務', 2:'② 健康減壓', 3:'③ 視野', 1:'① 效率', 0:'立場句型' };
 const LINE_ORDER = [4,2,3,1,0];
+// ===== 10 條故事線（2026-09-12 James 定）：chain 每項＝[slot, 前綴(灰), 固定片語(逐字), 中文提示(灰)]；固定片語必須是總表 DATA 的逐字子字串 =====
+const STORY = [{"id": 1, "part": "P3", "name": "穩定收入線", "line": 4, "zh": "認真 → 高分／穩定收入 → 溫暖的家", "cue": "學校、讀書、考試、工作、錢", "variants": [{"label": "學生版（James studies at university）", "members": [1, 2, 3, 5, 9, 13, 19, 22, 27], "chain": [["does", "", "", "認真做某事"], ["result", "", "get high grades and find a good job and a steady income", ""], ["impl", "X ", "leads to a better future and a warm and stable home", ""]]}, {"label": "上班版（works at firm）", "members": [4, 18, 24, 31], "chain": [["does", "", "", "這題的工作場景"], ["result", "", "earn a steady income for his family", ""], ["impl", "", "", "收家：a warm and stable home／keeps the whole family in harmony"]]}]}, {"id": 2, "part": "P3", "name": "先立業線", "line": 4, "zh": "唸完書有工作 → 沒錢的煩惱 → 穩定的家", "cue": "婚姻、年齡", "variants": [{"label": "", "members": [14, 29], "chain": [["does", "", "married at twenty-six after finishing his studies and finding a job", ""], ["result", "", "build a warm and stable home without money worries", ""], ["impl", "", "", "一句：先立業才有幸福婚姻"]]}]}, {"id": 3, "part": "P3", "name": "陪家人線", "line": 2, "zh": "省下時間或壓力 → 陪家人 → 全家和樂", "cue": "科技省時、工時、健康、城鄉、電視", "variants": [{"label": "", "members": [6, 7, 8, 11, 12, 23, 26, 30, 33, 36], "chain": [["does", "", "", "省時／準時下班／關電視／不加班／健康"], ["result", "", "spend more quality time with his family", ""], ["impl", "", "keeps the whole family in harmony", ""]]}]}, {"id": 4, "part": "P3", "name": "安心線", "line": 2, "zh": "有保障 → 安心 → 保護每個家庭", "cue": "法律、安全、隱私、政府預算", "variants": [{"label": "", "members": [17, 28, 32], "chain": [["does", "", "", "守法城市／私人時間／預算花民生"], ["result", "", "enjoy peace of mind", ""], ["impl", "", "", "protect every family／keeps the whole family in harmony"]]}]}, {"id": 5, "part": "P3", "name": "視野自信線", "line": 3, "zh": "接觸外面 → 有自信、跟不同背景相處 → 好職涯好家庭", "cue": "海外、語言、文化", "variants": [{"label": "", "members": [15, 34, 37], "chain": [["does", "", "", "住國外／學語言"], ["result", "", "become confident when he talks and get along with people from different backgrounds", ""], ["impl", "好職涯 → ", "a happy family", ""]]}]}, {"id": 6, "part": "P3", "name": "見證線", "line": 2, "zh": "James 親眼看到 → 看出多快／多嚴重 → 只有 X 才能保護每個家庭", "cue": "政府政策、環境、Report 型「該怎麼解決」", "variants": [{"label": "", "members": [10, 16, 20, 25], "chain": [["does", "", "saw", "某件事"], ["result", "", "see how", "多快／多嚴重"], ["impl", "", "", "政策：只有 X 才能 protect every family"]]}]}, {"id": 7, "part": "P3", "name": "反面線", "line": 2, "zh": "一直滑 → 做不到 → 傷未來傷家庭（立場「弊大於利」的科技題）", "cue": "成癮、資訊過載", "variants": [{"label": "", "members": [21, 35], "chain": [["does", "", "keeps surfing the internet on his phone", ""], ["able", "", "he is unable to", ""], ["result", "", "", "做不到的事：focus in class／relax at home"], ["impl", "", "", "傷未來傷家庭：poor academic performance／lose their temper"]]}]}, {"id": 8, "part": "P2", "name": "視野讓步", "line": 3, "zh": "X 教你學校教不到的 → 學到書本外的東西 → 視野寬", "cue": "教育對比、文化、媒體", "variants": [{"label": "", "members": [1, 2, 13, 21, 22, 27, 28], "chain": [["con", "", "", "X 有用／有價值"], ["conR", "X ", "shows what schools cannot", ""], ["resA", "", "learn things they cannot find in books", ""], ["resB", "", "a broader view of life", ""]]}]}, {"id": 9, "part": "P2", "name": "情緒讓步", "line": 2, "zh": "負面：規定太嚴 → 煩躁焦慮 → 壞脾氣傷家庭；正面：有人陪 → 不孤單 → 安心", "cue": "規定、懲罰、陪伴", "variants": [{"label": "負面（規定太嚴）", "members": [4, 5, 19, 37], "chain": [["con", "", "", "規定太嚴／壓力大"], ["resA", "", "feel upset and anxious", ""], ["resB", "", "a bad temper that hurts families", "或 unfair results／less interest"]]}, {"label": "正面（有人陪）", "members": [14, 23, 29, 31], "chain": [["con", "", "", "早婚支持／電視作伴／少工時"], ["resA", "", "feel less lonely", "或 feel relaxed"], ["resB", "", "peace of mind", ""]]}]}, {"id": 10, "part": "P2", "name": "錢與方便讓步", "line": 4, "zh": "賺錢：更努力 → 升遷加薪 → 少陪家人；方便：科技很方便 → 更快 → 效率", "cue": "工作、名氣、城市、科技", "variants": [{"label": "賺錢", "members": [11, 12, 24, 30, 32], "chain": [["cond", "", "", "work harder／stay in the news／go to big cities"], ["resA", "", "get a promotion and a higher income", "或 find a good job and a steady income"], ["resB", "", "", "less time with their family／better future prospects"]]}, {"label": "錢（花錢／省錢）", "members": [8, 10, 15], "chain": [["resA", "", "", "花很多錢／擔心錢／省學費"], ["resB", "… on ", "the whole family", "financial pressure／stress and anxiety"]]}, {"label": "方便", "members": [3, 7, 18, 34, 35, 36], "chain": [["con", "", "", "科技很方便"], ["resA", "", "", "finish faster／understand right away／save time"], ["resB", "", "", "efficiency／quality time"]]}]}];
+const NOLINE_P2 = [6, 9, 16, 17, 20, 25, 26, 33];   // 讓步段不是真讓步（直接講問題嚴重），各題自己背
+
 // 組標題只放「線名｜辨識詞」（≤30 字）；推論鏈放 title
 const GROUP_INFO = {
   1:'① 效率 & 時間｜辨識：科技、設備、商業模式讓生活更方便',
@@ -354,21 +368,40 @@ const tplTxt = s => s ? `<span class="cell aux mask">${run(s)}</span>` : '';
 const ARR = '<span class="arr">→</span>';
 const memChip = o => { const d = DATA.find(x => x.o === o); return d ? `<a data-n="${esc(d.n)}">${d.n} #${o}</a>` : ''; };
 
-function phLib(){
+function storyName(o, part){
+  for (const st of STORY) if (st.part === part) for (const v of st.variants) if (v.members.includes(o)) return st.name + (v.label ? '·' + v.label.split('（')[0] : '');
+  return part === 'P2' && NOLINE_P2.includes(o) ? '問題面' : '—';
+}
+function chainItem(it, line){
+  const [slot, pre, fixed, hint] = it;
+  let h = `<span class="sl">${slot}</span>`;
+  if (pre) h += `<span class="var">${esc(pre)}</span>`;
+  if (fixed) h += `<span class="cell mask">${phSpan({ p:{ line, zh:hint || '' , en:fixed } }, fixed, false)}</span>`;
+  if (hint && (!fixed || hint)) h += (fixed ? ' ' : '') + `<span class="var">${esc(hint)}</span>`;
+  return h;
+}
+function storyLib(){
   let html = '';
-  LINE_ORDER.forEach(line => {
-    const rows = PHRASES.map((p, i) => ({ p, i, n: PM[i].size })).filter(r => r.p.line === line)
-      .sort((a, b) => b.n - a.n || a.p.en.length - b.p.en.length);
-    if (!rows.length) return;
-    html += `<div class="pcard" style="border-left-color:${GCOLOR[line]}"><h3><span class="bg bg${line}">${LINE_NAME[line]}</span><span class="cnt">${rows.length} 個片語</span></h3>`;
-    rows.forEach(r => {
-      const mem = [...PM[r.i]].sort((a, b) => a - b).map(memChip).join('');
-      html += `<div class="prow"><span class="pen"><span class="cell mask">${phSpan({ p:r.p }, r.p.en, false)}</span></span><span class="pzh">${r.p.zh}</span><span class="pcnt">${r.n} 題</span><span class="pmem">${mem}</span></div>`;
+  STORY.forEach(st => {
+    html += `<div class="pcard story" style="border-left-color:${GCOLOR[st.line]}"><h3><span class="bg bg${st.line}">${st.id}</span>${st.name}<span class="cnt">${st.part === 'P3' ? '主論' : '讓步'}</span><span class="cue">辨識：${st.cue}</span></h3><div class="kj">${st.zh}</div>`;
+    st.variants.forEach(v => {
+      if (v.label) html += `<div class="vlabel">${v.label}</div>`;
+      html += `<div class="chainline">` + v.chain.map(it => chainItem(it, st.line)).join(ARR) + `</div>`;
+      html += `<div class="smem">題號：<span class="pmem">${v.members.map(memChip).join('')}</span></div>`;
     });
     html += '</div>';
   });
+  // 立場句型與其他共用片語（沒在上面故事線出現的）
+  const used = new Set(); STORY.forEach(st => st.variants.forEach(v => v.chain.forEach(it => { if (it[2]) used.add(it[2].toLowerCase()); })));
+  const rows = PHRASES.map((p, i) => ({ p, i, n: PM[i].size })).filter(r => !used.has(r.p.en.toLowerCase()) && r.n >= 2).sort((a, b) => a.p.line - b.p.line || b.n - a.n);
+  html += `<div class="pcard" style="border-left-color:${GCOLOR[0]}"><h3><span class="bg bg0">＋</span>立場句型與其他共用片語<span class="cnt">${rows.length} 個</span></h3>`;
+  rows.forEach(r => {
+    const mem = [...PM[r.i]].sort((a, b) => a - b).map(memChip).join('');
+    html += `<div class="prow"><span class="pen"><span class="cell mask">${phSpan({ p:r.p }, r.p.en, false)}</span></span><span class="pzh">${r.p.zh}</span><span class="pcnt">${r.n} 題</span><span class="pmem">${mem}</span></div>`;
+  });
+  html += `<div class="note" style="margin-top:8px">讓步段不是真讓步、直接講問題嚴重的題（各題自己背）：${NOLINE_P2.map(memChip).join(' ')}</div></div>`;
   $('phlib').innerHTML = html;
-  $('nPh').textContent = PHRASES.length;
+  $('nPh').textContent = STORY.length;
 }
 
 let sortMode = 0;   // 0=題號、1=獨有字少→多、2=獨有字多→少
@@ -381,7 +414,7 @@ function renderTable(){
   $('tbl').querySelector('tbody').innerHTML = rows.map(d => { const s = QS[d.o]; return `<tr data-o="${d.o}" data-n="${esc(d.n)}">
     <td class="stk">${d.mistakes ? '📌' : ''}${esc(d.n)}<span style="color:#bbb;font-size:.75em"> #${d.o}</span></td>
     <td class="num stk2"><b>${s.unique}</b> <small>/ ${s.total}</small></td><td class="num">${s.nph}</td>
-    <td class="tt" title="${esc(d.t)}">${esc(d.t)}</td><td>${badge(lineOf(d))}</td><td class="stc" title="${esc(d.stance)}">${esc(d.stance)}</td>
+    <td class="tt" title="${esc(d.t)}">${esc(d.t)}</td><td>${badge(lineOf(d))}</td><td class="stc">${storyName(d.o,"P3")}</td><td class="stc">${storyName(d.o,"P2")}</td><td class="stc" title="${esc(d.stance)}">${esc(d.stance)}</td>
     <td class="en" title="${esc(strip(d.es.does))}">${esc(strip(d.es.does))}</td><td>${stBadge(d.o)}</td></tr>`; }).join('');
   document.querySelectorAll('#tbl tbody tr').forEach(tr => tr.onclick = () => gotoQ(tr.dataset.n));
   setStk();
@@ -407,10 +440,10 @@ function qCard(d){
     <div class="row"><div class="row-label">P1 開頭</div>
       <div class="chain">${cell(e.topic)}${ARR}${T('p1c')}${cell(e.va)}${T('p1d')}${cell(e.vb)}${p1end}</div>
       ${z.p1 ? `<div class="zh sub">${maskEn(z.p1)}</div>` : ''}</div>
-    <div class="row"><div class="row-label">P2 讓步 ${badge(d.p2c)}</div>
+    <div class="row"><div class="row-label">P2 讓步 ${badge(d.p2c)}<span class="lnm">${storyName(d.o,"P2")}</span></div>
       <div class="chain">${T('con')}${cell(e.con)}${T('conR')}${cell(e.conR)}<br>${T('if_')}${cell(e.cond)}${T('then')}${tplTxt(strip(e.subj) + ' ' + strip(e.modal || 'can'))}${cell(e.resA)}${T('lead')}${cell(e.resB)}<br>${T('res')}${cell(e.concl)}</div>
       <div class="zh"><b>${maskEn(d.p2zh)}</b>${z.p2 ? `<br><span class="sub">${maskEn(z.p2)}</span>` : ''}</div></div>
-    <div class="row"><div class="row-label">P3 主論 ${badge(d.p3c)}</div>
+    <div class="row"><div class="row-label">P3 主論 ${badge(d.p3c)}<span class="lnm">${storyName(d.o,"P3")}</span></div>
       <div class="chain">${T('p3s')}${cell(e.stance)}${T('p3r')}${cell(e.reason)}<br>${T('james')}${tplTxt(strip(e.jv))}${T('at')}${tplTxt(strip(e.jn))}<br>${T('as')}${cell(e.does)}${e.able ? tplTxt(strip(e.able)) : T('able')}${cell(e.result)}<br>${T('iow')}${cell(e.impl)}</div>
       <div class="zh"><b>${maskEn(d.p3zh)}</b>${z.p3 ? `<br><span class="sub">${maskEn(z.p3)}</span>` : ''}</div></div>
     <div class="row"><div class="row-label">P4 結論</div>
@@ -422,7 +455,7 @@ function qCard(d){
 
 function render(){
   buildStats();
-  phLib();
+  storyLib();
   renderTable();
   const sorted = [...DATA].sort((a, b) => GROUP_ORDER.indexOf(lineOf(a)) - GROUP_ORDER.indexOf(lineOf(b)) || nNum(a.n) - nNum(b.n));
   let html = '';
