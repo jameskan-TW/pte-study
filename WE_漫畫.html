@@ -123,6 +123,23 @@ const SPR = {
  kid:        `<g transform="translate(20 40) scale(.6)">${face('happy') + bow + body('stand')}</g>`,
  kidUp:      `<g transform="translate(20 40) scale(.6)">${face('happy') + bow + body('up')}</g>`,
  kidSit:     `<g transform="translate(20 40) scale(.6)">${face('happy') + bow + body('sit')}</g>`,
+ manHat:     face('happy') + `<path d="M34 12h32M40 12V4h20v8" ${K}/>` + body('stand'),
+ womanScarf: face('happy') + `<path d="M35 24q0-22 15-22t15 22" ${K}/>` + body('stand'),
+ shake:      `<g transform="translate(-18 0)">${face('happy') + body('point')}</g><g transform="translate(118 0) scale(-1 1)">${face('happy') + bun + body('point')}</g><circle cx="50" cy="32" r="4" ${K}/>`,
+ lying:      `<rect x="5" y="62" width="90" height="24" rx="6" ${K}/><path d="M8 86v10M92 86v10" ${KN}/><circle cx="22" cy="48" r="11" ${K}/><path d="M16 46q3-3 6 0M25 46q3-3 6 0" ${KN}/><path d="M18 53q4 3 8 0" ${KN}/><path d="M33 56h44M77 56l10 8M62 56l8 8" ${KN}/><path d="M28 62q-8 3-8 12" ${KN}/>`,
+ cup:        `<path d="M30 45h40v30q0 12-12 12H42q-12 0-12-12z" ${K}/><path d="M70 52h8q8 0 8 8t-8 8h-8" ${KN}/><path d="M42 38q-4-6 0-12M52 38q-4-6 0-12" ${KN}/>`,
+ bulb:       `<path d="M35 58q-16-12-8-30t23-14q16 4 23 14t-8 30v8H35z" fill="#fff59d" stroke="#222" stroke-width="3" stroke-linejoin="round"/><path d="M38 76h24M42 86h16" ${KN}/><path d="M50 10V2M20 20l-6-6M80 20l6-6" ${KN}/>`,
+ book:       `<path d="M12 25q19-6 38 4q19-10 38-4v58q-19-6-38 4q-19-10-38-4z" ${K}/><path d="M50 29v58" ${KN}/><path d="M20 40h20M20 50h20M60 40h20M60 50h20" stroke="#999" stroke-width="2"/>`,
+ tvBulb:     `<rect x="10" y="30" width="80" height="55" rx="4" ${K}/><rect x="16" y="36" width="68" height="43" fill="#dfe9f3" stroke="#222" stroke-width="2"/><path d="M50 30l-12-14M50 30l12-14M35 95h30M50 85v10" ${KN}/><g transform="translate(28 36) scale(.42)"><path d="M35 58q-16-12-8-30t23-14q16 4 23 14t-8 30v8H35z" fill="#fff59d" stroke="#222" stroke-width="4"/><path d="M38 76h24" ${KN}/></g>`,
+ tvNo:       `<rect x="10" y="30" width="80" height="55" rx="4" ${K}/><rect x="16" y="36" width="68" height="43" fill="#dfe9f3" stroke="#222" stroke-width="2"/><path d="M50 30l-12-14M50 30l12-14M35 95h30M50 85v10" ${KN}/><circle cx="50" cy="56" r="12" ${K}/><circle cx="45" cy="54" r="1.5" fill="#222"/><circle cx="55" cy="54" r="1.5" fill="#222"/><path d="M45 61h10" ${KN}/><path d="M40 66l20-12" stroke="#e74c3c" stroke-width="3"/>`,
+ earNo:      `<path d="M40 30q22-16 26 8q2 16-10 22q-8 4-8 14" ${KN}/><path d="M48 40q8-4 10 4" ${KN}/><path d="M30 20l45 50" stroke="#e74c3c" stroke-width="5" stroke-linecap="round"/>`,
+ sound:      `<path d="M20 38q10 12 0 24M38 28q18 22 0 44M56 18q26 32 0 64" ${KN}/>`,
+ scaleGood:  `<path d="M50 92V28M28 92h44" ${KN}/><path d="M12 46L88 22" ${KN}/><path d="M12 46L2 72M12 46l10 26M88 22l-10 26M88 22l10 26" ${KN}/><path d="M2 72q10 10 20 0" ${K}/><path d="M78 48q10 10 20 0" ${K}/><path d="M6 60l4 4 8-10" stroke="#27ae60" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M82 32l10 10M92 32l-10 10" stroke="#e74c3c" stroke-width="4" stroke-linecap="round"/>`,
+ scaleHarm:  `<path d="M50 92V28M28 92h44" ${KN}/><path d="M12 22l76 24" ${KN}/><path d="M12 22L2 48M12 22l10 26M88 46l-10 26M88 46l10 26" ${KN}/><path d="M2 48q10 10 20 0" ${K}/><path d="M78 72q10 10 20 0" ${K}/><path d="M6 36l4 4 8-10" stroke="#27ae60" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M82 56l10 10M92 56l-10 10" stroke="#e74c3c" stroke-width="4" stroke-linecap="round"/>`,
+ calendar:   `<rect x="18" y="22" width="64" height="64" rx="3" ${K}/><path d="M18 38h64M32 14v14M68 14v14" ${KN}/><path d="M28 50h8M42 50h8M56 50h8M28 62h8M42 62h8M56 62h8M28 74h8M42 74h8M56 74h8" stroke="#222" stroke-width="3"/>`,
+ city:       `<path d="M2 100V55h16V35h14v20h10V25h18v30h10V45h14v55z" ${K}/><path d="M8 65h6M8 78h6M24 45h6M24 60h6M48 35h8M48 50h8M72 55h6M72 70h6" stroke="#222" stroke-width="2"/>`,
+ basket:     `<path d="M15 45h70l-8 40H23z" ${K}/><path d="M30 45q20-30 40 0" ${KN}/><path d="M35 55v22M50 55v22M65 55v22" stroke="#222" stroke-width="2"/>`,
+ crowd:      `<g transform="translate(-22 10) scale(.85)">${face('happy') + body('stand')}</g><g transform="translate(22 10) scale(.85)">${face('happy') + bun + body('stand')}</g><g transform="translate(0 0) scale(.85)">${face('happy') + body('up')}</g>`,
  // 建築、家具
  mall: `<rect x="5" y="30" width="90" height="70" ${K}/><path d="M5 30l8-16h74l8 16z" ${K}/>` +
        `<path d="M15 42h14v12H15zM43 42h14v12H43zM71 42h14v12H71zM15 64h14v12H15zM71 64h12v12H71z" ${K}/>` +
@@ -186,6 +203,7 @@ function scene(sc){
   const [bg, ...items] = sc;
   if (bg) h += SPR[bg] || '';
   items.forEach(([name, x, y, s = 1, o = {}]) => {
+    if (name === 'lbl') { h += `<text x="${x}" y="${y}" font-size="${11*s}" font-weight="700" fill="#2980b9" stroke="#fff" stroke-width="4" paint-order="stroke" text-anchor="${o.a||'middle'}">${o.t}</text>`; return; }
     const tf = o.flip ? `translate(${x + 100*s} ${y}) scale(${-s} ${s})` : `translate(${x} ${y}) scale(${s})`;
     h += `<g transform="${tf}">${SPR[name] || SPR.q}`;
     if (o.t) h += `<text x="50" y="${o.ty || 38}" font-size="${o.fs || 14}" text-anchor="middle" font-weight="700" fill="${o.fc || '#222'}">${o.t}</text>`;
@@ -197,29 +215,50 @@ function scene(sc){
 // ---------- 每題 10 格分鏡 ----------
 // 原型：①-1、①-2；其餘先用 GENERIC。
 const PIC = {
+// 原則：每個 slot 的關鍵字都要在圖裡看得到，並用藍色小標籤釘住。
 '①-1':[
- ['bgStreet', ['mall',5,32,1], ['arrow',100,60,.5], ['shop',140,52,.8], ['manWave',205,62,.7,{flip:1}], ['womanWave',240,62,.7]],
- ['bgStreet', ['shop',20,32,1], ['manSad',125,52,.8], ['sign',185,42,.9,{t:'SAVE!',fs:16}], ['heartS',235,20,.5]],
- ['bgStreet', ['mall',10,32,1], ['jamesUp',120,52,.8], ['check',200,40,.8], ['bubbleHeart',215,5,.5]],
- ['bgStreet', ['shop',10,32,1], ['manWave',115,52,.8], ['womanWave',185,52,.8,{flip:1}], ['bubbleTalk',140,0,.5], ['bubbleTalk',205,0,.5]],
- ['bgStreet', ['shop',10,32,1], ['man',110,52,.8], ['hi',150,10,.6], ['woman',200,52,.8,{flip:1}], ['cart',255,70,.45]],
- ['bgStreet', ['globe',5,2,.45], ['man',50,52,.8], ['woman',110,52,.8], ['man',170,52,.8], ['kid',215,52,.8], ['heartS',250,10,.5], ['shop',240,72,.6]],
- ['bgMall', ['jamesPoint',80,52,.8], ['list',140,45,.7], ['clockFast',210,30,.7]],
- ['bgMall', ['jamesPush',60,52,.8], ['cartFull',120,52,.8], ['lines',20,60,.5]],
- ['bgHome', ['clock',100,0,.4], ['jamesSit',105,52,.8], ['womanSit',155,52,.8], ['kidSit',200,52,.8], ['heart',150,0,.4], ['heart',230,10,.3], ['table',100,70,.9]],
- ['bgStreet', ['mall',10,32,1], ['check',85,10,.45], ['shop',160,52,.8], ['sprout',245,72,.6], ['heartS',235,20,.4]],
+ // topic: large malls REPLACING small shops → 大商場推進來，小店被打叉
+ ['bgStreet', ['mall',5,32,1], ['arrow',105,55,.5], ['shop',160,62,.7], ['cross',170,55,.55], ['lbl',195,22,1,{t:'replacing'}]],
+ // va: small shops should be PROTECTED → 盾牌罩住小店＋SAVE 牌
+ ['bgStreet', ['shop',30,42,.9], ['shield',45,5,.55], ['manSad',150,52,.8], ['sign',200,42,.9,{t:'SAVE!',fs:16}], ['lbl',75,145,1,{t:'protected'}]],
+ // vb: does more GOOD than HARM → 天平 ✓ 那邊沉下去
+ ['bgStreet', ['scaleGood',40,25,1], ['jamesUp',170,52,.8], ['lbl',90,145,1,{t:'good > harm'}]],
+ // con: good for the LOCAL AREA／conR: help people who live NEARBY KNOW EACH OTHER → 房子＋小店＋鄰居握手
+ ['bgStreet', ['house',5,72,.55], ['shop',60,42,.9], ['house',240,72,.55], ['shake',140,52,.8], ['lbl',185,22,1,{t:'know each other'}]],
+ // cond: people SHOP at small stores／resA: get to know their NEIGHBORS → 提籃走出小店，鄰居打招呼
+ ['bgStreet', ['shop',10,32,1], ['woman',100,52,.8], ['basket',125,80,.4], ['hi',175,5,.6], ['man',195,52,.8,{flip:1}], ['house',240,72,.55], ['lbl',245,22,1,{t:'neighbors'}]],
+ // resB: people from DIFFERENT BACKGROUNDS get along／concl: MANY people still LIKE small shops → 戴不同帽子的人手牽手＋人群愛心小店
+ ['bgStreet', ['manHat',20,52,.8], ['womanScarf',70,52,.8], ['man',120,52,.8], ['heartS',75,5,.5], ['lbl',85,22,1,{t:'different backgrounds'}], ['crowd',180,52,.8], ['shop',245,72,.55], ['heartS',255,30,.4]],
+ // stance: good for MODERN LIFE／reason: ONE-STOP shopping → SAVE TIME → 商場掛 1 STOP、清單全勾、時鐘打勾
+ ['bgMall', ['sign',30,20,.9,{t:'1 STOP',fs:15}], ['list',110,45,.7], ['clock',185,30,.7], ['check',215,20,.45], ['lbl',220,130,1,{t:'save time'}]],
+ // does: SHOPS at a large mall → James 推滿車走在商場走道
+ ['bgMall', ['jamesPush',70,52,.8], ['cartFull',130,52,.8], ['lines',30,60,.5], ['lbl',150,145,1,{t:'shops at a large mall'}]],
+ // result: SAVE A LOT OF TIME＋QUALITY TIME with family／impl: fit our BUSY LIFE → 時鐘打勾＋全家餐桌＋愛心
+ ['bgHome', ['clock',85,0,.4], ['check',105,-5,.3], ['lbl',105,58,1,{t:'time saved'}], ['table',130,70,.9], ['jamesSit',135,52,.8], ['womanSit',180,52,.8], ['kidSit',220,52,.8], ['heart',250,5,.4], ['lbl',225,145,1,{t:'quality time'}]],
+ // final: good > harm／rec: cities KEEP SPACE for special small shops → 天平＋城市天際線裡留一間小店
+ ['bgStreet', ['scaleGood',10,25,.9], ['lbl',55,145,1,{t:'good > harm'}], ['city',120,32,1], ['shop',215,62,.7], ['check',240,20,.4], ['lbl',245,145,1,{t:'keep space'}]],
 ],
 '①-2':[
- ['bgRoom', ['sofa',20,55,.9], ['manSit',45,52,.8], ['tvFace',150,42,.9], ['q',95,-2,.5]],
- ['bgRoom', ['sofa',10,55,.9], ['oldHappy',35,52,.8], ['tvFace',140,42,.9], ['heartS',100,10,.45], ['zzz',250,72,.35]],
- ['bgRoom', ['tv',20,42,.9], ['cross',40,40,.7], ['jamesPoint',125,52,.8], ['bubbleNo',150,-2,.5]],
- ['bgRoom', ['sofa',10,55,.9], ['oldSit',35,52,.8], ['tvFace',150,42,.9], ['bubbleTalk',160,0,.45]],
- ['bgRoom', ['sofa',10,55,.9], ['oldHappy',35,52,.8], ['tvFace',150,42,.9], ['heartS',90,5,.45], ['heartS',115,20,.35]],
- ['bgRoom', ['sofa',5,55,.9], ['oldHappy',30,52,.8], ['heart',120,20,.6], ['bubbleHeart',200,10,.5], ['tv',215,62,.55]],
- ['bgRoom', ['tvFace',20,42,.9], ['bubbleNo',105,5,.5], ['manFlat',195,52,.8], ['bubbleTalk',150,-2,.45]],
- ['bgHome', ['table',130,70,.9], ['jamesSit',150,52,.8], ['tvOff',225,45,.7], ['plug',175,70,.6], ['socket',270,90,.35]],
- ['bgHome', ['table',90,70,1], ['jamesSit',95,52,.8], ['womanSit',150,52,.8], ['kidSit',195,52,.8], ['bubbleTalk',100,0,.45], ['bubbleTalk',175,0,.45], ['heart',245,15,.4]],
- ['bgHome', ['tvOff',15,45,.7], ['cross',20,40,.6], ['arrow',95,60,.4], ['jamesUp',140,52,.8], ['womanWave',185,52,.8], ['kidUp',225,52,.8], ['heart',245,5,.4]],
+ // topic: is TV a good COMPANION? → 一個人坐沙發對著會笑的電視，問號
+ ['bgRoom', ['sofa',20,55,.9], ['manSit',45,52,.8], ['tvFace',150,42,.9], ['q',95,-2,.5], ['lbl',195,22,1,{t:'companion?'}]],
+ // va: RELAX（躺著）／TEACHES（電視裡燈泡）／LONELY people COMPANY（老人＋電視）→ 三小格
+ [null, ['lying',0,40,.6], ['lbl',30,125,1,{t:'relax'}], ['tvBulb',110,40,.6], ['lbl',140,125,1,{t:'teaches'}], ['oldHappy',195,55,.6], ['tvFace',240,60,.45], ['lbl',235,125,1,{t:'company'}]],
+ // vb: does more HARM than GOOD → 天平 ✗ 那邊沉
+ ['bgRoom', ['scaleHarm',30,25,1], ['tv',140,62,.5], ['jamesPoint',190,52,.8], ['lbl',80,145,1,{t:'harm > good'}]],
+ // con: companion for the LONELY／conR: HEAR VOICES and SEE FACES → 老人一個人，電視有臉、有聲波
+ ['bgRoom', ['sofa',10,55,.9], ['oldSit',35,52,.8], ['tvFace',140,42,.9], ['sound',215,45,.45], ['lbl',60,22,1,{t:'lonely'}], ['lbl',185,145,1,{t:'voices + faces'}]],
+ // cond: old people who LIVE ALONE watch favorite programs EVERY DAY／resA: feel LESS LONELY → 月曆＋老人看電視笑
+ ['bgRoom', ['sofa',10,55,.9], ['oldHappy',35,52,.8], ['tvFace',140,42,.9], ['calendar',5,0,.45], ['lbl',28,52,1,{t:'every day'}], ['heartS',100,5,.4], ['lbl',185,145,1,{t:'less lonely'}]],
+ // resB: a BETTER MOOD／concl: lonely people see TV as a FRIEND → 老人笑＋愛心相連電視
+ ['bgRoom', ['sofa',5,55,.9], ['oldHappy',30,52,.8], ['lbl',60,22,1,{t:'better mood'}], ['heart',115,30,.5], ['tvFace',175,42,.9], ['lbl',215,22,1,{t:'friend'}]],
+ // stance: NOT a real companion／reason: CANNOT TALK with you or LISTEN to you → 電視嘴巴打叉、耳朵打叉，人講話沒回應
+ ['bgRoom', ['tvNo',20,42,.9], ['earNo',100,20,.45], ['manFlat',195,52,.8], ['bubbleTalk',150,-2,.45], ['lbl',75,145,1,{t:'cannot talk / listen'}]],
+ // does: always TURNS OFF the television DURING DINNER → James 在餐桌，電視黑掉插頭拔掉
+ ['bgHome', ['table',130,70,.9], ['jamesSit',150,52,.8], ['tvOff',225,45,.7], ['plug',175,70,.6], ['socket',270,90,.35], ['lbl',150,145,1,{t:'turns off TV at dinner'}]],
+ // result: more CONVERSATIONS with his family／impl: keeps the whole family IN HARMONY → 全家餐桌對話框＋愛心
+ ['bgHome', ['table',90,70,1], ['jamesSit',95,52,.8], ['womanSit',150,52,.8], ['kidSit',195,52,.8], ['bubbleTalk',100,0,.45], ['bubbleTalk',175,0,.45], ['heart',245,15,.4], ['lbl',150,145,1,{t:'conversations → harmony'}]],
+ // final: harm > good／rec: TURN OFF the TV and SPEND TIME with families and friends → 天平＋電視黑＋一家人和朋友揮手
+ ['bgStreet', ['scaleHarm',5,25,.8], ['tvOff',95,72,.5], ['jamesUp',150,52,.8], ['womanWave',190,52,.8], ['kidUp',225,52,.8], ['manWave',255,52,.7,{flip:1}], ['heart',215,0,.35], ['lbl',45,145,1,{t:'harm > good'}], ['lbl',210,145,1,{t:'spend time together'}]],
 ],
 };
 const GENERIC = [
