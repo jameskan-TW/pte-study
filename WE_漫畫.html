@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WE 十格漫畫 — 一題一頁像讀漫畫</title>
+<style>
+:root{--ink:#222;--paper:#fffdf7;--line:#222;--g1:#2980b9;--g2:#e67e22;--g3:#8e44ad;--g4:#e74c3c;}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Noto Sans TC','Microsoft JhengHei',sans-serif;background:#f0ede6;color:var(--ink)}
+header{position:sticky;top:0;z-index:5;background:#2c3e50;color:#fff;padding:8px 12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+header h1{font-size:1rem;margin:0 8px 0 0}
+header select,header button{padding:5px 10px;border:none;border-radius:4px;font-family:inherit;font-size:.85rem;cursor:pointer}
+header button{background:#34495e;color:#fff}
+header button.on{background:#f1c40f;color:#222}
+header a{color:#bdc3c7;font-size:.8rem;margin-left:auto;text-decoration:none}
+main{max-width:1100px;margin:0 auto;padding:12px}
+.title{background:#fff;border:3px solid var(--line);border-radius:6px;padding:10px 14px;margin-bottom:12px;box-shadow:4px 4px 0 #222}
+.title .n{display:inline-block;background:var(--c);color:#fff;border-radius:4px;padding:1px 8px;font-weight:700;margin-right:8px}
+.title .en{font-size:.85rem;color:#555;margin-top:4px}
+.title .st{font-size:.85rem;margin-top:4px}
+.row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:10px;position:relative}
+.row.one{grid-template-columns:1fr}
+.plabel{grid-column:1/-1;font-size:.8rem;font-weight:700;color:#fff;background:var(--c);display:inline-block;width:max-content;padding:2px 10px;border-radius:12px;margin-bottom:-4px}
+.panel{background:var(--paper);border:3px solid var(--line);border-radius:4px;padding:8px 10px 10px;box-shadow:4px 4px 0 #222;display:flex;flex-direction:column;min-height:190px;cursor:pointer;user-select:none}
+.panel .num{font-size:.7rem;font-weight:700;color:#888;letter-spacing:1px}
+.panel .pic{font-size:2.6rem;line-height:1.2;text-align:center;margin:6px 0 4px;letter-spacing:2px;filter:drop-shadow(1px 1px 0 #999)}
+.panel .cap{font-size:.85rem;text-align:center;color:#444;margin-bottom:6px;min-height:1.2em}
+.panel .cap b{color:var(--c)}
+.bubble{position:relative;background:#fff;border:2px solid var(--line);border-radius:14px;padding:8px 10px;font-size:.92rem;line-height:1.5;margin-top:auto}
+.bubble::before{content:'';position:absolute;top:-12px;left:22px;border:6px solid transparent;border-bottom-color:var(--line);border-top:0}
+.bubble .t{color:#999;font-size:.8rem}
+.bubble .s{font-weight:600}
+.bubble i.a1{color:var(--g1);font-style:normal}.bubble i.a2{color:var(--g2);font-style:normal}.bubble i.a3{color:var(--g3);font-style:normal}.bubble i.a4{color:var(--g4);font-style:normal}
+body.hide .bubble .s{background:#eee;color:transparent;border-radius:3px;position:relative}
+body.hide .bubble .s i{color:transparent}
+body.hide .bubble .s::after{content:attr(data-hint);position:absolute;left:4px;top:0;color:#999;font-weight:400;letter-spacing:2px}
+body.hide .panel.open .bubble .s{background:none;color:inherit}
+body.hide .panel.open .bubble .s i.a1{color:var(--g1)}body.hide .panel.open .bubble .s i.a2{color:var(--g2)}body.hide .panel.open .bubble .s i.a3{color:var(--g3)}body.hide .panel.open .bubble .s i.a4{color:var(--g4)}
+body.hide .panel.open .bubble .s::after{display:none}
+body.nocap .panel .cap{display:none}
+.zh{background:#fff;border:2px dashed #aaa;border-radius:6px;padding:8px 12px;font-size:.85rem;color:#555;margin:-2px 0 14px}
+.nav{display:flex;justify-content:space-between;margin:10px 0 30px}
+.nav button{padding:8px 16px;border:2px solid #222;background:#fff;border-radius:6px;font-family:inherit;cursor:pointer;box-shadow:3px 3px 0 #222}
+.note{font-size:.78rem;color:#888;text-align:center;margin-bottom:20px}
+#loading{padding:40px;text-align:center;color:#888}
+.err{color:#c0392b}
+@media(max-width:640px){.row{grid-template-columns:repeat(2,1fr);gap:8px}.panel{min-height:160px}.panel .pic{font-size:2.1rem}.bubble{font-size:.85rem}}
+</style>
+</head>
+<body>
+<header>
+  <h1>🎞️ WE 十格漫畫</h1>
+  <select id="sel"></select>
+  <button id="bHide" title="遮住英文，點格子揭開">默寫</button>
+  <button id="bCap" title="隱藏中文提示">藏中文</button>
+  <a href="WE_論點總表.html">總表</a>
+</header>
+<main>
+  <div id="loading">載入總表題庫中…</div>
+  <div id="app" hidden></div>
+</main>
+<script>
+// ---------- 十格對應（每題固定，這是「漫畫分鏡」） ----------
+// 段落  格  內容 slot
+// P1    1  topic        場景：這題在講什麼
+//       2  va           反方說
+//       3  vb (+p1end)  我方說
+// P2    4  con + conR   讓步：承認對方有理
+//       5  cond → resA  如果…就會…
+//       6  resB → concl 進而導致…所以很多人…
+// P3    7  stance+reason我方主張＋理由
+//       8  does         James 做了什麼
+//       9  result+impl  結果 → 帶回家庭
+// P4   10  final+rec    結論＋建議
+const FRAMES = [
+ {p:1,k:'topic', cap:'這題在講…', t:'It is generally true that', keys:['topic']},
+ {p:1,k:'va',    cap:'反方說', t:'Some people are of the opinion that', keys:['va']},
+ {p:1,k:'vb',    cap:'我方說', t:'while others hold the view that', keys:['vb']},
+ {p:2,k:'con',   cap:'先承認：<b>對方有理</b>', t:'It has to be admitted that … one argument in favor of this view can be that', keys:['con','conR']},
+ {p:2,k:'cond',  cap:'如果…就會…', t:'If … then', keys:['cond','resA']},
+ {p:2,k:'resB',  cap:'進而導致 → 難怪', t:'in turn leading to … As a result, it is unsurprising that', keys:['resB','concl']},
+ {p:3,k:'stance',cap:'我方主張＋理由', t:'On the other hand, I firmly believe that … one compelling reason is that', keys:['stance','reason']},
+ {p:3,k:'does',  cap:'James 做了什麼', t:'A pertinent case in point is James, who … As James', keys:['does']},
+ {p:3,k:'result',cap:'結果 → <b>帶回家</b>', t:'he is able to … In other words,', keys:['result','impl']},
+ {p:4,k:'final', cap:'結論＋建議', t:'In conclusion … I believe that … and it is crucial that', keys:['final','rec']},
+];
+const PNAME = {1:'P1 開場（立場）',2:'P2 讓步（承認對方）',3:'P3 主論（James 的故事）',4:'P4 結論'};
+const GCOLOR = {1:'#2980b9',2:'#e67e22',3:'#8e44ad',4:'#e74c3c'};
+
+// ---------- 每題專屬的 10 格圖（手繪場景，用 emoji 拼）----------
+// 只做了 #1、#2 當原型；其他題先用下面 GENERIC 通用圖。
+const PIC = {
+'①-1':['🏬↔️🏪','🏪🛡️😢','🏬👍😊','🏪🤝🏘️','🛒🏪👋🧑‍🤝‍🧑','🌏🧑‍🤝‍🧑❤️','🏬⏱️💨','👨‍💼🛒🏬','⏱️➡️👨‍👩‍👧🏡','🏬✅🏪🌱'],
+'①-2':['📺🛋️❓','📺😌📚👵','📺❌🙅','👵🛋️📺','📺🎵🙂👵','😊🙂📺💛','📺🔇🗣️❌','👨‍💼🍽️📺🔌','🗣️👨‍👩‍👧😄🏡','📺⏻👨‍👩‍👧🌳'],
+};
+const GENERIC = ['🎬❓','🗣️👥','💪🙋','🤝👍','⚙️➡️','➡️🌊','🎯💡','👨‍💼🏢','🏡❤️','🏁📣'];
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+let DATA = [], ZH = {}, cur = 0;
+
+function hint(html){ // 首字母提示：每個字只留第一個字母
+  const txt = html.replace(/<[^>]+>/g,'');
+  return txt.split(/\s+/).map(w => w[0] || '').join(' ');
+}
+function slotText(e, keys, fr){
+  const parts = keys.map(k => {
+    let v = e[k] || '';
+    if (k === 'cond' && e.subj) v = v; // 主詞在模板灰字裡
+    return `<span class="s" data-hint="${esc(hint(v))}">${v}</span>`;
+  });
+  // 連接灰字
+  const glue = {
+    'con':' , <span class="t">and one argument in favor of this view can be that</span> ',
+    'cond':` , <span class="t">then ${esc(e.subj||'they')} ${esc(e.modal||'can')}</span> `,
+    'resB':' . <span class="t">As a result, it is unsurprising that</span> ',
+    'stance':' , <span class="t">and one compelling reason is that</span> ',
+    'result':' . <span class="t">In other words,</span> ',
+    'final':' , <span class="t">and it is crucial that</span> ',
+  }[fr.k] || ' ';
+  return parts.join(glue);
+}
+function lead(fr, e){
+  if (fr.k === 'does') return `<span class="t">James, who ${esc(e.jv||'works')} at a … ${esc(e.jn||'firm')}. As James</span> `;
+  if (fr.k === 'result') return `<span class="t">, ${esc(e.able||'he is able to')}</span> `;
+  if (fr.k === 'vb' && e.p1end) return '<span class="t">while others hold the view that</span> ';
+  return `<span class="t">${esc(fr.t.split(' … ')[0])}</span> `;
+}
+
+function render(){
+  const e = DATA[cur], es = e.es, c = GCOLOR[e.p3c] || '#7f8c8d';
+  const pics = PIC[e.n] || GENERIC;
+  const z = ZH[e.n] || {};
+  let h = `<div class="title" style="--c:${c}"><span class="n">${esc(e.n)}</span><b>${esc(e.t)}</b>
+    <div class="en">${esc(e.en)}</div><div class="st">立場：${esc(e.stance)}｜P2 ${esc(e.p2zh||'')}｜P3 ${esc(e.p3zh||'')}</div></div>`;
+  let lastP = 0;
+  FRAMES.forEach((fr, i) => {
+    if (fr.p !== lastP) {
+      if (lastP) h += `</div>` + (z['p'+lastP] ? `<div class="zh">🗒️ ${esc(z['p'+lastP])}</div>` : '');
+      h += `<div class="row${fr.p===4?' one':''}" style="--c:${c}"><div class="plabel">${PNAME[fr.p]}</div>`;
+      lastP = fr.p;
+    }
+    let extra = '';
+    if (fr.k === 'vb' && es.p1end) extra = ` . <span class="s" data-hint="${esc(hint(es.p1end))}">${es.p1end}</span>`;
+    h += `<div class="panel" style="--c:${c}" data-i="${i}">
+      <div class="num">${i+1} / 10</div>
+      <div class="pic">${pics[i]}</div>
+      <div class="cap">${fr.cap}</div>
+      <div class="bubble">${lead(fr,es)}${slotText(es, fr.keys, fr)}${extra}</div>
+    </div>`;
+  });
+  h += `</div>` + (z.p4 ? `<div class="zh">🗒️ ${esc(z.p4)}</div>` : '');
+  h += `<div class="nav"><button id="prev">◀ 上一題</button><button id="next">下一題 ▶</button></div>`;
+  h += `<div class="note">${PIC[e.n] ? '這題有專屬分鏡圖' : '這題還是通用圖（原型階段只畫了 ①-1、①-2）'}｜開「默寫」後點格子揭開英文</div>`;
+  $('app').innerHTML = h;
+  $('prev').onclick = () => go(cur-1); $('next').onclick = () => go(cur+1);
+  document.querySelectorAll('.panel').forEach(p => p.onclick = () => p.classList.toggle('open'));
+  $('sel').value = cur;
+  location.hash = 'q' + (cur+1);
+  window.scrollTo(0,0);
+}
+function go(i){ cur = (i + DATA.length) % DATA.length; render(); }
+
+$('bHide').onclick = () => { document.body.classList.toggle('hide'); $('bHide').classList.toggle('on'); };
+$('bCap').onclick = () => { document.body.classList.toggle('nocap'); $('bCap').classList.toggle('on'); };
+$('sel').onchange = () => go(+$('sel').value);
+document.addEventListener('keydown', ev => { if (ev.key==='ArrowRight') go(cur+1); if (ev.key==='ArrowLeft') go(cur-1); });
+
+fetch('WE_論點總表.html').then(r => { if(!r.ok) throw new Error(r.status); return r.text(); }).then(t => {
+  try {
+    const i = t.indexOf('const DATA = ['), j = t.indexOf('\n];', i);
+    if (i < 0 || j < 0) throw new Error('找不到 const DATA');
+    DATA = new Function('return ' + t.slice(t.indexOf('[', i), j + 2))();
+    const zi = t.indexOf('const ZH = {'), zj = t.indexOf('\n};', zi);
+    ZH = zi >= 0 && zj >= 0 ? new Function('return ' + t.slice(t.indexOf('{', zi), zj + 2))() : {};
+  } catch (err) { $('loading').className='err'; $('loading').textContent = '總表 DATA 解析失敗：' + err.message; return; }
+  $('sel').innerHTML = DATA.map((e,i) => `<option value="${i}">${esc(e.n)} ${esc(e.t)}</option>`).join('');
+  const m = location.hash.match(/q(\d+)/); if (m) cur = Math.min(DATA.length-1, Math.max(0, +m[1]-1));
+  $('loading').hidden = true; $('app').hidden = false;
+  render();
+}).catch(err => {
+  $('loading').className='err';
+  $('loading').innerHTML = '題庫載入失敗（' + esc(err.message) + '）。本機雙擊開會被擋，請用網址開：<b>jameskan-tw.github.io/pte-study/WE_漫畫.html</b>';
+});
+</script>
+</body>
+</html>
