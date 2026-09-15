@@ -1274,6 +1274,18 @@ const DATA = [
       { wrong:"plante（三輪錯 2 次，最後一輪仍錯）", right:"planets", cat:"spell", vocab:"planets",
         why:`<b>本批唯一沒攻下的字</b>：<span class="en">plan·et<b>s</b></span>＝<b>plan（計畫）＋ et</b>，字尾就是 <b>-ets</b>，<b>沒有 e 結尾</b>。你打的 plante 是把 t 和 e 對調又漏 s——考前必掃。` },
     ]},
+  { title:"Philosophy uses logic and reasons 哲學用邏輯分析人與經驗（3 輪才過）", pid:"", type:"WFD", date:"09-15",
+    text:`[[1]] uses [[2]] logic and [[3]] to [[4]] human and experience.`,
+    blanks:[
+      { wrong:"philopsphy", right:"Philosophy", cat:"spell", vocab:"philosophy",
+        why:`拼字：<span class="en">phi·los·o·phy</span>＝<b>phil（愛）＋ oso ＋ phy</b>，<b>開頭 ph、結尾也是 ph</b>。你打的 philopsphy 是把 p 和 s 對調又漏一個 o——<b>字母顛倒老毛病</b>，慢拼三段。` },
+      { wrong:"（漏 the）", right:"the", cat:"plural",
+        why:`原句是 <span class="en">uses <b>the</b> logic and reasons</span>，有冠詞 the。<b>the／a 這種吞音小字要刻意補</b>，少一個字就扣一分。` },
+      { wrong:"（漏 reasons，兩輪都漏）", right:"reasons", cat:"word",
+        why:`<span class="en">the logic and <b>reasons</b></span> 是<b>兩個並列名詞</b>，reasons 要<b>複數</b>。你連兩輪都漏掉——<b>聽到 and 就代表前後各有一個名詞</b>，and 後面空著就是漏字。` },
+      { wrong:"analiyze／analyz（兩輪兩種錯法）", right:"analyze", cat:"spell", vocab:"analyze",
+        why:`拼字：<span class="en">a·na·lyze</span>＝<b>ana ＋ lyze</b>，中間是 <b>y 不是 i</b>（你打 analiyze 多塞 i），字尾 <b>-ze 別漏 e</b>（你打 analyz）。⚠️ 第一輪還<b>語序整個對調</b>（experience 提前、human behaviors 丟句尾）又<b>腦補 behaviors</b>——原句尾巴是 <span class="en">human and experience</span>，<b>多打的字一樣扣分</b>。` },
+    ]},
 ];
 
 // 要背單字（James 標註）— 音節拆解幫記憶
@@ -1318,6 +1330,7 @@ const VOCAB_TIP = {
   applying:"ap·ply·ing（y 不去）", engage:"en·gage（en- 開頭）", important:"im·por·tant（-tant）",
   mathematics:"math·e·mat·ics（math 開頭）", studies:"stud·ies（y→ies）", limitations:"lim·i·ta·tions",
   planets:"plan·ets（plan+ets，沒 e 結尾）",
+  philosophy:"phi·los·o·phy（phil+oso+phy）", analyze:"an·a·lyze（ana+lyze，y 不是 i）",
 };
 const VOCAB_EXTRA = ["elective","engineering"]; // 有標要背但不是錯字的
 
@@ -1600,6 +1613,8 @@ const VQ=[
   {w:'nervously',zh:'緊張地（副詞）',tag:'WFD·0902',trap:'nervous + ly — -ous 的 u 別漏（不是 nervosly）；0902 拼 nurvors（nerve 是 ner 不是 nur、-ous 亂掉、忘了 -ly）——nerv + ous + ly 三段',src:'Observers waited ____ and with bated breath for the concert.'},
   {w:'bated breath',zh:'屏息以待（with bated breath，固定片語）',tag:'WFD·0902·片語',trap:'bated（不是 baited）＋ breath 名詞，字尾沒有 e（breathe 才是動詞）；整組兩個字；0902 拼 brate breath（bated 打成 brate）——bated = b·a·t·e·d，沒有 r',src:'Observers waited nervously and with ____ ____ for the concert.'},
   {w:'concert',zh:'音樂會',tag:'WFD·0902·漏字尾',trap:'con·cert — 字尾 -cert（不是 concern）；c 兩個；0902 拼 concer（漏字尾 t）',src:'Observers waited nervously and with bated breath for the ____.'},
+  {w:'philosophy',zh:'哲學',tag:'WFD·0915·顛倒',trap:'phi·los·o·phy — 開頭 ph、結尾也是 ph，中間 los·o 兩個 o；0915 拼 philopsphy（p 和 s 對調、漏一個 o）——拆 phil + oso + phy',src:'____ uses the logic and reasons to analyze human and experience.'},
+  {w:'analyze',zh:'分析',tag:'WFD·0915',trap:'a·na·lyze = ana + lyze — 中間是 y 不是 i（0915 拼 analiyze，多塞一個 i）；字尾 -ze 別漏 e（0915 拼 analyz）；英式 analyse 也算對，但別混成 analize',src:'Philosophy uses the logic and reasons to ____ human and experience.'},
 ];
 
 const vqList=document.getElementById('vqList');
