@@ -1053,7 +1053,27 @@ const DATA = [
  jv:'studies', jn:'university', does:'puts all his time into main subjects',
  result:'get high grades and find <i class="a4">a good job with a steady income</i>',
  impl:'focusing on main subjects leads to better future prospects and <i class="a4">a warm and stable home</i>',
- final:'teaching old plays does more harm than good', rec:'schools offer drama only as an optional class'}},
+ final:'teaching old plays does more harm than good', rec:'schools offer drama only as an optional class'},
+ mistakes:{
+  spell:[ {x:'to much', o:'too much', nt:'too 兩個 o'} ],
+  grammar:[
+   {x:'high school / old story / some school / drama course / high grade', o:'high schools / old stories / some schools / drama courses / high grades', nt:'漏 s — 今天犯 5 次。泛指的可數名詞一律複數、不加冠詞'},
+   {x:'the drama courses', o:'drama courses', nt:'泛指不加 the；加 the 是指前面提過的特定幾堂'},
+   {x:'some schools praised drama courses', o:'some schools praise drama courses', nt:'現在式（普遍情況）。上一句 lived 用過去式是因為句尾有 in the past'},
+   {x:'students learn old plays', o:'students study old plays', nt:'learn 接技能或 learn about；課程內容用 study 直接接'},
+   {x:'practice takes hours on main subjects', o:'practice takes hours from main subjects', nt:'from＝從主科搶走時間；on 變成「花時間在主科上」語意相反'},
+   {x:'studies hard on main subjects', o:'puts all his time into main subjects', nt:'study 不接 on（要 focus on 或 study + 受詞）'},
+   {x:'students study old plays does more harm than good', o:'teaching old plays does more harm than good', nt:'完整子句不能當主詞，要動名詞'},
+   {x:'has more harm than good', o:'does more harm than good', nt:'固定片語動詞是 does，不會變 has/is/brings'},
+   {x:'find a good job and have stable income', o:'find a good job with a steady income', nt:'① 不要多加動詞 have，find 一個動詞管到底 ② steady income／stable home 別互換 ③ a 不能漏'},
+   {x:'leads to better future prospects and have a warm and stable home', o:'leads to better future prospects and a warm and stable home', nt:'leads to A and B 是兩個名詞並列，中間不能再塞動詞（今天多加 have 兩次）'},
+   {x:'a warm and stable family', o:'a warm and stable home', nt:'固定片語 10 題共用，home 不能換成 family（犯 2 次）'},
+   {x:'a great academic performance', o:'outstanding academic performance', nt:'academic performance 抽象不可數，不加 a'},
+   {x:'a broader life experience', o:'a broader view of life', nt:'⑧視野讓步線固定收尾 7 題共用，別自己換字'},
+   {x:'schools make old drama course as an optional', o:'schools offer drama only as an optional class', nt:'① make 不接 as ② optional 是形容詞不能當名詞，要接 class ③ only 是建議的重點，漏了語氣就弱（漏 2 次）'}
+  ],
+  note:'2026-09-15 第一次逐 slot 練這題，16 格全打完。根因集中在漏 s（5 次）與多加動詞 have（2 次）。做對的：studies／leads 的第三人稱 +s、it is crucial that 後面 make 用原形、prospects 不加 a。同場決定改 DATA 三處：conR human nature→human behavior、result find...with、impl 換成他自己的 focusing on main subjects。'
+ }},
 
 {n:'④-16', o:28, t:'成本高也要保存漂亮的舊建築', en:'It is important to preserve the beautiful buildings of the past, even if it is expensive to do so. To what extent do you agree or disagree?',
  stance:'不同意 — 預算優先民生', p2c:3, p2zh:'讓步：古建築承載歷史文化', p3c:4, p3zh:'主論：預算花在住房醫療就業 → 家庭穩定生活',
