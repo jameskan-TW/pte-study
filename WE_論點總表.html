@@ -1086,7 +1086,32 @@ const DATA = [
  jv:'works', jn:'firm', does:'lives in a city that spends money on housing and hospitals',
  result:'raise his family and enjoy <i class="a2">peace of mind</i>',
  impl:'money on daily needs gives every family <i class="a4">a warm and stable home</i>',
- final:'daily needs should come before saving expensive old buildings', rec:'governments keep only the most important buildings'}},
+ final:'daily needs should come before saving expensive old buildings', rec:'governments keep only the most important buildings'},
+ mistakes:{
+  spell:[
+   {x:'placees', o:'places'},
+   {x:'monry', o:'money', nt:'m-o-n-e-y'},
+   {x:'out history', o:'our history', nt:'漏 r'},
+   {x:'invetments', o:'investments', nt:'in-ves-tments'}
+  ],
+  grammar:[
+   {x:'old building / many tourist / budget / job / daily need', o:'old buildings / many tourists / budgets / jobs / daily needs', nt:'漏 s — 本篇 7 次（old buildings 一字就錯 5 次）。檢查法：看到 are／they／many／some 就回頭確認主詞有沒有 s'},
+   {x:'it is worth to preserve', o:'old buildings are worth any cost（或 worth preserving）', nt:'worth 後面只收名詞或動名詞，不接 to'},
+   {x:'old buildings are a history', o:'old buildings are part of our history', nt:'history 不可數不加 a；a history 是「一部歷史著作」'},
+   {x:'public money should spend on', o:'public money should go to', nt:'錢是被花的，主動要寫 should be spent；範文用 go to 就避開被動語態'},
+   {x:'public spend should go to', o:'public money should go to', nt:'spend 是動詞不能當主詞'},
+   {x:'we know how people lived', o:'they show how people lived', nt:'主詞是 old buildings，P2 整段保持第三人稱'},
+   {x:'broader their view of life', o:'a broader view of life', nt:'broader 是形容詞比較級不能當動詞；in turn leading to 後面要名詞片語'},
+   {x:'a city with budgets go to daily needs first', o:'a city that spends money on housing and hospitals', nt:'with 只接名詞片語，接子句要用 that；例子要具體化，別重複 stance 的字'},
+   {x:'a city that spend money', o:'a city that spends money', nt:'關係代名詞 that 代替 a city（單數）→ 動詞 +s'},
+   {x:'he is able to raised his family', o:'he is able to raise his family', nt:'able to 接原形'},
+   {x:'a warm and a stable home', o:'a warm and stable home', nt:'一個 a 管兩個形容詞'},
+   {x:'money on daily needs gives a warm and stable home', o:'money on daily needs gives every family a warm and stable home', nt:'give 要「給誰」＋「給什麼」兩個受詞'},
+   {x:'budgets should go to housing and jobs（漏 first）', o:'budgets should go to housing and jobs first', nt:'first 是本題立場核心：民生優先、不是全盤否定（漏 2 次）'},
+   {x:'money on daily use', o:'money on daily needs', nt:'整篇統一用 daily needs'}
+  ],
+  note:'2026-09-15 第一次逐 slot 練這題，16 格全打完。漏 s 7 次（old buildings 一字 5 次）是最大宗，其次是被動語態與 with 接子句。做對的：housing 不加 s、enjoy peace of mind、it is crucial that 後面 keep 用原形、lived 過去式、raise 原形。final 打成 before expensive old buildings（未加 saving）也判通過——語意成立，只是比較對象不完全對等。'
+ }},
 
 {n:'④-17', o:31, t:'減少工時以緩解失業率', en:'In modern society, unemployment among young people is a serious problem. One solution is to shorten the working week. Give your opinion of the idea, considering the advantages and disadvantages, whether it can apply to young people or the whole workforce.',
  stance:'不同意 — 薪水跟著減，養不了家', p2c:2, p2zh:'讓步：工時短比較輕鬆', p3c:4, p3zh:'主論：工時減 → 收入減 → 動搖家庭穩定',
