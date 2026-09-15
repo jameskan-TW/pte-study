@@ -122,6 +122,8 @@
 
 > 2026-09-15 **表態句全面統一成 `does more harm than good` / `does more good than harm`**（James 決定，理由：short、固定片語、好拼；他說「我會努力記住 do 跟 does」）。原本混用的 `the good points are much greater than the bad points` 類句型（17 處、7 題）全部換掉：#4 stance `good design does more good than harm`／final `building design does more good than harm`；#18 vb＝stance＝final `involving employees does more good than harm`；#20 va `tourism does as much harm as good`（反方保留「一樣大」語意）／vb＝stance `tourism does more good than harm`；#21 va `the information revolution does more good than harm`／vb `it does more harm than good`／stance＝final 全名版；#26 final `the smartphone does more good than harm`；#27、#31 vb＝stance＝final 同句（`teaching old plays…`／`a shorter week…`）。**鐵律：主詞一律寫單數形（含不可數、動名詞），does 永不變**——37 題掃過沒有任何一處要用 do，避開 James 的 +s 罩門。ZH 速記同步；WE_背誦地圖 PHRASES 刪掉 4 個死片語（52→48），`does more good than harm` 覆蓋 9 題、`does more harm than good` 7 題。驗證：37 題解析＋buildEssay＋字數 254-287 全通過，PHRASES／STORY 仍全是 DATA 逐字子字串。
 
+> 2026-09-15（續，練 #27 當下 James 提的三個字級決定）：① **`find a good job with a steady income`**（原 and）——James 指出 find 配 income 很怪，改 with，9 處（#1/2/5/9/13/19/22/27 result、#30 resA）；論據卡的 `bring people a good job and a steady income` 保留（bring 配 and 正確）。② **①線收尾統一 `better future prospects`**（原 `a better future`，9 處 impl＋關鍵字表）——James 說 prospects 他背起來了、字比較高級，且 #12 resB 本來就是這個字（老師 0908 改的），統一後只剩一套。⚠ 陷阱：`better future prospects` **不加 a、字尾一定有 s**（對比 `a better future` 有 a）。③ #27 conR 換 James 直覺版 `human behavior`（原 human nature，不可數不加 s），漫畫頁第 4 格藍字同步。**坑**：WE_漫畫.html 的 `lbl` 藍字是寫死的，改 DATA 英文時 fetch 不會救它，要順手 grep 漫畫頁。
+
 前四篇都是主論①（圖書館現歸③視野組）。**下一步建議**：換主論②/③/④ 的題目練，讓四條鏈都熟。或 James 想針對拼字罩門做默寫訓練。
 
 ## 7. 已教過的兩個策略工具
