@@ -1274,6 +1274,18 @@ const DATA = [
       { wrong:"plante（三輪錯 2 次，最後一輪仍錯）", right:"planets", cat:"spell", vocab:"planets",
         why:`<b>本批唯一沒攻下的字</b>：<span class="en">plan·et<b>s</b></span>＝<b>plan（計畫）＋ et</b>，字尾就是 <b>-ets</b>，<b>沒有 e 結尾</b>。你打的 plante 是把 t 和 e 對調又漏 s——考前必掃。` },
     ]},
+  { title:"Statistical results depending on 統計結果視情況表達", pid:"", type:"WFD", date:"09-15",
+    text:`Statistical [[1]] should be expressed in different [[2]] [[3]] on the [[4]].`,
+    blanks:[
+      { wrong:"result", right:"results", cat:"plural",
+        why:`主詞複數 <span class="en">Statistical result<b>s</b></span>——後面配 <span class="en">should be</span> 聽不出單複數，但<b>統計結果不會只有一個</b>，這類句首泛指名詞預設複數。` },
+      { wrong:"way", right:"ways", cat:"plural",
+        why:`<span class="en">in different <b>ways</b></span> 是固定組合——<b>different 後面一定接複數</b>（不同的「好幾種」方式）。同款：different backgrounds／different cultures。` },
+      { wrong:"depend", right:"depending", cat:"form", vocab:"depending",
+        why:`<b>跟 raised 同一條規則：一句只能有一個主要動詞</b>。這句的主要動詞是 <span class="en">should be expressed</span>，depend 不能用原形，要變分詞。<br>① 但這裡的 <span class="en">depending</span> 跟 <span class="en">animals <b>raised</b></span> <b>修飾的對象不同</b>：raised 修飾前面的名詞 animals（被圈養的動物），<span class="en">depending on ~</span> 修飾的是<b>整個句子</b>＝「（怎麼表達）<b>要視…而定</b>」，不是在形容 ways。<br>② 為什麼是 -ing 不是 -ed：<b>主動</b>——是「表達方式」自己取決於情況，不是被誰 depend。<br>③ 最省事的記法：<span class="en"><b>depending on</b></span> 已經固定成一個片語，等於「根據／視…而定」，功能像介系詞（同 <span class="en">according to</span>、<span class="en">based on</span>）——<b>永遠是 -ing，沒有原形版本</b>。` },
+      { wrong:"specefic circumstances（原句沒有 specific）", right:"circumstances", cat:"word",
+        why:`原句是 <span class="en">on <b>the circumstances</b></span>，你<b>自己補了 specefic</b>——<b>WFD 多打的字一樣扣分</b>（0915 已經第二次：上一題多打 behaviors）。順帶，那個字正確拼法是 <span class="en">spe·cif·ic</span>（-cif-，不是 specefic）。` },
+    ]},
   { title:"Animals raised in captivity 圈養動物行為不同", pid:"", type:"WFD", date:"09-15",
     text:`[[1]] [[2]] in captivity behave differently than their wild counterparts.`,
     blanks:[
@@ -1340,6 +1352,7 @@ const VOCAB_TIP = {
   planets:"plan·ets（plan+ets，沒 e 結尾）",
   philosophy:"phi·los·o·phy（phil+oso+phy）", analyze:"an·a·lyze（ana+lyze，y 不是 i）",
   animals:"an·i·mals（-als 結尾）", raised:"raised（raise+d，被動分詞）",
+  depending:"de·pend·ing（depending on＝視…而定）",
 };
 const VOCAB_EXTRA = ["elective","engineering"]; // 有標要背但不是錯字的
 
@@ -1623,6 +1636,8 @@ const VQ=[
   {w:'bated breath',zh:'屏息以待（with bated breath，固定片語）',tag:'WFD·0902·片語',trap:'bated（不是 baited）＋ breath 名詞，字尾沒有 e（breathe 才是動詞）；整組兩個字；0902 拼 brate breath（bated 打成 brate）——bated = b·a·t·e·d，沒有 r',src:'Observers waited nervously and with ____ ____ for the concert.'},
   {w:'concert',zh:'音樂會',tag:'WFD·0902·漏字尾',trap:'con·cert — 字尾 -cert（不是 concern）；c 兩個；0902 拼 concer（漏字尾 t）',src:'Observers waited nervously and with bated breath for the ____.'},
   {w:'philosophy',zh:'哲學',tag:'WFD·0915·顛倒',trap:'phi·los·o·phy — 開頭 ph、結尾也是 ph，中間 los·o 兩個 o；0915 拼 philopsphy（p 和 s 對調、漏一個 o）——拆 phil + oso + phy',src:'____ uses the logic and reasons to analyze human and experience.'},
+  {w:'depending on',zh:'視…而定、根據（固定片語）',tag:'WFD·0915·文法',trap:'永遠是 -ing：句子的主要動詞已經有了（should be expressed），depend 只能當分詞；depending on 整組等於介系詞「根據」（同 according to）。0915 打成 depend on（原形）',src:'Statistical results should be expressed in different ways ____ ____ the circumstances.'},
+  {w:'specific',zh:'特定的、明確的',tag:'WFD·0915',trap:'spe·cif·ic — 中間是 -cif- 不是 -cef-（0915 拼 specefic）；同家族 specify／specification。⚠️ 這個字是你 0915 自己腦補多打進句子的，原句沒有——WFD 多打字一樣扣分',src:'（0915 多打）...depending on the ____ circumstances.'},
   {w:'animals',zh:'動物（複數）',tag:'WFD·0915·顛倒',trap:'an·i·mals — 字尾是 -als 不是 -las（0915 拼 animlas，a 和 l 對調）；拆 ani + mal + s',src:'____ raised in captivity behave differently than their wild counterparts.'},
   {w:'raised',zh:'被養育、被圈養（過去分詞）',tag:'WFD·0915·文法',trap:'raise + d — 名詞後面的分詞要問「主動還是被動」：動物是被人養 → raised（-ed 被動）；主動才用 -ing。句子真正的動詞是 behave，這裡不能再放一個原形 raise；raise（養育，及物）≠ rise（上升，不及物）',src:'Animals ____ in captivity behave differently than their wild counterparts.'},
   {w:'analyze',zh:'分析',tag:'WFD·0915',trap:'a·na·lyze = ana + lyze — 中間是 y 不是 i（0915 拼 analiyze，多塞一個 i）；字尾 -ze 別漏 e（0915 拼 analyz）；英式 analyse 也算對，但別混成 analize',src:'Philosophy uses the logic and reasons to ____ human and experience.'},
