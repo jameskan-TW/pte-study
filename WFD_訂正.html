@@ -1274,6 +1274,14 @@ const DATA = [
       { wrong:"plante（三輪錯 2 次，最後一輪仍錯）", right:"planets", cat:"spell", vocab:"planets",
         why:`<b>本批唯一沒攻下的字</b>：<span class="en">plan·et<b>s</b></span>＝<b>plan（計畫）＋ et</b>，字尾就是 <b>-ets</b>，<b>沒有 e 結尾</b>。你打的 plante 是把 t 和 e 對調又漏 s——考前必掃。` },
     ]},
+  { title:"Animals raised in captivity 圈養動物行為不同", pid:"", type:"WFD", date:"09-15",
+    text:`[[1]] [[2]] in captivity behave differently than their wild counterparts.`,
+    blanks:[
+      { wrong:"animlas", right:"Animals", cat:"spell", vocab:"animals",
+        why:`拼字：<span class="en">an·i·mals</span>＝<b>ani ＋ mal ＋ s</b>。你打 animlas 是把 <b>al 打成 la</b>——<b>字母顛倒老毛病</b>（同 philopsphy、develpoment）。字尾三個字母固定是 <b>-als</b>。` },
+      { wrong:"raise", right:"raised", cat:"form", vocab:"raised",
+        why:`<b>被動分詞當後位修飾</b>：<span class="en">Animals <b>(which are) raised</b> in captivity</span>＝「<b>被</b>圈養的動物」。動物是<b>被人養</b>，不是自己養誰 → 用過去分詞 <b>-ed</b>。<br>① 本句的<b>真正動詞是 behave</b>（Animals … behave differently）；打成 raise 會變成<b>一句兩個動詞又沒有連接詞</b>，文法直接垮。<br>② 口訣：<b>名詞後面接分詞，先問「牠做 vs 被做」</b>——主動用 -ing（<span class="en">animals living in zoos</span> 住在動物園的動物），被動用 -ed（<span class="en">animals raised in captivity</span> 被圈養的動物）。<br>③ 順帶：<span class="en">raise</span>（養育／舉起，要接受詞）≠ <span class="en">rise</span>（上升，不接受詞），別寫成 rised／risen。` },
+    ]},
   { title:"Philosophy uses logic and reasons 哲學用邏輯分析人與經驗（3 輪才過）", pid:"", type:"WFD", date:"09-15",
     text:`[[1]] uses [[2]] logic and [[3]] to [[4]] human and experience.`,
     blanks:[
@@ -1331,6 +1339,7 @@ const VOCAB_TIP = {
   mathematics:"math·e·mat·ics（math 開頭）", studies:"stud·ies（y→ies）", limitations:"lim·i·ta·tions",
   planets:"plan·ets（plan+ets，沒 e 結尾）",
   philosophy:"phi·los·o·phy（phil+oso+phy）", analyze:"an·a·lyze（ana+lyze，y 不是 i）",
+  animals:"an·i·mals（-als 結尾）", raised:"raised（raise+d，被動分詞）",
 };
 const VOCAB_EXTRA = ["elective","engineering"]; // 有標要背但不是錯字的
 
@@ -1614,6 +1623,8 @@ const VQ=[
   {w:'bated breath',zh:'屏息以待（with bated breath，固定片語）',tag:'WFD·0902·片語',trap:'bated（不是 baited）＋ breath 名詞，字尾沒有 e（breathe 才是動詞）；整組兩個字；0902 拼 brate breath（bated 打成 brate）——bated = b·a·t·e·d，沒有 r',src:'Observers waited nervously and with ____ ____ for the concert.'},
   {w:'concert',zh:'音樂會',tag:'WFD·0902·漏字尾',trap:'con·cert — 字尾 -cert（不是 concern）；c 兩個；0902 拼 concer（漏字尾 t）',src:'Observers waited nervously and with bated breath for the ____.'},
   {w:'philosophy',zh:'哲學',tag:'WFD·0915·顛倒',trap:'phi·los·o·phy — 開頭 ph、結尾也是 ph，中間 los·o 兩個 o；0915 拼 philopsphy（p 和 s 對調、漏一個 o）——拆 phil + oso + phy',src:'____ uses the logic and reasons to analyze human and experience.'},
+  {w:'animals',zh:'動物（複數）',tag:'WFD·0915·顛倒',trap:'an·i·mals — 字尾是 -als 不是 -las（0915 拼 animlas，a 和 l 對調）；拆 ani + mal + s',src:'____ raised in captivity behave differently than their wild counterparts.'},
+  {w:'raised',zh:'被養育、被圈養（過去分詞）',tag:'WFD·0915·文法',trap:'raise + d — 名詞後面的分詞要問「主動還是被動」：動物是被人養 → raised（-ed 被動）；主動才用 -ing。句子真正的動詞是 behave，這裡不能再放一個原形 raise；raise（養育，及物）≠ rise（上升，不及物）',src:'Animals ____ in captivity behave differently than their wild counterparts.'},
   {w:'analyze',zh:'分析',tag:'WFD·0915',trap:'a·na·lyze = ana + lyze — 中間是 y 不是 i（0915 拼 analiyze，多塞一個 i）；字尾 -ze 別漏 e（0915 拼 analyz）；英式 analyse 也算對，但別混成 analize',src:'Philosophy uses the logic and reasons to ____ human and experience.'},
 ];
 
