@@ -1,0 +1,307 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WE 格位速查 · 每一格填什麼</title>
+<style>
+  :root{
+    --ink:#1a1a1a; --muted:#6b6b6b; --line:#e3e0d8; --bg:#faf9f6;
+    --slot:#185fa5; --slotbg:#e6f1fb; --warn:#a32d2d; --warnbg:#fcebeb;
+    --ok:#3b6d11; --okbg:#eaf3de; --card:#ffffff; --gold:#b8860b; --goldbg:#fff8e1;
+  }
+  *{box-sizing:border-box}
+  body{margin:0}
+  .wrap{max-width:900px;margin:0 auto;padding:1.6rem 1.1rem 4rem;
+    font-family:-apple-system,"PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+    color:var(--ink);line-height:1.7;background:var(--bg)}
+  h1{font-size:1.55rem;font-weight:600;margin:0 0 .25rem}
+  .sub{color:var(--muted);margin:0 0 1.2rem;font-size:.92rem}
+  .nav{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+  .nav a{font-size:.9rem;text-decoration:none;color:var(--slot);background:var(--slotbg);
+    padding:.35rem .8rem;border-radius:999px;border:1px solid #cfe2f4}
+  h2{font-size:1.15rem;font-weight:600;margin:2.2rem 0 1rem;padding-bottom:.4rem;border-bottom:2px solid var(--line)}
+  .para{font-size:.8rem;font-weight:700;color:#fff;background:var(--muted);display:inline-block;
+    padding:.15rem .7rem;border-radius:999px;letter-spacing:.06em;margin:1.8rem 0 .7rem}
+  .g{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1.1rem;margin-bottom:.8rem}
+  .gh{display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap;margin-bottom:.5rem}
+  .num{font-size:1.15rem;font-weight:700;color:var(--slot)}
+  .zh{font-size:1.05rem;font-weight:600}
+  .key{font-family:ui-monospace,Menlo,monospace;font-size:.82rem;color:var(--muted);
+    background:#f0eee8;padding:.1em .45em;border-radius:4px}
+  .tpl{font-size:.97rem;line-height:1.9;margin:.3rem 0 .5rem;color:#333}
+  .slot{background:var(--slotbg);color:var(--slot);border-radius:5px;padding:.05em .5em;font-weight:600;white-space:nowrap}
+  .fill{font-size:.92rem;margin:0;color:#444}
+  .fill b{color:var(--ok)}
+  .trap{font-size:.88rem;margin:.45rem 0 0;padding:.4rem .7rem;background:var(--warnbg);
+    border-radius:7px;color:#7a2222}
+  .trap b{color:var(--warn)}
+  table{border-collapse:collapse;width:100%;font-size:.92rem;margin:.6rem 0}
+  th,td{border:1px solid var(--line);padding:.45rem .6rem;text-align:left;vertical-align:top}
+  th{background:#f2f0ea;font-weight:600}
+  .wrong{color:var(--warn);text-decoration:line-through;text-decoration-color:#d89}
+  .right{color:var(--ok);font-weight:600}
+  .note{background:var(--goldbg);border-left:4px solid var(--gold);padding:.7rem 1rem;
+    border-radius:0 8px 8px 0;margin:1rem 0;font-size:.93rem}
+  /* 對照區 */
+  .picker{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1.1rem;margin-bottom:1rem}
+  .picker p{margin:0 0 .5rem;font-size:.9rem;color:var(--muted)}
+  .qs{display:flex;flex-wrap:wrap;gap:.35rem}
+  .qs button{font-size:.85rem;padding:.25rem .6rem;border-radius:999px;cursor:pointer;
+    border:1px solid var(--line);background:#fff;color:#555;font-family:inherit}
+  .qs button.on{background:var(--slot);color:#fff;border-color:var(--slot);font-weight:600}
+  .cmp{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.85rem 1.05rem;margin-bottom:.7rem}
+  .cmp .gh{margin-bottom:.4rem}
+  .row{display:flex;gap:.6rem;padding:.3rem 0;border-top:1px dashed #eceae4;font-size:.95rem}
+  .row:first-of-type{border-top:0}
+  .qn{flex:0 0 3.4rem;font-weight:700;color:var(--muted);font-size:.85rem;padding-top:.15rem}
+  .en{flex:1;font-family:Georgia,"Times New Roman",serif}
+  .same{display:inline-block;font-size:.72rem;background:var(--okbg);color:var(--ok);
+    padding:.05em .45em;border-radius:4px;margin-left:.4rem;font-weight:700;font-family:inherit}
+  .loading{color:var(--muted);font-size:.9rem}
+  .err{background:var(--warnbg);color:#7a2222;padding:.7rem 1rem;border-radius:8px;font-size:.9rem}
+  @media (max-width:520px){
+    .row{flex-direction:column;gap:.1rem}
+    .qn{flex:none}
+  }
+</style>
+
+<div class="wrap">
+  <h1>WE 格位速查 · 每一格填什麼</h1>
+  <p class="sub">James 專用 · 16 格的中文名、英文代號、模板位置、填法與陷阱 · 下半自動從論點總表抓資料做多題對照</p>
+
+  <div class="nav">
+    <a href="WE_論點總表.html">📋 論點總表</a>
+    <a href="WE_背誦地圖.html">🧭 背誦地圖</a>
+    <a href="WE_封關卡.html">🔒 封關卡</a>
+    <a href="#cmp">⬇️ 跳到多題對照</a>
+  </div>
+
+  <div class="note">
+    <b>動詞形態一眼表</b>（今天最常錯的地方）<br>
+    ⑧就能 → <b>原形</b>｜⑭James 做了 → <b>動詞 +s</b>｜⑮所以他能 → <b>原形</b>｜⑱建議 → <b>原形</b>（不加 should、不加 s）
+  </div>
+
+  <h2>一、16 格速查</h2>
+
+  <div class="para">P1 · 開場</div>
+
+  <div class="g">
+    <div class="gh"><span class="num">①</span><span class="zh">主題</span><span class="key">topic</span></div>
+    <p class="tpl">It is generally true that <span class="slot">①</span> has become a matter of concern over the years, and this has caused great controversy and captured public attention.</p>
+    <p class="fill">填：<b>名詞片語</b>（不是句子），照抄題目關鍵字</p>
+    <p class="trap"><b>陷阱</b>：寫成完整句子。<span class="wrong">the mass media influence young</span> → <span class="right">the influence of mass media on the young</span></p>
+  </div>
+
+  <div class="g">
+    <div class="gh"><span class="num">②</span><span class="zh">反方說</span><span class="key">va</span></div>
+    <p class="tpl">Some people are of the opinion that <span class="slot">②</span>,</p>
+    <p class="fill">填：<b>完整子句</b>，反方立場（要具體，不能寫 this is very important）</p>
+  </div>
+
+  <div class="g">
+    <div class="gh"><span class="num">③</span><span class="zh">我方說</span><span class="key">vb</span></div>
+    <p class="tpl">while others hold the view that <span class="slot">③</span>. I tend to agree more with the latter and will discuss this further below.</p>
+    <p class="fill">填：<b>完整子句</b>，我方立場（我方永遠放 latter）</p>
+    <p class="trap"><b>表態句固定用</b>：單數主詞 + <b>does more harm than good</b>／<b>does more good than harm</b>。動詞永遠 does，不會變成 has／is／brings</p>
+  </div>
+
+  <div class="para">P2 · 讓步</div>
+
+  <div class="g">
+    <div class="gh"><span class="num">④</span><span class="zh">承認</span><span class="key">con</span></div>
+    <p class="tpl">It has to be admitted that <span class="slot">④</span>,</p>
+    <p class="fill">填：承認對方有道理的那件事（要具體，不要只說「有價值」）</p>
+  </div>
+
+  <div class="g">
+    <div class="gh"><span class="num">⑤</span><span class="zh">對方的理由</span><span class="key">conR</span></div>
+    <p class="tpl">and one argument in favor of this view can be that <span class="slot">⑤</span>.</p>
+    <p class="fill">填：那件事<b>具體好在哪</b>。<b>主詞是「那個東西」</b>（old stories／they／good programs）</p>
+    <p class="trap"><b>最容易跟⑧搞混</b>：⑤的主詞是<b>東西</b>（東西展示了什麼），⑧的主詞是<b>人</b>（人能得到什麼）</p>
+  </div>
+
+  <div class="g">
+    <div class="gh"><span class="num">⑥</span><span class="zh">如果</span><span class="key">cond</span></div>
+    <p class="tpl">If <span class="slot">⑥</span>,</p>
+    <p class="fill">填：條件句（誰做了什麼），主詞通常是複數人</p>
+  </div>
+
+  <div class="g">
+    <div class="gh"><span class="num">⑦</span><span class="zh">主詞</span><span class="key">subj</span></div>
+    <p class="tpl">then <span class="slot">⑦</span> can …</p>
+    <p class="fill">填：they／people（承接⑥的主詞）</p>
+  </div>
+
+  <div class="g">
+    <div class="gh"><span class="num">⑧</span><span class="zh">就能</span><span class="key">resA</span></div>
+    <p class="tpl">then they can <span class="slot">⑧</span>,</p>
+    <p class="fill">填：<b>原形動詞</b>開頭（can 後面接原形）</p>
+    <p class="trap">⑧視野讓步線固定句：<b>learn things they cannot find in books</b>（7 題共用）</p>
+  </div>
+
+  <div class="g">
+    <div class="gh"><span class="num">⑨</span><span class="zh">進而</span><span class="key">resB</span></div>
+    <p class="tpl">in turn leading to <span class="slot">⑨</span>.</p>
+    <p class="fill">填：<b>名詞片語</b></p>
+    <p class="trap"><b>leading to 的 to 是介系詞</b>，只收名詞／V-ing，不收原形動詞。<span class="wrong">leading to have a broader view</span> → <span class="right">leading to a broader view of life</span></p>
+  </div>
+
+  <div class="g">
+    <div class="gh"><span class="num">⑩</span><span class="zh">難怪</span><span class="key">concl</span></div>
+    <p class="tpl">As a result, it is unsurprising that <span class="slot">⑩</span>.</p>
+    <p class="fill">填：<b>完整子句</b>，讓步段小結（誰歡迎／誰稱讚／誰來參觀）</p>
+  </div>
+
+  <div class="para">P3 · 主論</div>
+
+  <div class="g">
+    <div class="gh"><span class="num">⑪</span><span class="zh">我的主張</span><span class="key">stance</span></div>
+    <p class="tpl">On the other hand, I firmly believe that <span class="slot">⑪</span>,</p>
+    <p class="fill">填：<b>完整子句</b>。比③更完整——<b>要帶對象</b>（… to the young）</p>
+  </div>
+
+  <div class="g">
+    <div class="gh"><span class="num">⑫</span><span class="zh">因為</span><span class="key">reason</span></div>
+    <p class="tpl">and one compelling reason is that <span class="slot">⑫</span>.</p>
+    <p class="fill">填：<b>完整子句</b>，支持主張的理由</p>
+  </div>
+
+  <div class="g">
+    <div class="gh"><span class="num">⑬</span><span class="zh">James 身分</span><span class="key">jv / jn</span></div>
+    <p class="tpl">A pertinent case in point is James, who <span class="slot">works</span> at a world-renowned and prestigious <span class="slot">firm</span>.</p>
+    <p class="fill">填：<b>works／firm</b>（上班版）或 <b>studies／university</b>（學生版）。題目講學生、讀書、考試 → 學生版</p>
+  </div>
+
+  <div class="g">
+    <div class="gh"><span class="num">⑭</span><span class="zh">James 做了</span><span class="key">does</span></div>
+    <p class="tpl">As James <span class="slot">⑭</span>,</p>
+    <p class="fill">填：<b>動詞 +s</b>（第三人稱單數）—— keeps／puts／lives／studies</p>
+    <p class="trap">整篇唯一要 +s 的動詞格。關係子句裡也要：a city that <b>spends</b> money…</p>
+  </div>
+
+  <div class="g">
+    <div class="gh"><span class="num">⑮</span><span class="zh">所以他能</span><span class="key">result</span></div>
+    <p class="tpl">he is able to <span class="slot">⑮</span>.</p>
+    <p class="fill">填：<b>原形動詞</b>開頭</p>
+    <p class="trap"><b>只能接正面能力</b>。立場是「壞處大」的題（#21／#35）要改成 <b>he is unable to</b>，否則例子會變成示範解方、自打臉</p>
+  </div>
+
+  <div class="g">
+    <div class="gh"><span class="num">⑯</span><span class="zh">換句話說</span><span class="key">impl</span></div>
+    <p class="tpl">In other words, <span class="slot">⑯</span>.</p>
+    <p class="fill">填：<b>完整子句</b>，收「家庭」（36/37 題都收家庭和諧）</p>
+  </div>
+
+  <div class="para">P4 · 結論</div>
+
+  <div class="g">
+    <div class="gh"><span class="num">⑰</span><span class="zh">結論立場</span><span class="key">final</span></div>
+    <p class="tpl">In conclusion, despite the fact that the counterargument may hold true in many cases, I believe that <span class="slot">⑰</span>,</p>
+    <p class="fill">填：<b>完整子句</b>（多半跟⑪同一句）</p>
+  </div>
+
+  <div class="g">
+    <div class="gh"><span class="num">⑱</span><span class="zh">建議</span><span class="key">rec</span></div>
+    <p class="tpl">and it is crucial that <span class="slot">⑱</span>.</p>
+    <p class="fill">填：<b>主詞 + 原形動詞</b>（虛擬語氣）</p>
+    <p class="trap">不加 should、不加 s：<span class="wrong">parents should set</span>／<span class="wrong">parents sets</span> → <span class="right">parents set</span><br>
+    （should 版在英式英文可接受、不算文法錯，但模板統一用原形：省一字、不必記兩套）</p>
+  </div>
+
+  <h2 id="cmp">二、多題對照（同一格，不同題怎麼填）</h2>
+
+  <div class="picker">
+    <p>點題號加入／移除對照（預設是 2026-09-15 練的三題）</p>
+    <div class="qs" id="qs"><span class="loading">讀取論點總表中…</span></div>
+  </div>
+
+  <div id="cmpout"></div>
+
+  <div class="note" style="margin-top:2rem">
+    <b>為什麼要對照著看</b>：固定句要<b>認位置</b>，不是只認句子。<code>how people lived in the past</code> 這句在 #27 放第⑧格、在 #28 放第⑤格——記錯格就會整段塞錯。
+  </div>
+</div>
+
+<script>
+const SLOTS = [
+  ['topic','① 主題'], ['va','② 反方說'], ['vb','③ 我方說'],
+  ['con','④ 承認'], ['conR','⑤ 對方的理由'], ['cond','⑥ 如果'], ['subj','⑦ 主詞'],
+  ['resA','⑧ 就能'], ['resB','⑨ 進而'], ['concl','⑩ 難怪'],
+  ['stance','⑪ 我的主張'], ['reason','⑫ 因為'], ['jv','⑬ James 身分'],
+  ['does','⑭ James 做了'], ['result','⑮ 所以他能'], ['impl','⑯ 換句話說'],
+  ['final','⑰ 結論立場'], ['rec','⑱ 建議']
+];
+const DEFAULT_Q = [27, 28, 22];
+const KEY = 'we_slot_cmp';
+let DATA = [], SEL = [];
+
+const strip = s => String(s || '').replace(/<[^>]+>/g, '');
+
+function loadSel(){
+  try { const v = JSON.parse(localStorage.getItem(KEY)); if (Array.isArray(v) && v.length) return v; } catch(e){}
+  return DEFAULT_Q.slice();
+}
+function saveSel(){ try { localStorage.setItem(KEY, JSON.stringify(SEL)); } catch(e){} }
+
+function renderPicker(){
+  const box = document.getElementById('qs');
+  box.innerHTML = '';
+  DATA.slice().sort((a,b) => a.o - b.o).forEach(d => {
+    const b = document.createElement('button');
+    b.textContent = '#' + d.o;
+    b.title = d.t;
+    if (SEL.includes(d.o)) b.className = 'on';
+    b.onclick = () => {
+      const i = SEL.indexOf(d.o);
+      if (i >= 0) SEL.splice(i, 1); else SEL.push(d.o);
+      SEL.sort((x, y) => DEFAULT_Q.indexOf(x) - DEFAULT_Q.indexOf(y) || x - y);
+      saveSel(); renderPicker(); renderCmp();
+    };
+    box.appendChild(b);
+  });
+}
+
+function renderCmp(){
+  const out = document.getElementById('cmpout');
+  out.innerHTML = '';
+  const qs = SEL.map(o => DATA.find(d => d.o === o)).filter(Boolean);
+  if (!qs.length){ out.innerHTML = '<p class="loading">選至少一題。</p>'; return; }
+
+  const head = document.createElement('p');
+  head.className = 'sub';
+  head.innerHTML = qs.map(d => '<b>#' + d.o + '</b> ' + d.t).join('　·　');
+  out.appendChild(head);
+
+  SLOTS.forEach(([k, zh]) => {
+    const vals = qs.map(d => k === 'jv'
+      ? strip(d.es.jv) + ' / ' + strip(d.es.jn)
+      : strip(d.es[k]));
+    const allSame = vals.length > 1 && vals.every(v => v === vals[0]);
+    const card = document.createElement('div');
+    card.className = 'cmp';
+    let h = '<div class="gh"><span class="zh">' + zh + '</span><span class="key">' + k + '</span>'
+          + (allSame ? '<span class="same">三題同句</span>' : '') + '</div>';
+    qs.forEach((d, i) => {
+      const dup = !allSame && vals.indexOf(vals[i]) !== i;
+      h += '<div class="row"><div class="qn">#' + d.o + '</div><div class="en">' + vals[i]
+        + (dup ? '<span class="same">共用</span>' : '') + '</div></div>';
+    });
+    card.innerHTML = h;
+    out.appendChild(card);
+  });
+}
+
+fetch('WE_論點總表.html')
+  .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
+  .then(t => {
+    const m = t.match(/const DATA = (\[[\s\S]*?\n\];)/) || t.match(/const DATA=(\[[\s\S]*?\n\];)/);
+    if (!m) throw new Error('找不到 DATA');
+    DATA = new Function('return ' + m[1].replace(/;$/, ''))();
+    SEL = loadSel().filter(o => DATA.some(d => d.o === o));
+    if (!SEL.length) SEL = DEFAULT_Q.slice();
+    renderPicker(); renderCmp();
+  })
+  .catch(e => {
+    document.getElementById('qs').innerHTML =
+      '<div class="err">讀不到論點總表（' + e.message + '）。本機直接開檔（file://）會被瀏覽器擋，'
+      + '請用網站網址開，或在資料夾跑 <code>python3 -m http.server</code> 後從 localhost 開。</div>';
+  });
+</script>
