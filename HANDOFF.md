@@ -100,6 +100,7 @@
 | ④-6 遲交扣分（原#9；0911 首戰 15 錯，走「公平」論點沒帶家庭；2026-09-12 補記進訂正頁＋mistakes） | ✔ | ✔ P2 車禍版（modal may） |
 | ④-15 古戲劇（原#27；2026-09-15 首次逐 slot 練，16 格全打完、14 條 mistakes） | ✔ | ✔ conR human behavior＋impl focusing on main subjects |
 | ④-16 舊建築（原#28；2026-09-15 首次逐 slot 練，16 格全打完、4 拼字＋14 文法） | ✔ | — |
+| ④-13 大眾媒體年輕人（原#22；2026-09-15 首次逐 slot 練，16 格全打完、5 拼字＋10 文法） | ✔ | — |
 | ②-8 氣候誰負責（原#25；2026-09-08 與 #16 共用一套環境字：greenhouse gas／cars and factories／hotter summers and more floods／make laws／protect every family） | — | ✔ 共用字版 |
 
 > 2026-09-08 老師看過 WE_訂正定稿 第 6–11 篇（Word 檔 WE_給老師_20260908.docx），改了 5 處已全部同步：②-2 小結補 would；②-3 小結改 put money first and ignore their family；②-4 resB 改 better future prospects；#16/#25 If-then 改 would、James 例子改具體公司事件（firm washed away／factory cut greenhouse gas after a new law）。
