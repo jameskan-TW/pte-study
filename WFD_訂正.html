@@ -1306,6 +1306,26 @@ const DATA = [
       { wrong:"analiyze／analyz（兩輪兩種錯法）", right:"analyze", cat:"spell", vocab:"analyze",
         why:`拼字：<span class="en">a·na·lyze</span>＝<b>ana ＋ lyze</b>，中間是 <b>y 不是 i</b>（你打 analiyze 多塞 i），字尾 <b>-ze 別漏 e</b>（你打 analyz）。⚠️ 第一輪還<b>語序整個對調</b>（experience 提前、human behaviors 丟句尾）又<b>腦補 behaviors</b>——原句尾巴是 <span class="en">human and experience</span>，<b>多打的字一樣扣分</b>。` },
     ]},
+  { title:"Polar regions field experiments 極地適合實地實驗（2 輪：8/13→11/13）", pid:"", type:"WFD", date:"09-16",
+    text:`Polar [[1]] are ideal for [[2]] and [[3]] to carry out [[4]] experiments.`,
+    blanks:[
+      { wrong:"regined islands（拼錯＋多打 islands）", right:"regions", cat:"word", vocab:"regions",
+        why:`原句只有 <span class="en">Polar <b>regions</b></span>——<b>後面沒有 islands</b>。你會多打是因為<b>上次（0902）把這句記成 Polar regions' islands</b>，那個版本是錯的（今天平台答案 13 字已確認），<b>本頁舊卡已一併修正</b>。拼字：<span class="en">re·gion ＋ s</span>，你打 regined 是把 <b>gio 順序打亂</b>（正確順序 g-i-o-n-s）。⚠️ <b>WFD 多打的字一樣扣分</b>——0915 已犯過兩次（specefic、behaviors），這是第三次。` },
+      { wrong:"astrophisics ／ astrophisicists（兩輪都 phis）", right:"astrophysicists", cat:"spell", vocab:"astrophysicists",
+        why:`拆三段 <span class="en"><b>astro ＋ physic ＋ ists</b></span>：<span class="en">physics</span> 你會拼，關鍵是 <b>ph 後面接 y 不是 i</b>。0902 兩輪、0916 兩輪<b>四次全錯在同一個點</b>（phis）——<b>錯法已定型</b>，動手前先默念 physics，再往後接 <b>-icists</b>（ic＋ist＋s＝人＋複數，c 別漏）。` },
+      { wrong:"meteolagiest（0902 打 meteologiest）", right:"meteorologists", cat:"spell", vocab:"meteorologists",
+        why:`<span class="en">me·te·or·ol·o·gists</span>＝<b>meteor（流星）＋ ologists</b>。你兩次都<b>漏掉 meteor 的 r</b>（漏 r 是老毛病：large／further），後面 <b>ol·o</b> 也塌掉、字尾打成 -giest。口訣：先把 <b>m-e-t-e-o-r</b> 寫完，再接 <b>ologists</b>（同 biologists／geologists）。` },
+      { wrong:"（第一輪整個漏掉）／fild", right:"field", cat:"spell", vocab:"field",
+        why:`<span class="en">field</span>＝<b>f-i-e-l-d</b>，<b>i 在 e 前面</b>（同 friend／piece）；你打 fild 是<b>漏掉 e</b>。第一輪更嚴重——這個字整個沒打，只剩 experiment。<span class="en"><b>field experiments</b></span>（實地實驗）是<b>兩個字一組</b>：聽到 <span class="en">carry out</span> 就要預期後面是 field experiments，別只打 experiments。` },
+    ]},
+  { title:"Neuroscience is a compound 神經科學由完全分開的部件組成（3 輪才過 6/8→7/8→8/8）", pid:"", type:"WFD", date:"09-16",
+    text:`[[1]] [[2]] a compound of completely separate parts.`,
+    blanks:[
+      { wrong:"nurosciences ／ nuroscience（兩輪都漏 e）", right:"Neuroscience", cat:"spell", vocab:"neuroscience",
+        why:`拆兩段 <span class="en"><b>neuro ＋ science</b></span>：neuro＝神經，<b>n-e-u-r-o</b>，<b>eu 兩個母音都要</b>。你兩輪都打 nuro——<b>eu 被吞成 u</b>（同家族 neuron／neural，跟 Europe 的 eu 同一個組合）。第一輪還多加複數 s：<b>學科名當主詞是單數</b>（同 physics／mathematics 不會變 sciences）。` },
+      { wrong:"are（第一輪）", right:"is", cat:"s3",
+        why:`主詞 <span class="en">Neuroscience</span> 是<b>單數學科名</b> → 動詞 <span class="en">is</span>。你打 <span class="en">nurosciences are</span> 是<b>錯字連鎖</b>：名詞先多加 s，動詞就跟著配成 are，<b>一個錯扣兩分</b>。口訣：打完主詞先問「這是一個東西嗎？」是就配 is。<br>⚠️ 這句跟 0817 的 <span class="en">A mixture is defined as the compound of chemically separate parts</span> 是<b>同骨架姊妹句</b>，差別：這句是 <b>a</b> compound（不是 the）＋ <b>completely</b>（不是 chemically），而且沒有 defined as。聽到 compound of … separate parts 先分清楚是哪一句。` },
+    ]},
 ];
 
 // 要背單字（James 標註）— 音節拆解幫記憶
@@ -1353,6 +1373,9 @@ const VOCAB_TIP = {
   philosophy:"phi·los·o·phy（phil+oso+phy）", analyze:"an·a·lyze（ana+lyze，y 不是 i）",
   animals:"an·i·mals（-als 結尾）", raised:"raised（raise+d，被動分詞）",
   depending:"de·pend·ing（depending on＝視…而定）",
+  regions:"re·gions（region＋s）", astrophysicists:"as·tro·phys·i·cists（astro＋physic＋ists）",
+  meteorologists:"me·te·or·ol·o·gists（meteor＋ologists）", field:"field（f-i-e-l-d，i 在 e 前）",
+  neuroscience:"neu·ro·sci·ence（neuro＋science，eu 別吞）",
 };
 const VOCAB_EXTRA = ["elective","engineering"]; // 有標要背但不是錯字的
 
@@ -1621,9 +1644,9 @@ const VQ=[
   {w:'eighth',zh:'第八（序數）',tag:'SST·0821',trap:'eight + h → eighth；世紀、名次都要序數 -th（0821 只寫 eight）',src:'Rome grew over time since the ____ century BC.'},
   {w:'appliances',zh:'家電（複數）',tag:'SST·0821·生字',trap:'ap·pli·ance + s — 同字根 applied（應用數學那個）：appli + ance =「應用電力的器具」；雙 p 跟著 apply 走（0821 漏答，補記憶鉤後過）',src:'Thanks to a rural electricity program, farmers could buy ____.'},
   {w:'efficient',zh:'有效率的（形容詞）',tag:'SST·0821·詞性',trap:'ef·fi·cient — are more ____ 要形容詞 -ient，不是名詞 efficiency（0821 詞性錯）；雙 f + ci',src:'Automated cars save fuel and are more ____.'},
-  {w:'islands',zh:'島嶼（複數）',tag:'WFD·0902',trap:'is·land + s — 開頭 is 的 s 不發音但要寫；regions\' 所有格的撇號在 s 後面（複數所有格）',src:'Polar regions\' ____ are ideal for astrophysicists and meteorologists to carry out field experiments.'},
-  {w:'astrophysicists',zh:'天體物理學家（複數）',tag:'WFD·0902·2連錯',trap:'astro + physicist + s；phys 用 ph 跟 y（同 physics）；字尾 -cists（ic + ist + s，c 別漏）；0902 兩連錯：astrophisis（phys 的 y 打成 i、後半整段沒了）→ astrophysicis（漏 -ists 的 t 和 s）——physics 你會拼，後面接 -icists 三段一起寫',src:'Polar regions\' islands are ideal for ____ and meteorologists to carry out field experiments.'},
-  {w:'meteorologists',zh:'氣象學家（複數）',tag:'WFD·0902·漏r',trap:'me·te·or·ol·o·gists — meteor（流星）+ ologist + s；or 後面還有 ol·o 兩個 o，別漏成 meterologists；0902 拼 meteologiest（meteor 的 r 漏了、or 後面的 ol·o 也沒了、字尾 -gists 打成 -giest）——先寫 meteor 再接 ologists',src:'Polar regions\' islands are ideal for astrophysicists and ____ to carry out field experiments.'},
+  {w:'regions',zh:'區域、地區（複數）',tag:'WFD·0916·多打字',trap:'re·gion + s — 0916 拼 regined（gio 順序打亂，正確 g-i-o-n-s）。⚠️ 原句是 <b>Polar regions are ideal…</b>，<b>後面沒有 islands</b>——0902 這張卡原本把句子記成 Polar regions 的 islands 是錯的，害你 0916 又多打一次 islands；WFD 多打的字一樣扣分',src:'Polar ____ are ideal for astrophysicists and meteorologists to carry out field experiments.'},
+  {w:'astrophysicists',zh:'天體物理學家（複數）',tag:'🔴反覆卡·4次',trap:'astro + physic + ists — <b>ph 後面是 y 不是 i</b>（同 physics）；字尾 -icists（ic + ist + s，c 別漏）；0902 兩連錯 astrophisis → astrophysicis（漏 t、s）；0916 又兩連錯 astrophisics → astrophisicists——<b>四次都錯在 phis</b>，錯法已定型：先默念 physics 再接 -icists，考前必掃',src:'Polar regions are ideal for ____ and meteorologists to carry out field experiments.'},
+  {w:'meteorologists',zh:'氣象學家（複數）',tag:'🔴反覆卡·漏r 2次',trap:'me·te·or·ol·o·gists = meteor（流星）+ ologists；0902 拼 meteologiest、0916 拼 meteolagiest——<b>兩次都漏掉 meteor 的 r</b>（漏 r 老毛病，同 large／further），or 後面的 ol·o 也塌掉、字尾打成 -giest。先寫完 m-e-t-e-o-r 再接 ologists（同 biologists／geologists）',src:'Polar regions are ideal for astrophysicists and ____ to carry out field experiments.'},
   {w:'experiments',zh:'實驗（複數）',tag:'WFD·0902·顛倒',trap:'ex·per·i·ments — per 後有 i（不是 experments）；+ s；0902 拼 expeirment（per-i 顛倒成 pe-ir、漏複數 s）',src:'...ideal for astrophysicists and meteorologists to carry out field ____.'},
   {w:'expressed',zh:'表達（被動）',tag:'WFD·0902',trap:'express + ed — 雙 s 保留（不是 expresed）；should be ____ 被動要 -ed',src:'Statistical results should be ____ in different ways depending on the circumstances.'},
   {w:'antibiotics',zh:'抗生素（複數）',tag:'WFD·0902',trap:'anti + bio + tic + s — bio 之後是 t·i·c·s；複數 s 別漏',src:'Food that contains ____ provides little or no nutritional value.'},
@@ -1641,6 +1664,8 @@ const VQ=[
   {w:'animals',zh:'動物（複數）',tag:'WFD·0915·顛倒',trap:'an·i·mals — 字尾是 -als 不是 -las（0915 拼 animlas，a 和 l 對調）；拆 ani + mal + s',src:'____ raised in captivity behave differently than their wild counterparts.'},
   {w:'raised',zh:'被養育、被圈養（過去分詞）',tag:'WFD·0915·文法',trap:'raise + d — 名詞後面的分詞要問「主動還是被動」：動物是被人養 → raised（-ed 被動）；主動才用 -ing。句子真正的動詞是 behave，這裡不能再放一個原形 raise；raise（養育，及物）≠ rise（上升，不及物）',src:'Animals ____ in captivity behave differently than their wild counterparts.'},
   {w:'analyze',zh:'分析',tag:'WFD·0915',trap:'a·na·lyze = ana + lyze — 中間是 y 不是 i（0915 拼 analiyze，多塞一個 i）；字尾 -ze 別漏 e（0915 拼 analyz）；英式 analyse 也算對，但別混成 analize',src:'Philosophy uses the logic and reasons to ____ human and experience.'},
+  {w:'field',zh:'實地的、野外的（field experiments 實地實驗）',tag:'WFD·0916',trap:'f-i-e-l-d — <b>i 在 e 前面</b>（同 friend／piece）；0916 拼 fild 漏掉 e，第一輪更直接整個字沒打。<b>field experiments 兩個字一組</b>：聽到 carry out 就預期後面是 field experiments，別只打 experiments',src:'Polar regions are ideal for astrophysicists and meteorologists to carry out ____ experiments.'},
+  {w:'neuroscience',zh:'神經科學',tag:'WFD·0916',trap:'neuro（神經，n-e-u-r-o）+ science；0916 兩輪都拼 nuro——<b>eu 被吞成 u</b>（同 neuron／neural、Europe 的 eu）；學科名當主詞<b>不加複數 s</b>：第一輪打 nurosciences are，名詞多一個 s 就把動詞也帶錯成 are，一個錯扣兩分',src:'____ is a compound of completely separate parts.'},
 ];
 
 const vqList=document.getElementById('vqList');
