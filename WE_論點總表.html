@@ -968,14 +968,44 @@ const DATA = [
  stance:'同意 — 家長應負法律責任', p2c:2, p2zh:'讓步：對家長壓力過大、不盡公平', p3c:4, p3zh:'主論：用心管教 → 好成績 → 好工作 → 家庭和諧',
  es:{topic:'parents’ legal responsibility for their children',
  va:'such responsibility is unfair to parents', vb:'parents should be held legally responsible',
- con:'this puts heavy pressure on parents', conR:'children do not always do what parents say',
+ con:'this puts heavy pressure on parents', conR:'children may not listen to their parents',
  cond:'parents are punished for every mistake', subj:'they', resA:'<i class="a2">feel upset and anxious</i>', resB:'<i class="a2">a bad temper that hurts families</i>',
  concl:'some people think this rule is too strict',
  stance:'parents should take legal responsibility', reason:'legal duty pushes parents to guide their children with care',
  jv:'works', jn:'firm', does:'was carefully guided by his parents',
  result:'get high grades and find <i class="a4">a good job with a steady income</i>',
  impl:'careful parenting keeps the whole family in harmony',
- final:'this rule does more good than harm', rec:'the law also provides parenting support'}},
+ final:'this rule does more good than harm', rec:'the law also provides parenting support'},
+ mistakes:{
+  spell:[
+   {x:'parensts', o:'parents', nt:'多打一個 s'},
+   {x:'loose', o:'lose', nt:'loose 是「鬆的」；「失去」只有一個 o'},
+   {x:'huts', o:'hurts', nt:'漏 r：h-u-r-t-s'},
+   {x:'strick', o:'strict', nt:'結尾是 ct'},
+   {x:'hole', o:'whole', nt:'hole 是「洞」；「整個」w-h-o-l-e'},
+   {x:'carful', o:'careful', nt:'care＋ful，e 要留'},
+   {x:'suppot', o:'support', nt:'漏 r：s-u-p-p-o-r-t'}
+  ],
+  grammar:[
+   {x:'take the legal responsibility', o:'take legal responsibility', nt:'固定片語，responsibility 泛指不加 the（③⑩兩格都加了）'},
+   {x:'this give too much pressure to parents', o:'this puts heavy pressure on parents', nt:'this 單數 +s；「給壓力」固定 put pressure on，不用 give…to'},
+   {x:'parents be punished by each mistakes', o:'parents are punished for every mistake', nt:'被動要有 are；因某錯被罰用 for；every 後面一定單數'},
+   {x:'every mistakes', o:'every mistake', nt:'every／each＝一個一個看，後面單數（連錯兩次）'},
+   {x:'feel depress and anxiety', o:'feel upset and anxious', nt:'feel 後接形容詞；②線固定片語 upset and anxious'},
+   {x:'lose their temper and hurt the family', o:'a bad temper that hurts families', nt:'⑧格要名詞，不是動詞句'},
+   {x:'legal responsibility push parents to teach', o:'legal duty pushes parents to guide their children with care', nt:'單數主詞 +s；「管教」是 guide with care，teach 是教書'},
+   {x:'pushes parents guide', o:'pushes parents to guide', nt:'push 人 to do，跟 make 不同要加 to'},
+   {x:'guide their children by care', o:'…with care', nt:'「用心」固定 with care'},
+   {x:'guided by his parents', o:'was guided by his parents', nt:'被動漏 be 動詞，過去式 was'},
+   {x:'get grades', o:'get high grades', nt:'漏 high'},
+   {x:'with steady income', o:'with a steady income', nt:'④線固定片語六字一組：a good job with a steady income'},
+   {x:'guiding with good care make hole family peace and harmony', o:'careful parenting keeps the whole family in harmony', nt:'主詞單數 +s；漏 the whole；固定 in harmony'},
+   {x:'keeps family in harmony', o:'keeps the whole family in harmony', nt:'36 題共用收尾，the whole family 五字一組'},
+   {x:'this rule does more harm than good', o:'this rule does more good than harm', nt:'⚠ 立場打反！同意方是 good than harm，整篇會自打嘴巴'},
+   {x:'governments give parents support', o:'the law also provides parenting support', nt:'漏 also（罰之外也要幫）和 parenting support 關鍵字'}
+  ],
+  note:'2026-09-18 首次逐 slot 練（情緒讓步線負面版第一題），18 格全打完：7 拼字＋16 文法。最危險：⑰ 立場打反。拼字集中漏 r（huts／suppot）；文法：take legal responsibility 亂加 the 兩次、every 後單數兩次。conR 改成 James 直覺版 may not listen to their parents。'
+ }},
 
 {n:'④-6', o:9, t:'遲交作業扣分（Report）', en:'Some students are deducted marks for late submission. What’s your view? What recommendations would you take?',
  stance:'扣分合理；建議：正當理由可延期', p2c:2, p2zh:'讓步：車禍交不出 → 被當（James 0911 版）', p3c:4, p3zh:'主論：deadline → 自律 → 好成績 → 好工作',
@@ -1406,7 +1436,7 @@ const ZH = {
  p4:'建築設計好處大於壞處 (building design does more good than harm)；建議：設計師注重舒適 (comfort) 與空間的使用方式 (how people use the space)'},
 '④-5':{
  p1:'反方：這責任對家長不公平 (unfair)；我方：家長應負法律責任 (legally responsible)',
- p2:'這給家長沉重壓力 (heavy pressure)——孩子不會事事聽話 (do not always do what parents say)。若家長為每個錯被罰 (punished for every mistake) → 沮喪焦慮 → 壞脾氣傷家庭。小結：有人覺得規定太嚴 (too strict)',
+ p2:'這給家長沉重壓力 (heavy pressure)——孩子可能不聽家長的話 (may not listen to their parents)。若家長為每個錯被罰 (punished for every mistake) → 沮喪焦慮 → 壞脾氣傷家庭。小結：有人覺得規定太嚴 (too strict)',
  p3:'家長應負法律責任——法律責任 (legal duty) 促使家長用心管教 (guide with care)。例：James 從小被父母細心引導 (carefully guided) → 好成績 (get high grades)、好工作穩定收入 (a good job and a steady income)。含義：用心的教養 (careful parenting) 讓全家和諧 (in harmony)',
  p4:'這規定利大於弊 (this rule does more good than harm)；建議：法律同時提供育兒支援 (parenting support)'},
 '④-6':{
