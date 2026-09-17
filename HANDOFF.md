@@ -104,6 +104,7 @@
 | ④-1 生活經驗vs正規教育（原#1；2026-09-15 首次逐 slot 練，16 格全打完、3 拼字＋14 文法） | ✔ | — |
 | ④-2 學習vs工作（原#2；2026-09-15 首次逐 slot 練，16 格全打完、1 拼字＋13 文法） | ✔ | — |
 | ④-8 實踐式學習（原#13；2026-09-17 首次逐 slot 練，16 格全打完、4 拼字＋13 文法） | ✔ | — |
+| ②-7 資訊革命（原#21；2026-09-17 首次逐 slot 練，讓步線最後一題，18 格全打完、4 拼字＋17 文法；主罩門複數 s／不可數 much） | ✔ | — |
 | ②-8 氣候誰負責（原#25；2026-09-08 與 #16 共用一套環境字：greenhouse gas／cars and factories／hotter summers and more floods／make laws／protect every family） | — | ✔ 共用字版 |
 
 > 2026-09-08 老師看過 WE_訂正定稿 第 6–11 篇（Word 檔 WE_給老師_20260908.docx），改了 5 處已全部同步：②-2 小結補 would；②-3 小結改 put money first and ignore their family；②-4 resB 改 better future prospects；#16/#25 If-then 改 would、James 例子改具體公司事件（firm washed away／factory cut greenhouse gas after a new law）。
