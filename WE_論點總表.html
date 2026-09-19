@@ -1127,7 +1127,27 @@ const DATA = [
  jv:'studies', jn:'university', does:'prepares step by step for written exams',
  result:'get high grades and find <i class="a4">a good job with a steady income</i>',
  impl:'fair exams lead to better future prospects and <i class="a4">a warm and stable home</i>',
- final:'written exams are a good way to test students', rec:'schools keep written exams as the main way to test students'}},
+ final:'written exams are a good way to test students', rec:'schools keep written exams as the main way to test students'},
+ mistakes:{
+  spell:[],
+  grammar:[
+   {x:'Whether written examination can be…', o:'whether written exams can be…', nt:'句中不大寫；exam 可數不能裸奔（複數／the＋單數／a＋單數 三選一）'},
+   {x:'student’s true ability', o:'students’ true ability', nt:'複數所有格撇號在 s 後面'},
+   {x:'written exams are fail to show', o:'written exams fail to show', nt:'fail 是動詞，前面不能再放 are'},
+   {x:'written exams still fair', o:'written exams are still fair', nt:'fair 是形容詞，前面一定要 are（跟上一條剛好相反）'},
+   {x:'everything depend on', o:'everything depends on', nt:'every- 家族（everything／everyone）一律單數 +s；沒有 everythings 這個字'},
+   {x:'students lead to upset and anxiety', o:'students can feel upset and anxious', nt:'lead to 是下一段模板的字串過來；feel 後接形容詞 anxious（#5 同錯）'},
+   {x:'performing less than their actual ability', o:'performance below their true level', nt:'「低於」用 below；performance 是名詞（-ance）'},
+   {x:'people always discuss the exam need to change', o:'people often talk about changing exams', nt:'常常＝often；兩個動詞撞在一起，talk about＋-ing'},
+   {x:'changing exam', o:'changing exams／changing the exam', nt:'exam 裸奔'},
+   {x:'prepare written exams', o:'prepares for written exams', nt:'James 後面 +s（看格子前一個字：人名 +s、to／can 原形）；準備考試要 for，沒 for 是「出考題」'},
+   {x:'a stable income', o:'a steady income', nt:'文法沒錯但串格：steady 配 income、stable 配 home（#13 也串過）'},
+   {x:'fair exam leads to', o:'fair exams lead to', nt:'exam 裸奔；改複數後動詞去 s'},
+   {x:'written exam is the best way', o:'written exams are a good way', nt:'exam 裸奔（本篇第四次）；立場是「仍公平」，the best 太滿'},
+   {x:'keep the written exams as the main test method', o:'keep written exams as the main way to test students', nt:'泛指複數不加 the；way to test students 跟⑰同一組字'}
+  ],
+  note:'2026-09-19 首次逐 slot 練（情緒讓步線負面版第二題），18 格全打完：0 拼字＋14 文法（首次拼字全對）。主罩門：exam 裸奔四次（可數名詞泛指一律打複數 exams）、be 動詞有無（are fail ✗／still fair 漏 are）。同日 ⑱ 建議句改成 keep written exams as the main way（句型同 #13）。'
+ }},
 
 {n:'④-12', o:20, t:'欠發達國家旅遊業', en:'The disadvantages of tourism in less developed countries are as great as the advantages. What is your opinion?',
  stance:'不同意 — 利大於弊', p2c:3, p2zh:'讓步：過度商業化 → 文化失真', p3c:4, p3zh:'主論：旅遊業 → 就業 → 收入養家',
