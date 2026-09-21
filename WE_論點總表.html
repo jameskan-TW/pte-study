@@ -742,15 +742,38 @@ const DATA = [
 {n:'②-9', o:29, t:'年齡限制（Report）', en:'Age restrictions can be seen everywhere. It is believed that people should not do things until they reach the right age, such as marriage, and driving. Select one activity and state the minimum age that you think. Support with your own experiences.',
  stance:'選「結婚」；最低年齡 25 歲（2026-09-11 從開車改結婚，全套字共用 #14）', p2c:2, p2zh:'讓步：早婚有情感支持 → 不孤單 → 安心（同 #14 P2）', p3c:4, p3zh:'主論：25 歲多半唸完書有工作 → 穩定收入 → 溫暖的家（同 #14 P3）',
  es:{topic:'the minimum age for marriage',
- va:'love matters more than age', vb:'marriage should wait until twenty-five',
+ va:'love matters more than age', vb:'marriage should wait until 25',
  con:'marrying young can give a couple support', conR:'couples encourage each other through hard times',
  cond:'a couple gets married young', subj:'they', resA:'<i class="a2">feel less lonely</i>', resB:'<i class="a2">peace of mind</i> in hard times',
  concl:'some early marriages do work well',
- stance:'twenty-five is the right age for marriage', reason:'at that age most people have finished school and have <i class="a4">a steady income</i>',
- jv:'works', jn:'firm', does:'married at twenty-six after finishing his studies and finding a job',
+ stance:'25 is the right age for marriage', reason:'at that age most people have finished school and have <i class="a4">a steady income</i>',
+ jv:'works', jn:'firm', does:'married at 26 after finishing school and finding a job',
  result:'build <i class="a4">a warm and stable home</i> without money worries',
- impl:'waiting a few years protects a young couple from money problems',
- final:'twenty-five is a fair minimum age for marriage', rec:'young people finish their studies and find a job before getting married'}},
+ impl:'waiting a few years can protect young couples from money problems',
+ final:'25 is a fair minimum age for marriage', rec:'young people finish school and find a job before getting married'},
+ mistakes:{
+  spell:[
+   {x:'longly', o:'lonely', nt:'lone＋ly，是 o-n-e 沒有 g'},
+   {x:'mariage', o:'marriage', nt:'兩個 r：marr＋i＋age（marry 的 y 變 i）'}
+  ],
+  grammar:[
+   {x:'the minimum marriage', o:'the minimum age for marriage', nt:'漏了 age；the minimum age of marriage 也對'},
+   {x:'couple can encourage each other', o:'couples encourage each other', nt:'couple 可數，單數不能裸奔 → 複數免冠詞'},
+   {x:'through hard time', o:'through hard times', nt:'time 當「一段時期」可數 → hard times 或 a hard time'},
+   {x:'a young couple get marry early', o:'a couple gets married young', nt:'get＋married（形容詞），不是 get marry；a couple 單數 → gets；young 和 early 重複'},
+   {x:'peace of mind with problems', o:'peace of mind in hard times', nt:'with problems 變成「帶著問題的安心」；用 ⑤ 同一組 hard times'},
+   {x:'many people finish study … during that age', o:'at that age most people have finished school', nt:'年紀是一個點 → at that age；study 可數不能裸奔 → school；多數＝most'},
+   {x:'most people finished their studies and have', o:'most people have finished … and have', nt:'「已經唸完」→ have finished；過去式跟後面現在式 have 對不上'},
+   {x:'finished school at 26 / get marriage after he finds a good job', o:'married at 26 after finishing school and finding a job', nt:'語序：先講 married at 26，after 後面才放兩個 -ing；26 歲是結婚不是畢業；連錯兩輪'},
+   {x:'get marriage', o:'got married／married', nt:'marriage 是名詞；get 後面永遠接 married；過去的事用過去式'},
+   {x:'finding job', o:'finding a job', nt:'job 可數單數要 a'},
+   {x:'wait for a few years can protect', o:'waiting a few years can protect', nt:'動詞原形不能當主詞 → -ing'},
+   {x:'protect young couples away from', o:'protect young couples from', nt:'protect A from B 不加 away（keep A away from B 才有）'},
+   {x:'25 years is the fair minimum married age', o:'25 is a fair minimum age for marriage', nt:'25 years＝25 年；a fair 不是 the；married age 不通 → 直接搬 ① 的 minimum age for marriage；重打又漏 minimum'},
+   {x:'before getting marriage', o:'before getting married', nt:'今天第三次：get marry／get marriage／getting marriage。get 在變（get/gets/got/getting），married 永遠不動；marriage 只跟在 for 後面'}
+  ],
+  note:'2026-09-22 首次逐 slot 練，情緒讓步線正面版第一題，18 格全打完、2 拼字＋14 文法。主罩門：get＋married（錯三次）、可數單數裸奔（couple／hard time／job）、⑭ 語序（married at 26 先講、after 後兩個 -ing）。做對的：⑩⑮ 一字不差、works、a steady income 的 a、crucial that 後 finish／find 原形、⑯ 自己用 can＋複數避開 +s 和冠詞。換 James 版：⑯ can protect young couples；「唸完書」⑫⑭⑱ 三格統一 school（#14 ⑭⑱ 同句同步）；數字改寫 25／26。他的 ② love is more important than age、④ early marriage can bring support to a young couple、⑪ the best age 也對，範文不動。'
+ }},
 
 {n:'②-10', o:30, t:'城市生活與鄉村生活', en:'Living in the countryside or having a city life, which one do you prefer? Please use examples or your personal experience to support your opinion.',
  stance:'偏好鄉村生活', p2c:4, p2zh:'讓步：城市工作機會多', p3c:2, p3zh:'主論：步調慢壓力小 → 安心陪家人 → 全家和樂',
@@ -1144,10 +1167,10 @@ const DATA = [
  cond:'a couple gets married young', subj:'they', resA:'feel less lonely', resB:'<i class="a2">peace of mind</i> in hard times',
  concl:'some early marriages do work well',
  stance:'studies and a job should come first', reason:'<i class="a4">a steady income</i> keeps a marriage strong',
- jv:'works', jn:'firm', does:'married at twenty-six after finishing his studies and finding a job',
+ jv:'works', jn:'firm', does:'married at 26 after finishing school and finding a job',
  result:'build <i class="a4">a warm and stable home</i> without <i class="a4">money worries</i>',
  impl:'a stable career supports a happy marriage',
- final:'marrying too early is unwise', rec:'young people finish their studies and find a job before getting married'}},
+ final:'marrying too early is unwise', rec:'young people finish school and find a job before getting married'}},
 
 {n:'④-10', o:18, t:'員工參與服務決策的好處和壞處', en:'Some employers involve employees in the decision-making process of products and services. What are the advantages and disadvantages?',
  stance:'好處大於壞處', p2c:1, p2zh:'壞處：決策變慢 → 效率降低', p3c:4, p3zh:'好處：被重視 → 動力 → 生產力與升遷',
@@ -1441,9 +1464,9 @@ const ZH = {
  p3:'政府應主導——只有政府有權立法 (make laws)、提供資金 (provide money)。例：James 去年親眼看到新法一出、他的工廠馬上減排 (saw his factory cut greenhouse gas right after a new law) → 親眼看到法律嚴、公司就改得快 (how fast a company changes when the law is strict)。含義：只有嚴格的法律 (strict laws) 能讓公司改變、保護每個家庭 (protect every family)（老師 0908：結局要跟公司有關）',
  p4:'政府必須擔主角；建議：政府訂嚴格法律 (strict laws)，個人與企業遵守 (follow them)'},
 '②-9':{
- p1:'主題：結婚最低年齡 (the minimum age for marriage)。反方：愛比年齡重要 (love matters more than age)；我方：結婚應等到 25 歲 (wait until twenty-five)',
+ p1:'主題：結婚最低年齡 (the minimum age for marriage)。反方：愛比年齡重要 (love matters more than age)；我方：結婚應等到 25 歲 (wait until 25)',
  p2:'（同 #14）早婚能給夫妻支持 (give a couple support)——夫妻在困難時互相鼓勵 (encourage each other)。若一對情侶早婚 (a couple gets married young) → 不那麼孤單 (feel less lonely) → 困難時安心 (peace of mind)。小結：有些早婚確實過得好 (do work well)',
- p3:'25 歲是結婚的正確年齡——在那個年紀 (at that age) 多數人已唸完書、有穩定收入 (finished school and have a steady income)。例：James 26 歲唸完書找到工作後才結婚 (married at twenty-six) → 建立溫暖穩定的家、沒有金錢煩惱 (without money worries)。含義：多等幾年 (waiting a few years) 保護年輕夫妻遠離金錢問題',
+ p3:'25 歲是結婚的正確年齡——在那個年紀 (at that age) 多數人已唸完書、有穩定收入 (finished school and have a steady income)。例：James 26 歲唸完書找到工作後才結婚 (married at 26 after finishing school and finding a job) → 建立溫暖穩定的家、沒有金錢煩惱 (without money worries)。含義：多等幾年 (waiting a few years) 能保護年輕夫妻遠離金錢問題 (can protect young couples from money problems)',
  p4:'25 歲是公平的最低年齡；建議：年輕人先唸完書找到工作再結婚 (before getting married)'},
 '②-10':{
  p1:'反方：城市生活 (city life) 是更好選擇；我方：鄉村生活帶來更多安心 (country life brings more peace of mind)',
@@ -1523,8 +1546,8 @@ const ZH = {
 '④-9':{
  p1:'反方：愛比時機重要 (love matters more than timing)；我方：婚姻應等有穩定工作 (until they have a steady job)',
  p2:'早婚能給夫妻支持 (marrying young can give a couple support)——夫妻互相鼓勵 (encourage each other) 度過難關。若一對情侶早婚 (a couple gets married young) → 比較不孤單 (feel less lonely) → 困難時的安心 (peace of mind)。小結：有些早婚確實幸福 (do work well)',
- p3:'學業與工作應優先 (come first)——穩定收入 (a steady income) 讓婚姻穩固 (keeps a marriage strong)。例：James 26 歲、完成學業找到工作後才結婚 (married at twenty-six after finishing his studies and finding a job) → 建立無金錢煩惱 (without money worries) 的溫暖穩定的家。含義：穩定職涯支撐幸福婚姻 (a happy marriage)',
- p4:'太早結婚不明智 (unwise)；建議：年輕人先唸完書找到工作再結婚 (finish their studies and find a job before getting married)'},
+ p3:'學業與工作應優先 (come first)——穩定收入 (a steady income) 讓婚姻穩固 (keeps a marriage strong)。例：James 26 歲、完成學業找到工作後才結婚 (married at 26 after finishing school and finding a job) → 建立無金錢煩惱 (without money worries) 的溫暖穩定的家。含義：穩定職涯支撐幸福婚姻 (a happy marriage)',
+ p4:'太早結婚不明智 (unwise)；建議：年輕人先唸完書找到工作再結婚 (finish school and find a job before getting married)'},
 '④-10':{
  p1:'反方：決策該留給主管 (left to managers alone)；我方：讓員工參與好處大於壞處 (involving employees does more good than harm)',
  p2:'員工參與會拖慢速度 (slow things down)——廣泛討論很花時間 (takes time)。若每個決策都要全員同意 (everyone to agree) → 流程變慢 (become slow) → 效率降低 (lower efficiency)。小結：有些公司由高層決定 (decide at the top)',
