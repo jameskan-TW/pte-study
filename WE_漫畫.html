@@ -317,6 +317,10 @@ const LINE = {
  H: {name:'反面線', p8:['bgNight', ['sofa',80,55,.9], ['jamesSit',105,52,.8], ['phone',150,55,.45], ['lines',180,50,.35], ['zzz',200,20,.4], L(150,145,'keeps surfing all evening')],
      p9:['bgHome', ['paperF',15,20,.6], ['cross',20,25,.45], ['arrow',85,55,.35], ['manAngry',130,52,.8], ['womanSad',175,52,.8], ['kidSad',215,52,.8], L(50,135,'unable to focus'), L(185,145,'hurts future & family')]},
 };
+// 單題覆寫第 9 格（同線但結尾鏈不同的題）
+const P9 = {
+ '③-3': ['bgStreet', ['james',5,52,.75], ['bubbleTalk',40,0,.4], ['manHat',72,52,.75], ['arrow',125,55,.3], ['moneyBag',150,30,.6], ['arrow',205,55,.3], ['house',212,52,.7], ['heartS',232,20,.35], L(55,145,'foreign clients'), L(175,120,'steady income'), L(238,145,'warm & stable home')],
+};
 const QLINE = {'①-1':'D','①-2':'D','①-3':'D','①-4':'D','②-1':'D','②-2':'D','②-3':'D','②-4':'D','②-5':'G','②-6':'E','②-7':'H','②-8':'G','②-9':'C','②-10':'D','②-11':'E','②-12':'D','②-13':'H','③-1':'F','③-2':'F','③-3':'F','④-1':'A','④-2':'A','④-3':'A','④-4':'B','④-5':'A','④-6':'A','④-7':'G','④-8':'A','④-9':'C','④-10':'B','④-11':'A','④-12':'B','④-13':'A','④-14':'B','④-15':'A','④-16':'E','④-17':'B'};
 // 第 8 格的題目專屬藍字：這題 James 做的事（畫面同線共用，字不同）
 const DOES = {'①-1':'shops at a large mall','①-2':'turns off the TV at dinner','①-3':'work + family chats on one phone','①-4':'good at using AI','②-1':'takes the metro every day','②-2':'stays healthy, annual check-ups','②-3':'spends more time with family','②-4':'stops working overtime','②-5':'saw his firm washed away by a flood','②-6':'city with strict traffic laws','②-7':'checks the news all evening','②-8':'saw his factory cut gas after a new law','②-9':'married at 26 after studies + job','②-10':'works online from his country home','②-11':'enjoys private time after work','②-12':'leaves on time: more hours ≠ more pay','②-13':'keeps surfing on his phone (high school)','③-1':'lives abroad','③-2':'learns languages himself','③-3':'learned a language at school','④-1':'follows a well-planned program','④-2':'all his energy into study','④-3':'printed textbooks in the quiet library','④-4':'bright, well-designed office','④-5':'carefully guided by his parents','④-6':'always submits on time','④-7':'saw a friend find a job after training','④-8':'follows well-planned courses','④-9':'married at 26 after studies + job','④-10':'joins decision-making at his firm','④-11':'prepares step by step for exams','④-12':'develops travel programs abroad','④-13':'keeps away from social media on school days','④-14':'keeps his firm’s good name','④-15':'all his time into main subjects','④-16':'city spends on housing + hospitals','④-17':'works full weeks'};
@@ -768,7 +772,7 @@ function render(){
   const sq = SEQ[cur], e = DATA.find(d => d.n === sq.n) || DATA[0], es = e.es, c = GCOLOR[e.p3c] || '#7f8c8d';
   const own = PIC[e.n] || [], ln = LINE[QLINE[e.n]] || LINE.D;
   const p8 = ln.p8;
-  const pics = [own[0],own[1],own[2],own[3],own[4],own[5],own[6], p8, ln.p9, own[7]].map(x => x || [null, ['q',110,20,.8]]);
+  const pics = [own[0],own[1],own[2],own[3],own[4],own[5],own[6], p8, P9[e.n] || ln.p9, own[7]].map(x => x || [null, ['q',110,20,.8]]);
   const z = ZH[e.n] || {};
   let h = `<div class="title" style="--c:${c}"><span class="grp">${esc(sq.g)}　${cur+1} / ${SEQ.length}</span><span class="n">${esc(e.n)}</span><b>${esc(e.t)}</b>
     <div class="en">${esc(e.en)}</div><div class="st">立場：${esc(e.stance)}｜P2 ${esc(e.p2zh||'')}｜P3 ${esc(e.p3zh||'')}</div>
