@@ -832,16 +832,38 @@ const DATA = [
 
 {n:'③-3', o:37, t:'外語應該作為必修課嗎？', en:'Should schools make learning a foreign language compulsory?',
  stance:'同意 — 應列必修', p2c:2, p2zh:'讓步：課業已重 → 壓力', p3c:3, p3zh:'主論：語言 → 外國客戶 → 穩定收入 → 溫暖穩定的家',
- es:{topic:'making foreign languages a required subject at school',
- va:'schools should not force students to learn a language', vb:'foreign languages should be a required subject',
+ es:{topic:'whether schools should make foreign languages a required subject',
+ va:'schools should not force students to learn a new language', vb:'foreign languages should be a required subject',
  con:'required language classes add pressure', conR:'students already have heavy workloads',
  cond:'schools add one more subject', subj:'students', modal:'may', resA:'<i class="a2">feel upset and anxious</i>', resB:'less interest in learning',
  concl:'any change to courses needs careful planning',
- stance:'foreign languages should be a required subject', reason:'language opens the door to other cultures',
- jv:'works', jn:'firm', does:'learned a foreign language at school',
+ stance:'foreign languages should be a required subject', reason:'foreign languages open the door to other cultures',
+ jv:'works', jn:'firm', does:'studied a foreign language in school',
  result:'become <i class="a3">confident when he talks</i> and get along with <i class="a3">people from different backgrounds</i>',
  impl:'language skills bring more foreign clients, <i class="a4">a steady income</i> and <i class="a4">a warm and stable home</i>',
- final:'schools should make foreign languages a required subject', rec:'courses stay fun and useful to reduce pressure'}},
+ final:'schools should make foreign languages a required subject', rec:'courses stay fun and useful to reduce pressure'},
+ mistakes:{
+  spell:[
+   {x:'require subject', o:'required subject', nt:'形容詞「必修的」要 -d'}
+  ],
+  grammar:[
+   {x:'make foreign languages as a required subject', o:'make foreign languages a required subject', nt:'make＋東西＋變成什麼，不加 as（真的變成 → make；只是看作 → see/treat/use ＋ as）；P4 又犯一次'},
+   {x:'should become the main subject', o:'should be a required subject', nt:'main subject＝主科，題目問的是必修 required'},
+   {x:'a required language subject will increase the pressure', o:'required language classes add pressure', nt:'沒特指的壓力不加 the；範文複數主詞免 +s 免 will'},
+   {x:'the course load of students is heavy already', o:'students already have heavy workloads', nt:'already 放動詞前；學生當主詞與下一句一致'},
+   {x:'lead to upset and anxiety', o:'feel upset and anxious', nt:'主詞是 students → feel＋形容詞。口訣：feel 配 -ous、stress 配 -ty'},
+   {x:'less interest on learning', o:'less interest in learning', nt:'興趣用 in；interest on 是「利息」'},
+   {x:'every change of courses need', o:'any change to courses needs', nt:'every/any change 單數 → needs；對…的改變用 change to'},
+   {x:'any change to course need', o:'any change to courses needs', nt:'泛指課程用複數；主詞是 change 不是 courses'},
+   {x:'needs planning careful', o:'needs careful planning', nt:'形容詞放名詞前'},
+   {x:'should be the required subject', o:'should be a required subject', nt:'必修課很多門，外語是其中一門 → a'},
+   {x:'language skill brings more foreign clients and a steady income and warm home', o:'language skills bring more foreign clients, a steady income and a warm and stable home', nt:'skill 可數單數要冠詞 → 用複數免 +s；三樣東西 A, B and C 只用一個 and'},
+   {x:'…, steady income and a warm and stable home', o:'…, a steady income and a warm and stable home', nt:'列舉的每樣東西各自要冠詞；warm and stable 是兩個形容詞共用一個 a（連三次漏 a）'},
+   {x:'schools make foreign languages…（結論句）', o:'schools should make foreign languages…', nt:'I believe that 後要自己寫 should；不寫 should 只限 it is crucial that 後面'},
+   {x:'course keep interest and useful to losing the stress', o:'courses stay fun and useful to reduce pressure', nt:'courses 複數；interest 名詞→fun 形容詞；to 接原形；lose 失去→reduce 減少。keep 用原形（crucial 規則）有做對'}
+  ],
+  note:'2026-09-21 首次逐 slot 練，情緒讓步線負面版最後一題（四題收完），18 格全打完、1 拼字＋14 文法。主罩門：make … as、冠詞 a（a steady income 連漏）、every/any 單數 +s。做對的：P2 如果句全對、works、may 模板、crucial that 後 keep 原形、foreign languages open（自己用複數避 +s）。換 James 版：①主題 whether 句（與⑰同句）、②a new language、⑫foreign languages open、⑭studied … in school。⑮他寫 talk with confidence（範文 become confident when he talks，#15/#34 共用），待定。'
+ }},
 
 {n:'④-1', o:1, t:'生活經驗 vs 學校正規教育', en:'Some people think that life experience is more important than formal education provided in schools and universities. How far do you agree with this statement, and provide examples?',
  stance:'正規教育更重要（latter）', p2c:3, p2zh:'讓步：生活經驗能開闊視野', p3c:4, p3zh:'主論：正規教育 → 好工作穩定收入 → 溫暖的家',
@@ -1454,7 +1476,7 @@ const ZH = {
  p3:'學外語仍重要——學語言才能自己跟其他國家的人交談 (talk with people from other countries by ourselves)。例：James 自己學外語 → 講話有自信 (confident when he talks)、跟不同背景的人相處融洽 (get along with people from different backgrounds)。含義：真實交談 (real talks build) 建立信任 (trust)、穩定工作、幸福家庭',
  p4:'學外語仍然非常重要；建議：把 AI 當輔助工具就好 (a helper only)'},
 '③-3':{
- p1:'反方：學校不該強迫學生學語言 (should not force)；我方：外語應列必修 (a required subject)',
+ p1:'反方：學校不該強迫學生學新語言 (should not force … a new language)；我方：外語應列必修 (a required subject)',
  p2:'必修語言課增加壓力——學生課業已重 (heavy workloads)。若學校再加一科 (add one more subject) → 學生可能 (may) 沮喪焦慮 (upset and anxious) → 學習興趣下降 (less interest)。小結：課程調整需要謹慎規劃 (careful planning)',
  p3:'外語應列必修——語言打開通往其他文化的門 (opens the door)。例：James 在學校學過外語 → 講話有自信 (confident when he talks)、跟不同背景的人相處融洽 (get along with people from different backgrounds)。含義：語言能力帶來更多外國客戶 (more foreign clients) → 穩定收入 (a steady income) → 溫暖穩定的家 (a warm and stable home)',
  p4:'學校應把外語列必修；建議：課程保持有趣實用 (fun and useful) 以減壓'},
