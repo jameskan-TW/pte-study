@@ -1393,17 +1393,34 @@ const DATA = [
  }},
 
 {n:'④-17', o:31, t:'減少工時以緩解失業率', en:'In modern society, unemployment among young people is a serious problem. One solution is to shorten the working week. Give your opinion of the idea, considering the advantages and disadvantages, whether it can apply to young people or the whole workforce.',
- stance:'不同意 — 薪水跟著減，養不了家', p2c:2, p2zh:'讓步：工時短比較輕鬆', p3c:4, p3zh:'主論：工時減 → 收入減 → 動搖家庭穩定',
+ stance:'不同意 — 薪水跟著減，養不了家', p2c:4, p2zh:'讓步：工時短 → 公司補人 → 多請年輕人（2026-09-23 James 指出舊版「多休息」跟青年失業無關）', p3c:4, p3zh:'主論：工時減 → 收入減 → 動搖家庭穩定',
  es:{topic:'shorter working hours to reduce youth unemployment',
- va:'a shorter week can reduce unemployment', vb:'a shorter week does more harm than good',
- con:'a shorter working week sounds relaxing', conR:'people get more rest and less pressure',
- cond:'employees work fewer hours', subj:'they', resA:'<i class="a2">feel relaxed</i>', resB:'<i class="a2">peace of mind</i>',
- concl:'the idea attracts many workers',
- stance:'a shorter week does more harm than good', reason:'fewer hours mean smaller pay',
+ va:'a shorter week can reduce unemployment', vb:'a shorter working week does more harm than good',
+ con:'a shorter working week can create more jobs', conR:'companies need more workers to finish the same work',
+ cond:'employees work fewer hours', subj:'companies', resA:'hire more young people', resB:'lower youth unemployment',
+ concl:'many governments like this idea',
+ stance:'a shorter working week does more harm than good', reason:'fewer working hours mean less pay',
  jv:'works', jn:'firm', does:'works full weeks at his firm',
  result:'earn <i class="a4">a steady income</i> for his family',
  impl:'cutting hours cuts pay and shakes <i class="a4">a stable home</i>',
- final:'a shorter week does more harm than good', rec:'governments create new jobs for both young people and the whole workforce'}}
+ final:'a shorter working week does more harm than good', rec:'governments create new jobs for both young people and the whole workforce'},
+ mistakes:{
+  spell:[],
+  grammar:[
+   {x:'shorten the working hours to lower…（主題格）', o:'shorter working hours to reduce youth unemployment', nt:'① 要名詞片語當主詞；動詞原形要變 -ing（shortening），或用形容詞 shorter 開頭'},
+   {x:'to do the same works', o:'to do the same work', nt:'work 當工作量不可數不加 s；works 是作品／工廠。jobs（職缺）才可數'},
+   {x:'workers work less', o:'employees work fewer hours', nt:'work less 只是「少做」沒說到工時；hours 可數 → fewer'},
+   {x:'young unemployment decrease', o:'lower youth unemployment', nt:'youth 名詞「青年」（young 是形容詞）；leading to 後面要名詞，decrease 動詞放不進去'},
+   {x:'less working hours is less money', o:'fewer working hours mean less pay', nt:'hours 可數 → fewer；複數主詞不能用 is；「等於」用 mean'},
+   {x:'works in a whole week', o:'works full weeks at his firm', nt:'in a whole week 是「一週之內」；full weeks 直接接，不加介系詞'},
+   {x:'works full week', o:'works full weeks', nt:'week 可數單數不能裸奔 → 複數'},
+   {x:'earn steady income', o:'earn a steady income', nt:'固定就是 a steady income（#37 也漏過）'},
+   {x:'is cutting salary, this will impact', o:'cuts pay and shakes', nt:'「等於」不用進行式；逗號不能直接接新句 → and；salary 可數要冠詞，用 pay 不可數'},
+   {x:'government create', o:'governments create', nt:'government 可數單數裸奔 → 複數免冠詞（⑩ 自己就寫對 many governments）'},
+   {x:'and whole workforce', o:'and the whole workforce', nt:'whole 前面幾乎永遠有 the'}
+  ],
+  note:'2026-09-23 首次逐 slot 練，18 格全打完、0 拼字＋11 文法。練前 James 指出舊 P2「多休息→放鬆」跟青年失業無關，整段改成「工時短→公司補人→多請年輕人→青年失業降」，#31 移出情緒讓步線。主罩門：可數單數裸奔（work 反向／full week／steady income／government／the whole）、fewer vs less（兩次）、介系詞後要名詞（①⑨）。做對的：①②③④⑩ 自己版本全對、-ing 主詞＋s 三次全中（shortening does／cutting cuts shakes）、governments 拼對、0 拼字。換 James 版：表態句三處＋④ 統一 a shorter working week、⑫ fewer working hours mean less pay。'
+ }}
 ];
 
 function badge(c){ const [cls,txt]=CAT[c]; return `<span class="bg ${cls}">${txt}</span>`; }
@@ -1626,10 +1643,10 @@ const ZH = {
  p3:'預算應先給住房與就業 (housing and jobs first)——日常生活比美麗的牆重要 (daily life matters more)。例：James 住在花錢蓋住房與醫院 (a city that spends money on housing and hospitals) 的城市 → 養家、安心 (raise his family and enjoy peace of mind)。含義：錢花在民生 (daily needs)，每個家庭都有溫暖穩定的家',
  p4:'民生應優先於昂貴的老建築；建議：政府只保留最重要的建築 (the most important buildings)'},
 '④-17':{
- p1:'反方：縮短工時能減少失業 (reduce unemployment)；我方：壞處大於好處 (a shorter week does more harm than good)',
- p2:'工時短聽起來輕鬆 (sounds relaxing)——多休息、壓力小 (more rest and less pressure)。若員工工時變少 → 感到放鬆 (feel relaxed) → 安心。小結：這想法吸引很多勞工 (attracts many workers)',
- p3:'縮短工時壞處大於好處 (a shorter week does more harm than good)——工時少＝薪水少 (fewer hours mean smaller pay)。例：James 在公司整週全職工作 (works full weeks at his firm) → 為家人賺穩定收入。含義：砍工時就是砍薪水 (cutting hours cuts pay)，動搖穩定的家 (shakes a stable home)',
- p4:'弊大於利 (a shorter week does more harm than good)；建議：政府改為創造新工作 (create new jobs instead)'}
+ p1:'反方：縮短工時能減少失業 (reduce unemployment)；我方：壞處大於好處 (a shorter working week does more harm than good)',
+ p2:'縮短工時能創造更多工作 (create more jobs)——公司要更多人做同樣的工作 (need more workers to finish the same work)。若員工工時變少 (work fewer hours) → 公司多請年輕人 (hire more young people) → 青年失業率下降 (lower youth unemployment)。小結：很多政府喜歡這個點子 (like this idea)',
+ p3:'縮短工時壞處大於好處 (a shorter working week does more harm than good)——工時少＝薪水少 (fewer working hours mean less pay)。例：James 在公司整週全職工作 (works full weeks at his firm) → 為家人賺穩定收入。含義：砍工時就是砍薪水 (cutting hours cuts pay)，動搖穩定的家 (shakes a stable home)',
+ p4:'弊大於利 (a shorter working week does more harm than good)；建議：政府改為創造新工作 (create new jobs instead)'}
 };
 
 let lastCat = 0;

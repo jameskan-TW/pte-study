@@ -112,6 +112,7 @@
 | ②-9 年齡限制（原#29；2026-09-22 首次逐 slot 練，情緒讓步線正面版第一題，18 格全打完、2 拼字＋14 文法；get＋married 錯三次、可數單數裸奔 couple／hard time／job、⑭ 語序） | ✔ | ✔ impl can protect young couples＋「唸完書」三格統一 school（#14 does／rec 同句同步）＋數字改 25／26 |
 | ④-9 早婚愚蠢（原#14；2026-09-23 首次逐 slot 練，情緒讓步線正面版第二題，18 格全打完、4 拼字＋10 文法；⑭ 時態、at／through、on time vs more than timing） | ✔ | ✔ does 拿掉 at 26（題目沒問年齡，與 #29 分開背） |
 | ①-2 電視陪伴（原#23；2026-09-23 首次逐 slot 練，情緒讓步線正面版第三題，18 格全打完、3 拼字＋11 文法；舊罩門重犯 4：lonely／字母顛倒／時態／否定 and；新：company vs companion、television 加不加 the） | ✔ | — |
+| ④-17 縮短工時（原#31；2026-09-23 練前 James 指出讓步段「多休息」跟青年失業無關，P2 整段改「工時短→公司補人→多請年輕人→失業降」、移出情緒讓步線歸問題面；同日首次逐 slot 練，18 格全打完、0 拼字＋11 文法；可數單數裸奔×5、fewer/less×2） | ✔ | ✔ 表態句三處＋④ 統一 a shorter working week、⑫ fewer working hours mean less pay |
 | ②-8 氣候誰負責（原#25；2026-09-08 與 #16 共用一套環境字：greenhouse gas／cars and factories／hotter summers and more floods／make laws／protect every family） | — | ✔ 共用字版 |
 
 > 2026-09-08 老師看過 WE_訂正定稿 第 6–11 篇（Word 檔 WE_給老師_20260908.docx），改了 5 處已全部同步：②-2 小結補 would；②-3 小結改 put money first and ignore their family；②-4 resB 改 better future prospects；#16/#25 If-then 改 would、James 例子改具體公司事件（firm washed away／factory cut greenhouse gas after a new law）。
