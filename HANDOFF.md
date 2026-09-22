@@ -110,6 +110,7 @@
 | ④-4 建築設計（原#4；2026-09-21 首次逐 slot 練，情緒讓步線負面版第三題，18 格全打完、4 拼字＋13 文法；形容詞/名詞混用 anxious/comfortable、and it 接子句） | ✔ | ✔ va bad design leads to harm＋concl many people |
 | ③-3 外語必修（原#37；2026-09-21 練前 James 指出 impl「自信 → 好職涯＋幸福家庭」跳太快，改 language skills bring more foreign clients, a steady income and a warm and stable home；漫畫新增 `P9` 單題覆寫第 9 格；同日首次逐 slot 練，情緒讓步線負面版四題收完，18 格全打完、1 拼字＋14 文法；make … as、a steady income 漏 a） | ✔ | ✔ impl 客戶→收入→家＋topic whether 句／a new language／foreign languages open／studied … in school |
 | ②-9 年齡限制（原#29；2026-09-22 首次逐 slot 練，情緒讓步線正面版第一題，18 格全打完、2 拼字＋14 文法；get＋married 錯三次、可數單數裸奔 couple／hard time／job、⑭ 語序） | ✔ | ✔ impl can protect young couples＋「唸完書」三格統一 school（#14 does／rec 同句同步）＋數字改 25／26 |
+| ④-9 早婚愚蠢（原#14；2026-09-23 首次逐 slot 練，情緒讓步線正面版第二題，18 格全打完、4 拼字＋10 文法；⑭ 時態、at／through、on time vs more than timing） | ✔ | ✔ does 拿掉 at 26（題目沒問年齡，與 #29 分開背） |
 | ②-8 氣候誰負責（原#25；2026-09-08 與 #16 共用一套環境字：greenhouse gas／cars and factories／hotter summers and more floods／make laws／protect every family） | — | ✔ 共用字版 |
 
 > 2026-09-08 老師看過 WE_訂正定稿 第 6–11 篇（Word 檔 WE_給老師_20260908.docx），改了 5 處已全部同步：②-2 小結補 would；②-3 小結改 put money first and ignore their family；②-4 resB 改 better future prospects；#16/#25 If-then 改 would、James 例子改具體公司事件（firm washed away／factory cut greenhouse gas after a new law）。
