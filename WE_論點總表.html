@@ -476,7 +476,28 @@ const DATA = [
  jv:'works', jn:'firm', does:'always turns off the television during dinner',
  result:'<i class="a1">have more conversations with his family</i>',
  impl:'turning off the television keeps the whole family in harmony',
- final:'television does more harm than good', rec:'people turn off the television and spend time with their families and friends'}},
+ final:'television does more harm than good', rec:'people turn off the television and spend time with their families and friends'},
+ mistakes:{
+  spell:[
+   {x:'longly', o:'lonely', nt:'昨天 #29 才錯過，重犯。lone＋ly 沒有 g'},
+   {x:'compnay', o:'company', nt:'字母顛倒：com-pa-ny'},
+   {x:'favorate', o:'favorite', nt:'fav-o-rite'}
+  ],
+  grammar:[
+   {x:'television companies lonely people', o:'television keeps lonely people company', nt:'company 當「陪伴」是名詞，沒有動詞 companies（那是公司複數）；固定講法 keep sb company'},
+   {x:'keeps lonely people companion', o:'keeps lonely people company', nt:'companion 是「同伴」（人），company 才是「陪伴」'},
+   {x:'people who lived alone can hear', o:'people who live alone can hear', nt:'一般情況現在式，跟後面 can 一致'},
+   {x:'on televisions', o:'on television', nt:'「在電視上」固定不加 s，television 當媒體不可數'},
+   {x:'If old people … can watch their favorite shows', o:'If old people … watch their favorite programs every day', nt:'If 子句講條件不放 can（can 在 then 後面）；every day 才有天天看→不孤單的因果'},
+   {x:'take television as their friends', o:'see television as a friend', nt:'television 單數＝一個朋友；see … as 是固定片語'},
+   {x:'cannot talk with you and listen to you', o:'cannot talk with you or listen to you', nt:'否定句兩個都不能用 or（同 #21／#35 unable to A or B）'},
+   {x:'during dinner times／at dinner times', o:'at dinner time／during dinner', nt:'dinner time 是時段名，單數；連錯兩次'},
+   {x:'makes family more harmony', o:'keeps the whole family in harmony', nt:'harmony 是名詞不能接 more 當形容詞；10 題共用的固定片語逐字背'},
+   {x:'the television does more harm than good', o:'television does more harm than good', nt:'電視當「媒體」不加 the（③ 自己打對）；當「機器」才加：turn off the television'},
+   {x:'turn off television', o:'turn off the television', nt:'關的是機器要 the；跟上一條是同一規則的兩個方向'}
+  ],
+  note:'2026-09-23 首次逐 slot 練，情緒讓步線正面版第三題，18 格全打完、3 拼字＋11 文法。舊罩門重犯 4 條：lonely 拼錯（昨天才錯）、字母顛倒 compnay、時態 lived、否定用 and。新東西：company／companion／companies 三個字分清楚、television 加不加 the 兩個方向、dinner time 單數。做對的：② 三個 +s 全對、⑭ turns 有 s、⑧⑨⑪⑬ 一字不差、⑮ 自己換成 conversations。他的 ⑮ have more discussion 文法對但改用 conversations，範文不動。'
+ }},
 
 {n:'①-3', o:26, t:'一項科技發明帶來的好處或壞處（Report）', en:'Recently, in our technological world, the number of new inventions has been evolving on a daily basis. Please describe a new invention and explain the impact, either beneficial or detrimental, that you feel it has had on society.',
  stance:'選擇：智慧型手機，好處為主', p2c:4, p2zh:'讓步：成癮 → 上課不專注 → 成績差', p3c:1, p3zh:'主論：省時聯絡方便 → 陪家人 → 全家和樂',
@@ -1431,8 +1452,8 @@ const ZH = {
  p4:'這趨勢利大於弊 (this trend does more good than harm)；建議：城市保留 (keep space) 特色小店'},
 '①-2':{
  p1:'反方：電視很有用 (very useful)；我方：弊大於利 (does more harm than good)',
- p2:'能從電視學東西 (learn from television)——好節目教我們認識世界 (teach us about the world)。若選優質節目 (quality programs) → 學到書本外的東西 → 更開闊的視野 (a broader view)。小結：很多人視電視為朋友 (a friend)',
- p3:'電視弊大於利——佔據家庭時間 (takes up family time)，大家只是安靜坐著 (sits quietly)。例：James 晚餐時關電視 (turns off the TV) → 更多優質時間陪家人。含義：關電視 (turning off the television) 讓全家和樂 (keeps the whole family in harmony)',
+ p2:'電視可以陪伴孤單的人 (a companion for the lonely)——獨居的人能在電視上聽到聲音、看到臉孔 (hear voices and see faces on television)。若獨居老人天天看最愛的節目 (watch their favorite programs every day) → 比較不孤單 (feel less lonely) → 心情比較好 (a better mood)。小結：很多孤單的人把電視當朋友 (see television as a friend)',
+ p3:'電視不是真正的陪伴 (not a real companion)——它不能跟你說話、也不能聽你說 (cannot talk with you or listen to you)。例：James 晚餐時總是關電視 (always turns off the television during dinner) → 跟家人有更多對話 (have more conversations with his family)。含義：關電視 (turning off the television) 讓全家和樂 (keeps the whole family in harmony)',
  p4:'電視弊大於利 (does more harm than good)；建議：家人關掉電視、多聊天 (talk more)'},
 '①-3':{
  p1:'反方：手機弊大於利；我方：非常有用的發明 (a very useful invention)',
