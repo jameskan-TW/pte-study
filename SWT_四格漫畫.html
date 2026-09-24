@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" spellcheck="false">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SWT 四格漫畫 — 179 題一題一條，看圖就知道在講什麼</title>
+<style>
+:root{--ink:#222;--paper:#fffdf7;--line:#222;--and:#1d4ed8;--andbg:#dbeafe;--but:#b91c1c;--butbg:#fee2e2;--sw:#16a34a;}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Noto Sans TC','Microsoft JhengHei',sans-serif;background:#f0ede6;color:var(--ink)}
+header{position:sticky;top:0;z-index:5;background:#1a3a5c;color:#fff;padding:8px 12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+header h1{font-size:1rem;margin:0 8px 0 0}
+header select,header button{padding:5px 10px;border:none;border-radius:4px;font-family:inherit;font-size:.85rem;cursor:pointer}
+header select{max-width:46vw}
+header button{background:#2c5282;color:#fff}
+header button.on{background:#f1c40f;color:#222}
+header a{color:#bdc3c7;font-size:.8rem;margin-left:auto;text-decoration:none}
+main{max-width:1180px;margin:0 auto;padding:12px}
+.legend{font-size:.8rem;color:#666;margin:0 0 10px;line-height:1.7}
+.legend .cj{font-size:.8rem}
+.strip{margin-bottom:34px}
+.title{background:#fff;border:3px solid var(--line);border-radius:6px;padding:10px 14px;margin-bottom:12px;box-shadow:4px 4px 0 #222;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px}
+.title .n{display:inline-block;background:#1a3a5c;color:#fff;border-radius:4px;padding:1px 10px;font-weight:700}
+.title b{font-size:1.1rem}
+.title .code{font-size:.75rem;color:#888}
+.title .cnt{font-size:.75rem;color:#888;margin-left:auto}
+.row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:10px}
+.row.n3{grid-template-columns:repeat(3,1fr)}
+.row.n5{grid-template-columns:repeat(5,1fr)}
+.panel{background:var(--paper);border:3px solid var(--line);border-radius:4px;padding:6px 8px 10px;box-shadow:4px 4px 0 #222;display:flex;flex-direction:column;cursor:pointer;user-select:none}
+.panel .num{font-size:.7rem;font-weight:700;color:#888;letter-spacing:1px;display:flex;justify-content:space-between}
+.panel .num .cj{font-size:.85rem;letter-spacing:0}
+.panel .pic{margin:2px 0 4px}.panel .pic svg{width:100%;height:auto;display:block;border:1.5px solid #bbb;border-radius:3px;background:#fff}
+.panel .cap{font-size:.85rem;text-align:center;color:#444;margin-bottom:6px;font-weight:600}
+.bubble{position:relative;background:#fff;border:2px solid var(--line);border-radius:14px;padding:8px 12px;font-size:.98rem;line-height:1.55;margin-top:auto;font-weight:600}
+.bubble::before{content:'';position:absolute;top:-12px;left:22px;border:6px solid transparent;border-bottom-color:var(--line);border-top:0}
+.cj{font-weight:800;padding:0 5px;border-radius:4px;margin:0 2px}
+.cj.and{color:var(--and);background:var(--andbg)}
+.cj.but{color:var(--but);background:var(--butbg)}
+.bubble .cj.lead{font-size:1.08em}
+.sw{color:var(--sw);font-weight:800}
+.og{color:#9ca3af;font-size:.8em;font-weight:400}
+body.hideog .og{display:none}
+.bubble .h{display:none;color:#999;font-weight:400;letter-spacing:1px;line-height:1.7}
+body.hide .panel:not(.open) .bubble .f{display:none}
+body.hide .panel:not(.open) .bubble .h{display:inline}
+body.nocap .panel .cap{display:none}
+body.nocap .zh{display:none}
+.full{background:#fff;border:2px solid #222;border-radius:6px;padding:10px 14px;font-size:1rem;line-height:1.7;box-shadow:3px 3px 0 #222}
+.full .lab{font-size:.72rem;color:#888;font-weight:700;letter-spacing:1px;display:block;margin-bottom:2px}
+body.hide .full .ft{display:none}
+body.hide .full .fh{display:block}
+.full .fh{display:none;color:#999;font-weight:400;letter-spacing:1px}
+.zh{background:#fff;border:2px dashed #aaa;border-radius:6px;padding:8px 12px;font-size:.88rem;color:#555;margin:8px 0 0;line-height:1.6}
+.note{font-size:.8rem;color:#8a6d3b;background:#fff8e1;border-left:4px solid #f1c40f;padding:6px 10px;margin-top:8px;line-height:1.5}
+.nav{display:flex;justify-content:space-between;margin:14px 0 30px}
+.nav button{padding:8px 16px;border:2px solid #222;background:#fff;border-radius:6px;font-family:inherit;cursor:pointer;box-shadow:3px 3px 0 #222;font-size:.95rem}
+.tip{font-size:.78rem;color:#888;text-align:center;margin-bottom:20px}
+#loading{padding:40px;text-align:center;color:#888}
+.err{color:#c0392b}
+@media(max-width:900px){.row,.row.n5,.row.n3{grid-template-columns:repeat(2,1fr);gap:8px}.bubble{font-size:.92rem}}
+@media(max-width:420px){.row,.row.n5,.row.n3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <h1>🎞️ SWT 四格漫畫</h1>
+  <select id="sel"></select>
+  <button id="bHide" title="遮住英文，點格子揭開">默寫</button>
+  <button id="bCap" title="隱藏中文">藏中文</button>
+  <button id="bOg" title="隱藏換字的原字">藏原字</button>
+  <button id="bAll" title="179 題一頁連讀">連讀</button>
+  <a href="SWT_擬答.html">擬答</a>
+</header>
+<main>
+  <div class="legend">一格＝擬答裡的一句原文句（要打出來的句子）。格與格之間用 <span class="cj and">and</span>（接續）或 <span class="cj but">but</span>（轉折）接起來，最後一列是拼好的整句。<span class="sw">綠字</span>＝換字，<span class="og">(灰字)</span>＝原字。藍色關鍵字＝這格在講什麼。</div>
+  <div id="loading">載入 SWT 擬答題庫中…</div>
+  <div id="app" hidden></div>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+// ---------- 線稿元件庫（與 WE_漫畫.html 同一套，另加 SWT 用元件） ----------
+
+const K = 'stroke="#222" stroke-width="3" fill="#fff" stroke-linecap="round" stroke-linejoin="round"';
+const KN = 'stroke="#222" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"';
+// 臉：表情 happy / sad / flat / wow
+const face = (m) => `<circle cx="50" cy="22" r="13" ${K}/>` +
+  `<circle cx="45" cy="20" r="1.8" fill="#222"/><circle cx="55" cy="20" r="1.8" fill="#222"/>` +
+  (m==='sad' ? `<path d="M44 30q6-5 12 0" ${KN}/>` : m==='wow' ? `<ellipse cx="50" cy="29" rx="3" ry="4" ${K}/>` :
+   m==='flat' ? `<path d="M45 29h10" ${KN}/>` : m==='angry' ? `<path d="M40 13l8 4M60 13l-8 4" ${KN}/><path d="M44 31q6-5 12 0" ${KN}/>` : `<path d="M44 27q6 6 12 0" ${KN}/>`);
+// 身體：pose stand / walk / up / point / sit / push / wave
+const body = (pose) => {
+  const arms = {stand:'M50 38l-14 16M50 38l14 16', up:'M50 38l-16-10M50 38l16-10', point:'M50 38l-14 16M50 38l20-6',
+    push:'M50 38l18 10M50 38l18 10', sit:'M50 38l-12 14M50 38l12 14', wave:'M50 38l-14 16M50 38l14-14'}[pose] || 'M50 38l-14 16M50 38l14 16';
+  const legs = pose==='sit' ? 'M50 66l-14 6v18M50 66l14 6v18' : pose==='walk' || pose==='push' ? 'M50 66l-14 30M50 66l12 30' : 'M50 66l-9 32M50 66l9 32';
+  return `<path d="M50 35v31" ${KN}/><path d="${arms}" ${KN}/><path d="${legs}" ${KN}/>`;
+};
+const hair = `<path d="M38 16q4-12 14-10q8-2 12 8" ${KN}/>`;
+const tie = `<path d="M47 36l3 7 3-7z" fill="#e74c3c" stroke="#222" stroke-width="1.5"/>`;
+const bun = `<circle cx="50" cy="8" r="5" ${K}/>`;
+const bow = `<path d="M40 8l6 4-6 4zM60 8l-6 4 6 4z" fill="#e67e22" stroke="#222" stroke-width="1.5"/>`;
+const SPR = {
+ // 人物
+ james:      face('happy') + hair + body('stand') + tie + `<text x="63" y="14" font-size="9" font-weight="700" fill="#222">J</text>`,
+ jamesWalk:  face('happy') + hair + body('walk') + tie,
+ jamesPush:  face('happy') + hair + body('push') + tie,
+ jamesUp:    face('happy') + hair + body('up') + tie,
+ jamesPoint: face('happy') + hair + body('point') + tie,
+ jamesSit:   face('happy') + hair + body('sit') + tie,
+ jamesSad:   face('sad') + hair + body('stand') + tie,
+ man:        face('happy') + body('stand'),
+ manSad:     face('sad') + body('stand'),
+ manWave:    face('happy') + body('wave'),
+ manSit:     face('happy') + body('sit'),
+ manFlat:    face('flat') + body('stand'),
+ woman:      face('happy') + bun + body('stand'),
+ womanWave:  face('happy') + bun + body('wave'),
+ womanSit:   face('happy') + bun + body('sit'),
+ womanSad:   face('sad') + bun + body('stand'),
+ oldSit:     face('flat') + bun + body('sit') + `<path d="M40 14h20" ${KN}/>`,
+ oldSad:     face('sad') + bun + body('stand') + `<path d="M40 14h20M70 60v38" ${KN}/>`,
+ oldHappy:   face('happy') + bun + body('sit') + `<path d="M40 14h20" ${KN}/>`,
+ kid:        `<g transform="translate(20 40) scale(.6)">${face('happy') + bow + body('stand')}</g>`,
+ kidUp:      `<g transform="translate(20 40) scale(.6)">${face('happy') + bow + body('up')}</g>`,
+ kidSit:     `<g transform="translate(20 40) scale(.6)">${face('happy') + bow + body('sit')}</g>`,
+ manHat:     face('happy') + `<path d="M34 12h32M40 12V4h20v8" ${K}/>` + body('stand'),
+ womanScarf: face('happy') + `<path d="M35 24q0-22 15-22t15 22" ${K}/>` + body('stand'),
+ shake:      `<g transform="translate(-18 0)">${face('happy') + body('point')}</g><g transform="translate(118 0) scale(-1 1)">${face('happy') + bun + body('point')}</g><circle cx="50" cy="32" r="4" ${K}/>`,
+ lying:      `<rect x="5" y="62" width="90" height="24" rx="6" ${K}/><path d="M8 86v10M92 86v10" ${KN}/><circle cx="22" cy="48" r="11" ${K}/><path d="M16 46q3-3 6 0M25 46q3-3 6 0" ${KN}/><path d="M18 53q4 3 8 0" ${KN}/><path d="M33 56h44M77 56l10 8M62 56l8 8" ${KN}/><path d="M28 62q-8 3-8 12" ${KN}/>`,
+ cup:        `<path d="M30 45h40v30q0 12-12 12H42q-12 0-12-12z" ${K}/><path d="M70 52h8q8 0 8 8t-8 8h-8" ${KN}/><path d="M42 38q-4-6 0-12M52 38q-4-6 0-12" ${KN}/>`,
+ bulb:       `<path d="M35 58q-16-12-8-30t23-14q16 4 23 14t-8 30v8H35z" fill="#fff59d" stroke="#222" stroke-width="3" stroke-linejoin="round"/><path d="M38 76h24M42 86h16" ${KN}/><path d="M50 10V2M20 20l-6-6M80 20l6-6" ${KN}/>`,
+ book:       `<path d="M12 25q19-6 38 4q19-10 38-4v58q-19-6-38 4q-19-10-38-4z" ${K}/><path d="M50 29v58" ${KN}/><path d="M20 40h20M20 50h20M60 40h20M60 50h20" stroke="#999" stroke-width="2"/>`,
+ tvBulb:     `<rect x="10" y="30" width="80" height="55" rx="4" ${K}/><rect x="16" y="36" width="68" height="43" fill="#dfe9f3" stroke="#222" stroke-width="2"/><path d="M50 30l-12-14M50 30l12-14M35 95h30M50 85v10" ${KN}/><g transform="translate(28 36) scale(.42)"><path d="M35 58q-16-12-8-30t23-14q16 4 23 14t-8 30v8H35z" fill="#fff59d" stroke="#222" stroke-width="4"/><path d="M38 76h24" ${KN}/></g>`,
+ tvNo:       `<rect x="10" y="30" width="80" height="55" rx="4" ${K}/><rect x="16" y="36" width="68" height="43" fill="#dfe9f3" stroke="#222" stroke-width="2"/><path d="M50 30l-12-14M50 30l12-14M35 95h30M50 85v10" ${KN}/><circle cx="50" cy="56" r="12" ${K}/><circle cx="45" cy="54" r="1.5" fill="#222"/><circle cx="55" cy="54" r="1.5" fill="#222"/><path d="M45 61h10" ${KN}/><path d="M40 66l20-12" stroke="#e74c3c" stroke-width="3"/>`,
+ earNo:      `<path d="M40 30q22-16 26 8q2 16-10 22q-8 4-8 14" ${KN}/><path d="M48 40q8-4 10 4" ${KN}/><path d="M30 20l45 50" stroke="#e74c3c" stroke-width="5" stroke-linecap="round"/>`,
+ sound:      `<path d="M20 38q10 12 0 24M38 28q18 22 0 44M56 18q26 32 0 64" ${KN}/>`,
+ scaleGood:  `<path d="M50 92V28M28 92h44" ${KN}/><path d="M12 46L88 22" ${KN}/><path d="M12 46L2 72M12 46l10 26M88 22l-10 26M88 22l10 26" ${KN}/><path d="M2 72q10 10 20 0" ${K}/><path d="M78 48q10 10 20 0" ${K}/><path d="M6 60l4 4 8-10" stroke="#27ae60" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M82 32l10 10M92 32l-10 10" stroke="#e74c3c" stroke-width="4" stroke-linecap="round"/>`,
+ scaleHarm:  `<path d="M50 92V28M28 92h44" ${KN}/><path d="M12 22l76 24" ${KN}/><path d="M12 22L2 48M12 22l10 26M88 46l-10 26M88 46l10 26" ${KN}/><path d="M2 48q10 10 20 0" ${K}/><path d="M78 72q10 10 20 0" ${K}/><path d="M6 36l4 4 8-10" stroke="#27ae60" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M82 56l10 10M92 56l-10 10" stroke="#e74c3c" stroke-width="4" stroke-linecap="round"/>`,
+ calendar:   `<rect x="18" y="22" width="64" height="64" rx="3" ${K}/><path d="M18 38h64M32 14v14M68 14v14" ${KN}/><path d="M28 50h8M42 50h8M56 50h8M28 62h8M42 62h8M56 62h8M28 74h8M42 74h8M56 74h8" stroke="#222" stroke-width="3"/>`,
+ city:       `<path d="M2 100V55h16V35h14v20h10V25h18v30h10V45h14v55z" ${K}/><path d="M8 65h6M8 78h6M24 45h6M24 60h6M48 35h8M48 50h8M72 55h6M72 70h6" stroke="#222" stroke-width="2"/>`,
+ basket:     `<path d="M15 45h70l-8 40H23z" ${K}/><path d="M30 45q20-30 40 0" ${KN}/><path d="M35 55v22M50 55v22M65 55v22" stroke="#222" stroke-width="2"/>`,
+ crowd:      `<g transform="translate(-22 10) scale(.85)">${face('happy') + body('stand')}</g><g transform="translate(22 10) scale(.85)">${face('happy') + bun + body('stand')}</g><g transform="translate(0 0) scale(.85)">${face('happy') + body('up')}</g>`,
+ // ---- 第二批元件（37 題用）----
+ phone:      `<rect x="32" y="10" width="36" height="80" rx="6" ${K}/><rect x="36" y="20" width="28" height="56" fill="#dfe9f3" stroke="none"/><circle cx="50" cy="83" r="2.5" fill="#222"/>`,
+ vs:         `<path d="M15 50h30M65 50h30M30 36l-14 14 14 14M80 36l14 14-14 14" stroke="#222" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+ smile:      `<circle cx="50" cy="50" r="34" ${K}/><circle cx="37" cy="42" r="3" fill="#222"/><circle cx="63" cy="42" r="3" fill="#222"/><path d="M33 60q17 16 34 0" ${KN}/>`,
+ two:        `<g transform="translate(-20 0)">${face('happy') + body('stand')}</g><g transform="translate(20 0)">${face('happy') + bun + body('stand')}</g>`,
+ building:   `<rect x="20" y="15" width="60" height="85" ${K}/><path d="M30 25h10v10H30zM45 25h10v10H45zM60 25h10v10H60zM30 45h10v10H30zM45 45h10v10H45zM60 45h10v10H60zM30 65h10v10H30zM60 65h10v10H60z" ${K}/><rect x="44" y="78" width="12" height="22" ${K}/>`,
+ manAngry:   face('angry') + body('stand'),
+ womanAngry: face('angry') + bun + body('stand'),
+ kidSad:     `<g transform="translate(20 40) scale(.6)">${face('sad') + bow + body('stand')}</g>`,
+ kidPhone:   `<g transform="translate(20 40) scale(.6)">${face('flat') + bow + body('push')}</g><rect x="60" y="66" width="8" height="14" rx="2" ${K}/>`,
+ manRun:     face('flat') + body('walk') + `<path d="M50 38l16 4M50 38l-16 4" ${KN}/><path d="M10 50h14M6 62h14M10 74h14" ${KN}/>`,
+ manLie:     `<circle cx="22" cy="68" r="11" ${K}/><path d="M16 66q3-3 6 0M25 66q3-3 6 0" ${KN}/><path d="M18 73q4 3 8 0" ${KN}/><path d="M33 76h44M77 76l10 8M62 76l8 8M30 82q-6 4-4 12" ${KN}/>`,
+ moon:       `<path d="M60 15q-30 5-30 35t30 35q-20 5-35-10T25 40q5-20 35-25z" fill="#fff59d" stroke="#222" stroke-width="3"/>`,
+ sun:        `<circle cx="50" cy="50" r="18" fill="#f1c40f" stroke="#222" stroke-width="3"/><path d="M50 18v10M50 72v10M18 50h10M72 50h10M27 27l7 7M66 66l7 7M73 27l-7 7M34 66l-7 7" ${KN}/>`,
+ star:       `<path d="M50 10l12 28 30 2-23 19 8 29-27-17-27 17 8-29L8 40l30-2z" fill="#f1c40f" stroke="#222" stroke-width="3" stroke-linejoin="round"/>`,
+ robot:      `<rect x="25" y="30" width="50" height="40" rx="6" ${K}/><path d="M50 30V15M50 12h.1" ${KN}/><circle cx="50" cy="12" r="4" ${K}/><circle cx="40" cy="45" r="5" fill="#2980b9"/><circle cx="60" cy="45" r="5" fill="#2980b9"/><path d="M40 60h20" ${KN}/><rect x="30" y="72" width="40" height="26" rx="4" ${K}/><path d="M25 45h-8M75 45h8" ${KN}/><text x="50" y="92" font-size="10" text-anchor="middle" font-weight="700" fill="#222">AI</text>`,
+ desk:       `<rect x="2" y="60" width="96" height="8" ${K}/><path d="M10 68v32M90 68v32" ${KN}/>`,
+ laptop:     `<rect x="25" y="35" width="50" height="35" rx="3" ${K}/><rect x="30" y="40" width="40" height="25" fill="#dfe9f3" stroke="none"/><path d="M15 76h70l-6-6H21z" ${K}/>`,
+ books:      `<rect x="20" y="76" width="60" height="12" ${K}/><rect x="25" y="64" width="55" height="12" ${K}/><rect x="22" y="52" width="50" height="12" ${K}/>`,
+ gradCap:    `<path d="M8 42l42-16 42 16-42 16z" fill="#222" stroke="#222" stroke-width="3" stroke-linejoin="round"/><path d="M28 50v14q22 12 44 0V50" ${K}/><path d="M88 44v18" ${KN}/>`,
+ briefcase:  `<rect x="15" y="42" width="70" height="45" rx="4" ${K}/><path d="M38 42v-10h24v10M15 62h70" ${KN}/>`,
+ moneyBag:   `<path d="M35 32h30l10 15q15 25 0 48H25q-15-23 0-48z" ${K}/><path d="M40 32l-5-12h30l-5 12" ${K}/><text x="50" y="76" font-size="24" text-anchor="middle" font-weight="700" fill="#222">$</text>`,
+ ring:       `<circle cx="50" cy="62" r="22" stroke="#222" stroke-width="6" fill="none"/><path d="M38 38l12-16 12 16z" fill="#9be" stroke="#222" stroke-width="2.5"/>`,
+ eye:        `<path d="M6 50q44-46 88 0q-44 46-88 0z" ${K}/><circle cx="50" cy="50" r="15" ${K}/><circle cx="50" cy="50" r="7" fill="#222"/>`,
+ wave:       `<path d="M0 60q15-15 30 0t30 0t30 0t30 0v40H0z" fill="#bde" stroke="#222" stroke-width="3"/><path d="M0 82q15-15 30 0t30 0t30 0" stroke="#222" stroke-width="2.5" fill="none"/>`,
+ factory:    `<path d="M10 100V52l25 15V52l25 15V52l25 15v33z" ${K}/><rect x="14" y="20" width="12" height="36" ${K}/><path d="M20 16q-8-8 0-16M32 12q-8-8 0-16M44 16q-8-8 0-16" stroke="#888" stroke-width="3" fill="none"/>`,
+ factoryClean:`<path d="M10 100V52l25 15V52l25 15V52l25 15v33z" ${K}/><rect x="14" y="20" width="12" height="36" ${K}/><path d="M60 30q-25-5-25-30q25 5 25 30z" fill="#a5d6a7" stroke="#222" stroke-width="2.5"/>`,
+ co2:        `<path d="M25 70q-18 0-18-16t20-16q6-16 24-16t24 16q17 0 17 16t-18 16z" fill="#ccc" stroke="#222" stroke-width="3"/><text x="50" y="60" font-size="16" text-anchor="middle" font-weight="700" fill="#222">CO2</text>`,
+ storm:      `<path d="M25 58q-15 0-15-14t18-14q5-15 22-15t22 15q15 0 15 14t-15 14z" ${K}/><path d="M52 58l-12 20h14l-10 20" stroke="#f1c40f" stroke-width="5" fill="none" stroke-linejoin="round"/>`,
+ metro:      `<rect x="5" y="30" width="90" height="55" rx="10" ${K}/><rect x="14" y="42" width="20" height="18" fill="#dfe9f3" stroke="#222" stroke-width="2"/><rect x="40" y="42" width="20" height="18" fill="#dfe9f3" stroke="#222" stroke-width="2"/><rect x="66" y="42" width="20" height="18" fill="#dfe9f3" stroke="#222" stroke-width="2"/><circle cx="25" cy="90" r="6" ${K}/><circle cx="75" cy="90" r="6" ${K}/><path d="M0 98h100" ${KN}/>`,
+ car:        `<path d="M8 72V56l16-18h52l16 18v16z" ${K}/><rect x="28" y="44" width="18" height="12" fill="#dfe9f3" stroke="#222" stroke-width="2"/><rect x="54" y="44" width="18" height="12" fill="#dfe9f3" stroke="#222" stroke-width="2"/><circle cx="28" cy="76" r="8" ${K}/><circle cx="72" cy="76" r="8" ${K}/>`,
+ road:       `<path d="M5 98L38 18h24l33 80z" ${K}/><path d="M50 26v10M50 48v12M50 72v14" stroke="#222" stroke-width="3" stroke-dasharray="6 6"/>`,
+ hospital:   `<rect x="15" y="25" width="70" height="75" ${K}/><path d="M50 38v22M39 49h22" stroke="#e74c3c" stroke-width="7"/><rect x="42" y="78" width="16" height="22" ${K}/>`,
+ paperA:     `<rect x="22" y="8" width="56" height="84" ${K}/><path d="M30 26h40M30 38h40M30 50h25" stroke="#bbb" stroke-width="2"/><text x="64" y="82" font-size="24" font-weight="700" fill="#e74c3c">A+</text>`,
+ paperF:     `<rect x="22" y="8" width="56" height="84" ${K}/><path d="M30 26h40M30 38h40M30 50h25" stroke="#bbb" stroke-width="2"/><text x="64" y="82" font-size="26" font-weight="700" fill="#e74c3c">F</text>`,
+ paper:      `<rect x="22" y="8" width="56" height="84" ${K}/><path d="M30 26h40M30 38h40M30 50h40M30 62h25" stroke="#bbb" stroke-width="2"/>`,
+ mask:       `<path d="M20 25q30-15 60 0v35q0 30-30 35Q20 90 20 60z" ${K}/><path d="M32 45q6-5 12 0M56 45q6-5 12 0" ${KN}/><path d="M35 65q15 12 30 0" ${KN}/>`,
+ oldBuilding:`<path d="M6 42L50 14l44 28z" ${K}/><rect x="10" y="42" width="80" height="8" ${K}/><path d="M20 50v42M35 50v42M50 50v42M65 50v42M80 50v42" ${KN}/><rect x="6" y="92" width="88" height="8" ${K}/>`,
+ tree:       `<path d="M50 100V62" ${KN}/><circle cx="50" cy="42" r="26" fill="#a5d6a7" stroke="#222" stroke-width="3"/>`,
+ palm:       `<path d="M50 100q-6-40 6-62" ${KN}/><path d="M56 38q-25-14-42 2q22-6 42-2zM56 38q25-14 42 2q-22-6-42-2zM56 38q-18-22-8-38q9 12 8 38zM56 38q18-22 8-38q-9 12-8 38z" fill="#a5d6a7" stroke="#222" stroke-width="2.5"/>`,
+ umbrella:   `<path d="M4 56q46-48 92 0z" fill="#f9c" stroke="#222" stroke-width="3"/><path d="M50 56v38q0 6-7 6" ${KN}/>`,
+ trophy:     `<path d="M30 18h40v26q0 20-20 20T30 44z" fill="#f1c40f" stroke="#222" stroke-width="3"/><path d="M30 26H20q0 16 12 19M70 26h10q0 16-12 19" ${KN}/><path d="M50 64v16M34 84h32" ${KN}/>`,
+ chartUp:    `<path d="M10 90h82M10 90V8" ${KN}/><path d="M16 74l20-20 15 10 32-40" stroke="#27ae60" stroke-width="5" fill="none"/><path d="M70 24h13v13" stroke="#27ae60" stroke-width="5" fill="none"/>`,
+ chartDown:  `<path d="M10 90h82M10 90V8" ${KN}/><path d="M16 24l20 20 15-10 32 40" stroke="#e74c3c" stroke-width="5" fill="none"/><path d="M70 74h13V61" stroke="#e74c3c" stroke-width="5" fill="none"/>`,
+ lock:       `<rect x="22" y="46" width="56" height="46" rx="5" ${K}/><path d="M33 46V32q17-22 34 0v14" ${KN}/><circle cx="50" cy="68" r="5" fill="#222"/>`,
+ camera:     `<rect x="8" y="36" width="84" height="50" rx="5" ${K}/><circle cx="50" cy="61" r="15" ${K}/><rect x="34" y="26" width="32" height="10" ${K}/><path d="M78 30l12-14M84 34l14-6" stroke="#f1c40f" stroke-width="4"/>`,
+ news:       `<rect x="8" y="18" width="84" height="68" ${K}/><path d="M16 30h68M16 44h32M16 54h32M16 64h32M16 74h32" stroke="#222" stroke-width="3"/><rect x="56" y="44" width="28" height="30" fill="#ddd" stroke="#222" stroke-width="2"/>`,
+ newsFake:   `<rect x="8" y="18" width="84" height="68" ${K}/><path d="M16 30h68M16 44h32M16 54h32M16 64h32" stroke="#222" stroke-width="3"/><text x="70" y="70" font-size="14" text-anchor="middle" font-weight="700" fill="#e74c3c">FAKE</text><path d="M14 22l72 60" stroke="#e74c3c" stroke-width="4"/>`,
+ gavel:      `<g transform="rotate(-40 40 34)"><rect x="22" y="24" width="36" height="20" rx="3" ${K}/></g><path d="M44 48l34 34" stroke="#222" stroke-width="8" stroke-linecap="round"/><rect x="40" y="86" width="52" height="8" ${K}/>`,
+ hourglass:  `<path d="M25 8h50v10q0 20-20 32q20 12 20 32v10H25V82q0-20 20-32Q25 38 25 18z" ${K}/><path d="M35 82q15-10 30 0" fill="#f1c40f" stroke="none"/>`,
+ bed:        `<rect x="4" y="52" width="92" height="26" rx="4" ${K}/><rect x="10" y="40" width="26" height="14" rx="4" ${K}/><path d="M8 78v16M92 78v16" ${KN}/>`,
+ darkRoom:   `<rect x="12" y="16" width="76" height="80" fill="#666" stroke="#222" stroke-width="3"/><rect x="36" y="32" width="26" height="20" fill="#999" stroke="#222" stroke-width="2"/>`,
+ brightRoom: `<rect x="4" y="12" width="92" height="84" ${K}/><rect x="14" y="22" width="72" height="36" fill="#fff59d" stroke="#222" stroke-width="2"/><path d="M50 22v36M14 40h72" stroke="#222" stroke-width="2"/>`,
+ board:      `<rect x="8" y="16" width="84" height="56" fill="#2e7d5b" stroke="#222" stroke-width="3"/><path d="M50 72v26M28 98h44" ${KN}/><text x="50" y="50" font-size="18" text-anchor="middle" font-weight="700" fill="#fff">ABC</text>`,
+ airplane:   `<path d="M8 56l70-32 12 6-26 30 16 26-8 6-22-22-24 16-6-6 16-16-30-4z" ${K}/>`,
+ suitcase:   `<rect x="18" y="36" width="64" height="50" rx="5" ${K}/><path d="M38 36V26h24v10" ${KN}/><path d="M30 86v10M70 86v10" ${KN}/><path d="M18 56h64" ${KN}/>`,
+ door:       `<rect x="26" y="10" width="48" height="88" ${K}/><path d="M26 10l30 8v88l-30-8z" fill="#f5deb3" stroke="#222" stroke-width="3"/><circle cx="50" cy="58" r="3" fill="#222"/>`,
+ stairs:     `<path d="M5 98V78h20V58h20V38h20V18h30v80z" ${K}/>`,
+ search:     `<circle cx="42" cy="42" r="26" ${K}/><path d="M62 62l28 28" stroke="#222" stroke-width="8" stroke-linecap="round"/>`,
+ discount:   `<path d="M12 52L54 10h36v36L48 88z" ${K}/><circle cx="76" cy="24" r="5" ${K}/><text x="40" y="66" font-size="16" font-weight="700" fill="#e74c3c" transform="rotate(-45 40 60)">-50%</text>`,
+ medal:      `<path d="M38 8h24l6 28H32z" fill="#e74c3c" stroke="#222" stroke-width="2.5"/><circle cx="50" cy="60" r="26" fill="#f1c40f" stroke="#222" stroke-width="3"/><path d="M50 44l5 11 12 1-9 8 3 12-11-6-11 6 3-12-9-8 12-1z" fill="#fff" stroke="#222" stroke-width="2"/>`,
+ gear:       `<circle cx="50" cy="50" r="22" ${K}/><circle cx="50" cy="50" r="8" ${K}/><path d="M50 16v12M50 72v12M16 50h12M72 50h12M26 26l8 8M66 66l8 8M74 26l-8 8M34 66l-8 8" stroke="#222" stroke-width="6" stroke-linecap="round"/>`,
+ phonePlay:  `<rect x="32" y="10" width="36" height="80" rx="6" ${K}/><path d="M43 38l18 12-18 12z" fill="#e74c3c" stroke="#222" stroke-width="2"/>`,
+ chain:      `<path d="M10 60q0-12 12-12t12 12-12 12-12-12zM30 48q0-12 12-12t12 12-12 12-12-12zM50 60q0-12 12-12t12 12-12 12-12-12zM70 48q0-12 12-12t12 12-12 12-12-12z" ${KN}/>`,
+ pills:      `<rect x="10" y="40" width="46" height="22" rx="11" transform="rotate(-30 33 51)" ${K}/><path d="M22 60l20-12" stroke="#222" stroke-width="3"/><circle cx="72" cy="66" r="12" fill="#e74c3c" stroke="#222" stroke-width="3"/>`,
+ target:     `<circle cx="50" cy="50" r="34" ${K}/><circle cx="50" cy="50" r="20" ${K}/><circle cx="50" cy="50" r="6" fill="#e74c3c" stroke="#222" stroke-width="3"/>`,
+ scaleEven:  `<path d="M50 92V28M28 92h44" ${KN}/><path d="M10 34h80" ${KN}/><path d="M10 34L0 60M10 34l10 26M90 34l-10 26M90 34l10 26" ${KN}/><path d="M0 60q10 10 20 0" ${K}/><path d="M80 60q10 10 20 0" ${K}/>`,
+ dollarUp:   `<path d="M50 90V20M30 40l20-20 20 20" stroke="#27ae60" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+ dollarDown: `<path d="M50 10v70M30 60l20 20 20-20" stroke="#e74c3c" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+ // 背景 2
+ bgOffice:   `<path d="M0 132h300" ${KN}/><rect x="200" y="14" width="80" height="40" ${K}/><path d="M240 14v40M200 34h80" ${KN}/><circle cx="40" cy="30" r="14" ${K}/><path d="M40 20v10l6 4" ${KN}/>`,
+ bgSchool:   `<path d="M0 132h300" ${KN}/><rect x="90" y="10" width="120" height="50" fill="#2e7d5b" stroke="#222" stroke-width="3"/><text x="150" y="42" font-size="18" text-anchor="middle" font-weight="700" fill="#fff">1 + 1 = 2</text>`,
+ bgNight:    `<path d="M0 132h300" ${KN}/><path d="M270 20q-18 3-18 20t18 20q-12 3-21-6t-6-22q3-12 27-12z" fill="#fff59d" stroke="#222" stroke-width="2.5"/>`,
+ // 建築、家具
+ mall: `<rect x="5" y="30" width="90" height="70" ${K}/><path d="M5 30l8-16h74l8 16z" ${K}/>` +
+       `<path d="M15 42h14v12H15zM43 42h14v12H43zM71 42h14v12H71zM15 64h14v12H15zM71 64h12v12H71z" ${K}/>` +
+       `<rect x="40" y="70" width="20" height="30" ${K}/><path d="M50 70v30" ${KN}/>` +
+       `<text x="50" y="26" font-size="12" text-anchor="middle" font-weight="700" fill="#222">MALL</text>`,
+ shop: `<rect x="15" y="50" width="70" height="50" ${K}/><path d="M8 50l7-16h70l7 16z" ${K}/>` +
+       `<path d="M8 50q7 9 14 0q7 9 14 0q7 9 14 0q7 9 14 0q7 9 14 0q7 9 14 0" ${K}/>` +
+       `<rect x="42" y="72" width="16" height="28" ${K}/><rect x="20" y="60" width="14" height="14" ${K}/><rect x="66" y="60" width="14" height="14" ${K}/>` +
+       `<text x="50" y="46" font-size="10" text-anchor="middle" font-weight="700" fill="#222">SHOP</text>`,
+ house: `<path d="M10 55L50 20l40 35" ${K}/><path d="M20 50v50h60V50" ${K}/><rect x="42" y="70" width="16" height="30" ${K}/>` +
+        `<rect x="26" y="60" width="12" height="12" ${K}/><rect x="62" y="60" width="12" height="12" ${K}/><path d="M70 30v-10h8v18" ${K}/>`,
+ tv: `<rect x="10" y="30" width="80" height="55" rx="4" ${K}/><rect x="16" y="36" width="68" height="43" fill="#dfe9f3" stroke="#222" stroke-width="2"/>` +
+     `<path d="M50 30l-12-14M50 30l12-14M35 95h30M50 85v10" ${KN}/>`,
+ tvFace: `<rect x="10" y="30" width="80" height="55" rx="4" ${K}/><rect x="16" y="36" width="68" height="43" fill="#dfe9f3" stroke="#222" stroke-width="2"/>` +
+     `<path d="M50 30l-12-14M50 30l12-14M35 95h30M50 85v10" ${KN}/><circle cx="50" cy="56" r="12" ${K}/><circle cx="45" cy="54" r="1.5" fill="#222"/><circle cx="55" cy="54" r="1.5" fill="#222"/><path d="M45 60q5 5 10 0" ${KN}/>`,
+ tvOff: `<rect x="10" y="30" width="80" height="55" rx="4" ${K}/><rect x="16" y="36" width="68" height="43" fill="#555" stroke="#222" stroke-width="2"/>` +
+     `<path d="M50 30l-12-14M50 30l12-14M35 95h30M50 85v10" ${KN}/>`,
+ sofa: `<rect x="5" y="55" width="90" height="30" rx="6" ${K}/><rect x="15" y="40" width="70" height="20" rx="4" ${K}/><path d="M10 85v12M90 85v12" ${KN}/>`,
+ table: `<ellipse cx="50" cy="60" rx="45" ry="8" ${K}/><path d="M15 64v34M85 64v34" ${KN}/>` +
+        `<circle cx="32" cy="58" r="7" ${K}/><circle cx="50" cy="58" r="7" ${K}/><circle cx="68" cy="58" r="7" ${K}/>`,
+ cart: `<path d="M8 30h12l10 40h46l9-30H30" ${K}/><circle cx="38" cy="82" r="6" ${K}/><circle cx="70" cy="82" r="6" ${K}/>` +
+       `<rect x="36" y="44" width="10" height="12" ${K}/><rect x="50" y="40" width="10" height="16" ${K}/><rect x="64" y="46" width="8" height="10" ${K}/>`,
+ cartFull: `<path d="M8 30h12l10 40h46l9-30H30" ${K}/><circle cx="38" cy="82" r="6" ${K}/><circle cx="70" cy="82" r="6" ${K}/>` +
+       `<rect x="34" y="20" width="12" height="36" ${K}/><rect x="48" y="14" width="12" height="42" ${K}/><rect x="62" y="24" width="10" height="32" ${K}/>`,
+ plug: `<path d="M5 90q25 0 35-25t30-25" ${KN}/><rect x="70" y="30" width="20" height="18" rx="3" ${K}/><path d="M90 35h7M90 43h7" ${KN}/>`,
+ socket: `<rect x="30" y="30" width="40" height="40" rx="4" ${K}/><path d="M43 45v10M57 45v10" stroke="#222" stroke-width="4"/>`,
+ // 道具、符號
+ clock: `<circle cx="50" cy="50" r="36" ${K}/><path d="M50 22v28l18 10" ${KN}/><path d="M50 14v6M50 80v6M14 50h6M80 50h6" ${KN}/>`,
+ clockFast: `<circle cx="50" cy="50" r="36" ${K}/><path d="M50 22v28l18 10" ${KN}/><path d="M92 40l6-6M94 55h8M92 70l6 6" ${KN}/>`,
+ list: `<rect x="25" y="10" width="50" height="80" rx="3" ${K}/><path d="M33 30h34M33 45h34M33 60h34M33 75h34" stroke="#bbb" stroke-width="2"/>` +
+       `<path d="M30 28l3 3 5-6M30 43l3 3 5-6M30 58l3 3 5-6M30 73l3 3 5-6" stroke="#27ae60" stroke-width="2.5" fill="none"/>`,
+ sign: `<path d="M50 100V50" ${KN}/><rect x="15" y="15" width="70" height="35" rx="3" ${K}/>`,
+ heart: `<path d="M50 90L18 58q-13-15 0-28t32 5q19-18 32-5t0 28z" stroke="#222" stroke-width="3" fill="#f9c" stroke-linejoin="round"/>`,
+ heartS: `<path d="M50 70L30 50q-8-9 0-17t20 3q12-11 20-3t0 17z" stroke="#222" stroke-width="2.5" fill="#f9c"/>`,
+ check: `<path d="M20 55l20 20 40-45" stroke="#27ae60" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+ cross: `<path d="M25 25l50 50M75 25L25 75" stroke="#e74c3c" stroke-width="10" stroke-linecap="round"/>`,
+ arrow: `<path d="M10 50h65M55 30l25 20-25 20" stroke="#222" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+ bubble: `<path d="M10 15h80v50H40L25 85V65H10z" ${K}/>`,
+ bubbleHeart: `<path d="M10 15h80v50H40L25 85V65H10z" ${K}/><path d="M50 58L36 44q-6-7 0-13t14 3q8-9 14-3t0 13z" fill="#f9c" stroke="#222" stroke-width="2"/>`,
+ bubbleTalk: `<path d="M10 15h80v50H40L25 85V65H10z" ${K}/><path d="M25 32h50M25 45h35" ${KN}/>`,
+ bubbleNo: `<path d="M10 15h80v50H40L25 85V65H10z" ${K}/><path d="M25 32h50M25 45h35" ${KN}/><path d="M18 20l64 44" stroke="#e74c3c" stroke-width="5" stroke-linecap="round"/>`,
+ zzz: `<text x="20" y="70" font-size="34" font-weight="700" fill="#222">z</text><text x="45" y="50" font-size="26" font-weight="700" fill="#222">z</text><text x="65" y="32" font-size="18" font-weight="700" fill="#222">z</text>`,
+ sweat: `<path d="M50 20q-14 24 0 36q14-12 0-36z" ${K}/>`,
+ lines: `<path d="M10 30h30M5 50h35M10 70h30" ${KN}/>`,
+ globe: `<circle cx="50" cy="50" r="36" ${K}/><ellipse cx="50" cy="50" rx="15" ry="36" ${K}/><path d="M14 50h72M20 32h60M20 68h60" stroke="#222" stroke-width="2.5"/>`,
+ sprout: `<path d="M50 100V60" ${KN}/><path d="M50 70q-25-5-25-30q25 5 25 30zM50 60q25-5 25-30q-25 5-25 30z" fill="#a5d6a7" stroke="#222" stroke-width="3"/>`,
+ shield: `<path d="M50 10l34 10v30q0 28-34 42Q16 78 16 50V20z" ${K}/><path d="M36 50l10 10 20-22" stroke="#27ae60" stroke-width="5" fill="none"/>`,
+ flag: `<path d="M25 100V12" ${KN}/><path d="M25 15h52l-12 15 12 15H25z" stroke="#222" stroke-width="3" fill="#f1c40f"/>`,
+ hi: `<text x="50" y="62" font-size="30" text-anchor="middle" font-weight="700" fill="#222">Hi!</text>`,
+ q: `<text x="50" y="80" font-size="80" text-anchor="middle" font-weight="700" fill="#222">?</text>`,
+ // 背景（畫在 300×150 整張）
+ bgStreet: `<path d="M0 132h300" ${KN}/><path d="M0 132q30-8 60 0" stroke="#bbb" stroke-width="2" fill="none"/>`,
+ bgRoom: `<path d="M0 132h300" ${KN}/><rect x="215" y="18" width="60" height="45" ${K}/><path d="M245 18v45M215 40h60" ${KN}/>`,
+ bgHome: `<path d="M0 132h300" ${KN}/><rect x="20" y="18" width="55" height="45" ${K}/><path d="M47 18v45M20 40h55" ${KN}/><path d="M28 66q0-8 8-8h20q8 0 8 8" ${KN}/>`,
+ bgMall: `<path d="M0 132h300" ${KN}/><path d="M20 20h260" ${KN}/><rect x="40" y="35" width="40" height="60" ${K}/><rect x="220" y="35" width="40" height="60" ${K}/><path d="M40 55h40M40 75h40M220 55h40M220 75h40" stroke="#bbb" stroke-width="2"/>`,
+};
+
+// ---------- SWT 新增元件：動物、自然 ----------
+Object.assign(SPR, {
+ eel:      `<path d="M8 60q14-30 28-10t28 10 28-10" stroke="#222" stroke-width="9" fill="none" stroke-linecap="round"/><path d="M8 60q14-30 28-10t28 10 28-10" stroke="#f1c40f" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="12" cy="56" r="2.5" fill="#222"/><path d="M70 22l-6 12h10l-8 14" stroke="#f1c40f" stroke-width="4" fill="none" stroke-linejoin="round"/><path d="M70 22l-6 12h10l-8 14" stroke="#222" stroke-width="1.5" fill="none" stroke-linejoin="round"/>`,
+ horse:    `<path d="M20 98V62q0-14 14-14h34l14-16 10 4-6 20v42" ${K}/><path d="M26 98V70M44 98V66M62 98V66M80 98V70" ${KN}/><path d="M68 32l-4-14 8 6 8-8 2 12" ${K}/><circle cx="80" cy="42" r="2" fill="#222"/><path d="M20 66q-12 6-10 22" ${KN}/>`,
+ fish:     `<path d="M12 50q28-30 60 0q-32 30-60 0z" ${K}/><path d="M72 50l20-14v28z" ${K}/><circle cx="26" cy="46" r="3" fill="#222"/><path d="M40 36q6 14 0 28" ${KN}/>`,
+ shark:    `<path d="M6 58q30-28 66-10l22-8-8 18 8 18-22-8q-36 18-66-10z" ${K}/><path d="M40 40l8-22 12 24" ${K}/><circle cx="20" cy="54" r="3" fill="#222"/><path d="M14 62q8 4 16 0" ${KN}/>`,
+ dog:      `<path d="M22 98V64q0-16 16-16h30l6-12h8l6 12v50" ${K}/><path d="M28 98V74M44 98V72M64 98V72M82 98V74" ${KN}/><path d="M70 36l-2-12 8 6M22 64q-14-2-14 14" ${KN}/><circle cx="76" cy="46" r="2.5" fill="#222"/><path d="M84 52q6 0 8 4" ${KN}/>`,
+ cow:      `<path d="M14 98V60q0-14 14-14h40q18 0 18 16v36" ${K}/><path d="M22 98V72M40 98V70M66 98V70M80 98V72" ${KN}/><path d="M60 34h20v12l-6 6H66l-6-6z" ${K}/><path d="M60 34l-8-10M80 34l8-10" ${KN}/><circle cx="68" cy="40" r="2" fill="#222"/><circle cx="76" cy="40" r="2" fill="#222"/><path d="M30 60q10 12 20 0q6 10 12 0" fill="#222" stroke="none"/><path d="M40 82q0 10 10 10t10-10" ${K}/>`,
+ bird:     `<path d="M20 60q16-24 40-16l18-10-6 14 8 8-20 2q-14 20-40 2z" ${K}/><circle cx="66" cy="42" r="2.5" fill="#222"/><path d="M28 56q18-14 36-6" ${KN}/><path d="M36 74l-4 12M44 74l2 12" ${KN}/>`,
+ bee:      `<ellipse cx="50" cy="58" rx="26" ry="18" fill="#f1c40f" stroke="#222" stroke-width="3"/><path d="M38 42v32M50 40v36M62 42v32" stroke="#222" stroke-width="5"/><circle cx="76" cy="52" r="10" ${K}/><circle cx="80" cy="50" r="2" fill="#222"/><path d="M78 42l4-8M84 44l6-6" ${KN}/><path d="M34 42q-10-22 12-16zM52 40q10-22 24-10z" fill="#dfe9f3" stroke="#222" stroke-width="2.5"/><path d="M22 60l-8 4" ${KN}/>`,
+ frog:     `<path d="M14 80q0-30 36-30t36 30z" fill="#a5d6a7" stroke="#222" stroke-width="3"/><circle cx="30" cy="48" r="10" fill="#a5d6a7" stroke="#222" stroke-width="3"/><circle cx="70" cy="48" r="10" fill="#a5d6a7" stroke="#222" stroke-width="3"/><circle cx="30" cy="48" r="3" fill="#222"/><circle cx="70" cy="48" r="3" fill="#222"/><path d="M36 70q14 8 28 0" ${KN}/><path d="M14 80l-8 12h16M86 80l8 12H78" ${K}/>`,
+ mouse:    `<path d="M14 70q0-24 30-24t40 18l8 6-10 4H44q-30 0-30-4z" ${K}/><circle cx="40" cy="42" r="10" ${K}/><circle cx="50" cy="40" r="7" ${K}/><circle cx="72" cy="60" r="2.5" fill="#222"/><path d="M14 70q-10 6-6 20" ${KN}/><path d="M86 66l8-6M88 70h10" stroke="#222" stroke-width="2"/>`,
+ panda:    `<circle cx="50" cy="52" r="30" ${K}/><circle cx="28" cy="30" r="10" fill="#222"/><circle cx="72" cy="30" r="10" fill="#222"/><ellipse cx="38" cy="48" rx="8" ry="10" fill="#222"/><ellipse cx="62" cy="48" rx="8" ry="10" fill="#222"/><circle cx="39" cy="47" r="2.5" fill="#fff"/><circle cx="61" cy="47" r="2.5" fill="#fff"/><ellipse cx="50" cy="62" rx="5" ry="3.5" fill="#222"/><path d="M44 70q6 5 12 0" ${KN}/>`,
+ monkey:   face('flat') + `<circle cx="36" cy="22" r="5" ${K}/><circle cx="64" cy="22" r="5" ${K}/>` + body('sit') + `<path d="M50 66q26 4 30-24" ${KN}/>`,
+ paw:      `<ellipse cx="50" cy="66" rx="20" ry="16" fill="#222"/><circle cx="26" cy="46" r="8" fill="#222"/><circle cx="42" cy="34" r="8" fill="#222"/><circle cx="58" cy="34" r="8" fill="#222"/><circle cx="74" cy="46" r="8" fill="#222"/>`,
+ goat:     `<path d="M22 98V64q0-14 14-14h30l8-14h8l2 14v48" ${K}/><path d="M28 98V74M44 98V70M62 98V70M78 98V74" ${KN}/><path d="M74 36l4-16M78 36l10-12" ${KN}/><circle cx="76" cy="44" r="2" fill="#222"/><path d="M82 54v10" ${KN}/>`,
+ ape:      face('flat') + `<circle cx="36" cy="22" r="5" ${K}/><circle cx="64" cy="22" r="5" ${K}/>` + `<path d="M50 35v31" ${KN}/><path d="M50 40l-24 30M50 40l24 30" ${KN}/><path d="M50 66l-12 30M50 66l12 30" ${KN}/>`,
+ treeRings:`<circle cx="50" cy="50" r="40" fill="#f5deb3" stroke="#222" stroke-width="3"/><circle cx="50" cy="50" r="30" ${KN}/><circle cx="50" cy="50" r="21" ${KN}/><circle cx="50" cy="50" r="13" ${KN}/><circle cx="50" cy="50" r="5" ${KN}/>`,
+ wheat:    `<path d="M50 100V30" ${KN}/><path d="M50 40l-12-8v10zM50 40l12-8v10zM50 54l-12-8v10zM50 54l12-8v10zM50 68l-12-8v10zM50 68l12-8v10z" fill="#f1c40f" stroke="#222" stroke-width="2.5" stroke-linejoin="round"/><path d="M50 30l-4-14M50 30l4-14" ${KN}/>`,
+ beans:    `<path d="M20 70q0-40 30-46q30 6 30 46q0 20-30 24q-30-4-30-24z" fill="#a5d6a7" stroke="#222" stroke-width="3"/><circle cx="50" cy="36" r="7" ${K}/><circle cx="50" cy="56" r="7" ${K}/><circle cx="50" cy="76" r="7" ${K}/>`,
+ grass:    `<path d="M10 100q4-30 0-50q10 20 10 50M30 100q8-30 0-56q14 24 12 56M54 100q-6-34 4-58q8 30 4 58M76 100q4-30 0-48q12 20 10 48" fill="#a5d6a7" stroke="#222" stroke-width="2.5"/>`,
+ soil:     `<rect x="4" y="50" width="92" height="46" fill="#a0522d" stroke="#222" stroke-width="3"/><path d="M4 50q23-12 46 0t46 0" fill="#a5d6a7" stroke="#222" stroke-width="3"/><circle cx="30" cy="70" r="4" fill="#222"/><circle cx="60" cy="80" r="3" fill="#222"/><circle cx="76" cy="64" r="3" fill="#222"/><path d="M40 86q6-4 12 0" stroke="#f9c" stroke-width="2.5" fill="none"/>`,
+ volcano:  `<path d="M4 98L34 30h32l30 68z" fill="#8d6e63" stroke="#222" stroke-width="3" stroke-linejoin="round"/><path d="M34 30q16 8 32 0" fill="#e74c3c" stroke="#222" stroke-width="2"/><path d="M50 30q-8-22 0-30q10 10 0 30zM40 28q-10-10-4-22M60 28q10-10 4-22" fill="#e74c3c" stroke="#222" stroke-width="2"/><path d="M44 30q-2 20 6 30t8 30" stroke="#e74c3c" stroke-width="4" fill="none"/>`,
+ mountain: `<path d="M2 98L36 30l16 24 12-16 32 60z" ${K}/><path d="M36 30l-8 16 8-4 8 6 8-14z" fill="#dfe9f3" stroke="#222" stroke-width="2"/>`,
+ cliff:    `<path d="M10 98V20h40l10 20-6 16 12 20-8 22z" ${K}/><path d="M20 40h20M18 60h18M22 80h22" stroke="#bbb" stroke-width="2"/><g transform="translate(58 52) scale(.45)">${face('flat') + body('stand')}</g>`,
+ cave:     `<path d="M6 98q0-70 44-70t44 70z" ${K}/><path d="M28 98q0-40 22-40t22 40z" fill="#555" stroke="#222" stroke-width="3"/>`,
+ island:   `<path d="M0 78q25-14 50 0t50 0v22H0z" fill="#bde" stroke="#222" stroke-width="3"/><path d="M26 78q24-20 48 0z" fill="#f5deb3" stroke="#222" stroke-width="3"/><path d="M50 72V44" ${KN}/><path d="M50 46q-18-10-28 2q18-2 28-2zM50 46q18-10 28 2q-18-2-28-2zM50 46q-8-16 0-22q8 6 0 22z" fill="#a5d6a7" stroke="#222" stroke-width="2"/>`,
+ africa:   `<path d="M34 10l30-2 12 12-6 12 14 16-8 26-12 8-6 16-12-2-6-20-12-14-2-18 10-16z" fill="#f1c40f" stroke="#222" stroke-width="3" stroke-linejoin="round"/>`,
+ australia:`<path d="M12 44l18-16 16 4 10-12 16 14 18 4 4 22-14 20-22 4-12-8-14 8-14-10z" fill="#f1c40f" stroke="#222" stroke-width="3" stroke-linejoin="round"/><path d="M78 76l8 6-4 8-8-4z" fill="#f1c40f" stroke="#222" stroke-width="2.5"/>`,
+ usa:      `<rect x="8" y="26" width="84" height="52" ${K}/><path d="M8 36h84M8 46h84M8 56h84M8 66h84" stroke="#e74c3c" stroke-width="4"/><rect x="8" y="26" width="36" height="28" fill="#2980b9" stroke="#222" stroke-width="3"/><path d="M14 32h4M22 32h4M30 32h4M14 40h4M22 40h4M30 40h4M14 48h4M22 48h4M30 48h4" stroke="#fff" stroke-width="2.5"/>`,
+ bigBen:   `<rect x="34" y="34" width="32" height="64" ${K}/><path d="M34 34l16-24 16 24z" ${K}/><circle cx="50" cy="52" r="10" ${K}/><path d="M50 46v6l4 3" ${KN}/><path d="M40 70h20M40 82h20" stroke="#222" stroke-width="2"/>`,
+ pyramid:  `<path d="M4 90L50 14l46 76z" fill="#f5deb3" stroke="#222" stroke-width="3" stroke-linejoin="round"/><path d="M50 14L36 90" ${KN}/>`,
+ sphinx:   `<path d="M6 92V70q0-14 16-14h36v36z" fill="#f5deb3" stroke="#222" stroke-width="3"/><path d="M58 56v36h34V70q0-10-8-10z" fill="#f5deb3" stroke="#222" stroke-width="3"/><path d="M42 56V36q0-16 16-16h6q16 0 16 16v20z" fill="#f5deb3" stroke="#222" stroke-width="3"/><path d="M42 40h40" ${KN}/><circle cx="54" cy="44" r="2" fill="#222"/><circle cx="68" cy="44" r="2" fill="#222"/><path d="M56 52q6 3 12 0" ${KN}/>`,
+ cloud:    `<path d="M25 72q-18 0-18-16t20-16q6-16 24-16t24 16q17 0 17 16t-18 16z" ${K}/>`,
+ rain:     `<path d="M25 58q-18 0-18-14t20-14q6-14 24-14t24 14q17 0 17 14t-18 14z" ${K}/><path d="M30 68l-6 14M50 68l-6 14M70 68l-6 14M40 82l-6 12M60 82l-6 12" stroke="#2980b9" stroke-width="3.5" stroke-linecap="round"/>`,
+ snow:     `<path d="M50 10v80M15 30l70 40M85 30L15 70" ${KN}/><path d="M42 18l8 8 8-8M42 82l8-8 8 8M20 40l10 2-2 10M80 40l-10 2 2 10M20 60l10-2-2-10M80 60l-10-2 2-10" ${KN}/>`,
+ hot:      `<rect x="40" y="10" width="20" height="60" rx="10" ${K}/><circle cx="50" cy="80" r="14" fill="#e74c3c" stroke="#222" stroke-width="3"/><rect x="46" y="26" width="8" height="46" fill="#e74c3c"/><path d="M66 22h10M66 36h10M66 50h10" ${KN}/>`,
+ cold:     `<rect x="40" y="10" width="20" height="60" rx="10" ${K}/><circle cx="50" cy="80" r="14" fill="#2980b9" stroke="#222" stroke-width="3"/><rect x="46" y="56" width="8" height="16" fill="#2980b9"/><path d="M66 22h10M66 36h10M66 50h10" ${KN}/>`,
+ wind:     `<path d="M10 36h50q12 0 12-10t-12-10M10 56h66q12 0 12 10t-12 10M10 76h40q10 0 10 8" ${KN}/>`,
+ drop:     `<path d="M50 10q30 36 30 56a30 30 0 0 1-60 0q0-20 30-56z" fill="#bde" stroke="#222" stroke-width="3"/><path d="M36 66q0 12 10 16" stroke="#fff" stroke-width="3" fill="none"/>`,
+ tap:      `<path d="M20 30h40v14H48v10h16q10 0 10 10v6" ${K}/><path d="M60 30v-8h-14v8" ${K}/><path d="M74 78q-6 10 0 16q6-6 0-16z" fill="#bde" stroke="#222" stroke-width="2"/><path d="M36 44v14h24V44" ${K}/>`,
+ flood:    `<path d="M0 62q15-12 30 0t30 0 30 0 30 0v38H0z" fill="#bde" stroke="#222" stroke-width="3"/><path d="M30 62V40l20-16 20 16v22" fill="#fff" stroke="#222" stroke-width="3"/><path d="M0 82q15-12 30 0t30 0 30 0 30 0" stroke="#222" stroke-width="2.5" fill="none"/>`,
+ fire:     `<path d="M50 10q20 24 20 44q10-6 8-20q18 26 4 46-14 18-32 18T18 80q-8-20 8-36q0 12 8 14q-8-28 16-48z" fill="#e74c3c" stroke="#222" stroke-width="3" stroke-linejoin="round"/><path d="M50 60q10 12 6 26-6 10-16 4-6-10 4-20 2 8 6-10z" fill="#f1c40f" stroke="none"/>`,
+ smoke:    `<path d="M30 96q-10-14 4-24q-12-10 2-22q-8-12 8-18M60 96q-10-14 4-24q-12-10 2-22q-8-12 8-18" stroke="#888" stroke-width="4" fill="none" stroke-linecap="round"/>`,
+ satellite:`<rect x="38" y="38" width="24" height="24" ${K}/><path d="M38 50H10M62 50h28" ${KN}/><rect x="4" y="40" width="20" height="20" fill="#2980b9" stroke="#222" stroke-width="2.5"/><rect x="76" y="40" width="20" height="20" fill="#2980b9" stroke="#222" stroke-width="2.5"/><path d="M50 38V24l-10-8M50 24l10-8" ${KN}/>`,
+ debris:   `<path d="M20 20l8 4-4 8-8-4zM70 16l10 6-6 8-10-4zM76 70l8 6-8 8-6-8zM26 74l10 2-4 10-8-4zM50 46l10 8-8 10-10-6z" ${K}/><path d="M6 8l10 8M92 92l-8-8" stroke="#888" stroke-width="2"/>`,
+ rocket:   `<path d="M50 6q20 20 20 56H30q0-36 20-56z" ${K}/><path d="M30 62l-14 20 14-4zM70 62l14 20-14-4z" ${K}/><circle cx="50" cy="40" r="7" fill="#bde" stroke="#222" stroke-width="2.5"/><path d="M40 80q10 20 20 0" fill="#e74c3c" stroke="#222" stroke-width="2.5"/>`,
+ amber:    `<path d="M50 8q36 10 40 50-6 32-40 34Q14 90 10 58q4-40 40-50z" fill="#f5b041" stroke="#222" stroke-width="3"/><g transform="translate(24 30) scale(.5)"><path d="M14 80q0-30 36-30t36 30z" fill="#a5d6a7" stroke="#222" stroke-width="4"/><circle cx="30" cy="48" r="10" fill="#a5d6a7" stroke="#222" stroke-width="4"/><circle cx="70" cy="48" r="10" fill="#a5d6a7" stroke="#222" stroke-width="4"/><circle cx="30" cy="48" r="3" fill="#222"/><circle cx="70" cy="48" r="3" fill="#222"/></g>`,
+ skull:    `<path d="M22 44q0-30 28-30t28 30q0 14-8 20v14H30V64q-8-6-8-20z" ${K}/><circle cx="40" cy="44" r="7" fill="#222"/><circle cx="60" cy="44" r="7" fill="#222"/><path d="M50 54l-4 8h8z" fill="#222"/><path d="M40 78v8M50 78v8M60 78v8" ${KN}/>`,
+ bones:    `<path d="M20 80L80 20M20 20l60 60" stroke="#222" stroke-width="8" stroke-linecap="round"/><circle cx="18" cy="18" r="6" ${K}/><circle cx="82" cy="18" r="6" ${K}/><circle cx="18" cy="82" r="6" ${K}/><circle cx="82" cy="82" r="6" ${K}/>`,
+ dna:      `<path d="M30 6q40 22 0 44t0 44M70 6q-40 22 0 44t0 44" ${KN}/><path d="M36 20h28M32 32h36M36 44h28M36 64h28M32 76h36M36 88h28" stroke="#2980b9" stroke-width="3"/>`,
+ virus:    `<circle cx="50" cy="50" r="22" fill="#a5d6a7" stroke="#222" stroke-width="3"/><path d="M50 28V12M50 72v16M28 50H12M72 50h16M34 34L23 23M66 66l11 11M66 34l11-11M34 66L23 77" stroke="#222" stroke-width="4" stroke-linecap="round"/><circle cx="50" cy="12" r="4" ${K}/><circle cx="50" cy="88" r="4" ${K}/><circle cx="12" cy="50" r="4" ${K}/><circle cx="88" cy="50" r="4" ${K}/><circle cx="42" cy="46" r="3" fill="#222"/><circle cx="58" cy="54" r="3" fill="#222"/>`,
+ cell:     `<ellipse cx="50" cy="50" rx="40" ry="30" fill="#f9c" stroke="#222" stroke-width="3"/><circle cx="46" cy="50" r="12" fill="#e74c3c" stroke="#222" stroke-width="2.5"/><circle cx="72" cy="42" r="4" fill="#222"/><circle cx="26" cy="60" r="3" fill="#222"/>`,
+ brain:    `<path d="M50 20q-22-8-30 12-12 10-2 28 0 20 20 22 10 8 12-4 2 12 12 4 20-2 20-22 10-18-2-28-8-20-30-12z" fill="#f9c" stroke="#222" stroke-width="3"/><path d="M50 20v62M30 36q10 4 12 14M70 36q-10 4-12 14M26 60q10-2 14 8M74 60q-10-2-14 8" ${KN}/>`,
+ chip:     `<rect x="26" y="26" width="48" height="48" rx="4" ${K}/><rect x="38" y="38" width="24" height="24" fill="#2980b9" stroke="#222" stroke-width="2"/><path d="M36 26V12M50 26V12M64 26V12M36 74v14M50 74v14M64 74v14M26 36H12M26 50H12M26 64H12M74 36h14M74 50h14M74 64h14" stroke="#222" stroke-width="3"/>`,
+ microscope:`<path d="M50 20l16 16-24 24-16-16z" ${K}/><path d="M42 60l-8 8 10 10 8-8" ${K}/><path d="M64 76q16-2 20-20" ${KN}/><rect x="20" y="88" width="60" height="8" ${K}/><path d="M50 88V78" ${KN}/><circle cx="38" cy="26" r="5" ${K}/>`,
+ flask:    `<path d="M40 10h20v26l22 40q4 14-10 14H28q-14 0-10-14l22-40z" ${K}/><path d="M28 70h44l-12-22H40z" fill="#a5d6a7" stroke="none"/><path d="M36 10h28" ${KN}/>`,
+ stone:    `<path d="M24 12h52l6 12v64l-6 6H30l-8-8V22z" fill="#8d8d8d" stroke="#222" stroke-width="3" stroke-linejoin="round"/><path d="M32 28h36M32 40h30M32 52h36M32 64h26M32 76h34" stroke="#fff" stroke-width="3"/>`,
+ tablet:   `<path d="M22 10h56v82H22z" fill="#f5deb3" stroke="#222" stroke-width="3"/><path d="M32 24l6-6 6 6M50 18v12M60 18l8 12-8 0M32 42h36M32 56h24M32 70h36" ${KN}/>`,
+ telescope:`<g transform="rotate(-30 50 50)"><rect x="10" y="42" width="60" height="16" rx="4" ${K}/><rect x="66" y="38" width="24" height="24" rx="4" ${K}/></g><path d="M40 62l-10 36M40 62l14 36M40 62v36" ${KN}/>`,
+});
+
+// ---------- SWT 新增元件：人物、物品 ----------
+const glasses = `<circle cx="45" cy="20" r="4.5" ${KN}/><circle cx="55" cy="20" r="4.5" ${KN}/><path d="M49.5 20h1" ${KN}/>`;
+const coat = `<path d="M40 38h20v30H40z" ${K}/><path d="M50 38v30" stroke="#222" stroke-width="1.5"/>`;
+const beard = `<path d="M40 28q10 14 20 0q0 12-10 14-10-2-10-14z" fill="#ccc" stroke="#222" stroke-width="2"/>`;
+Object.assign(SPR, {
+ scientist: face('happy') + glasses + coat + body('stand') + `<g transform="translate(56 42) scale(.32)">${SPR.flask}</g>`,
+ scientistQ: face('flat') + glasses + coat + body('stand') + `<text x="76" y="26" font-size="22" font-weight="700" fill="#222">?</text>`,
+ doctor:    face('happy') + coat + body('stand') + `<path d="M44 38q0 16 6 16t6-16" stroke="#222" stroke-width="2" fill="none"/><circle cx="50" cy="56" r="3" fill="#e74c3c"/><path d="M60 42h6v6h-6z" fill="#e74c3c"/>`,
+ teacher:   face('happy') + body('point') + `<path d="M70 32l14-10" stroke="#222" stroke-width="3"/><path d="M50 38l-12 14" ${KN}/>`,
+ student:   face('happy') + body('stand') + `<path d="M34 12l16-6 16 6-16 6z" fill="#222"/><path d="M66 12v8" stroke="#222" stroke-width="2"/><rect x="60" y="56" width="14" height="18" ${K}/>`,
+ baby:      `<circle cx="50" cy="58" r="22" ${K}/><circle cx="43" cy="55" r="2.5" fill="#222"/><circle cx="57" cy="55" r="2.5" fill="#222"/><path d="M44 66q6 5 12 0" ${KN}/><path d="M50 36q-4-8 4-10" ${KN}/><path d="M28 70q-8 12 4 20M72 70q8 12-4 20" ${KN}/>`,
+ twins:     `<g transform="translate(-16 40) scale(.6)">${face('happy') + bow + body('stand')}</g><g transform="translate(36 40) scale(.6)">${face('happy') + bow + body('stand')}</g>`,
+ oldMan:    face('flat') + beard + body('stand') + `<path d="M70 56v42" ${KN}/>`,
+ police:    face('flat') + `<path d="M34 12h32l-4-8H38z" fill="#2980b9" stroke="#222" stroke-width="2"/><path d="M36 12h28" ${KN}/>` + body('stand') + `<path d="M46 44l4-4 4 4-4 4z" fill="#f1c40f" stroke="#222" stroke-width="1.5"/>`,
+ soldier:   face('flat') + `<path d="M34 16q0-14 16-14t16 14z" fill="#2e7d5b" stroke="#222" stroke-width="2.5"/>` + body('stand') + `<path d="M64 54l16-24" stroke="#222" stroke-width="4"/>`,
+ king:      face('happy') + `<path d="M36 12l4-10 10 6 10-6 4 10z" fill="#f1c40f" stroke="#222" stroke-width="2.5" stroke-linejoin="round"/>` + body('stand') + `<path d="M40 38h20v30H40z" fill="#e74c3c" stroke="#222" stroke-width="2"/>`,
+ farmer:    face('happy') + `<path d="M28 14h44M40 14V6h20v8" fill="#f1c40f" stroke="#222" stroke-width="2.5"/>` + body('stand') + `<path d="M70 44v54M62 44h16" stroke="#222" stroke-width="3"/>`,
+ worker:    face('happy') + `<path d="M36 14q0-12 14-12t14 12z" fill="#f1c40f" stroke="#222" stroke-width="2.5"/>` + body('stand'),
+ suit:      face('happy') + body('stand') + tie,
+ suitSad:   face('sad') + body('stand') + tie,
+ speaker:   face('happy') + body('point') + `<rect x="70" y="26" width="6" height="14" rx="3" fill="#222"/><path d="M73 40v8" stroke="#222" stroke-width="2"/><path d="M82 24q6 6 0 12M88 20q10 10 0 20" ${KN}/>`,
+ thinker:   face('flat') + body('stand') + `<path d="M50 38l10 4 4-8" ${KN}/><text x="70" y="22" font-size="22" font-weight="700" fill="#222">?</text>`,
+ shy:       face('sad') + body('stand') + `<path d="M40 22q-6 8 0 12M60 22q6 8 0 12" stroke="#e74c3c" stroke-width="2" fill="none"/><path d="M62 42q10-6 6-14" ${KN}/>`,
+ miner:     face('happy') + `<path d="M36 14q0-12 14-12t14 12z" fill="#f1c40f" stroke="#222" stroke-width="2.5"/><circle cx="50" cy="8" r="3" fill="#fff59d" stroke="#222" stroke-width="1.5"/>` + body('stand') + `<path d="M64 54l18-22M72 30l10 4" stroke="#222" stroke-width="4"/>`,
+ explorer:  face('happy') + `<path d="M30 14h40M38 14V4h24v10" fill="#a5d6a7" stroke="#222" stroke-width="2.5"/>` + body('point') + `<path d="M66 34l16-6" stroke="#222" stroke-width="5"/>`,
+ writer:    face('flat') + body('sit') + `<rect x="10" y="66" width="80" height="6" ${K}/><path d="M62 52l10-14" stroke="#222" stroke-width="3"/><rect x="40" y="56" width="26" height="10" ${K}/>`,
+ pianist:   face('happy') + body('sit') + `<rect x="30" y="56" width="66" height="14" ${K}/><path d="M38 56v14M46 56v14M54 56v14M62 56v14M70 56v14M78 56v14M86 56v14" stroke="#222" stroke-width="1.5"/><path d="M30 70v28M90 70v28" ${KN}/>`,
+ diver:     face('flat') + `<circle cx="50" cy="22" r="17" ${KN}/>` + body('stand') + `<rect x="62" y="36" width="10" height="30" rx="4" ${K}/>`,
+ hunter:    face('flat') + body('point') + `<path d="M70 32l-6 22" stroke="#222" stroke-width="3"/><path d="M68 28q14 10 0 24" ${KN}/><path d="M70 32l14 0" stroke="#222" stroke-width="2"/>`,
+ volunteer: face('happy') + body('up') + `<path d="M50 52L38 40q-5-6 0-11t12 3q7-8 12-3t0 11z" fill="#f9c" stroke="#222" stroke-width="2"/>`,
+ goats:     `<g transform="translate(-14 30) scale(.7)">${SPR.goat}</g><g transform="translate(40 30) scale(.7)">${SPR.goat}</g>`,
+ family:    `<g transform="translate(-20 0) scale(.85)">${face('happy') + body('stand')}</g><g transform="translate(28 0) scale(.85)">${face('happy') + bun + body('stand')}</g><g transform="translate(58 44) scale(.5)">${face('happy') + bow + body('stand')}</g>`,
+ // 物品
+ honey:     `<path d="M30 30h40v10q10 10 10 30q0 24-30 24T20 70q0-20 10-30z" fill="#f5b041" stroke="#222" stroke-width="3"/><rect x="34" y="18" width="32" height="12" rx="3" ${K}/><path d="M40 56q10 8 20 0" stroke="#222" stroke-width="2" fill="none"/>`,
+ sugar:     `<rect x="20" y="54" width="26" height="26" fill="#fff" stroke="#222" stroke-width="3"/><rect x="54" y="54" width="26" height="26" fill="#fff" stroke="#222" stroke-width="3"/><rect x="37" y="28" width="26" height="26" fill="#fff" stroke="#222" stroke-width="3"/><path d="M20 54l8-8h26l-8 8M54 54l8-8h26l-8 8M37 28l8-8h26l-8 8" ${KN}/>`,
+ soda:      `<path d="M28 30h44l-6 62H34z" fill="#bde" stroke="#222" stroke-width="3"/><path d="M28 30h44" ${KN}/><path d="M56 30l10-22" stroke="#e74c3c" stroke-width="4"/><circle cx="42" cy="50" r="3" ${KN}/><circle cx="56" cy="64" r="3" ${KN}/><circle cx="46" cy="78" r="3" ${KN}/>`,
+ cereal:    `<path d="M10 48h80q0 34-40 34T10 48z" ${K}/><path d="M10 48q40-16 80 0" ${KN}/><path d="M64 60l6-26" stroke="#222" stroke-width="4"/><path d="M20 44q4-6 8 0M34 42q4-6 8 0M50 42q4-6 8 0" stroke="#f5b041" stroke-width="3" fill="none"/>`,
+ meat:      `<path d="M14 60q0-30 34-30t38 24q-6 30-38 30T14 60z" fill="#e74c3c" stroke="#222" stroke-width="3"/><path d="M30 50q10 22 30 20" stroke="#fff" stroke-width="3" fill="none"/><circle cx="76" cy="40" r="6" ${K}/>`,
+ plate:     `<ellipse cx="50" cy="60" rx="40" ry="18" ${K}/><ellipse cx="50" cy="60" rx="24" ry="10" ${KN}/><path d="M8 30v30M4 30v10q0 6 4 6M12 30v10q0 6-4 6M92 30q-6 10 0 20v10" ${KN}/>`,
+ breakfast: `<ellipse cx="50" cy="62" rx="40" ry="18" ${K}/><ellipse cx="46" cy="58" rx="16" ry="10" ${K}/><circle cx="46" cy="58" r="6" fill="#f1c40f" stroke="#222" stroke-width="2"/><path d="M62 54h16v10H62z" fill="#f5deb3" stroke="#222" stroke-width="2"/>`,
+ wine:      `<path d="M30 12h40q0 40-16 46v22h16v8H30v-8h16V58Q30 52 30 12z" ${K}/><path d="M32 30q18 8 36 0q-2 20-18 24-16-4-18-24z" fill="#8e44ad" stroke="none"/>`,
+ grapes:    `<circle cx="38" cy="40" r="10" fill="#8e44ad" stroke="#222" stroke-width="2.5"/><circle cx="62" cy="40" r="10" fill="#8e44ad" stroke="#222" stroke-width="2.5"/><circle cx="50" cy="56" r="10" fill="#8e44ad" stroke="#222" stroke-width="2.5"/><circle cx="30" cy="58" r="9" fill="#8e44ad" stroke="#222" stroke-width="2.5"/><circle cx="70" cy="58" r="9" fill="#8e44ad" stroke="#222" stroke-width="2.5"/><circle cx="40" cy="74" r="9" fill="#8e44ad" stroke="#222" stroke-width="2.5"/><circle cx="60" cy="74" r="9" fill="#8e44ad" stroke="#222" stroke-width="2.5"/><circle cx="50" cy="88" r="8" fill="#8e44ad" stroke="#222" stroke-width="2.5"/><path d="M50 30V12" ${KN}/>`,
+ cigarette: `<path d="M10 62h60v14H10z" ${K}/><path d="M58 62h12v14H58z" fill="#f5b041" stroke="#222" stroke-width="3"/><path d="M12 70q-6-10 0-20q-4-8 4-16" stroke="#888" stroke-width="3" fill="none"/><path d="M20 30l60 60M80 30L20 90" stroke="#e74c3c" stroke-width="6" stroke-linecap="round"/>`,
+ bicycle:   `<circle cx="24" cy="70" r="18" ${K}/><circle cx="76" cy="70" r="18" ${K}/><path d="M24 70l18-30h24l10 30M42 40l-8-10h14M66 40l-4-12h10M42 40l8 30h26" ${KN}/>`,
+ biplane:   `<path d="M10 34h80M10 58h80" stroke="#222" stroke-width="5" stroke-linecap="round"/><path d="M22 34v24M42 34v24M62 34v24M82 34v24" stroke="#222" stroke-width="2.5"/><path d="M30 46h50q8 0 8 8h-14" ${K}/><path d="M6 46l10-8v16z" ${K}/><circle cx="90" cy="54" r="7" ${K}/><path d="M36 66l4 12h20" ${KN}/>`,
+ toyHeli:   `<path d="M10 30h80" stroke="#222" stroke-width="4"/><path d="M50 30v10" ${KN}/><rect x="30" y="40" width="40" height="24" rx="10" ${K}/><path d="M70 52h20v-12" ${KN}/><path d="M36 64l-4 12M64 64l4 12" ${KN}/><path d="M40 52h10" stroke="#e74c3c" stroke-width="3"/>`,
+ ship:      `<path d="M8 70h84l-14 24H22z" ${K}/><path d="M50 70V10" ${KN}/><path d="M50 14q34 10 0 34zM50 18q-30 10 0 26z" fill="#f5deb3" stroke="#222" stroke-width="2.5"/>`,
+ truck:     `<rect x="4" y="34" width="56" height="40" ${K}/><path d="M60 46h20l14 14v14H60z" ${K}/><circle cx="22" cy="80" r="8" ${K}/><circle cx="76" cy="80" r="8" ${K}/><path d="M64 50h12l8 8H64z" fill="#dfe9f3" stroke="#222" stroke-width="2"/>`,
+ drone:     `<rect x="36" y="44" width="28" height="14" rx="4" ${K}/><path d="M36 50H14M64 50h22" ${KN}/><path d="M2 42h24M74 42h24" stroke="#222" stroke-width="4"/><path d="M14 50v-8M86 50v-8" ${KN}/><rect x="42" y="58" width="16" height="14" ${K}/>`,
+ bus:       `<rect x="8" y="26" width="84" height="54" rx="8" ${K}/><rect x="16" y="36" width="18" height="16" fill="#dfe9f3" stroke="#222" stroke-width="2"/><rect x="41" y="36" width="18" height="16" fill="#dfe9f3" stroke="#222" stroke-width="2"/><rect x="66" y="36" width="18" height="16" fill="#dfe9f3" stroke="#222" stroke-width="2"/><circle cx="26" cy="84" r="8" ${K}/><circle cx="74" cy="84" r="8" ${K}/>`,
+ jam:       `<g transform="translate(-10 20) scale(.55)">${SPR.car}</g><g transform="translate(26 20) scale(.55)">${SPR.car}</g><g transform="translate(62 20) scale(.55)">${SPR.car}</g><path d="M0 72h100" ${KN}/><path d="M20 84q-6 8 0 14M40 84q-6 8 0 14" stroke="#888" stroke-width="2.5" fill="none"/>`,
+ ecar:      `<path d="M8 72V56l16-18h52l16 18v16z" ${K}/><rect x="28" y="44" width="18" height="12" fill="#dfe9f3" stroke="#222" stroke-width="2"/><rect x="54" y="44" width="18" height="12" fill="#dfe9f3" stroke="#222" stroke-width="2"/><circle cx="28" cy="76" r="8" ${K}/><circle cx="72" cy="76" r="8" ${K}/><path d="M92 40l-8 14h10l-8 14" stroke="#27ae60" stroke-width="4" fill="none" stroke-linejoin="round"/>`,
+ battery:   `<rect x="10" y="34" width="72" height="32" rx="4" ${K}/><rect x="82" y="44" width="8" height="12" ${K}/><rect x="16" y="40" width="14" height="20" fill="#27ae60"/><rect x="34" y="40" width="14" height="20" fill="#27ae60"/><rect x="52" y="40" width="14" height="20" fill="#27ae60"/>`,
+ oil:       `<path d="M26 20h48v70q0 6-6 6H32q-6 0-6-6z" ${K}/><path d="M26 34h48M26 50h48M26 66h48" ${KN}/><path d="M42 40q8 10 8 18a8 8 0 0 1-16 0q0-8 8-18z" fill="#222"/>`,
+ solar:     `<path d="M10 30h80l10 40H0z" fill="#2980b9" stroke="#222" stroke-width="3"/><path d="M36 30l-10 40M64 30l10 40M5 50h90" stroke="#fff" stroke-width="2"/><path d="M50 70v26M36 96h28" ${KN}/><circle cx="84" cy="14" r="7" fill="#f1c40f" stroke="#222" stroke-width="2.5"/>`,
+ geo:       `<path d="M4 98V60h92v38z" fill="#8d6e63" stroke="#222" stroke-width="3"/><path d="M28 60V24M52 60V24" stroke="#2980b9" stroke-width="5"/><path d="M28 24q-8-8 0-18M52 24q8-8 0-18" stroke="#888" stroke-width="3" fill="none"/><rect x="64" y="34" width="24" height="26" ${K}/><path d="M64 44h24" ${KN}/><path d="M28 60v-10h24v10" fill="#e74c3c" stroke="none"/>`,
+ lightning: `<path d="M58 6L26 54h20l-8 40 36-52H54z" fill="#f1c40f" stroke="#222" stroke-width="3" stroke-linejoin="round"/>`,
+ printer3d: `<rect x="14" y="12" width="72" height="14" ${K}/><path d="M20 26v56M80 26v56" ${KN}/><rect x="14" y="82" width="72" height="12" ${K}/><path d="M44 26v12h12V26" ${K}/><path d="M50 38v12" stroke="#e74c3c" stroke-width="3"/><path d="M36 82V64h28v18" fill="#e74c3c" stroke="#222" stroke-width="2.5"/>`,
+ machine:   `<rect x="14" y="30" width="72" height="56" rx="4" ${K}/><rect x="24" y="40" width="30" height="20" fill="#dfe9f3" stroke="#222" stroke-width="2"/><circle cx="70" cy="50" r="8" ${K}/><path d="M24 70h52M24 78h30" stroke="#222" stroke-width="2.5"/><path d="M30 30V18h40v12" ${KN}/>`,
+ monitor:   `<rect x="10" y="16" width="80" height="54" rx="4" ${K}/><rect x="16" y="22" width="68" height="42" fill="#dfe9f3" stroke="none"/><path d="M35 88h30M50 70v18" ${KN}/>`,
+ web:       `<circle cx="50" cy="50" r="36" ${K}/><ellipse cx="50" cy="50" rx="15" ry="36" ${KN}/><path d="M14 50h72M20 32h60M20 68h60" stroke="#222" stroke-width="2"/><text x="50" y="58" font-size="20" text-anchor="middle" font-weight="700" fill="#2980b9" stroke="#fff" stroke-width="3" paint-order="stroke">www</text>`,
+ network:   `<circle cx="50" cy="20" r="9" ${K}/><circle cx="16" cy="70" r="9" ${K}/><circle cx="84" cy="70" r="9" ${K}/><circle cx="50" cy="86" r="9" ${K}/><path d="M50 29L16 61M50 29l34 32M16 79l34 7M84 79l-34 7M50 29v48" ${KN}/>`,
+ keyboard:  `<rect x="6" y="34" width="88" height="40" rx="4" ${K}/><path d="M14 44h8M28 44h8M42 44h8M56 44h8M70 44h8M14 56h8M28 56h8M42 56h8M56 56h8M70 56h8M26 66h48" stroke="#222" stroke-width="3"/>`,
+ pen:       `<path d="M20 80L64 20l16 12-44 60-20 8z" ${K}/><path d="M56 30l16 12" ${KN}/><path d="M20 80l4 12 12-4" fill="#222"/>`,
+ letters:   `<text x="50" y="66" font-size="40" text-anchor="middle" font-weight="700" fill="#222">ABC</text>`,
+ film:      `<circle cx="50" cy="50" r="38" ${K}/><circle cx="50" cy="50" r="8" ${K}/><circle cx="50" cy="26" r="7" ${K}/><circle cx="50" cy="74" r="7" ${K}/><circle cx="26" cy="50" r="7" ${K}/><circle cx="74" cy="50" r="7" ${K}/>`,
+ piano:     `<rect x="6" y="40" width="88" height="40" ${K}/><path d="M18 40v24M30 40v24M42 40v24M58 40v24M70 40v24M82 40v24" stroke="#222" stroke-width="5"/><path d="M6 80v16M94 80v16" ${KN}/>`,
+ mic:       `<rect x="38" y="10" width="24" height="46" rx="12" ${K}/><path d="M28 44q0 22 22 22t22-22M50 66v22M36 88h28" ${KN}/>`,
+ palette:   `<path d="M50 12q40 0 40 34-10 8-20 6-12 4-4 14-6 22-30 22-36 0-36-36 10-40 50-40z" ${K}/><circle cx="32" cy="36" r="6" fill="#e74c3c"/><circle cx="52" cy="28" r="6" fill="#2980b9"/><circle cx="70" cy="36" r="6" fill="#f1c40f"/><circle cx="28" cy="58" r="6" fill="#27ae60"/>`,
+ art:       `<rect x="14" y="14" width="72" height="56" ${K}/><path d="M22 60l16-24 12 14 10-8 18 18z" fill="#a5d6a7" stroke="#222" stroke-width="2.5"/><circle cx="66" cy="30" r="6" fill="#f1c40f" stroke="#222" stroke-width="2"/><path d="M30 78h40M50 70v8" ${KN}/>`,
+ columns:   `<path d="M6 34L50 12l44 22z" ${K}/><rect x="10" y="34" width="80" height="8" ${K}/><path d="M20 42v44M38 42v44M62 42v44M80 42v44" stroke="#222" stroke-width="5"/><rect x="6" y="86" width="88" height="10" ${K}/>`,
+ shelf:     `<rect x="10" y="10" width="80" height="84" ${K}/><path d="M10 38h80M10 66h80" ${KN}/><path d="M18 38V18h8v20zM30 38V22h8v16zM42 38V16h8v22zM60 38V20h10v18zM18 66V46h8v20zM30 66V50h8v16zM46 66V44h8v22zM62 66V48h10v18zM18 94V74h8v20zM34 94V78h8v16zM50 94V72h8v22zM64 94V76h10v18z" ${K}/>`,
+ scroll:    `<path d="M20 20h60v60H20z" fill="#f5deb3" stroke="#222" stroke-width="3"/><rect x="12" y="12" width="76" height="12" rx="6" ${K}/><rect x="12" y="76" width="76" height="12" rx="6" ${K}/><path d="M30 36h40M30 48h30M30 60h40" stroke="#222" stroke-width="2.5"/>`,
+ clockB:    `<circle cx="50" cy="40" r="30" ${K}/><path d="M50 18v22l14 8" ${KN}/><path d="M50 70v20" stroke="#222" stroke-width="3"/><circle cx="50" cy="92" r="6" fill="#f1c40f" stroke="#222" stroke-width="2.5"/><text x="50" y="46" font-size="10" text-anchor="middle" font-weight="700" fill="#222">B</text>`,
+ ghost:     `<path d="M22 96V50q0-28 28-28t28 28v46l-10-8-9 8-9-8-9 8-9-8z" fill="#fff" stroke="#222" stroke-width="3" stroke-dasharray="6 4"/><circle cx="40" cy="50" r="4" fill="#222"/><circle cx="60" cy="50" r="4" fill="#222"/>`,
+ straw:     `<rect x="8" y="46" width="84" height="44" rx="4" fill="#f1c40f" stroke="#222" stroke-width="3"/><path d="M8 62h84M8 76h84M30 46v44M64 46v44" stroke="#222" stroke-width="2"/><path d="M40 46l6-14 6 14M56 46l6-14 6 14" ${KN}/>`,
+ wall:      `<rect x="6" y="20" width="88" height="70" ${K}/><path d="M6 38h88M6 56h88M6 74h88M30 20v18M62 20v18M18 38v18M50 38v18M82 38v18M30 56v18M62 56v18M18 74v16M50 74v16M82 74v16" stroke="#222" stroke-width="2.5"/>`,
+ lens:      `<ellipse cx="50" cy="50" rx="18" ry="36" ${K}/><path d="M50 14q-30 36 0 72M50 14q30 36 0 72" fill="#bde" stroke="none"/><path d="M38 40q4-10 12-14" stroke="#fff" stroke-width="3" fill="none"/>`,
+ package:   `<path d="M10 36l40-16 40 16v44l-40 16-40-16z" ${K}/><path d="M10 36l40 16 40-16M50 52v44" ${KN}/><path d="M30 28l40 16" stroke="#222" stroke-width="2"/>`,
+ coins:     `<ellipse cx="40" cy="78" rx="26" ry="8" ${K}/><path d="M14 78V64q0-8 26-8t26 8v14" ${K}/><ellipse cx="40" cy="64" rx="26" ry="8" ${K}/><path d="M14 64V50q0-8 26-8t26 8v14" ${K}/><ellipse cx="40" cy="50" rx="26" ry="8" ${K}/><circle cx="76" cy="40" r="14" fill="#f1c40f" stroke="#222" stroke-width="3"/><text x="76" y="46" font-size="16" text-anchor="middle" font-weight="700" fill="#222">$</text>`,
+ bank:      `<path d="M6 34L50 12l44 22z" ${K}/><rect x="10" y="34" width="80" height="8" ${K}/><path d="M22 42v42M42 42v42M58 42v42M78 42v42" stroke="#222" stroke-width="5"/><rect x="6" y="84" width="88" height="10" ${K}/><text x="50" y="30" font-size="12" text-anchor="middle" font-weight="700" fill="#222">$</text>`,
+ card:      `<rect x="6" y="26" width="88" height="54" rx="6" ${K}/><rect x="6" y="38" width="88" height="10" fill="#222"/><rect x="16" y="58" width="30" height="8" fill="#f1c40f" stroke="#222" stroke-width="2"/>`,
+ piggy:     `<ellipse cx="50" cy="58" rx="34" ry="24" fill="#f9c" stroke="#222" stroke-width="3"/><circle cx="82" cy="56" r="10" fill="#f9c" stroke="#222" stroke-width="3"/><circle cx="84" cy="54" r="2" fill="#222"/><path d="M40 30h18v6H40z" fill="#222"/><path d="M30 80v12M66 80v12" ${KN}/><path d="M20 40l-6-10 12 2" fill="#f9c" stroke="#222" stroke-width="2.5"/>`,
+ receipt:   `<path d="M24 8h52v84l-8-6-9 6-9-6-9 6-9-6-8 6z" ${K}/><path d="M34 26h32M34 38h32M34 50h20M34 66h32" stroke="#222" stroke-width="2.5"/><text x="60" y="72" font-size="12" font-weight="700" fill="#222">£57</text>`,
+ sale:      `<rect x="10" y="30" width="80" height="44" rx="4" fill="#e74c3c" stroke="#222" stroke-width="3"/><text x="50" y="60" font-size="22" text-anchor="middle" font-weight="700" fill="#fff">SALE</text><path d="M50 74v22" ${KN}/>`,
+ percent:   `<text x="50" y="72" font-size="64" text-anchor="middle" font-weight="700" fill="#222">%</text>`,
+ ballot:    `<rect x="16" y="46" width="68" height="46" ${K}/><path d="M36 46h28v-4H36z" fill="#222"/><path d="M36 8h32l6 30H30z" ${K}/><path d="M42 24l6 6 12-12" stroke="#27ae60" stroke-width="4" fill="none"/>`,
+ podium:    `<rect x="26" y="46" width="48" height="50" ${K}/><rect x="20" y="36" width="60" height="12" ${K}/><g transform="translate(24 -10) scale(.55)">${face('happy') + body('point')}</g>`,
+ swords:    `<path d="M20 20l60 60M80 20L20 80" stroke="#222" stroke-width="6" stroke-linecap="round"/><path d="M14 14l12 12M74 14L62 26M14 86l12-12M74 86L62 74" stroke="#222" stroke-width="6" stroke-linecap="round"/>`,
+ fist:      `<rect x="24" y="30" width="52" height="46" rx="10" ${K}/><path d="M24 44h52M36 30V16h10v14M50 30V14h10v16M64 30V18h10v12" ${K}/><path d="M76 56q12 4 0 20" ${K}/><path d="M10 26l8 6M8 46h10M10 66l8-6" stroke="#e74c3c" stroke-width="3"/>`,
+ megaphone: `<path d="M14 40h20l40-24v70L34 62H14z" ${K}/><path d="M22 62v22h14V62" ${K}/><path d="M82 40q8 12 0 24" ${KN}/>`,
+ chess:     `<rect x="10" y="10" width="80" height="80" ${K}/><path d="M10 10h20v20H10zM50 10h20v20H50zM30 30h20v20H30zM70 30h20v20H70zM10 50h20v20H10zM50 50h20v20H50zM30 70h20v20H30zM70 70h20v20H70z" fill="#222"/>`,
+ crown:     `<path d="M12 74L8 30l22 16 20-30 20 30 22-16-4 44z" fill="#f1c40f" stroke="#222" stroke-width="3" stroke-linejoin="round"/><rect x="12" y="74" width="76" height="12" ${K}/>`,
+ key:       `<circle cx="30" cy="50" r="20" ${K}/><circle cx="30" cy="50" r="7" ${K}/><path d="M50 50h44v14h-10v-8h-8v10h-10v-10h-8" ${K}/>`,
+ puzzle:    `<path d="M20 20h24q-4-14 10-14t10 14h16v24q14-4 14 10t-14 10v20H56q4 14-10 14T36 84H20V60q-14 4-14-10t14-10z" ${K}/>`,
+ cycle:     `<path d="M50 14a36 36 0 0 1 34 24M50 86a36 36 0 0 1-34-24" ${KN}/><path d="M74 24l12 14-16 4M26 76L14 62l16-4" ${KN}/>`,
+ stages:    `<path d="M6 90h88M6 90V10" ${KN}/><path d="M12 84q16-8 24-40t22-24q16 8 22 30q4 22 12 28" stroke="#2980b9" stroke-width="5" fill="none"/><path d="M30 20v70M52 20v70M74 20v70" stroke="#222" stroke-width="2" stroke-dasharray="4 4"/>`,
+ triangle:  `<path d="M50 12L8 84h84z" ${K}/><circle cx="50" cy="12" r="6" fill="#e74c3c" stroke="#222" stroke-width="2.5"/><circle cx="8" cy="84" r="6" fill="#2980b9" stroke="#222" stroke-width="2.5"/><circle cx="92" cy="84" r="6" fill="#27ae60" stroke="#222" stroke-width="2.5"/>`,
+ balloon:   `<ellipse cx="50" cy="40" rx="24" ry="30" fill="#e74c3c" stroke="#222" stroke-width="3"/><path d="M50 70l-4 6h8zM50 76q-6 12 0 22" ${KN}/>`,
+ bomb:      `<circle cx="46" cy="60" r="30" fill="#222"/><path d="M60 34l10-14q8-8 16 0" stroke="#222" stroke-width="4" fill="none"/><path d="M84 12l4-6M90 18l6-2M78 8l-2-6" stroke="#e74c3c" stroke-width="3"/>`,
+ pie:       `<circle cx="50" cy="50" r="36" ${K}/><path d="M50 50V14a36 36 0 0 1 34 24z" fill="#2980b9" stroke="#222" stroke-width="3"/><path d="M50 50l34-12a36 36 0 0 1-20 44z" fill="#f1c40f" stroke="#222" stroke-width="3"/>`,
+ numbers:   `<text x="50" y="44" font-size="26" text-anchor="middle" font-weight="700" fill="#222">37%</text><text x="50" y="80" font-size="22" text-anchor="middle" font-weight="700" fill="#2980b9">1,864</text>`,
+ map:       `<path d="M8 22l28-10 28 10 28-10v66l-28 10-28-10-28 10z" ${K}/><path d="M36 12v66M64 22v66" ${KN}/><path d="M20 40q10-4 16 6t18 0" stroke="#2980b9" stroke-width="2.5" fill="none"/><circle cx="76" cy="46" r="5" fill="#e74c3c" stroke="#222" stroke-width="2"/>`,
+ pin:       `<path d="M50 96Q20 60 20 40a30 30 0 0 1 60 0q0 20-30 56z" fill="#e74c3c" stroke="#222" stroke-width="3"/><circle cx="50" cy="40" r="11" ${K}/>`,
+});
+
+// ---------- SWT 新增元件：符號、場所 ----------
+Object.assign(SPR, {
+ exclaim:   `<path d="M42 10h16l-4 52H46z" fill="#e74c3c" stroke="#222" stroke-width="3" stroke-linejoin="round"/><circle cx="50" cy="80" r="9" fill="#e74c3c" stroke="#222" stroke-width="3"/>`,
+ warning:   `<path d="M50 10L94 88H6z" fill="#f1c40f" stroke="#222" stroke-width="3" stroke-linejoin="round"/><path d="M50 36v26" stroke="#222" stroke-width="6" stroke-linecap="round"/><circle cx="50" cy="74" r="4" fill="#222"/>`,
+ plus:      `<path d="M50 20v60M20 50h60" stroke="#222" stroke-width="10" stroke-linecap="round"/>`,
+ eq:        `<path d="M20 38h60M20 62h60" stroke="#222" stroke-width="10" stroke-linecap="round"/>`,
+ neq:       `<path d="M20 38h60M20 62h60" stroke="#222" stroke-width="10" stroke-linecap="round"/><path d="M60 16L40 84" stroke="#e74c3c" stroke-width="8" stroke-linecap="round"/>`,
+ thumbUp:   `<path d="M30 46h14V26q0-12 8-12t8 10l-2 22h20q10 0 8 12l-6 24q-2 8-10 8H30z" ${K}/><rect x="10" y="46" width="20" height="44" ${K}/>`,
+ thumbDown: `<path d="M30 54h14v20q0 12 8 12t8-10l-2-22h20q10 0 8-12l-6-24q-2-8-10-8H30z" ${K}/><rect x="10" y="10" width="20" height="44" ${K}/>`,
+ upBig:     `<path d="M50 90V16M22 44l28-28 28 28" stroke="#27ae60" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+ downBig:   `<path d="M50 10v74M22 56l28 28 28-28" stroke="#e74c3c" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+ twoWay:    `<path d="M10 36h56M50 18l18 18-18 18M90 64H34M50 46L32 64l18 18" stroke="#222" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+ glassesBig:`<circle cx="28" cy="52" r="20" ${K}/><circle cx="72" cy="52" r="20" ${K}/><path d="M48 52h4M8 48L2 40M92 48l6-8" ${KN}/>`,
+ ear:       `<path d="M40 30q22-16 26 8q2 16-10 22q-8 4-8 14" ${KN}/><path d="M48 40q8-4 10 4" ${KN}/>`,
+ hand:      `<path d="M30 96V50q-14-10-4-18l10 12V16q0-6 6-6t6 6v22h4V12q0-6 6-6t6 6v28h4V18q0-6 6-6t6 6v40q0 14-8 22-8 10-8 16z" ${K}/>`,
+ speechNo:  `<path d="M10 15h80v50H40L25 85V65H10z" ${K}/><text x="50" y="50" font-size="22" text-anchor="middle" font-weight="700" fill="#e74c3c">NO</text>`,
+ speechYes: `<path d="M10 15h80v50H40L25 85V65H10z" ${K}/><text x="50" y="50" font-size="22" text-anchor="middle" font-weight="700" fill="#27ae60">YES</text>`,
+ idea:      `<path d="M35 58q-16-12-8-30t23-14q16 4 23 14t-8 30v8H35z" fill="#fff59d" stroke="#222" stroke-width="3" stroke-linejoin="round"/><path d="M38 76h24M42 86h16" ${KN}/><path d="M50 10V2M20 20l-6-6M80 20l6-6" ${KN}/>`,
+ ten:       `<text x="50" y="66" font-size="36" text-anchor="middle" font-weight="700" fill="#222">×10</text>`,
+ half:      `<circle cx="50" cy="50" r="36" ${K}/><path d="M50 14a36 36 0 0 1 0 72z" fill="#222"/>`,
+ one:       `<text x="50" y="80" font-size="80" text-anchor="middle" font-weight="700" fill="#222">1</text>`,
+ two2:      `<text x="50" y="80" font-size="80" text-anchor="middle" font-weight="700" fill="#222">2</text>`,
+ three:     `<text x="50" y="80" font-size="80" text-anchor="middle" font-weight="700" fill="#222">3</text>`,
+ year:      `<rect x="8" y="26" width="84" height="50" rx="6" ${K}/><text x="50" y="62" font-size="26" text-anchor="middle" font-weight="700" fill="#222">1903</text>`,
+ // 場所
+ school:    `<path d="M10 98V46l40-24 40 24v52z" ${K}/><rect x="42" y="70" width="16" height="28" ${K}/><rect x="20" y="56" width="12" height="12" ${K}/><rect x="68" y="56" width="12" height="12" ${K}/><path d="M50 22V8h14v10H50" ${K}/>`,
+ office:    `<rect x="14" y="10" width="72" height="88" ${K}/><path d="M24 20h14v12H24zM43 20h14v12H43zM62 20h14v12H62zM24 40h14v12H24zM43 40h14v12H43zM62 40h14v12H62zM24 60h14v12H24zM62 60h14v12H62z" fill="#dfe9f3" stroke="#222" stroke-width="2"/><rect x="42" y="78" width="16" height="20" ${K}/>`,
+ farm:      `<path d="M10 98V50l40-30 40 30v48z" fill="#e74c3c" stroke="#222" stroke-width="3"/><path d="M10 50h80" ${KN}/><rect x="38" y="66" width="24" height="32" ${K}/><path d="M38 66l24 32M62 66L38 98" ${KN}/>`,
+ lab:       `<rect x="6" y="60" width="88" height="8" ${K}/><path d="M14 68v30M86 68v30" ${KN}/><g transform="translate(14 14) scale(.48)">${SPR.flask}</g><g transform="translate(50 20) scale(.42)">${SPR.microscope}</g>`,
+ classroom: `<rect x="8" y="10" width="84" height="46" fill="#2e7d5b" stroke="#222" stroke-width="3"/><path d="M20 26h30M20 40h44" stroke="#fff" stroke-width="3"/><rect x="10" y="74" width="24" height="8" ${K}/><rect x="38" y="74" width="24" height="8" ${K}/><rect x="66" y="74" width="24" height="8" ${K}/><path d="M12 82v14M32 82v14M40 82v14M60 82v14M68 82v14M88 82v14" ${KN}/>`,
+ stadium:   `<path d="M6 60q44-30 88 0v10q-44 30-88 0z" ${K}/><path d="M6 60q44 30 88 0" ${KN}/><path d="M20 30h60v10H20z" ${K}/><path d="M26 40v20M74 40v20" ${KN}/>`,
+ beach:     `<path d="M0 70q25-12 50 0t50 0v30H0z" fill="#bde" stroke="#222" stroke-width="3"/><path d="M4 56q46-40 92 0z" fill="#f9c" stroke="#222" stroke-width="3"/><path d="M50 56v40" ${KN}/><circle cx="82" cy="18" r="9" fill="#f1c40f" stroke="#222" stroke-width="2.5"/>`,
+ lodge:     `<path d="M8 58L50 20l42 38" ${K}/><path d="M18 52v46h64V52" fill="#f5deb3" stroke="#222" stroke-width="3"/><rect x="42" y="72" width="16" height="26" ${K}/><path d="M18 62h64M18 74h64M18 86h64" stroke="#222" stroke-width="1.5"/>`,
+ town:      `<path d="M2 100V70h14V56h12v14h10V50h18v20h10V60h14v40z" ${K}/><path d="M60 50l8-14 8 14" ${K}/><path d="M8 78h4M8 88h4M32 76h4M46 58h4M46 70h4M76 68h4M76 82h4" stroke="#222" stroke-width="2"/>`,
+ countryside:`<path d="M0 80q25-16 50 0t50 0v20H0z" fill="#a5d6a7" stroke="#222" stroke-width="3"/><path d="M60 78V50l14-12 14 12v28z" ${K}/><rect x="70" y="64" width="8" height="14" ${K}/><g transform="translate(6 40) scale(.4)">${SPR.tree}</g><circle cx="20" cy="18" r="8" fill="#f1c40f" stroke="#222" stroke-width="2.5"/>`,
+ bookshop:  `<rect x="15" y="50" width="70" height="50" ${K}/><path d="M8 50l7-16h70l7 16z" ${K}/><path d="M8 50q7 9 14 0q7 9 14 0q7 9 14 0q7 9 14 0q7 9 14 0q7 9 14 0" ${K}/><rect x="42" y="72" width="16" height="28" ${K}/><g transform="translate(14 56) scale(.26)">${SPR.book}</g><g transform="translate(62 56) scale(.26)">${SPR.book}</g><text x="50" y="46" font-size="10" text-anchor="middle" font-weight="700" fill="#222">BOOKS</text>`,
+ museum:    `<path d="M6 34L50 12l44 22z" ${K}/><rect x="10" y="34" width="80" height="8" ${K}/><path d="M20 42v44M38 42v44M62 42v44M80 42v44" stroke="#222" stroke-width="5"/><rect x="6" y="86" width="88" height="10" ${K}/><text x="50" y="30" font-size="9" text-anchor="middle" font-weight="700" fill="#222">MUSEUM</text>`,
+ library:   `<path d="M6 34L50 12l44 22z" ${K}/><rect x="10" y="34" width="80" height="8" ${K}/><path d="M20 42v44M38 42v44M62 42v44M80 42v44" stroke="#222" stroke-width="5"/><rect x="6" y="86" width="88" height="10" ${K}/><g transform="translate(36 46) scale(.3)">${SPR.book}</g>`,
+ deepSea:   `<path d="M0 20q15-8 30 0t30 0 30 0 10 0v80H0z" fill="#2980b9" stroke="#222" stroke-width="3"/><path d="M20 90q10-14 20-8 14-8 24 4 10-6 18 4" fill="#8d6e63" stroke="#222" stroke-width="2.5"/><circle cx="30" cy="84" r="5" fill="#555" stroke="#222" stroke-width="2"/><circle cx="60" cy="86" r="5" fill="#555" stroke="#222" stroke-width="2"/><g transform="translate(30 30) scale(.4)">${SPR.fish}</g>`,
+ arctic:    `<path d="M0 70q25-14 50 0t50 0v30H0z" fill="#bde" stroke="#222" stroke-width="3"/><path d="M10 68l14-28 16 20 10-14 20 22z" fill="#fff" stroke="#222" stroke-width="3"/><path d="M60 20l4 4M64 18l-8-2M60 16v8" stroke="#222" stroke-width="2"/>`,
+ forest:    `<g transform="translate(-8 30) scale(.7)">${SPR.tree}</g><g transform="translate(24 20) scale(.8)">${SPR.tree}</g><g transform="translate(58 30) scale(.7)">${SPR.tree}</g>`,
+ stump:     `<path d="M20 98V70q0-10 30-10t30 10v28" fill="#8d6e63" stroke="#222" stroke-width="3"/><ellipse cx="50" cy="70" rx="30" ry="10" fill="#f5deb3" stroke="#222" stroke-width="3"/><ellipse cx="50" cy="70" rx="18" ry="6" ${KN}/><ellipse cx="50" cy="70" rx="8" ry="3" ${KN}/><path d="M84 40l8-12M90 46l10-4" stroke="#222" stroke-width="3"/>`,
+ stage:     `<rect x="6" y="70" width="88" height="26" ${K}/><path d="M6 70q44-16 88 0" ${KN}/><g transform="translate(20 -4) scale(.68)">${face('happy') + body('up')}</g><path d="M6 10q22 20 44 0M50 10q22 20 44 0" stroke="#e74c3c" stroke-width="4" fill="none"/>`,
+ crowdSad:  `<g transform="translate(-22 10) scale(.85)">${face('sad') + body('stand')}</g><g transform="translate(22 10) scale(.85)">${face('sad') + bun + body('stand')}</g><g transform="translate(0 0) scale(.85)">${face('sad') + body('stand')}</g>`,
+ crowdBig:  `<g transform="translate(-30 20) scale(.7)">${face('happy') + body('stand')}</g><g transform="translate(-4 20) scale(.7)">${face('happy') + bun + body('stand')}</g><g transform="translate(22 20) scale(.7)">${face('happy') + body('stand')}</g><g transform="translate(48 20) scale(.7)">${face('happy') + bun + body('stand')}</g><g transform="translate(9 0) scale(.7)">${face('happy') + body('up')}</g>`,
+ women:     `<g transform="translate(-20 0)">${face('happy') + bun + body('stand')}</g><g transform="translate(20 0)">${face('happy') + bun + body('stand')}</g>`,
+ kids:      `<g transform="translate(-14 40) scale(.6)">${face('happy') + bow + body('up')}</g><g transform="translate(20 40) scale(.6)">${face('happy') + body('stand')}</g><g transform="translate(54 40) scale(.6)">${face('happy') + bow + body('stand')}</g>`,
+ teen:      `<g transform="translate(10 20) scale(.8)">${face('happy') + hair + body('stand')}</g>`,
+ teenSad:   `<g transform="translate(10 20) scale(.8)">${face('sad') + hair + body('stand')}</g>`,
+});
+// 徽章（疊在元件右上角）
+const BADGE = {
+ x:    `<path d="M20 20l60 60M80 20L20 80" stroke="#e74c3c" stroke-width="12" stroke-linecap="round"/>`,
+ up:   `<circle cx="50" cy="50" r="40" fill="#fff" stroke="#27ae60" stroke-width="5"/><path d="M50 74V28M30 46l20-20 20 20" stroke="#27ae60" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+ down: `<circle cx="50" cy="50" r="40" fill="#fff" stroke="#e74c3c" stroke-width="5"/><path d="M50 26v46M30 54l20 20 20-20" stroke="#e74c3c" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+ q:    `<circle cx="50" cy="50" r="40" fill="#fff59d" stroke="#222" stroke-width="5"/><text x="50" y="72" font-size="60" text-anchor="middle" font-weight="700" fill="#222">?</text>`,
+ ok:   `<circle cx="50" cy="50" r="40" fill="#fff" stroke="#27ae60" stroke-width="5"/><path d="M28 52l16 16 30-36" stroke="#27ae60" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+ no:   `<circle cx="50" cy="50" r="40" fill="#fff" stroke="#e74c3c" stroke-width="6"/><path d="M22 22l56 56" stroke="#e74c3c" stroke-width="10" stroke-linecap="round"/>`,
+ heart:`<path d="M50 90L18 58q-13-15 0-28t32 5q19-18 32-5t0 28z" stroke="#222" stroke-width="4" fill="#f9c" stroke-linejoin="round"/>`,
+ zz:   `<text x="10" y="80" font-size="60" font-weight="700" fill="#2980b9" stroke="#fff" stroke-width="6" paint-order="stroke">zZ</text>`,
+ sweat:`<path d="M50 10q-24 40 0 60q24-20 0-60z" fill="#bde" stroke="#222" stroke-width="5"/>`,
+ star: `<path d="M50 6l13 30 32 3-24 21 8 32-29-17-29 17 8-32L5 39l32-3z" fill="#f1c40f" stroke="#222" stroke-width="4" stroke-linejoin="round"/>`,
+ bang: `<path d="M50 4l10 24 26-8-14 24 24 12-26 6 8 26-22-16-14 24-4-28-26 6 16-22L6 40l28-4z" fill="#f1c40f" stroke="#222" stroke-width="4" stroke-linejoin="round"/>`,
+ dollar:`<circle cx="50" cy="50" r="40" fill="#f1c40f" stroke="#222" stroke-width="5"/><text x="50" y="70" font-size="56" text-anchor="middle" font-weight="700" fill="#222">$</text>`,
+ idea: `<path d="M35 58q-16-12-8-30t23-14q16 4 23 14t-8 30v8H35z" fill="#fff59d" stroke="#222" stroke-width="5" stroke-linejoin="round"/><path d="M38 76h24M42 86h16" stroke="#222" stroke-width="5"/>`,
+ time: `<circle cx="50" cy="50" r="40" fill="#fff" stroke="#222" stroke-width="5"/><path d="M50 20v30l20 12" stroke="#222" stroke-width="7" fill="none" stroke-linecap="round"/>`,
+};
+
+// ---------- 每題分鏡：PIC[題號] = [[icons, 藍字, 中文], ...]（一格一句） ----------
+const PIC = {};
+
+Object.assign(PIC, {
+1: [
+ [['horse','eel:bang'], 'eels attack horses', '馬被牽過電鰻池，電鰻跳起攻擊'],
+ [['scientistQ','speechNo'], 'scientists doubted', '科學家懷疑這故事'],
+ [['scientist','eel:up','drop:down'], 'low water → more attacks', '水位低時電鰻更常躍起攻擊'],
+],
+2: [
+ [['doctor','glassesBig:x','thumbUp'], 'double blind = strength', '醫病都不知道誰吃真藥，被捧為優點'],
+ [['scaleEven:q','warning'], 'necessarily better?', '把雙盲當成一定較好，有問題'],
+ [['pills:ok','paper:x'], 'paradox', '很有效的療法反而拿不到最佳證據'],
+],
+3: [
+ [['australia','scaleEven','speechNo'], 'quality vs equity', '澳洲人認為品質與公平不能兼得'],
+ [['school','chartDown','neq'], 'equity reforms fail', '追求公平的改革常失敗：品質差距拉大'],
+ [['crowd','thumbUp','gradCap'], 'quality: accepted', '提升品質是大家都同意的'],
+ [['scaleEven:ok','crowd:heart'], 'equity → cohesion', '公平也重要：社會凝聚'],
+],
+4: [
+ [['suitcase','briefcase','city'], 'tourism jobs everywhere', '旅遊業的工作遍布整個經濟'],
+ [['airplane','chartUp','town'], 'drives regional economy', '旅遊業推動區域經濟'],
+ [['map','list','countryside'], 'few practical options', '許多地區少數可行的發展選項'],
+ [['globe','chartUp'], 'will keep growing', '旅遊業全球會持續成長'],
+],
+5: [
+ [['scientist','twins','brain'], 'scanned twins’ brains', '掃描 23 對同卵＋23 對異卵雙胞胎的腦'],
+ [['machine','brain'], 'HARDI scanner', '用 HARDI 掃描儀'],
+ [['dna','arrow','brain:star'], 'myelin: genetic', '髓鞘完整性由基因決定（智力區）'],
+],
+6: [
+ [['list','laptop'], 'syllabus lists tech', '每門課的課綱列出要用的科技'],
+ [['teacher:ok','teacher:q'], 'some can, some can’t', '有的老師會融入科技，有的不會'],
+ [['teacher','student','laptop:ok'], 'instructors help + online', '講師教職前老師用科技，隨時線上學'],
+],
+7: [
+ [['paw','forest:x'], 'habitat loss', '哺乳動物受棲地喪失衝擊最大'],
+ [['stump','paw:ok'], 'logged forests = shelter', '砍過的森林其實是被忽略的庇護所'],
+ [['forest','eq','stump'], 'large mammals: similar', '大型哺乳動物：原始林＝砍伐林'],
+ [['mouse:up','stump'], 'small mammals: higher', '小型哺乳動物：砍伐林反而更多'],
+],
+8: [
+ [['women','calendar','scaleEven:x'], '100 years, not equal', '婦女協會百年了，性別平等還沒達成'],
+ [['gavel','coins','woman:down'], 'pay gap still there', '有平等法，薪資差距還在'],
+ [['list','flask','laptop'], 'more to do: STEM', '還有很多要做，例如 STEM'],
+ [['building','arrow','check'], 'governments act', '政府應採取行動'],
+],
+9: [
+ [['oil','car','warning'], 'petroleum: unsustainable', '靠石油運輸撐不下去'],
+ [['ecar','plug','sound'], 'plug-in vehicle', '你會愈來愈常聽到「插電車」'],
+ [['ecar','arrow','office','calendar'], 'drive to work in 10 yrs', '十年後你開它上班'],
+ [['battery','moon','socket'], 'charged overnight', '大電池夜間充飽'],
+],
+10: [
+ [['dog','man','bubbleTalk'], 'dogs communicate', '狗跟人住，學會跟人溝通'],
+ [['dog','ear','smile'], 'voice + faces', '狗腦能聽出情緒、看懂表情'],
+ [['dog:heart','manAngry','camera'], 'angry / fear / happy', '看生氣、害怕、開心照片，反應更大'],
+],
+11: [
+ [['debris','satellite:bang','chain'], 'chain reaction', '碎片撞太空船→連鎖反應'],
+ [['scientist:sweat','debris:up'], 'critical mass', '軌道物體超過臨界量，科學家更擔心'],
+ [['satellite','moneyBag','warning'], 'satellites at risk', '數十億美元的衛星有危險'],
+],
+12: [
+ [['globe','family','kid:ok'], 'present + future', '永續＝滿足現在，不害後代'],
+ [['chartUp','bulb','factory'], 'growth + innovation', '過去的發展靠成長與創新'],
+ [['phone','calendar','q'], 'unpredictable', '今天的生活 20 年前猜不到'],
+ [['book','eye:x'], 'paradigm fails to see', '永續典範沒看到這點'],
+],
+13: [
+ [['crowdBig:up','globe'], 'bigger, stronger', '離散族群更大更強'],
+ [['globe','smile'], 'human face', '他們是全球化的人性面貌'],
+ [['list','chain','globe'], 'five factors', '五個因素造成，都跟全球化有關'],
+ [['crowdBig','map','chartUp'], 'will continue to grow', '中印俄墨的離散族群大，還會長'],
+],
+14: [
+ [['scientist','chess','two'], 'experts vs novices', '給專家和新手看幾何圖形與棋局'],
+ [['triangle','eq','two'], 'geometry: same', '認幾何圖形時表現一樣'],
+ [['chess','oldMan:ok','clockFast'], 'chess: experts quicker', '看棋局時專家更快'],
+ [['eye','chess','target'], 'pieces vs center', '新手盯棋子，專家看棋盤中央'],
+],
+15: [
+ [['wave','debris','fish:x'], 'plastic kills fish', '塑膠微粒流進海裡，魚被殺死'],
+ [['fish','debris:heart','plate:x'], 'prefer plastic', '幼魚寧吃塑膠不吃天然食物'],
+ [['fish:down','skull','chartDown'], 'stunted, more deaths', '發育遲緩，死亡率升高'],
+],
+16: [
+ [['stone','calendar','idea'], 'chance to clean 1999', '1999 年有機會清理羅塞塔石碑'],
+ [['stone','letters'], 'black + white lettering', '開工時石碑黑底白字'],
+ [['microscope','stone','search'], 'analyzed', '處理中發現的物質都拿去分析'],
+ [['hand','pen','stone:ok'], 'grease, wax, ink cleaned', '手油、蠟、油墨都清掉了'],
+],
+17: [
+ [['oldSit','australia','suit:sweat'], 'ageing: big problem', '人口老化是澳洲政策的大問題'],
+ [['worker:down','oldMan:up'], 'workers ↓ retirees ↑', '工作人口成長慢，退休人口比例升'],
+ [['building','crowd','arrow','check'], 'take actions', '政府與社會要採取行動'],
+],
+18: [
+ [['school:ok','school:x'], 'success + failure', '跨學科有成功也有失敗'],
+ [['globe','plus','book','check'], 'geography: worked', '地理正面例：北歐偏遠學校成功'],
+ [['scroll','warning'], 'history: issues', '歷史負面例：實作有問題'],
+],
+19: [
+ [['medal','scientist','globe'], 'Nobel → IPCC', '諾貝爾和平獎給 IPCC 科學家'],
+ [['speaker','storm','crowdSad'], 'Gore: what to fear', '高爾花更多時間叫大家害怕'],
+ [['paper:ok','vs','megaphone'], 'careful vs not restrained', 'IPCC 謹慎研究，高爾不克制'],
+ [['sun','heart','crowd'], 'warming saves lives', '暖化其實會救命'],
+],
+20: [
+ [['scientistQ','plate','q'], 'knows less', '科學對營養懂得比你想的少'],
+ [['soda','arrow','q'], 'soda in body?', '還在弄清喝汽水身體發生什麼'],
+ [['calendar','check','hourglass'], 'someday, not yet', '有天會有答案，但現在還沒'],
+],
+});
+
+Object.assign(PIC, {
+21: [
+ [['drop','globe','heart'], 'water = heart', '水是永續發展的核心'],
+ [['drop','coins:up','sprout'], 'supports growth', '水支撐減貧、成長、環境永續'],
+ [['tap','crowd','check'], 'safe water for all', '每個人都有足夠安全的水'],
+ [['drop','chain','gavel'], 'integrated + rights', '整合管理與人權是常態'],
+],
+22: [
+ [['usa','ballot','calendar'], 'every 4 years', '美國總統選舉每四年一次'],
+ [['podium','moneyBag','hourglass'], 'money + campaign', '候選人提前一年募款競選'],
+ [['crowd','arrow','suit:ok'], 'chosen by party', '要代表政黨得先被黨提名'],
+],
+23: [
+ [['eye','clock','star'], 'hindsight', '有些時刻事後看更重要'],
+ [['australia','arrow','usa','hourglass'], 'half a century', '轉向美國是半世紀的漫長過程'],
+ [['speaker','star','neq'], 'famous but no difference', '柯廷聲明有名，但沒改變什麼'],
+ [['book','q','lines'], 'not so simple', '澳洲史的敘事沒那麼簡單'],
+],
+24: [
+ [['globe','oldSit','oldMan'], 'ageing world', '我們活在老化的世界'],
+ [['city','calendar','check'], 'recently accepted', '已開發國家早知道，最近才承認'],
+ [['oldMan','eye','exclaim'], 'can’t ignore', '老化不能再被忽視'],
+ [['chartUp','family','three'], '3 generations', '照趨勢，三代內人口大革命'],
+],
+25: [
+ [['city','vs','trophy'], 'livable vs great', '宜居和偉大不一樣'],
+ [['tree','crowd','one'], 'public space', '第一：公共空間'],
+ [['metro','bus','two2'], 'transport system', '第二：好的交通系統'],
+ [['metro','coins:down','check'], 'cheap transport', '便宜大眾運輸是成功城市共通點'],
+],
+26: [
+ [['manRun','pills','trophy'], 'athletes + drugs', '運動員用藥提升表現'],
+ [['honey','eq','pills','thumbUp'], 'honey: same effect', '蜂蜜效果一樣，副作用少'],
+ [['honey','drop:down','chartDown'], 'blood sugar', '第一研究：對血糖影響較小'],
+ [['honey','manRun:ok','heart'], 'muscle recovery', '第二研究：幫助運動後肌肉恢復'],
+],
+27: [
+ [['film','earNo','sound'], 'silent → sound', '1920 年代默片為主，聲音登場'],
+ [['film','pianist'], 'live piano', '早期默片有現場鋼琴伴奏'],
+ [['calendar','mic','film'], '1923 soundtrack', '1923 年才錄出同步配樂'],
+ [['hourglass','film','bubbleTalk'], '7 more years', '再等七年有聲片才取代默片'],
+],
+28: [
+ [['car','co2','smoke'], 'car → gases', '開車產生溫室氣體'],
+ [['car','arrow','crowdSad'], 'negative externality', '經濟學叫負外部性'],
+ [['man','smile','coins:down','car:up'], 'benefits > cost paid', '享全部好處只付部分成本→開太多'],
+ [['gavel','plus','coins'], 'regulation + tax', '兩招：政府管制和課稅'],
+],
+29: [
+ [['laptop','man','star'], 'early PC users', '身障者是個人電腦早期用戶'],
+ [['keyboard','paper','key'], 'freedom', '文書處理和印表機讓他們不必靠人'],
+ [['monitor:ok','vs','news'], 'electronic > printed', '電子資訊比印刷更容易取得'],
+ [['laptop','bubbleTalk','scaleEven'], 'equal online', '線上溝通讓身障學生平等交流'],
+],
+30: [
+ [['letters','globe','thumbDown'], 'literacy: less important', '大家在提升讀寫，但現在沒那麼重要'],
+ [['scroll','search','hourglass'], 'text = old IT', '文字是儲存資訊的古老科技'],
+ [['scroll:x','clock'], 'obsolete', '這古老科技已過時'],
+ [['mic','camera','manRun'], 'voice, video, movement', '文字被聲音、影像、肢體取代'],
+],
+31: [
+ [['student','brain','arrow'], 'prior knowledge', '先備知識＝學習者帶來的知識技能'],
+ [['books','plus','bulb'], 'need enough base', '要有足夠基礎才能學新的'],
+ [['brain:idea','key'], 'activate', '「啟動先備知識」很有用'],
+ [['teacher','board','one'], 'at start of topic', '老師在新主題開頭做這件事'],
+],
+32: [
+ [['balloon:bang','fire','cup'], '1720 / 1748', '南海泡沫破裂，咖啡館交易所燒毀'],
+ [['bigBen','crowdBig','coins:up'], 'passed New York', '倫敦金融圈管理資金超越紐約'],
+ [['bigBen','coins','exclaim'], 'most expensive', '倫敦是最貴城市之一'],
+ [['shake','chartUp'], 'deals larger', '但交易愈做愈大'],
+],
+33: [
+ [['baby','smile','man'], 'babies imitate', '許多研究說嬰兒模仿大人'],
+ [['scientist','speechNo','paper'], 'refutes', '研究團隊反駁這說法'],
+ [['baby','neq','hand'], 'no link', '嬰兒行為和看到的手勢無關'],
+],
+34: [
+ [['globe:down','airplane','phone'], 'world shrinking', '通訊運輸金流變快，世界縮小'],
+ [['ship','chartUp','calendar'], 'trade increased', '國際貿易三十年來大增'],
+ [['building','chartUp','globe'], '30,000 → 63,000', '跨國企業 3 萬→6 萬 3 千家'],
+ [['pie','flag','building'], 'only 81 countries', '150 大經濟體只有 81 個是國家'],
+],
+35: [
+ [['teacher','bubbleTalk','vs','letters'], 'use vs form', '老師在「用語言」和「分析形式」間擺盪'],
+ [['q','scaleEven'], 'not resolved', '問題不容易解決'],
+ [['paper','check','paper'], 'both have evidence', '兩派都有證據'],
+ [['brain:star','crowd','letters'], 'natural aptitude', '人很會學，有人天生會語言'],
+],
+36: [
+ [['swords','soldier:x'], 'not only military', '戰爭不再只打敵軍'],
+ [['swords','arrow','town'], 'infiltrating society', '而是滲透社會各領域'],
+ [['bomb','gavel:x'], 'no rules', '小型戰爭：不守任何規則'],
+ [['flag','shield:x','house:x'], 'external + internal', '威脅外部也威脅內部安全'],
+],
+37: [
+ [['manLie','vs','monkey:zz'], 'less than primates', '人比其他靈長類睡得少'],
+ [['monkey:zz','vs','man'], '9–15 h vs 7 h', '別的睡 9–15 小時，人睡 7'],
+ [['two2','manLie','q'], 'two reasons', '人類生活兩個特徵造成短睡'],
+ [['man','eye','paw','moon'], 'guard vs predators', '得醒著防掠食者'],
+],
+38: [
+ [['farmer','africa','sun:down'], 'answer to climate change', '西非耕作法可能減緩氣候變遷'],
+ [['scientist','soil','africa'], 'fertile soils', '研究在賴比瑞亞、迦納找到肥沃土'],
+ [['fire','plate','arrow','soil'], 'charcoal + waste', '木炭＋廚餘→肥沃黑土'],
+],
+39: [
+ [['teacher','chartUp','globe'], 'data teacher', '羅斯林用數據教大眾世界怎麼變'],
+ [['crowd:q','hospital','globe'], 'don’t know basics', '第一：大家連基本健康事實都不知'],
+ [['search','lock','book'], 'hard to access', '第二：想知道的人也太難取得'],
+],
+40: [
+ [['teacher','list','check'], 'planning', '備課是有效教學的關鍵'],
+ [['teacher:ok','shield','storm'], 'confidence', '理由一：信心，能應付突發狀況'],
+ [['board','target','check'], 'method happens', '理由二：理想教法真的會發生'],
+],
+});
+
+Object.assign(PIC, {
+41: [
+ [['usa','letters','crown'], 'most influential', '美式英語最有影響力'],
+ [['one','usa','globe'], 'US power', '第一：美國最強，強權帶來影響力'],
+ [['two2','film','tv'], 'popular culture', '第二：透過流行文化擴散'],
+ [['three','phone','web'], 'communications tech', '第三：跟通訊科技發展有關'],
+],
+42: [
+ [['co2','factory','crowd'], 'CO2 from humans', '二氧化碳最重要，主要人類造成'],
+ [['co2','hot','wave:up'], 'temperature + sea level', '造成氣溫和海平面上升'],
+ [['building','suit','check'], 'business responsibility', '企業應負責解決'],
+ [['panda','shake','sprout'], 'WWF + companies', '世界自然基金會與企業合作永續'],
+],
+43: [
+ [['two','bubbleTalk','heartS'], 'complain together', '人愛互相抱怨，覺得不孤單'],
+ [['crowdSad','chain'], 'negative bonding', '負面連結是很多群體的預設'],
+ [['bubbleHeart','smile'], 'feel understood', '感覺好是因為被理解'],
+ [['crowdSad','heart','lock'], 'won’t leave comfort', '負面帶來連結，就不願放棄'],
+],
+44: [
+ [['manRun','bigBen','check'], 'active lifestyles', '推廣活躍生活能解決英國問題'],
+ [['manRun','heart','brain'], 'body + mind', '運動改善身心健康'],
+ [['hospital:down','coins:up'], 'save money', '減少慢性病，省錢'],
+ [['bicycle','manRun','sprout'], 'cycle + walk', '騎車走路省交通費、幫環境'],
+],
+45: [
+ [['pen','q'], 'origins unclear', '文字起源大多不清楚'],
+ [['globe','tablet','letters'], 'independently', '書寫系統在各地獨立產生'],
+ [['tablet','pyramid','hourglass'], 'Middle East 5,000 yrs', '最早在中東，約五千年前'],
+ [['letters','tablet','scroll','check'], 'different, same job', '長相規則讀法都不同，功能一樣'],
+],
+46: [
+ [['africa','hunter','hourglass'], '100,000 years ago', '最早現代人十萬年前住南非'],
+ [['crowd','africa'], 'Khoisan', '南非最早居民統稱科伊桑人'],
+ [['crowdBig','arrow','crowd:x'], 'Bantu expansion', '班圖擴張時被取代或同化'],
+ [['ship','africa','calendar'], 'Europeans 13th century', '歐洲人 13 世紀開始探索非洲海岸'],
+],
+47: [
+ [['crown','woman','chartUp'], 'Miss Universe', '澳洲小姐奪冠後，選美興趣大增'],
+ [['speechNo','women','clock'], 'critics: demeaning', '反對者：貶低女性、與時代脫節'],
+ [['womanSad','eye','sweat'], 'body image', '許多年輕澳洲女性對身材不安'],
+],
+48: [
+ [['sun','shark:zz','shark'], 'rest in groups by day', '夜行性，白天成群休息（40 隻）'],
+ [['moon','shark'], 'alone at night', '晚上大多獨自行動'],
+ [['deepSea','shark','search'], 'forage the bottom', '大部分時間在海底覓食'],
+ [['shark','arrow','deepSea'], '“walk” on the floor', '甚至用前鰭在海底「走路」'],
+],
+49: [
+ [['volcano','skull','crowdSad'], 'Tambora 1815', '1815 印尼坦博拉火山爆發，十萬人死'],
+ [['volcano:star','hourglass'], 'largest in 10,000 yrs', '一萬年來最大的火山爆發'],
+ [['smoke','sun:x','cold'], 'ash blocked the sun', '火山灰遮住陽光，地球降溫'],
+ [['calendar','sun:x','snow'], 'year without summer', '1816 年成了沒有夏天的一年'],
+],
+50: [
+ [['scientist','island','shark'], 'to Greenland', '科學家去世界最大島研究格陵蘭鯊'],
+ [['arctic','shark','crown'], '272 years', '北極頂級掠食者，活超過 272 年'],
+ [['shark','fish','bones'], 'hunter + scavenger', '既獵食也吃腐肉'],
+ [['q','shield','shark'], 'need more info', '需要更多資訊才能保護牠'],
+],
+51: [
+ [['countryside','man','check'], 'been there before', '我知道是好主意，以前住過'],
+ [['city','suit','star'], 'big shot in city', '曾想當城市裡的大人物'],
+ [['countryside','list','thumbDown'], 'small disadvantages', '知道鄉村生活的小缺點'],
+ [['two','countryside','thumbUp'], 'many benefits', '但好處很多，我跟妻子說'],
+],
+52: [
+ [['flag','goats','woman'], 'keeping goats', '1990 納米比亞獨立時她在放羊'],
+ [['woman','vs','paw'], 'wildlife = enemy', '她把野生動物當敵人'],
+ [['hourglass','womanWave','arrow'], '15 years later', '十五年後生活想法大不同'],
+ [['lodge','woman:star','suitcase'], 'lodge manager', '旅遊業職涯，第一位黑人旅館經理'],
+],
+53: [
+ [['crowdBig:up','arrow','chartUp'], 'demand rising', '人口成長，資源需求上升'],
+ [['gear','chartUp'], 'metal demand', '不可再生的金屬也需求增'],
+ [['oil','arrow','package'], 'oil for plastics', '為做塑膠，油的需求也大'],
+],
+54: [
+ [['oldMan','chartUp','calendar'], '+2 years / decade', '預期壽命每十年多兩年'],
+ [['piggy:x','oldSit','sweat'], 'savings not enough', '壽命長，存款撐不起退休'],
+ [['oldMan','book','crowd'], 'keep learning', '退休後繼續學習或建立新社交圈'],
+ [['cycle','idea','smile'], 're-creation', '把休閒變成「再創造」'],
+],
+55: [
+ [['letters:down','crowd','q'], 'sure of decline?', '奇怪，很多人深信英語在衰退'],
+ [['crowdSad','clockFast','globe'], 'fast-moving world', '反邋遢大隊其實在反應變快的世界'],
+ [['oldMan','thumbDown','teen'], 'every generation', '每代人都覺得下一代變差'],
+ [['scroll','heart','hourglass'], 'every century', '每個世紀都有人尊崇保守語言'],
+],
+56: [
+ [['flag','gear','stadium'], 'exhibitions', '皇家農業協會符合西方辦展的趨勢'],
+ [['crown','stadium','chain'], 'tools of imperialism', '博覽會是帝國主義的霸權工具'],
+ [['calendar','farm','wheat'], 'RAS 1822', '1822 成立，為改善澳洲農技'],
+],
+57: [
+ [['suit','vs','chess'], 'checkers vs chess', '普通經理下跳棋，優秀經理下西洋棋'],
+ [['one','crowd','clock'], 'uniqueness saves time', '第一：善用獨特性省時間'],
+ [['two2','man','check'], 'more responsible', '第二：讓人更負責'],
+ [['three','crowd','chain'], 'better team', '第三：建立團隊感（相互依賴）'],
+],
+58: [
+ [['ship','island','crowd'], 'Hispaniola 1492', '1492 哥倫布到島上，原住民已定居'],
+ [['shake','arrow','swords'], 'mistreating', '起初和平，直到西班牙人虐待他們'],
+ [['coins','eye','ship'], 'gold', '他們有黃金，西班牙人想要'],
+ [['crowdBig','arrow','skull','chartDown'], '500,000 → 11,000', '到 1519 年五十萬人剩一萬一'],
+],
+59: [
+ [['breakfast:x','brain:down','heart'], 'skipping hurts', '不吃早餐傷學習、記憶、健康'],
+ [['student','breakfast:x','search'], 'less efficient', '不吃早餐的學生篩選資訊較差'],
+ [['man','breakfast:x','brain:down'], 'adults too', '大人不吃早餐也傷思考'],
+ [['cereal','sun','thumbUp'], 'cereal + milk', '一碗牛奶麥片就是營養的開始'],
+],
+60: [
+ [['cow','heart','grass'], 'co-evolution', '牛和草共同演化是被低估的奇蹟'],
+ [['cow','arrow','sprout'], 'seed, hooves, manure', '牛散播草籽、踩種、施肥'],
+ [['grass','arrow','cow','plate'], 'lunch in exchange', '草則提供豐富的午餐'],
+ [['grass','arrow','meat'], 'grass → protein', '牛把草變成優質蛋白質'],
+],
+});
+
+Object.assign(PIC, {
+61: [
+ [['solar','scaleEven','bubbleTalk'], 'pros and cons', '太陽能的優缺點一直有爭論'],
+ [['solar','coins:up','map','thumbDown'], 'cost + geography', '成本高、看地點，吸引力降低'],
+ [['solar','cycle','sprout'], 'renewable + clean', '但仍受歡迎：可再生又乾淨'],
+ [['solar','gear:x','check'], 'little maintenance', '沒有活動零件，只要定期清潔'],
+],
+62: [
+ [['sphinx','wind','fist'], 'damaged face', '臉被風化和破壞'],
+ [['sphinx','palette','eye'], 'red pigment', '臉上仍看得到紅色顏料'],
+ [['sphinx','pyramid','hourglass'], 'buried in sand', '幾千年來沙埋到肩膀'],
+ [['explorer','sphinx:ok','calendar'], 'cleared 1930s', '1930 年代末哈桑把它挖出來'],
+],
+63: [
+ [['bird','sun','hot'], 'reflect infrared', '澳洲鳥類反射近紅外線控溫'],
+ [['sun','chain','bird'], 'hot, dry regions', '住熱乾地區↔反射近紅外光'],
+ [['paw','hot:down','heart'], 'hide + attract mate', '很多動物這樣控溫，不影響躲藏求偶'],
+],
+64: [
+ [['shake','briefcase','bubbleTalk'], 'negotiation', '談判是商業解決衝突的常態'],
+ [['twoWay','two','check'], 'compromise', '妥協：各讓一步換更想要的'],
+ [['shake','trophy','trophy'], 'win-win', '雙方透過妥協雙贏'],
+ [['manAngry','speechNo','shake:x'], 'unwilling party', '但一方不想解決就沒用'],
+],
+65: [
+ [['paw','tree','chain'], 'ecology', '生態學：生物彼此與環境的互動'],
+ [['cloud','hot','wind'], 'climatology', '氣候學：大氣的物理狀態'],
+ [['paw','neq','cloud'], 'clearly different', '兩個領域明顯不同'],
+ [['book','sprout','map'], 'shared history', '但起源相同：自然史與植物地理'],
+],
+66: [
+ [['tv','check'], 'TV is fine', '電視本身沒問題'],
+ [['kid','tv','clock','q'], 'how much?', '問題是孩子看多久、影響什麼'],
+ [['tv:up','book:down'], 'TV ↑ study ↓', '看電視變多，功課時間變少'],
+ [['tv','arrow','kid','exclaim'], 'huge impact', '電視必然對孩子影響巨大'],
+],
+67: [
+ [['office','chartUp','paper'], 'office space matters', '辦公空間影響表現，有研究支持'],
+ [['brightRoom','suit','heart'], 'feel cared for', '改善環境提升生產力：員工覺得被關心'],
+ [['sprout','desk','smile'], 'plants → well-being', '盆栽綠意有益心理健康'],
+],
+68: [
+ [['laptop','web','teacher'], 'Internet = medium', '線上教學靠網路溝通'],
+ [['teacher','pin:x','laptop'], 'anywhere', '不必到某個地方才能教'],
+ [['student','laptop','key'], 'freedom for students', '學生也更自由'],
+ [['monitor','crowd','globe'], 'virtual classrooms', '組虛擬教室，各地學生一起上'],
+],
+69: [
+ [['crowd','pie','one'], '1 in 5', '不到五分之一是主要照顧者'],
+ [['woman','oldSit','heart'], 'main carer', '照顧日常活動受限的人'],
+ [['woman','briefcase:x'], 'women, not working', '多為女性，較少在職'],
+ [['woman','coins:down'], 'lower income', '收入比其他照顧者低'],
+],
+70: [
+ [['africa','crowd','hourglass'], 'millennia', '南非地區有人住了數千年'],
+ [['hunter','manRun','crowd'], 'the San', '桑人是遷徙民族，小群體'],
+ [['goats','arrow','wave'], 'Khoikhoi to coast', '兩千年前科伊科伊牧民到海岸'],
+ [['crowdBig','arrow','africa','calendar'], '1200 AD', '索托茨瓦納和恩古尼人約 1200 年來'],
+],
+71: [
+ [['suit','monitor','bubbleTalk'], 'half a dozen computers', 'IBM 老闆預測世界只需六台電腦'],
+ [['scientistQ','crowd:q','gear'], 'bad at predicting', '大家（含專家）都不會預測科技'],
+ [['hourglass','chartUp','q'], 'extrapolate', '可以從過去科技經驗推斷'],
+ [['q','scaleEven'], 'open question', '但站不站得住腳是未解問題'],
+],
+72: [
+ [['ballot','key','australia'], 'right to choose', '民主國家應有權決定要不要投'],
+ [['ballot','clockFast','thumbDown'], 'fastest decision', '強迫投票只會亂投最快的'],
+ [['crowd','book','ballot'], 'informed electorate', '強制投票要選民有知識才行'],
+ [['ballot','heart','man'], 'those who care', '自願投票的人才是在乎的人'],
+],
+73: [
+ [['clockB','medal','calendar'], 'most accurate clock', '100 天測試後 B 鐘獲金氏最準確'],
+ [['oldMan','bubbleNo','crowd'], 'mocked 250 yrs ago', '250 年前設計者曾被嘲笑'],
+ [['oldMan','smile','trophy'], 'last laugh', '現在笑到最後的是哈里森'],
+],
+74: [
+ [['wheat','arrow','cow','thumbDown'], 'inefficient', '穀物餵牲畜生產食物很沒效率'],
+ [['cow','co2','hot'], 'livestock → warming', '牲畜對暖化貢獻很大'],
+ [['meat:down','crowd','bubbleTalk'], 'eat less meat', '任務：說服人少吃肉'],
+ [['cigarette','building','check'], 'quit smoking worked', '政府曾成功說服人戒菸'],
+],
+75: [
+ [['bookshop','king','crown'], 'aristocratic clients', '書店客人主要是貴族士紳'],
+ [['book','woman:up','list'], 'female purchasers ↑', '帳簿顯示女性買小說大增'],
+ [['woman','book','coins'], 'buy more novels', '有閒女性顧客買更多小說'],
+ [['woman','book','arrow','podium'], 'into politics', '讀小說讓女性參與男性主導的政治'],
+],
+76: [
+ [['kid','bubbleNo','cycle'], 'autism', '自閉症：溝通社交障礙、重複行為'],
+ [['ten','chartUp','calendar'], '10-fold in 40 years', '40 年來盛行率增十倍'],
+ [['q','scientistQ'], 'cause unknown', '但沒人知道原因'],
+ [['building','list','key'], 'diagnosis criteria', '社會制度、診斷標準改變是關鍵'],
+],
+77: [
+ [['africa','thumbDown','neq','chartUp'], 'unfair impression', '負面印象對發展好的非洲國家不公'],
+ [['africa','sprout','star'], 'potential', '非洲潛力很大'],
+ [['africa','coins:up','trophy'], 'best returns', '非洲投資報酬最好'],
+ [['africa','warning','swords'], 'problems + wars', '但也要承認困境：常有戰爭'],
+],
+78: [
+ [['usa','sugar','chartUp'], '150 lb sugar', '美國人年吃 150 磅精製糖'],
+ [['honey','chartDown'], '1.3 lb honey', '蜂蜜一年只吃 1.3 磅'],
+ [['sugar:x','arrow','honey','heart'], 'switch to honey', '把糖換成生蜂蜜，健康益處大'],
+ [['honey','battery','bed','tree'], 'energy, sleep, allergies', '對精力、睡眠、季節過敏都有幫助'],
+],
+79: [
+ [['oil:down','bigBen','chartDown'], 'inflation zero', '油價跌，英國通膨降到零'],
+ [['suit','speechNo','oil'], 'not only oil', '分析師：不只油價的關係'],
+ [['sale','arrow','mall:down'], 'discount retailers', '折扣店搶走大店市占'],
+ [['laptop','cart','coins:down'], 'online retailers', '網購成長壓低價格'],
+ [['shop','shop','shop:up'], 'more shops', '店愈開愈多也是原因'],
+],
+80: [
+ [['bird','sound','bird:q'], 'male studied, female not', '雄鳥研究多，雌鳥鳴唱研究少'],
+ [['bird','percent','sound'], '71% sing', '2013 研究：71% 雌鳥會唱'],
+ [['bird','sound','arrow','bird'], 'respond to mate', '雌鳥通常回應配偶才唱'],
+ [['bird','warning','paw'], 'young at risk', '這樣鳴叫讓幼鳥有危險'],
+],
+});
+
+Object.assign(PIC, {
+81: [
+ [['africa','geo','idea'], 'geothermal = answer', '東非專家認為地熱能是解答'],
+ [['drop','arrow','geo'], 'water into bedrock', '把水打進基岩'],
+ [['flood','lightning','warning'], 'hydro 60% unreliable', '肯亞六成電來自水力，但不可靠'],
+ [['geo','percent','chartUp'], '13% → 25%', '地熱 2020 年要從 13% 升到 25%'],
+],
+82: [
+ [['paperA','school','key'], 'assessment', '評量是教育的核心'],
+ [['student:ok','paper:x'], 'no need if learned', '學生都學會就不用評量'],
+ [['student:q','board','warning'], 'many don’t learn', '但很多學生沒學會'],
+ [['teacher','search','student','check'], 'find starting point', '不知起點教不好，所以要評量'],
+ [['teacher','chain','student'], 'link', '評量是教與學的橋樑'],
+],
+83: [
+ [['hot','sweat','cloud'], 'muggy = no cooling', '愈悶熱愈難涼快：蒸發率低'],
+ [['percent','drop','q'], 'relative humidity?', '你以為相對濕度是好指標'],
+ [['hot','drop','check'], 'dewpoint better', '但露點溫度才是更好的指標'],
+ [['drop:up','hot:up'], 'high dew point', '露點高＝濕度和溫度都高'],
+],
+84: [
+ [['plate','australia','cycle'], 'big change', '兩百年來飲食在澳洲公眾意識中大變'],
+ [['plate','house','lock'], 'private activity', '飲食本來是私人活動'],
+ [['plate','crowd','news'], 'public preoccupation', '20 世紀末成為公眾關注焦點'],
+ [['book','oldMan','thumbDown'], 'historians not interested', '但歷史學家沒興趣'],
+],
+85: [
+ [['two','usa','house'], 'Dayton, Ohio', '萊特兄弟住俄亥俄州代頓'],
+ [['bicycle','gear','calendar'], 'bicycles 1890s', '1890 年代開始做腳踏車'],
+ [['bicycle','arrow','biplane'], 'light, strong machines', '做輕巧機器的經驗對飛行有用'],
+ [['biplane','check','trophy'], 'flying problem solved', '直到萊特兄弟研究，飛行問題才解決'],
+],
+86: [
+ [['ballot','chartDown','idea'], 'falling turnout', '投票率下降→有人提議強制投票'],
+ [['crowdBig','ballot','thumbUp'], 'everyone participates', '支持者：社會各階層都要參與'],
+ [['ballot','key','speechNo'], 'right not to vote', '反對者：投票權包含不投的權利'],
+ [['globe','ballot','check'], 'widely used', '強制投票在世界各地普遍'],
+],
+87: [
+ [['network','phone','chartUp'], 'social networks popular', '社群網路正在流行'],
+ [['library','suit:q','network'], 'managers doubted', '圖書館主管不認為能用在服務上'],
+ [['network:up','library','cycle'], 'forced to reconsider', '社群媒體更流行，圖書館被迫重想'],
+ [['library','network','check'], 'mainstream', '圖書館用社群媒體已成主流'],
+],
+88: [
+ [['family','cycle','house'], 'copying childhood family', '父母的出生順序會重現原生家庭模式'],
+ [['manAngry','vs','kidSad'], 'firstborn vs firstborn', '長子父母和長子小孩激烈爭吵'],
+ [['scaleEven:x','crowd'], 'biases anyway', '不管排行第幾都可能有偏見'],
+],
+89: [
+ [['web','scientist','kid:q'], 'children main users', '柏內茲-李沒想到孩子成主要用戶'],
+ [['baby','phone','three'], 'age three', '大多數三歲就上網'],
+ [['kid','shield','letters'], 'as important as reading', '學會網路生存跟讀寫一樣重要'],
+],
+90: [
+ [['manLie','heart','percent'], 'nap → 37% less', '固定午睡 30 分鐘，心臟病死亡少 37%'],
+ [['suit','bed','check'], 'working men', '在職男性效果最明顯'],
+ [['bed','vs','plate','manRun'], 'nap > diet, exercise', '午睡比飲食運動更能降心臟病'],
+],
+91: [
+ [['cart','cycle','heart'], 'repeat purchase', '品牌忠誠＝重複買同牌不換'],
+ [['search','coins:up','vs','smile'], 'new customer costs more', '找新客比留舊客貴'],
+ [['target','cycle','crowd'], 'repositioning', '重新定位：改形象吸引新市場'],
+],
+92: [
+ [['tv','neq','book'], 'two kinds of vividness', '要區分電視和讀者的「生動」'],
+ [['tv','arrow','manAngry'], 'instinctual responses', '電視的生動引發本能反應'],
+ [['book','star','eye'], 'books vivid too', '書也有引人入勝的生動描寫'],
+ [['book','brain:idea','man'], 'reader participates', '但讀者主動參與建構現實'],
+],
+93: [
+ [['ship','coins','twoWay'], 'trade → rich', '貿易網讓腓尼基人致富，東西交流'],
+ [['letters','tablet','sound'], '22 signs', '腓尼基字母：22 個符號各代表一音'],
+ [['letters','arrow','globe','letters'], 'adapted to languages', '能記任何語言→被改編成多種文字'],
+],
+94: [
+ [['farmer','beans','soil'], 'grow legumes', '種豆科植物養家又改良土壤'],
+ [['beans','sprout','soil'], 'roots make nitrogen', '豆的根自己製造氮肥'],
+ [['beans','arrow','soil:ok'], 'nitrogen left in soil', '秋天拔起，氮留在土裡'],
+],
+95: [
+ [['mouse','package','ship'], 'stow away', '家鼠躲在箱子船上，是人類定居的標記'],
+ [['mouse','arrow','map','bones'], 'stand-in for humans', '用老鼠追人類移動，補充考古資料'],
+ [['mouse','globe','scientist'], 'every continent', '家鼠殖民每個大陸，研究很有用'],
+],
+96: [
+ [['bird','arrow','arctic'], 'shift north', '有些動物調整方法：往北移'],
+ [['bird','hourglass','warning'], '35 years', '新研究：不容易也不快，鳥花 35 年'],
+ [['bird:sweat','hot','warning'], 'limits of tolerance', '跟不上氣候的物種會到生理極限'],
+],
+97: [
+ [['scaleEven','check','cross'], 'right and wrong', '倫理：界定對錯的道德義務'],
+ [['doctor','list','gavel'], 'professional ethics', '許多專業有正式倫理規範'],
+ [['scientist','shield','check'], 'honesty + integrity', '科學倫理：每階段都誠實正直'],
+ [['paper','scaleEven','flask'], 'fair knowledge', '科學倫理是為了產出公正知識'],
+],
+98: [
+ [['manFlat','soil','q'], 'beneath our feet', '我們容易忘記腳下土壤裡有什麼'],
+ [['soil','virus','crowdBig'], 'more than people', '一湯匙土壤的生物比地球人還多'],
+ [['soil','drop','flood:down'], 'holds water', '健康土壤儲水，降低淹水'],
+ [['farm','flask','chartUp','warning'], 'chemical fertilizers', '但 50 年來農業更依賴化肥'],
+],
+99: [
+ [['fist','list','chartUp'], '4x the statistics', '真實犯罪數約是統計的四倍'],
+ [['shop','speechNo','eye'], 'fear for image', '企業怕形象受損不通報'],
+ [['car','shield:x','police:x'], 'not insured', '沒保險就沒理由報警'],
+],
+100: [
+ [['virus','wheat:down','soil'], 'take-all fungus', '全蝕病真菌傷穀類作物的根'],
+ [['farmer','wheat:ok','list'], 'choose cultivars', '選對小麥品種能控制病害'],
+ [['wheat','chartUp','two2'], '+2 tons / ha', '第二季小麥每公頃增產 2 噸'],
+],
+});
+
+Object.assign(PIC, {
+101: [
+ [['stump','treeRings','search'], 'count the rings', '砍樹數年輪很簡單'],
+ [['treeRings','hourglass','list'], 'thousands of years', '年輪紀錄回溯數千年'],
+ [['treeRings','rain','calendar'], 'rain + season', '每圈寬度反映當年雨量和季節'],
+],
+102: [
+ [['scientist','web','star'], 'revolutionary', '柏內茲-李是溫和學者，卻是革命者'],
+ [['web','cart','bubbleTalk'], 'shop + communicate', '網路 20 年來改變購物和溝通'],
+ [['scientist:sweat','search','idea'], 'all info in one place', '發明網路因為找不到資訊集中處'],
+],
+103: [
+ [['hunter','goats','africa'], 'got farm stock', '2300 年前桑人在波札那得到家畜'],
+ [['goats','crowd','crown'], 'Khoikhoi = real people', '南非最早牧民，自稱「真正的人」'],
+ [['crowd','shake','ship'], 'met the Dutch', '17 世紀中最早接觸荷蘭人'],
+],
+104: [
+ [['woman','printer3d','globe'], 'open to the world', '她的使命：把 3D 列印開放給全世界'],
+ [['printer3d','coins:down','crowd'], 'prices dropped', '價格大跌，幾百美元就能買'],
+ [['hand','monitor','printer3d'], 'Tactum: touch to design', 'Tactum 軟體：摸投影就能設計'],
+],
+105: [
+ [['art','two2','q'], 'two ways', '思考現代藝術有兩種方式'],
+ [['art','neq','house'], 'separate from life', '一：藝術與日常生活分離'],
+ [['art','arrow','city'], 'reacting to the world', '二：藝術是對現代世界的回應'],
+ [['art','eye','cycle'], 'reflecting change', '現代藝術反思創造現代性的轉變'],
+],
+106: [
+ [['hunter','forest','farm:x'], 'no farming', '狩獵採集者靠自然，不務農不放牧'],
+ [['hunter','cow','sprout'], 'hunt + berries', '獵大型草食動物，也吃莓果蘑菇'],
+ [['cave:x','crowd'], 'not deep in caves', '不住在洞穴深處'],
+ [['cliff','check'], 'foot of cliffs', '而是選懸崖腳下'],
+],
+107: [
+ [['volunteer','crowdBig','calendar'], '8,000 volunteers', '每年 8,000 人志願服務至少六個月'],
+ [['globe','shield','flood'], '130 countries', '在 130 國促和平、救災、幫社區'],
+ [['briefcase:x','star','heart'], 'not a career, but rewards', '不是職業，但機會經驗回報多'],
+],
+108: [
+ [['suit:star','thumbDown','office'], 'bias against too-good', '對太優秀員工的偏見很普遍'],
+ [['puzzle','check','brain:x'], 'perfect fit preferred', '公司偏好「剛好符合」不要更聰明'],
+ [['suit:star','chartUp','door:x'], 'do better, stay', '研究：資歷過高表現更好，也不早走'],
+ [['suit','bubbleTalk','smile'], 'simple tactic', '簡單管理手段就能減少不滿'],
+],
+109: [
+ [['shop','plate','coins'], 'food waste savings', 'Asda 首家算顧客減浪費能省多少'],
+ [['list','plate','idea'], 'storage tips, recipes', '活動教保存食物、剩菜食譜'],
+ [['crowdBig','check','receipt'], '£57 per customer', '兩百萬顧客會改變，每人省 57 鎊'],
+],
+110: [
+ [['scientist','eye','shield'], 'cataract surgery', '科學家或能預防白內障術後併發症'],
+ [['eye:ok','cell','warning'], 'lens cells stay', '手術有效，但總留些水晶體細胞'],
+ [['lens','idea','eye'], 'new artificial lens', '新人工水晶體放在開放的囊袋'],
+],
+111: [
+ [['crowdBig','coins:down','factory'], 'cheap labor', '中印勞力便宜，專做勞力密集產品'],
+ [['usa','chip','robot'], 'capital intensive', '美國專做資本密集的商品'],
+ [['gear','arrow','factory','coins:down'], 'production moves', '技術一普及，生產就移到便宜的國家'],
+],
+112: [
+ [['sprout','sun','plate'], 'plants do everything', '植物是能量管道、提供食物、塑造環境'],
+ [['three','plate','lightning','co2'], 'food, energy, environment', '三大挑戰都跟植物有關'],
+ [['scientist','sprout','check'], 'plant research', '植物研究對解決問題很重要'],
+],
+113: [
+ [['skull','bones','book'], 'archaeological record', '人類遺骸是考古紀錄的基本部分'],
+ [['skull','scaleEven','q'], 'ethical questions', '遺骸帶來特殊倫理問題不意外'],
+ [['skull','vs','gavel'], 'ownership disputes', '取得與所有權變成分歧的政治議題'],
+ [['package','arrow','crowd','heart'], 'repatriated', '有些遺骸被送回原本社群'],
+],
+114: [
+ [['panda','chartUp','calendar'], '+268', '野生貓熊十年增加 268 隻'],
+ [['panda','panda','panda'], '1,864 pandas', '總數達 1,864 隻'],
+ [['map:up','panda'], 'area increased', '分布範圍也擴大'],
+ [['building','shield','panda:ok'], 'conservation policies', '成功來自中國政府的保育政策'],
+],
+115: [
+ [['gavel','wine:x','calendar'], 'blow to wine 1920', '1920 第十八修正案重擊葡萄酒業'],
+ [['grapes','soda','check'], '200 gallons juice', '禁酒令允許每年做 200 加侖果汁'],
+ [['grapes','arrow','wine'], 'juice → wine', '果汁很適合拿來釀酒'],
+ [['building','grapes:x','gavel'], 'juice sales stopped', '政府介入禁止賣葡萄汁'],
+],
+116: [
+ [['kid','ear','letters'], 'learn what they hear', '孩子學會接觸到的任何語言'],
+ [['baby','paper','q'], 'blank sheets?', '關鍵問題：出生時腦是白紙嗎'],
+ [['dna','vs','house','hourglass'], 'nature vs nurture', '先天後天之爭，討論了幾世紀'],
+ [['scientist','book','calendar'], 'Chomsky 1959', '1959 喬姆斯基書評讓議題再起'],
+],
+117: [
+ [['shy','oldMan','gradCap'], 'scary', '認識資深學者可能很可怕'],
+ [['network','smile','check'], 'easier than you think', '但建立人脈比你想的容易'],
+ [['teacher','gradCap','one'], 'supervisor first', '指導教授和口委是好起點'],
+ [['stage','crowd','shake'], 'conferences', '研討會是學者交流主要方式，別錯過'],
+],
+118: [
+ [['miner','amber','hourglass'], 'frog in amber', '礦工發現琥珀裡 2500 萬年的樹蛙'],
+ [['amber','check','flag'], 'first in Mexico', '鑑定屬實就是墨西哥第一隻'],
+ [['scientist','dna','amber:x'], 'DNA sample?', '想取 DNA，但擁有者可能不讓鑽'],
+],
+119: [
+ [['table','family','heart'], 'brain, body, spirit', '一起吃晚餐對腦、身、心都好'],
+ [['bubbleTalk','kid','letters:up'], 'vocabulary', '晚餐對話比朗讀更增字彙'],
+ [['teen','table','paperA'], 'twice as likely: A', '每週 5–7 次家庭晚餐，拿 A 機率兩倍'],
+],
+120: [
+ [['museum','suit','q'], 'seems narrow', '博物館學看似只有專業人士關心'],
+ [['museum','book','hourglass'], 'study of museums', '簡單定義：研究博物館及其歷史'],
+ [['museum','pyramid','crowdBig'], 'as old as civilization', '博物館和文明一樣老，人人都相關'],
+],
+});
+
+Object.assign(PIC, {
+121: [
+ [['speaker','paper','search'], 'read aloud', '朗讀作品能找出最含糊的地方'],
+ [['manSad','sweat','lines'], 'too long', '讀到沒氣＝句子太長'],
+ [['letters','check'], 'short words', '短字永遠比長字好'],
+ [['idea','letters','star'], 'simple language', '用簡單語言講難的論點更厲害'],
+],
+122: [
+ [['police','school','shield'], 'police in schools', '武裝警察進新州學校降犯罪'],
+ [['police','shake','student'], 'good relationships', '警察與學生建立好關係'],
+ [['police','board','crowd'], 'workshops', '校園警察辦犯罪預防工作坊'],
+ [['family','warning','police'], 'parents warn', '家長警告：警民緊張的社區有危險'],
+],
+123: [
+ [['soil','zzz','calendar'], 'let land rest', '要長期耕作就得讓土地休息'],
+ [['soil','wheat:x'], 'fallow', '讓地休息叫休耕'],
+ [['soil:up','sprout'], 'rebuild nutrients', '休耕期讓土地補回養分'],
+ [['soil','virus','sprout'], 'life in soil', '土壤裡有很多有益生物'],
+],
+124: [
+ [['palm','suitcase','smile'], 'hassle-free', '馬來西亞是最省事宜人的旅遊國'],
+ [['beach','mountain','forest'], 'beaches, mountains, parks', '海灘、山脈、國家公園'],
+ [['megaphone','airplane','crowdBig'], '20 million visitors', '史上最大旅遊宣傳，目標 2000 萬人'],
+ [['city','pin','one'], 'start in KL', '行程都從吉隆坡開始'],
+],
+125: [
+ [['police','list','school'], 'checked referrals', '校園警察檢視轉介校長室的資料'],
+ [['fist','kidSad','chartUp'], 'thousands of bullying cases', '每年數千件霸凌轉介'],
+ [['calendar','teacher','eye'], 'schedule + supervision', '改課表、加強老師監督熱點'],
+ [['chartDown','percent','check'], 'suspensions −40%', '停學處分減少 40%'],
+],
+126: [
+ [['stadium','co2:x','sprout'], 'neutralize carbon', '大型賽事努力中和碳足跡'],
+ [['stadium','network','globe'], 'inspire global action', '賽事加入網絡，激勵全球環保行動'],
+ [['snow','moneyBag','solar'], '$1.75 billion', '索契冬奧投入 17.5 億美元節能再生'],
+],
+127: [
+ [['paw','chain','dna'], 'limited by nature', '動物受限於天擇給的工具'],
+ [['paw','search:x','heart'], 'just survive', '動物不追求真理，只求生存'],
+ [['man','upBig','target'], 'human-created goals', '人類能超越天生目標，自創目標'],
+],
+128: [
+ [['australia','plate','search'], 'food identity', '找飲食認同，澳洲看向本土食材'],
+ [['plate:x','crowd','thumbDown'], 'not eaten much', '但澳洲人不太吃本土食物'],
+ [['fish','wave','check'], 'fish + shellfish', '例外：魚、甲殼類、貝類'],
+ [['meat','sprout','flag'], 'lamb + passionfruit', '羊肉和百香果反而更代表澳洲'],
+],
+129: [
+ [['keyboard','coins:down','usa'], '1/4 of US pay', '印度程式設計師薪水是美國的四分之一'],
+ [['laptop','factory:x','check'], 'little capital needed', '印度有比較優勢：不需實體資本'],
+ [['usa','idea','chip'], 'innovation', '美國優勢在科技創新'],
+ [['keyboard','arrow','map'], 'work shifts to India', '印度會接手愈來愈多美國的工作'],
+],
+130: [
+ [['ghost','eye','crowd'], 'invisibility cloak', '隱形斗篷錯覺：以為自己更會觀察'],
+ [['man','eye','crowd:zz'], 'others less aware?', '我們看別人，卻以為別人沒在看'],
+ [['man','eye','bubbleNo'], 'quiet about watching', '大家對觀察別人這事很低調'],
+],
+131: [
+ [['kid','coins','speechNo'], 'don’t pay?', '很多人說付錢做家事不好'],
+ [['kid','coins','thumbUp'], 'extra work: helpful', '但付錢做額外家事可以有用'],
+ [['kid','coins','cart'], 'experience money', '零用錢讓孩子體驗錢能做什麼'],
+ [['piggy','target','hourglass'], 'saving = sacrifice', '儲蓄教孩子：昂貴目標要犧牲'],
+],
+132: [
+ [['globe','one','hourglass'], 'one continent', '大陸漂移說：地球原本一整塊大陸'],
+ [['map','arrow','globe'], 'split into seven', '分裂漂移成七大洲'],
+ [['scientist','globe','calendar'], 'Wegener 1912', '韋格納 1912 年提出完整理論'],
+],
+133: [
+ [['straw','house','scientist'], 'straw building', '研究稻草當低衝擊建材'],
+ [['straw','wall','two2'], '2x insulation', '稻草牆隔熱是法規要求的兩倍'],
+ [['coins:down','percent','fire'], 'fuel −90%', '燃料費可減 90%'],
+ [['wheat','co2','downBig'], 'carbon negative', '稻草生長吸 CO2，建築負碳'],
+],
+134: [
+ [['ecar','hourglass','one'], 'not new', '電動車不新，是最早的機動車之一'],
+ [['oil','car:up','ecar:down'], 'petrol cars won', '汽油車興起，電動車衰退'],
+ [['ecar','cycle','idea'], 'renewed interest', '現在對電動車重新有興趣'],
+ [['coins','search','ecar'], 'financial need', '有強烈財務理由找替代方案'],
+],
+135: [
+ [['smile','chartUp','suit'], 'positive mindset', '正向心態，各方面表現進步'],
+ [['trophy','arrow','smile'], 'success → happiness?', '多數人以為先成功才快樂'],
+ [['target','manRun','clockFast'], 'moving target', '但成功是移動目標，快樂短暫'],
+ [['dna','plus','house','q'], 'genes decide?', '誤解：基因環境決定快樂'],
+],
+136: [
+ [['woman','flag','cycle'], 'New Woman', '「新女性」出現在英美社會轉型期'],
+ [['writer','book','bubbleTalk'], 'Sarah’s book', '作家莎拉的書引發大爭論'],
+ [['women','book','cycle'], 'changing roles', '探討中產女性角色的轉變'],
+ [['woman','star','hourglass'], 'lasting impression', '「新女性」留下持久影響'],
+],
+137: [
+ [['clock','office','neq'], 'not nine to five', '朝九晚五單一雇主已不是主流'],
+ [['man','coins','coins','laptop'], 'many income streams', '數百萬人多種收入獨立工作'],
+ [['crowdBig','globe','chartUp'], '162 million', '歐美 1.62 億人獨立工作'],
+],
+138: [
+ [['deepSea','scaleEven','scientist'], 'deep-sea minerals', '海洋中心研究深海礦產的風險與好處'],
+ [['deepSea','fist','warning'], 'long-lasting damage', '深海採礦傷害持續數十年'],
+ [['ship:x','list','calendar'], 'planned', '還沒商業開採，但很多在規劃'],
+],
+139: [
+ [['network','cell','shield'], 'immune network', '免疫系統是器官細胞蛋白質的網絡'],
+ [['two2','shield','shield'], 'innate + adaptive', '兩部分：先天和適應性'],
+ [['shield','vs','virus'], 'defend vs invader', '後天系統做特殊蛋白質對抗入侵者'],
+],
+140: [
+ [['bank','arrow','coins','building'], 'overdraft', '銀行以透支提供短期融資'],
+ [['coins','twoWay','thumbUp'], 'flexibility', '優點：彈性'],
+ [['bank','exclaim','coins'], 'repayable on demand', '缺點：隨時可能被要求還'],
+ [['percent','chartUp','coins:up'], 'variable interest', '利息浮動，利率升成本就升'],
+],
+});
+
+Object.assign(PIC, {
+141: [
+ [['biplane','usa','bubbleTalk'], 'tried to sell', '1905 後找美國陸軍部賣飛機'],
+ [['speechNo','speechNo','manSad'], 'turned down', '一再被拒絕'],
+ [['two','biplane','check'], 'Army asked 1907', '堅持下去，1907 陸軍終於要買'],
+ [['two','star','crowdBig'], 'first stars', '成為二十世紀第一批大明星'],
+],
+142: [
+ [['scientist','classroom','calendar'], 'Skinner 1953', '1953 史金納去看女兒的數學課'],
+ [['machine','kid','clock'], 'teaching machine', '造出教學機器，孩子照自己步調答題'],
+ [['laptop','cycle','chartDown'], 'hype and flop', '教育科技不斷炒作又失敗'],
+ [['laptop','arrow','teacher'], 'serve teaching', '科技要為教學服務，不是反過來'],
+],
+143: [
+ [['shop','bicycle','calendar'], 'bicycle shop 1892', '1892 開腳踏車修理店，1896 造車'],
+ [['coins','arrow','biplane'], 'profits → flight', '利潤資助 1899–1905 航空實驗'],
+ [['news','skull','biplane'], 'Lilienthal’s death', '1896 李林塔爾滑翔機喪生的新聞點燃興趣'],
+],
+144: [
+ [['list','laptop','board'], 'syllabus', '每門學科課綱列出科技和教學法'],
+ [['student','laptop','arrow','classroom'], 'learn + integrate', '學生學科技並整合進教學'],
+ [['teacher:q','laptop:ok','list:x'], 'can’t integrate', '講師發現：會用科技卻不會整合進教案'],
+],
+145: [
+ [['countryside','arrow','city'], 'urbanization', '都市化：從聚落移到城市'],
+ [['city','warning','farm'], 'farming still needed', '但令人擔心：仍需要農業'],
+ [['chartUp','arrow','chartDown'], 'rise then fall', '先上升，後因反都市化下降'],
+ [['percent','city','check'], '80% best', '80% 是最佳水準'],
+],
+146: [
+ [['ecar','sprout','earNo'], 'clean, quiet, easy', '電動車乾淨安靜好開'],
+ [['battery:down','clock','car:up'], 'range + charge time', '但續航短充電久，汽油車更受歡迎'],
+ [['hot','scientist','ecar'], 'reconsider', '因暖化，科學家重新考慮電動車'],
+ [['ecar','plug','cycle'], 'charge often', '但電動車要常充電'],
+],
+147: [
+ [['africa','oil','lock'], 'unexploited resources', '非洲資源豐富，大多未開發'],
+ [['africa','thumbDown','scaleEven:x'], 'unfair image', '對非洲的負面概括不公平'],
+ [['worker','plate','hospital','shake'], 'needs support', '非洲人努力解決問題，但需國際支持'],
+ [['africa','briefcase','plus','hand'], 'business + help', '非洲適合做生意，但需要協助'],
+],
+148: [
+ [['ecar','hourglass'], 'not new', '電動車絕不是新東西'],
+ [['ecar','check','battery:down'], 'short range', '乾淨安靜好開，缺點續航短'],
+ [['calendar','oil','car:up'], '1915: gasoline won', '1915 後汽油車便宜，電動車退流行'],
+ [['hot','scientist','ecar:ok'], 'reconsider', '暖化擔憂→科學家重新考慮電動車'],
+],
+149: [
+ [['list','laptop','board'], 'syllabus', '每門學科課綱列出科技和教學法'],
+ [['student','laptop','arrow','classroom'], 'learn + integrate', '學生學科技並整合進教學'],
+ [['teacher:q','laptop:ok','puzzle:x'], 'don’t know how to integrate', '講師發現：會用卻不會整合'],
+],
+150: [
+ [['news','vs','woman'], 'media frenzy', '1890 年代媒體瘋狂爭論「新女性」'],
+ [['writer','calendar','one'], 'March 1894', '有人說起點是 1894 年莎拉·格蘭德'],
+ [['bubbleTalk','women','q'], 'from a debate', '也有人認為源自中產女性地位的辯論'],
+],
+151: [
+ [['biplane','year','trophy'], 'first flight 1903', '1903 萊特兄弟首次動力飛行'],
+ [['man','toyHeli','kids'], 'toy helicopter', '父親帶回橡皮筋玩具直升機'],
+ [['toyHeli','arrow','biplane','heart'], 'toy → interest', '奧維爾說這玩具點燃飛行興趣'],
+ [['bicycle','coins','arrow','biplane'], 'bicycle money', '腳踏車生意提供資金'],
+],
+152: [
+ [['calendar','school','check'], 'Sept to June', '九月到六月學年是慣例'],
+ [['sun','countryside','bubbleTalk'], 'born in the country?', '學生被告知暑假源自農村'],
+ [['farm','student','wheat'], 'work in the fields', '農村放假是讓學生下田'],
+ [['beach','bed','farm:x'], 'value of rest', '但暑假其實是肯定休息的價值'],
+],
+153: [
+ [['writer','books','pen'], '70 books', '羅素寫了 70 多本書、數千篇文章'],
+ [['oldMan','crown','brain'], 'greatest philosopher', '二十世紀最偉大哲學家和邏輯學家'],
+ [['speaker','crowd','fire'], 'political debates', '熱切投入社會政治爭議'],
+ [['lock','swords:x','calendar'], 'jailed 1918', '1918 因反戰入獄'],
+],
+154: [
+ [['volcano','list','search'], 'many events', '預測火山噴發要看很多事件'],
+ [['volcano','neq','volcano'], 'each different', '每座火山不同，可靠度各異'],
+ [['volcano:bang','warning:x'], 'no early signals', '有些噴發沒有前兆'],
+ [['scientist','volcano','hourglass'], 'long-term research', '但預測需要長期研究'],
+ [['crowd','arrow','scientist','volcano'], 'residents help', '附近居民可提供發現給科學家'],
+],
+155: [
+ [['volcano','list','eye'], 'monitor many events', '沒有單一事件能預測，要監測很多'],
+ [['volcano','neq','volcano','q'], 'reliability differs', '每座火山不同，預測可靠度不一'],
+ [['volcano:bang','warning:x'], 'no precursor', '有時毫無前兆就噴發'],
+ [['moneyBag','eye:x','volcano'], 'monitoring costly', '但監測很貴，不是都有監測'],
+],
+156: [
+ [['scientist','chip','brain'], 'copy the brain', '認知科學家用電腦模仿人腦'],
+ [['chip','search','list'], 'store + find', '電腦能儲存和取回資訊'],
+ [['brain:heart','vs','chip:time'], 'emotions vs speed', '人腦有情緒，電腦處理更快'],
+ [['chip','neq','brain'], 'not realistic', '用電腦模仿人腦不切實際'],
+],
+157: [
+ [['crowdBig:up','globe','warning'], 'pressure on resources', '人口成長，地球資源壓力增'],
+ [['house','cart','package'], 'homes + goods', '更多人要房子和商品，需大量材料'],
+ [['tree','plus','oil','chartUp'], 'non-renewables too', '不只可再生，不可再生資源也吃緊'],
+ [['road','sprout','check'], 'sustainable path', '永續道路很重要'],
+],
+158: [
+ [['city','chartUp','globe'], 'urbanization', '都市化是現代的大趨勢'],
+ [['city','briefcase','thumbUp'], 'better jobs', '城市好處：更好的工作機會'],
+ [['jam','smoke','coins:up'], 'traffic, pollution, costs', '但有壅塞、污染、高生活成本'],
+ [['suit','city','sprout'], 'sustainable cities', '規劃者著重永續宜居城市'],
+],
+159: [
+ [['hunter','africa','crowdBig'], '85,000', '桑人：南非民族，多群體，8 萬 5 千人'],
+ [['hunter','crowd','chain:x'], 'small hunting bands', '社會單位是小狩獵隊'],
+ [['hunter','package','manRun'], 'carry everything', '只擁有能隨身帶的東西'],
+ [['swords','ship','calendar'], 'resistance broken 1862', '抵抗荷蘭人，1862 年被粉碎'],
+],
+160: [
+ [['oldMan','three','crown'], 'three types', '韋伯三種權威：傳統、魅力、法理'],
+ [['crown','scroll','hourglass'], 'custom', '傳統型：靠習俗'],
+ [['speaker','star','crowd'], 'charisma', '魅力型：信領袖個人特質'],
+ [['office','gavel','list'], 'official rules', '官僚型：接受正式規則'],
+],
+});
+
+Object.assign(PIC, {
+161: [
+ [['biplane','year','trophy'], 'first flight 1903', '1903 萊特兄弟首次動力飛行'],
+ [['moon:x','hourglass'], 'not overnight', '這不是一夜之間發生的'],
+ [['shop','bicycle','coins'], 'Wright Cycle Co. 1892', '1892 成立腳踏車公司才找到好生意'],
+ [['bicycle','gear','hand'], 'mechanical skills', '修造腳踏車磨練機械技能'],
+],
+162: [
+ [['suit','bubbleTalk','target'], 'ask managers', '設目標要先問經理人內部觀點'],
+ [['crowd','smile','list'], 'customer satisfaction', '仔細檢查顧客滿意度'],
+ [['suit','plus','crowd','search'], 'combine → find issues', '結合內部回饋和顧客資料找根本問題'],
+],
+163: [
+ [['student','books','clock'], 'hours of research', '課後學生花數小時做研究'],
+ [['flag','student','clock:up'], 'even more time', '英語國家和歐盟學生投入更多'],
+ [['flask','vs','palette','chartUp'], 'varies by discipline', '不同學科差異大'],
+ [['student','neq','student'], 'differs within field', '同領域內差異也大'],
+],
+164: [
+ [['robot','briefcase:x','crowdSad'], 'job loss worries', '百年來自動化引發失業擔憂'],
+ [['robot','gear','suit:ok'], 'not all vulnerable', '例行工作被取代，但不是全部'],
+ [['man','robot','check'], 'not fully replaced', '人類沒有被完全取代'],
+ [['gear','arrow','idea','briefcase'], 'new roles', '科技改變工作，創造新角色'],
+],
+165: [
+ [['drone','co2:down','truck'], 'drones cut CO2', '無人機送貨比卡車少排碳'],
+ [['drone','arrow','house','check'], 'short distance', '飛不遠時無人機有優勢'],
+ [['truck','pin','pin','check'], 'many stops: trucks', '停靠點多時卡車更環保'],
+ [['package:up','co2:up'], 'heavier = less benefit', '包裹愈重，碳效益愈低'],
+],
+166: [
+ [['city','chartUp','briefcase'], 'fast-growing Seattle', '西雅圖成長快，工作多'],
+ [['jam','chartDown','calendar'], 'traffic worse', '但交通愈來愈糟'],
+ [['news','car:down','thumbUp'], 'reports: improved', '報告說變好：開車的人變少'],
+ [['list','vs','jam'], 'survey vs reality', '結論來自問卷，實際沒什麼改變'],
+],
+167: [
+ [['fist','two2','target'], 'two types', '攻擊行為兩類：敵意型、目標型'],
+ [['shield','vs','list'], 'defensive vs planned', '敵意型是防衛反應，目標型有計畫'],
+ [['fist','crowd','globe'], 'cultural norms', '受文化社會規範影響'],
+ [['gavel:x','fist:up'], 'weak law → violence', '法律執行弱，暴力更常見'],
+],
+168: [
+ [['library','shake','crown'], 'partners + leaders', '館員應是夥伴和領導者'],
+ [['books','arrow','scientist','shake'], 'collaborators', '從提供資源轉成研究合作者'],
+ [['scientist','neq','library'], 'gap remains', '但需求和服務仍有落差'],
+ [['gradCap','laptop','library'], '21st-century librarians', '要培養 21 世紀學術館員'],
+],
+169: [
+ [['scientist','chip','brain'], 'copy the brain', '認知科學家用電腦模仿人腦'],
+ [['chip','search','vs','brain'], 'store vs recall', '電腦儲存取回，人腦記憶回想'],
+ [['chip','neq','brain'], 'completely different', '有人說兩者根本不同'],
+ [['brain:heart','vs','chip:time'], 'emotions vs speed', '人腦有情緒，電腦更快'],
+],
+170: [
+ [['crowd','brain','neq'], 'differ greatly', '人的智力差很多'],
+ [['house','arrow','brain'], 'environment?', '過去認為環境是主因'],
+ [['dna','plus','house','brain'], 'nature + nurture', '現代心理學：先天後天交互作用'],
+ [['dna','brain','check'], 'heredity matters', '遺傳研究：遺傳很重要'],
+],
+171: [
+ [['co2','factory','crowd'], 'CO2 from humans', '二氧化碳最重要，主要人類造成'],
+ [['co2','hot','wave:up'], 'temperature + sea level', '造成氣溫和海平面上升'],
+ [['building','suit','check'], 'business responsibility', '企業應解決商業模式相關的環境問題'],
+ [['panda','shake','sprout'], 'WWF + companies', '世界自然基金會與企業合作永續'],
+],
+172: [
+ [['brain','search','list'], 'many methods', '心理學研究行為，方法很多'],
+ [['dna','brain','crowd'], 'biopsychosocial', '生物心理社會模型更有用'],
+ [['dna','plus','crowd'], 'biology + society', '思想行為受生物和社會影響'],
+ [['puzzle','eye','brain'], 'multiple perspectives', '要整合多種觀點'],
+],
+173: [
+ [['stages','coins:up','one'], 'introduction: costly', '導入期：最花錢'],
+ [['stages','chartUp','two2'], 'growth', '成長期：銷售利潤強勁成長'],
+ [['stages','eq','three'], 'maturity: stable', '成熟期：產品穩定'],
+ [['stages','chartDown','downBig'], 'decline', '衰退期：市場萎縮'],
+],
+174: [
+ [['q','crowd','warning'], 'fallacy everywhere', '謬誤在日常很常見'],
+ [['phone:x','manAngry','bubbleNo'], 'phone not working', 'A 打不通就以為 B 在躲他'],
+ [['brain','warning'], 'psychological', '謬誤在心理層面也有'],
+ [['clockFast','arrow','warning','brain:x'], 'quick conclusions', '快速下結論不思考，就產生謬誤'],
+],
+175: [
+ [['shy','q','book:x'], 'lack of knowledge', '不安恐懼來自缺乏了解'],
+ [['book','arrow','smile'], 'know more, relax more', '懂愈多愈自在'],
+ [['speaker','sweat','check'], 'natural to be scared', '怕公開演講很正常'],
+ [['mic','cycle','thumbUp'], 'practice → confidence', '練習愈多愈有信心'],
+],
+176: [
+ [['student','shy','book'], 'moments of shame', '學習常有讓人羞愧的時刻'],
+ [['book','cycle','check'], 'don’t give up', '但不代表該放棄終身學習'],
+ [['teacher','arrow','student','shield'], 'mentors', '導師提供指引，克服困難建信心'],
+ [['two','heart','manSad'], 'friends support', '朋友在沮喪時給支持'],
+ [['shake','arrow','trophy'], 'partners', '夥伴攜手同行'],
+],
+177: [
+ [['triangle','q','paper'], 'more persuasive?', '擔心多重方法是否真的更有說服力'],
+ [['triangle','two2','search'], 'two methods', '三角驗證：兩種方法問同一因果問題'],
+ [['triangle','warning','crowd'], 'big problems', '但社會科學的三角驗證有大缺陷'],
+ [['paper','neq','paper','q'], 'different findings?', '兩方法結果不同時該怎麼下結論'],
+],
+178: [
+ [['writer','pen','calendar'], '1837 “species change”', '1837 達爾文寫下「物種會變」'],
+ [['scientist','books','crowd'], '20 years of data', '20 年累積資料，先給小圈子看'],
+ [['book','calendar','crowdBig'], 'published 1859', '1859《物種起源》出版才公開'],
+],
+179: [
+ [['city','office','crowdBig'], 'Amazon 35,000', '西雅圖成長快：亞馬遜雇 35,000 人'],
+ [['crowdBig','arrow','house','coins:up'], 'housing pressure', '就業增加吸引更多人，房價壓力大'],
+ [['jam','chartDown'], 'congestion worse', '交通壅塞惡化'],
+ [['car:down','bus','bicycle'], 'less solo driving', '獨自開車減少，其他通勤方式大變'],
+],
+});
+
+// ---------- 自動排版：icons 依數量擺進 300×150 畫布 ----------
+const CONNECT = new Set(['arrow','vs','plus','eq','neq','twoWay','cycle']);
+const LAY = {1:[[95,12,1.1]], 2:[[45,25,1],[155,25,1]], 3:[[10,32,.9],[105,32,.9],[200,32,.9]], 4:[[4,50,.68],[77,50,.68],[150,50,.68],[223,50,.68]], 5:[[2,58,.56],[61,58,.56],[120,58,.56],[179,58,.56],[238,58,.56]]};
+function scene(icons, label){
+  let h = `<svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">`;
+  const lay = LAY[Math.min(5, Math.max(1, icons.length))] || LAY[4];
+  icons.slice(0,5).forEach((tok, i) => {
+    let [name, ...badges] = tok.split(':');
+    let [x, y, s] = lay[i];
+    const body = SPR[name] || SPR.q;
+    if (CONNECT.has(name)) { const s2 = s*.55; x += (100*s - 100*s2)/2; y += (100*s - 100*s2)/2; s = s2; }
+    h += `<g transform="translate(${x} ${y}) scale(${s})">${body}`;
+    badges.forEach((b, k) => {
+      if (b === 'x') h += `<g>${BADGE.x}</g>`;
+      else if (BADGE[b]) h += `<g transform="translate(${62 - k*4} ${-6 + k*30}) scale(.42)">${BADGE[b]}</g>`;
+    });
+    h += `</g>`;
+  });
+  if (label) h += `<text x="6" y="17" font-size="13" font-weight="700" fill="#2980b9" stroke="#fff" stroke-width="4" paint-order="stroke">${esc(label)}</text>`;
+  return h + `</svg>`;
+}
+
+// ---------- 把擬答切成一格一句（對齊 src 來源句；對不齊就照連接詞切） ----------
+const norm = t => t.replace(/[’‘]/g, "'").replace(/[“”]/g, '"');
+const toks = t => norm(t).toLowerCase().replace(/[^a-z0-9'&\-\s]/g, ' ').split(/\s+/).filter(w => w && w !== 'and' && w !== 'but');
+const UNIT = /\{(and|but)\}|\[([^|\]]+)\|([^\]]+)\]|\S+|\s+/g;
+function splitPanels(d){
+  const kept = (d.src || []).map(s => toks(s.replace(/~~.+?~~/g, ' ')).length);
+  const units = []; let m;
+  UNIT.lastIndex = 0;
+  while ((m = UNIT.exec(d.ans))) {
+    const u = m[0];
+    if (m[1]) units.push(['conn', u, 0]);
+    else if (m[2]) units.push(['swap', u, toks(m[3]).length]);
+    else if (!u.trim()) units.push(['sp', u, 0]);
+    else units.push(['w', u, toks(u).length]);
+  }
+  const total = units.reduce((a, u) => a + u[2], 0);
+  if (kept.length && total === kept.reduce((a, b) => a + b, 0)) {
+    const out = []; let cur = '', cnt = 0, i = 0;
+    units.forEach(([kind, u, c]) => {
+      if (i < kept.length - 1 && cnt >= kept[i] && (kind === 'conn' || (c > 0))) { out.push(cur.trim()); cur = ''; cnt = 0; i++; }
+      cur += u; cnt += c;
+    });
+    out.push(cur.trim());
+    return out;
+  }
+  // 後備：照 {and}/{but} 切
+  return d.ans.split(/(?=\{(?:and|but)\})/).map(s => s.trim()).filter(Boolean);
+}
+function fmt(t){ // 標記 → HTML
+  return esc(t).replace(/\[([^|\]]+)\|([^\]]+)\]/g, '<span class="sw">$1</span><span class="og">($2)</span>')
+    .replace(/\{(and|but)\}/g, (m, c) => `<span class="cj ${c}">${c}</span>`);
+}
+function hint(t){ // 默寫提示：每字首字母
+  const plain = t.replace(/\[([^|\]]+)\|[^\]]+\]/g, '$1').replace(/\{(and|but)\}/g, '$1');
+  return plain.split(/\s+/).map(w => { const m = w.match(/[A-Za-z0-9]/); return m ? m[0] + '·' : w; }).join(' ');
+}
+function leadConn(t){ const m = t.match(/^\{(and|but)\}\s*/); return m ? [m[1], t.slice(m[0].length)] : [null, t]; }
+
+// ---------- 畫一條 ----------
+let DATA = [], cur = 0, ALL = false;
+function stripHtml(d, idx){
+  const pans = splitPanels(d), pic = PIC[d.num] || [];
+  let h = `<div class="strip" id="s${d.num}"><div class="title"><span class="n">#${d.num}</span><b>${esc(d.title)}</b><span class="code">${esc(d.code || '')}</span><span class="cnt">${pans.length} 格｜${idx + 1} / ${DATA.length}</span></div>`;
+  h += `<div class="row n${pans.length}">`;
+  pans.forEach((p, i) => {
+    const [conn, rest] = leadConn(p);
+    const pp = pic[i] || [['q'], '', ''];
+    const [icons, lab, zh] = pp;
+    h += `<div class="panel"><div class="num"><span>${i + 1} / ${pans.length}</span>${conn ? `<span class="cj ${conn}">${conn}</span>` : ''}</div>
+      <div class="pic">${scene(icons, lab)}</div>
+      <div class="cap">${esc(zh || '')}</div>
+      <div class="bubble">${conn ? `<span class="cj ${conn} lead">${conn}</span> ` : ''}<span class="f">${fmt(rest)}</span><span class="h">${esc(hint(rest))}</span></div></div>`;
+  });
+  h += `</div>`;
+  h += `<div class="full"><span class="lab">整句（考場要打的）</span><span class="ft">${fmt(d.ans)}</span><span class="fh">${esc(hint(d.ans))}</span></div>`;
+  if (d.zh) h += `<div class="zh">🗒️ ${esc(d.zh)}</div>`;
+  if (d.note) h += `<div class="note">⚠️ ${d.note}</div>`;
+  return h + `</div>`;
+}
+function render(){
+  let h = '';
+  if (ALL) h = DATA.map((d, i) => stripHtml(d, i)).join('');
+  else h = stripHtml(DATA[cur], cur) + `<div class="nav"><button id="prev">◀ 上一題</button><button id="next">下一題 ▶</button></div><div class="tip">← → 鍵換題｜開「默寫」後點格子揭開英文｜網址加 #q題號 直達</div>`;
+  $('app').innerHTML = h;
+  if (!ALL) { $('prev').onclick = () => go(cur - 1); $('next').onclick = () => go(cur + 1); }
+  document.querySelectorAll('.panel').forEach(p => p.onclick = () => p.classList.toggle('open'));
+  $('sel').value = cur;
+  if (!ALL) { history.replaceState(null, '', '#q' + DATA[cur].num); window.scrollTo(0, 0); }
+}
+function go(i){ cur = (i + DATA.length) % DATA.length; if (ALL) { const el = $('s' + DATA[cur].num); if (el) el.scrollIntoView(); $('sel').value = cur; history.replaceState(null, '', '#q' + DATA[cur].num); } else render(); }
+
+const tog = (id, cls) => { $(id).onclick = () => { document.body.classList.toggle(cls); $(id).classList.toggle('on'); }; };
+tog('bHide', 'hide'); tog('bCap', 'nocap'); tog('bOg', 'hideog');
+$('bAll').onclick = () => { ALL = !ALL; $('bAll').classList.toggle('on', ALL); render(); if (ALL) go(cur); };
+$('sel').onchange = () => go(+$('sel').value);
+document.addEventListener('keydown', ev => { if (ev.target.tagName === 'SELECT') return; if (ev.key === 'ArrowRight') go(cur + 1); if (ev.key === 'ArrowLeft') go(cur - 1); });
+
+fetch('SWT_擬答.html').then(r => { if (!r.ok) throw new Error(r.status); return r.text(); }).then(t => {
+  try {
+    const i = t.indexOf('const DATA = ['), j = t.indexOf('\n];', i);
+    if (i < 0 || j < 0) throw new Error('找不到 const DATA');
+    DATA = new Function('return ' + t.slice(t.indexOf('[', i), j + 2))();
+  } catch (err) { $('loading').className = 'err'; $('loading').textContent = '擬答 DATA 解析失敗：' + err.message; return; }
+  $('sel').innerHTML = DATA.map((d, i) => `<option value="${i}">#${d.num} ${esc(d.title)}</option>`).join('');
+  const m = location.hash.match(/q(\d+)/); if (m) { const k = DATA.findIndex(d => d.num === +m[1]); if (k >= 0) cur = k; }
+  $('loading').hidden = true; $('app').hidden = false;
+  render();
+}).catch(err => {
+  $('loading').className = 'err';
+  $('loading').innerHTML = '題庫載入失敗（' + esc(err.message) + '）。本機雙擊開會被擋，請用網址開：<b>jameskan-tw.github.io/pte-study/SWT_四格漫畫.html</b>';
+});
+</script>
+</body>
+</html>

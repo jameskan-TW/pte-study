@@ -33,6 +33,7 @@ James 正在準備 PTE，弱項是 Writing 和拼字。本 repo 是一組純靜�
 | `SWT_中文翻譯.html` | SWT 179 篇中文翻譯 |
 | `SWT_擬答.html` | SWT 179 題擬答（2026-09-06）。James 定的規則：從紅字句挑 3-4 句、**只刪不改字**、用 and/but 拼成一句、50-60 字；每題換 3-4 個基礎字防複製貼上（綠字＋括弧原字）。DATA 陣列驅動，含原文黃底標示、中文翻譯、機經錯字提醒。加題／改題用 `tools/swt_add.py` 驗證器（用法見檔頭）（來源句必須是原文子字串、擬答扣掉換字後須等於來源句刪減拼接） |
 | `SWT_練習.html` | SWT 打字練習（2026-09-10）。**沒有自己的題庫**：執行時 fetch `SWT_擬答.html` 抽 `const DATA = [...]`，改擬答這頁自動跟上（本機要用 http server 開，file:// 會擋 fetch）。逐字 LCS 比對：換字／原字都算對、拼錯（編輯距離）→紅底＋「錯字再練一遍」、漏字、多字；10 分鐘計時、默寫模式、提示黃底；成績存 localStorage |
+| `SWT_四格漫畫.html` | SWT 179 題四格漫畫（2026-09-24，James 考前沒時間複習，要「看完漫畫和句子就知道這篇在講什麼」）。**沒有自己的題庫**：fetch `SWT_擬答.html` 抽 `const DATA`（本機要 http server）。一格＝擬答裡的一句來源句：`splitPanels()` 把 `ans` 依 `src` 各句字數對齊切格（`{and}`/`{but}` 不計字），對不齊（#154 機經黏字）就退回照連接詞切；56 題 3 格、119 題 4 格、4 題 5 格。格與格之間的 `and`（藍）/`but`（紅）用不同色塊標，整句列再拼一次。圖是 SVG 線稿：沿用 WE_漫畫 的 `SPR` 元件庫（build 時從 WE_漫畫.html 抽 `const K…` 到 `// 場景：` 之間）再加約 200 個 SWT 元件（動物／科學／人物／物品／場所）；`PIC[題號] = [[icons, 藍字, 中文], ...]` 一格一筆，icons 1–5 個由 `scene()` 自動排版，`icon:badge` 在右上疊徽章（x/up/down/q/ok/no/heart/zz/sweat/star/bang/dollar/idea/time）。默寫（遮英文留首字母，點格揭開）／藏中文／藏原字／連讀（179 題一頁）；`#q{num}` 直達（num＝擬答題號）。加題：擬答加 DATA 後，這頁加一筆 PIC（格數＝src 句數）。原始建置腳本在當時 session 的 scratchpad，改圖直接改本檔 |
 | `WFD_中文翻譯.html` / `wfd_memory_cards.html` | WFD 189 句翻譯／圖像記憶卡 |
 | `WFD_填空測驗.html` | 精選 87 句挖空測驗（有「答案模式」開關；曾從 189 句精簡） |
 | `WFD_保底字庫.html` | 防漏打技巧頁（跟訂正字庫性質不同，保留獨立） |
