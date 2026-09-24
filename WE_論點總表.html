@@ -827,17 +827,42 @@ const DATA = [
  }},
 
 {n:'②-10', o:30, t:'城市生活與鄉村生活', en:'Living in the countryside or having a city life, which one do you prefer? Please use examples or your personal experience to support your opinion.',
- stance:'偏好鄉村生活', p2c:4, p2zh:'讓步：城市工作機會多', p3c:2, p3zh:'主論：步調慢壓力小 → 安心陪家人 → 全家和樂',
- es:{topic:'countryside life versus city life',
+ stance:'偏好鄉村生活', p2c:4, p2zh:'讓步：城市工作機會多', p3c:2, p3zh:'主論：步調慢壓力小 → 放鬆陪家人 → 全家和樂',
+ es:{topic:'country life versus city life',
  va:'city life is the better choice', vb:'country life brings more peace of mind',
  con:'cities offer many job chances', conR:'big companies are there and pay well',
  cond:'young people work in big cities', subj:'they', resA:'find <i class="a4">a good job with a steady income</i>', resB:'faster career growth',
  concl:'many young people move to cities',
  stance:'country life is the better choice', reason:'life there is slow and has far less pressure',
- jv:'works', jn:'firm', does:'does his job online from his quiet country home',
- result:'enjoy <i class="a2">peace of mind</i> and spend more <i class="a1">quality time with his family</i>',
+ jv:'works', jn:'firm', does:'lives in the quiet countryside and does his job online',
+ result:'feel relaxed and spend more <i class="a1">quality time with his family</i>',
  impl:'country life brings <i class="a2">peace of mind</i> and keeps the whole family in harmony',
- final:'the countryside is my choice', rec:'people think about both career and family when choosing'}},
+ final:'country life is my choice', rec:'people think about both career and family when choosing'},
+ mistakes:{
+  spell:[
+   {x:'counrty', o:'country', nt:'t／r 顛倒：coun-tr-y，tr 連在一起'},
+   {x:'contryside', o:'countryside', nt:'漏 u：coun-try-side（① 的 country 加 side）'},
+   {x:'locat', o:'located', nt:'漏 e；而且「位於」要被動 are located in——範文直接用 are there 避開'},
+   {x:'movie', o:'move', nt:'多 i 變成「電影」；搬去＝move to'},
+   {x:'on line', o:'online', nt:'一個字（同 everywhere）'},
+   {x:'peae', o:'peace', nt:'漏 c：pea-c-e'},
+   {x:'bg／damily', o:'big／family', nt:'打字滑掉（漏 i；d 跟 f 是鍵盤鄰居）——寫完回頭掃一眼'}
+  ],
+  grammar:[
+   {x:'city offers many job chances', o:'cities offer many job chances', nt:'city 可數單數裸奔；用複數免冠詞也免 +s'},
+   {x:'big companies locat in cities', o:'big companies are there', nt:'④ 剛講 cities，⑤ 用 there 指回去；真要寫「位於」得用被動 are located in'},
+   {x:'country life is a better choice（⑪）', o:'country life is the better choice', nt:'二選一裡比較好的那個是唯一 → the；跟 ② 對稱（兩個比 the better、三個以上 the best）'},
+   {x:'country is the better choice', o:'country life is the better choice', nt:'country 單獨是「國家」，鄉村生活要 country life'},
+   {x:'the life pace is slow and far less pressure', o:'life there is slow and has far less pressure', nt:'「生活步調」是 the pace of life，範文用 life there；and 兩邊要對稱，動詞片語配動詞片語 → 補 has'},
+   {x:'lives in a quiet countryside', o:'lives in the quiet countryside', nt:'countryside 當地區固定配 the；country life（生活方式）才不加'},
+   {x:'enjoy the peace of mind', o:'enjoy peace of mind', nt:'固定片語不加 the（③ 自己打對）'},
+   {x:'gives a peae', o:'brings peace of mind', nt:'peace 不可數不加 a；片語要完整 peace of mind'},
+   {x:'he is able to he can relax', o:'he is able to feel relaxed', nt:'模板前面已有 he is able to，這格直接接原形'},
+   {x:'feel relax', o:'feel relaxed', nt:'feel 是連綴動詞接形容詞（同 stay healthy）；relax 動詞／relaxed 人放鬆的／relaxing 事物讓人放鬆的'},
+   {x:'people choice by both career and family', o:'people think about both career and family when choosing', nt:'choice 是名詞，整句沒動詞；「考慮」用 think about；句尾 when choosing 連掉兩次'}
+  ],
+  note:'2026-09-25 首次逐 slot 練（錢與方便讓步·賺錢線第三題，P3 陪家人線），18 格全打完、7 拼字＋11 文法。練前先復習 09-23 五題：拼字 20 字錯 4（lonely／company／timing／campaigns，都是連兩天同錯）、文法 20 句錯 12，重犯 7 條（a steady income 的 a 第 3 次、否定 or、the television、the whole、dinner time 單數、① people working、the key to）。本題主罩門：可數單數裸奔（city／a quiet countryside）、the 的兩個方向（the better choice 要加、peace of mind 不加）、打字滑掉 4 個（bg／movie／peae／damily）。做對的：②③⑧⑨⑯ 一字不差、+s 全對（brings／lives／does／keeps）。換 James 版：① country life versus city life（全篇統一 country life）、⑭ lives in the quiet countryside and does his job online、⑮ 改 feel relaxed（James 嫌 ③⑮⑯ 三次 peace of mind 太重複，留 ③⑯）、⑰ country life is my choice。'
+ }},
 
 {n:'②-11', o:32, t:'名人是否要放棄隱私', en:'People who are famous entertainers or sports people should give up the right to privacy because this is the price of fame.To what extent do you agree or disagree with this point of view? Give your opinion with your experiences.',
  stance:'不同意 — 隱私是基本權利', p2c:4, p2zh:'讓步：名氣換高收入（砍尾不收家人）', p3c:2, p3zh:'主論：隱私 → 放鬆安心 → 全家和樂',
@@ -1582,8 +1607,8 @@ const ZH = {
 '②-10':{
  p1:'反方：城市生活 (city life) 是更好選擇；我方：鄉村生活帶來更多安心 (country life brings more peace of mind)',
  p2:'城市工作機會多 (many job chances)——大公司都在那裡 (big companies are there)、薪水好 (pay well)。若年輕人在大城市工作 → 好工作穩定收入 → 職涯成長更快 (faster career growth)。小結：很多年輕人搬去城市',
- p3:'我偏好鄉村生活——步調平靜 (calm)、壓力小很多 (far less pressure)。例：James 在安靜鄉間的家遠端工作 (does his job online) → 安心 (enjoy peace of mind)、更多優質時間陪家人 (quality time with his family)。含義：鄉村生活帶來安心 (peace of mind)、全家和樂 (keeps the whole family in harmony)',
- p4:'鄉村是我的選擇；建議：選擇時同時考量職涯與家庭 (career and family)'},
+ p3:'鄉村生活是更好的選擇 (the better choice)——那裡的生活步調慢 (life there is slow)、壓力小很多 (far less pressure)。例：James 住在安靜的鄉下、遠端工作 (lives in the quiet countryside and does his job online) → 放鬆 (feel relaxed)、更多優質時間陪家人 (quality time with his family)。含義：鄉村生活帶來安心 (peace of mind)、全家和樂 (keeps the whole family in harmony)',
+ p4:'鄉村生活是我的選擇 (country life is my choice)；建議：選擇時同時考量職涯與家庭 (think about both career and family when choosing)'},
 '②-11':{
  p1:'反方：成名就要付出隱私 (paid for with privacy)；我方：名人絕不該放棄隱私 (never give up privacy)',
  p2:'成名確實能帶來大錢 (big money)——媒體關注維持人氣 (keeps them popular)。若名人常上新聞 (stay in the news) → 保持名氣和粉絲 → 非常高的收入 (a very high income)。小結：很多明星願意用隱私換名利 (money and fame)。★讓步砍尾：不收家人，家人留給主論②收',
