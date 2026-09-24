@@ -7,7 +7,7 @@
 <style>
 :root{--ink:#222;--paper:#fffdf7;--line:#222;--and:#1d4ed8;--andbg:#dbeafe;--but:#b91c1c;--butbg:#fee2e2;--sw:#16a34a;}
 *{box-sizing:border-box}
-body{margin:0;font-family:'Noto Sans TC','Microsoft JhengHei',sans-serif;background:#f0ede6;color:var(--ink)}
+body{margin:0;font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;background:#ece7dc;color:var(--ink)}
 header{position:sticky;top:0;z-index:5;background:#1a3a5c;color:#fff;padding:8px 12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 header h1{font-size:1rem;margin:0 8px 0 0}
 header select,header button{padding:5px 10px;border:none;border-radius:4px;font-family:inherit;font-size:.85rem;cursor:pointer}
@@ -24,15 +24,49 @@ main{max-width:1180px;margin:0 auto;padding:12px}
 .title b{font-size:1.1rem}
 .title .code{font-size:.75rem;color:#888}
 .title .cnt{font-size:.75rem;color:#888;margin-left:auto}
-.row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:10px}
+.row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:12px}
 .row.n3{grid-template-columns:repeat(3,1fr)}
 .row.n5{grid-template-columns:repeat(5,1fr)}
-.panel{background:var(--paper);border:3px solid var(--line);border-radius:4px;padding:6px 8px 10px;box-shadow:4px 4px 0 #222;display:flex;flex-direction:column;cursor:pointer;user-select:none}
-.panel .num{font-size:.7rem;font-weight:700;color:#888;letter-spacing:1px;display:flex;justify-content:space-between}
+.panel{background:var(--paper);border:3px solid var(--line);border-radius:6px;padding:6px 8px 10px;box-shadow:5px 5px 0 #222;display:flex;flex-direction:column;cursor:pointer;user-select:none}
+.panel .num{font-size:.7rem;font-weight:700;color:#888;letter-spacing:1px;display:flex;justify-content:space-between;align-items:center}
 .panel .num .cj{font-size:.85rem;letter-spacing:0}
-.panel .pic{margin:2px 0 4px}.panel .pic svg{width:100%;height:auto;display:block;border:1.5px solid #bbb;border-radius:3px;background:#fff}
-.panel .cap{font-size:.85rem;text-align:center;color:#444;margin-bottom:6px;font-weight:600}
-.bubble{position:relative;background:#fff;border:2px solid var(--line);border-radius:14px;padding:8px 12px;font-size:.98rem;line-height:1.55;margin-top:auto;font-weight:600}
+/* ---- 畫格 ---- */
+.pic{position:relative;aspect-ratio:2/1;border:2px solid #222;border-radius:6px;overflow:hidden;margin:4px 0 6px;isolation:isolate;background:#f4efe3}
+.pic .it{position:absolute;container-type:size}
+.pic .it.fl{z-index:1}
+.pic .it img,.pic .pt img{width:100%;height:100%;display:block;object-fit:contain;filter:drop-shadow(0 3px 2px rgba(0,0,0,.28))}
+.pic .it:not(.fl)::after{content:'';position:absolute;left:10%;right:10%;bottom:-6%;height:12%;background:radial-gradient(ellipse at center,rgba(0,0,0,.30),rgba(0,0,0,0) 68%);z-index:-1}
+.pic .pt{position:absolute}
+.pic .tx{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:56cqh;color:#222;line-height:1;text-shadow:0 0 6px #fff,0 0 2px #fff,2px 2px 0 rgba(255,255,255,.9)}
+.pic .tx.over{font-size:30cqh;padding-top:12%}
+.pic .em{display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-size:80cqh;line-height:1}
+.pic .bd{position:absolute;right:-12%;width:44%;height:44%;z-index:2}
+.pic .bd img{filter:drop-shadow(0 1px 1px rgba(0,0,0,.4))}
+.pic .b-up img{filter:hue-rotate(-85deg) saturate(1.4) drop-shadow(0 1px 1px rgba(0,0,0,.4))}
+.pic .b-down img{filter:hue-rotate(155deg) saturate(1.4) drop-shadow(0 1px 1px rgba(0,0,0,.4))}
+.pic .lbl{position:absolute;left:5px;top:5px;z-index:3;background:#fff;border:2px solid #222;border-radius:4px;padding:1px 7px;font-size:.74rem;font-weight:800;color:#1d4ed8;box-shadow:2px 2px 0 rgba(0,0,0,.45);max-width:74%;line-height:1.3}
+/* ---- 場景背景 ---- */
+.bg-paper{background:radial-gradient(#d6cebd 1px,transparent 1.6px) 0 0/16px 16px,linear-gradient(#fffdf6,#f5efe0)}
+.bg-out{background:radial-gradient(circle at 86% 20%,#fff1a3 0 6%,rgba(255,241,163,.35) 7%,transparent 10%),linear-gradient(180deg,#86c7ff 0%,#d9eeff 66%,#e2f3ff 70%,#5e9e4a 70%,#5e9e4a 71.5%,#8fd07a 71.5%,#6db95c 100%)}
+.bg-in{background:linear-gradient(#f8f3e9,#f8f3e9) top/100% 72% no-repeat,linear-gradient(#b9895a,#b9895a) 0 72%/100% 2px no-repeat,repeating-linear-gradient(90deg,#dcb98a 0 26px,#d0ad7c 26px 28px) bottom/100% 28% no-repeat}
+.bg-home{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 44'%3E%3Crect x='1.5' y='1.5' width='57' height='41' fill='%23bfe3ff' stroke='%23fff' stroke-width='3'/%3E%3Cpath d='M30 1.5v41M1.5 22h57' stroke='%23fff' stroke-width='3'/%3E%3C/svg%3E") right 6% top 12%/24% 32% no-repeat,linear-gradient(#fbf1e3,#fbf1e3) top/100% 72% no-repeat,linear-gradient(#b9895a,#b9895a) 0 72%/100% 2px no-repeat,repeating-linear-gradient(90deg,#dcb98a 0 26px,#d0ad7c 26px 28px) bottom/100% 28% no-repeat}
+.bg-office{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 44'%3E%3Crect x='1.5' y='1.5' width='57' height='41' fill='%23cfe6ff' stroke='%23fff' stroke-width='3'/%3E%3Cpath d='M20 1.5v41M40 1.5v41' stroke='%23fff' stroke-width='3'/%3E%3C/svg%3E") right 6% top 10%/30% 34% no-repeat,linear-gradient(#eef2f8,#eef2f8) top/100% 72% no-repeat,linear-gradient(#9aa6b5,#9aa6b5) 0 72%/100% 2px no-repeat,linear-gradient(#cfd6df,#bcc5d0) bottom/100% 28% no-repeat}
+.bg-lab{background:linear-gradient(#c7d2de,#c7d2de) 0 72%/100% 2px no-repeat,linear-gradient(#dfe7ef,#b9c6d4) bottom/100% 28% no-repeat,repeating-linear-gradient(0deg,rgba(0,0,0,.05) 0 1px,transparent 1px 18px) top/100% 72% no-repeat,repeating-linear-gradient(90deg,rgba(0,0,0,.05) 0 1px,transparent 1px 18px) top/100% 72% no-repeat,linear-gradient(#eaf1f7,#eaf1f7)}
+.bg-clinic{background:linear-gradient(#b9d9cf,#b9d9cf) 0 72%/100% 2px no-repeat,linear-gradient(#f4faf8,#d9e8e3) bottom/100% 28% no-repeat,linear-gradient(#e6f6f1,#e6f6f1)}
+.bg-class{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 50'%3E%3Crect x='2' y='2' width='116' height='46' fill='%232f7d5b' stroke='%23a67c52' stroke-width='4'/%3E%3Cpath d='M14 16h40M14 26h60M14 36h30' stroke='%23fff' stroke-opacity='.75' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E") center top 8%/58% 40% no-repeat,linear-gradient(#f7f0e1,#f7f0e1) top/100% 72% no-repeat,linear-gradient(#b9895a,#b9895a) 0 72%/100% 2px no-repeat,repeating-linear-gradient(90deg,#dcb98a 0 26px,#d0ad7c 26px 28px) bottom/100% 28% no-repeat}
+.bg-city{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 60' preserveAspectRatio='none'%3E%3Cpath d='M0 60V30h18V12h14v18h10V20h20v10h12V6h16v24h10V16h22v14h14V24h18v6h12V10h16v20h10V22h20v8h14V14h18v16h12V26h14v34z' fill='%23596b80'/%3E%3C/svg%3E") left 0 bottom 26%/100% 36% no-repeat,repeating-linear-gradient(90deg,#f5d442 0 14px,transparent 14px 28px) 0 87%/100% 3px no-repeat,linear-gradient(180deg,#9fd0ff 0%,#e3f1ff 62%,#e3f1ff 74%,#6b6f78 74%,#585c66 100%)}
+.bg-farm{background:linear-gradient(#9ec27a,#9ec27a) 0 62%/100% 8% no-repeat,repeating-linear-gradient(100deg,#c9a45f 0 12px,#b9924a 12px 24px) bottom/100% 30% no-repeat,radial-gradient(circle at 86% 20%,#fff1a3 0 6%,rgba(255,241,163,.35) 7%,transparent 10%),linear-gradient(180deg,#86c7ff 0%,#e2f3ff 70%)}
+.bg-forest{background:linear-gradient(#5d9c48,#5d9c48) bottom/100% 26% no-repeat,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 60' preserveAspectRatio='none'%3E%3Cpath d='M0 60V40q10-25 20-10q8-30 20-5q8-20 18 0q10-30 22-8q6-20 16-2q10-28 20-6q8-18 18 0q10-26 20-4q6-16 14 0q10-28 22-6q8-16 16 0q10-24 20-4q8-18 16 0q10-26 20-4v60z' fill='%232e6b3f'/%3E%3C/svg%3E") left 0 bottom 24%/100% 34% no-repeat,linear-gradient(180deg,#a5d5ff 0%,#e6f4ff 76%)}
+.bg-sea{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 20'%3E%3Cpath d='M0 10q15-10 30 0t30 0 30 0 30 0' fill='none' stroke='%23fff' stroke-opacity='.55' stroke-width='2'/%3E%3C/svg%3E") 0 60%/60px 10px repeat-x,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 20'%3E%3Cpath d='M0 10q15-10 30 0t30 0 30 0 30 0' fill='none' stroke='%23fff' stroke-opacity='.35' stroke-width='2'/%3E%3C/svg%3E") 30px 80%/60px 10px repeat-x,linear-gradient(180deg,#9ad5ff 0%,#e6f5ff 52%,#e6f5ff 55%,#5fb3ee 55%,#2a7fc9 100%)}
+.bg-deep{background:linear-gradient(#c9b38a,#a88f63) bottom/100% 14% no-repeat,linear-gradient(115deg,transparent 38%,rgba(255,255,255,.10) 44%,transparent 50%),linear-gradient(180deg,#2c78b0,#0d3557 70%,#08243d)}
+.bg-space{background:radial-gradient(1.5px 1.5px at 12% 22%,#fff 60%,transparent 62%),radial-gradient(1.5px 1.5px at 30% 60%,#fff 60%,transparent 62%),radial-gradient(2px 2px at 48% 18%,#fff 60%,transparent 62%),radial-gradient(1.5px 1.5px at 66% 48%,#fff 60%,transparent 62%),radial-gradient(2px 2px at 84% 26%,#fff 60%,transparent 62%),radial-gradient(1.5px 1.5px at 92% 70%,#fff 60%,transparent 62%),radial-gradient(1.5px 1.5px at 20% 84%,#fff 60%,transparent 62%),radial-gradient(1.5px 1.5px at 58% 82%,#fff 60%,transparent 62%),linear-gradient(#0a1533,#1a2a5e)}
+.bg-night{background:radial-gradient(circle at 84% 22%,#fff6c4 0 6%,rgba(255,246,196,.3) 8%,transparent 15%),radial-gradient(1.5px 1.5px at 20% 30%,#fff 60%,transparent 62%),radial-gradient(1.5px 1.5px at 44% 18%,#fff 60%,transparent 62%),radial-gradient(1.5px 1.5px at 62% 40%,#fff 60%,transparent 62%),linear-gradient(180deg,#1b2650 0%,#2c3a75 68%,#2e6b40 70%,#254f31 100%)}
+.bg-desert{background:radial-gradient(circle at 84% 20%,#fff3b0 0 7%,rgba(255,243,176,.35) 8%,transparent 12%),linear-gradient(180deg,#ffd27a 0%,#ffe9bf 62%,#f0c87a 62%,#dcae5c 100%)}
+.bg-snow{background:linear-gradient(180deg,#cfdff2 0%,#eef4fb 66%,#ffffff 66%,#e4ebf3 100%)}
+.bg-sport{background:linear-gradient(#fff,#fff) 0 84%/100% 2px no-repeat,linear-gradient(#5aa84a,#4d9640) bottom/100% 30% no-repeat,repeating-linear-gradient(0deg,#c8ccd2 0 5px,#b2b8c0 5px 10px) 0 44%/100% 28% no-repeat,linear-gradient(180deg,#9fd0ff 0%,#e3f1ff 70%)}
+/* ---- 文字 ---- */
+.panel .cap{background:#fff7d6;border:1.5px solid #d4a72c;border-radius:3px;padding:3px 8px;font-size:.84rem;color:#5a4a12;margin-bottom:8px;font-weight:600;line-height:1.45}
+.bubble{position:relative;background:#fff;border:2px solid var(--line);border-radius:14px;padding:8px 12px;font-size:.96rem;line-height:1.55;margin-top:auto;font-weight:600}
 .bubble::before{content:'';position:absolute;top:-12px;left:22px;border:6px solid transparent;border-bottom-color:var(--line);border-top:0}
 .cj{font-weight:800;padding:0 5px;border-radius:4px;margin:0 2px}
 .cj.and{color:var(--and);background:var(--andbg)}
@@ -80,434 +114,82 @@ body.hide .full .fh{display:block}
 <script>
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-// ---------- 線稿元件庫（與 WE_漫畫.html 同一套，另加 SWT 用元件） ----------
 
-const K = 'stroke="#222" stroke-width="3" fill="#fff" stroke-linecap="round" stroke-linejoin="round"';
-const KN = 'stroke="#222" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"';
-// 臉：表情 happy / sad / flat / wow
-const face = (m) => `<circle cx="50" cy="22" r="13" ${K}/>` +
-  `<circle cx="45" cy="20" r="1.8" fill="#222"/><circle cx="55" cy="20" r="1.8" fill="#222"/>` +
-  (m==='sad' ? `<path d="M44 30q6-5 12 0" ${KN}/>` : m==='wow' ? `<ellipse cx="50" cy="29" rx="3" ry="4" ${K}/>` :
-   m==='flat' ? `<path d="M45 29h10" ${KN}/>` : m==='angry' ? `<path d="M40 13l8 4M60 13l-8 4" ${KN}/><path d="M44 31q6-5 12 0" ${KN}/>` : `<path d="M44 27q6 6 12 0" ${KN}/>`);
-// 身體：pose stand / walk / up / point / sit / push / wave
-const body = (pose) => {
-  const arms = {stand:'M50 38l-14 16M50 38l14 16', up:'M50 38l-16-10M50 38l16-10', point:'M50 38l-14 16M50 38l20-6',
-    push:'M50 38l18 10M50 38l18 10', sit:'M50 38l-12 14M50 38l12 14', wave:'M50 38l-14 16M50 38l14-14'}[pose] || 'M50 38l-14 16M50 38l14 16';
-  const legs = pose==='sit' ? 'M50 66l-14 6v18M50 66l14 6v18' : pose==='walk' || pose==='push' ? 'M50 66l-14 30M50 66l12 30' : 'M50 66l-9 32M50 66l9 32';
-  return `<path d="M50 35v31" ${KN}/><path d="${arms}" ${KN}/><path d="${legs}" ${KN}/>`;
+// ---------- 圖示：元件鍵 → Twemoji（img/emoji/*.svg 自架，CC-BY 4.0） ----------
+// 值：'🐎' 單一 emoji｜{e:'☁️',t:'CO₂'} emoji 疊文字｜{t:'VS'} 純文字｜{parts:[[emoji, x%, y%, 縮放]...]} 組合
+const EMO = {
+ africa:'🌍', airplane:'✈️', amber:{parts:[['🟠',0,0,1],['🐸',25,25,.5]]}, arctic:{parts:[['🏔️',0,0,1],['❄️',60,0,.4]]},
+ arrow:'➡️', art:'🖼️', australia:'🌏', baby:'👶', balloon:'🎈', ballot:'🗳️', bank:'🏦', battery:'🔋', beach:'🏖️', beans:'🫘',
+ bed:'🛏️', bicycle:'🚲', bigBen:{parts:[['🏙️',0,0,1],['🇬🇧',55,0,.45]]}, biplane:'🛩️', bird:'🐦', board:'📝', bomb:'💣', bones:'🦴',
+ book:'📖', books:'📚', bookshop:{parts:[['🏪',0,0,1],['📚',58,-4,.45]]}, brain:'🧠', breakfast:'🍳', briefcase:'💼', brightRoom:'🪟',
+ bubbleHeart:{parts:[['💬',0,0,1],['❤️',30,22,.4]]}, bubbleNo:{parts:[['💬',0,0,1],['🚫',30,22,.4]]}, bubbleTalk:'💬', building:'🏢',
+ bulb:'💡', bus:'🚌', calendar:'📅', camera:'📷', car:'🚗', cart:'🛒', cave:{parts:[['⛰️',0,0,1],['🕳️',30,50,.4]]}, cell:'🧫',
+ cereal:'🥣', chain:'🔗', chartDown:'📉', chartUp:'📈', check:'✅', chess:'♟️', chip:'🖥️', cigarette:{parts:[['🚬',0,0,1],['🚫',50,0,.5]]},
+ city:'🏙️', classroom:'🏫', cliff:{parts:[['🏔️',0,0,1],['🧍',62,45,.45]]}, clock:'🕐', clockB:'🕰️', clockFast:'⏱️', cloud:'☁️',
+ co2:{e:'☁️',t:'CO₂'}, coins:'🪙', cold:'🧊', countryside:'🏞️', cow:'🐄', cross:'❌',
+ crowd:{parts:[['🧍‍♂️',0,10,.75],['🧍',28,0,.85],['🧍‍♀️',56,10,.75]]},
+ crowdBig:{parts:[['🧍‍♂️',12,0,.55],['🧍‍♀️',34,0,.55],['🧍‍♂️',0,30,.55],['🧍‍♀️',22,30,.55],['🧍',45,30,.55]]},
+ crowdSad:{parts:[['🙍‍♂️',0,10,.75],['🙍',28,0,.85],['🙍‍♀️',56,10,.75]]},
+ crown:'👑', cup:'☕', cycle:'🔄', debris:'☄️', deepSea:{parts:[['🌊',0,0,1],['🐟',50,50,.45]]}, desk:'🪑', dna:'🧬', doctor:'👨‍⚕️',
+ dog:'🐕', door:'🚪', downBig:'⬇️', drone:{parts:[['🚁',0,0,1],['📦',55,55,.4]]}, drop:'💧', ear:'👂', earNo:'🔇',
+ ecar:{parts:[['🚗',0,0,1],['🔌',60,0,.42]]}, eel:{parts:[['🐍',0,0,1],['⚡',60,0,.45]]}, eq:{t:'='}, exclaim:'❗', explorer:'🕵️‍♂️',
+ eye:'👁️', factory:'🏭', family:'👨‍👩‍👧', farm:'🚜', farmer:'👨‍🌾', film:'🎞️', fire:'🔥', fish:'🐟', fist:'✊', flag:'🚩', flask:'🧪',
+ flood:{parts:[['🌊',0,0,1],['🏠',45,10,.5]]}, forest:{parts:[['🌲',0,15,.7],['🌳',30,0,.85],['🌲',62,15,.7]]}, gavel:'⚖️', gear:'⚙️',
+ geo:'♨️', ghost:'👻', glassesBig:'👓', globe:'🌐', goats:{parts:[['🐐',0,10,.7],['🐐',35,0,.75]]}, gradCap:'🎓', grapes:'🍇', grass:'🌿',
+ hand:'✋', heart:'❤️', heartS:'💗', honey:'🍯', horse:'🐎', hospital:'🏥', hot:'🌡️', hourglass:'⏳', house:'🏠', hunter:'🏹', idea:'💡',
+ island:'🏝️', jam:{parts:[['🚗',0,20,.5],['🚕',26,20,.5],['🚙',52,20,.5]]}, key:'🔑', keyboard:'⌨️', kid:'🧒',
+ kidSad:{parts:[['🧒',0,0,1],['😢',60,0,.42]]}, kids:{parts:[['👧',0,10,.7],['🧒',30,0,.8],['👦',60,10,.7]]}, king:'🤴', laptop:'💻',
+ lens:{parts:[['👁️',0,0,1],['✨',58,0,.42]]}, letters:'🔤', library:{parts:[['🏛️',0,0,1],['📚',55,50,.45]]}, lightning:'⚡', lines:'📃',
+ list:'📋', lock:'🔒', lodge:'🏨', machine:'🧮', mall:'🏬', man:'🧍‍♂️', manAngry:'🙎‍♂️', manFlat:'🧍‍♂️', manLie:'🛌', manRun:'🏃‍♂️',
+ manSad:'🙍‍♂️', map:'🗺️', meat:'🥩', medal:'🏅', megaphone:'📣', metro:'🚇', mic:'🎤', microscope:'🔬',
+ miner:{parts:[['👷',0,0,1],['⛏️',58,5,.42]]}, moneyBag:'💰', monitor:'🖥️', monkey:'🐒', moon:'🌙', mountain:'🏔️', mouse:'🐁', museum:'🏛️',
+ neq:{t:'≠'}, network:{parts:[['📱',0,0,1],['💬',55,0,.45]]}, news:'📰', office:'🏢', oil:'🛢️', oldMan:'👴', oldSit:'🧓', one:'1️⃣',
+ package:'📦', palette:'🎨', palm:'🌴', panda:'🐼', paper:'📄', paperA:'💯', paw:'🐾', pen:'🖊️', percent:{t:'%'}, phone:'📱',
+ pianist:'🎹', pie:'📊', piggy:{parts:[['🐷',0,0,1],['💰',58,55,.42]]}, pills:'💊', pin:'📍', plate:'🍽️', plug:'🔌', plus:{t:'+'},
+ podium:'🎙️', police:'👮', printer3d:'🖨️', puzzle:'🧩', pyramid:'🏜️', q:'❓', rain:'🌧️', receipt:'🧾', road:'🛣️', robot:'🤖',
+ sale:'🏷️', satellite:'🛰️', scaleEven:'⚖️', school:'🏫', scientist:'👨‍🔬', scientistQ:{parts:[['👨‍🔬',0,0,1],['❓',60,0,.42]]},
+ scroll:'📜', search:'🔍', shake:'🤝', shark:'🦈', shield:'🛡️', ship:'⛵', shop:'🏪', shy:'😳', skull:'💀', smile:'😊', smoke:'🌫️',
+ snow:'❄️', socket:'🔌', soda:'🥤', soil:{parts:[['🟫',0,20,.9],['🌱',30,0,.45]]}, solar:{parts:[['☀️',0,0,.6],['🔋',35,40,.65]]},
+ soldier:'💂', sound:'🔊', speaker:'🗣️', speechNo:{e:'💬',t:'NO',tc:'#dc2626'}, sphinx:'🗿', sprout:'🌱', stadium:'🏟️',
+ stage:{parts:[['🗣️',0,0,.9],['👥',50,30,.5]]}, stages:'📊', star:'⭐', stone:'🪨', storm:'⛈️', straw:'🌾', student:'👨‍🎓', stump:'🪵',
+ sugar:'🍬', suit:'🧑‍💼', suitcase:'🧳', sun:'☀️', sweat:'💦', swords:'⚔️', table:'🍽️', tablet:'📜', tap:'🚰', target:'🎯',
+ teacher:'👨‍🏫', teen:'🧑', ten:{t:'×10'}, three:'3️⃣', thumbDown:'👎', thumbUp:'👍', town:'🏘️', toyHeli:'🚁', tree:'🌳', treeRings:'🪵',
+ triangle:'🔺', trophy:'🏆', truck:'🚚', tv:'📺', twins:{parts:[['👶',0,10,.65],['👶',35,10,.65]]}, two:'🧑‍🤝‍🧑', two2:'2️⃣', twoWay:'↔️',
+ upBig:'⬆️', usa:'🇺🇸', virus:'🦠', volcano:'🌋', volunteer:{parts:[['🙋‍♂️',0,0,1],['❤️',60,0,.4]]}, vs:{t:'VS'}, wall:'🧱',
+ warning:'⚠️', wave:'🌊', web:'🌐', wheat:'🌾', wind:'💨', wine:'🍷', woman:'🧍‍♀️', womanSad:'🙍‍♀️', womanWave:'🙋‍♀️',
+ women:{parts:[['🧍‍♀️',0,0,.85],['🧍‍♀️',40,0,.85]]}, worker:'👷', writer:'✍️', year:{e:'📅',t:'1903'}, zzz:'💤',
 };
-const hair = `<path d="M38 16q4-12 14-10q8-2 12 8" ${KN}/>`;
-const tie = `<path d="M47 36l3 7 3-7z" fill="#e74c3c" stroke="#222" stroke-width="1.5"/>`;
-const bun = `<circle cx="50" cy="8" r="5" ${K}/>`;
-const bow = `<path d="M40 8l6 4-6 4zM60 8l-6 4 6 4z" fill="#e67e22" stroke="#222" stroke-width="1.5"/>`;
-const SPR = {
- // 人物
- james:      face('happy') + hair + body('stand') + tie + `<text x="63" y="14" font-size="9" font-weight="700" fill="#222">J</text>`,
- jamesWalk:  face('happy') + hair + body('walk') + tie,
- jamesPush:  face('happy') + hair + body('push') + tie,
- jamesUp:    face('happy') + hair + body('up') + tie,
- jamesPoint: face('happy') + hair + body('point') + tie,
- jamesSit:   face('happy') + hair + body('sit') + tie,
- jamesSad:   face('sad') + hair + body('stand') + tie,
- man:        face('happy') + body('stand'),
- manSad:     face('sad') + body('stand'),
- manWave:    face('happy') + body('wave'),
- manSit:     face('happy') + body('sit'),
- manFlat:    face('flat') + body('stand'),
- woman:      face('happy') + bun + body('stand'),
- womanWave:  face('happy') + bun + body('wave'),
- womanSit:   face('happy') + bun + body('sit'),
- womanSad:   face('sad') + bun + body('stand'),
- oldSit:     face('flat') + bun + body('sit') + `<path d="M40 14h20" ${KN}/>`,
- oldSad:     face('sad') + bun + body('stand') + `<path d="M40 14h20M70 60v38" ${KN}/>`,
- oldHappy:   face('happy') + bun + body('sit') + `<path d="M40 14h20" ${KN}/>`,
- kid:        `<g transform="translate(20 40) scale(.6)">${face('happy') + bow + body('stand')}</g>`,
- kidUp:      `<g transform="translate(20 40) scale(.6)">${face('happy') + bow + body('up')}</g>`,
- kidSit:     `<g transform="translate(20 40) scale(.6)">${face('happy') + bow + body('sit')}</g>`,
- manHat:     face('happy') + `<path d="M34 12h32M40 12V4h20v8" ${K}/>` + body('stand'),
- womanScarf: face('happy') + `<path d="M35 24q0-22 15-22t15 22" ${K}/>` + body('stand'),
- shake:      `<g transform="translate(-18 0)">${face('happy') + body('point')}</g><g transform="translate(118 0) scale(-1 1)">${face('happy') + bun + body('point')}</g><circle cx="50" cy="32" r="4" ${K}/>`,
- lying:      `<rect x="5" y="62" width="90" height="24" rx="6" ${K}/><path d="M8 86v10M92 86v10" ${KN}/><circle cx="22" cy="48" r="11" ${K}/><path d="M16 46q3-3 6 0M25 46q3-3 6 0" ${KN}/><path d="M18 53q4 3 8 0" ${KN}/><path d="M33 56h44M77 56l10 8M62 56l8 8" ${KN}/><path d="M28 62q-8 3-8 12" ${KN}/>`,
- cup:        `<path d="M30 45h40v30q0 12-12 12H42q-12 0-12-12z" ${K}/><path d="M70 52h8q8 0 8 8t-8 8h-8" ${KN}/><path d="M42 38q-4-6 0-12M52 38q-4-6 0-12" ${KN}/>`,
- bulb:       `<path d="M35 58q-16-12-8-30t23-14q16 4 23 14t-8 30v8H35z" fill="#fff59d" stroke="#222" stroke-width="3" stroke-linejoin="round"/><path d="M38 76h24M42 86h16" ${KN}/><path d="M50 10V2M20 20l-6-6M80 20l6-6" ${KN}/>`,
- book:       `<path d="M12 25q19-6 38 4q19-10 38-4v58q-19-6-38 4q-19-10-38-4z" ${K}/><path d="M50 29v58" ${KN}/><path d="M20 40h20M20 50h20M60 40h20M60 50h20" stroke="#999" stroke-width="2"/>`,
- tvBulb:     `<rect x="10" y="30" width="80" height="55" rx="4" ${K}/><rect x="16" y="36" width="68" height="43" fill="#dfe9f3" stroke="#222" stroke-width="2"/><path d="M50 30l-12-14M50 30l12-14M35 95h30M50 85v10" ${KN}/><g transform="translate(28 36) scale(.42)"><path d="M35 58q-16-12-8-30t23-14q16 4 23 14t-8 30v8H35z" fill="#fff59d" stroke="#222" stroke-width="4"/><path d="M38 76h24" ${KN}/></g>`,
- tvNo:       `<rect x="10" y="30" width="80" height="55" rx="4" ${K}/><rect x="16" y="36" width="68" height="43" fill="#dfe9f3" stroke="#222" stroke-width="2"/><path d="M50 30l-12-14M50 30l12-14M35 95h30M50 85v10" ${KN}/><circle cx="50" cy="56" r="12" ${K}/><circle cx="45" cy="54" r="1.5" fill="#222"/><circle cx="55" cy="54" r="1.5" fill="#222"/><path d="M45 61h10" ${KN}/><path d="M40 66l20-12" stroke="#e74c3c" stroke-width="3"/>`,
- earNo:      `<path d="M40 30q22-16 26 8q2 16-10 22q-8 4-8 14" ${KN}/><path d="M48 40q8-4 10 4" ${KN}/><path d="M30 20l45 50" stroke="#e74c3c" stroke-width="5" stroke-linecap="round"/>`,
- sound:      `<path d="M20 38q10 12 0 24M38 28q18 22 0 44M56 18q26 32 0 64" ${KN}/>`,
- scaleGood:  `<path d="M50 92V28M28 92h44" ${KN}/><path d="M12 46L88 22" ${KN}/><path d="M12 46L2 72M12 46l10 26M88 22l-10 26M88 22l10 26" ${KN}/><path d="M2 72q10 10 20 0" ${K}/><path d="M78 48q10 10 20 0" ${K}/><path d="M6 60l4 4 8-10" stroke="#27ae60" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M82 32l10 10M92 32l-10 10" stroke="#e74c3c" stroke-width="4" stroke-linecap="round"/>`,
- scaleHarm:  `<path d="M50 92V28M28 92h44" ${KN}/><path d="M12 22l76 24" ${KN}/><path d="M12 22L2 48M12 22l10 26M88 46l-10 26M88 46l10 26" ${KN}/><path d="M2 48q10 10 20 0" ${K}/><path d="M78 72q10 10 20 0" ${K}/><path d="M6 36l4 4 8-10" stroke="#27ae60" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M82 56l10 10M92 56l-10 10" stroke="#e74c3c" stroke-width="4" stroke-linecap="round"/>`,
- calendar:   `<rect x="18" y="22" width="64" height="64" rx="3" ${K}/><path d="M18 38h64M32 14v14M68 14v14" ${KN}/><path d="M28 50h8M42 50h8M56 50h8M28 62h8M42 62h8M56 62h8M28 74h8M42 74h8M56 74h8" stroke="#222" stroke-width="3"/>`,
- city:       `<path d="M2 100V55h16V35h14v20h10V25h18v30h10V45h14v55z" ${K}/><path d="M8 65h6M8 78h6M24 45h6M24 60h6M48 35h8M48 50h8M72 55h6M72 70h6" stroke="#222" stroke-width="2"/>`,
- basket:     `<path d="M15 45h70l-8 40H23z" ${K}/><path d="M30 45q20-30 40 0" ${KN}/><path d="M35 55v22M50 55v22M65 55v22" stroke="#222" stroke-width="2"/>`,
- crowd:      `<g transform="translate(-22 10) scale(.85)">${face('happy') + body('stand')}</g><g transform="translate(22 10) scale(.85)">${face('happy') + bun + body('stand')}</g><g transform="translate(0 0) scale(.85)">${face('happy') + body('up')}</g>`,
- // ---- 第二批元件（37 題用）----
- phone:      `<rect x="32" y="10" width="36" height="80" rx="6" ${K}/><rect x="36" y="20" width="28" height="56" fill="#dfe9f3" stroke="none"/><circle cx="50" cy="83" r="2.5" fill="#222"/>`,
- vs:         `<path d="M15 50h30M65 50h30M30 36l-14 14 14 14M80 36l14 14-14 14" stroke="#222" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
- smile:      `<circle cx="50" cy="50" r="34" ${K}/><circle cx="37" cy="42" r="3" fill="#222"/><circle cx="63" cy="42" r="3" fill="#222"/><path d="M33 60q17 16 34 0" ${KN}/>`,
- two:        `<g transform="translate(-20 0)">${face('happy') + body('stand')}</g><g transform="translate(20 0)">${face('happy') + bun + body('stand')}</g>`,
- building:   `<rect x="20" y="15" width="60" height="85" ${K}/><path d="M30 25h10v10H30zM45 25h10v10H45zM60 25h10v10H60zM30 45h10v10H30zM45 45h10v10H45zM60 45h10v10H60zM30 65h10v10H30zM60 65h10v10H60z" ${K}/><rect x="44" y="78" width="12" height="22" ${K}/>`,
- manAngry:   face('angry') + body('stand'),
- womanAngry: face('angry') + bun + body('stand'),
- kidSad:     `<g transform="translate(20 40) scale(.6)">${face('sad') + bow + body('stand')}</g>`,
- kidPhone:   `<g transform="translate(20 40) scale(.6)">${face('flat') + bow + body('push')}</g><rect x="60" y="66" width="8" height="14" rx="2" ${K}/>`,
- manRun:     face('flat') + body('walk') + `<path d="M50 38l16 4M50 38l-16 4" ${KN}/><path d="M10 50h14M6 62h14M10 74h14" ${KN}/>`,
- manLie:     `<circle cx="22" cy="68" r="11" ${K}/><path d="M16 66q3-3 6 0M25 66q3-3 6 0" ${KN}/><path d="M18 73q4 3 8 0" ${KN}/><path d="M33 76h44M77 76l10 8M62 76l8 8M30 82q-6 4-4 12" ${KN}/>`,
- moon:       `<path d="M60 15q-30 5-30 35t30 35q-20 5-35-10T25 40q5-20 35-25z" fill="#fff59d" stroke="#222" stroke-width="3"/>`,
- sun:        `<circle cx="50" cy="50" r="18" fill="#f1c40f" stroke="#222" stroke-width="3"/><path d="M50 18v10M50 72v10M18 50h10M72 50h10M27 27l7 7M66 66l7 7M73 27l-7 7M34 66l-7 7" ${KN}/>`,
- star:       `<path d="M50 10l12 28 30 2-23 19 8 29-27-17-27 17 8-29L8 40l30-2z" fill="#f1c40f" stroke="#222" stroke-width="3" stroke-linejoin="round"/>`,
- robot:      `<rect x="25" y="30" width="50" height="40" rx="6" ${K}/><path d="M50 30V15M50 12h.1" ${KN}/><circle cx="50" cy="12" r="4" ${K}/><circle cx="40" cy="45" r="5" fill="#2980b9"/><circle cx="60" cy="45" r="5" fill="#2980b9"/><path d="M40 60h20" ${KN}/><rect x="30" y="72" width="40" height="26" rx="4" ${K}/><path d="M25 45h-8M75 45h8" ${KN}/><text x="50" y="92" font-size="10" text-anchor="middle" font-weight="700" fill="#222">AI</text>`,
- desk:       `<rect x="2" y="60" width="96" height="8" ${K}/><path d="M10 68v32M90 68v32" ${KN}/>`,
- laptop:     `<rect x="25" y="35" width="50" height="35" rx="3" ${K}/><rect x="30" y="40" width="40" height="25" fill="#dfe9f3" stroke="none"/><path d="M15 76h70l-6-6H21z" ${K}/>`,
- books:      `<rect x="20" y="76" width="60" height="12" ${K}/><rect x="25" y="64" width="55" height="12" ${K}/><rect x="22" y="52" width="50" height="12" ${K}/>`,
- gradCap:    `<path d="M8 42l42-16 42 16-42 16z" fill="#222" stroke="#222" stroke-width="3" stroke-linejoin="round"/><path d="M28 50v14q22 12 44 0V50" ${K}/><path d="M88 44v18" ${KN}/>`,
- briefcase:  `<rect x="15" y="42" width="70" height="45" rx="4" ${K}/><path d="M38 42v-10h24v10M15 62h70" ${KN}/>`,
- moneyBag:   `<path d="M35 32h30l10 15q15 25 0 48H25q-15-23 0-48z" ${K}/><path d="M40 32l-5-12h30l-5 12" ${K}/><text x="50" y="76" font-size="24" text-anchor="middle" font-weight="700" fill="#222">$</text>`,
- ring:       `<circle cx="50" cy="62" r="22" stroke="#222" stroke-width="6" fill="none"/><path d="M38 38l12-16 12 16z" fill="#9be" stroke="#222" stroke-width="2.5"/>`,
- eye:        `<path d="M6 50q44-46 88 0q-44 46-88 0z" ${K}/><circle cx="50" cy="50" r="15" ${K}/><circle cx="50" cy="50" r="7" fill="#222"/>`,
- wave:       `<path d="M0 60q15-15 30 0t30 0t30 0t30 0v40H0z" fill="#bde" stroke="#222" stroke-width="3"/><path d="M0 82q15-15 30 0t30 0t30 0" stroke="#222" stroke-width="2.5" fill="none"/>`,
- factory:    `<path d="M10 100V52l25 15V52l25 15V52l25 15v33z" ${K}/><rect x="14" y="20" width="12" height="36" ${K}/><path d="M20 16q-8-8 0-16M32 12q-8-8 0-16M44 16q-8-8 0-16" stroke="#888" stroke-width="3" fill="none"/>`,
- factoryClean:`<path d="M10 100V52l25 15V52l25 15V52l25 15v33z" ${K}/><rect x="14" y="20" width="12" height="36" ${K}/><path d="M60 30q-25-5-25-30q25 5 25 30z" fill="#a5d6a7" stroke="#222" stroke-width="2.5"/>`,
- co2:        `<path d="M25 70q-18 0-18-16t20-16q6-16 24-16t24 16q17 0 17 16t-18 16z" fill="#ccc" stroke="#222" stroke-width="3"/><text x="50" y="60" font-size="16" text-anchor="middle" font-weight="700" fill="#222">CO2</text>`,
- storm:      `<path d="M25 58q-15 0-15-14t18-14q5-15 22-15t22 15q15 0 15 14t-15 14z" ${K}/><path d="M52 58l-12 20h14l-10 20" stroke="#f1c40f" stroke-width="5" fill="none" stroke-linejoin="round"/>`,
- metro:      `<rect x="5" y="30" width="90" height="55" rx="10" ${K}/><rect x="14" y="42" width="20" height="18" fill="#dfe9f3" stroke="#222" stroke-width="2"/><rect x="40" y="42" width="20" height="18" fill="#dfe9f3" stroke="#222" stroke-width="2"/><rect x="66" y="42" width="20" height="18" fill="#dfe9f3" stroke="#222" stroke-width="2"/><circle cx="25" cy="90" r="6" ${K}/><circle cx="75" cy="90" r="6" ${K}/><path d="M0 98h100" ${KN}/>`,
- car:        `<path d="M8 72V56l16-18h52l16 18v16z" ${K}/><rect x="28" y="44" width="18" height="12" fill="#dfe9f3" stroke="#222" stroke-width="2"/><rect x="54" y="44" width="18" height="12" fill="#dfe9f3" stroke="#222" stroke-width="2"/><circle cx="28" cy="76" r="8" ${K}/><circle cx="72" cy="76" r="8" ${K}/>`,
- road:       `<path d="M5 98L38 18h24l33 80z" ${K}/><path d="M50 26v10M50 48v12M50 72v14" stroke="#222" stroke-width="3" stroke-dasharray="6 6"/>`,
- hospital:   `<rect x="15" y="25" width="70" height="75" ${K}/><path d="M50 38v22M39 49h22" stroke="#e74c3c" stroke-width="7"/><rect x="42" y="78" width="16" height="22" ${K}/>`,
- paperA:     `<rect x="22" y="8" width="56" height="84" ${K}/><path d="M30 26h40M30 38h40M30 50h25" stroke="#bbb" stroke-width="2"/><text x="64" y="82" font-size="24" font-weight="700" fill="#e74c3c">A+</text>`,
- paperF:     `<rect x="22" y="8" width="56" height="84" ${K}/><path d="M30 26h40M30 38h40M30 50h25" stroke="#bbb" stroke-width="2"/><text x="64" y="82" font-size="26" font-weight="700" fill="#e74c3c">F</text>`,
- paper:      `<rect x="22" y="8" width="56" height="84" ${K}/><path d="M30 26h40M30 38h40M30 50h40M30 62h25" stroke="#bbb" stroke-width="2"/>`,
- mask:       `<path d="M20 25q30-15 60 0v35q0 30-30 35Q20 90 20 60z" ${K}/><path d="M32 45q6-5 12 0M56 45q6-5 12 0" ${KN}/><path d="M35 65q15 12 30 0" ${KN}/>`,
- oldBuilding:`<path d="M6 42L50 14l44 28z" ${K}/><rect x="10" y="42" width="80" height="8" ${K}/><path d="M20 50v42M35 50v42M50 50v42M65 50v42M80 50v42" ${KN}/><rect x="6" y="92" width="88" height="8" ${K}/>`,
- tree:       `<path d="M50 100V62" ${KN}/><circle cx="50" cy="42" r="26" fill="#a5d6a7" stroke="#222" stroke-width="3"/>`,
- palm:       `<path d="M50 100q-6-40 6-62" ${KN}/><path d="M56 38q-25-14-42 2q22-6 42-2zM56 38q25-14 42 2q-22-6-42-2zM56 38q-18-22-8-38q9 12 8 38zM56 38q18-22 8-38q-9 12-8 38z" fill="#a5d6a7" stroke="#222" stroke-width="2.5"/>`,
- umbrella:   `<path d="M4 56q46-48 92 0z" fill="#f9c" stroke="#222" stroke-width="3"/><path d="M50 56v38q0 6-7 6" ${KN}/>`,
- trophy:     `<path d="M30 18h40v26q0 20-20 20T30 44z" fill="#f1c40f" stroke="#222" stroke-width="3"/><path d="M30 26H20q0 16 12 19M70 26h10q0 16-12 19" ${KN}/><path d="M50 64v16M34 84h32" ${KN}/>`,
- chartUp:    `<path d="M10 90h82M10 90V8" ${KN}/><path d="M16 74l20-20 15 10 32-40" stroke="#27ae60" stroke-width="5" fill="none"/><path d="M70 24h13v13" stroke="#27ae60" stroke-width="5" fill="none"/>`,
- chartDown:  `<path d="M10 90h82M10 90V8" ${KN}/><path d="M16 24l20 20 15-10 32 40" stroke="#e74c3c" stroke-width="5" fill="none"/><path d="M70 74h13V61" stroke="#e74c3c" stroke-width="5" fill="none"/>`,
- lock:       `<rect x="22" y="46" width="56" height="46" rx="5" ${K}/><path d="M33 46V32q17-22 34 0v14" ${KN}/><circle cx="50" cy="68" r="5" fill="#222"/>`,
- camera:     `<rect x="8" y="36" width="84" height="50" rx="5" ${K}/><circle cx="50" cy="61" r="15" ${K}/><rect x="34" y="26" width="32" height="10" ${K}/><path d="M78 30l12-14M84 34l14-6" stroke="#f1c40f" stroke-width="4"/>`,
- news:       `<rect x="8" y="18" width="84" height="68" ${K}/><path d="M16 30h68M16 44h32M16 54h32M16 64h32M16 74h32" stroke="#222" stroke-width="3"/><rect x="56" y="44" width="28" height="30" fill="#ddd" stroke="#222" stroke-width="2"/>`,
- newsFake:   `<rect x="8" y="18" width="84" height="68" ${K}/><path d="M16 30h68M16 44h32M16 54h32M16 64h32" stroke="#222" stroke-width="3"/><text x="70" y="70" font-size="14" text-anchor="middle" font-weight="700" fill="#e74c3c">FAKE</text><path d="M14 22l72 60" stroke="#e74c3c" stroke-width="4"/>`,
- gavel:      `<g transform="rotate(-40 40 34)"><rect x="22" y="24" width="36" height="20" rx="3" ${K}/></g><path d="M44 48l34 34" stroke="#222" stroke-width="8" stroke-linecap="round"/><rect x="40" y="86" width="52" height="8" ${K}/>`,
- hourglass:  `<path d="M25 8h50v10q0 20-20 32q20 12 20 32v10H25V82q0-20 20-32Q25 38 25 18z" ${K}/><path d="M35 82q15-10 30 0" fill="#f1c40f" stroke="none"/>`,
- bed:        `<rect x="4" y="52" width="92" height="26" rx="4" ${K}/><rect x="10" y="40" width="26" height="14" rx="4" ${K}/><path d="M8 78v16M92 78v16" ${KN}/>`,
- darkRoom:   `<rect x="12" y="16" width="76" height="80" fill="#666" stroke="#222" stroke-width="3"/><rect x="36" y="32" width="26" height="20" fill="#999" stroke="#222" stroke-width="2"/>`,
- brightRoom: `<rect x="4" y="12" width="92" height="84" ${K}/><rect x="14" y="22" width="72" height="36" fill="#fff59d" stroke="#222" stroke-width="2"/><path d="M50 22v36M14 40h72" stroke="#222" stroke-width="2"/>`,
- board:      `<rect x="8" y="16" width="84" height="56" fill="#2e7d5b" stroke="#222" stroke-width="3"/><path d="M50 72v26M28 98h44" ${KN}/><text x="50" y="50" font-size="18" text-anchor="middle" font-weight="700" fill="#fff">ABC</text>`,
- airplane:   `<path d="M8 56l70-32 12 6-26 30 16 26-8 6-22-22-24 16-6-6 16-16-30-4z" ${K}/>`,
- suitcase:   `<rect x="18" y="36" width="64" height="50" rx="5" ${K}/><path d="M38 36V26h24v10" ${KN}/><path d="M30 86v10M70 86v10" ${KN}/><path d="M18 56h64" ${KN}/>`,
- door:       `<rect x="26" y="10" width="48" height="88" ${K}/><path d="M26 10l30 8v88l-30-8z" fill="#f5deb3" stroke="#222" stroke-width="3"/><circle cx="50" cy="58" r="3" fill="#222"/>`,
- stairs:     `<path d="M5 98V78h20V58h20V38h20V18h30v80z" ${K}/>`,
- search:     `<circle cx="42" cy="42" r="26" ${K}/><path d="M62 62l28 28" stroke="#222" stroke-width="8" stroke-linecap="round"/>`,
- discount:   `<path d="M12 52L54 10h36v36L48 88z" ${K}/><circle cx="76" cy="24" r="5" ${K}/><text x="40" y="66" font-size="16" font-weight="700" fill="#e74c3c" transform="rotate(-45 40 60)">-50%</text>`,
- medal:      `<path d="M38 8h24l6 28H32z" fill="#e74c3c" stroke="#222" stroke-width="2.5"/><circle cx="50" cy="60" r="26" fill="#f1c40f" stroke="#222" stroke-width="3"/><path d="M50 44l5 11 12 1-9 8 3 12-11-6-11 6 3-12-9-8 12-1z" fill="#fff" stroke="#222" stroke-width="2"/>`,
- gear:       `<circle cx="50" cy="50" r="22" ${K}/><circle cx="50" cy="50" r="8" ${K}/><path d="M50 16v12M50 72v12M16 50h12M72 50h12M26 26l8 8M66 66l8 8M74 26l-8 8M34 66l-8 8" stroke="#222" stroke-width="6" stroke-linecap="round"/>`,
- phonePlay:  `<rect x="32" y="10" width="36" height="80" rx="6" ${K}/><path d="M43 38l18 12-18 12z" fill="#e74c3c" stroke="#222" stroke-width="2"/>`,
- chain:      `<path d="M10 60q0-12 12-12t12 12-12 12-12-12zM30 48q0-12 12-12t12 12-12 12-12-12zM50 60q0-12 12-12t12 12-12 12-12-12zM70 48q0-12 12-12t12 12-12 12-12-12z" ${KN}/>`,
- pills:      `<rect x="10" y="40" width="46" height="22" rx="11" transform="rotate(-30 33 51)" ${K}/><path d="M22 60l20-12" stroke="#222" stroke-width="3"/><circle cx="72" cy="66" r="12" fill="#e74c3c" stroke="#222" stroke-width="3"/>`,
- target:     `<circle cx="50" cy="50" r="34" ${K}/><circle cx="50" cy="50" r="20" ${K}/><circle cx="50" cy="50" r="6" fill="#e74c3c" stroke="#222" stroke-width="3"/>`,
- scaleEven:  `<path d="M50 92V28M28 92h44" ${KN}/><path d="M10 34h80" ${KN}/><path d="M10 34L0 60M10 34l10 26M90 34l-10 26M90 34l10 26" ${KN}/><path d="M0 60q10 10 20 0" ${K}/><path d="M80 60q10 10 20 0" ${K}/>`,
- dollarUp:   `<path d="M50 90V20M30 40l20-20 20 20" stroke="#27ae60" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
- dollarDown: `<path d="M50 10v70M30 60l20 20 20-20" stroke="#e74c3c" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
- // 背景 2
- bgOffice:   `<path d="M0 132h300" ${KN}/><rect x="200" y="14" width="80" height="40" ${K}/><path d="M240 14v40M200 34h80" ${KN}/><circle cx="40" cy="30" r="14" ${K}/><path d="M40 20v10l6 4" ${KN}/>`,
- bgSchool:   `<path d="M0 132h300" ${KN}/><rect x="90" y="10" width="120" height="50" fill="#2e7d5b" stroke="#222" stroke-width="3"/><text x="150" y="42" font-size="18" text-anchor="middle" font-weight="700" fill="#fff">1 + 1 = 2</text>`,
- bgNight:    `<path d="M0 132h300" ${KN}/><path d="M270 20q-18 3-18 20t18 20q-12 3-21-6t-6-22q3-12 27-12z" fill="#fff59d" stroke="#222" stroke-width="2.5"/>`,
- // 建築、家具
- mall: `<rect x="5" y="30" width="90" height="70" ${K}/><path d="M5 30l8-16h74l8 16z" ${K}/>` +
-       `<path d="M15 42h14v12H15zM43 42h14v12H43zM71 42h14v12H71zM15 64h14v12H15zM71 64h12v12H71z" ${K}/>` +
-       `<rect x="40" y="70" width="20" height="30" ${K}/><path d="M50 70v30" ${KN}/>` +
-       `<text x="50" y="26" font-size="12" text-anchor="middle" font-weight="700" fill="#222">MALL</text>`,
- shop: `<rect x="15" y="50" width="70" height="50" ${K}/><path d="M8 50l7-16h70l7 16z" ${K}/>` +
-       `<path d="M8 50q7 9 14 0q7 9 14 0q7 9 14 0q7 9 14 0q7 9 14 0q7 9 14 0" ${K}/>` +
-       `<rect x="42" y="72" width="16" height="28" ${K}/><rect x="20" y="60" width="14" height="14" ${K}/><rect x="66" y="60" width="14" height="14" ${K}/>` +
-       `<text x="50" y="46" font-size="10" text-anchor="middle" font-weight="700" fill="#222">SHOP</text>`,
- house: `<path d="M10 55L50 20l40 35" ${K}/><path d="M20 50v50h60V50" ${K}/><rect x="42" y="70" width="16" height="30" ${K}/>` +
-        `<rect x="26" y="60" width="12" height="12" ${K}/><rect x="62" y="60" width="12" height="12" ${K}/><path d="M70 30v-10h8v18" ${K}/>`,
- tv: `<rect x="10" y="30" width="80" height="55" rx="4" ${K}/><rect x="16" y="36" width="68" height="43" fill="#dfe9f3" stroke="#222" stroke-width="2"/>` +
-     `<path d="M50 30l-12-14M50 30l12-14M35 95h30M50 85v10" ${KN}/>`,
- tvFace: `<rect x="10" y="30" width="80" height="55" rx="4" ${K}/><rect x="16" y="36" width="68" height="43" fill="#dfe9f3" stroke="#222" stroke-width="2"/>` +
-     `<path d="M50 30l-12-14M50 30l12-14M35 95h30M50 85v10" ${KN}/><circle cx="50" cy="56" r="12" ${K}/><circle cx="45" cy="54" r="1.5" fill="#222"/><circle cx="55" cy="54" r="1.5" fill="#222"/><path d="M45 60q5 5 10 0" ${KN}/>`,
- tvOff: `<rect x="10" y="30" width="80" height="55" rx="4" ${K}/><rect x="16" y="36" width="68" height="43" fill="#555" stroke="#222" stroke-width="2"/>` +
-     `<path d="M50 30l-12-14M50 30l12-14M35 95h30M50 85v10" ${KN}/>`,
- sofa: `<rect x="5" y="55" width="90" height="30" rx="6" ${K}/><rect x="15" y="40" width="70" height="20" rx="4" ${K}/><path d="M10 85v12M90 85v12" ${KN}/>`,
- table: `<ellipse cx="50" cy="60" rx="45" ry="8" ${K}/><path d="M15 64v34M85 64v34" ${KN}/>` +
-        `<circle cx="32" cy="58" r="7" ${K}/><circle cx="50" cy="58" r="7" ${K}/><circle cx="68" cy="58" r="7" ${K}/>`,
- cart: `<path d="M8 30h12l10 40h46l9-30H30" ${K}/><circle cx="38" cy="82" r="6" ${K}/><circle cx="70" cy="82" r="6" ${K}/>` +
-       `<rect x="36" y="44" width="10" height="12" ${K}/><rect x="50" y="40" width="10" height="16" ${K}/><rect x="64" y="46" width="8" height="10" ${K}/>`,
- cartFull: `<path d="M8 30h12l10 40h46l9-30H30" ${K}/><circle cx="38" cy="82" r="6" ${K}/><circle cx="70" cy="82" r="6" ${K}/>` +
-       `<rect x="34" y="20" width="12" height="36" ${K}/><rect x="48" y="14" width="12" height="42" ${K}/><rect x="62" y="24" width="10" height="32" ${K}/>`,
- plug: `<path d="M5 90q25 0 35-25t30-25" ${KN}/><rect x="70" y="30" width="20" height="18" rx="3" ${K}/><path d="M90 35h7M90 43h7" ${KN}/>`,
- socket: `<rect x="30" y="30" width="40" height="40" rx="4" ${K}/><path d="M43 45v10M57 45v10" stroke="#222" stroke-width="4"/>`,
- // 道具、符號
- clock: `<circle cx="50" cy="50" r="36" ${K}/><path d="M50 22v28l18 10" ${KN}/><path d="M50 14v6M50 80v6M14 50h6M80 50h6" ${KN}/>`,
- clockFast: `<circle cx="50" cy="50" r="36" ${K}/><path d="M50 22v28l18 10" ${KN}/><path d="M92 40l6-6M94 55h8M92 70l6 6" ${KN}/>`,
- list: `<rect x="25" y="10" width="50" height="80" rx="3" ${K}/><path d="M33 30h34M33 45h34M33 60h34M33 75h34" stroke="#bbb" stroke-width="2"/>` +
-       `<path d="M30 28l3 3 5-6M30 43l3 3 5-6M30 58l3 3 5-6M30 73l3 3 5-6" stroke="#27ae60" stroke-width="2.5" fill="none"/>`,
- sign: `<path d="M50 100V50" ${KN}/><rect x="15" y="15" width="70" height="35" rx="3" ${K}/>`,
- heart: `<path d="M50 90L18 58q-13-15 0-28t32 5q19-18 32-5t0 28z" stroke="#222" stroke-width="3" fill="#f9c" stroke-linejoin="round"/>`,
- heartS: `<path d="M50 70L30 50q-8-9 0-17t20 3q12-11 20-3t0 17z" stroke="#222" stroke-width="2.5" fill="#f9c"/>`,
- check: `<path d="M20 55l20 20 40-45" stroke="#27ae60" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
- cross: `<path d="M25 25l50 50M75 25L25 75" stroke="#e74c3c" stroke-width="10" stroke-linecap="round"/>`,
- arrow: `<path d="M10 50h65M55 30l25 20-25 20" stroke="#222" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
- bubble: `<path d="M10 15h80v50H40L25 85V65H10z" ${K}/>`,
- bubbleHeart: `<path d="M10 15h80v50H40L25 85V65H10z" ${K}/><path d="M50 58L36 44q-6-7 0-13t14 3q8-9 14-3t0 13z" fill="#f9c" stroke="#222" stroke-width="2"/>`,
- bubbleTalk: `<path d="M10 15h80v50H40L25 85V65H10z" ${K}/><path d="M25 32h50M25 45h35" ${KN}/>`,
- bubbleNo: `<path d="M10 15h80v50H40L25 85V65H10z" ${K}/><path d="M25 32h50M25 45h35" ${KN}/><path d="M18 20l64 44" stroke="#e74c3c" stroke-width="5" stroke-linecap="round"/>`,
- zzz: `<text x="20" y="70" font-size="34" font-weight="700" fill="#222">z</text><text x="45" y="50" font-size="26" font-weight="700" fill="#222">z</text><text x="65" y="32" font-size="18" font-weight="700" fill="#222">z</text>`,
- sweat: `<path d="M50 20q-14 24 0 36q14-12 0-36z" ${K}/>`,
- lines: `<path d="M10 30h30M5 50h35M10 70h30" ${KN}/>`,
- globe: `<circle cx="50" cy="50" r="36" ${K}/><ellipse cx="50" cy="50" rx="15" ry="36" ${K}/><path d="M14 50h72M20 32h60M20 68h60" stroke="#222" stroke-width="2.5"/>`,
- sprout: `<path d="M50 100V60" ${KN}/><path d="M50 70q-25-5-25-30q25 5 25 30zM50 60q25-5 25-30q-25 5-25 30z" fill="#a5d6a7" stroke="#222" stroke-width="3"/>`,
- shield: `<path d="M50 10l34 10v30q0 28-34 42Q16 78 16 50V20z" ${K}/><path d="M36 50l10 10 20-22" stroke="#27ae60" stroke-width="5" fill="none"/>`,
- flag: `<path d="M25 100V12" ${KN}/><path d="M25 15h52l-12 15 12 15H25z" stroke="#222" stroke-width="3" fill="#f1c40f"/>`,
- hi: `<text x="50" y="62" font-size="30" text-anchor="middle" font-weight="700" fill="#222">Hi!</text>`,
- q: `<text x="50" y="80" font-size="80" text-anchor="middle" font-weight="700" fill="#222">?</text>`,
- // 背景（畫在 300×150 整張）
- bgStreet: `<path d="M0 132h300" ${KN}/><path d="M0 132q30-8 60 0" stroke="#bbb" stroke-width="2" fill="none"/>`,
- bgRoom: `<path d="M0 132h300" ${KN}/><rect x="215" y="18" width="60" height="45" ${K}/><path d="M245 18v45M215 40h60" ${KN}/>`,
- bgHome: `<path d="M0 132h300" ${KN}/><rect x="20" y="18" width="55" height="45" ${K}/><path d="M47 18v45M20 40h55" ${KN}/><path d="M28 66q0-8 8-8h20q8 0 8 8" ${KN}/>`,
- bgMall: `<path d="M0 132h300" ${KN}/><path d="M20 20h260" ${KN}/><rect x="40" y="35" width="40" height="60" ${K}/><rect x="220" y="35" width="40" height="60" ${K}/><path d="M40 55h40M40 75h40M220 55h40M220 75h40" stroke="#bbb" stroke-width="2"/>`,
-};
+// 徽章（疊在元件右上）
+const BADGE = { x:'❌', up:'⬆️', down:'⬇️', q:'❓', ok:'✅', no:'🚫', heart:'❤️', zz:'💤', sweat:'💦', star:'⭐', bang:'💥', dollar:'💲', idea:'💡', time:'⏰' };
+// 浮在半空的連接符號（不落地、不畫影子）
+const FLOAT = new Set(['arrow','vs','plus','eq','neq','twoWay','cycle']);
+// 場景背景：依格內元件自動挑（先命中先贏）
+const BGS = [
+ ['space', 'satellite debris rocket'],
+ ['deep',  'deepSea'],
+ ['sea',   'fish shark wave ship island beach flood palm'],
+ ['snow',  'snow cold arctic'],
+ ['night', 'moon bed manLie zzz'],
+ ['desert','pyramid sphinx'],
+ ['forest','tree forest stump paw bird mouse frog hunter cave cliff mountain volcano treeRings panda monkey horse eel dog bee'],
+ ['farm',  'farmer cow goats wheat farm soil beans grass straw honey'],
+ ['lab',   'scientist scientistQ flask microscope dna cell virus amber skull bones lens'],
+ ['clinic','doctor hospital pills'],
+ ['class', 'teacher student classroom school board gradCap paperA'],
+ ['home',  'house family table sofa tv kid kids baby twins breakfast cereal plate brightRoom piggy cup wine grapes'],
+ ['office','suit office desk laptop monitor keyboard briefcase building machine printer3d chip robot bank card receipt sale'],
+ ['city',  'city town jam car ecar bus metro road truck bigBen mall shop bookshop museum library stadium'],
+ ['sport', 'manRun trophy medal'],
+ ['out',   'man woman manSad womanSad womanWave manAngry manFlat crowd crowdBig crowdSad women teen kidSad oldMan oldSit africa australia usa globe sun cloud rain storm wind drop tap fire smoke sprout countryside lodge police soldier swords bomb worker explorer volunteer king ballot podium megaphone airplane biplane toyHeli drone bicycle suitcase solar geo oil factory co2 hot flag shake two miner writer speaker shy thinker'],
+].map(([n, s]) => [n, new Set(s.split(' '))]);
+function pickBg(icons, override){
+  if (override) return override;
+  const names = icons.map(t => t.split(':')[0]);
+  for (const [n, set] of BGS) if (names.some(k => set.has(k))) return n;
+  return 'paper';
+}
 
-// ---------- SWT 新增元件：動物、自然 ----------
-Object.assign(SPR, {
- eel:      `<path d="M8 60q14-30 28-10t28 10 28-10" stroke="#222" stroke-width="9" fill="none" stroke-linecap="round"/><path d="M8 60q14-30 28-10t28 10 28-10" stroke="#f1c40f" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="12" cy="56" r="2.5" fill="#222"/><path d="M70 22l-6 12h10l-8 14" stroke="#f1c40f" stroke-width="4" fill="none" stroke-linejoin="round"/><path d="M70 22l-6 12h10l-8 14" stroke="#222" stroke-width="1.5" fill="none" stroke-linejoin="round"/>`,
- horse:    `<path d="M20 98V62q0-14 14-14h34l14-16 10 4-6 20v42" ${K}/><path d="M26 98V70M44 98V66M62 98V66M80 98V70" ${KN}/><path d="M68 32l-4-14 8 6 8-8 2 12" ${K}/><circle cx="80" cy="42" r="2" fill="#222"/><path d="M20 66q-12 6-10 22" ${KN}/>`,
- fish:     `<path d="M12 50q28-30 60 0q-32 30-60 0z" ${K}/><path d="M72 50l20-14v28z" ${K}/><circle cx="26" cy="46" r="3" fill="#222"/><path d="M40 36q6 14 0 28" ${KN}/>`,
- shark:    `<path d="M6 58q30-28 66-10l22-8-8 18 8 18-22-8q-36 18-66-10z" ${K}/><path d="M40 40l8-22 12 24" ${K}/><circle cx="20" cy="54" r="3" fill="#222"/><path d="M14 62q8 4 16 0" ${KN}/>`,
- dog:      `<path d="M22 98V64q0-16 16-16h30l6-12h8l6 12v50" ${K}/><path d="M28 98V74M44 98V72M64 98V72M82 98V74" ${KN}/><path d="M70 36l-2-12 8 6M22 64q-14-2-14 14" ${KN}/><circle cx="76" cy="46" r="2.5" fill="#222"/><path d="M84 52q6 0 8 4" ${KN}/>`,
- cow:      `<path d="M14 98V60q0-14 14-14h40q18 0 18 16v36" ${K}/><path d="M22 98V72M40 98V70M66 98V70M80 98V72" ${KN}/><path d="M60 34h20v12l-6 6H66l-6-6z" ${K}/><path d="M60 34l-8-10M80 34l8-10" ${KN}/><circle cx="68" cy="40" r="2" fill="#222"/><circle cx="76" cy="40" r="2" fill="#222"/><path d="M30 60q10 12 20 0q6 10 12 0" fill="#222" stroke="none"/><path d="M40 82q0 10 10 10t10-10" ${K}/>`,
- bird:     `<path d="M20 60q16-24 40-16l18-10-6 14 8 8-20 2q-14 20-40 2z" ${K}/><circle cx="66" cy="42" r="2.5" fill="#222"/><path d="M28 56q18-14 36-6" ${KN}/><path d="M36 74l-4 12M44 74l2 12" ${KN}/>`,
- bee:      `<ellipse cx="50" cy="58" rx="26" ry="18" fill="#f1c40f" stroke="#222" stroke-width="3"/><path d="M38 42v32M50 40v36M62 42v32" stroke="#222" stroke-width="5"/><circle cx="76" cy="52" r="10" ${K}/><circle cx="80" cy="50" r="2" fill="#222"/><path d="M78 42l4-8M84 44l6-6" ${KN}/><path d="M34 42q-10-22 12-16zM52 40q10-22 24-10z" fill="#dfe9f3" stroke="#222" stroke-width="2.5"/><path d="M22 60l-8 4" ${KN}/>`,
- frog:     `<path d="M14 80q0-30 36-30t36 30z" fill="#a5d6a7" stroke="#222" stroke-width="3"/><circle cx="30" cy="48" r="10" fill="#a5d6a7" stroke="#222" stroke-width="3"/><circle cx="70" cy="48" r="10" fill="#a5d6a7" stroke="#222" stroke-width="3"/><circle cx="30" cy="48" r="3" fill="#222"/><circle cx="70" cy="48" r="3" fill="#222"/><path d="M36 70q14 8 28 0" ${KN}/><path d="M14 80l-8 12h16M86 80l8 12H78" ${K}/>`,
- mouse:    `<path d="M14 70q0-24 30-24t40 18l8 6-10 4H44q-30 0-30-4z" ${K}/><circle cx="40" cy="42" r="10" ${K}/><circle cx="50" cy="40" r="7" ${K}/><circle cx="72" cy="60" r="2.5" fill="#222"/><path d="M14 70q-10 6-6 20" ${KN}/><path d="M86 66l8-6M88 70h10" stroke="#222" stroke-width="2"/>`,
- panda:    `<circle cx="50" cy="52" r="30" ${K}/><circle cx="28" cy="30" r="10" fill="#222"/><circle cx="72" cy="30" r="10" fill="#222"/><ellipse cx="38" cy="48" rx="8" ry="10" fill="#222"/><ellipse cx="62" cy="48" rx="8" ry="10" fill="#222"/><circle cx="39" cy="47" r="2.5" fill="#fff"/><circle cx="61" cy="47" r="2.5" fill="#fff"/><ellipse cx="50" cy="62" rx="5" ry="3.5" fill="#222"/><path d="M44 70q6 5 12 0" ${KN}/>`,
- monkey:   face('flat') + `<circle cx="36" cy="22" r="5" ${K}/><circle cx="64" cy="22" r="5" ${K}/>` + body('sit') + `<path d="M50 66q26 4 30-24" ${KN}/>`,
- paw:      `<ellipse cx="50" cy="66" rx="20" ry="16" fill="#222"/><circle cx="26" cy="46" r="8" fill="#222"/><circle cx="42" cy="34" r="8" fill="#222"/><circle cx="58" cy="34" r="8" fill="#222"/><circle cx="74" cy="46" r="8" fill="#222"/>`,
- goat:     `<path d="M22 98V64q0-14 14-14h30l8-14h8l2 14v48" ${K}/><path d="M28 98V74M44 98V70M62 98V70M78 98V74" ${KN}/><path d="M74 36l4-16M78 36l10-12" ${KN}/><circle cx="76" cy="44" r="2" fill="#222"/><path d="M82 54v10" ${KN}/>`,
- ape:      face('flat') + `<circle cx="36" cy="22" r="5" ${K}/><circle cx="64" cy="22" r="5" ${K}/>` + `<path d="M50 35v31" ${KN}/><path d="M50 40l-24 30M50 40l24 30" ${KN}/><path d="M50 66l-12 30M50 66l12 30" ${KN}/>`,
- treeRings:`<circle cx="50" cy="50" r="40" fill="#f5deb3" stroke="#222" stroke-width="3"/><circle cx="50" cy="50" r="30" ${KN}/><circle cx="50" cy="50" r="21" ${KN}/><circle cx="50" cy="50" r="13" ${KN}/><circle cx="50" cy="50" r="5" ${KN}/>`,
- wheat:    `<path d="M50 100V30" ${KN}/><path d="M50 40l-12-8v10zM50 40l12-8v10zM50 54l-12-8v10zM50 54l12-8v10zM50 68l-12-8v10zM50 68l12-8v10z" fill="#f1c40f" stroke="#222" stroke-width="2.5" stroke-linejoin="round"/><path d="M50 30l-4-14M50 30l4-14" ${KN}/>`,
- beans:    `<path d="M20 70q0-40 30-46q30 6 30 46q0 20-30 24q-30-4-30-24z" fill="#a5d6a7" stroke="#222" stroke-width="3"/><circle cx="50" cy="36" r="7" ${K}/><circle cx="50" cy="56" r="7" ${K}/><circle cx="50" cy="76" r="7" ${K}/>`,
- grass:    `<path d="M10 100q4-30 0-50q10 20 10 50M30 100q8-30 0-56q14 24 12 56M54 100q-6-34 4-58q8 30 4 58M76 100q4-30 0-48q12 20 10 48" fill="#a5d6a7" stroke="#222" stroke-width="2.5"/>`,
- soil:     `<rect x="4" y="50" width="92" height="46" fill="#a0522d" stroke="#222" stroke-width="3"/><path d="M4 50q23-12 46 0t46 0" fill="#a5d6a7" stroke="#222" stroke-width="3"/><circle cx="30" cy="70" r="4" fill="#222"/><circle cx="60" cy="80" r="3" fill="#222"/><circle cx="76" cy="64" r="3" fill="#222"/><path d="M40 86q6-4 12 0" stroke="#f9c" stroke-width="2.5" fill="none"/>`,
- volcano:  `<path d="M4 98L34 30h32l30 68z" fill="#8d6e63" stroke="#222" stroke-width="3" stroke-linejoin="round"/><path d="M34 30q16 8 32 0" fill="#e74c3c" stroke="#222" stroke-width="2"/><path d="M50 30q-8-22 0-30q10 10 0 30zM40 28q-10-10-4-22M60 28q10-10 4-22" fill="#e74c3c" stroke="#222" stroke-width="2"/><path d="M44 30q-2 20 6 30t8 30" stroke="#e74c3c" stroke-width="4" fill="none"/>`,
- mountain: `<path d="M2 98L36 30l16 24 12-16 32 60z" ${K}/><path d="M36 30l-8 16 8-4 8 6 8-14z" fill="#dfe9f3" stroke="#222" stroke-width="2"/>`,
- cliff:    `<path d="M10 98V20h40l10 20-6 16 12 20-8 22z" ${K}/><path d="M20 40h20M18 60h18M22 80h22" stroke="#bbb" stroke-width="2"/><g transform="translate(58 52) scale(.45)">${face('flat') + body('stand')}</g>`,
- cave:     `<path d="M6 98q0-70 44-70t44 70z" ${K}/><path d="M28 98q0-40 22-40t22 40z" fill="#555" stroke="#222" stroke-width="3"/>`,
- island:   `<path d="M0 78q25-14 50 0t50 0v22H0z" fill="#bde" stroke="#222" stroke-width="3"/><path d="M26 78q24-20 48 0z" fill="#f5deb3" stroke="#222" stroke-width="3"/><path d="M50 72V44" ${KN}/><path d="M50 46q-18-10-28 2q18-2 28-2zM50 46q18-10 28 2q-18-2-28-2zM50 46q-8-16 0-22q8 6 0 22z" fill="#a5d6a7" stroke="#222" stroke-width="2"/>`,
- africa:   `<path d="M34 10l30-2 12 12-6 12 14 16-8 26-12 8-6 16-12-2-6-20-12-14-2-18 10-16z" fill="#f1c40f" stroke="#222" stroke-width="3" stroke-linejoin="round"/>`,
- australia:`<path d="M12 44l18-16 16 4 10-12 16 14 18 4 4 22-14 20-22 4-12-8-14 8-14-10z" fill="#f1c40f" stroke="#222" stroke-width="3" stroke-linejoin="round"/><path d="M78 76l8 6-4 8-8-4z" fill="#f1c40f" stroke="#222" stroke-width="2.5"/>`,
- usa:      `<rect x="8" y="26" width="84" height="52" ${K}/><path d="M8 36h84M8 46h84M8 56h84M8 66h84" stroke="#e74c3c" stroke-width="4"/><rect x="8" y="26" width="36" height="28" fill="#2980b9" stroke="#222" stroke-width="3"/><path d="M14 32h4M22 32h4M30 32h4M14 40h4M22 40h4M30 40h4M14 48h4M22 48h4M30 48h4" stroke="#fff" stroke-width="2.5"/>`,
- bigBen:   `<rect x="34" y="34" width="32" height="64" ${K}/><path d="M34 34l16-24 16 24z" ${K}/><circle cx="50" cy="52" r="10" ${K}/><path d="M50 46v6l4 3" ${KN}/><path d="M40 70h20M40 82h20" stroke="#222" stroke-width="2"/>`,
- pyramid:  `<path d="M4 90L50 14l46 76z" fill="#f5deb3" stroke="#222" stroke-width="3" stroke-linejoin="round"/><path d="M50 14L36 90" ${KN}/>`,
- sphinx:   `<path d="M6 92V70q0-14 16-14h36v36z" fill="#f5deb3" stroke="#222" stroke-width="3"/><path d="M58 56v36h34V70q0-10-8-10z" fill="#f5deb3" stroke="#222" stroke-width="3"/><path d="M42 56V36q0-16 16-16h6q16 0 16 16v20z" fill="#f5deb3" stroke="#222" stroke-width="3"/><path d="M42 40h40" ${KN}/><circle cx="54" cy="44" r="2" fill="#222"/><circle cx="68" cy="44" r="2" fill="#222"/><path d="M56 52q6 3 12 0" ${KN}/>`,
- cloud:    `<path d="M25 72q-18 0-18-16t20-16q6-16 24-16t24 16q17 0 17 16t-18 16z" ${K}/>`,
- rain:     `<path d="M25 58q-18 0-18-14t20-14q6-14 24-14t24 14q17 0 17 14t-18 14z" ${K}/><path d="M30 68l-6 14M50 68l-6 14M70 68l-6 14M40 82l-6 12M60 82l-6 12" stroke="#2980b9" stroke-width="3.5" stroke-linecap="round"/>`,
- snow:     `<path d="M50 10v80M15 30l70 40M85 30L15 70" ${KN}/><path d="M42 18l8 8 8-8M42 82l8-8 8 8M20 40l10 2-2 10M80 40l-10 2 2 10M20 60l10-2-2-10M80 60l-10-2 2-10" ${KN}/>`,
- hot:      `<rect x="40" y="10" width="20" height="60" rx="10" ${K}/><circle cx="50" cy="80" r="14" fill="#e74c3c" stroke="#222" stroke-width="3"/><rect x="46" y="26" width="8" height="46" fill="#e74c3c"/><path d="M66 22h10M66 36h10M66 50h10" ${KN}/>`,
- cold:     `<rect x="40" y="10" width="20" height="60" rx="10" ${K}/><circle cx="50" cy="80" r="14" fill="#2980b9" stroke="#222" stroke-width="3"/><rect x="46" y="56" width="8" height="16" fill="#2980b9"/><path d="M66 22h10M66 36h10M66 50h10" ${KN}/>`,
- wind:     `<path d="M10 36h50q12 0 12-10t-12-10M10 56h66q12 0 12 10t-12 10M10 76h40q10 0 10 8" ${KN}/>`,
- drop:     `<path d="M50 10q30 36 30 56a30 30 0 0 1-60 0q0-20 30-56z" fill="#bde" stroke="#222" stroke-width="3"/><path d="M36 66q0 12 10 16" stroke="#fff" stroke-width="3" fill="none"/>`,
- tap:      `<path d="M20 30h40v14H48v10h16q10 0 10 10v6" ${K}/><path d="M60 30v-8h-14v8" ${K}/><path d="M74 78q-6 10 0 16q6-6 0-16z" fill="#bde" stroke="#222" stroke-width="2"/><path d="M36 44v14h24V44" ${K}/>`,
- flood:    `<path d="M0 62q15-12 30 0t30 0 30 0 30 0v38H0z" fill="#bde" stroke="#222" stroke-width="3"/><path d="M30 62V40l20-16 20 16v22" fill="#fff" stroke="#222" stroke-width="3"/><path d="M0 82q15-12 30 0t30 0 30 0 30 0" stroke="#222" stroke-width="2.5" fill="none"/>`,
- fire:     `<path d="M50 10q20 24 20 44q10-6 8-20q18 26 4 46-14 18-32 18T18 80q-8-20 8-36q0 12 8 14q-8-28 16-48z" fill="#e74c3c" stroke="#222" stroke-width="3" stroke-linejoin="round"/><path d="M50 60q10 12 6 26-6 10-16 4-6-10 4-20 2 8 6-10z" fill="#f1c40f" stroke="none"/>`,
- smoke:    `<path d="M30 96q-10-14 4-24q-12-10 2-22q-8-12 8-18M60 96q-10-14 4-24q-12-10 2-22q-8-12 8-18" stroke="#888" stroke-width="4" fill="none" stroke-linecap="round"/>`,
- satellite:`<rect x="38" y="38" width="24" height="24" ${K}/><path d="M38 50H10M62 50h28" ${KN}/><rect x="4" y="40" width="20" height="20" fill="#2980b9" stroke="#222" stroke-width="2.5"/><rect x="76" y="40" width="20" height="20" fill="#2980b9" stroke="#222" stroke-width="2.5"/><path d="M50 38V24l-10-8M50 24l10-8" ${KN}/>`,
- debris:   `<path d="M20 20l8 4-4 8-8-4zM70 16l10 6-6 8-10-4zM76 70l8 6-8 8-6-8zM26 74l10 2-4 10-8-4zM50 46l10 8-8 10-10-6z" ${K}/><path d="M6 8l10 8M92 92l-8-8" stroke="#888" stroke-width="2"/>`,
- rocket:   `<path d="M50 6q20 20 20 56H30q0-36 20-56z" ${K}/><path d="M30 62l-14 20 14-4zM70 62l14 20-14-4z" ${K}/><circle cx="50" cy="40" r="7" fill="#bde" stroke="#222" stroke-width="2.5"/><path d="M40 80q10 20 20 0" fill="#e74c3c" stroke="#222" stroke-width="2.5"/>`,
- amber:    `<path d="M50 8q36 10 40 50-6 32-40 34Q14 90 10 58q4-40 40-50z" fill="#f5b041" stroke="#222" stroke-width="3"/><g transform="translate(24 30) scale(.5)"><path d="M14 80q0-30 36-30t36 30z" fill="#a5d6a7" stroke="#222" stroke-width="4"/><circle cx="30" cy="48" r="10" fill="#a5d6a7" stroke="#222" stroke-width="4"/><circle cx="70" cy="48" r="10" fill="#a5d6a7" stroke="#222" stroke-width="4"/><circle cx="30" cy="48" r="3" fill="#222"/><circle cx="70" cy="48" r="3" fill="#222"/></g>`,
- skull:    `<path d="M22 44q0-30 28-30t28 30q0 14-8 20v14H30V64q-8-6-8-20z" ${K}/><circle cx="40" cy="44" r="7" fill="#222"/><circle cx="60" cy="44" r="7" fill="#222"/><path d="M50 54l-4 8h8z" fill="#222"/><path d="M40 78v8M50 78v8M60 78v8" ${KN}/>`,
- bones:    `<path d="M20 80L80 20M20 20l60 60" stroke="#222" stroke-width="8" stroke-linecap="round"/><circle cx="18" cy="18" r="6" ${K}/><circle cx="82" cy="18" r="6" ${K}/><circle cx="18" cy="82" r="6" ${K}/><circle cx="82" cy="82" r="6" ${K}/>`,
- dna:      `<path d="M30 6q40 22 0 44t0 44M70 6q-40 22 0 44t0 44" ${KN}/><path d="M36 20h28M32 32h36M36 44h28M36 64h28M32 76h36M36 88h28" stroke="#2980b9" stroke-width="3"/>`,
- virus:    `<circle cx="50" cy="50" r="22" fill="#a5d6a7" stroke="#222" stroke-width="3"/><path d="M50 28V12M50 72v16M28 50H12M72 50h16M34 34L23 23M66 66l11 11M66 34l11-11M34 66L23 77" stroke="#222" stroke-width="4" stroke-linecap="round"/><circle cx="50" cy="12" r="4" ${K}/><circle cx="50" cy="88" r="4" ${K}/><circle cx="12" cy="50" r="4" ${K}/><circle cx="88" cy="50" r="4" ${K}/><circle cx="42" cy="46" r="3" fill="#222"/><circle cx="58" cy="54" r="3" fill="#222"/>`,
- cell:     `<ellipse cx="50" cy="50" rx="40" ry="30" fill="#f9c" stroke="#222" stroke-width="3"/><circle cx="46" cy="50" r="12" fill="#e74c3c" stroke="#222" stroke-width="2.5"/><circle cx="72" cy="42" r="4" fill="#222"/><circle cx="26" cy="60" r="3" fill="#222"/>`,
- brain:    `<path d="M50 20q-22-8-30 12-12 10-2 28 0 20 20 22 10 8 12-4 2 12 12 4 20-2 20-22 10-18-2-28-8-20-30-12z" fill="#f9c" stroke="#222" stroke-width="3"/><path d="M50 20v62M30 36q10 4 12 14M70 36q-10 4-12 14M26 60q10-2 14 8M74 60q-10-2-14 8" ${KN}/>`,
- chip:     `<rect x="26" y="26" width="48" height="48" rx="4" ${K}/><rect x="38" y="38" width="24" height="24" fill="#2980b9" stroke="#222" stroke-width="2"/><path d="M36 26V12M50 26V12M64 26V12M36 74v14M50 74v14M64 74v14M26 36H12M26 50H12M26 64H12M74 36h14M74 50h14M74 64h14" stroke="#222" stroke-width="3"/>`,
- microscope:`<path d="M50 20l16 16-24 24-16-16z" ${K}/><path d="M42 60l-8 8 10 10 8-8" ${K}/><path d="M64 76q16-2 20-20" ${KN}/><rect x="20" y="88" width="60" height="8" ${K}/><path d="M50 88V78" ${KN}/><circle cx="38" cy="26" r="5" ${K}/>`,
- flask:    `<path d="M40 10h20v26l22 40q4 14-10 14H28q-14 0-10-14l22-40z" ${K}/><path d="M28 70h44l-12-22H40z" fill="#a5d6a7" stroke="none"/><path d="M36 10h28" ${KN}/>`,
- stone:    `<path d="M24 12h52l6 12v64l-6 6H30l-8-8V22z" fill="#8d8d8d" stroke="#222" stroke-width="3" stroke-linejoin="round"/><path d="M32 28h36M32 40h30M32 52h36M32 64h26M32 76h34" stroke="#fff" stroke-width="3"/>`,
- tablet:   `<path d="M22 10h56v82H22z" fill="#f5deb3" stroke="#222" stroke-width="3"/><path d="M32 24l6-6 6 6M50 18v12M60 18l8 12-8 0M32 42h36M32 56h24M32 70h36" ${KN}/>`,
- telescope:`<g transform="rotate(-30 50 50)"><rect x="10" y="42" width="60" height="16" rx="4" ${K}/><rect x="66" y="38" width="24" height="24" rx="4" ${K}/></g><path d="M40 62l-10 36M40 62l14 36M40 62v36" ${KN}/>`,
-});
-
-// ---------- SWT 新增元件：人物、物品 ----------
-const glasses = `<circle cx="45" cy="20" r="4.5" ${KN}/><circle cx="55" cy="20" r="4.5" ${KN}/><path d="M49.5 20h1" ${KN}/>`;
-const coat = `<path d="M40 38h20v30H40z" ${K}/><path d="M50 38v30" stroke="#222" stroke-width="1.5"/>`;
-const beard = `<path d="M40 28q10 14 20 0q0 12-10 14-10-2-10-14z" fill="#ccc" stroke="#222" stroke-width="2"/>`;
-Object.assign(SPR, {
- scientist: face('happy') + glasses + coat + body('stand') + `<g transform="translate(56 42) scale(.32)">${SPR.flask}</g>`,
- scientistQ: face('flat') + glasses + coat + body('stand') + `<text x="76" y="26" font-size="22" font-weight="700" fill="#222">?</text>`,
- doctor:    face('happy') + coat + body('stand') + `<path d="M44 38q0 16 6 16t6-16" stroke="#222" stroke-width="2" fill="none"/><circle cx="50" cy="56" r="3" fill="#e74c3c"/><path d="M60 42h6v6h-6z" fill="#e74c3c"/>`,
- teacher:   face('happy') + body('point') + `<path d="M70 32l14-10" stroke="#222" stroke-width="3"/><path d="M50 38l-12 14" ${KN}/>`,
- student:   face('happy') + body('stand') + `<path d="M34 12l16-6 16 6-16 6z" fill="#222"/><path d="M66 12v8" stroke="#222" stroke-width="2"/><rect x="60" y="56" width="14" height="18" ${K}/>`,
- baby:      `<circle cx="50" cy="58" r="22" ${K}/><circle cx="43" cy="55" r="2.5" fill="#222"/><circle cx="57" cy="55" r="2.5" fill="#222"/><path d="M44 66q6 5 12 0" ${KN}/><path d="M50 36q-4-8 4-10" ${KN}/><path d="M28 70q-8 12 4 20M72 70q8 12-4 20" ${KN}/>`,
- twins:     `<g transform="translate(-16 40) scale(.6)">${face('happy') + bow + body('stand')}</g><g transform="translate(36 40) scale(.6)">${face('happy') + bow + body('stand')}</g>`,
- oldMan:    face('flat') + beard + body('stand') + `<path d="M70 56v42" ${KN}/>`,
- police:    face('flat') + `<path d="M34 12h32l-4-8H38z" fill="#2980b9" stroke="#222" stroke-width="2"/><path d="M36 12h28" ${KN}/>` + body('stand') + `<path d="M46 44l4-4 4 4-4 4z" fill="#f1c40f" stroke="#222" stroke-width="1.5"/>`,
- soldier:   face('flat') + `<path d="M34 16q0-14 16-14t16 14z" fill="#2e7d5b" stroke="#222" stroke-width="2.5"/>` + body('stand') + `<path d="M64 54l16-24" stroke="#222" stroke-width="4"/>`,
- king:      face('happy') + `<path d="M36 12l4-10 10 6 10-6 4 10z" fill="#f1c40f" stroke="#222" stroke-width="2.5" stroke-linejoin="round"/>` + body('stand') + `<path d="M40 38h20v30H40z" fill="#e74c3c" stroke="#222" stroke-width="2"/>`,
- farmer:    face('happy') + `<path d="M28 14h44M40 14V6h20v8" fill="#f1c40f" stroke="#222" stroke-width="2.5"/>` + body('stand') + `<path d="M70 44v54M62 44h16" stroke="#222" stroke-width="3"/>`,
- worker:    face('happy') + `<path d="M36 14q0-12 14-12t14 12z" fill="#f1c40f" stroke="#222" stroke-width="2.5"/>` + body('stand'),
- suit:      face('happy') + body('stand') + tie,
- suitSad:   face('sad') + body('stand') + tie,
- speaker:   face('happy') + body('point') + `<rect x="70" y="26" width="6" height="14" rx="3" fill="#222"/><path d="M73 40v8" stroke="#222" stroke-width="2"/><path d="M82 24q6 6 0 12M88 20q10 10 0 20" ${KN}/>`,
- thinker:   face('flat') + body('stand') + `<path d="M50 38l10 4 4-8" ${KN}/><text x="70" y="22" font-size="22" font-weight="700" fill="#222">?</text>`,
- shy:       face('sad') + body('stand') + `<path d="M40 22q-6 8 0 12M60 22q6 8 0 12" stroke="#e74c3c" stroke-width="2" fill="none"/><path d="M62 42q10-6 6-14" ${KN}/>`,
- miner:     face('happy') + `<path d="M36 14q0-12 14-12t14 12z" fill="#f1c40f" stroke="#222" stroke-width="2.5"/><circle cx="50" cy="8" r="3" fill="#fff59d" stroke="#222" stroke-width="1.5"/>` + body('stand') + `<path d="M64 54l18-22M72 30l10 4" stroke="#222" stroke-width="4"/>`,
- explorer:  face('happy') + `<path d="M30 14h40M38 14V4h24v10" fill="#a5d6a7" stroke="#222" stroke-width="2.5"/>` + body('point') + `<path d="M66 34l16-6" stroke="#222" stroke-width="5"/>`,
- writer:    face('flat') + body('sit') + `<rect x="10" y="66" width="80" height="6" ${K}/><path d="M62 52l10-14" stroke="#222" stroke-width="3"/><rect x="40" y="56" width="26" height="10" ${K}/>`,
- pianist:   face('happy') + body('sit') + `<rect x="30" y="56" width="66" height="14" ${K}/><path d="M38 56v14M46 56v14M54 56v14M62 56v14M70 56v14M78 56v14M86 56v14" stroke="#222" stroke-width="1.5"/><path d="M30 70v28M90 70v28" ${KN}/>`,
- diver:     face('flat') + `<circle cx="50" cy="22" r="17" ${KN}/>` + body('stand') + `<rect x="62" y="36" width="10" height="30" rx="4" ${K}/>`,
- hunter:    face('flat') + body('point') + `<path d="M70 32l-6 22" stroke="#222" stroke-width="3"/><path d="M68 28q14 10 0 24" ${KN}/><path d="M70 32l14 0" stroke="#222" stroke-width="2"/>`,
- volunteer: face('happy') + body('up') + `<path d="M50 52L38 40q-5-6 0-11t12 3q7-8 12-3t0 11z" fill="#f9c" stroke="#222" stroke-width="2"/>`,
- goats:     `<g transform="translate(-14 30) scale(.7)">${SPR.goat}</g><g transform="translate(40 30) scale(.7)">${SPR.goat}</g>`,
- family:    `<g transform="translate(-20 0) scale(.85)">${face('happy') + body('stand')}</g><g transform="translate(28 0) scale(.85)">${face('happy') + bun + body('stand')}</g><g transform="translate(58 44) scale(.5)">${face('happy') + bow + body('stand')}</g>`,
- // 物品
- honey:     `<path d="M30 30h40v10q10 10 10 30q0 24-30 24T20 70q0-20 10-30z" fill="#f5b041" stroke="#222" stroke-width="3"/><rect x="34" y="18" width="32" height="12" rx="3" ${K}/><path d="M40 56q10 8 20 0" stroke="#222" stroke-width="2" fill="none"/>`,
- sugar:     `<rect x="20" y="54" width="26" height="26" fill="#fff" stroke="#222" stroke-width="3"/><rect x="54" y="54" width="26" height="26" fill="#fff" stroke="#222" stroke-width="3"/><rect x="37" y="28" width="26" height="26" fill="#fff" stroke="#222" stroke-width="3"/><path d="M20 54l8-8h26l-8 8M54 54l8-8h26l-8 8M37 28l8-8h26l-8 8" ${KN}/>`,
- soda:      `<path d="M28 30h44l-6 62H34z" fill="#bde" stroke="#222" stroke-width="3"/><path d="M28 30h44" ${KN}/><path d="M56 30l10-22" stroke="#e74c3c" stroke-width="4"/><circle cx="42" cy="50" r="3" ${KN}/><circle cx="56" cy="64" r="3" ${KN}/><circle cx="46" cy="78" r="3" ${KN}/>`,
- cereal:    `<path d="M10 48h80q0 34-40 34T10 48z" ${K}/><path d="M10 48q40-16 80 0" ${KN}/><path d="M64 60l6-26" stroke="#222" stroke-width="4"/><path d="M20 44q4-6 8 0M34 42q4-6 8 0M50 42q4-6 8 0" stroke="#f5b041" stroke-width="3" fill="none"/>`,
- meat:      `<path d="M14 60q0-30 34-30t38 24q-6 30-38 30T14 60z" fill="#e74c3c" stroke="#222" stroke-width="3"/><path d="M30 50q10 22 30 20" stroke="#fff" stroke-width="3" fill="none"/><circle cx="76" cy="40" r="6" ${K}/>`,
- plate:     `<ellipse cx="50" cy="60" rx="40" ry="18" ${K}/><ellipse cx="50" cy="60" rx="24" ry="10" ${KN}/><path d="M8 30v30M4 30v10q0 6 4 6M12 30v10q0 6-4 6M92 30q-6 10 0 20v10" ${KN}/>`,
- breakfast: `<ellipse cx="50" cy="62" rx="40" ry="18" ${K}/><ellipse cx="46" cy="58" rx="16" ry="10" ${K}/><circle cx="46" cy="58" r="6" fill="#f1c40f" stroke="#222" stroke-width="2"/><path d="M62 54h16v10H62z" fill="#f5deb3" stroke="#222" stroke-width="2"/>`,
- wine:      `<path d="M30 12h40q0 40-16 46v22h16v8H30v-8h16V58Q30 52 30 12z" ${K}/><path d="M32 30q18 8 36 0q-2 20-18 24-16-4-18-24z" fill="#8e44ad" stroke="none"/>`,
- grapes:    `<circle cx="38" cy="40" r="10" fill="#8e44ad" stroke="#222" stroke-width="2.5"/><circle cx="62" cy="40" r="10" fill="#8e44ad" stroke="#222" stroke-width="2.5"/><circle cx="50" cy="56" r="10" fill="#8e44ad" stroke="#222" stroke-width="2.5"/><circle cx="30" cy="58" r="9" fill="#8e44ad" stroke="#222" stroke-width="2.5"/><circle cx="70" cy="58" r="9" fill="#8e44ad" stroke="#222" stroke-width="2.5"/><circle cx="40" cy="74" r="9" fill="#8e44ad" stroke="#222" stroke-width="2.5"/><circle cx="60" cy="74" r="9" fill="#8e44ad" stroke="#222" stroke-width="2.5"/><circle cx="50" cy="88" r="8" fill="#8e44ad" stroke="#222" stroke-width="2.5"/><path d="M50 30V12" ${KN}/>`,
- cigarette: `<path d="M10 62h60v14H10z" ${K}/><path d="M58 62h12v14H58z" fill="#f5b041" stroke="#222" stroke-width="3"/><path d="M12 70q-6-10 0-20q-4-8 4-16" stroke="#888" stroke-width="3" fill="none"/><path d="M20 30l60 60M80 30L20 90" stroke="#e74c3c" stroke-width="6" stroke-linecap="round"/>`,
- bicycle:   `<circle cx="24" cy="70" r="18" ${K}/><circle cx="76" cy="70" r="18" ${K}/><path d="M24 70l18-30h24l10 30M42 40l-8-10h14M66 40l-4-12h10M42 40l8 30h26" ${KN}/>`,
- biplane:   `<path d="M10 34h80M10 58h80" stroke="#222" stroke-width="5" stroke-linecap="round"/><path d="M22 34v24M42 34v24M62 34v24M82 34v24" stroke="#222" stroke-width="2.5"/><path d="M30 46h50q8 0 8 8h-14" ${K}/><path d="M6 46l10-8v16z" ${K}/><circle cx="90" cy="54" r="7" ${K}/><path d="M36 66l4 12h20" ${KN}/>`,
- toyHeli:   `<path d="M10 30h80" stroke="#222" stroke-width="4"/><path d="M50 30v10" ${KN}/><rect x="30" y="40" width="40" height="24" rx="10" ${K}/><path d="M70 52h20v-12" ${KN}/><path d="M36 64l-4 12M64 64l4 12" ${KN}/><path d="M40 52h10" stroke="#e74c3c" stroke-width="3"/>`,
- ship:      `<path d="M8 70h84l-14 24H22z" ${K}/><path d="M50 70V10" ${KN}/><path d="M50 14q34 10 0 34zM50 18q-30 10 0 26z" fill="#f5deb3" stroke="#222" stroke-width="2.5"/>`,
- truck:     `<rect x="4" y="34" width="56" height="40" ${K}/><path d="M60 46h20l14 14v14H60z" ${K}/><circle cx="22" cy="80" r="8" ${K}/><circle cx="76" cy="80" r="8" ${K}/><path d="M64 50h12l8 8H64z" fill="#dfe9f3" stroke="#222" stroke-width="2"/>`,
- drone:     `<rect x="36" y="44" width="28" height="14" rx="4" ${K}/><path d="M36 50H14M64 50h22" ${KN}/><path d="M2 42h24M74 42h24" stroke="#222" stroke-width="4"/><path d="M14 50v-8M86 50v-8" ${KN}/><rect x="42" y="58" width="16" height="14" ${K}/>`,
- bus:       `<rect x="8" y="26" width="84" height="54" rx="8" ${K}/><rect x="16" y="36" width="18" height="16" fill="#dfe9f3" stroke="#222" stroke-width="2"/><rect x="41" y="36" width="18" height="16" fill="#dfe9f3" stroke="#222" stroke-width="2"/><rect x="66" y="36" width="18" height="16" fill="#dfe9f3" stroke="#222" stroke-width="2"/><circle cx="26" cy="84" r="8" ${K}/><circle cx="74" cy="84" r="8" ${K}/>`,
- jam:       `<g transform="translate(-10 20) scale(.55)">${SPR.car}</g><g transform="translate(26 20) scale(.55)">${SPR.car}</g><g transform="translate(62 20) scale(.55)">${SPR.car}</g><path d="M0 72h100" ${KN}/><path d="M20 84q-6 8 0 14M40 84q-6 8 0 14" stroke="#888" stroke-width="2.5" fill="none"/>`,
- ecar:      `<path d="M8 72V56l16-18h52l16 18v16z" ${K}/><rect x="28" y="44" width="18" height="12" fill="#dfe9f3" stroke="#222" stroke-width="2"/><rect x="54" y="44" width="18" height="12" fill="#dfe9f3" stroke="#222" stroke-width="2"/><circle cx="28" cy="76" r="8" ${K}/><circle cx="72" cy="76" r="8" ${K}/><path d="M92 40l-8 14h10l-8 14" stroke="#27ae60" stroke-width="4" fill="none" stroke-linejoin="round"/>`,
- battery:   `<rect x="10" y="34" width="72" height="32" rx="4" ${K}/><rect x="82" y="44" width="8" height="12" ${K}/><rect x="16" y="40" width="14" height="20" fill="#27ae60"/><rect x="34" y="40" width="14" height="20" fill="#27ae60"/><rect x="52" y="40" width="14" height="20" fill="#27ae60"/>`,
- oil:       `<path d="M26 20h48v70q0 6-6 6H32q-6 0-6-6z" ${K}/><path d="M26 34h48M26 50h48M26 66h48" ${KN}/><path d="M42 40q8 10 8 18a8 8 0 0 1-16 0q0-8 8-18z" fill="#222"/>`,
- solar:     `<path d="M10 30h80l10 40H0z" fill="#2980b9" stroke="#222" stroke-width="3"/><path d="M36 30l-10 40M64 30l10 40M5 50h90" stroke="#fff" stroke-width="2"/><path d="M50 70v26M36 96h28" ${KN}/><circle cx="84" cy="14" r="7" fill="#f1c40f" stroke="#222" stroke-width="2.5"/>`,
- geo:       `<path d="M4 98V60h92v38z" fill="#8d6e63" stroke="#222" stroke-width="3"/><path d="M28 60V24M52 60V24" stroke="#2980b9" stroke-width="5"/><path d="M28 24q-8-8 0-18M52 24q8-8 0-18" stroke="#888" stroke-width="3" fill="none"/><rect x="64" y="34" width="24" height="26" ${K}/><path d="M64 44h24" ${KN}/><path d="M28 60v-10h24v10" fill="#e74c3c" stroke="none"/>`,
- lightning: `<path d="M58 6L26 54h20l-8 40 36-52H54z" fill="#f1c40f" stroke="#222" stroke-width="3" stroke-linejoin="round"/>`,
- printer3d: `<rect x="14" y="12" width="72" height="14" ${K}/><path d="M20 26v56M80 26v56" ${KN}/><rect x="14" y="82" width="72" height="12" ${K}/><path d="M44 26v12h12V26" ${K}/><path d="M50 38v12" stroke="#e74c3c" stroke-width="3"/><path d="M36 82V64h28v18" fill="#e74c3c" stroke="#222" stroke-width="2.5"/>`,
- machine:   `<rect x="14" y="30" width="72" height="56" rx="4" ${K}/><rect x="24" y="40" width="30" height="20" fill="#dfe9f3" stroke="#222" stroke-width="2"/><circle cx="70" cy="50" r="8" ${K}/><path d="M24 70h52M24 78h30" stroke="#222" stroke-width="2.5"/><path d="M30 30V18h40v12" ${KN}/>`,
- monitor:   `<rect x="10" y="16" width="80" height="54" rx="4" ${K}/><rect x="16" y="22" width="68" height="42" fill="#dfe9f3" stroke="none"/><path d="M35 88h30M50 70v18" ${KN}/>`,
- web:       `<circle cx="50" cy="50" r="36" ${K}/><ellipse cx="50" cy="50" rx="15" ry="36" ${KN}/><path d="M14 50h72M20 32h60M20 68h60" stroke="#222" stroke-width="2"/><text x="50" y="58" font-size="20" text-anchor="middle" font-weight="700" fill="#2980b9" stroke="#fff" stroke-width="3" paint-order="stroke">www</text>`,
- network:   `<circle cx="50" cy="20" r="9" ${K}/><circle cx="16" cy="70" r="9" ${K}/><circle cx="84" cy="70" r="9" ${K}/><circle cx="50" cy="86" r="9" ${K}/><path d="M50 29L16 61M50 29l34 32M16 79l34 7M84 79l-34 7M50 29v48" ${KN}/>`,
- keyboard:  `<rect x="6" y="34" width="88" height="40" rx="4" ${K}/><path d="M14 44h8M28 44h8M42 44h8M56 44h8M70 44h8M14 56h8M28 56h8M42 56h8M56 56h8M70 56h8M26 66h48" stroke="#222" stroke-width="3"/>`,
- pen:       `<path d="M20 80L64 20l16 12-44 60-20 8z" ${K}/><path d="M56 30l16 12" ${KN}/><path d="M20 80l4 12 12-4" fill="#222"/>`,
- letters:   `<text x="50" y="66" font-size="40" text-anchor="middle" font-weight="700" fill="#222">ABC</text>`,
- film:      `<circle cx="50" cy="50" r="38" ${K}/><circle cx="50" cy="50" r="8" ${K}/><circle cx="50" cy="26" r="7" ${K}/><circle cx="50" cy="74" r="7" ${K}/><circle cx="26" cy="50" r="7" ${K}/><circle cx="74" cy="50" r="7" ${K}/>`,
- piano:     `<rect x="6" y="40" width="88" height="40" ${K}/><path d="M18 40v24M30 40v24M42 40v24M58 40v24M70 40v24M82 40v24" stroke="#222" stroke-width="5"/><path d="M6 80v16M94 80v16" ${KN}/>`,
- mic:       `<rect x="38" y="10" width="24" height="46" rx="12" ${K}/><path d="M28 44q0 22 22 22t22-22M50 66v22M36 88h28" ${KN}/>`,
- palette:   `<path d="M50 12q40 0 40 34-10 8-20 6-12 4-4 14-6 22-30 22-36 0-36-36 10-40 50-40z" ${K}/><circle cx="32" cy="36" r="6" fill="#e74c3c"/><circle cx="52" cy="28" r="6" fill="#2980b9"/><circle cx="70" cy="36" r="6" fill="#f1c40f"/><circle cx="28" cy="58" r="6" fill="#27ae60"/>`,
- art:       `<rect x="14" y="14" width="72" height="56" ${K}/><path d="M22 60l16-24 12 14 10-8 18 18z" fill="#a5d6a7" stroke="#222" stroke-width="2.5"/><circle cx="66" cy="30" r="6" fill="#f1c40f" stroke="#222" stroke-width="2"/><path d="M30 78h40M50 70v8" ${KN}/>`,
- columns:   `<path d="M6 34L50 12l44 22z" ${K}/><rect x="10" y="34" width="80" height="8" ${K}/><path d="M20 42v44M38 42v44M62 42v44M80 42v44" stroke="#222" stroke-width="5"/><rect x="6" y="86" width="88" height="10" ${K}/>`,
- shelf:     `<rect x="10" y="10" width="80" height="84" ${K}/><path d="M10 38h80M10 66h80" ${KN}/><path d="M18 38V18h8v20zM30 38V22h8v16zM42 38V16h8v22zM60 38V20h10v18zM18 66V46h8v20zM30 66V50h8v16zM46 66V44h8v22zM62 66V48h10v18zM18 94V74h8v20zM34 94V78h8v16zM50 94V72h8v22zM64 94V76h10v18z" ${K}/>`,
- scroll:    `<path d="M20 20h60v60H20z" fill="#f5deb3" stroke="#222" stroke-width="3"/><rect x="12" y="12" width="76" height="12" rx="6" ${K}/><rect x="12" y="76" width="76" height="12" rx="6" ${K}/><path d="M30 36h40M30 48h30M30 60h40" stroke="#222" stroke-width="2.5"/>`,
- clockB:    `<circle cx="50" cy="40" r="30" ${K}/><path d="M50 18v22l14 8" ${KN}/><path d="M50 70v20" stroke="#222" stroke-width="3"/><circle cx="50" cy="92" r="6" fill="#f1c40f" stroke="#222" stroke-width="2.5"/><text x="50" y="46" font-size="10" text-anchor="middle" font-weight="700" fill="#222">B</text>`,
- ghost:     `<path d="M22 96V50q0-28 28-28t28 28v46l-10-8-9 8-9-8-9 8-9-8z" fill="#fff" stroke="#222" stroke-width="3" stroke-dasharray="6 4"/><circle cx="40" cy="50" r="4" fill="#222"/><circle cx="60" cy="50" r="4" fill="#222"/>`,
- straw:     `<rect x="8" y="46" width="84" height="44" rx="4" fill="#f1c40f" stroke="#222" stroke-width="3"/><path d="M8 62h84M8 76h84M30 46v44M64 46v44" stroke="#222" stroke-width="2"/><path d="M40 46l6-14 6 14M56 46l6-14 6 14" ${KN}/>`,
- wall:      `<rect x="6" y="20" width="88" height="70" ${K}/><path d="M6 38h88M6 56h88M6 74h88M30 20v18M62 20v18M18 38v18M50 38v18M82 38v18M30 56v18M62 56v18M18 74v16M50 74v16M82 74v16" stroke="#222" stroke-width="2.5"/>`,
- lens:      `<ellipse cx="50" cy="50" rx="18" ry="36" ${K}/><path d="M50 14q-30 36 0 72M50 14q30 36 0 72" fill="#bde" stroke="none"/><path d="M38 40q4-10 12-14" stroke="#fff" stroke-width="3" fill="none"/>`,
- package:   `<path d="M10 36l40-16 40 16v44l-40 16-40-16z" ${K}/><path d="M10 36l40 16 40-16M50 52v44" ${KN}/><path d="M30 28l40 16" stroke="#222" stroke-width="2"/>`,
- coins:     `<ellipse cx="40" cy="78" rx="26" ry="8" ${K}/><path d="M14 78V64q0-8 26-8t26 8v14" ${K}/><ellipse cx="40" cy="64" rx="26" ry="8" ${K}/><path d="M14 64V50q0-8 26-8t26 8v14" ${K}/><ellipse cx="40" cy="50" rx="26" ry="8" ${K}/><circle cx="76" cy="40" r="14" fill="#f1c40f" stroke="#222" stroke-width="3"/><text x="76" y="46" font-size="16" text-anchor="middle" font-weight="700" fill="#222">$</text>`,
- bank:      `<path d="M6 34L50 12l44 22z" ${K}/><rect x="10" y="34" width="80" height="8" ${K}/><path d="M22 42v42M42 42v42M58 42v42M78 42v42" stroke="#222" stroke-width="5"/><rect x="6" y="84" width="88" height="10" ${K}/><text x="50" y="30" font-size="12" text-anchor="middle" font-weight="700" fill="#222">$</text>`,
- card:      `<rect x="6" y="26" width="88" height="54" rx="6" ${K}/><rect x="6" y="38" width="88" height="10" fill="#222"/><rect x="16" y="58" width="30" height="8" fill="#f1c40f" stroke="#222" stroke-width="2"/>`,
- piggy:     `<ellipse cx="50" cy="58" rx="34" ry="24" fill="#f9c" stroke="#222" stroke-width="3"/><circle cx="82" cy="56" r="10" fill="#f9c" stroke="#222" stroke-width="3"/><circle cx="84" cy="54" r="2" fill="#222"/><path d="M40 30h18v6H40z" fill="#222"/><path d="M30 80v12M66 80v12" ${KN}/><path d="M20 40l-6-10 12 2" fill="#f9c" stroke="#222" stroke-width="2.5"/>`,
- receipt:   `<path d="M24 8h52v84l-8-6-9 6-9-6-9 6-9-6-8 6z" ${K}/><path d="M34 26h32M34 38h32M34 50h20M34 66h32" stroke="#222" stroke-width="2.5"/><text x="60" y="72" font-size="12" font-weight="700" fill="#222">£57</text>`,
- sale:      `<rect x="10" y="30" width="80" height="44" rx="4" fill="#e74c3c" stroke="#222" stroke-width="3"/><text x="50" y="60" font-size="22" text-anchor="middle" font-weight="700" fill="#fff">SALE</text><path d="M50 74v22" ${KN}/>`,
- percent:   `<text x="50" y="72" font-size="64" text-anchor="middle" font-weight="700" fill="#222">%</text>`,
- ballot:    `<rect x="16" y="46" width="68" height="46" ${K}/><path d="M36 46h28v-4H36z" fill="#222"/><path d="M36 8h32l6 30H30z" ${K}/><path d="M42 24l6 6 12-12" stroke="#27ae60" stroke-width="4" fill="none"/>`,
- podium:    `<rect x="26" y="46" width="48" height="50" ${K}/><rect x="20" y="36" width="60" height="12" ${K}/><g transform="translate(24 -10) scale(.55)">${face('happy') + body('point')}</g>`,
- swords:    `<path d="M20 20l60 60M80 20L20 80" stroke="#222" stroke-width="6" stroke-linecap="round"/><path d="M14 14l12 12M74 14L62 26M14 86l12-12M74 86L62 74" stroke="#222" stroke-width="6" stroke-linecap="round"/>`,
- fist:      `<rect x="24" y="30" width="52" height="46" rx="10" ${K}/><path d="M24 44h52M36 30V16h10v14M50 30V14h10v16M64 30V18h10v12" ${K}/><path d="M76 56q12 4 0 20" ${K}/><path d="M10 26l8 6M8 46h10M10 66l8-6" stroke="#e74c3c" stroke-width="3"/>`,
- megaphone: `<path d="M14 40h20l40-24v70L34 62H14z" ${K}/><path d="M22 62v22h14V62" ${K}/><path d="M82 40q8 12 0 24" ${KN}/>`,
- chess:     `<rect x="10" y="10" width="80" height="80" ${K}/><path d="M10 10h20v20H10zM50 10h20v20H50zM30 30h20v20H30zM70 30h20v20H70zM10 50h20v20H10zM50 50h20v20H50zM30 70h20v20H30zM70 70h20v20H70z" fill="#222"/>`,
- crown:     `<path d="M12 74L8 30l22 16 20-30 20 30 22-16-4 44z" fill="#f1c40f" stroke="#222" stroke-width="3" stroke-linejoin="round"/><rect x="12" y="74" width="76" height="12" ${K}/>`,
- key:       `<circle cx="30" cy="50" r="20" ${K}/><circle cx="30" cy="50" r="7" ${K}/><path d="M50 50h44v14h-10v-8h-8v10h-10v-10h-8" ${K}/>`,
- puzzle:    `<path d="M20 20h24q-4-14 10-14t10 14h16v24q14-4 14 10t-14 10v20H56q4 14-10 14T36 84H20V60q-14 4-14-10t14-10z" ${K}/>`,
- cycle:     `<path d="M50 14a36 36 0 0 1 34 24M50 86a36 36 0 0 1-34-24" ${KN}/><path d="M74 24l12 14-16 4M26 76L14 62l16-4" ${KN}/>`,
- stages:    `<path d="M6 90h88M6 90V10" ${KN}/><path d="M12 84q16-8 24-40t22-24q16 8 22 30q4 22 12 28" stroke="#2980b9" stroke-width="5" fill="none"/><path d="M30 20v70M52 20v70M74 20v70" stroke="#222" stroke-width="2" stroke-dasharray="4 4"/>`,
- triangle:  `<path d="M50 12L8 84h84z" ${K}/><circle cx="50" cy="12" r="6" fill="#e74c3c" stroke="#222" stroke-width="2.5"/><circle cx="8" cy="84" r="6" fill="#2980b9" stroke="#222" stroke-width="2.5"/><circle cx="92" cy="84" r="6" fill="#27ae60" stroke="#222" stroke-width="2.5"/>`,
- balloon:   `<ellipse cx="50" cy="40" rx="24" ry="30" fill="#e74c3c" stroke="#222" stroke-width="3"/><path d="M50 70l-4 6h8zM50 76q-6 12 0 22" ${KN}/>`,
- bomb:      `<circle cx="46" cy="60" r="30" fill="#222"/><path d="M60 34l10-14q8-8 16 0" stroke="#222" stroke-width="4" fill="none"/><path d="M84 12l4-6M90 18l6-2M78 8l-2-6" stroke="#e74c3c" stroke-width="3"/>`,
- pie:       `<circle cx="50" cy="50" r="36" ${K}/><path d="M50 50V14a36 36 0 0 1 34 24z" fill="#2980b9" stroke="#222" stroke-width="3"/><path d="M50 50l34-12a36 36 0 0 1-20 44z" fill="#f1c40f" stroke="#222" stroke-width="3"/>`,
- numbers:   `<text x="50" y="44" font-size="26" text-anchor="middle" font-weight="700" fill="#222">37%</text><text x="50" y="80" font-size="22" text-anchor="middle" font-weight="700" fill="#2980b9">1,864</text>`,
- map:       `<path d="M8 22l28-10 28 10 28-10v66l-28 10-28-10-28 10z" ${K}/><path d="M36 12v66M64 22v66" ${KN}/><path d="M20 40q10-4 16 6t18 0" stroke="#2980b9" stroke-width="2.5" fill="none"/><circle cx="76" cy="46" r="5" fill="#e74c3c" stroke="#222" stroke-width="2"/>`,
- pin:       `<path d="M50 96Q20 60 20 40a30 30 0 0 1 60 0q0 20-30 56z" fill="#e74c3c" stroke="#222" stroke-width="3"/><circle cx="50" cy="40" r="11" ${K}/>`,
-});
-
-// ---------- SWT 新增元件：符號、場所 ----------
-Object.assign(SPR, {
- exclaim:   `<path d="M42 10h16l-4 52H46z" fill="#e74c3c" stroke="#222" stroke-width="3" stroke-linejoin="round"/><circle cx="50" cy="80" r="9" fill="#e74c3c" stroke="#222" stroke-width="3"/>`,
- warning:   `<path d="M50 10L94 88H6z" fill="#f1c40f" stroke="#222" stroke-width="3" stroke-linejoin="round"/><path d="M50 36v26" stroke="#222" stroke-width="6" stroke-linecap="round"/><circle cx="50" cy="74" r="4" fill="#222"/>`,
- plus:      `<path d="M50 20v60M20 50h60" stroke="#222" stroke-width="10" stroke-linecap="round"/>`,
- eq:        `<path d="M20 38h60M20 62h60" stroke="#222" stroke-width="10" stroke-linecap="round"/>`,
- neq:       `<path d="M20 38h60M20 62h60" stroke="#222" stroke-width="10" stroke-linecap="round"/><path d="M60 16L40 84" stroke="#e74c3c" stroke-width="8" stroke-linecap="round"/>`,
- thumbUp:   `<path d="M30 46h14V26q0-12 8-12t8 10l-2 22h20q10 0 8 12l-6 24q-2 8-10 8H30z" ${K}/><rect x="10" y="46" width="20" height="44" ${K}/>`,
- thumbDown: `<path d="M30 54h14v20q0 12 8 12t8-10l-2-22h20q10 0 8-12l-6-24q-2-8-10-8H30z" ${K}/><rect x="10" y="10" width="20" height="44" ${K}/>`,
- upBig:     `<path d="M50 90V16M22 44l28-28 28 28" stroke="#27ae60" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
- downBig:   `<path d="M50 10v74M22 56l28 28 28-28" stroke="#e74c3c" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
- twoWay:    `<path d="M10 36h56M50 18l18 18-18 18M90 64H34M50 46L32 64l18 18" stroke="#222" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
- glassesBig:`<circle cx="28" cy="52" r="20" ${K}/><circle cx="72" cy="52" r="20" ${K}/><path d="M48 52h4M8 48L2 40M92 48l6-8" ${KN}/>`,
- ear:       `<path d="M40 30q22-16 26 8q2 16-10 22q-8 4-8 14" ${KN}/><path d="M48 40q8-4 10 4" ${KN}/>`,
- hand:      `<path d="M30 96V50q-14-10-4-18l10 12V16q0-6 6-6t6 6v22h4V12q0-6 6-6t6 6v28h4V18q0-6 6-6t6 6v40q0 14-8 22-8 10-8 16z" ${K}/>`,
- speechNo:  `<path d="M10 15h80v50H40L25 85V65H10z" ${K}/><text x="50" y="50" font-size="22" text-anchor="middle" font-weight="700" fill="#e74c3c">NO</text>`,
- speechYes: `<path d="M10 15h80v50H40L25 85V65H10z" ${K}/><text x="50" y="50" font-size="22" text-anchor="middle" font-weight="700" fill="#27ae60">YES</text>`,
- idea:      `<path d="M35 58q-16-12-8-30t23-14q16 4 23 14t-8 30v8H35z" fill="#fff59d" stroke="#222" stroke-width="3" stroke-linejoin="round"/><path d="M38 76h24M42 86h16" ${KN}/><path d="M50 10V2M20 20l-6-6M80 20l6-6" ${KN}/>`,
- ten:       `<text x="50" y="66" font-size="36" text-anchor="middle" font-weight="700" fill="#222">×10</text>`,
- half:      `<circle cx="50" cy="50" r="36" ${K}/><path d="M50 14a36 36 0 0 1 0 72z" fill="#222"/>`,
- one:       `<text x="50" y="80" font-size="80" text-anchor="middle" font-weight="700" fill="#222">1</text>`,
- two2:      `<text x="50" y="80" font-size="80" text-anchor="middle" font-weight="700" fill="#222">2</text>`,
- three:     `<text x="50" y="80" font-size="80" text-anchor="middle" font-weight="700" fill="#222">3</text>`,
- year:      `<rect x="8" y="26" width="84" height="50" rx="6" ${K}/><text x="50" y="62" font-size="26" text-anchor="middle" font-weight="700" fill="#222">1903</text>`,
- // 場所
- school:    `<path d="M10 98V46l40-24 40 24v52z" ${K}/><rect x="42" y="70" width="16" height="28" ${K}/><rect x="20" y="56" width="12" height="12" ${K}/><rect x="68" y="56" width="12" height="12" ${K}/><path d="M50 22V8h14v10H50" ${K}/>`,
- office:    `<rect x="14" y="10" width="72" height="88" ${K}/><path d="M24 20h14v12H24zM43 20h14v12H43zM62 20h14v12H62zM24 40h14v12H24zM43 40h14v12H43zM62 40h14v12H62zM24 60h14v12H24zM62 60h14v12H62z" fill="#dfe9f3" stroke="#222" stroke-width="2"/><rect x="42" y="78" width="16" height="20" ${K}/>`,
- farm:      `<path d="M10 98V50l40-30 40 30v48z" fill="#e74c3c" stroke="#222" stroke-width="3"/><path d="M10 50h80" ${KN}/><rect x="38" y="66" width="24" height="32" ${K}/><path d="M38 66l24 32M62 66L38 98" ${KN}/>`,
- lab:       `<rect x="6" y="60" width="88" height="8" ${K}/><path d="M14 68v30M86 68v30" ${KN}/><g transform="translate(14 14) scale(.48)">${SPR.flask}</g><g transform="translate(50 20) scale(.42)">${SPR.microscope}</g>`,
- classroom: `<rect x="8" y="10" width="84" height="46" fill="#2e7d5b" stroke="#222" stroke-width="3"/><path d="M20 26h30M20 40h44" stroke="#fff" stroke-width="3"/><rect x="10" y="74" width="24" height="8" ${K}/><rect x="38" y="74" width="24" height="8" ${K}/><rect x="66" y="74" width="24" height="8" ${K}/><path d="M12 82v14M32 82v14M40 82v14M60 82v14M68 82v14M88 82v14" ${KN}/>`,
- stadium:   `<path d="M6 60q44-30 88 0v10q-44 30-88 0z" ${K}/><path d="M6 60q44 30 88 0" ${KN}/><path d="M20 30h60v10H20z" ${K}/><path d="M26 40v20M74 40v20" ${KN}/>`,
- beach:     `<path d="M0 70q25-12 50 0t50 0v30H0z" fill="#bde" stroke="#222" stroke-width="3"/><path d="M4 56q46-40 92 0z" fill="#f9c" stroke="#222" stroke-width="3"/><path d="M50 56v40" ${KN}/><circle cx="82" cy="18" r="9" fill="#f1c40f" stroke="#222" stroke-width="2.5"/>`,
- lodge:     `<path d="M8 58L50 20l42 38" ${K}/><path d="M18 52v46h64V52" fill="#f5deb3" stroke="#222" stroke-width="3"/><rect x="42" y="72" width="16" height="26" ${K}/><path d="M18 62h64M18 74h64M18 86h64" stroke="#222" stroke-width="1.5"/>`,
- town:      `<path d="M2 100V70h14V56h12v14h10V50h18v20h10V60h14v40z" ${K}/><path d="M60 50l8-14 8 14" ${K}/><path d="M8 78h4M8 88h4M32 76h4M46 58h4M46 70h4M76 68h4M76 82h4" stroke="#222" stroke-width="2"/>`,
- countryside:`<path d="M0 80q25-16 50 0t50 0v20H0z" fill="#a5d6a7" stroke="#222" stroke-width="3"/><path d="M60 78V50l14-12 14 12v28z" ${K}/><rect x="70" y="64" width="8" height="14" ${K}/><g transform="translate(6 40) scale(.4)">${SPR.tree}</g><circle cx="20" cy="18" r="8" fill="#f1c40f" stroke="#222" stroke-width="2.5"/>`,
- bookshop:  `<rect x="15" y="50" width="70" height="50" ${K}/><path d="M8 50l7-16h70l7 16z" ${K}/><path d="M8 50q7 9 14 0q7 9 14 0q7 9 14 0q7 9 14 0q7 9 14 0q7 9 14 0" ${K}/><rect x="42" y="72" width="16" height="28" ${K}/><g transform="translate(14 56) scale(.26)">${SPR.book}</g><g transform="translate(62 56) scale(.26)">${SPR.book}</g><text x="50" y="46" font-size="10" text-anchor="middle" font-weight="700" fill="#222">BOOKS</text>`,
- museum:    `<path d="M6 34L50 12l44 22z" ${K}/><rect x="10" y="34" width="80" height="8" ${K}/><path d="M20 42v44M38 42v44M62 42v44M80 42v44" stroke="#222" stroke-width="5"/><rect x="6" y="86" width="88" height="10" ${K}/><text x="50" y="30" font-size="9" text-anchor="middle" font-weight="700" fill="#222">MUSEUM</text>`,
- library:   `<path d="M6 34L50 12l44 22z" ${K}/><rect x="10" y="34" width="80" height="8" ${K}/><path d="M20 42v44M38 42v44M62 42v44M80 42v44" stroke="#222" stroke-width="5"/><rect x="6" y="86" width="88" height="10" ${K}/><g transform="translate(36 46) scale(.3)">${SPR.book}</g>`,
- deepSea:   `<path d="M0 20q15-8 30 0t30 0 30 0 10 0v80H0z" fill="#2980b9" stroke="#222" stroke-width="3"/><path d="M20 90q10-14 20-8 14-8 24 4 10-6 18 4" fill="#8d6e63" stroke="#222" stroke-width="2.5"/><circle cx="30" cy="84" r="5" fill="#555" stroke="#222" stroke-width="2"/><circle cx="60" cy="86" r="5" fill="#555" stroke="#222" stroke-width="2"/><g transform="translate(30 30) scale(.4)">${SPR.fish}</g>`,
- arctic:    `<path d="M0 70q25-14 50 0t50 0v30H0z" fill="#bde" stroke="#222" stroke-width="3"/><path d="M10 68l14-28 16 20 10-14 20 22z" fill="#fff" stroke="#222" stroke-width="3"/><path d="M60 20l4 4M64 18l-8-2M60 16v8" stroke="#222" stroke-width="2"/>`,
- forest:    `<g transform="translate(-8 30) scale(.7)">${SPR.tree}</g><g transform="translate(24 20) scale(.8)">${SPR.tree}</g><g transform="translate(58 30) scale(.7)">${SPR.tree}</g>`,
- stump:     `<path d="M20 98V70q0-10 30-10t30 10v28" fill="#8d6e63" stroke="#222" stroke-width="3"/><ellipse cx="50" cy="70" rx="30" ry="10" fill="#f5deb3" stroke="#222" stroke-width="3"/><ellipse cx="50" cy="70" rx="18" ry="6" ${KN}/><ellipse cx="50" cy="70" rx="8" ry="3" ${KN}/><path d="M84 40l8-12M90 46l10-4" stroke="#222" stroke-width="3"/>`,
- stage:     `<rect x="6" y="70" width="88" height="26" ${K}/><path d="M6 70q44-16 88 0" ${KN}/><g transform="translate(20 -4) scale(.68)">${face('happy') + body('up')}</g><path d="M6 10q22 20 44 0M50 10q22 20 44 0" stroke="#e74c3c" stroke-width="4" fill="none"/>`,
- crowdSad:  `<g transform="translate(-22 10) scale(.85)">${face('sad') + body('stand')}</g><g transform="translate(22 10) scale(.85)">${face('sad') + bun + body('stand')}</g><g transform="translate(0 0) scale(.85)">${face('sad') + body('stand')}</g>`,
- crowdBig:  `<g transform="translate(-30 20) scale(.7)">${face('happy') + body('stand')}</g><g transform="translate(-4 20) scale(.7)">${face('happy') + bun + body('stand')}</g><g transform="translate(22 20) scale(.7)">${face('happy') + body('stand')}</g><g transform="translate(48 20) scale(.7)">${face('happy') + bun + body('stand')}</g><g transform="translate(9 0) scale(.7)">${face('happy') + body('up')}</g>`,
- women:     `<g transform="translate(-20 0)">${face('happy') + bun + body('stand')}</g><g transform="translate(20 0)">${face('happy') + bun + body('stand')}</g>`,
- kids:      `<g transform="translate(-14 40) scale(.6)">${face('happy') + bow + body('up')}</g><g transform="translate(20 40) scale(.6)">${face('happy') + body('stand')}</g><g transform="translate(54 40) scale(.6)">${face('happy') + bow + body('stand')}</g>`,
- teen:      `<g transform="translate(10 20) scale(.8)">${face('happy') + hair + body('stand')}</g>`,
- teenSad:   `<g transform="translate(10 20) scale(.8)">${face('sad') + hair + body('stand')}</g>`,
-});
-// 徽章（疊在元件右上角）
-const BADGE = {
- x:    `<path d="M20 20l60 60M80 20L20 80" stroke="#e74c3c" stroke-width="12" stroke-linecap="round"/>`,
- up:   `<circle cx="50" cy="50" r="40" fill="#fff" stroke="#27ae60" stroke-width="5"/><path d="M50 74V28M30 46l20-20 20 20" stroke="#27ae60" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
- down: `<circle cx="50" cy="50" r="40" fill="#fff" stroke="#e74c3c" stroke-width="5"/><path d="M50 26v46M30 54l20 20 20-20" stroke="#e74c3c" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
- q:    `<circle cx="50" cy="50" r="40" fill="#fff59d" stroke="#222" stroke-width="5"/><text x="50" y="72" font-size="60" text-anchor="middle" font-weight="700" fill="#222">?</text>`,
- ok:   `<circle cx="50" cy="50" r="40" fill="#fff" stroke="#27ae60" stroke-width="5"/><path d="M28 52l16 16 30-36" stroke="#27ae60" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
- no:   `<circle cx="50" cy="50" r="40" fill="#fff" stroke="#e74c3c" stroke-width="6"/><path d="M22 22l56 56" stroke="#e74c3c" stroke-width="10" stroke-linecap="round"/>`,
- heart:`<path d="M50 90L18 58q-13-15 0-28t32 5q19-18 32-5t0 28z" stroke="#222" stroke-width="4" fill="#f9c" stroke-linejoin="round"/>`,
- zz:   `<text x="10" y="80" font-size="60" font-weight="700" fill="#2980b9" stroke="#fff" stroke-width="6" paint-order="stroke">zZ</text>`,
- sweat:`<path d="M50 10q-24 40 0 60q24-20 0-60z" fill="#bde" stroke="#222" stroke-width="5"/>`,
- star: `<path d="M50 6l13 30 32 3-24 21 8 32-29-17-29 17 8-32L5 39l32-3z" fill="#f1c40f" stroke="#222" stroke-width="4" stroke-linejoin="round"/>`,
- bang: `<path d="M50 4l10 24 26-8-14 24 24 12-26 6 8 26-22-16-14 24-4-28-26 6 16-22L6 40l28-4z" fill="#f1c40f" stroke="#222" stroke-width="4" stroke-linejoin="round"/>`,
- dollar:`<circle cx="50" cy="50" r="40" fill="#f1c40f" stroke="#222" stroke-width="5"/><text x="50" y="70" font-size="56" text-anchor="middle" font-weight="700" fill="#222">$</text>`,
- idea: `<path d="M35 58q-16-12-8-30t23-14q16 4 23 14t-8 30v8H35z" fill="#fff59d" stroke="#222" stroke-width="5" stroke-linejoin="round"/><path d="M38 76h24M42 86h16" stroke="#222" stroke-width="5"/>`,
- time: `<circle cx="50" cy="50" r="40" fill="#fff" stroke="#222" stroke-width="5"/><path d="M50 20v30l20 12" stroke="#222" stroke-width="7" fill="none" stroke-linecap="round"/>`,
-};
-
-// ---------- 每題分鏡：PIC[題號] = [[icons, 藍字, 中文], ...]（一格一句） ----------
+// ---------- 每題分鏡：PIC[題號] = [[icons, 藍字, 中文, (可選)背景], ...]（一格一句） ----------
 const PIC = {};
 
 Object.assign(PIC, {
@@ -1203,7 +885,7 @@ Object.assign(PIC, {
 120: [
  [['museum','suit','q'], 'seems narrow', '博物館學看似只有專業人士關心'],
  [['museum','book','hourglass'], 'study of museums', '簡單定義：研究博物館及其歷史'],
- [['museum','pyramid','crowdBig'], 'as old as civilization', '博物館和文明一樣老，人人都相關'],
+ [['museum','hourglass','crowdBig'], 'as old as civilization', '博物館和文明一樣老，人人都相關'],
 ],
 });
 
@@ -1559,26 +1241,35 @@ Object.assign(PIC, {
 ],
 });
 
-// ---------- 自動排版：icons 依數量擺進 300×150 畫布 ----------
-const CONNECT = new Set(['arrow','vs','plus','eq','neq','twoWay','cycle']);
+// ---------- 畫格：背景 + 元件（Twemoji 圖）+ 藍字 ----------
+const twe = s => { // emoji → 檔名（twemoji 規則：無 ZWJ 就去掉 FE0F）
+  const raw = s.indexOf('‍') < 0 ? s.replace(/️/g, '') : s;
+  return [...raw].map(c => c.codePointAt(0).toString(16)).join('-');
+};
+const img = (e, cls = '') => `<img class="${cls}" src="img/emoji/${twe(e)}.svg" alt="${e}" loading="lazy" draggable="false" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'em',textContent:this.alt}))">`;
 const LAY = {1:[[95,12,1.1]], 2:[[45,25,1],[155,25,1]], 3:[[10,32,.9],[105,32,.9],[200,32,.9]], 4:[[4,50,.68],[77,50,.68],[150,50,.68],[223,50,.68]], 5:[[2,58,.56],[61,58,.56],[120,58,.56],[179,58,.56],[238,58,.56]]};
-function scene(icons, label){
-  let h = `<svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">`;
-  const lay = LAY[Math.min(5, Math.max(1, icons.length))] || LAY[4];
-  icons.slice(0,5).forEach((tok, i) => {
-    let [name, ...badges] = tok.split(':');
+function itemHtml(spec){
+  if (typeof spec === 'string') return img(spec);
+  if (spec.parts) return spec.parts.map(([e, x, y, s]) => `<span class="pt" style="left:${x}%;top:${y}%;width:${s*100}%;height:${s*100}%">${img(e)}</span>`).join('');
+  let h = spec.e ? img(spec.e) : '';
+  if (spec.t) h += `<span class="tx${spec.e ? ' over' : ''}" style="${spec.tc ? 'color:' + spec.tc : ''}">${esc(spec.t)}</span>`;
+  return h;
+}
+function scene(icons, label, bg){
+  const lay = LAY[Math.min(5, Math.max(1, icons.length))];
+  let h = `<div class="pic bg-${pickBg(icons, bg)}">`;
+  icons.slice(0, 5).forEach((tok, i) => {
+    const [name, ...badges] = tok.split(':');
     let [x, y, s] = lay[i];
-    const body = SPR[name] || SPR.q;
-    if (CONNECT.has(name)) { const s2 = s*.55; x += (100*s - 100*s2)/2; y += (100*s - 100*s2)/2; s = s2; }
-    h += `<g transform="translate(${x} ${y}) scale(${s})">${body}`;
-    badges.forEach((b, k) => {
-      if (b === 'x') h += `<g>${BADGE.x}</g>`;
-      else if (BADGE[b]) h += `<g transform="translate(${62 - k*4} ${-6 + k*30}) scale(.42)">${BADGE[b]}</g>`;
-    });
-    h += `</g>`;
+    const spec = EMO[name] || '❓';
+    const fl = FLOAT.has(name);
+    if (fl) { const s2 = s * .6; x += (100*s - 100*s2) / 2; y += (100*s - 100*s2) / 2 - 12; s = s2; }
+    h += `<div class="it${fl ? ' fl' : ''}" style="left:${x/3}%;top:${y/1.5}%;width:${s*100/3}%;height:${s*100/1.5}%">${itemHtml(spec)}`;
+    badges.forEach((b, k) => { if (BADGE[b]) h += `<span class="bd b-${b}" style="top:${-8 + k*34}%">${img(BADGE[b])}</span>`; });
+    h += `</div>`;
   });
-  if (label) h += `<text x="6" y="17" font-size="13" font-weight="700" fill="#2980b9" stroke="#fff" stroke-width="4" paint-order="stroke">${esc(label)}</text>`;
-  return h + `</svg>`;
+  if (label) h += `<div class="lbl">${esc(label)}</div>`;
+  return h + `</div>`;
 }
 
 // ---------- 把擬答切成一格一句（對齊 src 來源句；對不齊就照連接詞切） ----------
@@ -1606,14 +1297,13 @@ function splitPanels(d){
     out.push(cur.trim());
     return out;
   }
-  // 後備：照 {and}/{but} 切
   return d.ans.split(/(?=\{(?:and|but)\})/).map(s => s.trim()).filter(Boolean);
 }
-function fmt(t){ // 標記 → HTML
+function fmt(t){
   return esc(t).replace(/\[([^|\]]+)\|([^\]]+)\]/g, '<span class="sw">$1</span><span class="og">($2)</span>')
     .replace(/\{(and|but)\}/g, (m, c) => `<span class="cj ${c}">${c}</span>`);
 }
-function hint(t){ // 默寫提示：每字首字母
+function hint(t){
   const plain = t.replace(/\[([^|\]]+)\|[^\]]+\]/g, '$1').replace(/\{(and|but)\}/g, '$1');
   return plain.split(/\s+/).map(w => { const m = w.match(/[A-Za-z0-9]/); return m ? m[0] + '·' : w; }).join(' ');
 }
@@ -1628,9 +1318,9 @@ function stripHtml(d, idx){
   pans.forEach((p, i) => {
     const [conn, rest] = leadConn(p);
     const pp = pic[i] || [['q'], '', ''];
-    const [icons, lab, zh] = pp;
+    const [icons, lab, zh, bg] = pp;
     h += `<div class="panel"><div class="num"><span>${i + 1} / ${pans.length}</span>${conn ? `<span class="cj ${conn}">${conn}</span>` : ''}</div>
-      <div class="pic">${scene(icons, lab)}</div>
+      ${scene(icons, lab, bg)}
       <div class="cap">${esc(zh || '')}</div>
       <div class="bubble">${conn ? `<span class="cj ${conn} lead">${conn}</span> ` : ''}<span class="f">${fmt(rest)}</span><span class="h">${esc(hint(rest))}</span></div></div>`;
   });
@@ -1643,7 +1333,7 @@ function stripHtml(d, idx){
 function render(){
   let h = '';
   if (ALL) h = DATA.map((d, i) => stripHtml(d, i)).join('');
-  else h = stripHtml(DATA[cur], cur) + `<div class="nav"><button id="prev">◀ 上一題</button><button id="next">下一題 ▶</button></div><div class="tip">← → 鍵換題｜開「默寫」後點格子揭開英文｜網址加 #q題號 直達</div>`;
+  else h = stripHtml(DATA[cur], cur) + `<div class="nav"><button id="prev">◀ 上一題</button><button id="next">下一題 ▶</button></div><div class="tip">← → 鍵換題｜開「默寫」後點格子揭開英文｜網址加 #q題號 直達｜圖示：<a href="https://github.com/jdecked/twemoji" target="_blank" style="color:#888">Twemoji</a>（CC-BY 4.0）</div>`;
   $('app').innerHTML = h;
   if (!ALL) { $('prev').onclick = () => go(cur - 1); $('next').onclick = () => go(cur + 1); }
   document.querySelectorAll('.panel').forEach(p => p.onclick = () => p.classList.toggle('open'));
