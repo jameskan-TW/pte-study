@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SWT 四格漫畫 — 179 題一題一條，看圖就知道在講什麼</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#222;--paper:#fffdf7;--line:#222;--and:#1d4ed8;--andbg:#dbeafe;--but:#b91c1c;--butbg:#fee2e2;--sw:#16a34a;}
 *{box-sizing:border-box}
@@ -20,7 +22,8 @@ main{max-width:1180px;margin:0 auto;padding:12px}
 .legend .cj{font-size:.8rem}
 .strip{margin-bottom:34px}
 .title{background:#fff;border:3px solid var(--line);border-radius:6px;padding:10px 14px;margin-bottom:12px;box-shadow:4px 4px 0 #222;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px}
-.title .n{display:inline-block;background:#1a3a5c;color:#fff;border-radius:4px;padding:1px 10px;font-weight:700}
+.title .ep{font-family:'Dela Gothic One','Noto Sans TC',sans-serif;font-size:.9rem;background:#111;color:#fff;padding:2px 8px;border-radius:2px;letter-spacing:1px}
+.title .n{display:inline-block;font-family:'Dela Gothic One','Noto Sans TC',sans-serif;background:#1a3a5c;color:#fff;border-radius:2px;padding:1px 10px;font-weight:400}
 .title b{font-size:1.1rem}
 .title .code{font-size:.75rem;color:#888}
 .title .cnt{font-size:.75rem;color:#888;margin-left:auto}
@@ -31,10 +34,15 @@ main{max-width:1180px;margin:0 auto;padding:12px}
 .panel .num{font-size:.7rem;font-weight:700;color:#888;letter-spacing:1px;display:flex;justify-content:space-between;align-items:center}
 .panel .num .cj{font-size:.85rem;letter-spacing:0}
 /* ---- 畫格 ---- */
-.pic{position:relative;aspect-ratio:2/1;border:2px solid #222;border-radius:6px;overflow:hidden;margin:4px 0 6px;isolation:isolate;background:#f4efe3}
+.pic{position:relative;aspect-ratio:2/1;border:2.5px solid #1a1a1a;border-radius:4px;overflow:hidden;margin:4px 0 6px;isolation:isolate;background:#f4efe3}
+.pic::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(#111 24%,transparent 27%) 0 0/5px 5px;opacity:.08;mix-blend-mode:multiply}
+.panel.but .pic::after{content:'';position:absolute;inset:-25%;z-index:-1;pointer-events:none;background:repeating-conic-gradient(from 0deg,transparent 0 3.6deg,rgba(20,20,20,.45) 3.6deg 4.3deg);-webkit-mask:radial-gradient(circle at 50% 50%,transparent 36%,#000 76%);mask:radial-gradient(circle at 50% 50%,transparent 36%,#000 76%)}
+.pic .sfx{position:absolute;right:6px;bottom:3px;z-index:3;font-family:'Dela Gothic One','Noto Sans TC',sans-serif;font-size:1.1rem;line-height:1;color:#111;transform:rotate(-7deg);letter-spacing:1px;text-shadow:0 0 5px #fff,0 0 3px #fff,1px 1px 0 #fff,-1px -1px 0 #fff,1px -1px 0 #fff,-1px 1px 0 #fff;pointer-events:none}
+.panel.but .pic .sfx{color:#c0392b}
+body.nosfx .sfx{display:none}
 .pic .it{position:absolute;container-type:size}
 .pic .it.fl{z-index:1}
-.pic .it img,.pic .pt img{width:100%;height:100%;display:block;object-fit:contain;filter:drop-shadow(0 3px 2px rgba(0,0,0,.28))}
+.pic .it img,.pic .pt img{width:100%;height:100%;display:block;object-fit:contain;filter:drop-shadow(1.2px 0 0 #1c1c1c) drop-shadow(-1.2px 0 0 #1c1c1c) drop-shadow(0 1.2px 0 #1c1c1c) drop-shadow(0 -1.2px 0 #1c1c1c) drop-shadow(0 3px 2px rgba(0,0,0,.25))}
 .pic .it:not(.fl)::after{content:'';position:absolute;left:10%;right:10%;bottom:-6%;height:12%;background:radial-gradient(ellipse at center,rgba(0,0,0,.30),rgba(0,0,0,0) 68%);z-index:-1}
 .pic .pt{position:absolute}
 .pic .tx{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:56cqh;color:#222;line-height:1;text-shadow:0 0 6px #fff,0 0 2px #fff,2px 2px 0 rgba(255,255,255,.9)}
@@ -44,7 +52,7 @@ main{max-width:1180px;margin:0 auto;padding:12px}
 .pic .bd img{filter:drop-shadow(0 1px 1px rgba(0,0,0,.4))}
 .pic .b-up img{filter:hue-rotate(-85deg) saturate(1.4) drop-shadow(0 1px 1px rgba(0,0,0,.4))}
 .pic .b-down img{filter:hue-rotate(155deg) saturate(1.4) drop-shadow(0 1px 1px rgba(0,0,0,.4))}
-.pic .lbl{position:absolute;left:5px;top:5px;z-index:3;background:#fff;border:2px solid #222;border-radius:4px;padding:1px 7px;font-size:.74rem;font-weight:800;color:#1d4ed8;box-shadow:2px 2px 0 rgba(0,0,0,.45);max-width:74%;line-height:1.3}
+.pic .lbl{position:absolute;left:5px;top:5px;z-index:3;background:#fff;border:2px solid #222;border-radius:3px;padding:2px 7px 1px;font-family:'Dela Gothic One','Noto Sans TC',sans-serif;font-size:.7rem;font-weight:400;color:#1d4ed8;box-shadow:2px 2px 0 rgba(0,0,0,.45);max-width:74%;line-height:1.3}
 /* ---- 場景背景 ---- */
 .bg-paper{background:radial-gradient(#d6cebd 1px,transparent 1.6px) 0 0/16px 16px,linear-gradient(#fffdf6,#f5efe0)}
 .bg-out{background:radial-gradient(circle at 86% 20%,#fff1a3 0 6%,rgba(255,241,163,.35) 7%,transparent 10%),linear-gradient(180deg,#86c7ff 0%,#d9eeff 66%,#e2f3ff 70%,#5e9e4a 70%,#5e9e4a 71.5%,#8fd07a 71.5%,#6db95c 100%)}
@@ -65,9 +73,15 @@ main{max-width:1180px;margin:0 auto;padding:12px}
 .bg-snow{background:linear-gradient(180deg,#cfdff2 0%,#eef4fb 66%,#ffffff 66%,#e4ebf3 100%)}
 .bg-sport{background:linear-gradient(#fff,#fff) 0 84%/100% 2px no-repeat,linear-gradient(#5aa84a,#4d9640) bottom/100% 30% no-repeat,repeating-linear-gradient(0deg,#c8ccd2 0 5px,#b2b8c0 5px 10px) 0 44%/100% 28% no-repeat,linear-gradient(180deg,#9fd0ff 0%,#e3f1ff 70%)}
 /* ---- 文字 ---- */
-.panel .cap{background:#fff7d6;border:1.5px solid #d4a72c;border-radius:3px;padding:3px 8px;font-size:.84rem;color:#5a4a12;margin-bottom:8px;font-weight:600;line-height:1.45}
-.bubble{position:relative;background:#fff;border:2px solid var(--line);border-radius:14px;padding:8px 12px;font-size:.96rem;line-height:1.55;margin-top:auto;font-weight:600}
-.bubble::before{content:'';position:absolute;top:-12px;left:22px;border:6px solid transparent;border-bottom-color:var(--line);border-top:0}
+.panel .cap{background:#fff;border:2px solid #1a1a1a;border-radius:2px;padding:3px 8px;font-size:.84rem;color:#222;margin-bottom:8px;font-weight:600;line-height:1.45;box-shadow:2px 2px 0 rgba(0,0,0,.18)}
+.say{display:flex;gap:7px;align-items:flex-end;margin-top:auto}
+.say .who{width:56px;height:56px;flex:none;filter:drop-shadow(1px 1px 0 rgba(0,0,0,.2))}
+.row.n5 .say .who{width:44px;height:44px}
+.row.n5 .bubble{font-size:.9rem;padding:7px 9px}
+.bubble{position:relative;flex:1;min-width:0;background:#fff;border:2.5px solid var(--line);border-radius:16px;padding:8px 12px;font-size:.96rem;line-height:1.55;font-weight:600}
+.bubble::before{content:'';position:absolute;left:-11px;bottom:16px;border:7px solid transparent;border-right-color:var(--line);border-left:0}
+.bubble::after{content:'';position:absolute;left:-7px;bottom:17px;border:6px solid transparent;border-right-color:#fff;border-left:0}
+.panel.but .bubble{border-radius:6px;box-shadow:0 0 0 2px #fff,0 0 0 4px #1a1a1a}
 .cj{font-weight:800;padding:0 5px;border-radius:4px;margin:0 2px}
 .cj.and{color:var(--and);background:var(--andbg)}
 .cj.but{color:var(--but);background:var(--butbg)}
@@ -103,11 +117,12 @@ body.hide .full .fh{display:block}
   <button id="bHide" title="遮住英文，點格子揭開">默寫</button>
   <button id="bCap" title="隱藏中文">藏中文</button>
   <button id="bOg" title="隱藏換字的原字">藏原字</button>
+  <button id="bSfx" class="on" title="漫畫擬音字（日文）">擬音</button>
   <button id="bAll" title="179 題一頁連讀">連讀</button>
   <a href="SWT_擬答.html">擬答</a>
 </header>
 <main>
-  <div class="legend">一格＝擬答裡的一句原文句（要打出來的句子）。格與格之間用 <span class="cj and">and</span>（接續）或 <span class="cj but">but</span>（轉折）接起來，最後一列是拼好的整句。<span class="sw">綠字</span>＝換字，<span class="og">(灰字)</span>＝原字。藍色關鍵字＝這格在講什麼。</div>
+  <div class="legend">一格＝擬答裡的一句原文句（要打出來的句子）。格與格之間用 <span class="cj and">and</span>（接續）或 <span class="cj but">but</span>（轉折）接起來，最後一列是拼好的整句。<span class="sw">綠字</span>＝換字，<span class="og">(灰字)</span>＝原字。藍色關鍵字＝這格在講什麼。角色表情跟著句子情緒走（but＝反駁、and＝接著說）。</div>
   <div id="loading">載入 SWT 擬答題庫中…</div>
   <div id="app" hidden></div>
 </main>
@@ -1241,6 +1256,56 @@ Object.assign(PIC, {
 ],
 });
 
+// ---------- Q 版角色（說話的人）：依句子情緒換表情 ----------
+const AV = {
+  ink: '#2b1a12',
+  eye(cx, ry = 9.5, r = 5.6){ return `<ellipse cx="${cx}" cy="59" rx="7.5" ry="${ry}" fill="#fff" stroke="${AV.ink}" stroke-width="2"/><circle cx="${cx}" cy="61" r="${r}" fill="#2f6fd6"/><circle cx="${cx}" cy="62" r="${r*.55}" fill="#0f1d33"/><circle cx="${cx-2.4}" cy="57.5" r="2.2" fill="#fff"/><path d="M${cx-8} 50.5q8-6 16 0" fill="none" stroke="${AV.ink}" stroke-width="3.4" stroke-linecap="round"/>`; },
+  eyeHappy(cx){ return `<path d="M${cx-8} 62q8-11 16 0" fill="none" stroke="${AV.ink}" stroke-width="3.4" stroke-linecap="round"/>`; },
+  eyeClosed(cx){ return `<path d="M${cx-7} 61.5h14" fill="none" stroke="${AV.ink}" stroke-width="3.2" stroke-linecap="round"/>`; },
+  brow(d){ return `<path d="${d}" fill="none" stroke="${AV.ink}" stroke-width="3" stroke-linecap="round"/>`; },
+  base(){ return `<ellipse cx="50" cy="46" rx="38" ry="35" fill="#3a2316"/><path d="M22 54q0 34 28 36q28-2 28-36 0-32-28-32-28 0-28 32z" fill="#ffe0c2" stroke="${AV.ink}" stroke-width="2.2"/><path d="M38 88v7q-16 2-22 9h68q-6-7-22-9v-7z" fill="#ffe0c2" stroke="${AV.ink}" stroke-width="2"/><path d="M14 104q6-12 24-14l12 6 12-6q18 2 24 14z" fill="#e5533d" stroke="${AV.ink}" stroke-width="2"/><path d="M13 52Q14 12 50 9q36 3 37 43l-8-9-6 9-8-13-8 12-8-13-8 13-8-12-6 10z" fill="#3a2316" stroke="${AV.ink}" stroke-width="2" stroke-linejoin="round"/>`; },
+  blush(){ return `<ellipse cx="31" cy="69" rx="5" ry="2.6" fill="#ff8fa3" opacity=".55"/><ellipse cx="69" cy="69" rx="5" ry="2.6" fill="#ff8fa3" opacity=".55"/>`; },
+};
+const MOODS = {
+  neutral:   () => AV.eye(37) + AV.eye(63) + AV.brow('M29 47q8-4 16 0') + AV.brow('M55 47q8-4 16 0') + `<path d="M44 77h12" fill="none" stroke="${AV.ink}" stroke-width="2.4" stroke-linecap="round"/>`,
+  smile:     () => AV.eye(37) + AV.eye(63) + AV.brow('M29 47q8-4 16 0') + AV.brow('M55 47q8-4 16 0') + `<path d="M42 76q8 7 16 0" fill="none" stroke="${AV.ink}" stroke-width="2.4" stroke-linecap="round"/>` + AV.blush(),
+  happy:     () => AV.eyeHappy(37) + AV.eyeHappy(63) + AV.brow('M29 46q8-4 16 0') + AV.brow('M55 46q8-4 16 0') + `<path d="M40 74q10 12 20 0z" fill="#d9534f" stroke="${AV.ink}" stroke-width="2" stroke-linejoin="round"/>` + AV.blush(),
+  surprised: () => AV.eye(37, 11.5, 6.5) + AV.eye(63, 11.5, 6.5) + AV.brow('M28 41q9-6 18 0') + AV.brow('M54 41q9-6 18 0') + `<ellipse cx="50" cy="78" rx="4.5" ry="5.5" fill="#d9534f" stroke="${AV.ink}" stroke-width="2"/>`,
+  worried:   () => AV.eye(37) + AV.eye(63) + AV.brow('M30 48l15-5') + AV.brow('M55 43l15 5') + `<path d="M42 78q4-4 8 0t8 0" fill="none" stroke="${AV.ink}" stroke-width="2.4" stroke-linecap="round"/>` + `<path d="M81 38q-7 11 0 17q7-6 0-17z" fill="#a9dcff" stroke="${AV.ink}" stroke-width="1.6"/>`,
+  angry:     () => AV.eye(37) + AV.eye(63) + AV.brow('M30 42l15 6') + AV.brow('M55 48l15-6') + `<path d="M41 75q9 10 18 0z" fill="#d9534f" stroke="${AV.ink}" stroke-width="2" stroke-linejoin="round"/>` + `<path d="M78 26q4 0 4 4M82 22q0 4 4 4M78 30q0 4 4 4" fill="none" stroke="#d9534f" stroke-width="2.4" stroke-linecap="round"/>`,
+  puzzled:   () => AV.eye(37) + AV.eye(63) + AV.brow('M28 42q9-6 18 0') + AV.brow('M55 47h16') + `<path d="M44 78q6 3 12-2" fill="none" stroke="${AV.ink}" stroke-width="2.4" stroke-linecap="round"/>` + `<text x="80" y="36" font-size="22" font-weight="700" fill="${AV.ink}" font-family="Arial">?</text>`,
+  sleepy:    () => AV.eyeClosed(37) + AV.eyeClosed(63) + AV.brow('M29 49q8-3 16 0') + AV.brow('M55 49q8-3 16 0') + `<path d="M46 78q4 3 8 0" fill="none" stroke="${AV.ink}" stroke-width="2.4" stroke-linecap="round"/>` + `<text x="76" y="30" font-size="16" font-weight="700" fill="#2f6fd6" font-family="Arial">z z</text>`,
+};
+function avatar(mood){ return `<svg viewBox="0 0 100 100" class="who" aria-hidden="true">${AV.base()}${(MOODS[mood] || MOODS.neutral)()}</svg>`; }
+function moodOf(conn, icons, first){
+  const b = icons.join(' ');
+  if (/:bang/.test(b)) return 'surprised';
+  if (/:x\b|:no\b/.test(b)) return conn === 'but' ? 'angry' : 'worried';
+  if (/:q\b/.test(b)) return 'puzzled';
+  if (/:zz/.test(b)) return 'sleepy';
+  if (/:sweat/.test(b)) return 'worried';
+  if (/:heart|:star|:ok|:idea/.test(b)) return 'happy';
+  if (conn === 'but') return 'angry';
+  if (conn === 'and') return 'smile';
+  return first ? 'neutral' : 'smile';
+}
+function sfxOf(conn, icons){
+  const b = icons.join(' ');
+  if (/:bang/.test(b)) return 'ドン!!';
+  if (/:x\b|:no\b/.test(b)) return 'ダメ!';
+  if (/:q\b/.test(b)) return 'ん？';
+  if (/:zz/.test(b)) return 'スヤァ…';
+  if (/:sweat/.test(b)) return 'ダラダラ';
+  if (/:up/.test(b)) return 'グン↑';
+  if (/:down/.test(b)) return 'ガクッ↓';
+  if (/:star|:idea/.test(b)) return 'ピカーン!';
+  if (/:heart/.test(b)) return 'ドキッ';
+  if (/:ok/.test(b)) return 'OK!';
+  if (/:time/.test(b)) return 'チクタク';
+  if (conn === 'but') return 'しかし…';
+  return '';
+}
+
 // ---------- 畫格：背景 + 元件（Twemoji 圖）+ 藍字 ----------
 const twe = s => { // emoji → 檔名（twemoji 規則：無 ZWJ 就去掉 FE0F）
   const raw = s.indexOf('‍') < 0 ? s.replace(/️/g, '') : s;
@@ -1255,7 +1320,7 @@ function itemHtml(spec){
   if (spec.t) h += `<span class="tx${spec.e ? ' over' : ''}" style="${spec.tc ? 'color:' + spec.tc : ''}">${esc(spec.t)}</span>`;
   return h;
 }
-function scene(icons, label, bg){
+function scene(icons, label, bg, sfx){
   const lay = LAY[Math.min(5, Math.max(1, icons.length))];
   let h = `<div class="pic bg-${pickBg(icons, bg)}">`;
   icons.slice(0, 5).forEach((tok, i) => {
@@ -1269,6 +1334,7 @@ function scene(icons, label, bg){
     h += `</div>`;
   });
   if (label) h += `<div class="lbl">${esc(label)}</div>`;
+  if (sfx) h += `<div class="sfx">${esc(sfx)}</div>`;
   return h + `</div>`;
 }
 
@@ -1313,16 +1379,17 @@ function leadConn(t){ const m = t.match(/^\{(and|but)\}\s*/); return m ? [m[1], 
 let DATA = [], cur = 0, ALL = false;
 function stripHtml(d, idx){
   const pans = splitPanels(d), pic = PIC[d.num] || [];
-  let h = `<div class="strip" id="s${d.num}"><div class="title"><span class="n">#${d.num}</span><b>${esc(d.title)}</b><span class="code">${esc(d.code || '')}</span><span class="cnt">${pans.length} 格｜${idx + 1} / ${DATA.length}</span></div>`;
+  let h = `<div class="strip" id="s${d.num}"><div class="title"><span class="ep">第 ${idx + 1} 話</span><span class="n">#${d.num}</span><b>${esc(d.title)}</b><span class="code">${esc(d.code || '')}</span><span class="cnt">${pans.length} 格｜${idx + 1} / ${DATA.length}</span></div>`;
   h += `<div class="row n${pans.length}">`;
   pans.forEach((p, i) => {
     const [conn, rest] = leadConn(p);
     const pp = pic[i] || [['q'], '', ''];
     const [icons, lab, zh, bg] = pp;
-    h += `<div class="panel"><div class="num"><span>${i + 1} / ${pans.length}</span>${conn ? `<span class="cj ${conn}">${conn}</span>` : ''}</div>
-      ${scene(icons, lab, bg)}
+    const mood = moodOf(conn, icons, i === 0), sfx = sfxOf(conn, icons);
+    h += `<div class="panel${conn ? ' ' + conn : ''}"><div class="num"><span>${i + 1} / ${pans.length}</span>${conn ? `<span class="cj ${conn}">${conn}</span>` : ''}</div>
+      ${scene(icons, lab, bg, sfx)}
       <div class="cap">${esc(zh || '')}</div>
-      <div class="bubble">${conn ? `<span class="cj ${conn} lead">${conn}</span> ` : ''}<span class="f">${fmt(rest)}</span><span class="h">${esc(hint(rest))}</span></div></div>`;
+      <div class="say">${avatar(mood)}<div class="bubble">${conn ? `<span class="cj ${conn} lead">${conn}</span> ` : ''}<span class="f">${fmt(rest)}</span><span class="h">${esc(hint(rest))}</span></div></div></div>`;
   });
   h += `</div>`;
   h += `<div class="full"><span class="lab">整句（考場要打的）</span><span class="ft">${fmt(d.ans)}</span><span class="fh">${esc(hint(d.ans))}</span></div>`;
@@ -1343,7 +1410,7 @@ function render(){
 function go(i){ cur = (i + DATA.length) % DATA.length; if (ALL) { const el = $('s' + DATA[cur].num); if (el) el.scrollIntoView(); $('sel').value = cur; history.replaceState(null, '', '#q' + DATA[cur].num); } else render(); }
 
 const tog = (id, cls) => { $(id).onclick = () => { document.body.classList.toggle(cls); $(id).classList.toggle('on'); }; };
-tog('bHide', 'hide'); tog('bCap', 'nocap'); tog('bOg', 'hideog');
+tog('bHide', 'hide'); tog('bCap', 'nocap'); tog('bOg', 'hideog'); tog('bSfx', 'nosfx');
 $('bAll').onclick = () => { ALL = !ALL; $('bAll').classList.toggle('on', ALL); render(); if (ALL) go(cur); };
 $('sel').onchange = () => go(+$('sel').value);
 document.addEventListener('keydown', ev => { if (ev.target.tagName === 'SELECT') return; if (ev.key === 'ArrowRight') go(cur + 1); if (ev.key === 'ArrowLeft') go(cur - 1); });
