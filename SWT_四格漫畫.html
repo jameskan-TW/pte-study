@@ -117,7 +117,7 @@ body.hide .full .fh{display:block}
   <button id="bHide" title="遮住英文，點格子揭開">默寫</button>
   <button id="bCap" title="隱藏中文">藏中文</button>
   <button id="bOg" title="隱藏換字的原字">藏原字</button>
-  <button id="bSfx" class="on" title="漫畫擬音字（日文）">擬音</button>
+  <button id="bSfx" class="on" title="畫格角落的音效字（BOOM! / NO! / ?）">音效</button>
   <button id="bAll" title="179 題一頁連讀">連讀</button>
   <a href="SWT_擬答.html">擬答</a>
 </header>
@@ -1289,20 +1289,12 @@ function moodOf(conn, icons, first){
   if (conn === 'and') return 'smile';
   return first ? 'neutral' : 'smile';
 }
-function sfxOf(conn, icons){
+function sfxOf(conn, icons){ // 音效字只留最強的幾種（英文，James 看不懂日文）
   const b = icons.join(' ');
-  if (/:bang/.test(b)) return 'ドン!!';
-  if (/:x\b|:no\b/.test(b)) return 'ダメ!';
-  if (/:q\b/.test(b)) return 'ん？';
-  if (/:zz/.test(b)) return 'スヤァ…';
-  if (/:sweat/.test(b)) return 'ダラダラ';
-  if (/:up/.test(b)) return 'グン↑';
-  if (/:down/.test(b)) return 'ガクッ↓';
-  if (/:star|:idea/.test(b)) return 'ピカーン!';
-  if (/:heart/.test(b)) return 'ドキッ';
-  if (/:ok/.test(b)) return 'OK!';
-  if (/:time/.test(b)) return 'チクタク';
-  if (conn === 'but') return 'しかし…';
+  if (/:bang/.test(b)) return 'BOOM!';
+  if (/:x\b|:no\b/.test(b)) return 'NO!';
+  if (/:q\b/.test(b)) return '?';
+  if (/:zz/.test(b)) return 'Zzz…';
   return '';
 }
 
