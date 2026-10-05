@@ -1455,7 +1455,7 @@ function render(){
       <li><span class="exn">${CIRC[i]}</span><b class="r">${b.right}</b><s class="w">${b.wrong}</s>
       <span class="badge b-${b.cat}">${CAT[b.cat].name}</span>
       <span class="wy">${b.why}</span></li>`).join('');
-    return `<div class="card ${cls}">
+    return `<div class="card ${cls}" id="w${DATA.indexOf(p)+1}">
       <div class="chead">
         <span class="title">📄 ${p.title}</span>
         ${p.pid?`<span class="pid">${p.pid}</span>`:''}
@@ -1487,6 +1487,8 @@ function setQuiz(on){
 }
 qBtn.addEventListener('click', ()=> setQuiz(!document.body.classList.contains('quiz')));
 setQuiz(localStorage.getItem('wfdc_quiz')==='1');
+/* 菜單直達：#w{n} 捲到第 n 句（放在 setQuiz 之後，因為 setQuiz 會重畫） */
+(function(){ const m=location.hash.match(/^#w\d+$/); if(!m) return; setTimeout(()=>{ const el=document.getElementById(location.hash.slice(1)); if(el){ window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - 8); el.style.outline='3px solid #e0b95a'; el.style.outlineOffset='3px'; } },0); })();
 
 /* ═══════════ 易錯單字默拼測驗（原 WFD_易錯單字庫 併入） ═══════════ */
 (function(){

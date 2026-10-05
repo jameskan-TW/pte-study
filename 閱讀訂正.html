@@ -646,6 +646,7 @@ qBtn.addEventListener('click', ()=> setQuiz(!document.body.classList.contains('q
 setQuiz(localStorage.getItem('rc_quiz')==='1');
 
 renderIndex();
+(function(){ const m=location.hash.match(/^#p(\d+)$/); if(m){ const i=+m[1]-1; if(i>=0 && i<DATA.length) openDetail(i); } })();
 </script>
 </body>
 </html>
