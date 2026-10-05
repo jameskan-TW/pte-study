@@ -24,7 +24,7 @@ w = rd('WFD_訂正.html'); i = w.find('const DATA'); j = w.find('const VQ')
 WFD = [{'i': k+1, 't': e[0], 'd': e[2]} for k, e in enumerate(re.findall(r'\{ title:"([^"]+)", pid:"[^"]*", type:"([^"]+)", date:"([^"]*)"', w[i:j]))]
 k2 = w.find('];', j)
 VQ = [{'w': a, 'zh': b, 'tag': c} for a, b, c in re.findall(r"\{w:'([^']+)',zh:'([^']*)',tag:'([^']*)'", w[j:k2])]
-assert len(WFD) == 115 and len(VQ) == 176, (len(WFD), len(VQ))
+assert len(WFD) >= 115 and len(VQ) >= 176, (len(WFD), len(VQ))
 
 t = rd('SWT_擬答.html')
 swt_titles = {int(m.group(1)): m.group(2) for m in re.finditer(r'"num":\s*(\d+),\s*"title":\s*"([^"]*)"', t)}
@@ -65,7 +65,7 @@ N = 28
 def short_wfd(tt): return re.split(r'\s(?=[一-鿿（])', tt, 1)[0].strip()
 def short_title(tt): return re.split(r'[（(]', tt, 1)[0].strip()[:44]
 
-wfd_days = [WFD[i*5:(i+1)*5] for i in range(23)]
+wfd_days = [WFD[i*5:(i+1)*5] for i in range(23)]  # 新增句（>115）進不了前 23 天，會進 D24–28 重做池（latest 優先）
 hard = [x for x in WFD if ('輪' in x['t'] or '次' in x['t'])]
 latest = [x for x in reversed(WFD) if x not in hard]
 redo = (hard + latest)[:25]
@@ -145,7 +145,7 @@ assert len(DAYS) == 28
 
 # ───────── 每日紀錄（練完由 Claude 補；HTML 字串陣列） ─────────
 LOG = {
-  # 1: ['…'],
+  1: ['<b>WFD 默拼還錯 2 字</b>：<span class="en">definitive</span>（de·fin·i·tive，0805 就錯過）、<span class="en">available</span>（a·vail·a·ble，-able）——已加進 WFD_訂正 #vquiz 默拼庫，明天先重打'],
 }
 for day in DAYS:
     if day['d'] in LOG: day['log'] = LOG[day['d']]
