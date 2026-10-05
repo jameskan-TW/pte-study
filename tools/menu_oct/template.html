@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" spellcheck="false">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>28 天讀書菜單（10/5–11/1）</title>
+<style>
+  :root{--ink:#1a1a2e;--sub:#5a5a72;--line:#d9d9e3;--bg:#f6f6fa;--card:#fff;
+        --accent:#3b2fa0;--accent-bg:#ececf6;--fib:#0b6e4f;--fib-bg:#e6f4ee;--done:#0a7a4b;--warn:#b3261e;--today:#fff7e6}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.65;
+       font-family:"PingFang TC","Microsoft JhengHei","Noto Sans TC",sans-serif;font-size:16px}
+  .wrap{max-width:860px;margin:0 auto;padding:24px 16px 64px}
+  h1{font-size:24px;margin:0 0 4px}
+  h2{font-size:18px;margin:26px 0 6px;color:var(--accent)}
+  .sub{color:var(--sub);font-size:14px;margin-bottom:16px}
+  .goal{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 20px}
+  .goal div{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 14px;font-size:14.5px}
+  .goal b{color:var(--accent)}
+  .progress{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:20px}
+  .pbar{height:12px;background:var(--accent-bg);border-radius:6px;overflow:hidden;margin-top:6px}
+  .pfill{height:100%;background:var(--accent);width:0;transition:width .3s}
+  details.std{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin-bottom:20px}
+  details.std summary{font-weight:700;cursor:pointer}
+  table{border-collapse:collapse;width:100%;margin:10px 0;font-size:14.5px}
+  th,td{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top}
+  th{background:var(--accent-bg)}
+  .day{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:10px 0}
+  .day.today{background:var(--today);border-color:#e0b95a;border-width:2px}
+  .day.done{opacity:.62}
+  .day.collapsed ul.chk, .day.collapsed .dwe, .day.collapsed .dfib{display:none}
+  .dhead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;cursor:pointer}
+  .dnum{font-weight:800;color:var(--accent);font-size:17px}
+  .ddate{color:var(--sub);font-size:14px}
+  .dwe{font-size:14.5px;margin:6px 0;padding:7px 10px;background:var(--accent-bg);border-radius:7px}
+  .dwe b{color:var(--accent)}
+  .dfib{font-size:14.5px;margin:6px 0;padding:7px 10px;background:var(--fib-bg);border-radius:7px}
+  .dfib b{color:var(--fib)}
+  ul.chk{list-style:none;margin:8px 0 0;padding:0}
+  ul.chk li{margin:6px 0;display:flex;gap:8px;align-items:flex-start;font-size:15px}
+  ul.chk input[type=checkbox]{margin-top:4px;width:16px;height:16px;accent-color:var(--accent);flex:none}
+  ul.chk li.checked > span{color:var(--sub);text-decoration:line-through}
+  ul.chk li > span{flex:1}
+  .min{color:var(--sub);font-size:13px}
+  .tagx{display:inline-block;font-size:12px;background:#fdeceb;color:var(--warn);border-radius:8px;padding:0 8px;margin-left:6px}
+  .tagw{display:inline-block;font-size:12px;background:var(--accent-bg);color:var(--accent);border-radius:8px;padding:0 8px;margin-left:6px}
+  .back{font-size:14px;margin-bottom:10px;display:inline-block}
+  .rule{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:20px 0;font-size:14.5px}
+  .rule ul{margin:6px 0 0 18px;padding:0}
+  .lk{font-size:14px;color:var(--sub)}
+  .lk a{color:var(--accent)}
+  details.vq{margin-top:4px}
+  details.vq summary{cursor:pointer;font-size:14px;color:var(--accent)}
+  .vqt{width:100%;border-collapse:collapse;margin:6px 0 2px;font-size:14px}
+  .vqt td{border:none;border-bottom:1px solid var(--line);padding:4px 6px}
+  .vqt input{width:100%;max-width:220px;font-size:15px;padding:3px 6px;border:1px solid var(--line);border-radius:5px;font-family:Consolas,Menlo,monospace}
+  .vqt .ok{color:var(--done);font-weight:700}
+  .vqt .ng{color:var(--warn);font-weight:700}
+  .vqt .ans{color:var(--sub);font-family:Consolas,Menlo,monospace}
+  .vqbtn{font-size:12px;padding:2px 8px;border:1px solid var(--line);border-radius:6px;background:#fff;cursor:pointer;margin-left:8px}
+  .tools{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}
+  details.fc{margin:6px 0;border:1px dashed #9fcdb8;border-radius:8px;padding:6px 10px;background:#f5fbf8}
+  details.fc summary{cursor:pointer;font-size:14px;color:var(--fib);font-weight:700}
+  .fc .fct{font-weight:700;font-size:14px;margin:8px 0 2px;color:var(--ink)}
+  .fc .fct a{color:var(--fib)}
+  .fc .row{border-top:1px solid #e3efe9;padding:6px 0;font-size:14px}
+  .fc .ctx{color:var(--ink)}
+  .fc .ctx b{background:#fff3bf;padding:0 4px;border-radius:3px}
+  .fc .ans{margin-top:2px}
+  .fc .wr{color:var(--warn);text-decoration:line-through}
+  .fc .rt{color:var(--done);font-weight:700}
+  .fc .why{color:var(--sub);font-size:13px;margin-top:2px}
+  .fc .why .en{font-family:Consolas,Menlo,monospace}
+  .fc .cat{display:inline-block;font-size:11px;border-radius:6px;padding:0 6px;margin-right:6px;background:#e8e8f5;color:#3b2fa0}
+  .fc .cat.col{background:#ffe9d6;color:#9a4a00}.fc .cat.sem{background:#e1f0ff;color:#0b4f9c}.fc .cat.log{background:#f3e5ff;color:#6b21a8}.fc .cat.pos{background:#e6f4ee;color:#0b6e4f}.fc .cat.ten{background:#fdeceb;color:#b3261e}
+  .fc.hide .ans, .fc.hide .why{display:none}
+  .fc.hide .row.open .ans, .fc.hide .row.open .why{display:block}
+  .fc.hide .row{cursor:pointer}
+  .fc .fcbar{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--sub);margin-top:4px}
+  .dlog{font-size:14px;margin:6px 0;padding:7px 10px;background:#fff7e6;border:1px solid #f0d9a0;border-radius:7px}
+  .dlog b{color:#8a5a00}
+  .dlog ul{margin:4px 0 0 18px;padding:0}
+  .tools button{font-size:13px;padding:4px 10px;border:1px solid var(--line);border-radius:7px;background:#fff;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="index.html">← 回首頁</a>
+<h1>28 天讀書菜單（十月版）</h1>
+<div class="sub">2026/10/5（一）– 11/1（日）｜每天約 2.5 小時｜每一天要做哪幾句、哪幾題、哪一篇都寫死了，打開照做</div>
+
+<div class="goal">
+  <div>目標 <b>總分 72／Writing 75</b></div>
+  <div>現況（9/29）總分 68 · L60 · R63 · S78 · <b>W64</b></div>
+  <div>Skills Profile 最矮兩條：<b>Extended Writing（WE）</b>、<b>Multiple-skills Comprehension（FIB-RW／HIW）</b></div>
+  <div>優先序 <b>WE slot×2 ＞ FIB 清帳 ＞ 保溫（WFD／SWT／SST／口說）</b></div>
+</div>
+
+<div class="progress">
+  <b>總進度</b> <span id="pText" class="min"></span>
+  <div class="pbar"><div class="pfill" id="pFill"></div></div>
+</div>
+
+<div class="tools">
+  <button onclick="jumpToday()">跳到今天</button>
+  <button onclick="collapseAll(true)">全部收合</button>
+  <button onclick="collapseAll(false)">全部展開</button>
+</div>
+
+<details class="std">
+  <summary>標準日課表（約 155 分，點開看）</summary>
+  <table>
+    <tr><th>#</th><th>項目</th><th>分</th><th>做法</th></tr>
+    <tr><td>1</td><td>口說保溫</td><td>10</td><td>RA／RS／DI／RL 四天一輪，出聲就好。S78 已達標，不投時間</td></tr>
+    <tr><td>2</td><td>WE 模板盲打 1 回</td><td>6</td><td><a href="WE_打字練習.html" target="_blank">WE_打字練習</a>，每天唯一一次碰模板</td></tr>
+    <tr><td>3</td><td>WE slot 兩題</td><td>80</td><td>每題：10 秒決策（題型／立場／主論線／讓步線）→ 默打全部 slot → <a href="WE_論點總表.html" target="_blank">論點總表</a>核對 → 錯的進 mistakes。先重打昨日錯 slot 再做今日兩題。W3 起換成整篇計時（見當日欄）</td></tr>
+    <tr><td>4</td><td>FIB 清帳</td><td>30</td><td>跟 Claude 考當日那批：5 格一批四選一（干擾項放你當時選錯的字），答錯當場重考；每批考完 Claude 歸一條規則。來源 <a href="閱讀訂正.html" target="_blank">閱讀訂正</a>，當日篇名可直接點。<b>綠框下的「📇 快速複習小字卡」</b>＝那批全部錯格（原句挖空＋你選／正解＋根因），考前可遮答案自測；練完當天的紀錄會補在黃框</td></tr>
+    <tr><td>5</td><td>WFD 抽寫 5 句</td><td>8</td><td>點當日句名開 <a href="WFD_訂正.html" target="_blank">WFD_訂正</a>該句，看中文默打英文，對照紅字。Reproducing 已滿格，只保溫</td></tr>
+    <tr><td>6</td><td>默拼 10 字</td><td>5</td><td>在本頁直接作答：看中文打英文，Enter 判對錯，錯的立刻再打一次</td></tr>
+    <tr><td>7</td><td>SWT 練習 2 題</td><td>10</td><td>點題號開 <a href="SWT_練習.html" target="_blank">SWT_練習</a>計時打。Short Writing 已滿格，只保溫</td></tr>
+    <tr><td>8</td><td>SST 擬答 1 篇</td><td>5</td><td>點篇名開 <a href="SST_擬答.html" target="_blank">SST_擬答</a>默背</td></tr>
+    <tr><td>9</td><td>拼字黑名單掃</td><td>5</td><td><a href="寫作訂正.html#check" target="_blank">寫作訂正 ③</a> 收尾</td></tr>
+  </table>
+  <div class="min">時間只剩 1 小時的日子：只做 #2、#3 一題、#4 一批。WE 新題與 FIB 批次是兩筆不能欠的債，欠了隔天補。</div>
+</details>
+
+<div id="days"></div>
+
+<div class="rule">
+  <b>四週設計</b>
+  <ul>
+    <li><b>W1（D1–D7）</b>：WE 剩下 11 題逐 slot 收尾，兩題一天。FIB 77 格語意搭配類分 7 批考完，每批歸一條規則。</li>
+    <li><b>W2（D8–D14）</b>：WE 錯最多的 14 題重打，兩題一天。FIB 二輪只考錯格，再用 <a href="FIB-RW_拆解.html" target="_blank">FIB-RW 拆解</a>的冷題驗證每條規則，過了才算清；規則固化成 <a href="閱讀搭配練習.html" target="_blank">閱讀搭配練習</a>（比照 <a href="閱讀文法練習.html" target="_blank">閱讀文法練習</a>）。</li>
+    <li><b>W3（D15–D21）</b>：WE 改整篇計時，每天 1 篇 20 分貼給 Claude 批改，當天進錯題本、隔天只重寫錯句；另加 1 題 slot 重打。FIB-RW 冷題每天 10 格保溫。</li>
+    <li><b>W4（D22–D28）</b>：隔天 1 篇整篇保手感、封關卡、黑名單、錯 slot 重打。<b>考試日確定後，把 D28 對齊考前一天，多出的日子往 W3 加整篇。</b></li>
+    <li><b>保溫題庫怎麼分</b>：WFD 訂正 115 句 D1–D23 照序各 5 句走完一輪，D24–D28 重做多輪才過的句；默拼 176 字 D1–D18 走完一輪，之後先重考反覆卡與 WE 罩門字；SWT 179 題隔兩題取一題（#1、#4、#7…）共 56 題；SST 62 篇隔篇取 28 篇。</li>
+  </ul>
+</div>
+
+<script>
+/*__DAYS__*/
+const KEY='menu28_oct_v2';
+let state={};
+try{state=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){state={}}
+let collapsed={};
+try{collapsed=JSON.parse(localStorage.getItem(KEY+'_c')||'{}')}catch(e){collapsed={}}
+
+function todayStr(){ const n=new Date(); return (n.getMonth()+1)+'/'+n.getDate(); }
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
+
+function items(day){
+  const sp = day.heavy ? '口說保溫 5 分（重日縮短）：'+day.sp : '口說保溫 10 分：'+day.sp;
+  const it=[
+    ['sp', sp],
+    ['tp', 'WE 模板盲打 1 回 <span class="lk">（<a href="WE_打字練習.html" target="_blank">WE_打字練習</a>）</span>'],
+    ['we', (day.full?'WE 整篇計時＋批改重寫':'WE 當日兩題')+'（見上方紫框）'],
+    ['fib', 'FIB 清帳（見上方綠框）'],
+    ['wfd', 'WFD 抽寫 5 句：'+day.wfd.map(w=>'<a href="WFD_訂正.html#w'+w.i+'" target="_blank">'+esc(w.t)+'</a>').join('、')],
+    ['vq', '默拼 10 字 <button class="vqbtn" onclick="revealAll(this)">全部揭曉</button>'+vqTable(day)],
+    ['swt', 'SWT 練習 2 題：'+day.swt.map(s=>'<a href="SWT_練習.html#'+s.n+'" target="_blank">#'+s.n+' '+esc(s.t)+'</a>').join('、')],
+    ['sst', 'SST 默背 1 篇：<a href="SST_擬答.html#'+day.sst.a+'" target="_blank">#'+day.sst.n+' '+esc(day.sst.t)+'</a>'],
+    ['bl', '拼字黑名單掃 <span class="lk">（<a href="寫作訂正.html#check" target="_blank">寫作訂正 ③</a>）</span>'],
+  ];
+  let keep = it;
+  if(day.heavy) keep = keep.filter(x=>x[0]!=='sst');
+  if(day.exam) keep = keep.filter(x=>!['sst','swt','wfd','vq'].includes(x[0]));
+  if(day.rest) keep = keep.filter(x=>x[0]==='tp');
+  if(day.fib==='—') keep = keep.filter(x=>x[0]!=='fib');
+  return keep;
+}
+function vqTable(day){
+  return '<details class="vq"><summary>點開作答（看中文打英文，Enter 判分）</summary><table class="vqt">'+
+    day.vq.map((v,i)=>'<tr><td style="width:46%">'+esc(v.zh)+'</td><td><input data-w="'+esc(v.w)+'" onkeydown="vqKey(event,this)" onblur="vqCheck(this)" autocomplete="off" autocapitalize="off"></td><td class="res" style="width:34%"></td></tr>').join('')+
+    '</table></details>';
+}
+function norm(s){ return s.trim().toLowerCase().replace(/\s+/g,' '); }
+function vqKey(e,el){ if(e.key==='Enter'){ e.preventDefault(); vqCheck(el); const tr=el.closest('tr').nextElementSibling; if(tr) tr.querySelector('input').focus(); } }
+function vqCheck(el){
+  const v=norm(el.value); if(!v) return;
+  const w=el.dataset.w, res=el.closest('tr').querySelector('.res');
+  if(v===norm(w)){ res.innerHTML='<span class="ok">✓</span>'; }
+  else { res.innerHTML='<span class="ng">✗</span> <span class="ans">'+esc(w)+'</span>　<span class="lk">再打一次</span>'; el.select(); }
+}
+function revealAll(btn){
+  const tb=btn.parentElement.querySelector('.vqt'); if(!tb) return;
+  tb.querySelectorAll('tr').forEach(tr=>{ const inp=tr.querySelector('input'); tr.querySelector('.res').innerHTML='<span class="ans">'+esc(inp.dataset.w)+'</span>'; });
+  tb.closest('details').open=true;
+}
+const CAT={col:'固定搭配',sem:'語意',log:'邏輯',pos:'詞性',ten:'時態',word:'用字',gram:'文法',spell:'拼字'};
+function fcBlock(day){
+  if(!day.cards||!day.cards.length) return '';
+  const n=day.cards.reduce((s,c)=>s+c.items.length,0);
+  const hide=!!fcHide[day.d];
+  return '<details class="fc'+(hide?' hide':'')+'" id="fc'+day.d+'"><summary>📇 '+esc(day.cardTitle||'快速複習小字卡')+'（'+n+' 格）</summary>'+
+    '<div class="fcbar">遮住答案自測：<button class="vqbtn" onclick="fcToggle('+day.d+')">'+(hide?'顯示全部答案':'遮住答案')+'</button><span>遮住時點一列揭開</span></div>'+
+    day.cards.map(c=>'<div class="fct">'+(c.i?'<a href="閱讀訂正.html#p'+c.i+'" target="_blank">'+esc(c.t)+'</a>':esc(c.t))+'</div>'+
+      c.items.map(b=>'<div class="row" onclick="this.classList.toggle(\'open\')">'+
+        '<span class="cat '+b.cat+'">'+(CAT[b.cat]||b.cat)+'</span><span class="ctx">'+esc(b.ctx).replace('____','<b>____</b>')+'</span>'+
+        '<div class="ans">你選 <span class="wr">'+esc(b.w)+'</span>　→　<span class="rt">'+esc(b.r)+'</span></div>'+
+        '<div class="why">'+b.why+'</div></div>').join('')).join('')+
+    '</details>';
+}
+function logBlock(day){
+  if(!day.log||!day.log.length) return '';
+  return '<div class="dlog"><b>📝 當日紀錄</b><ul>'+day.log.map(x=>'<li>'+x+'</li>').join('')+'</ul></div>';
+}
+let fcHide={};
+try{fcHide=JSON.parse(localStorage.getItem(KEY+'_fc')||'{}')}catch(e){fcHide={}}
+function fcToggle(d){
+  fcHide[d]=!fcHide[d];
+  try{localStorage.setItem(KEY+'_fc',JSON.stringify(fcHide))}catch(e){}
+  const el=document.getElementById('fc'+d); el.classList.toggle('hide',fcHide[d]);
+  el.querySelector('.fcbar button').textContent=fcHide[d]?'顯示全部答案':'遮住答案';
+  el.querySelectorAll('.row.open').forEach(r=>r.classList.remove('open'));
+}
+function minutes(day){
+  if(day.rest) return 6;
+  if(day.exam) return 150;
+  let m=10+6+80+30+8+5+10+5+5;
+  if(day.heavy) m-=10;
+  return m;
+}
+function render(){
+  const box=document.getElementById('days');
+  const td=todayStr();
+  box.innerHTML='';
+  let total=0,doneN=0,week=0;
+  DAYS.forEach(day=>{
+    const w=Math.ceil(day.d/7);
+    if(w!==week){
+      week=w;
+      const h=document.createElement('h2');
+      h.textContent=['','W1 · WE 收尾 11 題 ＋ FIB 一輪 77 格','W2 · WE 重打 14 題 ＋ FIB 二輪與冷題驗證','W3 · 整篇計時 ＋ FIB 冷題保溫','W4 · 封關'][w];
+      box.appendChild(h);
+    }
+    const it=items(day);
+    const dayDone=it.every(x=>state[day.d+'_'+x[0]]);
+    it.forEach(x=>{total++;if(state[day.d+'_'+x[0]])doneN++;});
+    const isToday=day.date.split(' ')[0]===td;
+    const div=document.createElement('div');
+    div.id='d'+day.d;
+    const col = (day.d in collapsed) ? collapsed[day.d] : (dayDone && !isToday);
+    div.className='day'+(isToday?' today':'')+(dayDone?' done':'')+(col?' collapsed':'');
+    let tag='';
+    if(day.heavy)tag+='<span class="tagx">重日</span>';
+    if(day.exam)tag+='<span class="tagx">驗收日</span>';
+    if(day.full)tag+='<span class="tagw">整篇</span>';
+    if(day.rest)tag+='<span class="tagw">休息</span>';
+    if(dayDone)tag+='<span class="tagw">✓ 完成</span>';
+    div.innerHTML='<div class="dhead" onclick="toggleDay('+day.d+')"><span class="dnum">D'+day.d+'</span>'+
+      '<span class="ddate">'+day.date+'</span>'+tag+
+      '<span class="min">約 '+minutes(day)+' 分</span></div>'+
+      '<div class="dwe"><b>WE：</b>'+day.we+'</div>'+
+      (day.fib&&day.fib!=='—'?'<div class="dfib"><b>FIB：</b>'+day.fib+'</div>':'')+
+      fcBlock(day)+logBlock(day)+
+      '<ul class="chk">'+it.map(x=>{
+        const k=day.d+'_'+x[0], c=state[k]?'checked':'';
+        return '<li class="'+c+'"><input type="checkbox" '+(state[k]?'checked':'')+
+          ' onchange="tog(\''+k+'\',this.checked)"><span>'+x[1]+'</span></li>';
+      }).join('')+'</ul>';
+    box.appendChild(div);
+  });
+  const pct=total?Math.round(doneN/total*100):0;
+  document.getElementById('pFill').style.width=pct+'%';
+  document.getElementById('pText').textContent=doneN+' / '+total+' 項（'+pct+'%）';
+}
+function tog(k,v){
+  if(v)state[k]=1;else delete state[k];
+  try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}
+  // 不重畫整頁，免得默拼輸入框被清掉
+  const li=document.querySelector('input[onchange*="\''+k+'\'"]').closest('li');
+  li.classList.toggle('checked',!!v);
+  let total=0,doneN=0;
+  DAYS.forEach(day=>items(day).forEach(x=>{total++;if(state[day.d+'_'+x[0]])doneN++;}));
+  const pct=total?Math.round(doneN/total*100):0;
+  document.getElementById('pFill').style.width=pct+'%';
+  document.getElementById('pText').textContent=doneN+' / '+total+' 項（'+pct+'%）';
+}
+function toggleDay(d){
+  const el=document.getElementById('d'+d); const now=!el.classList.contains('collapsed');
+  el.classList.toggle('collapsed',now); collapsed[d]=now;
+  try{localStorage.setItem(KEY+'_c',JSON.stringify(collapsed))}catch(e){}
+}
+function collapseAll(v){
+  DAYS.forEach(day=>{ collapsed[day.d]=v; document.getElementById('d'+day.d).classList.toggle('collapsed',v); });
+  try{localStorage.setItem(KEY+'_c',JSON.stringify(collapsed))}catch(e){}
+}
+function jumpToday(){
+  const el=document.querySelector('.day.today'); if(el){ el.classList.remove('collapsed'); el.scrollIntoView({behavior:'smooth',block:'start'}); }
+}
+render();
+if(location.hash.match(/^#d\d+$/)){ const el=document.querySelector(location.hash); if(el){ el.classList.remove('collapsed'); el.scrollIntoView(); } }
+else { const t=document.querySelector('.day.today'); if(t) setTimeout(()=>t.scrollIntoView({block:'start'}),50); }
+</script>
+</div>
+</body>
+</html>
