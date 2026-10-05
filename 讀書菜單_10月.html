@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" spellcheck="false">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>28 天讀書菜單（10/5–11/1）</title>
+<style>
+  :root{--ink:#1a1a2e;--sub:#5a5a72;--line:#d9d9e3;--bg:#f6f6fa;--card:#fff;
+        --accent:#3b2fa0;--accent-bg:#ececf6;--fib:#0b6e4f;--fib-bg:#e6f4ee;--done:#0a7a4b;--warn:#b3261e;--today:#fff7e6}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.65;
+       font-family:"PingFang TC","Microsoft JhengHei","Noto Sans TC",sans-serif;font-size:16px}
+  .wrap{max-width:860px;margin:0 auto;padding:24px 16px 64px}
+  h1{font-size:24px;margin:0 0 4px}
+  h2{font-size:18px;margin:26px 0 6px;color:var(--accent)}
+  .sub{color:var(--sub);font-size:14px;margin-bottom:16px}
+  .goal{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 20px}
+  .goal div{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 14px;font-size:14.5px}
+  .goal b{color:var(--accent)}
+  .progress{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:20px}
+  .pbar{height:12px;background:var(--accent-bg);border-radius:6px;overflow:hidden;margin-top:6px}
+  .pfill{height:100%;background:var(--accent);width:0;transition:width .3s}
+  details.std{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin-bottom:20px}
+  details.std summary{font-weight:700;cursor:pointer}
+  table{border-collapse:collapse;width:100%;margin:10px 0;font-size:14.5px}
+  th,td{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top}
+  th{background:var(--accent-bg)}
+  .day{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:10px 0}
+  .day.today{background:var(--today);border-color:#e0b95a;border-width:2px}
+  .day.done{opacity:.62}
+  .dhead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .dnum{font-weight:800;color:var(--accent);font-size:17px}
+  .ddate{color:var(--sub);font-size:14px}
+  .dwe{font-size:14.5px;margin:6px 0;padding:7px 10px;background:var(--accent-bg);border-radius:7px}
+  .dwe b{color:var(--accent)}
+  .dfib{font-size:14.5px;margin:6px 0;padding:7px 10px;background:var(--fib-bg);border-radius:7px}
+  .dfib b{color:var(--fib)}
+  ul.chk{list-style:none;margin:8px 0 0;padding:0}
+  ul.chk li{margin:5px 0;display:flex;gap:8px;align-items:flex-start;font-size:15px}
+  ul.chk input{margin-top:4px;width:16px;height:16px;accent-color:var(--accent);flex:none}
+  ul.chk li.checked span{color:var(--sub);text-decoration:line-through}
+  .min{color:var(--sub);font-size:13px}
+  .tagx{display:inline-block;font-size:12px;background:#fdeceb;color:var(--warn);border-radius:8px;padding:0 8px;margin-left:6px}
+  .tagw{display:inline-block;font-size:12px;background:var(--accent-bg);color:var(--accent);border-radius:8px;padding:0 8px;margin-left:6px}
+  .back{font-size:14px;margin-bottom:10px;display:inline-block}
+  .rule{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:20px 0;font-size:14.5px}
+  .rule ul{margin:6px 0 0 18px;padding:0}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="index.html">← 回首頁</a>
+<h1>28 天讀書菜單（十月版）</h1>
+<div class="sub">2026/10/5（一）– 11/1（日）｜每天約 2.5 小時｜WE 收尾 11 題＋重打 14 題＋整篇計時；FIB 93 錯格兩週清帳</div>
+
+<div class="goal">
+  <div>目標 <b>總分 72／Writing 75</b></div>
+  <div>現況（9/29）總分 68 · L60 · R63 · S78 · <b>W64</b></div>
+  <div>Skills Profile 最矮兩條：<b>Extended Writing（WE）</b>、<b>Multiple-skills Comprehension（FIB-RW／HIW）</b></div>
+  <div>優先序 <b>WE slot×2 ＞ FIB 清帳 ＞ 保溫（WFD／SWT／SST／口說）</b></div>
+</div>
+
+<div class="progress">
+  <b>總進度</b> <span id="pText" class="min"></span>
+  <div class="pbar"><div class="pfill" id="pFill"></div></div>
+</div>
+
+<details class="std">
+  <summary>標準日課表（約 155 分，點開看）</summary>
+  <table>
+    <tr><th>#</th><th>項目</th><th>分</th><th>做法</th></tr>
+    <tr><td>1</td><td>口說保溫</td><td>10</td><td>RA／RS／DI 輪流，出聲就好。S78 已達標，不投時間</td></tr>
+    <tr><td>2</td><td>WE 模板盲打 1 回</td><td>6</td><td><a href="WE_打字練習.html">WE_打字練習</a>，每天唯一一次碰模板</td></tr>
+    <tr><td>3</td><td>WE slot 兩題</td><td>80</td><td>每題：10 秒決策（題型／立場／主論線／讓步線）→ 默打全部 slot → <a href="WE_論點總表.html">論點總表</a>核對 → 錯的進 mistakes。先重打昨日錯 slot 再做今日兩題。W3 起換成整篇計時（見當日欄）</td></tr>
+    <tr><td>4</td><td>FIB 清帳</td><td>30</td><td>跟 Claude 考當日那批：5 格一批四選一（干擾項放你當時選錯的字），答錯當場重考；每批考完 Claude 歸一條規則。來源 <a href="閱讀訂正.html">閱讀訂正</a></td></tr>
+    <tr><td>5</td><td>WFD 保溫</td><td>10</td><td><a href="WFD_訂正.html">WFD_訂正</a>抽寫 5 句＋<a href="WFD_訂正.html#vquiz">默拼</a> 10 字。Reproducing 已滿格，只保溫</td></tr>
+    <tr><td>6</td><td>SWT 練習 2 題</td><td>10</td><td><a href="SWT_練習.html">SWT_練習</a>計時打 2 題。Short Writing 已滿格，只保溫</td></tr>
+    <tr><td>7</td><td>SST 擬答 1 篇</td><td>5</td><td><a href="SST_擬答.html">SST_擬答</a>默背 1 篇</td></tr>
+    <tr><td>8</td><td>拼字黑名單掃</td><td>5</td><td><a href="寫作訂正.html#check">寫作訂正 ③</a> 收尾</td></tr>
+  </table>
+  <div class="min">時間只剩 1 小時的日子：只做 #2、#3 一題、#4 一批。WE 新題與 FIB 批次是兩筆不能欠的債，欠了隔天補。</div>
+</details>
+
+<div id="days"></div>
+
+<div class="rule">
+  <b>四週設計</b>
+  <ul>
+    <li><b>W1（D1–D7）</b>：WE 剩下 11 題逐 slot 收尾，兩題一天。FIB 77 格語意搭配類分 7 批考完，每批歸一條規則。</li>
+    <li><b>W2（D8–D14）</b>：WE 錯最多的 14 題重打，兩題一天。FIB 二輪只考錯格，再用 <a href="FIB-RW_拆解.html">FIB-RW 拆解</a>的冷題驗證每條規則，過了才算清；規則固化成 <a href="閱讀搭配練習.html">閱讀搭配練習</a>（比照 <a href="閱讀文法練習.html">閱讀文法練習</a>）。</li>
+    <li><b>W3（D15–D21）</b>：WE 改整篇計時，每天 1 篇 20 分貼給 Claude 批改，當天進錯題本、隔天只重寫錯句；另加 1 題 slot 重打。FIB-RW 冷題每天 10 格保溫。</li>
+    <li><b>W4（D22–D28）</b>：隔天 1 篇整篇保手感、封關卡、黑名單、錯 slot 重打。<b>考試日確定後，把 D28 對齊考前一天，多出的日子往 W3 加整篇。</b></li>
+  </ul>
+</div>
+
+<script>
+const DAYS=[
+ // ---- W1：11 題新 slot 收尾 ＋ FIB 77 格一輪 ----
+ {d:1, date:'10/5 一', we:'新題 ②-1 修路vs大眾運輸（#7，0905 實戰版 slot）、②-6 法律限制行為（#17）', fib:'第 1 批：篇 1–9（Arlington → Exponential Growth），11 格'},
+ {d:2, date:'10/6 二', we:'新題 ④-10 員工參與決策（#18）、④-12 欠發達國家觀光（#20）', fib:'第 2 批：篇 10–16（Teenage Daughter → Monkeys），10 格'},
+ {d:3, date:'10/7 三', we:'新題 ②-11 名人隱私（#32）、②-8 氣候誰負責（#25，跟 #16 共用環境字）', fib:'第 3 批：篇 17–22（Job-hunting → Walt Disney），13 格'},
+ {d:4, date:'10/8 四', we:'新題 ②-13 21 世紀孩子（#35，跟 #26 手機題角色互換）、②-12 最高薪資（#33）', fib:'第 4 批：篇 23–27（Integrate Sales → SpaceX），12 格'},
+ {d:5, date:'10/9 五', we:'新題 ③-1 海外學習（#15）、③-2 AI 翻譯還要學外語嗎（#34）——視野線兩題同天', fib:'第 5 批：篇 28–33（return of chemistry → Spotted Owls），10 格'},
+ {d:6, date:'10/10 六', we:'新題 ④-7 政府最緊迫問題失業（#10）＋ D1–D3 六題錯 slot 重打', fib:'第 6 批：篇 34–41（Farming → GM corn），14 格', heavy:1},
+ {d:7, date:'10/11 日', we:'週複習：D4–D6 五題錯 slot 重打＋ 11 題 10 秒決策 rapid-fire', fib:'第 7 批：篇 42–47（Smarter organism → Sustainable），7 格＋ pos/ten 新增 7 格＋重驗「and 前後對齊」「光桿 -ing」', review:1},
+ // ---- W2：14 題重打 ＋ FIB 二輪與冷題驗證 ----
+ {d:8, date:'10/12 一', we:'重打 ②-4 過勞後果（#12，23 錯）、④-5 家長法律責任（#5，23 錯）', fib:'二輪 ①：W1 答錯的格重考（上半）'},
+ {d:9, date:'10/13 二', we:'重打 ②-7 資訊革命（#21，21 錯）、②-10 城鄉（#30，18 錯）', fib:'二輪 ②：W1 答錯的格重考（下半）'},
+ {d:10,date:'10/14 三', we:'重打 ④-1 經驗vs正規教育（#1，18 錯）、④-3 圖書館（#3，18 錯）', fib:'二輪 ③：還錯的再考一遍；Claude 整理 W1 規則清單'},
+ {d:11,date:'10/15 四', we:'重打 ④-16 舊建築（#28，18 錯）、④-4 建築設計（#4，17 錯）', fib:'冷題驗證 ①：固定搭配類規則各抽 1–2 格新題（FIB-RW 拆解）'},
+ {d:12,date:'10/16 五', we:'重打 ④-8 實踐式學習（#13，17 錯）、②-2 醫療長壽（#8，16 錯）', fib:'冷題驗證 ②：語意／同義複述類規則'},
+ {d:13,date:'10/17 六', we:'重打 ②-9 年齡限制（#29，16 錯）、③-3 外語必修（#37，15 錯）', fib:'冷題驗證 ③：邏輯連接＋詞性時態類規則；沒過的規則標紅', heavy:1},
+ {d:14,date:'10/18 日', we:'重打 ④-14 名聲vs折扣（#24，15 錯）、④-15 古戲劇（#27，15 錯）＋ 14 題 10 秒決策 rapid-fire', fib:'閱讀搭配練習頁上線，整頁跑一遍；標紅規則再考', review:1},
+ // ---- W3：整篇計時 ----
+ {d:15,date:'10/19 一', we:'整篇計時 1 篇（37 題抽，20 分）→ 貼 Claude 批改 → 錯句進錯題本；slot 重打 1 題（累計錯最多）', fib:'FIB-RW 冷題 10 格（拆解頁），錯格歸因', full:1},
+ {d:16,date:'10/20 二', we:'先重寫昨日錯句 → 整篇計時 1 篇；slot 重打 1 題', fib:'FIB-RW 冷題 10 格', full:1},
+ {d:17,date:'10/21 三', we:'先重寫昨日錯句 → 整篇計時 1 篇；slot 重打 1 題', fib:'FIB-RW 冷題 10 格', full:1},
+ {d:18,date:'10/22 四', we:'先重寫昨日錯句 → 整篇計時 1 篇；slot 重打 1 題', fib:'FIB-RW 冷題 10 格', full:1},
+ {d:19,date:'10/23 五', we:'先重寫昨日錯句 → 整篇計時 1 篇；slot 重打 1 題', fib:'FIB-RW 冷題 10 格', full:1},
+ {d:20,date:'10/24 六', we:'先重寫昨日錯句 → 整篇計時 1 篇（抽冷題：37 題以外，練現場組句）', fib:'閱讀搭配練習頁再跑一遍', full:1, heavy:1},
+ {d:21,date:'10/25 日', we:'驗收：Writing 全套計時——SWT 2 題＋WE 1 篇＋WFD 10 句，照考試順序；整份貼 Claude', fib:'FIB-RW 冷題 20 格計時', exam:1},
+ // ---- W4：封關 ----
+ {d:22,date:'10/26 一', we:'重寫驗收錯句；整篇計時 1 篇', fib:'FIB-RW 冷題 10 格', full:1},
+ {d:23,date:'10/27 二', we:'錯最多 slot 集中重打（不寫整篇）', fib:'閱讀搭配練習＋閱讀文法練習各跑一遍', review:1},
+ {d:24,date:'10/28 三', we:'整篇計時 1 篇', fib:'FIB-RW 冷題 10 格', full:1},
+ {d:25,date:'10/29 四', we:'37 題 10 秒決策 rapid-fire 全跑＋特殊題型六型速查', fib:'標紅規則最後一輪', review:1},
+ {d:26,date:'10/30 五', we:'整篇計時 1 篇（最後一篇）', fib:'FIB-RW 冷題 10 格', full:1},
+ {d:27,date:'10/31 六', we:'WE_封關卡＋寫作訂正 #check＋黑名單全掃', fib:'只看規則表，不做新題', review:1},
+ {d:28,date:'11/1 日', we:'休息日：模板盲打 1 回，其他不碰。考試日確定後把這天對齊考前一天', fib:'—', rest:1},
+];
+const STD=[
+ ['口說保溫 10 分','sp'],
+ ['WE 模板盲打 1 回','tp'],
+ ['WE 當日進度','we'],
+ ['FIB 清帳（當日批次）','fib'],
+ ['WFD 保溫 抽寫 5 句＋默拼 10 字','wfd'],
+ ['SWT 練習 2 題','swt'],
+ ['SST 擬答 1 篇','sst'],
+ ['拼字黑名單掃','bl'],
+];
+const KEY='menu28_oct_v1';
+let state={};
+try{state=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){state={}}
+
+function todayStr(){
+  const n=new Date();
+  return (n.getMonth()+1)+'/'+n.getDate();
+}
+function items(day){
+  let it=STD.map(x=>x.slice());
+  if(day.full){ it=it.map(x=>x[1]==='we'?['WE 整篇計時＋批改重寫（當日欄）','we']:x); }
+  if(day.heavy){ it=it.filter(x=>x[1]!=='sst'); it[0][0]='口說保溫 5 分（重日縮短）'; }
+  if(day.exam){ it=it.filter(x=>x[1]!=='sst'&&x[1]!=='swt'&&x[1]!=='wfd'); }
+  if(day.rest){ it=it.filter(x=>x[1]==='tp'); }
+  return it;
+}
+function minutes(day){
+  if(day.rest) return 6;
+  if(day.exam) return 150;
+  let m=10+6+80+30+10+10+5+5;
+  if(day.heavy) m-=10;
+  return m;
+}
+function render(){
+  const box=document.getElementById('days');
+  const td=todayStr();
+  box.innerHTML='';
+  let total=0,doneN=0,week=0;
+  DAYS.forEach(day=>{
+    const w=Math.ceil(day.d/7);
+    if(w!==week){
+      week=w;
+      const h=document.createElement('h2');
+      h.textContent=['','W1 · WE 收尾 11 題 ＋ FIB 一輪 77 格','W2 · WE 重打 14 題 ＋ FIB 二輪與冷題驗證','W3 · 整篇計時 ＋ FIB 冷題保溫','W4 · 封關'][w];
+      box.appendChild(h);
+    }
+    const it=items(day);
+    const dayDone=it.every((x,i)=>state[day.d+'_'+i]);
+    it.forEach((x,i)=>{total++;if(state[day.d+'_'+i])doneN++;});
+    const div=document.createElement('div');
+    div.className='day'+(day.date.split(' ')[0]===td?' today':'')+(dayDone?' done':'');
+    let tag='';
+    if(day.heavy)tag+='<span class="tagx">重日</span>';
+    if(day.exam)tag+='<span class="tagx">驗收日</span>';
+    if(day.full)tag+='<span class="tagw">整篇</span>';
+    if(day.rest)tag+='<span class="tagw">休息</span>';
+    div.innerHTML='<div class="dhead"><span class="dnum">D'+day.d+'</span>'+
+      '<span class="ddate">'+day.date+'</span>'+tag+
+      '<span class="min">約 '+minutes(day)+' 分</span></div>'+
+      '<div class="dwe"><b>WE：</b>'+day.we+'</div>'+
+      (day.fib&&day.fib!=='—'?'<div class="dfib"><b>FIB：</b>'+day.fib+'</div>':'')+
+      '<ul class="chk">'+it.map((x,i)=>{
+        const k=day.d+'_'+i, c=state[k]?'checked':'';
+        return '<li class="'+c+'"><input type="checkbox" '+(state[k]?'checked':'')+
+          ' onchange="tog(\''+k+'\',this.checked)"><span>'+x[0]+'</span></li>';
+      }).join('')+'</ul>';
+    box.appendChild(div);
+  });
+  const pct=total?Math.round(doneN/total*100):0;
+  document.getElementById('pFill').style.width=pct+'%';
+  document.getElementById('pText').textContent=doneN+' / '+total+' 項（'+pct+'%）';
+}
+function tog(k,v){
+  if(v)state[k]=1;else delete state[k];
+  try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}
+  render();
+}
+render();
+</script>
+</div>
+</body>
+</html>
