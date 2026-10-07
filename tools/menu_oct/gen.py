@@ -140,6 +140,7 @@ WRONG = {
 # LOG[天] = [HTML…]  → 黃框「當日紀錄」（WFD 錯字、新規則等）
 LOG = {
   2: ['<b>WE 兩題 10/7 補練完</b>（#18 員工決策 5 拼字＋11 文法、#20 旅遊 6 拼字＋10 文法，錯題已進 <a href="WE_論點總表.html#q18" target="_blank">總表 #18</a>／<a href="WE_論點總表.html#q20" target="_blank">#20</a> 錯題本）。拼字：slow <span class="en">done</span>→down、<span class="en">knee</span>→keen（改 willing）、<span class="en">hole</span>→whole、<span class="en">conutries</span>、<span class="en">hart</span>→hurt、<span class="en">loose/lose</span>→loss（錯三次）、<span class="en">carelss</span>、<span class="en">toruism</span>、develop<span class="en">ed</span> 掉 -ed。文法三條規則：① 被動要 be＋-ed（should <b>be left</b>／be <b>approved</b>）② make／help＋受詞＋<b>原形</b>，不加 be（makes employees feel…／helps families earn…）③ crucial that 後面原形不加 should。+s 掉 4 次（takes／turns／becomes／helps）。改 James 版：#18 ⑫ willing to work、⑮ 加 work harder；#20 ⑧⑨ become shows for tourists → a loss of real local culture'],
+  3: ['<b>要記的字</b>：<span class="en">forerunners</span> ＝ 先驅、前身（fore 前 ＋ runner 跑的人 ＋ s）。<span class="en">All three are considered American forerunners of Pop.</span> 搭配 <span class="en">forerunner of ＋ 名詞</span>、<span class="en">be considered ＋ 名詞</span>（被視為）'],
   1: ['<b>WFD 默拼還錯 2 字</b>：<span class="en">definitive</span>（de·fin·i·tive，0805 就錯過）、<span class="en">available</span>（a·vail·a·ble，-able）——已加進 WFD_訂正 #vquiz 默拼庫，明天先重打'],
 }
 for day in DAYS:
