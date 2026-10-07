@@ -28,7 +28,10 @@
   .day{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:10px 0}
   .day.today{background:var(--today);border-color:#e0b95a;border-width:2px}
   .day.done{opacity:.62}
-  .day.collapsed ul.chk, .day.collapsed .dwe, .day.collapsed .dfib{display:none}
+  .day.collapsed ul.chk, .day.collapsed .dwe, .day.collapsed .dfib, .day.collapsed .fc, .day.collapsed .dlog{display:none}
+  .arrow{display:inline-block;width:14px;color:var(--sub);font-size:12px;transition:transform .15s}
+  .day.collapsed .arrow{transform:rotate(-90deg)}
+  .dhead:hover .dnum{text-decoration:underline}
   .dhead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;cursor:pointer}
   .dnum{font-weight:800;color:var(--accent);font-size:17px}
   .ddate{color:var(--sub);font-size:14px}
@@ -87,7 +90,7 @@
 <div class="wrap">
 <a class="back" href="index.html">← 回首頁</a>
 <h1>28 天讀書菜單（十月版）</h1>
-<div class="sub">2026/10/5（一）– 11/1（日）｜每天約 2.5 小時｜每一天要做哪幾句、哪幾題、哪一篇都寫死了，打開照做</div>
+<div class="sub">2026/10/5（一）– 11/1（日）｜每天約 2.5 小時｜每一天要做哪幾句、哪幾題、哪一篇都寫死了，打開照做。<b>點「D1 10/5」那行可收合／展開當天內容</b>，不小心收起來再點一次就回來</div>
 
 <div class="goal">
   <div>目標 <b>總分 72／Writing 75</b></div>
@@ -247,7 +250,7 @@ function render(){
     if(day.full)tag+='<span class="tagw">整篇</span>';
     if(day.rest)tag+='<span class="tagw">休息</span>';
     if(dayDone)tag+='<span class="tagw">✓ 完成</span>';
-    div.innerHTML='<div class="dhead" onclick="toggleDay('+day.d+')"><span class="dnum">D'+day.d+'</span>'+
+    div.innerHTML='<div class="dhead" onclick="toggleDay('+day.d+')" title="點一下收合／展開"><span class="arrow">▼</span><span class="dnum">D'+day.d+'</span>'+
       '<span class="ddate">'+day.date+'</span>'+tag+
       '<span class="min">約 '+minutes(day)+' 分</span></div>'+
       '<div class="dwe"><b>WE：</b>'+day.we+'</div>'+
