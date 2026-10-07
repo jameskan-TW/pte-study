@@ -135,7 +135,7 @@ assert len(DAYS) == 28
 # WRONG[天] = [(閱讀訂正篇序, 空格序 1-based), ...]  → 當天「複習還錯」的格，小字卡只留這些
 # （James 2026-10-07：小字卡只留當天複習還錯的，不要整批）
 WRONG = {
-  3: [(10, 2), (10, 3)],   # 10/7 Teenage Daughter：development（詞性）、sharp（語意）
+  3: [(10, 2), (10, 3), (11, 1), (11, 3)],   # 10/7 Teenage Daughter：development／sharp；Radioactivity：Nevertheless／magnitude
 }
 # LOG[天] = [HTML…]  → 黃框「當日紀錄」（WFD 錯字、新規則等）
 LOG = {
