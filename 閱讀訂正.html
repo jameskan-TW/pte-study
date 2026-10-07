@@ -74,6 +74,9 @@
   .ex .w { color:#c0392b; opacity:.75; margin:0 6px; }
   .ex .badge { margin-left:4px; }
   .ex .wy { display:block; margin-top:3px; color:#666; }
+  .note { margin-top:12px; padding:10px 14px; background:#fff8e1; border-left:4px solid #f39c12; border-radius:6px; font-size:.92rem; line-height:1.8; }
+  .note table { border-collapse:collapse; margin:6px 0; }
+  .note td { border:1px solid #e8d9a8; padding:3px 8px; vertical-align:top; }
   .ex .en { font-family:"SF Mono",Menlo,Consolas,monospace; font-size:12px; background:#eef0f2; padding:1px 5px; border-radius:4px; color:#2b4a6b; }
 
   /* quiz mode */
@@ -252,7 +255,14 @@ const DATA = [
     text:`School-to-work transition is a historically persistent topic of educational policy-making and reform that impacts national systems of vocational education and training. The ${ok('transition')} process refers to a period between completion of general education and the beginning of vocational education or the beginning of gainful ${ok('employment')} as well as to training systems, institutions, and programs that prepare young people for careers. The status passage of youth from school-to-work has changed structurally under late modernism, and young people are [[1]] to adapt to changing demands of their environment especially when planning for entry into the labour market. Since the transition to a job is seen as a major success in life, youth who manage this step successfully are more ${ok('optimistic')} about their future; till others are disillusioned and pushed to the margins of society. While some young people have developed ${ok('successful')} strategies to cope with these requirements, those undereducated and otherwise ${ok('disadvantaged')} in society often face serious problems when trying to prepare for careers. Longer transitions lead to a greater vulnerability and to risky behaviours.`,
     blanks:[
       { wrong:"struggling", right:"forced", cat:"sem", why:`語意：年輕人「被迫」<span class="en">forced to adapt</span> 適應環境變化。<span class="en">struggling</span>（掙扎）雖文法通，但機經正解強調外在壓力下的<b>被迫</b>，語意更精準。` },
-    ]},
+    ],
+    note:`📌 <b>otherwise 三個意思，看位置判斷</b>（2026-10-07 James 問，本篇 <span class="en">undereducated and otherwise disadvantaged</span> 是第 2 種）
+<table>
+<tr><td><b>1. 否則</b></td><td>句首或逗號後</td><td><span class="en">Leave now, <b>otherwise</b> you will miss the train.</span> 現在走，否則會錯過火車。</td></tr>
+<tr><td><b>2. 在其他方面</b></td><td>放形容詞前面</td><td><span class="en">undereducated and <b>otherwise</b> disadvantaged</span>＝教育不足、或在其他方面弱勢的人。弱勢不只教育一種（家境、健康、地區…），otherwise 一個字把其他種類全包進去。</td></tr>
+<tr><td><b>3. 用別的方式</b></td><td>放動詞後面</td><td><span class="en">He could not have done <b>otherwise</b>.</span> 他不可能用別的方式做。</td></tr>
+</table>
+PTE 閱讀最常考第 2 種：<span class="en">A and otherwise B</span>＝A 或其他方面 B。<b>看到 otherwise 前面有 and、後面是形容詞，就是「其他方面」</b>。`},
 
   { title:"The Bridge to Pop 通往流行音樂的橋樑", pid:"#080004", type:"FIB-DD",
     text:`In the US, artists in the mid-1950s began to create a ${ok('bridge')} to Pop. Strongly influenced by Dada and its ${ok('emphasis')} on appropriation and everyday objects, artists increasingly worked with ${ok('collage')}, consumer products, and a healthy dose of irony. Jasper Johns [[1]] iconic imagery like the American flag; Robert Rauschenberg employed silk-screen printings and found objects; and Larry Rivers used images of mass-produced goods. All three are considered American ${ok('forerunners')} of Pop.`,
@@ -595,6 +605,7 @@ function renderDetail(){
       <div class="passage">${passageHTML(p, quiz)}</div>
       <span class="reveal" onclick="this.closest('.card').classList.add('open')">👁 顯示答案與解析</span>
       <ol class="ex">${ex}</ol>
+      ${p.note?`<div class="note">${p.note}</div>`:''}
     </div>`;
   document.getElementById('prevBtn').disabled = current===0;
   document.getElementById('nextBtn').disabled = current===DATA.length-1;
