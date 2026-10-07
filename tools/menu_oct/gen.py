@@ -82,15 +82,11 @@ sst_days = [SST[2*i] for i in range(N)]
 SPEAK = ['RA 朗讀 3 題', 'RS 複述 10 句', 'DI 描述圖表 2 張', 'RL 複述講座 1 題']
 
 B = [(1,9),(10,16),(17,22),(23,27),(28,33),(34,41),(42,47)]
-def fib_batch(a, b, grammar_too=False):
+def fib_batch(a, b):
     fs = [f for f in FIB if a <= f['i'] <= b]
     n = sum(f['n'] for f in fs)
     links = '、'.join(f'<a href="閱讀訂正.html#p{f["i"]}" target="_blank">{html.escape(short_title(f["t"]))}</a>' for f in fs)
-    cards = []
-    for f in fs:
-        items = [b_ for b_ in f['blanks'] if grammar_too or b_['cat'] in ('sem', 'col', 'log')]
-        if items: cards.append({'i': f['i'], 't': short_title(f['t']), 'items': items})
-    return n, links, cards
+    return n, links
 
 DAYS = []
 def D(d, date, we, fib, **kw): DAYS.append(dict(d=d, date=date, we=we, fib=fib, **kw))
@@ -105,17 +101,9 @@ w1 = [
  ('10/11 日', '週複習：D4–D6 五題（#35 #33 #15 #34 #10）錯 slot 重打＋ 11 題 10 秒決策 rapid-fire'),
 ]
 for k, (date, we) in enumerate(w1):
-    a, b = B[k]; n, links, cards = fib_batch(a, b)
-    extra = ''
-    if k == 6:
-        extra = '＋ pos／ten 新增 7 格（詞性時態格一併考）＋重驗「and 前後對齊」「光桿 -ing」'
-        # 第 7 批把全部 pos/ten 格也放進小字卡（8/13 考過 9 格，之後新增的沒考）
-        gram = []
-        for f in FIB:
-            items = [b_ for b_ in f['blanks'] if b_['cat'] in ('pos', 'ten')]
-            if items: gram.append({'i': f['i'], 't': short_title(f['t']), 'items': items})
-        cards = cards + [{'i': 0, 't': '── 詞性／時態格（全部 16 格，8/13 考過 9 格）──', 'items': []}] + gram
-    D(k+1, date, we, f'第 {k+1} 批 {n} 格：{links}{extra}', heavy=(k==5), review=(k==6), cards=cards, cardTitle=f'第 {k+1} 批 快速複習小字卡')
+    a, b = B[k]; n, links = fib_batch(a, b)
+    extra = '＋ pos／ten 新增 7 格（詞性時態格一併考）＋重驗「and 前後對齊」「光桿 -ing」' if k == 6 else ''
+    D(k+1, date, we, f'第 {k+1} 批 {n} 格：{links}{extra}', heavy=(k==5), review=(k==6))
 
 w2 = [
  ('10/12 一', '重打 ②-4 過勞後果（#12，23 錯）、④-5 家長法律責任（#5，23 錯）', '二輪 ①：第 1–4 批答錯的格重考'),
@@ -143,13 +131,26 @@ D(27, '10/31 六', '<a href="WE_封關卡.html" target="_blank">WE_封關卡</a>
 D(28, '11/1 日', '休息日：模板盲打 1 回，其他不碰。考試日確定後把這天對齊考前一天', '—', rest=True)
 assert len(DAYS) == 28
 
-# ───────── 每日紀錄（練完由 Claude 補；HTML 字串陣列） ─────────
+# ───────── 每日紀錄（練完由 Claude 補） ─────────
+# WRONG[天] = [(閱讀訂正篇序, 空格序 1-based), ...]  → 當天「複習還錯」的格，小字卡只留這些
+# （James 2026-10-07：小字卡只留當天複習還錯的，不要整批）
+WRONG = {
+  # 1: [(1, 1), (9, 3)],
+}
+# LOG[天] = [HTML…]  → 黃框「當日紀錄」（WFD 錯字、新規則等）
 LOG = {
   2: ['<b>WE 兩題 10/7 補練完</b>（#18 員工決策 5 拼字＋11 文法、#20 旅遊 6 拼字＋10 文法，錯題已進 <a href="WE_論點總表.html#q18" target="_blank">總表 #18</a>／<a href="WE_論點總表.html#q20" target="_blank">#20</a> 錯題本）。拼字：slow <span class="en">done</span>→down、<span class="en">knee</span>→keen（改 willing）、<span class="en">hole</span>→whole、<span class="en">conutries</span>、<span class="en">hart</span>→hurt、<span class="en">loose/lose</span>→loss（錯三次）、<span class="en">carelss</span>、<span class="en">toruism</span>、develop<span class="en">ed</span> 掉 -ed。文法三條規則：① 被動要 be＋-ed（should <b>be left</b>／be <b>approved</b>）② make／help＋受詞＋<b>原形</b>，不加 be（makes employees feel…／helps families earn…）③ crucial that 後面原形不加 should。+s 掉 4 次（takes／turns／becomes／helps）。改 James 版：#18 ⑫ willing to work、⑮ 加 work harder；#20 ⑧⑨ become shows for tourists → a loss of real local culture'],
   1: ['<b>WFD 默拼還錯 2 字</b>：<span class="en">definitive</span>（de·fin·i·tive，0805 就錯過）、<span class="en">available</span>（a·vail·a·ble，-able）——已加進 WFD_訂正 #vquiz 默拼庫，明天先重打'],
 }
 for day in DAYS:
     if day['d'] in LOG: day['log'] = LOG[day['d']]
+    if day['d'] in WRONG and WRONG[day['d']]:
+        cards = {}
+        for (ai, bn) in WRONG[day['d']]:
+            f = FIB[ai-1]; b = f['blanks'][bn-1]
+            cards.setdefault(ai, {'i': ai, 't': short_title(f['t']), 'items': []})['items'].append(b)
+        day['cards'] = [cards[k] for k in sorted(cards)]
+        day['cardTitle'] = f"D{day['d']} 複習還錯的格"
 
 for k, day in enumerate(DAYS):
     day['sp'] = SPEAK[k % 4]
