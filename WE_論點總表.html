@@ -119,6 +119,12 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
             letter-spacing: .05em; margin: 8px 0 4px; }
 .mistakes ul { list-style: none; padding-left: 0; margin: 0; }
 .mistakes li { font-size: .9rem; line-height: 1.9; }
+.mistakes .rules { background: #f4f8fb; border: 1px solid #cfe0ee; border-radius: 8px;
+            padding: 8px 12px; margin-top: 10px; }
+.mistakes .rules .mk-cat { color: #2c6fa8; margin-top: 0; }
+.mistakes .rules li { line-height: 1.75; margin-bottom: 4px; }
+.mistakes .rules .rk { font-weight: 700; color: #1a5490; }
+.mistakes .rules .rv { color: #333; }
 .mistakes .x { color: #b03a2e; text-decoration: line-through; font-family: Georgia, serif; }
 .mistakes .o { color: #1e8449; font-weight: 700; font-family: Georgia, serif; }
 .mistakes .nt { color: #888; font-size: .82rem; font-family: 'Noto Sans TC', sans-serif; }
@@ -908,7 +914,7 @@ const DATA = [
  es:{topic:'whether studying overseas is overrated',
  va:'studying locally is just as good', vb:'studying overseas gives something local study cannot',
  con:'studying locally is cheaper', conR:'studying overseas needs a lot of money, such as insurance, visa fees and accommodation',
- cond:'students stay home', subj:'they', resA:'save school fees and living costs', resB:'less <i class="a4">pressure from money</i> for families',
+ cond:'students stay in their own country', subj:'they', resA:'save money on living costs', resB:'less <i class="a4">pressure from money</i> for families',
  concl:'many great scholars never studied abroad',
  stance:'studying overseas is really worth it', reason:'a new place opens the mind',
  jv:'studies', jn:'university', does:'lives abroad among people from different backgrounds',
@@ -944,6 +950,24 @@ const DATA = [
    {x:'a wider view of life and great confident', o:'a wide view and strong confidence', nt:'① a broader view of life 是⑨的固定片語別串過來 ② confident 是形容詞、名詞是 confidence（記法：字尾 t 換成 ce）③ 搭配用 strong confidence'},
    {x:'helps latter a great career and stable family', o:'later help a good career and a stable family', nt:'① and 連接兩個主詞＝複數不加 s ② later（之後）vs latter（後者，兩個 t＝兩者）③ 副詞不能卡在及物動詞與受詞之間 ④ career／family 都是可數單數，各自要 a（confidence 不可數才不用）'},
    {x:'take the chance if they can study overseas', o:'take international chances when they can', nt:'複數泛指；when 比 if 積極'}
+  ],
+  rules:[
+   {k:'e 走 y 留', v:'動詞加 -ing：e 結尾去 e（use→using、evolve→evolving）、y 結尾留 y（study→studying）。留 y 是因為變 i 會撞成 studiing'},
+   {k:'動名詞算單數', v:'studying overseas needs／involving employees does——動名詞當主詞，動詞要 +s'},
+   {k:'and 連接兩主詞＝複數', v:'a wide view and strong confidence later help（不加 s）。不管兩邊各自是單數或不可數'},
+   {k:'情態助動詞後接原形、永不加 s', v:'they can take／he may hold／study should come'},
+   {k:'動名詞對外名詞、對內動詞', v:'所以配副詞不配形容詞：studying locally ✅／local studying ❌。形容詞要配純名詞：local study ✅'},
+   {k:'overseas 形容詞副詞同形', v:'studying overseas（動名詞+副詞）＝ overseas study（形容詞+名詞），兩個都對；local 只有形容詞身分，副詞是 locally'},
+   {k:'字尾 t 換成 ce ＝ 名詞', v:'confident→confidence、different→difference、important→importance、silent→silence。再加 ly 就是副詞'},
+   {k:'worth 直接吃、worthy 配 of', v:'is worth it／worth any cost／worth preserving；worthy of respect。兩個都是形容詞不是動詞'},
+   {k:'their 不決定單複數', v:'看「每人幾個」：their own country（每人一國，單數）vs their studies（每人多門課，複數）'},
+   {k:'and 兩邊的冠詞分開算', v:'a good career and a stable family（兩個可數單數各要 a）；strong confidence 不可數不用。不是「共用一個 a」'},
+   {k:'副詞不能卡在及物動詞與受詞之間', v:'❌ help later a career ✅ later help a career ✅ help a career later（受詞長時往前挪較清楚）'},
+   {k:'省略法：只留助動詞', v:'前面講過的動詞可砍掉：what schools cannot（省 teach）／something local study cannot（省 give）／when they can（省 take）'},
+   {k:'介系詞三組', v:'stay in a country（國家用 in）／save money on X（on 才是「在 X 上省」）／pressure from money for families'},
+   {k:'then vs than', v:'then＝那麼（If…then…）；than＝比（more than）。模板字別打錯'},
+   {k:'later vs latter', v:'latter 兩個 t ＝ 兩者中的後者（the latter，一定加 the）；later 一個 t ＝ 之後。發音也不同：later 長音、latter 短音'},
+   {k:'abroad / aboard / broad', v:'abroad ＝ ab+road 在國外；aboard ＝ 上船上機；broad ＝ 寬的（a broader view of life）'}
   ],
   note:'2026-10-10 首次逐 slot 練這題（③視野線第一題，走法跟前面七題都不同：P2 讓步用錢、P3 用視野自信線、收尾是 a good career and a stable family 不是溫暖的家）。James 嫌原 conR「海外花費高很多」邏輯太薄弱，換成他自己的具體版（insurance／visa fees／accommodation）。本篇問了六個文法觀念：動名詞為何配副詞、their 後面單複數、worth vs worthy、confident 詞性家族、later vs latter、副詞位置。拼字錯 9 個是歷來最多（abroad 兩種錯法已入默拼庫）。做對的：⑮ 一次過（he cannot find 的 he 抓對）、take／help 的單複數、介系詞 for families。'
  }},
@@ -1585,6 +1609,11 @@ function renderMistakes(mk){
   let out = '<div class="mistakes"><div class="mk-title">📌 我的錯誤複習區（自己寫過、扣除模板）</div>';
   if (mk.spell && mk.spell.length) out += '<div class="mk-cat">拼字</div><ul>' + mk.spell.map(item).join('') + '</ul>';
   if (mk.grammar && mk.grammar.length) out += '<div class="mk-cat">文法</div><ul>' + mk.grammar.map(item).join('') + '</ul>';
+  if (mk.rules && mk.rules.length) {
+    out += '<div class="rules"><div class="mk-cat">📐 這次釐清的規則</div><ul>'
+         + mk.rules.map(r => `<li><span class="rk">${r.k}</span>｜<span class="rv">${r.v}</span></li>`).join('')
+         + '</ul></div>';
+  }
   if (mk.note) out += `<div class="nt" style="margin-top:8px">${mk.note}</div>`;
   return out + '</div>';
 }
@@ -1704,7 +1733,7 @@ const ZH = {
  p4:'現在的孩子面對比過去更大的問題 (than in the past)；建議：家庭與學校教孩子養成健康數位習慣 (healthy digital habits，同 #26)'},
 '③-1':{
  p1:'反方：在本地讀 (studying locally) 一樣好；我方：海外學習 (studying overseas) 有本地給不了的東西',
- p2:'本地讀比較省錢 (cheaper)——海外要花很多錢：保險、簽證費、住宿 (needs a lot of money, such as insurance, visa fees and accommodation)。若學生留在家 → 省學費與生活費 (school fees and living costs) → 家庭少一點金錢壓力 (less pressure from money)。小結：很多大學者從沒出國 (never studied abroad)',
+ p2:'本地讀比較省錢 (cheaper)——海外要花很多錢：保險、簽證費、住宿 (needs a lot of money, such as insurance, visa fees and accommodation)。若學生留在本國唸書 (stay in their own country) → 省下生活費 (save money on living costs) → 家庭少一點金錢壓力 (less pressure from money)。小結：很多大學者從沒出國 (never studied abroad)',
  p3:'海外學習真的值得 (really worth it)——新環境打開心胸 (opens the mind)。例：James（大學生版）在國外與不同背景的人一起生活 → 學到書本外的東西、講話變自信 (confident)。含義：開闊的視野和自信 (a wide view and strong confidence) 之後帶來好職涯與穩定家庭',
  p4:'海外學習的價值是真的 (the value is real)；建議：有機會就把握國際機會 (international chances)'},
 '③-2':{
