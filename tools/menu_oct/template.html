@@ -199,7 +199,7 @@ function fcBlock(day){
     day.cards.map(c=>'<div class="fct">'+(c.i?'<a href="閱讀訂正.html#p'+c.i+'" target="_blank">'+esc(c.t)+'</a>':esc(c.t))+'</div>'+
       c.items.map(b=>'<div class="row" onclick="this.classList.toggle(\'open\')">'+
         '<span class="cat '+b.cat+'">'+(CAT[b.cat]||b.cat)+'</span><span class="ctx">'+esc(b.ctx).replace('____','<b>____</b>')+'</span>'+
-        '<div class="ans">你選 <span class="wr">'+esc(b.w)+'</span>　→　<span class="rt">'+esc(b.r)+'</span></div>'+
+        '<div class="ans">'+(b.w?'你選 <span class="wr">'+esc(b.w)+'</span>　→　':'答案　')+'<span class="rt">'+esc(b.r)+'</span></div>'+
         '<div class="why">'+b.why+'</div></div>').join('')).join('')+
     '</details>';
 }

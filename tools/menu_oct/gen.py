@@ -132,9 +132,12 @@ D(28, '11/1 日', '休息日：模板盲打 1 回，其他不碰。考試日確�
 assert len(DAYS) == 28
 
 # ───────── 每日紀錄（練完由 Claude 補） ─────────
-# WRONG[天] = [(閱讀訂正篇序, 空格序 1-based), ...]  → 該天那批 FIB「複習還錯」的格，小字卡只留這些（按批次歸天，不按實際複習日期）
+# WRONG[天] = [(閱讀訂正篇序, 空格序 1-based 或 自訂格 dict{w,r,cat,ctx,why}), ...]  → 該天那批 FIB「複習還錯」的格，小字卡只留這些（按批次歸天，不按實際複習日期）
 # （James 2026-10-07：小字卡只留當天複習還錯的，不要整批）
 WRONG = {
+  3: [(18, 1), (18, 2), (18, {'w': '', 'r': 'outhouses', 'cat': 'sem',
+       'ctx': "While it's true that by the time he was 73 he had accumulated all the usual dragging baggage – ____ full of fancy cars, a taste for expensive wine and a sprawl of dependents – it was also now that he produced career-defining work.",
+       'why': '語意：破折號後在列舉「包袱」的具體項目 → <span class="en">outhouses full of fancy cars</span>＝停滿名車的<b>附屬建築</b>（主屋旁的小屋／車庫，英式用法）。美式 outhouse 是戶外廁所，這裡不是。'})],   # 10/10 複習 An Artist's Life：closing／irrelevant＋outhouses（原本答對、今天錯）
   2: [(10, 2), (10, 3), (11, 1), (11, 3), (13, 1), (14, 1), (15, 1)],   # 第 2 批（10/7 複習）Teenage Daughter：development／sharp；Radioactivity：Nevertheless／magnitude；School-to-work：forced；Bridge to Pop：reimagined；Wine：way
 }
 # LOG[天] = [HTML…]  → 黃框「當日紀錄」（WFD 錯字、新規則等）
@@ -147,7 +150,7 @@ for day in DAYS:
     if day['d'] in WRONG and WRONG[day['d']]:
         cards = {}
         for (ai, bn) in WRONG[day['d']]:
-            f = FIB[ai-1]; b = f['blanks'][bn-1]
+            f = FIB[ai-1]; b = bn if isinstance(bn, dict) else f['blanks'][bn-1]
             cards.setdefault(ai, {'i': ai, 't': short_title(f['t']), 'items': []})['items'].append(b)
         day['cards'] = [cards[k] for k in sorted(cards)]
         day['cardTitle'] = f"D{day['d']} 複習還錯的格"
