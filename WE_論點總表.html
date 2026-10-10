@@ -129,6 +129,12 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
 .mistakes .o { color: #1e8449; font-weight: 700; font-family: Georgia, serif; }
 .mistakes .nt { color: #888; font-size: .82rem; font-family: 'Noto Sans TC', sans-serif; }
 .done-mark { margin: 0 6px 0 2px; font-size: .95em; }
+.solid-mark { margin: 0 6px 0 2px; font-size: .95em; }
+.q.solid { border-left: 4px solid #27ae60; }
+.q.solid .q-num { color: #1e8449; font-weight: 700; }
+tr.solid td:first-child { color: #1e8449; font-weight: 700; background: #eafaf1; }
+#legend-solid { background:#eafaf1; border:1px solid #a9dfbf; color:#1e8449;
+            border-radius:6px; padding:1px 8px; font-size:.85em; font-weight:600; }
 </style>
 </head>
 <body>
@@ -151,6 +157,13 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
     <span class="bg bg2">② 健康 &amp; 壓力</span>
     <span class="bg bg3">③ 視野 &amp; 文化</span>
     <span class="bg bg4">④ 職涯 &amp; 財務</span>
+  </div>
+  <div class="legend-row">
+    <b>練習狀態：</b>
+    <span id="legend-solid">🎯 逐 slot 扎實練過（有「這次釐清的規則」）</span>
+    <span>📌 練過，有錯誤複習區</span>
+    <span style="color:#999">無記號 = 還沒練</span>
+    <span id="solid-count" style="color:#1e8449;font-weight:600"></span>
   </div>
 </div>
 
@@ -1818,8 +1831,10 @@ DATA.forEach(d=>{
     gh.textContent = GROUP_INFO[d.p3c];
     qlist.appendChild(gh);
   }
+  const solid = !!(d.mistakes && d.mistakes.rules && d.mistakes.rules.length);
   const tr = document.createElement('tr');
-  tr.innerHTML = `<td style="white-space:nowrap">${d.mistakes?'📌':''}${d.n}<span style="color:#bbb;font-size:.75em"> 原#${d.o}</span></td><td>${d.t}</td><td>${d.stance}</td><td>${badge(d.p2c)}</td><td>${badge(d.p3c)}</td>`;
+  if (solid) tr.className = 'solid';
+  tr.innerHTML = `<td style="white-space:nowrap">${solid?'🎯':(d.mistakes?'📌':'')}${d.n}<span style="color:#bbb;font-size:.75em"> 原#${d.o}</span></td><td>${d.t}</td><td>${d.stance}</td><td>${badge(d.p2c)}</td><td>${badge(d.p3c)}</td>`;
   tr.onclick = ()=>{ const el=document.getElementById('q'+d.n); el.classList.add('open'); el.scrollIntoView({behavior:'smooth'}); };
   sumtable.appendChild(tr);
 
@@ -1827,11 +1842,11 @@ DATA.forEach(d=>{
   const wc = wordCount(paras);
 
   const div = document.createElement('div');
-  div.className = 'q';
+  div.className = solid ? 'q solid' : 'q';
   div.id = 'q'+d.n;
   div.innerHTML = `
   <div class="q-header" onclick="this.closest('.q').classList.toggle('open')">
-    <span class="q-num">${d.n} · 原#${d.o}</span>${d.mistakes?'<span class="done-mark" title="已練習，有錯誤複習區">📌</span>':''}<span class="q-title">${d.t}</span>
+    <span class="q-num">${d.n} · 原#${d.o}</span>${solid?'<span class="solid-mark" title="逐 slot 扎實練過，已整理成規則">🎯</span>':(d.mistakes?'<span class="done-mark" title="已練習，有錯誤複習區">📌</span>':'')}<span class="q-title">${d.t}</span>
     ${badge(d.p2c)} <span style="opacity:.6">→</span> ${badge(d.p3c)}
   </div>
   <div class="q-body">
@@ -1872,6 +1887,14 @@ DATA.forEach(d=>{
   </div>`;
   qlist.appendChild(div);
 });
+
+// 圖例顯示扎實練過的題數
+(function(){
+  const el = document.getElementById('solid-count');
+  if (!el) return;
+  const n = DATA.filter(d => d.mistakes && d.mistakes.rules && d.mistakes.rules.length).length;
+  el.textContent = `（已扎實練 ${n}／${DATA.length} 題）`;
+})();
 
 // 外部連結帶 #q④-1 進來（背誦地圖／書籤）：展開該題卡並捲到定位；--hh = sticky header 高度，給 .q 的 scroll-margin-top 用
 (function(){
