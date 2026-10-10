@@ -132,26 +132,26 @@ D(28, '11/1 日', '休息日：模板盲打 1 回，其他不碰。考試日確�
 assert len(DAYS) == 28
 
 # ───────── 每日紀錄（練完由 Claude 補） ─────────
-# WRONG[天] = [(閱讀訂正篇序, 關鍵片語挖空, 答案, 當時錯選 or '', 一句中文), ...]
+# WRONG[天] = [(閱讀訂正篇序, 關鍵片語挖空, 答案, 當時錯選 or '', 一句中文, '分類｜解釋'), ...]
 #   → 該天那批 FIB「複習還錯」的格（按批次歸天，不按實際複習日期）
-# （James 2026-10-07：小字卡只留當天複習還錯的；2026-10-10：精簡成只留要背的片語，不放整句和長解說）
+# （James 2026-10-07：小字卡只留當天複習還錯的；2026-10-10：精簡成只留要背的片語，不放整句；再加一行文法／語意解釋）
 WRONG = {
-  2: [(10, 'a paradoxical time of ____', 'development', 'growing', 'of 後面接名詞'),
-      (10, 'very ____ brains', 'sharp', 'special', '腦筋敏銳'),
-      (11, '____, we understand quite well…', 'Nevertheless', 'Therefore', '前後轉折＝然而'),
-      (11, 'orders of ____', 'magnitude', 'volume', '數量級'),
-      (13, 'be ____ to adapt', 'forced', 'struggling', '被迫適應'),
-      (14, 'Jasper Johns ____ iconic imagery', 'reimagined', 'have been reimagining', '跟後面 employed／used 並列，過去式'),
-      (15, 'make its ____ north', 'way', 'direction', 'make its way＝一路前進')],
-  3: [(18, "the ____ decades of an artist's life", 'closing', 'final', '人生晚期'),
-      (18, 'an ____ old age', 'irrelevant', 'unimportant', '無足輕重的晚年'),
-      (18, '____ full of fancy cars', 'outhouses', '', '主屋旁的小屋／車庫（英式）'),
-      (20, 'the African ____', 'continent', 'region', '非洲大陸'),
-      (21, 'students in … ____', 'classes', 'disciplines', '修課的學生；-ss 結尾加 -es'),
-      (21, 'the need to ____ for a second taste', 'return', 'review', '回來再吃一次'),
-      (21, 'doubt the ____ of', 'quality', '', '質疑品質'),
-      (21, 'think and ____ teaches them', 'actually', '', '真正教會'),
-      (21, "which Taylor's ____ reflects", 'menu', '', '菜單反映理念')],
+  2: [(10, 'a paradoxical time of ____', 'development', 'growing', 'of 後面接名詞', '文法｜介系詞 of 後面要接名詞 → development；growing 是動名詞，學術文偏好正式名詞'),
+      (10, 'very ____ brains', 'sharp', 'special', '腦筋敏銳', '語意｜sharp 專指腦筋快、反應敏捷；special 只是「特別」，沒說到聰明'),
+      (11, '____, we understand quite well…', 'Nevertheless', 'Therefore', '前後轉折＝然而', '邏輯｜前句說輻射可怕，後句說其實很清楚安全劑量＝轉折 → Nevertheless；Therefore 是因果（因此）'),
+      (11, 'orders of ____', 'magnitude', 'volume', '數量級', '搭配｜orders of magnitude 是固定片語；volume（體積、音量）搭不上'),
+      (13, 'be ____ to adapt', 'forced', 'struggling', '被迫適應', '語意｜前面說環境結構改變＝外在壓力 → be forced to（被迫）；be struggling to 是自己掙扎，沒有被逼的意思'),
+      (14, 'Jasper Johns ____ iconic imagery', 'reimagined', 'have been reimagining', '跟後面 employed／used 並列，過去式', '文法｜分號串三個人：Rauschenberg employed、Rivers used 都是過去簡單式 → 第一個也用過去式 reimagined'),
+      (15, 'make its ____ north', 'way', 'direction', 'make its way＝一路前進', '搭配｜make its way 是固定片語（一路往某方向前進）；make its direction 不是英文說法')],
+  3: [(18, "the ____ decades of an artist's life", 'closing', 'final', '人生晚期', '搭配｜the closing years／decades 是講「晚年」的慣用說法；final 意思接近但不是正解'),
+      (18, 'an ____ old age', 'irrelevant', 'unimportant', '無足輕重的晚年', '語意｜後面說 Monet「打破」這模式 → 一般藝術家晚年是失去影響力、沒人在乎＝irrelevant；unimportant 太籠統'),
+      (18, '____ full of fancy cars', 'outhouses', '', '主屋旁的小屋／車庫（英式）', '語意｜破折號後列舉三種「包袱」：停滿名車的房產、愛喝貴酒、一群要養的人；美式 outhouse 是戶外廁所，這裡不是'),
+      (20, 'the African ____', 'continent', 'region', '非洲大陸', '語意｜非洲是一整塊大陸 → continent；region 指大陸裡的一小塊地區'),
+      (21, 'students in … ____', 'classes', 'disciplines', '修課的學生；-ss 結尾加 -es', '語意＋文法｜students in … classes＝修某課的學生；disciplines 是抽象學科。學生是複數 → 課也用複數，class 是 -ss 結尾所以加 -es'),
+      (21, 'the need to ____ for a second taste', 'return', 'review', '回來再吃一次', '語意｜for a second taste＝再嚐一次 → 要「回來」return；review（評論）接不上'),
+      (21, 'doubt the ____ of', 'quality', '', '質疑品質', '搭配｜doubt the quality of＝質疑……的品質；懷疑學生開的餐廳，就是懷疑水準'),
+      (21, 'think and ____ teaches them', 'actually', '', '真正教會', '文法＋語意｜空格夾在 and 和動詞 teaches 中間 → 要副詞；跟後面「只讀食譜、沒學到」對比 → 真正教會'),
+      (21, "which Taylor's ____ reflects", 'menu', '', '菜單反映理念', '文法＋語意｜reflects 有 s → 主詞是單數名詞；餐廳裡能反映「食材全用」理念的是菜單')],
 }
 # LOG[天] = [HTML…]  → 黃框「當日紀錄」（WFD 錯字、新規則等）
 LOG = {
@@ -162,8 +162,8 @@ for day in DAYS:
     if day['d'] in LOG: day['log'] = LOG[day['d']]
     if day['d'] in WRONG and WRONG[day['d']]:
         cards = {}
-        for (ai, k, r, w, m) in WRONG[day['d']]:
-            cards.setdefault(ai, {'i': ai, 't': short_title(FIB[ai-1]['t']), 'items': []})['items'].append({'k': k, 'r': r, 'w': w, 'm': m})
+        for (ai, k, r, w, m, x) in WRONG[day['d']]:
+            cards.setdefault(ai, {'i': ai, 't': short_title(FIB[ai-1]['t']), 'items': []})['items'].append({'k': k, 'r': r, 'w': w, 'm': m, 'x': x})
         day['cards'] = [cards[k] for k in sorted(cards)]
         day['cardTitle'] = f"D{day['d']} 複習還錯的格"
 

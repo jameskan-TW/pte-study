@@ -73,11 +73,14 @@
   .fc .wr{color:var(--warn);text-decoration:line-through}
   .fc .rt{color:var(--done);font-weight:700}
   .fc .why{color:var(--sub);font-size:13px}
+  .fc .ex{flex-basis:100%;color:var(--sub);font-size:13px;line-height:1.5}
+  .fc .xt{display:inline-block;font-size:11px;border-radius:6px;padding:0 6px;margin-right:6px;background:#e1f0ff;color:#0b4f9c}
   .fc .why .en{font-family:Consolas,Menlo,monospace}
   .fc .cat{display:inline-block;font-size:11px;border-radius:6px;padding:0 6px;margin-right:6px;background:#e8e8f5;color:#3b2fa0}
   .fc .cat.col{background:#ffe9d6;color:#9a4a00}.fc .cat.sem{background:#e1f0ff;color:#0b4f9c}.fc .cat.log{background:#f3e5ff;color:#6b21a8}.fc .cat.pos{background:#e6f4ee;color:#0b6e4f}.fc .cat.ten{background:#fdeceb;color:#b3261e}
-  .fc.hide .ans, .fc.hide .why{display:none}
+  .fc.hide .ans, .fc.hide .why, .fc.hide .ex{display:none}
   .fc.hide .row.open .ans, .fc.hide .row.open .why{display:inline}
+  .fc.hide .row.open .ex{display:block}
   .fc.hide .row{cursor:pointer}
   .fc .fcbar{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--sub);margin-top:4px}
   .dlog{font-size:14px;margin:6px 0;padding:7px 10px;background:#fff7e6;border:1px solid #f0d9a0;border-radius:7px}
@@ -200,7 +203,8 @@ function fcBlock(day){
       c.items.map(b=>'<div class="row" onclick="this.classList.toggle(\'open\')">'+
         '<span class="ctx">'+esc(b.k).replace('____','<b>____</b>')+'</span>'+
         '<span class="ans">→ <span class="rt">'+esc(b.r)+'</span>'+(b.w?' <span class="wr">'+esc(b.w)+'</span>':'')+'</span>'+
-        '<span class="why">'+esc(b.m)+'</span></div>').join('')).join('')+
+        '<span class="why">'+esc(b.m)+'</span>'+
+        (b.x?'<div class="ex"><span class="xt">'+esc(b.x.split('｜')[0])+'</span>'+esc(b.x.split('｜').slice(1).join('｜'))+'</div>':'')+'</div>').join('')).join('')+
     '</details>';
 }
 function logBlock(day){
