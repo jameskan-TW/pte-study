@@ -129,10 +129,16 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
 .mistakes .o { color: #1e8449; font-weight: 700; font-family: Georgia, serif; }
 .mistakes .nt { color: #888; font-size: .82rem; font-family: 'Noto Sans TC', sans-serif; }
 .done-mark { margin: 0 6px 0 2px; font-size: .95em; }
-.solid-mark { margin: 0 6px 0 2px; font-size: .95em; }
-.q.solid { border-left: 4px solid #27ae60; }
-.q.solid .q-num { color: #1e8449; font-weight: 700; }
-tr.solid td:first-child { color: #1e8449; font-weight: 700; background: #eafaf1; }
+.solid-mark { font-size: 1.05em; }
+/* 扎實練過：整條題頭換深綠，跟未練的深藍一眼分辨 */
+.q.solid .q-header { background: #1e7a45; box-shadow: inset 6px 0 0 #58d68d; }
+.q.solid .q-header:hover { background: #269454; }
+.q.solid .q-num { color: #d4f5e2; opacity: .9; font-weight: 700; }
+.solid-tag { background: #58d68d; color: #0b3d22; font-size: .72rem; font-weight: 800;
+            padding: 2px 9px; border-radius: 999px; letter-spacing: .03em; white-space: nowrap; }
+tr.solid td { background: #eafaf1; }
+tr.solid td:first-child { color: #1e8449; font-weight: 700;
+            box-shadow: inset 5px 0 0 #27ae60; }
 #legend-solid { background:#eafaf1; border:1px solid #a9dfbf; color:#1e8449;
             border-radius:6px; padding:1px 8px; font-size:.85em; font-weight:600; }
 </style>
@@ -1846,7 +1852,7 @@ DATA.forEach(d=>{
   div.id = 'q'+d.n;
   div.innerHTML = `
   <div class="q-header" onclick="this.closest('.q').classList.toggle('open')">
-    <span class="q-num">${d.n} · 原#${d.o}</span>${solid?'<span class="solid-mark" title="逐 slot 扎實練過，已整理成規則">🎯</span>':(d.mistakes?'<span class="done-mark" title="已練習，有錯誤複習區">📌</span>':'')}<span class="q-title">${d.t}</span>
+    <span class="q-num">${d.n} · 原#${d.o}</span>${solid?'<span class="solid-mark">🎯</span><span class="solid-tag">扎實練過</span>':(d.mistakes?'<span class="done-mark" title="已練習，有錯誤複習區">📌</span>':'')}<span class="q-title">${d.t}</span>
     ${badge(d.p2c)} <span style="opacity:.6">→</span> ${badge(d.p3c)}
   </div>
   <div class="q-body">
