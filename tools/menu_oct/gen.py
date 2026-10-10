@@ -137,7 +137,17 @@ assert len(DAYS) == 28
 WRONG = {
   3: [(18, 1), (18, 2), (18, {'w': '', 'r': 'outhouses', 'cat': 'sem',
        'ctx': "While it's true that by the time he was 73 he had accumulated all the usual dragging baggage – ____ full of fancy cars, a taste for expensive wine and a sprawl of dependents – it was also now that he produced career-defining work.",
-       'why': '語意：破折號後在列舉「包袱」的具體項目 → <span class="en">outhouses full of fancy cars</span>＝停滿名車的<b>附屬建築</b>（主屋旁的小屋／車庫，英式用法）。美式 outhouse 是戶外廁所，這裡不是。'}), (20, 1)],   # 10/10 複習 An Artist's Life：closing／irrelevant＋outhouses（原本答對、今天錯）；Botswana：continent
+       'why': '語意：破折號後在列舉「包袱」的具體項目 → <span class="en">outhouses full of fancy cars</span>＝停滿名車的<b>附屬建築</b>（主屋旁的小屋／車庫，英式用法）。美式 outhouse 是戶外廁所，這裡不是。'}), (20, 1),
+      (21, 1), (21, 2),
+      (21, {'w': '', 'r': 'quality', 'cat': 'col',
+       'ctx': "Skeptics might doubt the ____ of a student-run restaurant, but one visit to Taylor's will immediately change their outlook.",
+       'why': '搭配 <span class="en">doubt the quality of</span>＝質疑……的<b>品質</b>。懷疑學生餐廳，最自然就是懷疑它好不好吃、水準夠不夠。'}),
+      (21, {'w': '', 'r': 'actually', 'cat': 'sem',
+       'ctx': "\"Understanding ratios and proportions when creating dishes instead of recipes makes students think and ____ teaches them how to cook, rather than just reading a recipe and not learning from it,\" Garmy said.",
+       'why': '語意：跟後面「只是讀食譜、沒學到」對比 → <b>真正</b>教會 <span class="en">actually teaches</span>。副詞放動詞前；teaches 的主詞是 Understanding…（第三人稱單數，-ch 結尾加 -es）。'}),
+      (21, {'w': '', 'r': 'menu', 'cat': 'sem',
+       'ctx': "Garmy said he believes in using all aspects of a product, which Taylor's ____ reflects.",
+       'why': '語意：餐廳裡能「反映」用盡整個食材理念的，是它的<b>菜單</b> → <span class="en">Taylor\'s menu reflects</span>。reflects 單數主詞，所以填單數名詞。'})],   # 10/10 複習 An Artist's Life：closing／irrelevant＋outhouses（原本答對、今天錯）；Botswana：continent；Taylor's 全 5 格（classes／return＋quality／actually／menu）
   2: [(10, 2), (10, 3), (11, 1), (11, 3), (13, 1), (14, 1), (15, 1)],   # 第 2 批（10/7 複習）Teenage Daughter：development／sharp；Radioactivity：Nevertheless／magnitude；School-to-work：forced；Bridge to Pop：reimagined；Wine：way
 }
 # LOG[天] = [HTML…]  → 黃框「當日紀錄」（WFD 錯字、新規則等）
