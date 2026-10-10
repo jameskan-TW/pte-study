@@ -137,7 +137,7 @@ assert len(DAYS) == 28
 WRONG = {
   3: [(18, 1), (18, 2), (18, {'w': '', 'r': 'outhouses', 'cat': 'sem',
        'ctx': "While it's true that by the time he was 73 he had accumulated all the usual dragging baggage – ____ full of fancy cars, a taste for expensive wine and a sprawl of dependents – it was also now that he produced career-defining work.",
-       'why': '語意：破折號後在列舉「包袱」的具體項目 → <span class="en">outhouses full of fancy cars</span>＝停滿名車的<b>附屬建築</b>（主屋旁的小屋／車庫，英式用法）。美式 outhouse 是戶外廁所，這裡不是。'})],   # 10/10 複習 An Artist's Life：closing／irrelevant＋outhouses（原本答對、今天錯）
+       'why': '語意：破折號後在列舉「包袱」的具體項目 → <span class="en">outhouses full of fancy cars</span>＝停滿名車的<b>附屬建築</b>（主屋旁的小屋／車庫，英式用法）。美式 outhouse 是戶外廁所，這裡不是。'}), (20, 1)],   # 10/10 複習 An Artist's Life：closing／irrelevant＋outhouses（原本答對、今天錯）；Botswana：continent
   2: [(10, 2), (10, 3), (11, 1), (11, 3), (13, 1), (14, 1), (15, 1)],   # 第 2 批（10/7 複習）Teenage Daughter：development／sharp；Radioactivity：Nevertheless／magnitude；School-to-work：forced；Bridge to Pop：reimagined；Wine：way
 }
 # LOG[天] = [HTML…]  → 黃框「當日紀錄」（WFD 錯字、新規則等）
