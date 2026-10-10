@@ -132,23 +132,26 @@ D(28, '11/1 日', '休息日：模板盲打 1 回，其他不碰。考試日確�
 assert len(DAYS) == 28
 
 # ───────── 每日紀錄（練完由 Claude 補） ─────────
-# WRONG[天] = [(閱讀訂正篇序, 空格序 1-based 或 自訂格 dict{w,r,cat,ctx,why}), ...]  → 該天那批 FIB「複習還錯」的格，小字卡只留這些（按批次歸天，不按實際複習日期）
-# （James 2026-10-07：小字卡只留當天複習還錯的，不要整批）
+# WRONG[天] = [(閱讀訂正篇序, 關鍵片語挖空, 答案, 當時錯選 or '', 一句中文), ...]
+#   → 該天那批 FIB「複習還錯」的格（按批次歸天，不按實際複習日期）
+# （James 2026-10-07：小字卡只留當天複習還錯的；2026-10-10：精簡成只留要背的片語，不放整句和長解說）
 WRONG = {
-  3: [(18, 1), (18, 2), (18, {'w': '', 'r': 'outhouses', 'cat': 'sem',
-       'ctx': "While it's true that by the time he was 73 he had accumulated all the usual dragging baggage – ____ full of fancy cars, a taste for expensive wine and a sprawl of dependents – it was also now that he produced career-defining work.",
-       'why': '語意：破折號後在列舉「包袱」的具體項目 → <span class="en">outhouses full of fancy cars</span>＝停滿名車的<b>附屬建築</b>（主屋旁的小屋／車庫，英式用法）。美式 outhouse 是戶外廁所，這裡不是。'}), (20, 1),
-      (21, 1), (21, 2),
-      (21, {'w': '', 'r': 'quality', 'cat': 'col',
-       'ctx': "Skeptics might doubt the ____ of a student-run restaurant, but one visit to Taylor's will immediately change their outlook.",
-       'why': '搭配 <span class="en">doubt the quality of</span>＝質疑……的<b>品質</b>。懷疑學生餐廳，最自然就是懷疑它好不好吃、水準夠不夠。'}),
-      (21, {'w': '', 'r': 'actually', 'cat': 'sem',
-       'ctx': "\"Understanding ratios and proportions when creating dishes instead of recipes makes students think and ____ teaches them how to cook, rather than just reading a recipe and not learning from it,\" Garmy said.",
-       'why': '語意：跟後面「只是讀食譜、沒學到」對比 → <b>真正</b>教會 <span class="en">actually teaches</span>。副詞放動詞前；teaches 的主詞是 Understanding…（第三人稱單數，-ch 結尾加 -es）。'}),
-      (21, {'w': '', 'r': 'menu', 'cat': 'sem',
-       'ctx': "Garmy said he believes in using all aspects of a product, which Taylor's ____ reflects.",
-       'why': '語意：餐廳裡能「反映」用盡整個食材理念的，是它的<b>菜單</b> → <span class="en">Taylor\'s menu reflects</span>。reflects 單數主詞，所以填單數名詞。'})],   # 10/10 複習 An Artist's Life：closing／irrelevant＋outhouses（原本答對、今天錯）；Botswana：continent；Taylor's 全 5 格（classes／return＋quality／actually／menu）
-  2: [(10, 2), (10, 3), (11, 1), (11, 3), (13, 1), (14, 1), (15, 1)],   # 第 2 批（10/7 複習）Teenage Daughter：development／sharp；Radioactivity：Nevertheless／magnitude；School-to-work：forced；Bridge to Pop：reimagined；Wine：way
+  2: [(10, 'a paradoxical time of ____', 'development', 'growing', 'of 後面接名詞'),
+      (10, 'very ____ brains', 'sharp', 'special', '腦筋敏銳'),
+      (11, '____, we understand quite well…', 'Nevertheless', 'Therefore', '前後轉折＝然而'),
+      (11, 'orders of ____', 'magnitude', 'volume', '數量級'),
+      (13, 'be ____ to adapt', 'forced', 'struggling', '被迫適應'),
+      (14, 'Jasper Johns ____ iconic imagery', 'reimagined', 'have been reimagining', '跟後面 employed／used 並列，過去式'),
+      (15, 'make its ____ north', 'way', 'direction', 'make its way＝一路前進')],
+  3: [(18, "the ____ decades of an artist's life", 'closing', 'final', '人生晚期'),
+      (18, 'an ____ old age', 'irrelevant', 'unimportant', '無足輕重的晚年'),
+      (18, '____ full of fancy cars', 'outhouses', '', '主屋旁的小屋／車庫（英式）'),
+      (20, 'the African ____', 'continent', 'region', '非洲大陸'),
+      (21, 'students in … ____', 'classes', 'disciplines', '修課的學生；-ss 結尾加 -es'),
+      (21, 'the need to ____ for a second taste', 'return', 'review', '回來再吃一次'),
+      (21, 'doubt the ____ of', 'quality', '', '質疑品質'),
+      (21, 'think and ____ teaches them', 'actually', '', '真正教會'),
+      (21, "which Taylor's ____ reflects", 'menu', '', '菜單反映理念')],
 }
 # LOG[天] = [HTML…]  → 黃框「當日紀錄」（WFD 錯字、新規則等）
 LOG = {
@@ -159,9 +162,8 @@ for day in DAYS:
     if day['d'] in LOG: day['log'] = LOG[day['d']]
     if day['d'] in WRONG and WRONG[day['d']]:
         cards = {}
-        for (ai, bn) in WRONG[day['d']]:
-            f = FIB[ai-1]; b = bn if isinstance(bn, dict) else f['blanks'][bn-1]
-            cards.setdefault(ai, {'i': ai, 't': short_title(f['t']), 'items': []})['items'].append(b)
+        for (ai, k, r, w, m) in WRONG[day['d']]:
+            cards.setdefault(ai, {'i': ai, 't': short_title(FIB[ai-1]['t']), 'items': []})['items'].append({'k': k, 'r': r, 'w': w, 'm': m})
         day['cards'] = [cards[k] for k in sorted(cards)]
         day['cardTitle'] = f"D{day['d']} 複習還錯的格"
 

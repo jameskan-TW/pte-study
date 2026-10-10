@@ -66,18 +66,18 @@
   details.fc summary{cursor:pointer;font-size:14px;color:var(--fib);font-weight:700}
   .fc .fct{font-weight:700;font-size:14px;margin:8px 0 2px;color:var(--ink)}
   .fc .fct a{color:var(--fib)}
-  .fc .row{border-top:1px solid #e3efe9;padding:6px 0;font-size:14px}
+  .fc .row{border-top:1px solid #e3efe9;padding:5px 0;font-size:14px;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline}
   .fc .ctx{color:var(--ink)}
   .fc .ctx b{background:#fff3bf;padding:0 4px;border-radius:3px}
-  .fc .ans{margin-top:2px}
+  .fc .ctx{font-family:Consolas,Menlo,monospace}
   .fc .wr{color:var(--warn);text-decoration:line-through}
   .fc .rt{color:var(--done);font-weight:700}
-  .fc .why{color:var(--sub);font-size:13px;margin-top:2px}
+  .fc .why{color:var(--sub);font-size:13px}
   .fc .why .en{font-family:Consolas,Menlo,monospace}
   .fc .cat{display:inline-block;font-size:11px;border-radius:6px;padding:0 6px;margin-right:6px;background:#e8e8f5;color:#3b2fa0}
   .fc .cat.col{background:#ffe9d6;color:#9a4a00}.fc .cat.sem{background:#e1f0ff;color:#0b4f9c}.fc .cat.log{background:#f3e5ff;color:#6b21a8}.fc .cat.pos{background:#e6f4ee;color:#0b6e4f}.fc .cat.ten{background:#fdeceb;color:#b3261e}
   .fc.hide .ans, .fc.hide .why{display:none}
-  .fc.hide .row.open .ans, .fc.hide .row.open .why{display:block}
+  .fc.hide .row.open .ans, .fc.hide .row.open .why{display:inline}
   .fc.hide .row{cursor:pointer}
   .fc .fcbar{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--sub);margin-top:4px}
   .dlog{font-size:14px;margin:6px 0;padding:7px 10px;background:#fff7e6;border:1px solid #f0d9a0;border-radius:7px}
@@ -198,9 +198,9 @@ function fcBlock(day){
     '<div class="fcbar">遮住答案自測：<button class="vqbtn" onclick="fcToggle('+day.d+')">'+(hide?'顯示全部答案':'遮住答案')+'</button><span>遮住時點一列揭開</span></div>'+
     day.cards.map(c=>'<div class="fct">'+(c.i?'<a href="閱讀訂正.html#p'+c.i+'" target="_blank">'+esc(c.t)+'</a>':esc(c.t))+'</div>'+
       c.items.map(b=>'<div class="row" onclick="this.classList.toggle(\'open\')">'+
-        '<span class="cat '+b.cat+'">'+(CAT[b.cat]||b.cat)+'</span><span class="ctx">'+esc(b.ctx).replace('____','<b>____</b>')+'</span>'+
-        '<div class="ans">'+(b.w?'你選 <span class="wr">'+esc(b.w)+'</span>　→　':'答案　')+'<span class="rt">'+esc(b.r)+'</span></div>'+
-        '<div class="why">'+b.why+'</div></div>').join('')).join('')+
+        '<span class="ctx">'+esc(b.k).replace('____','<b>____</b>')+'</span>'+
+        '<span class="ans">→ <span class="rt">'+esc(b.r)+'</span>'+(b.w?' <span class="wr">'+esc(b.w)+'</span>':'')+'</span>'+
+        '<span class="why">'+esc(b.m)+'</span></div>').join('')).join('')+
     '</details>';
 }
 function logBlock(day){
