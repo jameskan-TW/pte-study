@@ -116,6 +116,7 @@
 | ②-4 過勞普遍與後果（原#12；2026-09-23 首次逐 slot 練，錢與方便讓步·賺錢線第一題，18 格全打完、8 拼字＋15 文法；pay attention to 第 4 次錯 on、形容詞／名詞混用 health／mental／efficiency／happy of family） | ✔ | ✔ ④ 刪 people in、⑭ 加 quality、⑯ 改短版 extra money from working overtime cannot buy a happy family |
 | ④-14 名聲vs折扣（原#24；2026-09-23 首次逐 slot 練，錢與方便讓步線第二題，唯一不收家庭題，18 格全打完、6 拼字＋9 文法；reputation 拼錯四次、字母顛倒 focus／quality／campaigns、key to／reputation for） | ✔ | ✔ 全篇 a good name → a good reputation＋②③④⑩⑪⑮⑯ James 版 |
 | ②-10 城鄉（原#30；2026-09-25 首次逐 slot 練，錢與方便讓步·賺錢線第三題，18 格全打完、7 拼字＋11 文法；練前先復習 09-23 五題重犯 7 條；可數單數裸奔、the 兩個方向、打字滑掉 4 個） | ✔ | ✔ ①⑭⑰ 統一 country life＋⑮ 改 feel relaxed（去掉第三個 peace of mind） |
+| ③-1 海外學習（原#15；2026-10-10 首次逐 slot 練，18 格全打完、9 拼字＋16 文法） | ✔ | ✔ conR 換 James 具體版（insurance／visa fees／accommodation） |
 | ②-8 氣候誰負責（原#25；2026-09-08 與 #16 共用一套環境字：greenhouse gas／cars and factories／hotter summers and more floods／make laws／protect every family） | — | ✔ 共用字版 |
 | ④-10 員工參與決策（原#18；2026-10-07 首次逐 slot 練，補 10/6 D2 菜單，18 格全打完、5 拼字＋11 文法；被動漏 be／-ed、make＋受詞不加 be、冠詞、動詞撞車） | ✔ | ✔ ⑫ keen → willing to work＋⑮ 加 work harder＋⑱ 去 mechanism |
 | ④-12 欠發達國家旅遊（原#20；2026-10-07 首次逐 slot 練，補 10/6 D2 菜單，18 格全打完、6 拼字＋10 文法；-ed 分詞當形容詞、+s、lose／loss 三錯、help＋原形） | ✔ | ✔ ⑧⑨ 改 become shows for tourists → a loss of real local culture（原版重複） |
