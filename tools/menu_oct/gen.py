@@ -159,7 +159,10 @@ WRONG = {
       (25, 'paint a ____ future', 'bleak', '', '描繪出黯淡的前景', '搭配｜paint a bleak future／picture／outlook 是固定說法；線索：前面全是慢性病、車禍死亡、塞車等壞消息'),
       (26, 'external ____ of the past centuries', 'domination', 'invasion', '幾世紀的外來支配', '語意｜of the past centuries＝持續幾百年的狀態 → domination（長期支配）；invasion（入侵）是單次事件，撐不了幾世紀'),
       (26, 'a vibrant ____ of popular movements', 'array', 'group', '一系列活躍的人民運動', '搭配｜an array of＝一系列、各式各樣；group 多指一群人，配 movements 不自然'),
-      (26, 'rather than elite and foreign ____', 'domination', 'suppression', '而不是菁英和外國主導', '語意｜rather than 對比「誰說了算」：人民參與 vs 菁英外國主導；首尾呼應開頭 external domination。suppression（鎮壓）是動作，不是在講誰作主')],
+      (26, 'rather than elite and foreign ____', 'domination', 'suppression', '而不是菁英和外國主導', '語意｜rather than 對比「誰說了算」：人民參與 vs 菁英外國主導；首尾呼應開頭 external domination。suppression（鎮壓）是動作，不是在講誰作主'),
+      (27, 'lofted an uncrewed ____ of the Dragon capsule', 'mockup', 'structure', '無人的實體模型、樣機', '語意｜uncrewed＋of Dragon capsule → 測試送上去的是樣機，不是真的載人艙；structure（結構）太空泛'),
+      (27, 'a ____ development', 'promising', 'encouraging', '有前景的進展', '搭配｜a promising development 是慣用搭配；下文想拿 NASA 合約＝未來可期。encouraging 意思近但不是正解'),
+      (27, 'if it reached ____', 'orbit', 'route', '進入軌道', '語意｜第一句 reaching orbit 9 minutes later 就是線索（同篇重複同一個字）；太空飛行成功標準＝進入軌道，route 是路線')],
 }
 # LOG[天] = [HTML…]  → 黃框「當日紀錄」（WFD 錯字、新規則等）
 LOG = {
