@@ -152,6 +152,8 @@ WRONG = {
       (21, 'doubt the ____ of', 'quality', '', '質疑品質', '搭配｜doubt the quality of＝質疑……的品質；懷疑學生開的餐廳，就是懷疑水準'),
       (21, 'think and ____ teaches them', 'actually', '', '真正教會', '文法＋語意｜空格夾在 and 和動詞 teaches 中間 → 要副詞；跟後面「只讀食譜、沒學到」對比 → 真正教會'),
       (21, "which Taylor's ____ reflects", 'menu', '', '菜單反映理念', '文法＋語意｜reflects 有 s → 主詞是單數名詞；餐廳裡能反映「食材全用」理念的是菜單')],
+  4: [(23, 'growth in customer power, ____ makes it necessary', 'which', 'that', '這件事使得……', '文法｜逗號後接補充說明只能用 which（指前面整件事）；that 不能放逗號後'),
+      (23, 'within the industry ____ is still uncertainty', 'there', 'that', '業界裡有不確定性', '文法｜____ + is + 名詞、意思是「有」→ there is；within the industry 是介系詞片語不能當主詞，that 沒東西可指')],
 }
 # LOG[天] = [HTML…]  → 黃框「當日紀錄」（WFD 錯字、新規則等）
 LOG = {
