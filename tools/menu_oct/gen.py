@@ -156,7 +156,10 @@ WRONG = {
       (23, 'within the industry ____ is still uncertainty', 'there', 'that', '業界裡有不確定性', '文法｜____ + is + 名詞、意思是「有」→ there is；within the industry 是介系詞片語不能當主詞，that 沒東西可指'),
       (24, 'the virus ____ mostly in remote locations until recently', 'circulated', 'are circulated', '病毒（以前）主要在偏遠地區流傳', '文法｜三關：主詞 the virus 單數；病毒自己流傳、後面沒有 by → 主動；until recently → 過去式。對照同篇 which is transmitted by mosquito bite（被蚊子傳 → 被動）'),
       (25, 'we ____ some 60 years ago', 'plateaued', '', '（進步）停滯、到頂了', '語意｜plateau 當動詞＝走到高原平台不再往上；前面「進步幾千年」＋後面「不再更安全、還在變差」→ 60 年前就停了。recovered（恢復）方向相反'),
-      (25, 'paint a ____ future', 'bleak', '', '描繪出黯淡的前景', '搭配｜paint a bleak future／picture／outlook 是固定說法；線索：前面全是慢性病、車禍死亡、塞車等壞消息')],
+      (25, 'paint a ____ future', 'bleak', '', '描繪出黯淡的前景', '搭配｜paint a bleak future／picture／outlook 是固定說法；線索：前面全是慢性病、車禍死亡、塞車等壞消息'),
+      (26, 'external ____ of the past centuries', 'domination', 'invasion', '幾世紀的外來支配', '語意｜of the past centuries＝持續幾百年的狀態 → domination（長期支配）；invasion（入侵）是單次事件，撐不了幾世紀'),
+      (26, 'a vibrant ____ of popular movements', 'array', 'group', '一系列活躍的人民運動', '搭配｜an array of＝一系列、各式各樣；group 多指一群人，配 movements 不自然'),
+      (26, 'rather than elite and foreign ____', 'domination', 'suppression', '而不是菁英和外國主導', '語意｜rather than 對比「誰說了算」：人民參與 vs 菁英外國主導；首尾呼應開頭 external domination。suppression（鎮壓）是動作，不是在講誰作主')],
 }
 # LOG[天] = [HTML…]  → 黃框「當日紀錄」（WFD 錯字、新規則等）
 LOG = {
