@@ -153,7 +153,8 @@ WRONG = {
       (21, 'think and ____ teaches them', 'actually', '', '真正教會', '文法＋語意｜空格夾在 and 和動詞 teaches 中間 → 要副詞；跟後面「只讀食譜、沒學到」對比 → 真正教會'),
       (21, "which Taylor's ____ reflects", 'menu', '', '菜單反映理念', '文法＋語意｜reflects 有 s → 主詞是單數名詞；餐廳裡能反映「食材全用」理念的是菜單')],
   4: [(23, 'growth in customer power, ____ makes it necessary', 'which', 'that', '這件事使得……', '文法｜逗號後接補充說明只能用 which（指前面整件事）；that 不能放逗號後'),
-      (23, 'within the industry ____ is still uncertainty', 'there', 'that', '業界裡有不確定性', '文法｜____ + is + 名詞、意思是「有」→ there is；within the industry 是介系詞片語不能當主詞，that 沒東西可指')],
+      (23, 'within the industry ____ is still uncertainty', 'there', 'that', '業界裡有不確定性', '文法｜____ + is + 名詞、意思是「有」→ there is；within the industry 是介系詞片語不能當主詞，that 沒東西可指'),
+      (24, 'the virus ____ mostly in remote locations until recently', 'circulated', 'are circulated', '病毒（以前）主要在偏遠地區流傳', '文法｜三關：主詞 the virus 單數；病毒自己流傳、後面沒有 by → 主動；until recently → 過去式。對照同篇 which is transmitted by mosquito bite（被蚊子傳 → 被動）')],
 }
 # LOG[天] = [HTML…]  → 黃框「當日紀錄」（WFD 錯字、新規則等）
 LOG = {
@@ -161,7 +162,8 @@ LOG = {
       '<br>① <b>it 還是 there</b>：說「有」用 <span class="en">there is/are</span>；評論整件事用 <span class="en">It is no wonder／no surprise／important that…</span>、<span class="en">It seems that ＋句子</span>（no 後面接名詞 surprise，不接 surprising）'
       '<br>② <b>there 的動詞看後面名詞</b>：<span class="en">There seem<b>s</b> to be a problem</span>／<span class="en">There seem to be fewer students</span>；it 永遠單數 → <span class="en">It seem<b>s</b></span>'
       '<br>③ <b>what 還是 which</b>：前面有名詞可指 → which（<span class="en">…, which makes／in which</span>）；沒有 → what（<span class="en">What surprised me most was…</span>＝the thing that）',
-      '<b>固定搭配</b>：<span class="en">demanding customers</span>＝要求高的顧客（Integrate Sales ①，錯選 considerable；considerable＝相當大的，不能形容顧客難搞）'],
+      '<b>固定搭配</b>：<span class="en">demanding customers</span>＝要求高的顧客（Integrate Sales ①，錯選 considerable；considerable＝相當大的，不能形容顧客難搞）',
+      '<b>主被動＋時態加練</b>（Zika circulated 延伸）：意思決定主被動（主詞自己做 → 主動；被別人做、常有 by → 被動），be＋p.p. 只是被動的長相；時態看線索 Today → 現在、until last year → 過去。不規則動詞：<span class="en">spread → spread → spread</span>（沒有 spreaded）、<span class="en">rise → rose → risen</span>（沒有 rised；rise 不接受詞，不能被動）'],
   2: ['<b>WE 兩題 10/7 補練完</b>（#18 員工決策 5 拼字＋11 文法、#20 旅遊 6 拼字＋10 文法，錯題已進 <a href="WE_論點總表.html#q18" target="_blank">總表 #18</a>／<a href="WE_論點總表.html#q20" target="_blank">#20</a> 錯題本）。拼字：slow <span class="en">done</span>→down、<span class="en">knee</span>→keen（改 willing）、<span class="en">hole</span>→whole、<span class="en">conutries</span>、<span class="en">hart</span>→hurt、<span class="en">loose/lose</span>→loss（錯三次）、<span class="en">carelss</span>、<span class="en">toruism</span>、develop<span class="en">ed</span> 掉 -ed。文法三條規則：① 被動要 be＋-ed（should <b>be left</b>／be <b>approved</b>）② make／help＋受詞＋<b>原形</b>，不加 be（makes employees feel…／helps families earn…）③ crucial that 後面原形不加 should。+s 掉 4 次（takes／turns／becomes／helps）。改 James 版：#18 ⑫ willing to work、⑮ 加 work harder；#20 ⑧⑨ become shows for tourists → a loss of real local culture', '<b>要記的字</b>：<span class="en">forerunners</span> ＝ 先驅、前身（fore 前 ＋ runner 跑的人 ＋ s）。<span class="en">All three are considered American forerunners of Pop.</span> 搭配 <span class="en">forerunner of ＋ 名詞</span>、<span class="en">be considered ＋ 名詞</span>（被視為）'],
   1: ['<b>WFD 默拼還錯 2 字</b>：<span class="en">definitive</span>（de·fin·i·tive，0805 就錯過）、<span class="en">available</span>（a·vail·a·ble，-able）——已加進 WFD_訂正 #vquiz 默拼庫，明天先重打'],
 }
