@@ -168,12 +168,15 @@ WRONG = {
       (30, 'There is ____ difficulty in conversation', 'little', 'converging', '對話時沒什麼困難', '文法＋語意｜修飾名詞 difficulty 要形容詞；後面 because 聽者有無數線索 → 困難很少'),
       (30, 'the listener can ____ at any time', 'cut in', 'cut off', '隨時插話', '文法｜cut in＝插話，不接受詞；cut off＝打斷某人，後面要接人（cut him off）。空格後直接 at any time → cut in'),
       (30, 'overcome … by ____ on ideas from different directions', 'converging', 'cut in', '從不同方向匯聚在想法上', '文法＋搭配｜介系詞 by 後面接動作 → V-ing；converge on＝匯聚、集中在。emerging（浮現）語意不對'),
-      (30, 'without benefits of physical ____ and emphasis', 'tone', 'intonation', '語氣和強調', '語意＋搭配｜tone＝語氣、口吻（範圍廣）；intonation＝語調高低（偏技術、範圍窄）。tone and emphasis 常一起出現')],
+      (30, 'without benefits of physical ____ and emphasis', 'tone', 'intonation', '語氣和強調', '語意＋搭配｜tone＝語氣、口吻（範圍廣）；intonation＝語調高低（偏技術、範圍窄）。tone and emphasis 常一起出現'),
+      (31, 'someone someday is sure to try it, ____ Stephan Schuster', 'predicts', 'foresees', '某某人預測', '文法＋語意｜引述句型「意見, ＿＿＋說話者」→ 填「說」類動詞：predict＝pre 先＋dict 說；foresee＝fore 先＋see 看，是腦中預見不是說出來。主詞單數 → predicts')],
 }
 # LOG[天] = [HTML…]  → 黃框「當日紀錄」（WFD 錯字、新規則等）
 LOG = {
   5: ['<span class="key">⭐ 重點技巧：插入語先遮掉</span>空格前後有插入的小片語（<span class="en">from it</span>、<span class="en">in fact</span>、<span class="en">for that matter</span>、逗號夾住的一段），先遮掉再判斷詞性。例：<span class="en">must take this line of symbols and [from it] ____ the original wholeness</span> → 遮掉 from it 變 <span class="en">must take … and ____ the original wholeness</span>：① and 前後對齊（take 原形 → 空格也原形）② 空格後接名詞片語＝受詞 → 空格是動詞 → <b>reconstruct</b>。曾被 from 騙成「介系詞後接名詞」。<br>三步驟：① 遮插入語 ② 往前找 and／or／but 對齊 ③ 往後看，後面接名詞 → 空格多半是動詞', '<b>要記的字</b>：<span class="en">hereditary</span>（he·red·i·tar·y）＝遺傳的，形容詞（-ary 字尾常是形容詞：necessary／ordinary）。DNA 題 <span class="en">the ____ material</span>：名詞前要形容詞 → <span class="en">hereditary material</span>＝遺傳物質；gene 是名詞塞不進去（「基因的」要說 <span class="en">genetic</span>／<span class="en">hereditary</span>）；後面 <span class="en">passed down from generation to generation</span> 正是 hereditary 的定義',
-      '<b>固定搭配</b>：<span class="en">tone and emphasis</span>＝語氣和強調（wholeness 題 ⑤，錯選 intonation）。tone＝語氣、口吻，範圍廣；intonation＝語調高低起伏，偏技術、範圍窄'],
+      '<b>固定搭配</b>：<span class="en">tone and emphasis</span>＝語氣和強調（wholeness 題 ⑤，錯選 intonation）。tone＝語氣、口吻，範圍廣；intonation＝語調高低起伏，偏技術、範圍窄',
+      '<b>引述句型</b>（DNA sequence ①，錯選 foresees）：前面一段意見／預測（不一定有引號）＋逗號＋<b>「說」類動詞＋說話者</b>（人、報告、機構）。<span class="en">…, predicts Stephan Schuster</span>＝Schuster predicts that…（倒裝）。說話者也可在前：<span class="en">…, he says</span>（代名詞幾乎都放前面）。「說」類動詞：<span class="en">says／adds／warns／predicts／argues／notes／explains／suggests</span>，單數加 s；不填「看」類（sees／foresees）。<b>不加 which</b>：<span class="en">"…," warns an expert</span> 的主詞是 an expert；加 which 變「這句話警告了專家」意思反了',
+      '<b>固定搭配</b>：<span class="en">a driving force behind ～</span>＝背後的推動力、主導者（DNA sequence ③，錯選 carrying；carrying force 不是英文說法）。例：<span class="en">She is the driving force behind the project.</span>'],
   4: ['<b>文法加練（which／there 延伸，18 題錯 3 → 二輪全對）三條判斷</b>：'
       '<br>① <b>it 還是 there</b>：說「有」用 <span class="en">there is/are</span>；評論整件事用 <span class="en">It is no wonder／no surprise／important that…</span>、<span class="en">It seems that ＋句子</span>（no 後面接名詞 surprise，不接 surprising）'
       '<br>② <b>there 的動詞看後面名詞</b>：<span class="en">There seem<b>s</b> to be a problem</span>／<span class="en">There seem to be fewer students</span>；it 永遠單數 → <span class="en">It seem<b>s</b></span>'
