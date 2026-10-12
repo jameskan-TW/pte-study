@@ -166,6 +166,7 @@ WRONG = {
 }
 # LOG[天] = [HTML…]  → 黃框「當日紀錄」（WFD 錯字、新規則等）
 LOG = {
+  5: ['<b>要記的字</b>：<span class="en">hereditary</span>（he·red·i·tar·y）＝遺傳的，形容詞（-ary 字尾常是形容詞：necessary／ordinary）。DNA 題 <span class="en">the ____ material</span>：名詞前要形容詞 → <span class="en">hereditary material</span>＝遺傳物質；gene 是名詞塞不進去（「基因的」要說 <span class="en">genetic</span>／<span class="en">hereditary</span>）；後面 <span class="en">passed down from generation to generation</span> 正是 hereditary 的定義'],
   4: ['<b>文法加練（which／there 延伸，18 題錯 3 → 二輪全對）三條判斷</b>：'
       '<br>① <b>it 還是 there</b>：說「有」用 <span class="en">there is/are</span>；評論整件事用 <span class="en">It is no wonder／no surprise／important that…</span>、<span class="en">It seems that ＋句子</span>（no 後面接名詞 surprise，不接 surprising）'
       '<br>② <b>there 的動詞看後面名詞</b>：<span class="en">There seem<b>s</b> to be a problem</span>／<span class="en">There seem to be fewer students</span>；it 永遠單數 → <span class="en">It seem<b>s</b></span>'
