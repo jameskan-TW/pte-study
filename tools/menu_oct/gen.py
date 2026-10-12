@@ -170,7 +170,9 @@ WRONG = {
       (30, 'overcome … by ____ on ideas from different directions', 'converging', 'cut in', '從不同方向匯聚在想法上', '文法＋搭配｜介系詞 by 後面接動作 → V-ing；converge on＝匯聚、集中在。emerging（浮現）語意不對'),
       (30, 'without benefits of physical ____ and emphasis', 'tone', 'intonation', '語氣和強調', '語意＋搭配｜tone＝語氣、口吻（範圍廣）；intonation＝語調高低（偏技術、範圍窄）。tone and emphasis 常一起出現'),
       (31, 'someone someday is sure to try it, ____ Stephan Schuster', 'predicts', 'foresees', '某某人預測', '文法＋語意｜引述句型「意見, ＿＿＋說話者」→ 填「說」類動詞：predict＝pre 先＋dict 說；foresee＝fore 先＋see 看，是腦中預見不是說出來。主詞單數 → predicts'),
-      (32, '____ agrarian parties to be important, … must not be integrated', 'For', 'although', '要讓農民政黨變重要', '文法｜空格後是「誰＋to＋動詞」（to be 不是真動詞，不是完整句子）→ For；although 後面要完整句子（parties are important）')],
+      (32, '____ agrarian parties to be important, … must not be integrated', 'For', 'although', '要讓農民政黨變重要', '文法｜空格後是「誰＋to＋動詞」（to be 不是真動詞，不是完整句子）→ For；although 後面要完整句子（parties are important）'),
+      (33, 'Mountains restricted gene flow, while the lower Coast Range ____ gene flow', 'facilitated', 'prevented', '（海岸山脈）促進了基因交流', '邏輯｜while 連兩個不同主角＝對比（而）：前半 restricted → 後半相反 facilitated；同句 genetic corridor（走廊＝讓東西通過）、high vs lower 也在對比'),
+      (33, 'did not act as a barrier, ____ owls readily fly over this large river', 'suggesting', 'proving', '顯示貓頭鷹能飛越', '語意｜只觀察到「河沒擋住」→ 只能推測，用語氣弱的 suggest／indicate；prove＝證明，要決定性證據。學術文從觀察推結論選弱語氣')],
 }
 # LOG[天] = [HTML…]  → 黃框「當日紀錄」（WFD 錯字、新規則等）
 LOG = {
