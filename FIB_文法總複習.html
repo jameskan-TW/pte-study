@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FIB 文法總複習（10/10–10/13）</title>
+<style>
+  :root{--ink:#1f2328;--sub:#5b6370;--line:#e3e6ea;--bg:#f7f7f5;--card:#fff;--en:#0b4f9c;--ok:#0b7a43;--ng:#b42318;--key:#fff3c4;--keyb:#f0b400;--tag:#eef1f5}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif}
+  main{max-width:820px;margin:0 auto;padding:16px 16px 60px}
+  h1{font-size:24px;margin:8px 0 4px}
+  .lead{color:var(--sub);font-size:14px;margin:0 0 14px}
+  nav{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:14px;margin-bottom:18px}
+  nav a{color:var(--en);text-decoration:none;margin-right:12px;white-space:nowrap;line-height:2}
+  h2{font-size:20px;margin:28px 0 10px;padding-bottom:4px;border-bottom:2px solid var(--ink)}
+  h3{font-size:16px;margin:18px 0 6px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:10px 0}
+  .card.key{background:var(--key);border:1px solid #f0d9a0;border-left:5px solid var(--keyb)}
+  .card h3{margin:0 0 6px}
+  .en{font-family:Menlo,Consolas,monospace;color:var(--en);font-size:.94em}
+  .ok{color:var(--ok);font-weight:700}
+  .ng{color:var(--ng);text-decoration:line-through}
+  .tag{display:inline-block;font-size:12px;background:var(--tag);color:var(--sub);border-radius:5px;padding:0 6px;margin-right:4px}
+  ul{margin:4px 0;padding-left:20px} li{margin:2px 0}
+  table{border-collapse:collapse;width:100%;font-size:14.5px;margin:6px 0}
+  th,td{border:1px solid var(--line);padding:5px 8px;text-align:left;vertical-align:top}
+  th{background:#f0f2f5;font-weight:700}
+  .tw{overflow-x:auto}
+  pre{background:#f3f5f8;border-radius:8px;padding:8px 10px;font-size:13.5px;overflow-x:auto;margin:6px 0;line-height:1.5}
+  details.q{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 10px;margin:6px 0}
+  details.q summary{cursor:pointer;list-style:none}
+  details.q summary::-webkit-details-marker{display:none}
+  details.q summary::after{content:"　▸ 看答案";color:var(--sub);font-size:12px}
+  details.q[open] summary::after{content:""}
+  details.q .a{margin-top:4px;padding-top:4px;border-top:1px dashed var(--line);font-size:14.5px}
+  .day{font-size:13px;color:#fff;background:#3b2fa0;border-radius:5px;padding:1px 7px;margin-right:6px}
+  .bar{position:sticky;top:0;background:var(--bg);padding:6px 0;z-index:2;font-size:13px}
+  .bar button{font:inherit;border:1px solid var(--line);background:#fff;border-radius:6px;padding:3px 10px;margin-right:6px}
+  @media print{.bar,nav{display:none} body{background:#fff} .card,details.q{break-inside:avoid}}
+</style>
+</head>
+<body>
+<main>
+<h1>FIB 文法總複習</h1>
+<p class="lead">10/10–10/13 跟 Claude 練的全部內容（D2–D5 四批閱讀訂正＋文法加練）。離線可用。自測題點一下看答案。</p>
+<div class="bar"><button onclick="document.querySelectorAll('details').forEach(d=>d.open=true)">全部展開</button><button onclick="document.querySelectorAll('details').forEach(d=>d.open=false)">全部收起</button></div>
+<nav>
+  <a href="#A">一、解題技巧</a><a href="#B">二、文法規則</a><a href="#C">三、搭配與單字</a><a href="#D">四、錯格速查</a><a href="#E">五、自測題</a>
+</nav>
+
+<!-- ============ 一、解題技巧 ============ -->
+<h2 id="A">一、解題技巧（做題順序）</h2>
+
+<div class="card key">
+<h3>⭐ 1. 插入語先遮掉</h3>
+空格前後有插進來的小片語（<span class="en">from it</span>、<span class="en">in fact</span>、<span class="en">for that matter</span>、逗號夾住的一段），先遮掉再判斷。
+<pre>must take this line of symbols and [from it] ____ the original wholeness
+→ 遮掉 from it：must take … and ____ the original wholeness
+→ and 對齊 take（原形）＋後面接名詞（受詞）→ 動詞原形 reconstruct</pre>
+曾被 from 騙成「介系詞後接名詞」。
+</div>
+
+<div class="card">
+<h3>2. 先看詞性，再看意思</h3>
+<ol style="margin:4px 0;padding-left:20px">
+<li><b>遮插入語</b></li>
+<li><b>往前找 and／or／but</b>：前後詞性要對齊（<span class="en">telling … and guiding</span>、<span class="en">must take … and reconstruct</span>）</li>
+<li><b>往後看</b>：後面接名詞 → 空格多半是動詞或形容詞；後面是 <span class="en">to＋動詞</span> → 想 For</li>
+<li>把選項按詞性分組，每格只剩 1–3 個，再看語意</li>
+</ol>
+</div>
+
+<div class="card">
+<h3>3. 同篇重複的字＝線索</h3>
+<ul>
+<li>Imperial Control：開頭 <span class="en">external domination</span> → 結尾 <span class="en">foreign domination</span></li>
+<li>SpaceX：第一句 <span class="en">reaching orbit</span> → 後面 <span class="en">if it reached orbit</span></li>
+<li>Chemistry：<span class="en">attract</span> students → 同字根 <span class="en">attraction</span></li>
+</ul>
+</div>
+
+<div class="card">
+<h3>4. 文法題 vs 語意題</h3>
+<ul>
+<li><b>文法題</b>：看空格旁的小字（逗號、into、is、to、by），答案有規則可推</li>
+<li><b>語意題</b>：選項詞性都一樣、文法都通 → 看前後句意思、對比、因果</li>
+</ul>
+</div>
+
+<!-- ============ 二、文法規則 ============ -->
+<h2 id="B">二、文法規則</h2>
+
+<div class="card">
+<h3>1. <span class="en">, which</span> 補充整件事</h3>
+<ul>
+<li>逗號後面接補充說明 → 只能用 <b>which</b>，<b>that 不能放逗號後</b></li>
+<li>which 指前面整件事 → 動詞用單數：<span class="en">…, which makes it necessary</span></li>
+<li>口訣：<span class="en">, ____ ＋ 動詞</span> → which</li>
+<li>例：<span class="en">He passed the test, which made his mom happy.</span></li>
+</ul>
+<table><tr><th>情況</th><th>用</th></tr>
+<tr><td>逗號後補充</td><td>只能 which</td></tr>
+<tr><td>沒逗號、緊貼名詞</td><td>that 或 which 都行</td></tr>
+<tr><td>介系詞後面</td><td>只能 which：<span class="en">the town in which I grew up</span></td></tr></table>
+</div>
+
+<div class="card">
+<h3>2. which 還是 what</h3>
+<ul>
+<li>前面<b>有名詞</b>可以指 → which</li>
+<li>前面<b>沒有名詞</b>，空格本身＝「……的東西」→ <b>what</b>（＝the thing that）</li>
+<li><span class="en">What surprised me most was the price.</span>　<span class="en">What I need most is more sleep.</span></li>
+</ul>
+</div>
+
+<div class="card">
+<h3>3. that 當連接詞</h3>
+<span class="en">agree／say／think／believe that ＋ 完整句子</span>（這個 that 可省略）<br>
+<span class="en">Experts agree that the problem will get worse.</span>　<span class="en">The manager said that there was no money left.</span>
+</div>
+
+<div class="card">
+<h3>4. there 還是 it</h3>
+<div class="tw"><table>
+<tr><th>看句子</th><th>用</th><th>例</th></tr>
+<tr><td>只有名詞，意思是「有／沒有＿＿」</td><td><b>There</b></td><td><span class="en">There is no hospital nearby.</span><br><span class="en">There is no doubt that…</span></td></tr>
+<tr><td>後面有 <span class="en">to＋動詞</span> 或 <span class="en">that＋完整句子</span>（能搬到前面當主詞）</td><td><b>It</b></td><td><span class="en">It is important to save money.</span><br><span class="en">It is no wonder that…</span><br><span class="en">It is no surprise that…</span></td></tr>
+<tr><td><span class="en">seems that ＋ 句子</span></td><td><b>It</b></td><td><span class="en">It seems that the plan will not work.</span></td></tr>
+<tr><td><span class="en">seem(s) to be ＋ 名詞</span>（有……）</td><td><b>There</b></td><td><span class="en">There seems to be less time for family.</span></td></tr>
+<tr><td>指前面講過的東西</td><td>It</td><td><span class="en">The noise? It seems to be a problem.</span></td></tr>
+</table></div>
+<ul>
+<li><b>there 的動詞看後面名詞</b>：<span class="en">There seems to be a problem</span>（單數）／<span class="en">There seem to be fewer students</span>（複數）</li>
+<li><b>it 永遠單數</b>：It seem<b>s</b>，It seem ✗</li>
+<li><b>no 後面接名詞</b>：<span class="en">It is no surprise that…</span> ✓／<span class="en">It is not surprising that…</span> ✓／<span class="en">There is no surprising that…</span> ✗（no＋形容詞沒講完）</li>
+<li><span class="en">within the industry</span> 這種介系詞片語不能當主詞 → <span class="en">within the industry there is still uncertainty</span></li>
+</ul>
+</div>
+
+<div class="card">
+<h3>5. 主動還是被動</h3>
+<ul>
+<li><b>意思決定主被動</b>：主詞自己做 → 主動；被別人做（常有 by）→ 被動</li>
+<li><b>be＋p.p. 只是被動的長相</b>，判定完才套</li>
+<li>同篇對照（Zika）：<span class="en">which is transmitted by mosquito bite</span>（被蚊子傳 → 被動）／<span class="en">the virus circulated mostly in remote locations</span>（自己流傳 → 主動）</li>
+<li><span class="en">rise</span> 不接受詞，<b>永遠不能被動</b></li>
+</ul>
+<table><tr><th>時態</th><th>被動寫法</th></tr>
+<tr><td>現在</td><td>am／is／are＋p.p.</td></tr>
+<tr><td>過去</td><td>was／were＋p.p.</td></tr>
+<tr><td>未來</td><td>will be＋p.p.</td></tr>
+<tr><td>現在完成</td><td>has／have been＋p.p.</td></tr>
+<tr><td>助動詞</td><td>can／should／must be＋p.p.（<span class="en">It can be passed from mother to fetus</span>）</td></tr></table>
+<b>做題四步</b>：① 找主詞定單複數 ② 判主被動 ③ 看時間線索定時態 ④ 寫出動詞注意不規則
+</div>
+
+<div class="card">
+<h3>6. 時態線索＋過去式 vs 過去完成式</h3>
+<ul>
+<li><span class="en">Today</span> → 現在式；<span class="en">last week／last night／until last year／until recently</span> → 過去式</li>
+<li><b>一件過去的事用過去式；兩件過去的事比先後，先發生的那件用 had＋p.p.</b></li>
+<li><span class="en">until 2020／until recently</span> 只標結束時間，還是一件事 → 過去式</li>
+<li>看到 <span class="en">by the time／when／before ＋過去式</span> 在比先後，才想 had＋p.p.：<span class="en">When I arrived, the train had left.</span></li>
+<li>並列對齊：<span class="en">Jasper Johns reimagined…; Rauschenberg employed…; Rivers used…</span>（全過去式）</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>7. 不規則動詞</h3>
+<table><tr><th>原形</th><th>過去式</th><th>p.p.</th><th>注意</th></tr>
+<tr><td>spread</td><td>spread</td><td>spread</td><td>沒有 spreaded</td></tr>
+<tr><td>rise</td><td>rose</td><td>risen</td><td>沒有 rised；不能被動</td></tr>
+<tr><td>send</td><td>sent</td><td>sent</td><td><span class="en">The letter was sent … by the school.</span></td></tr>
+<tr><td>seek</td><td>sought</td><td>sought</td><td><span class="en">They have sought to…</span></td></tr></table>
+</div>
+
+<div class="card">
+<h3>8. 名詞前要形容詞</h3>
+<ul>
+<li><span class="en">the ____ material</span> → <b>hereditary</b>（遺傳的），gene 是名詞塞不進去（「基因的」＝genetic）</li>
+<li><span class="en">a ____ biologist</span> → <b>molecular</b>（分子的），molecule 是名詞</li>
+<li><span class="en">There is ____ difficulty</span> → <b>little</b></li>
+<li>字尾 <b>-ary</b> 常是形容詞：hereditary／necessary／ordinary</li>
+<li>名詞當形容詞用：<span class="en">success story</span>、<span class="en">building block</span></li>
+</ul>
+</div>
+
+<div class="card">
+<h3>9. 介系詞後面：名詞或 V-ing，不能原形</h3>
+<ul>
+<li><span class="en">by bus</span>／<span class="en">by the teacher</span>／<span class="en">by 5 pm</span>／<span class="en">by working hard</span> ✓　<span class="en">by work hard</span> ✗</li>
+<li>Owls 篇：<span class="en">by converging on ideas</span></li>
+<li>其他介系詞同理：<span class="en">interested in learning</span>、<span class="en">without saying goodbye</span>、<span class="en">before leaving</span></li>
+<li><b>to 的兩種身分</b>：介系詞 → 接 V-ing（<span class="en">look forward to seeing</span>、<span class="en">be used to living</span>）；不定詞 → 接原形（<span class="en">want to go</span>、<span class="en">for parties to be</span>）</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>10. For someone to do something</h3>
+<ul>
+<li>＝<b>讓某人做某事</b>。空格後面看到「誰＋<b>to</b>＋動詞」→ 填 <b>For</b></li>
+<li>although／because／if／when 後面要<b>完整句子</b>（主詞＋有時態的動詞）</li>
+<li>對照：<span class="en">For the plan to work, everyone must help.</span>（要讓計畫成功）vs <span class="en">Although the plan worked, nobody thanked him.</span>（雖然計畫成功了）</li>
+<li>兩種用法：句首 <span class="en">For you to pass, you must practise.</span>／<span class="en">It is hard for me to wake up early.</span></li>
+</ul>
+</div>
+
+<div class="card">
+<h3>11. 引述句型</h3>
+<ul>
+<li>一段意見或預測（<b>不一定有引號</b>）＋逗號＋<b>「說」類動詞＋說話者</b>（人、報告、機構）</li>
+<li><span class="en">…, predicts Stephan Schuster</span>＝Schuster predicts that…（倒裝）；代名詞放前面：<span class="en">…, he says</span></li>
+<li>「說」類：<span class="en">says／adds／warns／predicts／argues／notes／explains／suggests</span>；不填「看」類 sees／foresees</li>
+<li><b>predict＝pre 先＋dict 說</b>；foresee＝fore 先＋see 看（腦中預見，不是說出來）</li>
+<li><b>不加 which</b>：<span class="en">"…," warns an expert</span> 的主詞是 an expert；加 which 變「這句話警告了專家」</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>12. while 的兩個意思</h3>
+<table><tr><th>意思</th><th>判斷</th><th>例</th></tr>
+<tr><td>當……的時候</td><td>兩件事同時發生</td><td><span class="en">I listened to music while I cooked.</span></td></tr>
+<tr><td>而（對比）</td><td>兩個不同主角在比較 → 空格跟前面相反</td><td><span class="en">Mountains restricted gene flow, while the Coast Range facilitated it.</span></td></tr></table>
+</div>
+
+<div class="card">
+<h3>13. 轉折與因果連接詞</h3>
+<ul>
+<li><b>Nevertheless</b>＝然而（前後轉折）；Therefore＝因此（因果）</li>
+<li><b>Thus</b>＝因此（順著推結論）；After all＝畢竟（補理由，不是推結論）</li>
+<li><b>Although</b> 前後相反：雖然沒有斷層，但有幾個地形很重要（<span class="en">several</span>）</li>
+<li><span class="en">survive and thus reproduce</span>：thus 是副詞，放在 and 和動詞中間</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>14. 學術語氣：suggest 不是 prove</h3>
+從一個觀察推結論 → 選語氣弱的 <b>suggest／indicate／imply</b>；prove＝證明，要決定性證據。<br>
+<span class="en">The river did not act as a barrier, suggesting owls readily fly over it.</span>
+</div>
+
+<div class="card">
+<h3>15. 真動詞 vs V-ing／to V（讀長句）</h3>
+<ul>
+<li>真動詞有時態：is／symbolizes／moved／will move</li>
+<li>單獨 V-ing 前面沒有 be → 不是動詞（動名詞或分詞）；to＋原形 也不是真動詞</li>
+<li><span class="en">It is an approach that symbolizes chemistry's success story: moving with the times, while holding fast to…</span><br>→ 真動詞只有 <b>is</b> 和 <b>symbolizes</b>；moving、holding 是補充</li>
+</ul>
+<pre>讀長句：
+1. 先找主詞＋動詞，抓最短的完整句（It is an approach）
+2. that／which → 修飾前面的名詞
+3. 冒號 → 解釋前面的名詞
+4. while／as／of → 補充細節，最後再看</pre>
+<b>容易看錯的字</b>：
+<table><tr><th>字</th><th>以為</th><th>其實</th></tr>
+<tr><td>times</td><td>次數</td><td>時代（move with the times）</td></tr>
+<tr><td>fast</td><td>快的</td><td>牢牢地（hold fast to）</td></tr>
+<tr><td>advance</td><td>動詞前進</td><td>名詞進步（technological advance）</td></tr>
+<tr><td>building</td><td>蓋房子</td><td>building block＝基石</td></tr>
+<tr><td>popular</td><td>受歡迎的</td><td>人民的（popular movements）</td></tr>
+<tr><td>address</td><td>地址</td><td>動詞：探討（The book addresses…）</td></tr></table>
+</div>
+
+<div class="card">
+<h3>16. 第三人稱 +s／複數 -es（頭號罩門）</h3>
+<ul>
+<li>先找主詞，再決定動詞：<span class="en">The book addresses</span>、<span class="en">it fits into</span>、<span class="en">Stephan Schuster predicts</span>、<span class="en">an approach that symbolizes</span>、<span class="en">Understanding … teaches them</span></li>
+<li>字尾 -s／-ss／-sh／-ch／-x 加 <b>-es</b>：class→class<b>es</b>、teach→teach<b>es</b>、watch→watch<b>es</b>、box→box<b>es</b>、miss→miss<b>es</b></li>
+</ul>
+</div>
+
+<div class="card">
+<h3>17. 要不要受詞</h3>
+<ul>
+<li><b>cut in</b>＝插話，不接受詞：<span class="en">the listener can cut in at any time</span></li>
+<li><b>cut off</b>＝打斷某人，要接人：<span class="en">cut him off</span></li>
+<li><b>fit into</b>＝融入；<b>adapt to</b>＝適應（adapt 不接 into）</li>
+</ul>
+</div>
+
+<!-- ============ 三、搭配與單字 ============ -->
+<h2 id="C">三、搭配與單字</h2>
+
+<h3>固定搭配</h3>
+<div class="tw"><table>
+<tr><th>搭配</th><th>意思</th><th>錯選／對照</th></tr>
+<tr><td class="en">a time of development</td><td>發展的時期</td><td>growing（of 後接名詞）</td></tr>
+<tr><td class="en">sharp brains</td><td>敏銳的腦袋</td><td>special</td></tr>
+<tr><td class="en">orders of magnitude</td><td>好幾個數量級</td><td>volume</td></tr>
+<tr><td class="en">be forced to adapt</td><td>被迫適應</td><td>struggling</td></tr>
+<tr><td class="en">make its way</td><td>一路前進</td><td>direction</td></tr>
+<tr><td class="en">the closing decades／years</td><td>晚年、最後幾十年</td><td>final</td></tr>
+<tr><td class="en">return for a second taste</td><td>回來再吃一次</td><td>review</td></tr>
+<tr><td class="en">doubt the quality of</td><td>質疑品質</td><td></td></tr>
+<tr><td class="en">demanding customers</td><td>要求高的顧客</td><td>considerable</td></tr>
+<tr><td class="en">fit into</td><td>融入</td><td>adapt（adapt to）</td></tr>
+<tr><td class="en">paint a bleak future／picture</td><td>描繪黯淡前景</td><td></td></tr>
+<tr><td class="en">external／foreign domination</td><td>外來支配</td><td>invasion（單次）、suppression（鎮壓）</td></tr>
+<tr><td class="en">a vibrant array of</td><td>一系列活躍的</td><td>group</td></tr>
+<tr><td class="en">a wide array of</td><td>各式各樣的</td><td></td></tr>
+<tr><td class="en">a promising development</td><td>有前景的進展</td><td>encouraging</td></tr>
+<tr><td class="en">reach orbit</td><td>進入軌道</td><td>route</td></tr>
+<tr><td class="en">tone and emphasis</td><td>語氣和強調</td><td>intonation（語調高低，窄）</td></tr>
+<tr><td class="en">converge on</td><td>匯聚、集中在</td><td>emerging</td></tr>
+<tr><td class="en">a driving force behind ～</td><td>背後的推動力</td><td>carrying</td></tr>
+<tr><td class="en">a molecular biologist</td><td>分子生物學家</td><td>molecule</td></tr>
+<tr><td class="en">hereditary material</td><td>遺傳物質</td><td>gene</td></tr>
+<tr><td class="en">differ from</td><td>跟……不同</td><td></td></tr>
+<tr><td class="en">move with the times</td><td>跟上時代</td><td></td></tr>
+<tr><td class="en">hold fast to</td><td>堅守</td><td></td></tr>
+<tr><td class="en">be exposed to</td><td>接觸到</td><td></td></tr>
+<tr><td class="en">a matter of credibility</td><td>關乎公信力</td><td></td></tr>
+<tr><td class="en">forerunner of ＋名詞</td><td>……的先驅</td><td><span class="en">be considered ＋名詞</span>＝被視為</td></tr>
+<tr><td class="en">It is no wonder／no surprise that</td><td>難怪／不意外</td><td>There（✗）</td></tr>
+<tr><td class="en">There is no doubt that</td><td>毫無疑問</td><td></td></tr>
+</table></div>
+
+<h3>單字（依主題）</h3>
+<div class="tw"><table>
+<tr><th>字</th><th>意思</th><th>備註</th></tr>
+<tr><td class="en">irrelevant</td><td>無足輕重、沒人在乎</td><td>an irrelevant old age；unimportant 太籠統</td></tr>
+<tr><td class="en">outhouses</td><td>主屋旁小屋、車庫（英式）</td><td>美式＝戶外廁所</td></tr>
+<tr><td class="en">continent</td><td>大陸</td><td>the African continent；region 範圍小</td></tr>
+<tr><td class="en">classes</td><td>課程</td><td>students in … classes；disciplines＝學科</td></tr>
+<tr><td class="en">plateau（v.）</td><td>停滯、到頂</td><td>we plateaued 60 years ago</td></tr>
+<tr><td class="en">bleak</td><td>黯淡的</td><td></td></tr>
+<tr><td class="en">mockup</td><td>實體模型、樣機</td><td>an uncrewed mockup；structure 太空泛</td></tr>
+<tr><td class="en">orbit</td><td>軌道</td><td></td></tr>
+<tr><td class="en">attraction</td><td>吸引點</td><td>attract 的名詞</td></tr>
+<tr><td class="en">reconstruct</td><td>重建</td><td></td></tr>
+<tr><td class="en">facilitate</td><td>促進</td><td>↔ restrict 限制</td></tr>
+<tr><td class="en">suggest</td><td>顯示、暗示（弱）</td><td>↔ prove 證明（強）</td></tr>
+<tr><td class="en">hereditary</td><td>遺傳的</td><td>he·red·i·tar·y</td></tr>
+<tr><td class="en">forerunners</td><td>先驅、前身</td><td>fore 前＋runner＋s</td></tr>
+<tr><td class="en">dominate → domination → dominant</td><td>支配（v.／n.／adj.）</td><td>字族</td></tr>
+<tr><td class="en">engaging</td><td>吸引人投入的</td><td></td></tr>
+<tr><td class="en">credibility</td><td>公信力</td><td></td></tr>
+<tr><td class="en">symbolize</td><td>象徵</td><td></td></tr>
+<tr><td class="en">address（v.）</td><td>探討</td><td></td></tr>
+<tr><td class="en">escalating costs</td><td>不斷上升的成本</td><td></td></tr>
+<tr><td class="en">allocate resources</td><td>分配資源</td><td></td></tr>
+<tr><td class="en">uncrewed</td><td>無人的</td><td>crew＝機組人員</td></tr>
+<tr><td class="en">disillusionment</td><td>幻滅、失望</td><td></td></tr>
+<tr><td class="en">indigenous</td><td>原住民的</td><td></td></tr>
+<tr><td class="en">a handful of</td><td>少數幾個</td><td></td></tr>
+<tr><td class="en">buck the pattern</td><td>打破常規</td><td></td></tr>
+<tr><td class="en">career-defining</td><td>代表作級的</td><td></td></tr>
+<tr><td class="en">pilgrimage site</td><td>朝聖地</td><td></td></tr>
+<tr><td class="en">utopian</td><td>烏托邦式、夢幻完美的</td><td></td></tr>
+<tr><td class="en">barrier</td><td>屏障</td><td></td></tr>
+<tr><td class="en">gene flow</td><td>基因交流</td><td></td></tr>
+</table></div>
+
+<!-- ============ 四、錯格速查 ============ -->
+<h2 id="D">四、錯格速查（D2–D5）</h2>
+<p class="lead">左邊片語遮住答案先想，再點開。紅字＝當時選錯的。</p>
+
+<h3><span class="day">D2</span>第 2 批</h3>
+<details class="q"><summary><span class="en">a paradoxical time of ____</span></summary><div class="a"><span class="ok">development</span> <span class="ng">growing</span>　of 後面接名詞</div></details>
+<details class="q"><summary><span class="en">very ____ brains</span></summary><div class="a"><span class="ok">sharp</span> <span class="ng">special</span>　腦筋敏銳</div></details>
+<details class="q"><summary><span class="en">____, we understand quite well the safe levels…</span>（前句說可怕）</summary><div class="a"><span class="ok">Nevertheless</span> <span class="ng">Therefore</span>　轉折＝然而</div></details>
+<details class="q"><summary><span class="en">orders of ____</span></summary><div class="a"><span class="ok">magnitude</span> <span class="ng">volume</span>　數量級</div></details>
+<details class="q"><summary><span class="en">young people are ____ to adapt</span></summary><div class="a"><span class="ok">forced</span> <span class="ng">struggling</span>　被外在壓力逼著</div></details>
+<details class="q"><summary><span class="en">Jasper Johns ____ iconic imagery; Rauschenberg employed…</span></summary><div class="a"><span class="ok">reimagined</span> <span class="ng">have been reimagining</span>　並列過去式</div></details>
+<details class="q"><summary><span class="en">make its ____ north</span></summary><div class="a"><span class="ok">way</span> <span class="ng">direction</span>　make its way＝一路前進</div></details>
+
+<h3><span class="day">D3</span>第 3 批</h3>
+<details class="q"><summary><span class="en">the ____ decades of an artist's life</span></summary><div class="a"><span class="ok">closing</span> <span class="ng">final</span>　晚年的慣用說法</div></details>
+<details class="q"><summary><span class="en">an ____ old age</span></summary><div class="a"><span class="ok">irrelevant</span> <span class="ng">unimportant</span>　晚年失去影響力</div></details>
+<details class="q"><summary><span class="en">____ full of fancy cars</span></summary><div class="a"><span class="ok">outhouses</span>　主屋旁的小屋／車庫</div></details>
+<details class="q"><summary><span class="en">the African ____</span></summary><div class="a"><span class="ok">continent</span> <span class="ng">region</span>　非洲大陸</div></details>
+<details class="q"><summary><span class="en">students in … ____</span></summary><div class="a"><span class="ok">classes</span> <span class="ng">disciplines</span>　-ss 加 -es</div></details>
+<details class="q"><summary><span class="en">the need to ____ for a second taste</span></summary><div class="a"><span class="ok">return</span> <span class="ng">review</span>　回來再吃</div></details>
+<details class="q"><summary><span class="en">doubt the ____ of</span></summary><div class="a"><span class="ok">quality</span>　質疑品質</div></details>
+<details class="q"><summary><span class="en">think and ____ teaches them</span></summary><div class="a"><span class="ok">actually</span>　副詞放動詞前</div></details>
+<details class="q"><summary><span class="en">which Taylor's ____ reflects</span></summary><div class="a"><span class="ok">menu</span>　reflects 有 s → 單數名詞</div></details>
+
+<h3><span class="day">D4</span>第 4 批</h3>
+<details class="q"><summary><span class="en">growth in customer power, ____ makes it necessary</span></summary><div class="a"><span class="ok">which</span> <span class="ng">that</span>　逗號後只能 which</div></details>
+<details class="q"><summary><span class="en">within the industry ____ is still uncertainty</span></summary><div class="a"><span class="ok">there</span> <span class="ng">that</span>　有＝there is</div></details>
+<details class="q"><summary><span class="en">how it ____ into their business model</span></summary><div class="a"><span class="ok">fits</span> <span class="ng">adapts</span>　fit into；it 單數 +s</div></details>
+<details class="q"><summary><span class="en">the virus ____ mostly in remote locations until recently</span></summary><div class="a"><span class="ok">circulated</span> <span class="ng">are circulated</span>　單數＋主動＋過去</div></details>
+<details class="q"><summary><span class="en">we ____ some 60 years ago</span></summary><div class="a"><span class="ok">plateaued</span>　進步停滯</div></details>
+<details class="q"><summary><span class="en">paint a ____ future</span></summary><div class="a"><span class="ok">bleak</span>　黯淡</div></details>
+<details class="q"><summary><span class="en">external ____ of the past centuries</span></summary><div class="a"><span class="ok">domination</span> <span class="ng">invasion</span>　持續幾世紀</div></details>
+<details class="q"><summary><span class="en">a vibrant ____ of popular movements</span></summary><div class="a"><span class="ok">array</span> <span class="ng">group</span>　an array of</div></details>
+<details class="q"><summary><span class="en">rather than elite and foreign ____</span></summary><div class="a"><span class="ok">domination</span> <span class="ng">suppression</span>　首尾呼應</div></details>
+<details class="q"><summary><span class="en">lofted an uncrewed ____ of the Dragon capsule</span></summary><div class="a"><span class="ok">mockup</span> <span class="ng">structure</span>　樣機</div></details>
+<details class="q"><summary><span class="en">a ____ development</span>（想拿 NASA 合約）</summary><div class="a"><span class="ok">promising</span> <span class="ng">encouraging</span>　有前景</div></details>
+<details class="q"><summary><span class="en">if it reached ____</span></summary><div class="a"><span class="ok">orbit</span> <span class="ng">route</span>　第一句就有 orbit</div></details>
+<details class="q"><summary><span class="en">more ____ customers</span></summary><div class="a"><span class="ok">demanding</span> <span class="ng">considerable</span>　要求高的</div></details>
+
+<h3><span class="day">D5</span>第 5 批</h3>
+<details class="q"><summary><span class="en">an ____ for students will be a teaching approach</span></summary><div class="a"><span class="ok">attraction</span> <span class="ng">approach</span>　前句 attract</div></details>
+<details class="q"><summary><span class="en">and [from it] ____ the original wholeness of thought</span></summary><div class="a"><span class="ok">reconstruct</span> <span class="ng">emerging</span>　遮插入語、對齊 take</div></details>
+<details class="q"><summary><span class="en">There is ____ difficulty in conversation</span></summary><div class="a"><span class="ok">little</span> <span class="ng">converging</span>　名詞前形容詞</div></details>
+<details class="q"><summary><span class="en">the listener can ____ at any time</span></summary><div class="a"><span class="ok">cut in</span> <span class="ng">cut off</span>　不接受詞</div></details>
+<details class="q"><summary><span class="en">overcome … by ____ on ideas from different directions</span></summary><div class="a"><span class="ok">converging</span> <span class="ng">cut in</span>　by＋V-ing；converge on</div></details>
+<details class="q"><summary><span class="en">without benefits of physical ____ and emphasis</span></summary><div class="a"><span class="ok">tone</span> <span class="ng">intonation</span>　tone and emphasis</div></details>
+<details class="q"><summary><span class="en">the ____ material, which is passed down from generation to generation</span></summary><div class="a"><span class="ok">hereditary</span> <span class="ng">gene</span>　名詞前形容詞</div></details>
+<details class="q"><summary><span class="en">someone someday is sure to try it, ____ Stephan Schuster</span></summary><div class="a"><span class="ok">predicts</span> <span class="ng">foresees</span>　引述句型，說類動詞</div></details>
+<details class="q"><summary><span class="en">a ____ force behind the project</span></summary><div class="a"><span class="ok">driving</span> <span class="ng">carrying</span>　推動力</div></details>
+<details class="q"><summary><span class="en">____ agrarian parties to be important, …</span></summary><div class="a"><span class="ok">For</span> <span class="ng">although</span>　誰＋to＋動詞</div></details>
+<details class="q"><summary><span class="en">restricted gene flow, while the lower Coast Range ____ gene flow</span></summary><div class="a"><span class="ok">facilitated</span> <span class="ng">prevented</span>　while 對比</div></details>
+<details class="q"><summary><span class="en">did not act as a barrier, ____ owls readily fly over</span></summary><div class="a"><span class="ok">suggesting</span> <span class="ng">proving</span>　觀察只能推測</div></details>
+
+<!-- ============ 五、自測題 ============ -->
+<h2 id="E">五、自測題（新例句）</h2>
+<p class="lead">先自己作答再點開。標 ★ 的是你練習時錯過的。</p>
+
+<h3>A. which／that／there／it／what</h3>
+<details class="q"><summary>1. Prices rose by 20% last year, ____ forced many families to cut spending.</summary><div class="a"><span class="ok">which</span>　逗號後補充整件事</div></details>
+<details class="q"><summary>2. Experts agree ____ the problem will get worse.</summary><div class="a"><span class="ok">that</span>　連接詞＋完整句子</div></details>
+<details class="q"><summary>3. ____ is no doubt that online shopping has changed the way we live.</summary><div class="a"><span class="ok">There</span>　There is no doubt</div></details>
+<details class="q"><summary>★ 4. ____ is no wonder that young people prefer online shopping.</summary><div class="a"><span class="ok">It</span>　It is no wonder that（評論整件事）</div></details>
+<details class="q"><summary>★ 5. ____ seem to be fewer students in the library this year.</summary><div class="a"><span class="ok">There</span>　seem 沒 s → it 不行；fewer students 複數</div></details>
+<details class="q"><summary>6. The company, ____ was started in 1990, now has 5,000 workers.</summary><div class="a"><span class="ok">which</span>　公司是物，不用 who</div></details>
+<details class="q"><summary>7. ____ is important to save money for the future.</summary><div class="a"><span class="ok">It</span>　後面有 to save → It</div></details>
+<details class="q"><summary>8. The town in ____ I grew up has changed a lot.</summary><div class="a"><span class="ok">which</span>　介系詞後只能 which</div></details>
+<details class="q"><summary>★ 9. ____ surprised me most was the price.</summary><div class="a"><span class="ok">What</span>　前面沒名詞 → what＝the thing that</div></details>
+<details class="q"><summary>10. Within the city centre, ____ are very few places to park.</summary><div class="a"><span class="ok">there</span>　places 複數 → there are</div></details>
+<details class="q"><summary>11. He finally said sorry, ____ was exactly what everyone wanted.</summary><div class="a"><span class="ok">which</span></div></details>
+<details class="q"><summary>12. ____ is no surprise that house prices keep going up.</summary><div class="a"><span class="ok">It</span>　no＋名詞 surprise</div></details>
+<details class="q"><summary>13. ____ seems that the plan will not work.</summary><div class="a"><span class="ok">It</span>　seems that＋句子 → It</div></details>
+<details class="q"><summary>14. In big cities, ____ seems to be less time for family.</summary><div class="a"><span class="ok">there</span>　seems to be＋名詞 → There；time 不可數 → seems</div></details>
+<details class="q"><summary>★ 15. In many small towns, ____ is still no hospital nearby.</summary><div class="a"><span class="ok">there</span>　只有名詞、意思是「沒有」→ There</div></details>
+
+<h3>B. 主被動＋時態</h3>
+<details class="q"><summary>16. The news ____ (spread) quickly across the city last night.</summary><div class="a"><span class="ok">spread</span>　自己傳開＋過去</div></details>
+<details class="q"><summary>★ 17. The letter ____ (send) to every student by the school last week.</summary><div class="a"><span class="ok">was sent</span>　by → 被動；單數＋過去</div></details>
+<details class="q"><summary>★ 18. Today, the disease ____ (spread) by dirty water in many poor areas.</summary><div class="a"><span class="ok">is spread</span>　Today → 現在；spread 三態同形</div></details>
+<details class="q"><summary>★ 19. House prices ____ (rise) quickly until last year.</summary><div class="a"><span class="ok">rose</span>　rise→rose→risen；不能被動</div></details>
+<details class="q"><summary>20. Rumours ____ (circulate) only among local people until last month.</summary><div class="a"><span class="ok">circulated</span>　一件過去的事 → 過去式（had circulated 也通但非首選）</div></details>
+
+<h3>C. 連接詞／引述／搭配</h3>
+<details class="q"><summary>21. ____ the plan to work, everyone must help.（Although / For / Because）</summary><div class="a"><span class="ok">For</span>　誰＋to＋動詞</div></details>
+<details class="q"><summary>22. ____ the plan worked, nobody thanked him.（Although / For / Because）</summary><div class="a"><span class="ok">Although</span>　完整句子＋前後相反</div></details>
+<details class="q"><summary>23. "Prices will keep rising next year," ____ an expert at the bank.（warns / foresees / looks）</summary><div class="a"><span class="ok">warns</span>　說類動詞，不加 which</div></details>
+<details class="q"><summary>24. "This is only the beginning," ____ the report's author.（sees / adds / foresees）</summary><div class="a"><span class="ok">adds</span></div></details>
+<details class="q"><summary>25. After years of fast growth, sales ____ in 2020 and have not grown since.（plateaued / recovered / rose）</summary><div class="a"><span class="ok">plateaued</span></div></details>
+<details class="q"><summary>26. Rising prices and low wages paint a ____ picture for young families.（bleak / bright / broad）</summary><div class="a"><span class="ok">bleak</span></div></details>
+<details class="q"><summary>27. For two hundred years, the country lived under foreign ____.（domination / invasion / suppression）</summary><div class="a"><span class="ok">domination</span></div></details>
+<details class="q"><summary>28. The market sells a wide ____ of fresh fruit.（array / group / structure）</summary><div class="a"><span class="ok">array</span></div></details>
+<details class="q"><summary>29. Before building the real car, engineers made a full-size ____.（mockup / structure / route）</summary><div class="a"><span class="ok">mockup</span></div></details>
+<details class="q"><summary>30. The new medicine is a ____ development for patients.（promising / demanding / considerable）</summary><div class="a"><span class="ok">promising</span></div></details>
+<details class="q"><summary>31. Today's customers are more ____ than ever.（promising / demanding / considerable）</summary><div class="a"><span class="ok">demanding</span></div></details>
+<details class="q"><summary>32. The satellite reached ____ ten minutes after launch.（orbit / route / range）</summary><div class="a"><span class="ok">orbit</span></div></details>
+<details class="q"><summary>33. She is the ____ force behind the new project.（driving / carrying / pushing）</summary><div class="a"><span class="ok">driving</span></div></details>
+<details class="q"><summary>34. In a meeting, it is rude to ____ while others are talking.（cut in / cut off / cut out）</summary><div class="a"><span class="ok">cut in</span>　插話，不接受詞</div></details>
+<details class="q"><summary>35. The data only ____ that the drug works; more tests are needed.（suggests / proves）</summary><div class="a"><span class="ok">suggests</span>　證據不足 → 弱語氣</div></details>
+<details class="q"><summary>36. Cities grew fast, while villages ____.（shrank / grew）</summary><div class="a"><span class="ok">shrank</span>　while 對比 → 相反</div></details>
+
+<p class="lead" style="margin-top:30px">產生日期 2026-10-13。來源：閱讀訂正.html 第 10–33 篇、讀書菜單_10月 D2–D5 小字卡與當日紀錄。</p>
+</main>
+</body>
+</html>
