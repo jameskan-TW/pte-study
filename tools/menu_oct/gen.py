@@ -176,6 +176,14 @@ WRONG = {
 }
 # LOG[天] = [HTML…]  → 黃框「當日紀錄」（WFD 錯字、新規則等）
 LOG = {
+  7: ['<span class="key">⭐ 第 7 批要記的字</span><a href="閱讀訂正.html#p42" target="_blank">Smarter organism</a>（0819）這篇錯的不是文法，是<b>字不認識、搭配沒看過</b>——這 6 個先背：<table>'
+      '<tr><td><span class="en">employ a strategy</span></td><td>採用策略。employ 這裡＝<b>use</b>，不是雇用；文中 <span class="en">employ sophisticated strategies to look for food</span></td></tr>'
+      '<tr><td><span class="en">sophisticated</span></td><td>so·phis·ti·cat·ed＝<b>複雜而高級</b>。形容機器／系統／策略 → 先進、精密；形容人 → 世故有品味。<b>不是 precise（精準）</b>：策略沒有準不準，只有高不高明</td></tr>'
+      '<tr><td><span class="en">optimize</span></td><td>op·ti·mize＝最佳化，同組 <span class="en">maximize／improve／enhance</span>。本題錯選 polish（潤飾做好的東西）。文法線索：<span class="en">a way <b>that</b> optimize<b>s</b></span>，that 子句主詞是單數 a way → 動詞 +s，原形選項先刪</td></tr>'
+      '<tr><td><span class="en">foraging</span></td><td>覓食（動物找食物）。forage 動詞，-ing 當名詞；＝前面的 <span class="en">look for food</span></td></tr>'
+      '<tr><td><span class="en">vice versa</span></td><td>反過來也一樣。兩個字分開寫；<span class="en">twice as likely to turn left as right, and vice versa</span></td></tr>'
+      '<tr><td><span class="en">rudimentary</span></td><td>ru·di·men·ta·ry＝初級的、還很基本的。常配 <span class="en">memory／knowledge／skills</span>；本題 <span class="en">a rudimentary memory</span>，後面 <span class="en">being able to remember</span> 就是在解釋它</td></tr>'
+      '</table>'],
   10: ['<span class="key">⭐ 今日 8 條規則一句話判斷</span>共用動作：<b>先看空格旁邊的介系詞或 that，再想意思</b>（10/14 考 5 批 26 題錯 4，全是沒先看旁邊）<table>'
       '<tr><td>such／so／形容詞</td><td>that 後面的句子<b>完整</b> → 要 such／so；<b>缺一塊</b> → 填形容詞</td></tr>'
       '<tr><td>such 還是 so</td><td>空格後面是<b>名詞</b> → such；<b>形容詞／副詞</b> → so。有 a 時 such 放 a 前面</td></tr>'
