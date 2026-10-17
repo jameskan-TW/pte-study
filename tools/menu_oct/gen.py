@@ -207,7 +207,9 @@ LOG = {
       '<tr><td><span class="en">impression</span></td><td>im·pres·sion。這裡是<b>實體的印痕</b>（壓出來的痕跡），不是「印象」；<span class="en">leaving behind an impression</span>＝留下一個印痕。press＝壓，im-＝進去</td></tr>'
       '<tr><td><span class="en">contaminating materials</span></td><td>con·tam·i·nate＝污染，-ing 當形容詞（去 e）修飾 materials；<span class="en">colorless contaminating materials such as soap, moisturizer and grease</span>＝肥皂、乳液、油脂這些弄髒手指的東西</td></tr>'
       '<tr><td><span class="en">latent</span></td><td>la·tent＝潛伏的、看不見的；<span class="en">described as "latent" as they are invisible to the naked eye</span>。醫學 <span class="en">latent period</span>＝潛伏期</td></tr>'
-      '</table>'],
+      '</table>',
+      '<span class="key">⭐ A of B ＝「B 的 A」</span>of 前後<b>倒過來讀</b>：<span class="en">principles of sustainability</span>＝永續<b>的原則</b>、<span class="en">employee of the month</span>＝本月<b>的員工</b>、<span class="en">the depth and number of wrinkles</span>＝皺紋<b>的深度和數量</b>、<span class="en">a large volume of foot traffic</span>＝人潮<b>的大量</b>→大量人潮。'
+      '<br><b>FIB 用法</b>：空格在 of 前面 → 先翻成中文「B 的 ___」，問 B 這種東西會有什麼。<a href="閱讀訂正.html#p47" target="_blank">Sustainable transportation</a> ① 錯選 regulations：「永續的規定」講不通，理念沒有規定、有的是<b>原則</b> → <span class="en">principles</span>（prin·ci·<b>ple</b>s；prin·ci·pal 是校長）。regulations 是政府訂的條文，配 <span class="en">regulations on smoking</span>（管什麼用 on）。'],
   10: ['<span class="key">⭐ 今日 8 條規則一句話判斷</span>共用動作：<b>先看空格旁邊的介系詞或 that，再想意思</b>（10/14 考 5 批 26 題錯 4，全是沒先看旁邊）<table>'
       '<tr><td>such／so／形容詞</td><td>that 後面的句子<b>完整</b> → 要 such／so；<b>缺一塊</b> → 填形容詞</td></tr>'
       '<tr><td>such 還是 so</td><td>空格後面是<b>名詞</b> → such；<b>形容詞／副詞</b> → so。有 a 時 such 放 a 前面</td></tr>'
