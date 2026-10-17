@@ -183,6 +183,15 @@ LOG = {
       '<tr><td><span class="en">foraging</span></td><td>覓食（動物找食物）。forage 動詞，-ing 當名詞；＝前面的 <span class="en">look for food</span></td></tr>'
       '<tr><td><span class="en">vice versa</span></td><td>反過來也一樣。兩個字分開寫；<span class="en">twice as likely to turn left as right, and vice versa</span></td></tr>'
       '<tr><td><span class="en">rudimentary</span></td><td>ru·di·men·ta·ry＝初級的、還很基本的。常配 <span class="en">memory／knowledge／skills</span>；本題 <span class="en">a rudimentary memory</span>，後面 <span class="en">being able to remember</span> 就是在解釋它</td></tr>'
+      '</table>',
+      '<span class="key">⭐ ingredient 還是 component</span>一句話：<b>ingredient＝調出來的材料，component＝裝出來的零件</b>。問自己「這東西是調的還是裝的」：食物／藥／化妝品／配方（混合後分不開）→ <span class="en">ingredient</span>（<span class="en">active ingredients</span>、<span class="en">a secret ingredient</span>、<span class="en">the ingredients of success</span>）；機器／系統／計畫／課程（每塊可拆下來）→ <span class="en">component</span>（<span class="en">computer components</span>、<span class="en">a key component of the plan</span>）。<a href="閱讀訂正.html#p43" target="_blank">Wrinkle cure</a> ③ 錯選 components：化妝品是調出來的，而且 <span class="en">active ingredients</span>＝有效成分是藥品／化妝品固定用語。近親 <span class="en">element</span> 最籠統三種都能用，但選項裡有更專門的字時通常不是答案。',
+      '<b>Wrinkle cure 要記的字</b>（<a href="閱讀訂正.html#p43" target="_blank">#43</a>，5 格錯 3）：<table>'
+      '<tr><td><span class="en">extract</span></td><td>萃取物（名詞，重音在前 EX-tract）；<span class="en">a patented extract of okra seed</span>。① 錯選 ingredients：<b>a 後面只能接單數</b>，複數字先刪</td></tr>'
+      '<tr><td><span class="en">active ingredients</span></td><td>有效成分，in·gre·di·ents。④ 連鎖錯：① 把 ingredients 用掉這格就沒字。<b>先鎖定百分之百確定的固定搭配，剩下的字再分</b></td></tr>'
+      '<tr><td><span class="en">commissioned by</span></td><td>由…委託，com·mis·sion（兩個 m 兩個 s）；<span class="en">research commissioned by a cosmetics company</span></td></tr>'
+      '<tr><td><span class="en">let alone</span></td><td>更別說…。前面是否定句，後面放更難的事；<span class="en">hard to find studies that…, let alone more comprehensive research</span></td></tr>'
+      '<tr><td><span class="en">rigorous</span></td><td>嚴謹的，rig·or·ous（or 不是 our）；<span class="en">rigorous studies／research</span>。<span class="en">Even when</span>＝就算…也，後面填正面形容詞</td></tr>'
+      '<tr><td><span class="en">comprehensive</span></td><td>全面的，com·pre·hen·sive；<span class="en">comprehensive research</span></td></tr>'
       '</table>'],
   10: ['<span class="key">⭐ 今日 8 條規則一句話判斷</span>共用動作：<b>先看空格旁邊的介系詞或 that，再想意思</b>（10/14 考 5 批 26 題錯 4，全是沒先看旁邊）<table>'
       '<tr><td>such／so／形容詞</td><td>that 後面的句子<b>完整</b> → 要 such／so；<b>缺一塊</b> → 填形容詞</td></tr>'
