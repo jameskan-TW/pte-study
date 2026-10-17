@@ -201,7 +201,13 @@ LOG = {
       '<br>原句 <span class="en">ancient Greece enjoyed progress <b>while failing</b> to teach it</span> ＝ <span class="en">…while <b>ancient Greece failed</b> to teach it</span>（進步很大，<b>卻</b>不教）。'
       '<br><b>讀法</b>：看到 while／when／before／after／although ＋ V-ing，把前半的主詞抄一份塞回去、動詞改回正常。<span class="en">She kept smiling while feeling sad</span> → while <b>she felt</b> sad。'
       '<br><b>限制</b>：主詞不同就不能省，要寫完整 <span class="en">Greece made progress while <b>Rome failed</b> to teach it</span>。'
-      '<br><b>FIB 用法</b>：空格在 while／when／after 後面、前面沒有新主詞 → 答案是 -ing，原形和過去式選項先刪。while 兩個意思：「當…時」（<span class="en">read while waiting</span>）、「卻」（前後相反，本題）。'],
+      '<br><b>FIB 用法</b>：空格在 while／when／after 後面、前面沒有新主詞 → 答案是 -ing，原形和過去式選項先刪。while 兩個意思：「當…時」（<span class="en">read while waiting</span>）、「卻」（前後相反，本題）。',
+      '<b>Fingerprint 要記的字</b>（<a href="閱讀訂正.html#p46" target="_blank">#46</a>，3 格錯 1）：<table>'
+      '<tr><td><span class="en">forensics</span></td><td>fo·ren·sics＝鑑識科學（CSI 那種），字尾 s 但當單數用；<span class="en">referred to as "fingermarks" in forensics</span>＝在鑑識領域叫指痕</td></tr>'
+      '<tr><td><span class="en">impression</span></td><td>im·pres·sion。這裡是<b>實體的印痕</b>（壓出來的痕跡），不是「印象」；<span class="en">leaving behind an impression</span>＝留下一個印痕。press＝壓，im-＝進去</td></tr>'
+      '<tr><td><span class="en">contaminating materials</span></td><td>con·tam·i·nate＝污染，-ing 當形容詞（去 e）修飾 materials；<span class="en">colorless contaminating materials such as soap, moisturizer and grease</span>＝肥皂、乳液、油脂這些弄髒手指的東西</td></tr>'
+      '<tr><td><span class="en">latent</span></td><td>la·tent＝潛伏的、看不見的；<span class="en">described as "latent" as they are invisible to the naked eye</span>。醫學 <span class="en">latent period</span>＝潛伏期</td></tr>'
+      '</table>'],
   10: ['<span class="key">⭐ 今日 8 條規則一句話判斷</span>共用動作：<b>先看空格旁邊的介系詞或 that，再想意思</b>（10/14 考 5 批 26 題錯 4，全是沒先看旁邊）<table>'
       '<tr><td>such／so／形容詞</td><td>that 後面的句子<b>完整</b> → 要 such／so；<b>缺一塊</b> → 填形容詞</td></tr>'
       '<tr><td>such 還是 so</td><td>空格後面是<b>名詞</b> → such；<b>形容詞／副詞</b> → so。有 a 時 such 放 a 前面</td></tr>'
