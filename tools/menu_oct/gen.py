@@ -192,6 +192,10 @@ LOG = {
       '<tr><td><span class="en">let alone</span></td><td>更別說…。前面是否定句，後面放更難的事；<span class="en">hard to find studies that…, let alone more comprehensive research</span></td></tr>'
       '<tr><td><span class="en">rigorous</span></td><td>嚴謹的，rig·or·ous（or 不是 our）；<span class="en">rigorous studies／research</span>。<span class="en">Even when</span>＝就算…也，後面填正面形容詞</td></tr>'
       '<tr><td><span class="en">comprehensive</span></td><td>全面的，com·pre·hen·sive；<span class="en">comprehensive research</span></td></tr>'
+      '</table>',
+      '<b>Rudman 要記的字</b>（<a href="閱讀訂正.html#p44" target="_blank">#44</a>，4 格錯 1）：<table>'
+      '<tr><td><span class="en">enjoy progress</span></td><td><b>enjoy＝擁有（好東西），不是享受</b>。<span class="en">enjoy progress／success／a reputation／good health</span>；<span class="en">ancient Greece enjoyed unrivalled progress</span>＝古希臘<b>擁有</b>無人能及的進步。受詞是正面的東西 → 動詞用 enjoy</td></tr>'
+      '<tr><td><span class="en">punchline</span></td><td>一個字，punch＋line。原本是笑話最後的「笑點」那句，引申＝<b>出人意料的結論</b>。<span class="en">leads to a radical punchline: …</span>。① 錯選 deferred：形容詞修飾的是 punchline 本身，問「這是什麼樣的結論」，不要被後面 after we leave school 的時間字帶走</td></tr>'
       '</table>'],
   10: ['<span class="key">⭐ 今日 8 條規則一句話判斷</span>共用動作：<b>先看空格旁邊的介系詞或 that，再想意思</b>（10/14 考 5 批 26 題錯 4，全是沒先看旁邊）<table>'
       '<tr><td>such／so／形容詞</td><td>that 後面的句子<b>完整</b> → 要 such／so；<b>缺一塊</b> → 填形容詞</td></tr>'
