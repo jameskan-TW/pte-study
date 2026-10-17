@@ -196,7 +196,12 @@ LOG = {
       '<b>Rudman 要記的字</b>（<a href="閱讀訂正.html#p44" target="_blank">#44</a>，4 格錯 1）：<table>'
       '<tr><td><span class="en">enjoy progress</span></td><td><b>enjoy＝擁有（好東西），不是享受</b>。<span class="en">enjoy progress／success／a reputation／good health</span>；<span class="en">ancient Greece enjoyed unrivalled progress</span>＝古希臘<b>擁有</b>無人能及的進步。受詞是正面的東西 → 動詞用 enjoy</td></tr>'
       '<tr><td><span class="en">punchline</span></td><td>一個字，punch＋line。原本是笑話最後的「笑點」那句，引申＝<b>出人意料的結論</b>。<span class="en">leads to a radical punchline: …</span>。① 錯選 deferred：形容詞修飾的是 punchline 本身，問「這是什麼樣的結論」，不要被後面 after we leave school 的時間字帶走</td></tr>'
-      '</table>'],
+      '</table>',
+      '<span class="key">⭐ 文法：while／when／after ＋ V-ing</span>前後<b>主詞相同</b> → 第二個主詞省掉，動詞改 -ing。這個 -ing <b>不是進行式</b>，只是主詞被省略後的動詞長相。'
+      '<br>原句 <span class="en">ancient Greece enjoyed progress <b>while failing</b> to teach it</span> ＝ <span class="en">…while <b>ancient Greece failed</b> to teach it</span>（進步很大，<b>卻</b>不教）。'
+      '<br><b>讀法</b>：看到 while／when／before／after／although ＋ V-ing，把前半的主詞抄一份塞回去、動詞改回正常。<span class="en">She kept smiling while feeling sad</span> → while <b>she felt</b> sad。'
+      '<br><b>限制</b>：主詞不同就不能省，要寫完整 <span class="en">Greece made progress while <b>Rome failed</b> to teach it</span>。'
+      '<br><b>FIB 用法</b>：空格在 while／when／after 後面、前面沒有新主詞 → 答案是 -ing，原形和過去式選項先刪。while 兩個意思：「當…時」（<span class="en">read while waiting</span>）、「卻」（前後相反，本題）。'],
   10: ['<span class="key">⭐ 今日 8 條規則一句話判斷</span>共用動作：<b>先看空格旁邊的介系詞或 that，再想意思</b>（10/14 考 5 批 26 題錯 4，全是沒先看旁邊）<table>'
       '<tr><td>such／so／形容詞</td><td>that 後面的句子<b>完整</b> → 要 such／so；<b>缺一塊</b> → 填形容詞</td></tr>'
       '<tr><td>such 還是 so</td><td>空格後面是<b>名詞</b> → such；<b>形容詞／副詞</b> → so。有 a 時 such 放 a 前面</td></tr>'
