@@ -930,7 +930,7 @@ const DATA = [
 {n:'②-11', o:32, t:'名人是否要放棄隱私', en:'People who are famous entertainers or sports people should give up the right to privacy because this is the price of fame.To what extent do you agree or disagree with this point of view? Give your opinion with your experiences.',
  stance:'不同意 — 隱私是基本權利', p2c:4, p2zh:'讓步：名氣換高收入（砍尾不收家人）', p3c:2, p3zh:'主論：隱私 → 放鬆安心 → 全家和樂',
  es:{topic:'whether famous people should give up privacy',
- va:'fame must be paid for with privacy', vb:'famous people should never give up privacy',
+ va:'famous people need to give up their privacy for fame', vb:'famous people should never give up privacy',
  con:'fame can bring famous people big money', conR:'losing some privacy is a fair trade for the money they earn',
  cond:'famous people stay in the news', subj:'they', resA:'keep their fame and many fans', resB:'<i class="a4">a very high income</i>',
  concl:'many stars give up privacy for money and fame',
@@ -938,7 +938,26 @@ const DATA = [
  jv:'works', jn:'firm', does:'is not famous and enjoys his private time after work',
  result:'relax and <i class="a2">enjoy peace of mind</i>',
  impl:'privacy keeps the whole family in harmony, and fame should never take privacy away',
- final:'privacy is a right fame cannot replace', rec:'the media respect private life'}},
+ final:'privacy is a right that fame cannot replace', rec:'the media respect private life'},
+ mistakes:{
+  rules:[
+   {k:'冠詞六連錯：先問「哪一個／第一次提」', v:'in the news（固定）／a lot of（a 不能掉）／his private time（他自己的用 his）／a right（第一次提到的一種權利）／the media（整體固定 the，同 the government／the public）。enjoy peace of mind 不加 the（#17 ⑮ 也錯，連兩題）'},
+   {k:'money 不可數', v:'big money／huge money／a lot of money；a huge money ❌'},
+   {k:'give up X for Y', v:'用 X 換 Y 介系詞是 for：give up privacy for fame and money／break the law for money。to ❌'},
+   {k:'take … away', v:'奪走＝take away privacy／take privacy away；take of ❌'},
+   {k:'for 後面只能接名詞或 -ing', v:'for the money they earn／for earning big money；for earn ❌'},
+   {k:'名詞後面接「主詞＋動詞」＝那個名詞的說明', v:'the money they earn（that 省略）、things he cannot find、crimes that laws cannot stop。主句動詞只有一個（is），earn 是小句子的動詞，不是第二個主句'},
+   {k:'主詞位的被動用 being＋過去分詞', v:'being watched all the time leads to…。been watch ❌（been 是 have been 的，不能開頭）'},
+   {k:'情態助動詞後原形', v:'may lead（不是 may leads）；and 後面要平行：may lead to stress and make it hard（兩個都接 may）'},
+   {k:'fame 不會「放棄」東西', v:'動作的主詞要是人：famous people need to give up their privacy for fame。fame need to give up of privacy ❌（主詞錯＋give up 後面沒有 of）'},
+   {k:'a 配單數', v:'a celebrity／a right；a celebrities ❌。乾脆用 famous people／is not famous，沒單複數坑'},
+   {k:'media 不加 s、配複數動詞、前面加 the', v:'the media respect private life。medias ❌。同 police（看似單數其實複數）；news 相反（看似複數其實單數 the news is）'},
+   {k:'逗號連兩句（第三題連犯）', v:'privacy keeps the whole family in harmony, and fame should never take away privacy。沒有 and 的逗號是錯'},
+   {k:'第三人稱 +s', v:'James is not a celebrity and enjoys his private time（同一主詞第二個動詞也 +s；and 前不用逗號）'},
+   {k:'拼字五字', v:'privacy（pri-va-cy，同 private）／fame（有 e；一場三次 fam／fam／famw）／losing（一個 o；loose 是鬆的）／earning（e-a-r-n-i-n-g；一場三次 earing／earining／eraning，改用 the money they earn 避開 -ing）／celebrities 拼不穩改用 famous people'}
+  ],
+  note:'2026-10-18 晚首次逐 slot 練（W1 收尾第三題）。練前 James 看機經範文（立場相反：同意放棄隱私是賺錢交換），借兩條補強：⑤ 讓步改 trade-off、⑫ 加 hard to focus on work；⑭ 加 is not famous、⑱ 去 people\u2019s。18 格全打完、9 拼字（5 字）＋20 文法。主罩門：冠詞 6 次、介系詞 3 次、fame／earning 各錯三次才過。做對的：③⑨⑪⑬ 一次過，firm 首次一次過。換 James 版：② famous people need to give up their privacy for fame（他說 fame comes at the price of privacy「不是我自己想的，要另外背」退回）、⑰ 加 that。'
+ }},
 
 {n:'②-12', o:33, t:'要不要限定最高薪資', en:'"Should there be a maximum wage for high-paying people."To what extent do you agree with this statement? Please give your reasons and/or arguments.',
  stance:'同意設上限', p2c:4, p2zh:'讓步：高報酬激勵人才', p3c:2, p3zh:'主論：薪水有頂 → 不拼命加班 → 陪家人 → 和諧',
@@ -1747,7 +1766,7 @@ const ZH = {
  p3:'鄉村生活是更好的選擇 (the better choice)——那裡的生活步調慢 (life there is slow)、壓力小很多 (far less pressure)。例：James 住在安靜的鄉下、遠端工作 (lives in the quiet countryside and does his job online) → 放鬆 (feel relaxed)、更多優質時間陪家人 (quality time with his family)。含義：鄉村生活帶來安心 (peace of mind)、全家和樂 (keeps the whole family in harmony)',
  p4:'鄉村生活是我的選擇 (country life is my choice)；建議：選擇時同時考量職涯與家庭 (think about both career and family when choosing)'},
 '②-11':{
- p1:'反方：成名就要付出隱私 (paid for with privacy)；我方：名人絕不該放棄隱私 (never give up privacy)',
+ p1:'反方：名人為了名氣得放棄隱私 (need to give up their privacy for fame)；我方：名人絕不該放棄隱私 (never give up privacy)',
  p2:'成名確實能帶來大錢 (big money)——失去一些隱私是賺大錢的公平交換 (a fair trade for the money they earn)【2026-10-18 借機經 trade-off】。若名人常上新聞 (stay in the news) → 保持名氣和粉絲 → 非常高的收入 (a very high income)。小結：很多明星願意用隱私換名利 (money and fame)。★讓步砍尾：不收家人，家人留給主論②收',
  p3:'名人不該放棄隱私——時刻被注視 (being watched all the time) 導致壓力、無法專心工作 (hard to focus on work)【借機經 cannot concentrate】。例：James 不是名人 (is not famous)，下班享受私人時間 (private time) → 放鬆安心。含義：隱私讓全家和樂 (privacy keeps the whole family in harmony)，名氣絕不該奪走隱私 (fame should never take privacy away)',
  p4:'隱私是名氣無法取代的權利 (a right)；建議：媒體尊重 (respect) 私人生活 (private life)'},
