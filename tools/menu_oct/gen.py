@@ -176,6 +176,12 @@ WRONG = {
 }
 # LOG[天] = [HTML…]  → 黃框「當日紀錄」（WFD 錯字、新規則等）
 LOG = {
+  14: ['<span class="key">⭐ take the metro／by metro（James 10/18 點名要記）</span>交通工具兩種講法，冠詞<b>相反</b>：'
+      '<b>「搭」take the ＋ 工具</b>（<span class="en">takes the metro／the bus／the train</span>，搭的是城裡那一套系統，大家知道哪一套所以 the）；'
+      '<b>「靠」by ＋ 工具，零冠詞</b>（<span class="en">by metro／by bus／by car／on foot</span>，by 講的是方式不是東西）。'
+      '❌ <span class="en">takes metro</span>（少 the）❌ <span class="en">by the metro</span>（多 the）。一句話：<b>take 要 the，by 不要</b>。'
+      '同句 <span class="en">to work</span> 零冠詞——work 當場所，同 go home／go to school。10/17 WE #7 錯一次、10/18 複習又掉 the，連兩天',
+      '<b>WE #7 多修路 vs 公共交通 複習（10/17 首練 6 拼字＋13 文法）</b>：今天二輪還錯 <span class="en">the metro</span>、<span class="en">and … keeps</span>（第二個動詞的 s）、<span class="en">earlier</span>（earlyer→earliear，連兩天字尾亂加）、<span class="en">by metro</span> 零冠詞。一次過：building／make＋原形／leading to 接名詞／in a better mood／invest in／during the ride。規則已進 <a href="WE_論點總表.html#q7" target="_blank">總表 #7</a>'],
   7: ['<span class="key">⭐ 第 7 批要記的字</span><a href="閱讀訂正.html#p42" target="_blank">Smarter organism</a>（0819）這篇錯的不是文法，是<b>字不認識、搭配沒看過</b>——這 6 個先背：<table>'
       '<tr><td><span class="en">employ a strategy</span></td><td>採用策略。employ 這裡＝<b>use</b>，不是雇用；文中 <span class="en">employ sophisticated strategies to look for food</span></td></tr>'
       '<tr><td><span class="en">sophisticated</span></td><td>so·phis·ti·cat·ed＝<b>複雜而高級</b>。形容機器／系統／策略 → 先進、精密；形容人 → 世故有品味。<b>不是 precise（精準）</b>：策略沒有準不準，只有高不高明</td></tr>'
