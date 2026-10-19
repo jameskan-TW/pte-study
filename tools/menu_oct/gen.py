@@ -176,6 +176,9 @@ WRONG = {
 }
 # LOG[天] = [HTML…]  → 黃框「當日紀錄」（WFD 錯字、新規則等）
 LOG = {
+  15: ['<span class="key">⭐ take the lead／take the main role（James 點名易忘）</span>帶頭＝<span class="en">take the lead</span>、擔主角＝<span class="en">take the main role</span>。the 是「唯一的那個位置」：<b>main／first／best／only／same 前面一律 the</b>。對照不加 the：take part／take action。立場句三次（③⑪⑰）要一字不差，10/19 ⑪ 打成 take more role',
+      '<span class="key">⭐ see／hear／make／let ＋ 受詞 ＋ 原形</span><span class="en">saw his factory <b>cut</b> gas／make companies <b>change</b>／let him <b>go</b></span>。第二個動詞是受詞的動作，不加 s 不加 to；跟 <span class="en">the money they earn</span>（名詞後接主詞＋動詞）是表兄弟，都不是第二個主句。James 10/19 問「saw 又 cut 不是兩個動詞嗎」',
+      '<b>WE #25 氣候誰負責首練</b>（見證線、If 句 would）：2 拼字（<span class="en">factorites／strike</span>）＋16 文法。<span class="en">greenhouse</span> 掉 <span class="en">gas</span>×2、不可數單數 +s（comes×2／changes）、冠詞（a clean air／the greenhouse gas／a company）、<span class="en">every family</span> 第三次、how 子句不倒裝、when 後要完整句。規則已進 <a href="WE_論點總表.html#q25" target="_blank">總表 #25</a>'],
   14: ['<span class="key">⭐ take the metro／by metro（James 10/18 點名要記）</span>交通工具兩種講法，冠詞<b>相反</b>：'
       '<b>「搭」take the ＋ 工具</b>（<span class="en">takes the metro／the bus／the train</span>，搭的是城裡那一套系統，大家知道哪一套所以 the）；'
       '<b>「靠」by ＋ 工具，零冠詞</b>（<span class="en">by metro／by bus／by car／on foot</span>，by 講的是方式不是東西）。'

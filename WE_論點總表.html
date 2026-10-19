@@ -842,16 +842,34 @@ const DATA = [
 
 {n:'②-8', o:25, t:'氣候變化誰應負責？（Report）', en:'In terms of climate change, who should be responsible, individuals, organizations or governments?',
  stance:'政府主責（與 #16 共用字）', p2c:2, p2zh:'讓步：個人少開車、工廠用潔淨能源 → 空氣變乾淨', p3c:2, p3zh:'主論：只有政府能立法給錢 → 新法一出工廠就減排 → 保護每個家庭',
- es:{topic:'who should deal with climate change', modal:'would',
+ es:{topic:'who should be responsible for climate change', modal:'would',
  va:'people and companies should take the lead', vb:'governments should take the main role',
  con:'people and companies also play a part', conR:'most greenhouse gas comes from cars and factories',
  cond:'people drive less and factories use clean energy', subj:'they', resA:'put less greenhouse gas into the air', resB:'<i class="a2">cleaner air for everyone</i>',
  concl:'many people support personal action',
- stance:'governments should take the main role', reason:'only governments have the power to make laws and provide money',
+ stance:'governments should take the main role', reason:'only governments have the right to make laws and give money',
  jv:'works', jn:'firm', does:'saw his factory cut greenhouse gas right after a new law last year',
  result:'see how fast a company changes when the law is strict',
  impl:'only strict laws can make companies change and <i class="a1">protect every family</i>',
- final:'governments must take the main role', rec:'governments make strict laws and people and companies follow them'}},
+ final:'governments must take the main role', rec:'governments make strict laws and people and companies follow them'},
+ mistakes:{
+  rules:[
+   {k:'take the lead／take the main role（James 點名易忘）', v:'帶頭＝take the lead、擔主角＝take the main role，立場句 ③⑪⑰ 三次都用它，一字不差。the 是因為「唯一的那個位置」：main／first／best／only／same 前面一律 the。對照不加 the：take part／take action'},
+   {k:'greenhouse gas 兩個字一組', v:'greenhouse 單獨是「溫室」玻璃房；溫室氣體一定帶 gas，整篇三次。泛指不加 the（0908 錯 by the greenhouse gas、1019 再錯）。不可數＝單數：most greenhouse gas comes（+s）'},
+   {k:'不可數不加 a、比較級', v:'cleaner air for everyone：air 不可數（a clean air ❌）、「更乾淨」比較級 cleaner、「給大家」用 for 不用 to'},
+   {k:'into the air', v:'排進空氣有「進入」動作用 into（to the air ❌）；air 同 the sky／the sea／the environment，地球就一個，固定 the'},
+   {k:'see／hear／make／let ＋ 受詞 ＋ 原形', v:'saw his factory cut gas／make companies change／let him go。第二個動詞是受詞的動作，不加 s 不加 to。跟 the money they earn（名詞後接主詞＋動詞）是表兄弟，都不是第二個主句'},
+   {k:'how 子句不倒裝', v:'see how fast a company changes（主詞前、動詞後、+s）；how fast can company change ❌ 是問句語序。加 can 可免 s：how fast a company can change'},
+   {k:'when 後面要完整句', v:'when the law is strict／when there is a strict law；when saw a strict law ❌ 沒主詞'},
+   {k:'it is crucial that A and B 原形', v:'governments make strict laws and individuals and firms follow them。and 後面不再加 that、不加 to'},
+   {k:'every 後面一定單數（第三次）', v:'protect every family。#5 every mistakes、#17 every families、#25 every families'},
+   {k:'可數名詞不裸奔（第三題連犯）', v:'a company／companies；company 單獨 ❌。泛指用複數最省（make companies change）'},
+   {k:'should 後面要動詞', v:'should take the lead；should the lead ❌（漏動詞整句垮）'},
+   {k:'last year 單數', v:'去年就一年；last years ❌'},
+   {k:'拼字兩字', v:'factories（factory 去 y 加 ies；1019 拼 factorites 多 t）／strict（1019 拼 strike＝罷工；1018 自己點名的字）'}
+  ],
+  note:'2026-10-19 首次逐 slot 練（W1 收尾第四題，見證線 G、If 句用 would）。18 格全打完、2 拼字＋16 文法。主罩門：greenhouse 掉 gas×2、不可數／單數 +s（comes×2、changes）、冠詞（a clean air／the greenhouse gas／a company）、every family 第三次。做對的：①③④⑥⑩⑬⑰ 一次過，⑭ 問完 see＋受詞＋原形後一字不差。換 James 版：① who should be responsible for climate change（跟題目同字）、⑫ the right to make laws and give money（比 power／provide 好拼）。'
+ }},
 
 {n:'②-9', o:29, t:'年齡限制（Report）', en:'Age restrictions can be seen everywhere. It is believed that people should not do things until they reach the right age, such as marriage, and driving. Select one activity and state the minimum age that you think. Support with your own experiences.',
  stance:'選「結婚」；最低年齡 25 歲（2026-09-11 從開車改結婚，全套字共用 #14）', p2c:2, p2zh:'讓步：早婚有情感支持 → 不孤單 → 安心（同 #14 P2）', p3c:4, p3zh:'主論：25 歲多半唸完書有工作 → 穩定收入 → 溫暖的家（同 #14 P3）',
@@ -1751,9 +1769,9 @@ const ZH = {
  p3:'壞處大於好處 (the information revolution does more harm than good)——資訊過載 (too much information) 與假新聞 (fake news) 導致壓力焦慮 (stress and anxiety)。例：James 整晚一直看手機新聞 (keeps checking the news all evening) → **無法放鬆、也沒法陪家人** (he is **unable to** relax at home or spend quality time with his family)。含義：太多新聞讓人發脾氣 (lose their temper)、傷害家庭關係。⚠ 本題與 #35 同樣把模板的 he is able to 改成 he is unable to',
  p4:'弊大於利 (does more harm than good)；建議：人們學會判斷新聞 (judge news)、限制螢幕時間 (limit screen time)'},
 '②-8':{
- p1:'反方：個人與企業 (people and companies) 應主導 (take the lead)；我方：政府 (governments) 應擔任主要角色 (the main role)',
+ p1:'主題：誰該為氣候變化負責 (be responsible for)。反方：個人與企業 (people and companies) 應主導 (take the lead)；我方：政府 (governments) 應擔任主要角色 (the main role)',
  p2:'個人與企業也有貢獻 (play a part)——大多數溫室氣體來自汽車和工廠 (greenhouse gas from cars and factories)。若大家少開車 (drive less)、工廠用潔淨能源 (use clean energy) → 排較少溫室氣體 → 大家都有更乾淨的空氣 (cleaner air for everyone)。小結：很多人支持個人行動 (personal action)',
- p3:'政府應主導——只有政府有權立法 (make laws)、提供資金 (provide money)。例：James 去年親眼看到新法一出、他的工廠馬上減排 (saw his factory cut greenhouse gas right after a new law) → 親眼看到法律嚴、公司就改得快 (how fast a company changes when the law is strict)。含義：只有嚴格的法律 (strict laws) 能讓公司改變、保護每個家庭 (protect every family)（老師 0908：結局要跟公司有關）',
+ p3:'政府應主導——只有政府有權 (the right) 立法 (make laws)、給錢 (give money)。例：James 去年親眼看到新法一出、他的工廠馬上減排 (saw his factory cut greenhouse gas right after a new law) → 親眼看到法律嚴、公司就改得快 (how fast a company changes when the law is strict)。含義：只有嚴格的法律 (strict laws) 能讓公司改變、保護每個家庭 (protect every family)（老師 0908：結局要跟公司有關）',
  p4:'政府必須擔主角；建議：政府訂嚴格法律 (strict laws)，個人與企業遵守 (follow them)'},
 '②-9':{
  p1:'主題：結婚最低年齡 (the minimum age for marriage)。反方：愛比年齡重要 (love matters more than age)；我方：結婚應等到 25 歲 (wait until 25)',
