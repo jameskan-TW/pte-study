@@ -96,15 +96,15 @@
 | 86 | decision-making | 決策 | 63 ❌1019 少 -making |
 | 87 | interviews | 面試、訪談 | 63 ❌1019 漏 s |
 | 88 | judgment | 判斷 | 63 ✅1019 |
-| 89 | danger | 危險 | 4 | |
-| 90 | drugs | 藥物 | 3 | |
-| 91 | children | 小孩 | 3, 18, 40 | |
-| 92 | parents | 父母 | 32, 40 | |
-| 93 | objects | 物體 | 33 | |
-| 94 | planet | 行星 | 50 | |
-| 95 | warmest | 最暖的 | 9 | |
+| 89 | danger | 危險 | 4 ❌❌1019 dangerous→dander ⭐反覆 |
+| 90 | drugs | 藥物 | 3 ❌1019 medicine |
+| 91 | children | 小孩 | 3, 18, 40 ✅1019 |
+| 92 | parents | 父母 | 32, 40 ❌1019 漏 s |
+| 93 | objects | 物體 | 33 ❌1019 meter |
+| 94 | planet | 行星 | 50 ❌1019 planate |
+| 95 | warmest | 最暖的 | 9 ❌1019 warmist |
 
-（89–95 是「應該不會錯但要確認一次」的保底字，排最後。）
+（89–95 原以為是保底字，1019 實考 7 錯 6，不保底。）
 
 ## 剔掉的零風險字（77 個，不考）
 DNA、2001、cells、genes、gene research→併入 research、wrong use、risk、market economy→併入 economy、working class、bees、crops、Big Bang、stars、body fat、food、fish、Vitamin D→併入 vitamin、Einstein、Edwin Hubble、economic system→併入 economy、China、Starbucks、brands、Scotland、stones、shapes、money、leaders、power、care、stock market、stocks、fear、Plato、ideas、food technology→併入 technology、Hollywood、IT、fresh water、Rome、Romans、English、languages→併入 language、history、Darwin、moral rules、right and wrong、ape、Tommy、court、smiles、face、happiness economics→併入 economy/happiness、hook、ads、staff、organization studies→併入 organization、level-four、level-three、food crisis→併入 crisis、product、market share、laws、business owner→併入 business、Internet、news、Mars、Earth、negative emotions→拆成 negative/emotions、online research→併入 research、data、drop out、boys、girls、value、mood、jobs、credit card、loss、modern poetry→併入 poetry、poets、modern style、need
@@ -115,12 +115,13 @@ DNA、2001、cells、genes、gene research→併入 research、wrong use、risk�
 |---|---|---|
 | 2026-10-19 | 1–3 Biology／energy／research | 3/3 全對 |
 | 2026-10-19 | 4–88 一路考完（James 要求不限 3 個） | 85 題首打對 46、錯 39；漏複數 s 6 次（gases/sciences×2/systems×2/machines/interviews）、選錯字或詞性 21、純拼錯 9、完全不會 2（breadth/abstraction） |
+| 2026-10-19 | 89–95 保底字 | 7 題只對 children；danger 錯兩次、drugs/parents/objects/planet/warmest 各錯一次 |
 
 ## 錯過的字（下輪優先重考）
 
-**⭐ 反覆卡（錯 2 次以上）**：refrigerators、Britain、architecture、buildings、recognize、social sciences、driving systems
+**⭐ 反覆卡（錯 2 次以上）**：refrigerators、Britain、architecture、buildings、recognize、social sciences、driving systems、danger（dangerous→dander）
 **⭐ 完全不會**：breadth、abstraction
-**純拼錯**：leadership（leasership）、canned（caning）、Moore's（More）、separation（seperation）、happiness（happynous）、production（prodactive）、crisis（dangerious）
-**漏複數 s（頭號罩門）**：harmful gases、social sciences、driving systems、machines、interviews、managers
-**選錯字／詞性**：safety（safe/security）、economics（economy）、globalization（global）、rejection（refuse）、Republic（Ideal）、fight-or-flight（run）、military camp（campus）、essay（article）、waggle（swing）、newspaper（paper）、workforce（labor）、healing（curing）、seller's（selling）、management（manage）、unique（special）、avoidance（doge）、symbolic（sign）、progress（improve）、context（background）、decision-making（少 -making）
+**純拼錯**：planet（planate）、warmest（warmist）、leadership（leasership）、canned（caning）、Moore's（More）、separation（seperation）、happiness（happynous）、production（prodactive）、crisis（dangerious）
+**漏複數 s（頭號罩門）**：parents、harmful gases、social sciences、driving systems、machines、interviews、managers
+**選錯字／詞性**：drugs（medicine）、objects（meter）、safety（safe/security）、economics（economy）、globalization（global）、rejection（refuse）、Republic（Ideal）、fight-or-flight（run）、military camp（campus）、essay（article）、waggle（swing）、newspaper（paper）、workforce（labor）、healing（curing）、seller's（selling）、management（manage）、unique（special）、avoidance（doge）、symbolic（sign）、progress（improve）、context（background）、decision-making（少 -making）
 
