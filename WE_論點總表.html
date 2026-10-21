@@ -1357,16 +1357,31 @@ const DATA = [
 
 {n:'④-7', o:10, t:'政府面臨的最緊迫問題（失業）', en:'The world’s government and organizations are facing a lot of issues today. Which do you think is the most pressing issue for the inhabitants? Provide solutions to deal with this issue.',
  stance:'最緊迫問題：失業；方案：職業訓練 + 創造就業（照 #16 走法：P2 問題嚴重性、P3 解方，無真讓步）', p2c:2, p2zh:'問題面：失業很難解 → 失去收入 → 天天擔心錢 → 全家壓力焦慮 → 精神疾病', p3c:4, p3zh:'解方：職訓給技能找新工作；James 朋友失業→政府職訓→找到工作 → 穩定收入 → 溫暖的家',
- es:{topic:'unemployment',
+ es:{topic:'unemployment', modal:'will',
  va:'unemployment is too hard to solve', vb:'job training can really solve it',
  con:'unemployment is a very serious problem', conR:'people without jobs lose their <i class="a4">steady income</i>',
  cond:'people lose their jobs', subj:'they', resA:'<i class="a4">worry about money</i> every day', resB:'<i class="a2">stress and anxiety</i> for the whole family',
  concl:'some people may even <i class="a2">develop mental illness</i>',
- stance:'job training is the best solution', reason:'training gives people the skills to find a new job',
+ stance:'job training is the best solution', reason:'job training gives people new skills to find new jobs',
  jv:'works', jn:'firm', does:'saw his friend find a new job after a government training program',
- result:'see how fast a family becomes stable again with <i class="a4">a steady income</i>',
+ result:'see how fast a family can settle down with <i class="a4">a steady income</i>',
  impl:'job training and new jobs give every family <i class="a4">a warm and stable home</i>',
- final:'unemployment is the most pressing issue and job training is the answer', rec:'governments spend on training and create more jobs'}},
+ final:'unemployment is the most urgent issue, and job training is the answer', rec:'governments provide more job training programs and create more jobs'},
+ mistakes:{
+  rules:[
+   {k:'job 可數：單數裸奔三次', v:'people without jobs／lose their jobs／new jobs。their 後面看每人幾個（各一份 → jobs）；a job 才單數'},
+   {k:'anxious 形容詞、anxiety 名詞', v:'leading to 後面要名詞：stress and anxiety for the whole family（不可數不加 an；「給全家」用 for 不用 on）。#4 錯過同一組'},
+   {k:'see ＋ 受詞 ＋ 原形（第二題）', v:'saw his friend find a new job；finds ❌。#25 剛練的規則，隔天又加 s'},
+   {k:'If 後面要完整句', v:'If people lose their jobs（主詞不能掉）'},
+   {k:'with a steady income', v:'「靠／帶著穩定收入」用 with；by ❌（by 只接零冠詞工具）。a steady income 的 a 不能掉（10/07 #18 同）'},
+   {k:'一個名詞兩個形容詞只要一個 a', v:'a warm and stable home ✅；a warm and a stable home ❌＝兩個家。對照 a good career and a stable family（兩個名詞各要 a）'},
+   {k:'逗號連兩句（第四題連犯）', v:'the most urgent issue, and job training is the answer。沒 and 的逗號是錯'},
+   {k:'Report 題答案句要回應「最」', v:'題目問 the most pressing issue，⑰ 一定要有 the most（an urgent issue ❌ 沒回答到）。urgent 比 pressing 好拼，可用'},
+   {k:'負面必然後果 If 句用 will', v:'If people lose their jobs, then they will worry about money（can＝能夠，配正面；will＝必然；may＝可能）。James 自己問的，這題 modal 設 will；#16 #25 環境題用 would'},
+   {k:'拼字四字', v:'training（一個 n，ai 長音不雙寫）／solution（so-lu-tion，同 solve）／settle（兩個 t 沒有 a）／urgent（urge＋nt）'}
+  ],
+  note:'2026-10-21 首次逐 slot 練——**W1 收尾 11 題全部清完**（最後一題）。18 格全打完、4 拼字＋13 文法。主罩門：job 單數裸奔 ×3、anxious→anxiety、saw…finds、逗號連兩句。做對的：①②④⑫⑬⑱ 一次過，unemployment／anxiety 一次拼對。換 James 版：⑦ modal will（他問 can 是不是換 will）、⑫ gives people new skills to find new jobs、⑮ can settle down with、⑰ the most urgent issue, and…、⑱ provide more job training programs and create more jobs。'
+ }},
 
 {n:'④-8', o:13, t:'實踐式學習 vs 傳統教育', en:'Some people point that experiential learning (i·e· learning by doing it) can work well in formal education. However, others think a traditional form of teaching is the best. Do you think experiential learning can work well in high schools or colleges?',
  stance:'挺傳統教育 — 系統化學習', p2c:3, p2zh:'讓步：動手做能學到書本外的東西', p3c:4, p3zh:'主論：系統化學習 → 紮實基礎 → 好成績 → 好工作',
@@ -1895,8 +1910,8 @@ const ZH = {
 '④-7':{
  p1:'主題：失業 (unemployment)。反方：失業太難解 (too hard to solve)；我方：職訓 (job training) 真的解得了',
  p2:'失業很嚴重 (a very serious problem)——失業的人失去穩定收入。若人們失業 (lose their jobs) → 天天擔心錢 (worry about money every day) → 全家壓力焦慮。小結：有人甚至罹患精神疾病 (mental illness)',
- p3:'職訓是最好的解方 (the best solution)——訓練給人技能 (skills) 找新工作。例：James 看到朋友參加政府職訓計畫 (a government training program) 後找到新工作 (find a new job after) → 看到一個家庭靠穩定收入多快穩下來。含義：職訓和新工作 (job training and new jobs) 給每個家庭溫暖穩定的家',
- p4:'失業是最嚴重的問題；建議：政府投資職訓 (spend on training)、創造更多工作'},
+ p3:'職訓是最好的解方 (the best solution)——職訓給人新技能找新工作 (new skills to find new jobs)。例：James 看到朋友參加政府職訓計畫 (a government training program) 後找到新工作 (find a new job after) → 看到一個家庭靠穩定收入多快安頓下來 (settle down with a steady income)。含義：職訓和新工作 (job training and new jobs) 給每個家庭溫暖穩定的家',
+ p4:'失業是最緊迫的問題 (the most urgent issue)，職訓是答案；建議：政府提供更多職訓計畫 (provide more job training programs)、創造更多工作'},
 '④-8':{
  p1:'反方：做中學 (learning by doing) 在學校很有效；我方：傳統教學 (traditional teaching) 最好',
  p2:'做中學新鮮有趣 (fresh and fun)——動手做 (hands-on tasks) 展現事物運作原理。若學生做中學 → 學到書本外的東西 → 更開闊的視野。小結：很多學校加開實作課',
