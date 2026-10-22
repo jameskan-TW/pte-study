@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" spellcheck="false">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FIB 文法測驗 — 93 格互動出題</title>
+<!-- 由 tools/menu_oct/quiz.py 產出，不要直接改這頁；改 quiz_template.html 或資料來源後重跑 -->
+<style>
+  :root{--ink:#1f2328;--sub:#5b6370;--line:#e3e6ea;--bg:#f7f7f5;--card:#fff;--en:#0b4f9c;--ok:#0b7a43;--okbg:#e7f6ec;--ng:#b42318;--ngbg:#fdeeee;--tag:#eef1f5;--acc:#37352f;--accink:#fff;--hint:#fff6d6}
+  @media (prefers-color-scheme:dark){:root{--ink:#e6e6e3;--sub:#a3a7ad;--line:#33363b;--bg:#191a1c;--card:#232427;--en:#7db4ff;--ok:#5fd08f;--okbg:#17321f;--ng:#ff8a7a;--ngbg:#3a1d1a;--tag:#2e3136;--acc:#e6e6e3;--accink:#191a1c;--hint:#3a3420}}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 -apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif}
+  main{max-width:760px;margin:0 auto;padding:20px 16px 80px}
+  a{color:var(--en)}
+  .back{font-size:14px;text-decoration:none}
+  h1{font-size:24px;margin:6px 0 2px}
+  .lead{color:var(--sub);font-size:14px;margin:0 0 16px}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:14px}
+  .row{margin:0 0 14px}.row:last-child{margin:0}
+  .lab{font-size:13px;font-weight:700;color:var(--sub);margin-bottom:6px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 14px;font-size:14px;cursor:pointer;font-family:inherit}
+  .chip.on{background:var(--acc);border-color:var(--acc);color:var(--accink);font-weight:700}
+  .chip small{opacity:.7;margin-left:3px}
+  .btn{border:1px solid var(--acc);background:var(--acc);color:var(--accink);border-radius:8px;padding:9px 22px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit}
+  .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line);font-weight:400}
+  .btn:disabled{opacity:.4;cursor:default}
+  .meta{font-size:13px;color:var(--sub);margin-left:10px}
+  .hist{font-size:13px;color:var(--sub);margin-top:10px}
+  .hist button{font-size:12px;background:none;border:none;color:var(--sub);text-decoration:underline;cursor:pointer;padding:0;margin-left:6px}
+
+  .top{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--sub);margin-bottom:6px;gap:8px}
+  .bar{height:5px;background:var(--line);border-radius:3px;overflow:hidden;margin-bottom:14px}
+  .bar i{display:block;height:100%;background:var(--ok);transition:width .25s}
+  .tags{margin-bottom:8px}
+  .tag{display:inline-block;font-size:12px;background:var(--tag);color:var(--sub);border-radius:5px;padding:0 7px;margin-right:4px}
+  .tag.c-col{background:#e6f0ff;color:#1d4f91}.tag.c-sem{background:#f3e8ff;color:#6b2fa3}.tag.c-log{background:#fff0e0;color:#9a4b00}.tag.c-pos{background:#e5f6ee;color:#16683f}.tag.c-ten{background:#fde8ea;color:#a0263a}
+  @media (prefers-color-scheme:dark){.tag.c-col,.tag.c-sem,.tag.c-log,.tag.c-pos,.tag.c-ten{background:var(--tag);color:var(--ink)}}
+  .sent{font-family:Georgia,"Times New Roman",serif;font-size:18px;line-height:1.9;margin:6px 0 16px}
+  .blank{display:inline-block;min-width:90px;border-bottom:2px solid var(--sub);text-align:center;font-family:Menlo,Consolas,monospace;font-size:15px;color:var(--sub);padding:0 6px}
+  .blank.ok{color:var(--ok);border-color:var(--ok);font-weight:700}
+  .blank.ng{color:var(--ng);border-color:var(--ng);font-weight:700}
+  .opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .opt{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;padding:10px 12px;font-size:16px;cursor:pointer;text-align:left;font-family:Menlo,Consolas,monospace}
+  .opt kbd{font-family:inherit;font-size:11px;color:var(--sub);border:1px solid var(--line);border-radius:4px;padding:0 5px;margin-right:8px}
+  .opt:hover:not(:disabled){border-color:var(--sub)}
+  .opt.ok{background:var(--okbg);border-color:var(--ok);color:var(--ok);font-weight:700}
+  .opt.ng{background:var(--ngbg);border-color:var(--ng);color:var(--ng);text-decoration:line-through}
+  .opt:disabled{cursor:default}
+  .note2{font-size:12px;color:var(--sub);margin-top:8px}
+  .typ{display:flex;gap:8px}
+  .typ input{flex:1;min-width:0;font:17px Menlo,Consolas,monospace;padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+  .typ input:focus{outline:2px solid var(--en);outline-offset:-1px}
+  .typ input.ng{border-color:var(--ng)}
+  .shape{font-family:Menlo,Consolas,monospace;font-size:14px;color:var(--sub);margin-bottom:8px;letter-spacing:2px}
+  .hintbox{background:var(--hint);border-radius:8px;padding:6px 12px;font-size:14px;margin-top:8px}
+  .diff{font-family:Menlo,Consolas,monospace;font-size:15px;margin-top:8px}
+  .diff .x{color:var(--ng);background:var(--ngbg);text-decoration:line-through}
+  .diff .m{color:var(--ok);background:var(--okbg);font-weight:700}
+  .retry{color:var(--ng);font-size:14px;font-weight:700;margin-top:6px}
+
+  .fb{margin-top:16px;border-top:1px dashed var(--line);padding-top:12px;font-size:15px}
+  .fb .head{font-weight:800;font-size:16px;margin-bottom:4px}
+  .fb .head.ok{color:var(--ok)}.fb .head.ng{color:var(--ng)}
+  .fb .en,.why .en{font-family:Menlo,Consolas,monospace;color:var(--en);font-size:.95em}
+  .fb .card{background:var(--tag);border-radius:8px;padding:6px 10px;margin-top:8px;font-size:14px}
+  .fb .src{font-size:13px;margin-top:8px}
+  .nav{display:flex;justify-content:space-between;align-items:center;margin-top:16px}
+
+  .big{font-size:44px;font-weight:800;line-height:1.1}
+  table{border-collapse:collapse;width:100%;font-size:14px;margin:10px 0}
+  th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left}
+  th{color:var(--sub);font-weight:700;font-size:12px}
+  .wl{border-top:1px solid var(--line);padding:10px 0;font-size:14px}
+  .wl .s{font-family:Georgia,serif;font-size:15px}
+  .wl .s b{color:var(--ok)}
+  .wl .why{color:var(--sub);margin-top:2px}
+  .hide{display:none}
+  @media (max-width:520px){.opts{grid-template-columns:1fr}.sent{font-size:17px}}
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="index.html">← 回 PTE Study Hub</a>
+<h1>🎯 FIB 文法測驗</h1>
+<p class="lead">題目全部來自 <a href="閱讀訂正.html">閱讀訂正</a> 47 篇 93 格（你真的錯過的格）。<b>選擇</b>：詞性／時態 16 格是四選一，其他是「正解 vs 你當時選的」二選一；<b>默打</b>：給首字母和字數，拼錯要重打到對才放行。只有第一次就對才算分，紀錄存在這台瀏覽器。</p>
+
+<section id="setup" class="panel">
+  <div class="row"><div class="lab">模式</div><div class="chips" id="modeC"></div></div>
+  <div class="row"><div class="lab">分類（可多選）</div><div class="chips" id="catC"></div></div>
+  <div class="row"><div class="lab">範圍</div><div class="chips" id="scopeC"></div></div>
+  <div class="row"><div class="lab">題數</div><div class="chips" id="numC"></div></div>
+  <div class="row"><button class="btn" id="go">開始</button><span class="meta" id="pool"></span></div>
+  <div class="hist" id="hist"></div>
+</section>
+
+<section id="quiz" class="panel hide">
+  <div class="top"><span id="pos"></span><span id="score"></span></div>
+  <div class="bar"><i id="barI"></i></div>
+  <div class="tags" id="tags"></div>
+  <div class="sent" id="sent"></div>
+  <div id="ans"></div>
+  <div class="fb hide" id="fb"></div>
+  <div class="nav"><button class="btn ghost" id="quit">結束</button><button class="btn hide" id="next">下一題 ↵</button></div>
+</section>
+
+<section id="result" class="panel hide"></section>
+</main>
+
+<script>
+const Q = /*__DATA__*/[];
+const CAT = {col:'固定搭配', sem:'語意精準', log:'轉折邏輯', pos:'詞性詞形', ten:'時態語態'};
+const KEY = 'fib_quiz_v1', PREF = 'fib_quiz_pref';
+const $ = id => document.getElementById(id);
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm = s => s.trim().toLowerCase().replace(/\s+/g, ' ');
+function load(k, d){ try { return JSON.parse(localStorage.getItem(k)) || d; } catch(e){ return d; } }
+function save(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+let ST = load(KEY, {});            // id → {n 做過次數, bad 錯過次數, last 1/0}
+let P = Object.assign({mode:'choice', cats:Object.keys(CAT), scope:'all', num:20}, load(PREF, {}));
+
+function chips(el, items, isOn, onClick){
+  el.innerHTML = '';
+  items.forEach(([v, label]) => {
+    const b = document.createElement('button');
+    b.className = 'chip' + (isOn(v) ? ' on' : ''); b.innerHTML = label;
+    b.onclick = () => { onClick(v); renderSetup(); };
+    el.appendChild(b);
+  });
+}
+function poolList(){
+  return Q.filter(q => P.cats.includes(q.cat) && (
+    P.scope === 'all' || (P.scope === 'bad' && ST[q.id] && ST[q.id].last === 0) || (P.scope === 'new' && !ST[q.id])));
+}
+function renderSetup(){
+  save(PREF, P);
+  chips($('modeC'), [['choice','選擇'],['type','默打（練拼字）']], v => P.mode === v, v => P.mode = v);
+  chips($('catC'), Object.entries(CAT).map(([k, n]) => [k, `${n}<small>${Q.filter(q => q.cat === k).length}</small>`]),
+    v => P.cats.includes(v), v => { P.cats = P.cats.includes(v) ? P.cats.filter(x => x !== v) : [...P.cats, v]; });
+  const nb = Q.filter(q => ST[q.id] && ST[q.id].last === 0).length, nn = Q.filter(q => !ST[q.id]).length;
+  chips($('scopeC'), [['all','全部'],['bad',`上次答錯<small>${nb}</small>`],['new',`還沒做過<small>${nn}</small>`]], v => P.scope === v, v => P.scope = v);
+  chips($('numC'), [[10,'10 題'],[20,'20 題'],[0,'全部']], v => P.num === v, v => P.num = v);
+  const n = poolList().length;
+  $('pool').textContent = `符合 ${n} 題` + (P.num && n > P.num ? `，抽 ${P.num}` : '');
+  $('go').disabled = !n;
+  const done = Object.keys(ST).length, ok = Object.values(ST).filter(s => s.last === 1).length;
+  $('hist').innerHTML = done ? `累計做過 ${done}／93 格，最近一次答對 ${ok} 格、答錯 ${nb} 格<button id="reset">清除紀錄</button>` : '還沒有作答紀錄';
+  if (done) $('reset').onclick = () => { if (confirm('清掉這台瀏覽器的作答紀錄？')) { ST = {}; save(KEY, ST); renderSetup(); } };
+}
+
+function shuffle(a){ a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.random() * (i + 1) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; }
+let S = null;   // 本輪：{list, i, ok, res:[{q, ok, said}], mode}
+function start(list){
+  S = {list, i:0, ok:0, res:[], mode:P.mode};
+  $('setup').classList.add('hide'); $('result').classList.add('hide'); $('quiz').classList.remove('hide');
+  show();
+}
+$('go').onclick = () => { const l = shuffle(poolList()); start(P.num ? l.slice(0, P.num) : l); };
+$('quit').onclick = finish;
+$('next').onclick = next;
+
+function blankHtml(q, state){
+  const inner = state ? esc(q.r) : (S.mode === 'type' ? esc(q.r[0]) + '…' : '　');
+  return `<span class="blank ${state || ''}" id="blank">${inner}</span>`;
+}
+function show(){
+  const q = S.list[S.i];
+  S.cur = {q, first:null, done:false};
+  $('pos').textContent = `第 ${S.i + 1} / ${S.list.length} 題`;
+  $('score').textContent = `第一次就對 ${S.ok}`;
+  $('barI').style.width = (S.i / S.list.length * 100) + '%';
+  $('tags').innerHTML = `<span class="tag c-${q.cat}">${CAT[q.cat]}</span><span class="tag">${q.ty}</span><span class="tag">第 ${q.a} 篇 ${esc(q.t)}</span>`;
+  $('sent').innerHTML = esc(q.ctx).replace('____', blankHtml(q));
+  $('fb').classList.add('hide'); $('next').classList.add('hide');
+  if (S.mode === 'choice') {
+    const o = shuffle(q.opts);
+    $('ans').innerHTML = `<div class="opts">${o.map((w, k) => `<button class="opt" data-w="${esc(w)}"><kbd>${k + 1}</kbd>${esc(w)}</button>`).join('')}</div>`
+      + (o.length === 2 ? `<div class="note2">二選一：其中一個是你當時選錯的</div>` : '');
+    $('ans').querySelectorAll('.opt').forEach(b => b.onclick = () => pick(b));
+  } else {
+    const shape = q.r.split('').map((c, k) => c === ' ' ? '　' : (k ? '_' : c)).join(' ');
+    $('ans').innerHTML = `<div class="shape">${esc(shape)}　（${q.r.replace(/ /g, '').length} 個字母）</div>
+      <div class="typ"><input id="inp" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="打出空格的字"><button class="btn" id="sub">送出</button></div>
+      <div><button class="chip" id="hintB" style="margin-top:8px">💡 提示</button></div><div id="hintBox"></div><div id="tfb"></div>`;
+    $('sub').onclick = typed;
+    $('hintB').onclick = () => {
+      $('hintBox').innerHTML = `<div class="hintbox">不是 <b>${esc(q.w)}</b>（你當時選的）${q.zh ? `；意思：${esc(q.zh)}` : ''}</div>`;
+      $('hintB').remove(); $('inp').focus();
+    };
+    $('inp').focus();
+  }
+}
+function record(q, ok, said){
+  S.cur.first = ok; if (ok) S.ok++;
+  S.res.push({q, ok, said});
+  const s = ST[q.id] || {n:0, bad:0}; s.n++; if (!ok) s.bad++; s.last = ok ? 1 : 0; ST[q.id] = s; save(KEY, ST);
+  $('score').textContent = `第一次就對 ${S.ok}`;
+}
+function pick(b){
+  if (S.cur.done) return;
+  const q = S.cur.q, ok = b.dataset.w === q.r;
+  $('ans').querySelectorAll('.opt').forEach(x => { x.disabled = true; if (x.dataset.w === q.r) x.classList.add('ok'); });
+  if (!ok) b.classList.add('ng');
+  record(q, ok, b.dataset.w);
+  reveal(ok, b.dataset.w);
+}
+// 逐字 LCS：標出多打（紅刪除線）和漏打（綠）
+function diff(a, b){
+  const m = a.length, n = b.length, d = Array.from({length:m + 1}, () => new Array(n + 1).fill(0));
+  for (let i = m - 1; i >= 0; i--) for (let j = n - 1; j >= 0; j--) d[i][j] = a[i] === b[j] ? d[i+1][j+1] + 1 : Math.max(d[i+1][j], d[i][j+1]);
+  let i = 0, j = 0, out = '';
+  while (i < m || j < n) {
+    if (i < m && j < n && a[i] === b[j]) { out += esc(a[i]); i++; j++; }
+    else if (j < n && (i >= m || d[i][j+1] >= d[i+1][j])) { out += `<span class="m">${esc(b[j])}</span>`; j++; }
+    else { out += `<span class="x">${esc(a[i])}</span>`; i++; }
+  }
+  return out;
+}
+function typed(){
+  const q = S.cur.q, inp = $('inp'), v = inp.value;
+  if (!v.trim() || S.cur.done) return;
+  const ok = norm(v) === norm(q.r);
+  if (S.cur.first === null) record(q, ok, v.trim());
+  if (ok) {
+    inp.disabled = true; inp.classList.remove('ng'); $('sub').disabled = true;
+    if ($('hintB')) $('hintB').remove();
+    $('tfb').innerHTML = '';
+    reveal(S.cur.first, S.res[S.res.length - 1].said);
+  } else {
+    $('tfb').innerHTML = `<div class="diff">你打：${diff(norm(v), norm(q.r))}</div><div class="retry">↻ 再打一遍（正解 ${esc(q.r)}）</div>`;
+    inp.value = ''; inp.classList.add('ng'); inp.focus();
+  }
+}
+function reveal(ok, said){
+  const q = S.cur.q; S.cur.done = true;
+  $('blank').outerHTML = blankHtml(q, ok ? 'ok' : 'ng');
+  const wasTrap = norm(said) === norm(q.w);
+  $('fb').innerHTML = `<div class="head ${ok ? 'ok' : 'ng'}">${ok ? '✅ 答對' : S.mode === 'type' ? '❌ 第一次拼錯（已重打對）' : (wasTrap ? '❌ 又踩到同一個陷阱' : '❌ 答錯')}</div>
+    <div>正解 <span class="en"><b>${esc(q.r)}</b></span>　·　你當時選 <span class="en">${esc(q.w)}</span>${!ok && !wasTrap && S.mode === 'choice' ? `　·　這次選 <span class="en">${esc(said)}</span>` : ''}</div>
+    <div class="why" style="margin-top:6px">${q.why}</div>
+    ${q.card ? `<div class="card">📇 複習卡 ${esc(q.card)}</div>` : ''}
+    <div class="src"><a href="閱讀訂正.html#p${q.a}" target="_blank">看原文第 ${q.a} 篇 ↗</a></div>`;
+  $('fb').classList.remove('hide');
+  $('next').textContent = S.i + 1 < S.list.length ? '下一題 ↵' : '看結果 ↵';
+  $('next').classList.remove('hide');
+  $('next').focus();
+}
+function next(){ if (++S.i < S.list.length) show(); else finish(); }
+
+function finish(){
+  if (!S || !S.res.length) { $('quiz').classList.add('hide'); $('setup').classList.remove('hide'); renderSetup(); return; }
+  const r = S.res, ok = r.filter(x => x.ok).length, bad = r.filter(x => !x.ok);
+  const rows = Object.keys(CAT).map(k => { const a = r.filter(x => x.q.cat === k); return a.length ? `<tr><td>${CAT[k]}</td><td>${a.filter(x => x.ok).length} / ${a.length}</td></tr>` : ''; }).join('');
+  $('result').innerHTML = `<div class="lab">本輪結果（${S.mode === 'type' ? '默打' : '選擇'}）</div>
+    <div class="big">${ok} / ${r.length}</div><div class="meta" style="margin:0">第一次就對 ${Math.round(ok / r.length * 100)}%${r.length < S.list.length ? `（中途結束，共 ${S.list.length} 題）` : ''}</div>
+    <table><tr><th>分類</th><th>答對</th></tr>${rows}</table>
+    ${bad.length ? `<div class="lab" style="margin-top:14px">錯的 ${bad.length} 題</div>` + bad.map(x => `<div class="wl"><div class="s">${esc(x.q.ctx).replace('____', `<b>${esc(x.q.r)}</b>`)}</div>
+      <div>你這次：<span class="en" style="color:var(--ng)">${esc(x.said)}</span>　<span class="tag c-${x.q.cat}">${CAT[x.q.cat]}</span></div><div class="why">${x.q.why}</div></div>`).join('') : '<p>🎉 全對</p>'}
+    <div class="nav">${bad.length ? `<button class="btn" id="again">錯的 ${bad.length} 題再考一輪</button>` : '<span></span>'}<button class="btn ghost" id="back">回設定</button></div>`;
+  $('quiz').classList.add('hide'); $('result').classList.remove('hide');
+  if (bad.length) $('again').onclick = () => start(shuffle(bad.map(x => x.q)));
+  $('back').onclick = () => { $('result').classList.add('hide'); $('setup').classList.remove('hide'); renderSetup(); };
+  window.scrollTo(0, 0);
+}
+
+document.addEventListener('keydown', e => {
+  if (!S || $('quiz').classList.contains('hide')) return;
+  if (e.key === 'Enter') {
+    if (S.cur.done) { e.preventDefault(); next(); }
+    else if (S.mode === 'type' && e.target.id === 'inp') { e.preventDefault(); typed(); }
+  } else if (S.mode === 'choice' && !S.cur.done && /^[1-4]$/.test(e.key)) {
+    const b = $('ans').querySelectorAll('.opt')[+e.key - 1]; if (b) pick(b);
+  }
+});
+renderSetup();
+</script>
+</body>
+</html>
