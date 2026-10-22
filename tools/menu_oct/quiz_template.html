@@ -47,7 +47,6 @@
   .opt.ok{background:var(--okbg);border-color:var(--ok);color:var(--ok);font-weight:700}
   .opt.ng{background:var(--ngbg);border-color:var(--ng);color:var(--ng);text-decoration:line-through}
   .opt:disabled{cursor:default}
-  .note2{font-size:12px;color:var(--sub);margin-top:8px}
   .typ{display:flex;gap:8px}
   .typ input{flex:1;min-width:0;font:17px Menlo,Consolas,monospace;padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
   .typ input:focus{outline:2px solid var(--en);outline-offset:-1px}
@@ -83,7 +82,7 @@
 <main>
 <a class="back" href="index.html">← 回 PTE Study Hub</a>
 <h1>🎯 FIB 文法測驗</h1>
-<p class="lead">題目全部來自 <a href="閱讀訂正.html">閱讀訂正</a> 47 篇 93 格（你真的錯過的格）。<b>選擇</b>：詞性／時態 16 格是四選一，其他是「正解 vs 你當時選的」二選一；<b>默打</b>：給首字母和字數，拼錯要重打到對才放行。只有第一次就對才算分，紀錄存在這台瀏覽器。</p>
+<p class="lead">題目全部來自 <a href="閱讀訂正.html">閱讀訂正</a> 47 篇 93 格（你真的錯過的格）。<b>選擇</b>：每格四選一，選項裡一定有你當時選錯的那個；<b>默打</b>：給首字母和字數，拼錯要重打到對才放行。只有第一次就對才算分，紀錄存在這台瀏覽器。</p>
 
 <section id="setup" class="panel">
   <div class="row"><div class="lab">模式</div><div class="chips" id="modeC"></div></div>
@@ -174,8 +173,7 @@ function show(){
   $('fb').classList.add('hide'); $('next').classList.add('hide');
   if (S.mode === 'choice') {
     const o = shuffle(q.opts);
-    $('ans').innerHTML = `<div class="opts">${o.map((w, k) => `<button class="opt" data-w="${esc(w)}"><kbd>${k + 1}</kbd>${esc(w)}</button>`).join('')}</div>`
-      + (o.length === 2 ? `<div class="note2">二選一：其中一個是你當時選錯的</div>` : '');
+    $('ans').innerHTML = `<div class="opts">${o.map((w, k) => `<button class="opt" data-w="${esc(w)}"><kbd>${k + 1}</kbd>${esc(w)}</button>`).join('')}</div>`;
     $('ans').querySelectorAll('.opt').forEach(b => b.onclick = () => pick(b));
   } else {
     const shape = q.r.split('').map((c, k) => c === ' ' ? '　' : (k ? '_' : c)).join(' ');

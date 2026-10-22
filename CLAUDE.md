@@ -14,7 +14,7 @@ James 正在準備 PTE，弱項是 Writing 和拼字。本 repo 是一組純靜�
 | `寫作訂正.html` | WE 錯誤一條龍，三分頁（hash 直達）：`#review` 看根因（整篇錯誤＋跨篇趨勢）、`#rewrite` 動手改（錯句重寫）、`#check` 考前掃（5 條自檢）。**拼字黑名單只有這裡一份**（共用 `BLACKLIST` 陣列，①頁尾與③同吃）。新增 WE 訂正就加進這檔的 `DATA` |
 | `閱讀訂正.html` | R-FIB／FIB-DD 錯題訂正，目錄制（目錄卡→單篇詳情），根因分類＋自測模式 |
 | `閱讀複習包.html` | **FIB 總統整（2026-10-17）**，James 說「所有文法都複習完了，幫我一個最後大統整」而建。**沒有自己的資料**：由 `tools/menu_oct/pack.py` 產出，讀 `tools/menu_oct/gen.py` 的 `LOG`（當日紀錄，含 `class="key"` 的 ⭐ 規則）／`WRONG`（複習卡）＋ `閱讀訂正.html` 的 47 篇 93 格。四段：§1 核心規則（只收 LOG 裡有 `class="key"` 的條目，黃框）、§2 其餘當日紀錄、§3 93 格分類索引（col/sem/log/pos/ten 五表）、§4 逐篇解析（對到 WRONG 的格附「複習卡 Dn」）。「遮答案」鈕藏正解＋錯選＋解析，留挖空句自測。**改 gen.py LOG／WRONG 或閱讀訂正後要重跑 pack.py**，兩頁才同步 |
-| `FIB_文法測驗.html` | **FIB 互動測驗（2026-10-22）**，James 說「幫我設計互動式的FIB文法測驗」而建。**沒有自己的資料**：由 `tools/menu_oct/quiz.py` 產出（版面在 `quiz_template.html`），讀 `fibdata.py`（pack.py 共用：閱讀訂正 93 格＋gen.py `WRONG` 複習卡中文提示）。一題一張卡：選擇模式＝詞性／時態 16 格用 quiz.py `OPTS` 手挑同字族四選一，其餘「正解 vs 當時錯選」二選一（不自動生干擾項，怕出現另一個也對的選項）；默打模式＝首字母＋字數，拼錯 LCS 標差異、重打到對才放行。分類多選、範圍（全部／上次答錯／沒做過）、題數 10/20/全部；作答紀錄存 localStorage `fib_quiz_v1`。**改閱讀訂正或 gen.py 後 pack.py、quiz.py 都要重跑** |
+| `FIB_文法測驗.html` | **FIB 互動測驗（2026-10-22）**，James 說「幫我設計互動式的FIB文法測驗」而建。**沒有自己的資料**：由 `tools/menu_oct/quiz.py` 產出（版面在 `quiz_template.html`），讀 `fibdata.py`（pack.py 共用：閱讀訂正 93 格＋gen.py `WRONG` 複習卡中文提示）。一題一張卡：選擇模式＝93 格全四選一，quiz.py `OPTS` 手挑（正解＋當時錯選＋2 干擾；干擾項必須在語境裡明確錯，避開放進去也通的同義字；詞性／時態 16 格用同字族）；默打模式＝首字母＋字數，拼錯 LCS 標差異、重打到對才放行。分類多選、範圍（全部／上次答錯／沒做過）、題數 10/20/全部；作答紀錄存 localStorage `fib_quiz_v1`。**改閱讀訂正或 gen.py 後 pack.py、quiz.py 都要重跑** |
 | `WFD_訂正.html` | 聽寫訂正＋要背單字 chips；頁尾 `#vquiz` 是 57 字易錯默拼測驗（原 WFD_易錯單字庫 併入，WFD＋WE 罩門字合一）。新錯字加 `DATA`，新默拼字加 `VQ` |
 | `WE_封關卡.html` | 考前模板＋模板專屬罩門（view/and one/吞小字）；文法拼字罩門是按鈕連去寫作訂正③，**不要在這裡重複維護** |
 
