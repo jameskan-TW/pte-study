@@ -10,7 +10,7 @@ James 正在準備 PTE，弱項是 Writing 和拼字。本 repo 是一組純靜�
 Claude 的自動記憶（auto-memory）是**每台電腦各自一份**，Mac 看不到 Windows 寫的。所以 2026-10-24 起，
 所有「練習進度／考他的規則／James 的罩門清單」都以 repo 裡的 **`_memory/`** 為準，兩台共用：
 
-- 開工時先讀 `_memory/MEMORY.md`（索引），再讀裡面點到的檔（尤其 `october-plan`、`spelling-drill-progress`、
+- 開工時先讀 `_memory/MEMORY.md`（索引）→ **`_memory/practice-rules-overview.md`（練習規則總覽＋接續點，考他之前必讀）**，再讀裡面點到的檔（尤其 `october-plan`、`spelling-drill-progress`、
   `sst-keyword-drill`、`we-grammar-review-progress`、`we-slot-drill-watchlist`、`interactive-drill-batching`）。
 - 練完、進度有變，**直接改 `_memory/` 裡的檔並 commit**，不要只寫進本機 auto-memory（另一台會看不到）。
   本機 auto-memory 可以同步一份副本，但 `_memory/` 是真本。

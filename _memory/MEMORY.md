@@ -1,5 +1,6 @@
 # Memory Index
 
+- [練習規則總覽](practice-rules-overview.md) — **換電腦先讀這份**：WE 逐 slot 練法（18 格名稱＋流程）／文法總複習 18 類 5 句一批／拼字・SST 5 題一批／FIB 四選一，含 10/24 各項接續點（slot 下一題 #12、文法第 5 批）
 - [PTE 同步設定](pte-sync-setup.md) — Mac/Windows 兩台用 GitHub 同步；開工 pull、收工 push；**2026-10-24 起記憶檔真本在 repo `_memory/`**，改完要 commit
 - [FIB PDF 擷取法](fib-pdf-extraction.md) — ptefighter 機經 PDF 用 PyMuPDF 抓黃色高亮＝答案；雙層疊印、num/id 不同步等地雷
 - [閱讀複習進度](reading-review-progress.md) — 互動考題複習法；文法 9 格已過（which/and 對齊/-ing 三觀念要重驗）、語意搭配 43 格未考
