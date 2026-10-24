@@ -5,6 +5,20 @@ James 正在準備 PTE，弱項是 Writing 和拼字。本 repo 是一組純靜�
 
 **先讀 `HANDOFF.md`**——那是 WE（Write Essay）工程的單一事實來源，含五大論據、mistakes 資料結構、DATA 提取範本。本檔只補 HANDOFF 沒寫的全局脈絡。
 
+## 練習進度與考法規則（兩台電腦共用，開工必讀）
+
+Claude 的自動記憶（auto-memory）是**每台電腦各自一份**，Mac 看不到 Windows 寫的。所以 2026-10-24 起，
+所有「練習進度／考他的規則／James 的罩門清單」都以 repo 裡的 **`_memory/`** 為準，兩台共用：
+
+- 開工時先讀 `_memory/MEMORY.md`（索引），再讀裡面點到的檔（尤其 `october-plan`、`spelling-drill-progress`、
+  `sst-keyword-drill`、`we-grammar-review-progress`、`we-slot-drill-watchlist`、`interactive-drill-batching`）。
+- 練完、進度有變，**直接改 `_memory/` 裡的檔並 commit**，不要只寫進本機 auto-memory（另一台會看不到）。
+  本機 auto-memory 可以同步一份副本，但 `_memory/` 是真本。
+- Mac 第一次接手時，若想讓本機 auto-memory 也有這些內容，把 `_memory/*.md` 複製到
+  `~/.claude/projects/-Users-nn-Documents-claude-pte-study/memory/`（資料夾不存在就建）；之後仍以 `_memory/` 為準。
+- Windows 這台的 auto-memory 在 `C:/Users/james/.claude/projects/C--Users-james-OneDrive----Claude-workspace-projects-PTE-Study-Hub/memory/`，
+  收工 push 前把有改動的檔複製回 `_memory/`。
+
 ## 檔案地圖（2026-08-07 全站重組後：分「訂正區」和「題庫區」）
 
 **🩺 訂正區（James 自己的錯題，一篇一篇累積，複習價值最高）**
