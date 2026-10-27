@@ -1,6 +1,6 @@
 ---
 name: we-grammar-review-progress
-description: WE_文法總複習.html 18 類互動考題進度——1027 考完第 7–16 批，下次從第 17 批（every／there）接
+description: WE_文法總複習.html 18 類互動考題進度——1028 全 18 類考完一輪；下次只考 1024–1028 錯句
 metadata:
   node_type: memory
   type: project
@@ -24,7 +24,10 @@ WE 文法總複習（repo `WE_文法總複習.html`，18 類依犯過題數排�
 - **2026-10-27 第 14 批「逗號連兩句」完成**（重打後全對）。but／and 兩句一次對；錯：, a safe city（沒補 and）＋ keeps people **safely**（→ safe）、in harmony **that** fame should（把上批 and it→that 套錯地方，這裡是兩個完整句要 , and）、things that cannot find（漏主詞 they）。
 - **2026-10-27 第 15 批「make／let／help／see＋原形；allow／push＋to」完成**（重打後全對）。allow to 一次對；錯：makes employees **to** feel、saw his friend **finding**（不算錯，see＋-ing 成立，但範文用 find）、help local **family having**（→ families earn）、pushes parents **guiding**（→ to guide）；重打時 allow their children **use**（to 又掉，改一個掉一個）。
 - **2026-10-27 第 16 批「時態」完成**（重打後全對）。live／praise 一次對；錯：school **build**（單數漏 s，改成 schools build 也對）、James **gets marry**（→ married／got married）、if **student surffing on internet**（漏 a、要真動詞 surfs、surf 一個 f、→ surf the internet，第二次還留 on）；問了 a student 後 surf 要不要 s → 要；重打時 If 打成 **It**。
-- **下次從第 17 批「every／there」開始**（punished by each mistakes→for every mistake／protect every families→family／everything depend→depends／every change of courses need→needs／there have no wage limit→there should be no），接著、10 -ing 主詞、11 and/or、12 leading to、13 比較級、14 逗號連兩句、15 make/let、16 時態、17 every/there、18 改一個掉一個。
+- **2026-10-27 第 17 批「every／there」完成**（重打後全對）。every family 一次對；錯：punished **by** each mistake（→ for）、**everythings** depend（everything 不加 s、動詞加 s）、every change of course **need**（→ change to courses needs；change of course＝改變方向）、there **have**／**has** no wage limits（連錯兩次 → there should be；問了 no 後面要不要 a/s → no 佔冠詞位，單複數都可）。
+- **2026-10-28 第 18 批「改一個掉一個」完成，18 類全部考完一輪。** 錯：with his **families** and get along with **their** parents（原句三錯只改了 parent→parents，問了原本錯在哪）、拼 **fmaily**。第 1 句寫成 high grades, a good job and a steady income 文法對，範文是 find a good job with a steady income。
+- 1027 James 要「今天重點給口訣」：每批一句口訣（例：leading to 後只放名詞，and it 換 that；make/let/help/see 原形、allow/push 要 to；改完整句從頭念一次），已在對話給過。
+- **下一輪**：不再照 18 類重跑，只考 1024–1028 錯過的句子（下方清單），一批 5 句。
 - 1021 當天錯的（1024 已複考，重打後全對）：teach→teachs（ch 要 es）、more pays（pay 不可數）、pay attention **on**（第 5 次）、**with** a better mood（第 3 次）、exames、are **worry**（問了「be 後面不能接動詞嗎」→ 只能接形容詞／V-ing／過去分詞）、body and **mental**、laws affect little on／less effect to（→ have little effect on）。
 
-**How to apply:** 開場先複考 1024／1027 錯的（in a mood、are worried、goes／does、get a promotion、A happy employee、people living in、the better choice、stay healthy、crucial that＋原形、deal with his work every day、part of our history、keeps the whole family in harmony、a warm and stable home、Studying old plays does more harm than good、being watched…leads、foreign、life there is slow and has far less pressure、a bad temper that hurts families、fewer hours mean less money、cleaner air、more than timing、keeps people safe、, and fame should never…、makes…feel／allow…to use／push…to guide、If a student surfs the internet、James married），再出第 17 批 5 句，不要重講規則。
+**How to apply:** 18 類已考完。下次開場考 1024–1028 錯的（in a mood、are worried、goes／does、get a promotion、A happy employee、people living in、the better choice、stay healthy、crucial that＋原形、deal with his work every day、part of our history、keeps the whole family in harmony、a warm and stable home、Studying old plays does more harm than good、being watched…leads、foreign、life there is slow and has far less pressure、a bad temper that hurts families、fewer hours mean less money、cleaner air、more than timing、keeps people safe、, and fame should never…、makes…feel／allow…to use／push…to guide、If a student surfs the internet、James married、punished for、everything depends、there should be no、his family／his parents），一批 5 句，不要重講規則。

@@ -10,4 +10,4 @@
 - [十月計畫](october-plan.md) — 10/5–11/1 28 天菜單：WE W1 收尾 11 題 10/21 全清、接 W2 重打 14 題、W3 整篇；FIB 93 錯格清帳；閱讀搭配練習頁待建
 - [WE 盯梢清單](we-slot-drill-watchlist.md) — James 點名要記：take the metro／by metro 冠詞相反；and…keeps、earlier、the ride 連錯點
 - [SST 關鍵字默拼](sst-keyword-drill.md) — 95 字清單在 repo SST_關鍵字默拼_進度.md；每天考 3 個；1019 第一輪 95 字全過（錯 45）；下次重考進度檔「錯過的字」區：反覆卡 8＋breadth/abstraction 優先，每批 5 個
-- [WE 文法總複習考題進度](we-grammar-review-progress.md) — 18 類 5 句一批；1027 考完第 5–16 批，下次從第 17 批「every／there」接，先複考 1024 錯的 in a mood／are worried／goes／a promotion
+- [WE 文法總複習考題進度](we-grammar-review-progress.md) — 18 類 5 句一批；1028 18 類全考完一輪，下次只考 1024–28 錯句，先複考 1024 錯的 in a mood／are worried／goes／a promotion
