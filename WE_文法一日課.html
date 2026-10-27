@@ -1,0 +1,518 @@
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WE 文法一日課 — 依錯誤頻率排的 18 課</title>
+<style>
+  body{margin:0;background:#fff;color:#222;font-family:"Noto Sans TC",-apple-system,"Segoe UI",sans-serif;line-height:1.75;font-size:16px}
+  main{max-width:760px;margin:0 auto;padding:24px 16px 80px}
+  h1{font-size:1.7em;margin:.4em 0 .3em}h2{font-size:1.35em;margin:1.8em 0 .5em;padding-bottom:.2em;border-bottom:1px solid #ddd}
+  h3{font-size:1.15em;margin:0 0 .3em}
+  h4{font-size:.95em;margin:.9em 0 .2em;color:#555}
+  blockquote{margin:.8em 0;padding:.5em 1em;border-left:4px solid #bbb;background:#f6f6f6}
+  table{border-collapse:collapse;width:100%;margin:.4em 0;font-size:.95em}
+  td,th{border:1px solid #ddd;padding:4px 8px;vertical-align:top;text-align:left}
+  th{background:#f3f3f3;font-weight:700}
+  ul{margin:.2em 0 .4em;padding-left:1.3em}
+  .en{font-family:Consolas,"Noto Sans TC",monospace;color:#0b4f9c}
+  .bar{position:sticky;top:0;background:#fff;border-bottom:1px solid #ddd;padding:6px 0;margin-bottom:8px;font-size:.9em;z-index:5}
+  .bar button{font:inherit;padding:2px 10px;margin:2px 8px 2px 0;cursor:pointer}
+  .toc a{margin-right:10px;white-space:nowrap}
+  .hint{color:#888;font-size:.85em}
+  .sched td:first-child{width:6.5em}
+  .sched a{display:inline-block;margin-right:10px}
+  .sched a.done{color:#0b6e4f;font-weight:700}
+  .sched a.done::after{content:" ✓"}
+  .top8 td:first-child{width:46%}
+  .lesson{margin:1.4em 0 1.8em;padding:.7em .9em .6em;border:1px solid #e3e3e3;border-left:5px solid #0b4f9c;border-radius:4px;background:#f5f8fd}
+  .lesson.hot{border-left-color:#b3261e;background:#fff8f7}
+  .lesson.mid{border-left-color:#e0b000;background:#fffdf5}
+  .lesson.finished{opacity:.75}
+  .rank{display:inline-block;min-width:1.6em;text-align:center;background:#333;color:#fff;border-radius:3px;font-size:.85em;margin-right:6px;padding:0 4px}
+  .stat{font-size:.82em;color:#666;font-weight:400;display:block;margin-top:2px}
+  .mn{margin:.5em 0 .6em;padding:.45em .8em;border-left:4px solid #e0b000;background:#fff3b0;font-weight:700}
+  .blind{margin:.5em 0;padding:.4em .8em;border-left:4px solid #b3261e;background:#fdecea;font-size:.95em}
+  .x{color:#b3261e;text-decoration:line-through}
+  .o{color:#0b6e4f;font-weight:700}
+  .nt{font-size:.88em;color:#555}
+  body.hide .ans-o,body.hide .ans-nt{visibility:hidden}
+  .errs td:first-child{width:46%}
+  .errs .hint{display:inline-block;text-decoration:none;margin-left:4px}
+  .prac{margin:.35em 0;padding:.45em .6em;background:#fff;border:1px solid #e3e3e3;border-radius:4px}
+  .prac .q{font-family:Consolas,"Noto Sans TC",monospace}
+  .prac .q .num{color:#888;margin-right:4px;font-family:"Noto Sans TC",sans-serif}
+  .prac .q .ctx{color:#888;font-size:.85em;font-family:"Noto Sans TC",sans-serif;margin-left:6px}
+  .prac .row{display:flex;gap:6px;margin-top:4px}
+  .prac input{flex:1;min-width:0;font:inherit;font-family:Consolas,"Noto Sans TC",monospace;padding:3px 6px;border:1px solid #bbb;border-radius:3px}
+  .prac button{font:inherit;font-size:.85em;padding:2px 8px;cursor:pointer;white-space:nowrap}
+  .prac .res{margin-top:4px;font-size:.92em;display:none}
+  .prac.ok{border-color:#0b6e4f;background:#f2faf6}
+  .prac.ng{border-color:#b3261e;background:#fff6f5}
+  .prac.ok .res,.prac.ng .res,.prac.shown .res{display:block}
+  .miss{background:#c8f0d8;color:#0b6e4f;font-weight:700;padding:0 2px;border-radius:2px}
+  .extra{background:#fbd5d1;color:#b3261e;text-decoration:line-through;padding:0 2px;border-radius:2px}
+  .donebox{margin-top:.6em;font-size:.92em}
+  .score{font-size:.85em;color:#666;margin-left:6px}
+  .check5 li{margin:.15em 0}
+  #mix .prac .q .from{font-size:.8em;color:#888;margin-left:6px;font-family:"Noto Sans TC",sans-serif}
+  @media(max-width:600px){.errs td:first-child,.top8 td:first-child{width:auto}.prac .row{flex-wrap:wrap}}
+</style></head><body><main>
+<div class="bar"><button onclick="document.body.classList.toggle('hide')">遮／顯示錯句答案</button><button onclick="mix()">混考 20 題</button><span class="toc"><a href="#s0">課表</a><a href="#s1">頑固錯</a><a href="#s2">18 課</a><a href="#s3">送出前五步</a><a href="#s4">拼字</a><a href="#mixsec">混考</a></span></div>
+<h1>WE 文法一日課</h1>
+<p class="hint">產出日 2026-10-28。排序依據：37 篇 Write Essay 範文錯題本裡<b>犯過的題數</b>（同題數比次數），數字跟 <a href="WE_文法總複習.html">WE 文法總複習</a> §0 同一份資料。每課另外列出 10/21–10/28 互動考題<b>練過又錯</b>的句子（來源：<span class="en">_memory/we-grammar-review-progress.md</span>）。拼字錯不算文法，集中在最後的 §4。</p>
+<blockquote><b>每一課怎麼上（約 20–25 分鐘）</b><br>
+① 念黃框口訣 → ② 看規則 → ③ 讀紅框「你的盲區」→ ④ 按上方「遮答案」，把你的錯句自己改一遍再打開 → ⑤ 做 5 題新題（全是沒考過的句子，打字作答、按 Enter 對答案）→ ⑥ 全對再勾「這課完成」。<br>
+新題答錯：看綠色＝你漏的字、紅色刪除線＝你多打的字，<b>整句重打到對</b>才下一題。</blockquote>
+
+<h2 id="s0">課表（一天 6 節）</h2>
+<table class="sched" id="sched"><tr><th>時間</th><th>內容</th></tr></table>
+<p class="hint">勾過「這課完成」的課，課表會變綠打勾（存在這台瀏覽器）。</p>
+
+<h2 id="s1">頑固錯 TOP 8：練過還是又錯</h2>
+<p class="hint">這幾個是在範文錯過、考題又錯過的，最該先盯。次數＝範文＋10/21–28 考題合計。</p>
+<table class="top8">
+<tr><th>你寫的</th><th>要寫</th><th>次數</th></tr>
+<tr><td class="x">pay attention <b>on</b></td><td class="o">pay attention <b>to</b></td><td>5</td></tr>
+<tr><td class="x">goes home <b>with</b> a good mood</td><td class="o">goes home <b>in</b> a better mood</td><td>4</td></tr>
+<tr><td class="x">young people are <b>worry</b></td><td class="o">young people are <b>worried</b></td><td>3</td></tr>
+<tr><td class="x">our <b>healthy</b>／stay <b>in health</b></td><td class="o">our <b>health</b>／stay <b>healthy</b></td><td>3</td></tr>
+<tr><td class="x">long hours <b>causes</b>／students studying… <b>does</b></td><td class="o">複數主詞動詞不加 s：hours <b>cause</b></td><td>3</td></tr>
+<tr><td class="x">keeps family in harmony</td><td class="o">keeps <b>the whole</b> family in harmony</td><td>3</td></tr>
+<tr><td class="x">there <b>have</b>／there <b>has</b> no wage limit</td><td class="o">there <b>should be</b> no wage limit</td><td>3</td></tr>
+<tr><td class="x">laws <b>affect</b> little <b>on</b> people</td><td class="o">laws <b>have little effect on</b> people</td><td>3</td></tr>
+</table>
+
+<h2 id="s2">18 課（依頻率由高到低）</h2>
+<div id="lessons"></div>
+
+<h2 id="s3">送出前五步（第 6 節：每寫完一句都跑一次）</h2>
+<div class="lesson hot">
+<div class="mn">改完一處，整句從頭念一次再送出</div>
+<ol class="check5">
+<li><b>找主詞</b>，決定動詞要不要 s（第 1 課）。單數加 s，複數不加；-ing 主詞、everything 都算單數。</li>
+<li><b>每個名詞過三關</b>：可數還是不可數？一個（要 a）還是泛指（加 s）？說得出是哪一個才加 the（第 3、5、6、8 課）。</li>
+<li><b>be／feel／stay／keep 後面</b>是形容詞嗎？our／his／leading to 後面是名詞嗎？（第 4 課）</li>
+<li><b>介系詞和收尾片語</b>是整組背的那個嗎？（第 2、9 課）</li>
+<li><b>逗號兩邊</b>是不是兩個完整句子？是的話補 and／but（第 14 課）。</li>
+</ol>
+</div>
+
+<h2 id="s4">拼字盲區（10/21–28 考題拼錯的字）</h2>
+<table>
+<tr><th>你打的</th><th>正確</th><th>怎麼記</th></tr>
+<tr><td class="x">foreing／foering</td><td class="o">foreign</td><td>for＋eign，e 在 i 前、g 不發音</td></tr>
+<tr><td class="x">affcet</td><td class="o">affect</td><td>af-fect；名詞 effect、動詞 affect</td></tr>
+<tr><td class="x">seady</td><td class="o">steady</td><td>s-t-ea-dy，t 不能漏</td></tr>
+<tr><td class="x">studing</td><td class="o">studying</td><td>study 的 y 留著，直接加 -ing</td></tr>
+<tr><td class="x">waitting</td><td class="o">waiting</td><td>t 前面是兩個母音 ai，不重複 t</td></tr>
+<tr><td class="x">promoption</td><td class="o">promotion</td><td>pro-mo-tion，沒有 p</td></tr>
+<tr><td class="x">upgrad</td><td class="o">upgrade</td><td>up＋grade，結尾 e</td></tr>
+<tr><td class="x">birngs／fmaily</td><td class="o">brings／family</td><td>字母顛倒：b-r-i、f-a-m</td></tr>
+<tr><td class="x">pays（要打 plays）</td><td class="o">plays</td><td>漏 l，意思整個變</td></tr>
+<tr><td class="x">surffing</td><td class="o">surfing</td><td>surf 一個 f</td></tr>
+<tr><td class="x">livied</td><td class="o">lived</td><td>live＋d</td></tr>
+<tr><td class="x">exames／teachs</td><td class="o">exams／teaches</td><td>exam＋s；ch 結尾加 es</td></tr>
+</table>
+
+<h2 id="mixsec">混考</h2>
+<p class="hint">按上方「混考 20 題」，從 18 課的 90 題新題隨機抽 20 題，不告訴你是哪一課（答完會顯示）。</p>
+<div id="mix"><span class="hint">還沒抽題。</span></div>
+
+<script>
+// 每課：name、n/t＝範文犯過題數／次數（同 WE_文法總複習 §0）、mn 口訣、rules、blind 盲區、
+// errs＝10/21–28 考題又錯 [錯, 對, 說明]、ex＝範文錯句、prac＝新題 {q 題目, a 可接受答案[], nt 說明, c 情境}
+const L=[
+{name:'s 的方向：主詞單數動詞加 s、複數不加',n:25,t:44,
+ mn:'先找主詞再決定 s：單數加 s，複數不加',
+ rules:['主詞是 he／she／it、單數名詞、不可數名詞、-ing 主詞 → 現在式動詞加 s：<span class="en">he works／the price is／studying needs</span>',
+  '主詞是複數（hours、roads、laws、people、children）→ 動詞不加 s：<span class="en">long hours cause stress</span>',
+  '主詞和動詞中間隔了字，回頭找真正的主詞：<span class="en">the effects of climate change <b>are</b></span>（主詞是 effects）',
+  'and 後面的第二個動詞也要看主詞：<span class="en">he comes home early and <b>keeps</b> …</span>',
+  'ch／sh／s／x 結尾加 es（teaches、watches）；子音＋y 結尾改 ies（studies）'],
+ blind:'s 像蹺蹺板：主詞有 s，動詞就沒有；主詞沒 s，動詞就要有。你常兩邊都加（hours <b>causes</b>）或兩邊都沒有（worker <b>go</b>）。people、children 沒有 s 但是複數，動詞不加 s。',
+ errs:[['a happy worker go home','a happy worker goes home','worker 單數'],['television do more harm than good','television does more harm than good','television 單數'],['long hours causes a bad temper','long hours cause a bad temper','hours 複數，動詞不加 s'],['students studying old plays does more harm','studying old plays does more harm','主詞讀成「學生們」就變複數'],['school build good habits','school builds good habits','school 單數'],['a part-time job teachs','a part-time job teaches','ch 結尾加 es']],
+ ex:[['the effects of climate change is','the effects of climate change are'],['wider roads makes cars move','wider roads make cars move'],['he comes home early and keep the whole family in harmony','…and keeps the whole family in harmony']],
+ prac:[
+  {q:'my father work long hours every day',a:['my father works long hours every day'],nt:'my father 單數 → works'},
+  {q:'long working hours causes stress',a:['long working hours cause stress'],nt:'hours 複數 → cause'},
+  {q:'people who lives in big cities spend more on rent',a:['people who live in big cities spend more on rent'],nt:'who 指 people（複數）→ live'},
+  {q:'the price of houses are too high',a:['the price of houses is too high'],nt:'主詞是 price（單數），不是 houses'},
+  {q:'he finishes work early and spend time with his kids',a:['he finishes work early and spends time with his kids'],nt:'and 後第二個動詞也要 s'}]},
+
+{name:'介系詞固定片語',n:25,t:43,
+ mn:'介系詞不能照中文猜，整組背',
+ rules:['<span class="en">pay attention <b>to</b></span>（注意力「付給」對象）',
+  '<span class="en">goes home <b>in</b> a better mood</span>（人在心情裡）',
+  '<span class="en">interest <b>in</b>／focus <b>on</b>／addicted <b>to</b>／depend <b>on</b>／spend time <b>with</b></span>',
+  '<span class="en">give up X <b>for</b> Y</span>（用 X 換 Y）／<span class="en">punished <b>for</b> a mistake</span>（因為錯誤被罰）',
+  '<span class="en">put pressure <b>on</b>／through hard times／have little effect <b>on</b></span>',
+  '<span class="en">surf the internet</span>（不用 on）'],
+ blind:'你照中文翻介系詞：「對…注意」寫 on、「帶著好心情」寫 with、「被錯誤罰」寫 by。這三個都是中文直譯。<b>attention on 錯 5 次、with a mood 錯 4 次</b>，是全部最頑固的兩個。',
+ errs:[['pay more attention on our health','pay more attention to our health','第 5 次'],['goes home with a good mood','goes home in a better mood','第 4 次'],['punished by each mistake','punished for each mistake','因為錯誤 → for'],['surfs on the internet','surfs the internet','標準說法不用 on'],['laws affect little on people','laws have little effect on people','affect 後面直接接受詞，不接 on']],
+ ex:[['less interest on learning','less interest in learning'],['addicted on the internet','addicted to the internet'],['give up privacy to fame','give up privacy for fame']],
+ prac:[
+  {q:'students should focus in their studies',a:['students should focus on their studies'],nt:'focus on'},
+  {q:'many teenagers are addicted on their phones',a:['many teenagers are addicted to their phones'],nt:'addicted to'},
+  {q:'he goes home with a good mood',a:['he goes home in a good mood','he goes home in a better mood'],nt:'心情用 in'},
+  {q:'parents should pay more attention on their children',a:['parents should pay more attention to their children'],nt:'pay attention to'},
+  {q:'children who are punished by small mistakes may lose confidence',a:['children who are punished for small mistakes may lose confidence'],nt:'因為錯誤被罰 → for'}]},
+
+{name:'可數名詞泛指要複數：漏 s',n:24,t:57,
+ mn:'可數名詞講一般情況：加 s，不加 a',
+ rules:['泛指一類東西用複數、不加冠詞：<span class="en">old buildings／written exams／foreign languages</span>',
+  'many／some／these／other 後面接複數：<span class="en">many employees</span>',
+  '很多人各有一個 → 複數：<span class="en">people check their phones／people without jobs</span>',
+  '不可數名詞（money、information、work…）不能加 s，見第 8 課'],
+ blind:'中文名詞沒有單複數，你的名詞常常光禿禿：既沒 a 也沒 s。這是 37 篇裡<b>犯最多次的一類（57 次）</b>。看到可數名詞先問：「一個還是很多？」一個 → a；泛指或很多 → s。',
+ errs:[['short-term discount','short-term discounts','泛指折扣'],['a bad temper that hurts family','a bad temper that hurts families','泛指家庭'],['help local family earn','help local families earn','當地的家庭不只一個'],['translations of book','translations of books','泛指書']],
+ ex:[['old building are part of our history','old buildings are part of our history'],['learning foreign language is still important','learning foreign languages is still important'],['save time for many employee','save time for many employees']],
+ prac:[
+  {q:'old building are part of our history',a:['old buildings are part of our history'],nt:'泛指舊建築 → buildings'},
+  {q:'many student feel stressed before exam',a:['many students feel stressed before exams','many students feel stressed before an exam','many students feel stressed before the exam'],nt:'many＋複數；exam 可數不能光禿禿'},
+  {q:'he reads the translations of book',a:['he reads the translations of books'],nt:'泛指書'},
+  {q:'companies should give employee more training',a:['companies should give employees more training','companies should give their employees more training'],nt:'泛指員工'},
+  {q:'people often check their phone on the train',a:['people often check their phones on the train'],nt:'每個人各有一支 → phones'}]},
+
+{name:'詞性穿錯衣服：形容詞／名詞／動詞',n:24,t:39,
+ mn:'先問這格要什麼詞：be／feel／stay 後接形容詞，our／leading to 後接名詞',
+ rules:['be／feel／stay／keep＋人 後面接<b>形容詞</b>：<span class="en">are worried／stay healthy／keeps people safe／feel relaxed</span>',
+  'our／his／a／the 後面、leading to 後面接<b>名詞</b>：<span class="en">our health／leads to stress and anxiety</span>',
+  'and 兩邊詞性要一樣：<span class="en">body and mind</span>（兩個名詞）',
+  '常混的字族：worry→worried／health→healthy／anxiety→anxious／success→successful／relax→relaxed／safe→safely／mind→mental／effect（名）→affect（動）',
+  '名詞後面接修飾：主動用 -ing（<span class="en">people living in the country</span>），被動用 -ed（<span class="en">people trained by the company</span>）'],
+ blind:'中文「健康」「擔心」不分詞性，你會挑最熟的那個形態硬塞（health、worry）。<b>are worry 錯 3 次、health／healthy 錯 3 次</b>。',
+ errs:[['young people are worry about money','young people are worried about money','be 後面不能接動詞'],['stay healthy in both body and mental','stay healthy in body and mind','兩個名詞'],['pay more attention to our healthy','pay more attention to our health','our 後面要名詞'],['old people should stay in health','old people stay healthy','stay＋形容詞'],['people lived in the country','people living in the country','主動 → -ing'],['keeps people safely','keeps people safe','keep＋人＋形容詞']],
+ ex:[['it leads to stress and anxious','it leads to stress and anxiety'],['are successed in career','succeed in their careers'],['he is able to feel relax','he is able to feel relaxed']],
+ prac:[
+  {q:'many workers feel anxiety before a big meeting',a:['many workers feel anxious before a big meeting'],nt:'feel＋形容詞 anxious'},
+  {q:'regular exercise keeps people health',a:['regular exercise keeps people healthy'],nt:'keep＋人＋形容詞'},
+  {q:'long hours lead to stress and anxious',a:['long hours lead to stress and anxiety'],nt:'and 兩邊都是名詞'},
+  {q:'he wants to be success in his career',a:['he wants to be successful in his career','he wants to succeed in his career'],nt:'be＋形容詞 successful，或直接用動詞 succeed'},
+  {q:'a long holiday helps him feel relax',a:['a long holiday helps him feel relaxed'],nt:'人放鬆 → relaxed'}]},
+
+{name:'可數單數不裸奔：a／an 不能掉',n:23,t:40,
+ mn:'單數可數不裸奔：前面要 a／the／his；嫌麻煩就改複數',
+ rules:['<span class="en">earn <b>a</b> steady income／get <b>a</b> promotion／<b>A</b> happy employee goes home</span>',
+  '兩個名詞各要一個 a：<span class="en">a good career and a stable family</span>',
+  '一個名詞配兩個形容詞，只要一個 a：<span class="en">a warm and stable home</span>',
+  'no 已經站在冠詞位置，不再加 a：<span class="en">there should be no wage limit</span>',
+  '母音開頭用 an：<span class="en">an exam／an hour</span>'],
+ blind:'<b>句首最容易掉</b>（Happy employee…、If student…）；形容詞越多越容易忘（steady income）。反過來，兩個形容詞時又會多加一個 a。',
+ errs:[['get promotion and get a higher income','get a promotion and a higher income','promotion 可數'],['happy employee goes home','A happy employee goes home','句首掉 a'],['leads to bad temper','leads to a bad temper','temper 前要 a'],['if student surfs the internet','if a student surfs the internet','句首掉 a'],['a warm and a stable home','a warm and stable home','一個名詞只要一個 a']],
+ ex:[['earn steady income','earn a steady income'],['there should be maximum wage limit','there should be a wage limit']],
+ prac:[
+  {q:'he works hard to earn steady income',a:['he works hard to earn a steady income'],nt:'a steady income 六字一組'},
+  {q:'happy worker does better work',a:['a happy worker does better work','happy workers do better work'],nt:'句首要 a，或改複數'},
+  {q:'she wants good career and stable family',a:['she wants a good career and a stable family'],nt:'兩個名詞各要 a'},
+  {q:'he can build a warm and a stable home',a:['he can build a warm and stable home'],nt:'一個名詞兩個形容詞，一個 a'},
+  {q:'if student plays games all night, he feels tired in class',a:['if a student plays games all night he feels tired in class'],nt:'student 前要 a'}]},
+
+{name:'冠詞 the：固定加／泛指不加',n:21,t:41,
+ mn:'泛指不加 the；說得出「是哪一個」才加',
+ rules:['固定加 the：<span class="en">the internet／the government／the environment／the law／the whole family</span>',
+  '二選一裡較好的那個是唯一的 → <span class="en">the better choice</span>',
+  '特指某件事 → <span class="en">the information revolution</span>',
+  '泛指不加：<span class="en">television</span>（媒體）／<span class="en">society／peace of mind／take legal responsibility／laws／knowledge</span>'],
+ blind:'你<b>兩個方向都錯</b>：該加的掉（information revolution 前的 The）、不該加的加（the peace of mind、the television）。另外 a 和 the 會互換錯（a better choice）。',
+ errs:[['take a legal responsibility','take legal responsibility','泛指不加冠詞'],['country life is a better choice','country life is the better choice','二選一 → the'],['information revolution has positive consequences','The information revolution has positive consequences','特指'],['has a positive consequences','has positive consequences','複數前不能 a']],
+ ex:[['the television does more harm than good','television does more harm than good'],['enjoy the peace of mind','enjoy peace of mind'],['follows the well-planned study course','follows well-planned courses']],
+ prac:[
+  {q:'the television does more harm than good',a:['television does more harm than good'],nt:'電視當媒體，不加 the'},
+  {q:'people can enjoy the peace of mind in the country',a:['people can enjoy peace of mind in the country'],nt:'peace of mind 不加 the'},
+  {q:'young people spend too much time on internet',a:['young people spend too much time on the internet'],nt:'the internet 固定加'},
+  {q:'between city life and country life, country life is a better choice',a:['between city life and country life country life is the better choice'],nt:'二選一 → the better choice'},
+  {q:'the society should help old people',a:['society should help old people'],nt:'泛指社會不加 the'}]},
+
+{name:'助動詞／to／crucial that 後面一律原形',n:19,t:23,
+ mn:'should、can、will、to、crucial that 後面，一律原形',
+ rules:['should／can／may／will 後面原形，不加 s、-ing、-ed，也不加 to：<span class="en">can build／should upgrade／will lead</span>',
+  'to 後面原形：<span class="en">able to raise his family</span>',
+  '模板 P4 ⑱：<span class="en">it is crucial that</span>＋主詞＋<b>原形</b>，不加 s、不放 should：<span class="en">crucial that the government <b>help</b>…</span>',
+  '動詞形態對照：⑧ 原形／⑭ +s／⑮ 原形／⑱ 原形'],
+ blind:'crucial that 後面你會放 should（英式英文不算錯，但模板統一不放）；主詞是單數時你習慣加 s，⑱ 正好不能加。',
+ errs:[['he can built a warm home','he can build a warm home','can＋原形'],['crucial that old people should stay in health','crucial that old people stay healthy','不放 should'],['crucial that students should finish','crucial that students finish','不放 should']],
+ ex:[['should constantly upgrading','should constantly upgrade'],['he is able to raised his family','he is able to raise his family'],['it will leads to stress','it will lead to stress']],
+ prac:[
+  {q:'he can saves more money',a:['he can save more money'],nt:'can＋原形'},
+  {q:'the government should to build more parks',a:['the government should build more parks'],nt:'should 後不加 to'},
+  {q:'he is able to found a better job',a:['he is able to find a better job'],nt:'to＋原形 find'},
+  {q:'it is crucial that the government helps young families',a:['it is crucial that the government help young families'],nt:'crucial that＋原形，不加 s'},
+  {q:'this will leads to more stress',a:['this will lead to more stress'],nt:'will＋原形'}]},
+
+{name:'不可數名詞：不加 a、不加 s、配 much',n:17,t:19,
+ mn:'錢、資訊、工作、空氣、歷史：不加 a、不加 s，用 much',
+ rules:['常見不可數：<span class="en">information／news／money／pay／work／knowledge／history／culture／air／homework／advice／traffic／pressure</span>',
+  '「很多」用 much 或 a lot of：<span class="en">too much information</span>',
+  '「比較少」用 less：<span class="en">less money</span>（第 13 課）',
+  'works 是「作品」；工作用 <span class="en">his work</span>'],
+ blind:'你會把中文「一份工資」「很多資訊」直接數出來（more pays、too many information）。',
+ errs:[['more pays','more pay','pay 不可數'],['deal with the works','deal with his work','works＝作品'],['a cleaner air','cleaner air','air 不可數'],['fewer money','less money','money 不可數用 less']],
+ ex:[['too many information','too much information'],['a huge money','huge money／a lot of money'],['old buildings are a history','old buildings are part of our history']],
+ prac:[
+  {q:'children get too many information online',a:['children get too much information online'],nt:'information 不可數 → much'},
+  {q:'he wants to earn more moneys',a:['he wants to earn more money'],nt:'money 不加 s'},
+  {q:'cars bring a dirty air to the city',a:['cars bring dirty air to the city'],nt:'air 不加 a'},
+  {q:'students have too many homeworks',a:['students have too much homework'],nt:'homework 不可數'},
+  {q:'he gets less pays than before',a:['he gets less pay than before'],nt:'pay 不加 s'}]},
+
+{name:'固定片語不能減字、不能換字',n:15,t:20,
+ mn:'收尾片語整串背，一字不換',
+ rules:['<span class="en">a good job with a steady income</span>',
+  '<span class="en">a warm and stable home</span>（steady 配 income、stable 配 home）',
+  '<span class="en">keeps the whole family in harmony</span>',
+  '<span class="en">does more harm than good</span>（動詞固定 does）',
+  '<span class="en">a broader view of life</span>／<span class="en">have little effect on</span>'],
+ blind:'你會<b>減字</b>（keeps family，連兩次沒補 the whole）或<b>換字</b>（has more harm、stable income、broader life experience）。',
+ errs:[['this keeps family in harmony','this keeps the whole family in harmony','連錯兩次'],['has more harm than good','does more harm than good','動詞固定 does'],['a broader life experience','a broader view of life','整組換'],['matters on time','matters more than timing','on time＝準時']],
+ ex:[['a warm and stable family','a warm and stable home'],['a stable income','a steady income']],
+ prac:[
+  {q:'he finds a good job and a stable income',a:['he finds a good job with a steady income'],nt:'with＋steady'},
+  {q:'this keeps family in harmony',a:['this keeps the whole family in harmony'],nt:'the whole family'},
+  {q:'using phones all day has more harm than good',a:['using phones all day does more harm than good'],nt:'does more harm than good'},
+  {q:'living abroad gives him a broader life experience',a:['living abroad gives him a broader view of life'],nt:'a broader view of life'},
+  {q:'he can build a warm and stable family',a:['he can build a warm and stable home'],nt:'stable 配 home'}]},
+
+{name:'動詞當主詞要 -ing；-ing 算單數',n:14,t:18,
+ mn:'動詞當主詞先加 -ing，-ing 算一件事，動詞加 s',
+ rules:['動詞要當主詞，先變 -ing：<span class="en">Keeping work-life balance is difficult</span>',
+  '-ing 主詞算單數，動詞加 s：<span class="en">Studying needs time</span>',
+  '被動當主詞用 being＋過去分詞：<span class="en">Being watched all the time leads to stress</span>（been 只放 have／has 後面）',
+  '完整句子不能直接當主詞：<span class="en">Students study old plays does…</span> ✗ → <span class="en">Studying old plays does…</span>',
+  '一句話一定要有真正的動詞，不能全是 -ing'],
+ blind:'修了 -ing 就忘了 s（studying need），或把真動詞也改成 -ing（being watched … <b>leading</b> to）。',
+ errs:[['studying need time','studying needs time','-ing 主詞＝單數'],['been watch all the time','being watched all the time','被動當主詞'],['being watched all the time leading to stress','being watched all the time leads to stress','要留一個真動詞'],['students studying old plays does','studying old plays does','拿掉 students']],
+ ex:[['keep work-life balance is difficult','keeping work-life balance is difficult'],['wait for a few years can protect young couples','waiting a few years can protect young couples']],
+ prac:[
+  {q:'work long hours make people tired',a:['working long hours makes people tired'],nt:'Working＋makes'},
+  {q:'learn a language take time',a:['learning a language takes time'],nt:'Learning＋takes'},
+  {q:'be watched all the time leads to stress',a:['being watched all the time leads to stress'],nt:'被動主詞 being watched'},
+  {q:'reading books help children think',a:['reading books helps children think'],nt:'-ing 主詞算單數'},
+  {q:'students study abroad costs a lot of money',a:['studying abroad costs a lot of money'],nt:'完整句不能當主詞'}]},
+
+{name:'and／or：否定用 or、並列要對稱',n:13,t:15,
+ mn:'不能 A 也不能 B 用 or；三樣東西 A, B and C；and 兩邊要對稱',
+ rules:['否定句兩個都不能 → or：<span class="en">cannot talk with you <b>or</b> listen to you</span>',
+  '三樣東西只用一個 and：<span class="en">clients, a steady income and a warm and stable home</span>',
+  'and 兩邊要同類：<span class="en">life there is slow and <b>has</b> far less pressure</span>（動詞配動詞）',
+  '兩個名詞各要 a：<span class="en">a good career and a stable family</span>'],
+ blind:'並列時你會讓後半句少一個動詞（is slow and far less pressure），三樣東西會連用兩個 and。',
+ errs:[['the life pace is slow and far less pressure','life there is slow and has far less pressure','補動詞 has'],['clients and a steady income and warm home','clients, a steady income and a warm and stable home','A, B and C']],
+ ex:[['cannot talk with you and listen to you','cannot talk with you or listen to you'],['good career and stable family','a good career and a stable family']],
+ prac:[
+  {q:'he cannot relax and sleep well',a:['he cannot relax or sleep well'],nt:'否定 → or'},
+  {q:'this brings new jobs and more money and a better life',a:['this brings new jobs more money and a better life'],nt:'A, B and C'},
+  {q:'life in the country is quiet and less stress',a:['life in the country is quiet and has less stress'],nt:'and 後補動詞'},
+  {q:'he wants good job and a happy family',a:['he wants a good job and a happy family'],nt:'兩個名詞各要 a'},
+  {q:'busy parents do not cook and talk with their kids',a:['busy parents do not cook or talk with their kids'],nt:'否定 → or'}]},
+
+{name:'leading to／before／for 後面只收名詞或 -ing',n:11,t:13,
+ mn:'leading to 後面只放名詞；遇到 and it，換成 that',
+ rules:['<span class="en">in turn leading to</span>＋名詞片語，不接原形：<span class="en">leading to a broader view of life</span>',
+  'leading to 後面要接「…而且它…」時，<b>and it 換成 that</b>：<span class="en">a bad temper that hurts families</span>',
+  'before／after／for／without 後面接名詞或 -ing：<span class="en">before finding a job／for earning money</span>',
+  '或接完整子句：<span class="en">before they find a job</span>'],
+ blind:'單獨一句寫 and it 不算錯，<b>錯在 leading to 後面</b>。你換的時候會留著 and（and that）、或換成 and this。口訣是兩個字換一個字。',
+ errs:[['a bad temper and it hurts families','a bad temper that hurts families','and it → that'],['a bad temper and this hurts family','a bad temper that hurts families','and this 也不行'],['a bad temper and that hurts families','a bad temper that hurts families','and 要拿掉']],
+ ex:[['in turn leading to have a broader view','in turn leading to a broader view of life'],['before find a job','before finding a job'],['for earn big money','for earning big money']],
+ prac:[
+  {q:'in turn leading to have more free time',a:['in turn leading to more free time'],nt:'leading to＋名詞'},
+  {q:'he works long hours, in turn leading to a bad temper and it hurts his family',a:['he works long hours in turn leading to a bad temper that hurts his family'],nt:'and it → that'},
+  {q:'students should get work experience before find a job',a:['students should get work experience before finding a job','students should get work experience before they find a job'],nt:'before＋-ing 或子句'},
+  {q:'he saves money for buy a house',a:['he saves money for buying a house','he saves money to buy a house'],nt:'for＋-ing，或改 to＋原形'},
+  {q:'he left without say goodbye',a:['he left without saying goodbye'],nt:'without＋-ing'}]},
+
+{name:'比較級：fewer／less、than、the better',n:10,t:12,
+ mn:'可數 fewer、不可數 less；有 than，前面就要有 more 或 -er',
+ rules:['可數用 fewer：<span class="en">fewer working hours／fewer cars</span>',
+  '不可數用 less：<span class="en">less money／less pressure</span>',
+  'than 前面一定有比較級：<span class="en">matters <b>more</b> than</span>',
+  '-er 和 more 不能一起用：<span class="en">slower</span>（不是 more slower）',
+  '兩個比用 the better，三個以上用 the best'],
+ blind:'你會把 fewer／less 對調（fewer money），或寫了 than 忘了 more（matters than）。',
+ errs:[['less working hours is less money','fewer working hours mean less money','hours 可數＋複數動詞'],['fewer money','less money','money 不可數'],['matters than short-term discounts','matters more than short-term discounts','than 配 more'],['love matters more than on time','love matters more than timing','時機＝timing']],
+ ex:[['have more benefits that the shortage','has more benefits than drawbacks'],['a clean air（更乾淨）','cleaner air']],
+ prac:[
+  {q:'less cars mean cleaner air',a:['fewer cars mean cleaner air'],nt:'cars 可數 → fewer'},
+  {q:'he earns fewer money than before',a:['he earns less money than before'],nt:'money 不可數 → less'},
+  {q:'health matters than money',a:['health matters more than money'],nt:'than 前要 more'},
+  {q:'life in the country is more slower',a:['life in the country is slower'],nt:'-er 和 more 二選一'},
+  {q:'between city life and country life, city life is the best choice',a:['between city life and country life city life is the better choice'],nt:'兩個比 → the better'}]},
+
+{name:'逗號連兩句／不完整句',n:9,t:11,
+ mn:'兩個完整句子中間不能只有逗號：用 , and／, but／句號',
+ rules:['兩句中間：<span class="en">…in order<b>, and</b> a safe city keeps people safe</span>',
+  '意思相反用 but：<span class="en">…what they can do<b>, but</b> cannot force them</span>',
+  'because／if／when 子句不能單獨成句，要接回主句',
+  'that 後面的子句也要有主詞：<span class="en">things (that) <b>they</b> cannot find in books</span>'],
+ blind:'上一課的「and it → that」你會套錯地方：兩個完整句子之間要的是 , and，不是 that。',
+ errs:[['laws keep society in order, a safe city keeps people safe','laws keep society in order, and a safe city keeps people safe','補 and'],['in harmony that fame should never take it away','in harmony, and fame should never take it away','這裡不是 leading to'],['things that cannot find in books','things that they cannot find in books','補主詞 they']],
+ ex:[['unemployment is the most urgent issue, job training is the answer','…the most urgent issue, and job training is the answer'],['Because every person may have an accident.','…harsh on students, because every person may have an accident']],
+ prac:[
+  {q:'he works long hours, he has no time for his family',a:['he works long hours and he has no time for his family','he works long hours so he has no time for his family','he works long hours. he has no time for his family'],nt:'補 and／so，或用句號'},
+  {q:'laws can guide people, cannot force them',a:['laws can guide people but cannot force them'],nt:'意思相反 → but'},
+  {q:'he feels safe. Because he has a steady income.',a:['he feels safe because he has a steady income'],nt:'because 子句接回主句'},
+  {q:'students learn things that cannot learn in class',a:['students learn things that they cannot learn in class','students learn things they cannot learn in class'],nt:'補主詞 they'},
+  {q:'travel is fun, it costs a lot of money',a:['travel is fun but it costs a lot of money'],nt:'意思相反 → but'}]},
+
+{name:'make／let／help／see＋受詞＋原形；allow／push 才加 to',n:9,t:10,
+ mn:'make、let、help、see 後面直接原形；allow、push 要 to',
+ rules:['<span class="en">makes employees <b>feel</b> important／let children <b>make</b> mistakes</span>',
+  '<span class="en">helps local families <b>earn</b> a steady income／saw his friend <b>find</b> a new job</span>',
+  '<span class="en">allow their children <b>to use</b>／push parents <b>to guide</b></span>',
+  '原形後面不加 s、不加 -ing、不加 to'],
+ blind:'修好 to 之後，下一輪又掉（allow their children use）。make 和 push 中文都是「讓／逼」，但英文一個不加 to、一個要加。',
+ errs:[['makes employees to feel important','makes employees feel important','make 不加 to'],['help local family having','help local families earn','help＋原形'],['pushes parents guiding','pushes parents to guide','push 要 to'],['allow their children use phones','allow their children to use phones','to 又掉了']],
+ ex:[['make cars driving','make cars move'],['saw his friend finds a new job','saw his friend find a new job']],
+ prac:[
+  {q:'his boss makes him to work late',a:['his boss makes him work late'],nt:'make 不加 to'},
+  {q:'parents should let children making mistakes',a:['parents should let children make mistakes'],nt:'let＋原形'},
+  {q:'this program helps young people finding jobs',a:['this program helps young people find jobs','this program helps young people to find jobs'],nt:'help＋原形（help 加 to 也可以）'},
+  {q:'parents should allow children use the computer for homework',a:['parents should allow children to use the computer for homework'],nt:'allow 要 to'},
+  {q:'high prices push young people live with their parents',a:['high prices push young people to live with their parents'],nt:'push 要 to'}]},
+
+{name:'時態：一般情況現在式、James 做過的事過去式',n:9,t:10,
+ mn:'一般情況用現在式；James 做過的事用過去式；if 子句用現在式',
+ rules:['講一般情況用現在式：<span class="en">people who live alone／schools build good habits</span>',
+  'James 已經做過的一次性事件用過去式：<span class="en">As James married after finishing school</span>',
+  'if 子句用現在式，而且要有真動詞：<span class="en">If a student surfs the internet all night, …</span>',
+  '過去式動詞不加 s'],
+ blind:'你寫 if 子句時常常沒有真正的動詞（if a student surffing…），講 James 的經歷時會用現在式。',
+ errs:[['As James gets marry after finishing school','As James married after finishing school','做過的事 → 過去式'],['if student surffing on internet','If a student surfs the internet','if 子句要真動詞'],['It a student surfs','If a student surfs','If 打成 It']],
+ ex:[['people who lived alone can hear voices','people who live alone can hear voices'],['some schools praised drama courses','some schools praise drama courses']],
+ prac:[
+  {q:'people who lived in big cities often feel stressed',c:'一般情況',a:['people who live in big cities often feel stressed'],nt:'一般情況 → live'},
+  {q:'last year, James takes a training program',c:'已經發生',a:['last year james took a training program'],nt:'last year → 過去式 took'},
+  {q:'if a student will study hard, he can get high grades',a:['if a student studies hard he can get high grades'],nt:'if 子句用現在式'},
+  {q:'schools taught students good habits',c:'一般情況',a:['schools teach students good habits'],nt:'一般情況 → teach'},
+  {q:'after James finds a new job, he earned a steady income again',c:'James 做過',a:['after james found a new job he earned a steady income again'],nt:'兩個都用過去式'}]},
+
+{name:'every／each／everything 後面單數；there 只配 be',n:7,t:10,
+ mn:'every、each、everything 後面單數，動詞加 s；「有」用 there is／there should be',
+ rules:['<span class="en">every family／each mistake</span>（名詞單數）',
+  '<span class="en">everything depends／everyone wants／every change needs</span>（動詞加 s）',
+  'everything、everyone 本身不加 s',
+  '「有」：<span class="en">there is／there are／there should be</span>，there 不配 have、has、get',
+  'no 站在冠詞位置：<span class="en">there should be no wage limit</span>（不加 a）'],
+ blind:'there 後面你會寫 have，改了又寫 has（<b>連錯兩次</b>）。中文「有」是 have，英文「某處有」要用 there＋be。',
+ errs:[['everythings depend on money','everything depends on money','everything 不加 s、動詞加 s'],['every change of course need time','every change to courses needs time','主詞是 change'],['there have no wage limits','there should be no wage limit','there 配 be'],['there has no wage limits','there should be no wage limit','has 也不行']],
+ ex:[['protect every families','protect every family'],['punished by each mistakes','punished for every mistake']],
+ prac:[
+  {q:'every students need support',a:['every student needs support'],nt:'every＋單數＋動詞 s'},
+  {q:'each family have its own rules',a:['each family has its own rules'],nt:'each 單數 → has'},
+  {q:'there have many parks in the city',a:['there are many parks in the city'],nt:'there＋be'},
+  {q:'everyone want a steady income',a:['everyone wants a steady income'],nt:'everyone 單數'},
+  {q:'there should have a limit on working hours',a:['there should be a limit on working hours'],nt:'there should be'}]},
+
+{name:'改一個掉一個：送出前整句回頭念',n:5,t:8,
+ mn:'改完一處，整句從頭念一次再送出',
+ rules:['修好一個錯之後，另一處常常跟著掉。','送出前照 §3「送出前五步」跑一次：主詞→名詞三關→詞性→片語→逗號。'],
+ blind:'範文只算到 5 題，但 10/21–28 考題裡這是<b>出現最多的習慣</b>：幾乎每批都有一句修好 A 掉了 B。',
+ errs:[['allow their children use phones','allow their children to use phones','上一輪對，這輪 to 掉'],['study need time（上一輪寫對的 studying 又改回 study）','studying needs time','改 A 掉 B'],['with his families and get along with their parents','with his family and get along with his parents','三錯只改一個'],['with a steady income and he can build','with a steady income, he can build','多加 and']],
+ ex:[['get high grades and a good job with a steady income','get high grades and find a good job with a steady income'],['studying need time and a calm mind','studying needs time and a calm mind']],
+ prac:[
+  {q:'he can enjoy quality time with his families and get along with their parent',a:['he can enjoy quality time with his family and get along with his parents'],nt:'family 單數、his、parents'},
+  {q:'learning a language help him read the translations of book',a:['learning a language helps him read the translations of books'],nt:'helps＋books'},
+  {q:'studying need time and calm mind',a:['studying needs time and a calm mind'],nt:'needs＋a calm mind'},
+  {q:'my sister work in a big company and earn steady income',a:['my sister works in a big company and earns a steady income'],nt:'兩個動詞都 s＋a steady income'},
+  {q:'there have many student who is worry about exam',a:['there are many students who are worried about exams','there are many students who are worried about their exams'],nt:'there are／students／are worried／exams'}]}
+];
+
+// 一天 6 節：課號（從 1 起算）
+const SCHED=[['09:00–10:30','第 1 節｜頭號三類',[1,2,3]],['10:45–12:00','第 2 節｜名詞與詞性',[4,5,6]],['13:30–14:45','第 3 節｜動詞形態',[7,8,9,10]],['15:00–16:15','第 4 節｜句子怎麼接',[11,12,13,14]],['16:30–17:15','第 5 節｜最後三類',[15,16,17]],['19:30–20:30','第 6 節｜總複習',[18]]];
+
+const KEY='we_gram_day_v1';
+let ST={done:{},res:{}};
+try{ST=Object.assign(ST,JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(ST))}catch(e){}}
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm=s=>s.toLowerCase().replace(/[’‘]/g,"'").replace(/[,;:!?"]/g,' ').replace(/\.\s*$/,'').replace(/\s+/g,' ').trim();
+
+// 逐字 LCS：標出漏打（綠）與多打（紅刪除線）
+function diff(user,ans){
+  const a=norm(user).split(' ').filter(Boolean),b=ans.split(' ');
+  const n=a.length,m=b.length,d=Array.from({length:n+1},()=>new Array(m+1).fill(0));
+  for(let i=n-1;i>=0;i--)for(let j=m-1;j>=0;j--)d[i][j]=a[i]===b[j]?d[i+1][j+1]+1:Math.max(d[i+1][j],d[i][j+1]);
+  const out=[];let i=0,j=0;
+  while(i<n&&j<m){if(a[i]===b[j]){out.push(esc(b[j]));i++;j++}else if(d[i+1][j+1]===d[i][j]){out.push('<span class="extra">'+esc(a[i])+'</span>','<span class="miss">'+esc(b[j])+'</span>');i++;j++}else if(d[i+1][j]>=d[i][j+1]){out.push('<span class="extra">'+esc(a[i])+'</span>');i++}else{out.push('<span class="miss">'+esc(b[j])+'</span>');j++}}
+  while(i<n)out.push('<span class="extra">'+esc(a[i++])+'</span>');
+  while(j<m)out.push('<span class="miss">'+esc(b[j++])+'</span>');
+  return out.join(' ');
+}
+function closest(user,list){
+  const u=norm(user).split(' ');let best=list[0],bs=-1;
+  list.forEach(x=>{const w=x.split(' ');const sc=w.filter(t=>u.includes(t)).length-Math.abs(w.length-u.length);if(sc>bs){bs=sc;best=x}});
+  return best;
+}
+
+function pracHTML(p,id,num,extra){
+  return `<div class="prac" id="${id}"><div class="q"><span class="num">${num}.</span>${esc(p.q)}${p.c?`<span class="ctx">（${esc(p.c)}）</span>`:''}${extra||''}</div>
+  <div class="row"><input autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="整句改對後打在這裡，按 Enter"><button data-act="check">對答案</button><button data-act="show">看答案</button></div>
+  <div class="res"></div></div>`;
+}
+function bindPrac(box,p,key){
+  const inp=box.querySelector('input'),res=box.querySelector('.res');
+  const check=()=>{
+    if(!inp.value.trim())return;
+    const ok=p.a.includes(norm(inp.value));
+    box.classList.remove('ok','ng','shown');box.classList.add(ok?'ok':'ng');
+    res.innerHTML=ok?`✅ 對了。<span class="nt">${esc(p.nt)}</span>`
+      :`❌ <span class="nt">對照：</span>${diff(inp.value,closest(inp.value,p.a))}<br><span class="nt">${esc(p.nt)}。整句重打一次。</span>`;
+    if(key){ST.res[key]=ok?1:0;save();updScore()}
+    if(!ok){inp.select()}
+  };
+  inp.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.isComposing)check()});
+  box.querySelector('[data-act=check]').onclick=check;
+  box.querySelector('[data-act=show]').onclick=()=>{box.classList.add('shown');res.innerHTML=`<span class="o">${esc(p.a[0])}</span><br><span class="nt">${esc(p.nt)}${p.a.length>1?'（也可以：'+esc(p.a.slice(1).join('／'))+'）':''}</span>`};
+}
+
+function updScore(){
+  L.forEach((l,i)=>{
+    const ok=l.prac.filter((_,k)=>ST.res[i+'-'+k]===1).length;
+    const el=document.getElementById('sc'+i);if(el)el.textContent=`新題 ${ok}／${l.prac.length} 對`;
+  });
+}
+function updSched(){
+  document.querySelectorAll('#sched a[data-l]').forEach(a=>a.classList.toggle('done',!!ST.done[a.dataset.l]));
+  L.forEach((_,i)=>document.getElementById('L'+(i+1)).classList.toggle('finished',!!ST.done[i+1]));
+}
+
+// 課表
+document.getElementById('sched').insertAdjacentHTML('beforeend',SCHED.map(([t,name,ls])=>
+  `<tr><td>${t}</td><td><b>${name}</b><br>${ls.map(k=>`<a href="#L${k}" data-l="${k}">${k}. ${esc(L[k-1].name.split('：')[0])}</a>`).join('')}</td></tr>`).join('')
+  +'<tr><td>20:30 後</td><td>按上方「混考 20 題」，錯的回該課再看一次</td></tr>');
+
+// 18 課
+document.getElementById('lessons').innerHTML=L.map((l,i)=>{
+  const cls=i<6?'hot':i<11?'mid':'';
+  return `<div class="lesson ${cls}" id="L${i+1}">
+  <h3><span class="rank">${i+1}</span>${esc(l.name)}<span class="stat">範文犯過 ${l.n} 題／${l.t} 次・10/21–28 考題又錯 ${l.errs.length} 句<span class="score" id="sc${i}"></span></span></h3>
+  <div class="mn">口訣：${esc(l.mn)}</div>
+  <h4>規則</h4><ul>${l.rules.map(r=>`<li>${r}</li>`).join('')}</ul>
+  <div class="blind"><b>你的盲區：</b>${l.blind}</div>
+  <h4>你的錯句（先遮答案自己改）</h4>
+  <table class="errs"><tr><th>你寫的</th><th>要寫</th></tr>
+  ${l.errs.map(([x,o,nt])=>`<tr><td class="x">${esc(x)}</td><td><span class="o ans-o">${esc(o)}</span>${nt?`<br><span class="nt ans-nt">${esc(nt)}</span>`:''}</td></tr>`).join('')}
+  ${l.ex.map(([x,o])=>`<tr><td class="x">${esc(x)}<span class="hint">（範文）</span></td><td><span class="o ans-o">${esc(o)}</span></td></tr>`).join('')}
+  </table>
+  <h4>新題：整句改對</h4>
+  ${l.prac.map((p,k)=>pracHTML(p,`p${i}-${k}`,k+1)).join('')}
+  <label class="donebox"><input type="checkbox" data-done="${i+1}" ${ST.done[i+1]?'checked':''}> 這課完成（5 題都對、口訣背得出來）</label>
+  </div>`;
+}).join('');
+L.forEach((l,i)=>l.prac.forEach((p,k)=>bindPrac(document.getElementById(`p${i}-${k}`),p,i+'-'+k)));
+document.querySelectorAll('[data-done]').forEach(cb=>cb.onchange=()=>{ST.done[cb.dataset.done]=cb.checked;save();updSched()});
+updScore();updSched();
+
+// 混考
+function mix(){
+  const all=[];L.forEach((l,i)=>l.prac.forEach(p=>all.push([p,i])));
+  for(let i=all.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[all[i],all[j]]=[all[j],all[i]]}
+  const pick=all.slice(0,20),box=document.getElementById('mix');
+  box.innerHTML=pick.map(([p,i],k)=>pracHTML(p,'m'+k,k+1,`<span class="from" style="display:none">← 第 ${i+1} 課</span>`)).join('');
+  pick.forEach(([p],k)=>{
+    const el=document.getElementById('m'+k);bindPrac(el,p,null);
+    el.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>el.querySelector('.from').style.display=''));
+    el.querySelector('input').addEventListener('keydown',e=>{if(e.key==='Enter')el.querySelector('.from').style.display=''});
+  });
+  location.hash='#mixsec';
+}
+if(location.hash)setTimeout(()=>{const t=document.querySelector(location.hash);if(t)t.scrollIntoView()},50);
+</script>
+</main></body></html>

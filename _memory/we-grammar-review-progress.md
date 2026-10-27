@@ -27,6 +27,7 @@ WE 文法總複習（repo `WE_文法總複習.html`，18 類依犯過題數排�
 - **2026-10-27 第 17 批「every／there」完成**（重打後全對）。every family 一次對；錯：punished **by** each mistake（→ for）、**everythings** depend（everything 不加 s、動詞加 s）、every change of course **need**（→ change to courses needs；change of course＝改變方向）、there **have**／**has** no wage limits（連錯兩次 → there should be；問了 no 後面要不要 a/s → no 佔冠詞位，單複數都可）。
 - **2026-10-28 第 18 批「改一個掉一個」完成，18 類全部考完一輪。** 錯：with his **families** and get along with **their** parents（原句三錯只改了 parent→parents，問了原本錯在哪）、拼 **fmaily**。第 1 句寫成 high grades, a good job and a steady income 文法對，範文是 find a good job with a steady income。
 - 1027 James 要「今天重點給口訣」：每批一句口訣（例：leading to 後只放名詞，and it 換 that；make/let/help/see 原形、allow/push 要 to；改完整句從頭念一次），已在對話給過。
+- 2026-10-28 James 要「依頻率從高到低做一天文法課教材」→ 建 `WE_文法一日課.html`（18 課口訣／規則／盲區／錯句＋90 題新題打字作答、6 節課表、頑固錯 TOP 8）。下一輪可直接叫他照這頁上，或考裡面的新題。
 - **下一輪**：不再照 18 類重跑，只考 1024–1028 錯過的句子（下方清單），一批 5 句。
 - 1021 當天錯的（1024 已複考，重打後全對）：teach→teachs（ch 要 es）、more pays（pay 不可數）、pay attention **on**（第 5 次）、**with** a better mood（第 3 次）、exames、are **worry**（問了「be 後面不能接動詞嗎」→ 只能接形容詞／V-ing／過去分詞）、body and **mental**、laws affect little on／less effect to（→ have little effect on）。
 
