@@ -59,7 +59,7 @@ W3 起改整篇計時 1 篇／天貼來批改（題目寫死在菜單 D15 起）
 9 固定片語不減字不換字、10 動詞當主詞 -ing、11 and／or、12 leading to／before／for 接名詞、
 13 比較級、14 逗號連兩句、15 make／let／help／see＋受詞＋原形、16 時態、17 every／each／there、18 改一個掉一個。
 
-**接續點（2026-10-24 更新）**：10/24 已複考 10/21 錯句並考完第 5–6 批、10/27 考完第 7–15 批，**下次從第 16 批「時態」接**，開場先複考 10/24 錯的（見 `we-grammar-review-progress.md`）。以下為 10/21 時的紀錄：10/21 考完第 1–4 批。**下次開場先複考 10/21 錯的**：teach→teaches、pay（不可數，不是 more pays）、pay attention **to**、**in** a better mood、exams、are **worried**、body and **mind**、have little effect **on**。然後從 **第 5 批「a 不能掉」** 開始（earn **a** steady income／with **a** steady income／get **a** promotion and **a** higher income／**a** maximum wage limit／**a** happy employee goes home），接 6 → 18。
+**接續點（2026-10-24 更新）**：10/24 已複考 10/21 錯句並考完第 5–6 批、10/27 考完第 7–16 批，**下次從第 17 批「every／there」接**，開場先複考 10/24 錯的（見 `we-grammar-review-progress.md`）。以下為 10/21 時的紀錄：10/21 考完第 1–4 批。**下次開場先複考 10/21 錯的**：teach→teaches、pay（不可數，不是 more pays）、pay attention **to**、**in** a better mood、exams、are **worried**、body and **mind**、have little effect **on**。然後從 **第 5 批「a 不能掉」** 開始（earn **a** steady income／with **a** steady income／get **a** promotion and **a** higher income／**a** maximum wage limit／**a** happy employee goes home），接 6 → 18。
 詳見 `we-grammar-review-progress.md`。
 
 ## 3. 拼字默拼（WFD_訂正 VQ）與 SST 關鍵字
