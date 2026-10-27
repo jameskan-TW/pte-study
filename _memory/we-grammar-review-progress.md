@@ -1,6 +1,6 @@
 ---
 name: we-grammar-review-progress
-description: WE_文法總複習.html 18 類互動考題進度——1027 考完第 7–11 批，下次從第 12 批（leading to 後接名詞）接
+description: WE_文法總複習.html 18 類互動考題進度——1027 考完第 7–12 批，下次從第 13 批（比較級）接
 metadata:
   node_type: memory
   type: project
@@ -19,7 +19,8 @@ WE 文法總複習（repo `WE_文法總複習.html`，18 類依犯過題數排�
 - **2026-10-27 第 9 批「固定片語」完成**（重打後全對）。錯：a warm and **a** stable home（多加 a）、拼 **seady**（漏 t）、keeps family in harmony（**the whole 連兩次沒補**，第二次還掉主詞 this）、**has** more harm than good（第一次沒改）、broader life experience（→ broader view of life）。
 - **2026-10-27 第 10 批「-ing 主詞」完成**（重打後全對，第 3 句重打 4 次）。錯：拼 **waitting**、**studing**（漏 y）、studentingold（黏字）、pays（漏 l）；**students studying** old plays does（主詞變複數）→ Studying old plays；study need（兩處退回）→ studying needs；been watch → **being watched**（問了為什麼是 being → 被動 be＋p.p.，當主詞 be 變 being；been 只放 have 後）；leads 改成 **leading**（改一個掉一個）；重打時把 more harm than good 寫反成 more good than harm。
 - **2026-10-27 第 11 批「and／or」完成**（重打後全對）。or／各要 a 一次對；錯：life pace is slow and far less pressure（第一次沒改，→ and **has**；pace 不會有壓力，建議主詞 life there）、clients and income and warm home（第一次沒改；第二次掉 a＋漏 stable）、拼 **foreing／foering**（foreign 單獨打 3 次才過）、**birngs**（字母顛倒）。問了 stable and warm 能不能反過來 → 可以，文法沒錯，只是範文固定 warm and stable 好背（Claude 一開始標錯太嚴，已更正）。
-- **下次從第 12 批「leading to 後接名詞」開始**（bad temper and it hurts→that／leading to have→刪 have／prospects and have a home→刪 have／before find→before finding／for earn→for earning），接著、10 -ing 主詞、11 and/or、12 leading to、13 比較級、14 逗號連兩句、15 make/let、16 時態、17 every/there、18 改一個掉一個。
+- **2026-10-27 第 12 批「leading to 後接名詞」完成**（重打後全對）。leading to／before／for 四句一次對；錯：long hours **causes**（複數主詞多加 s）、and it hurts（問了單句有沒有錯 → 單句沒錯，錯在 leading to 後面只能放名詞片語；Claude 承認出題沒交代語境）。James 要中文自己翻：bad temper 掉 a、**and this** hurts、hurts **family**（→ families）；再來寫成 **and that** hurts（and 沒拿掉）。口訣 and it → that（兩字換一字）。
+- **下次從第 13 批「比較級」開始**（less working hours is→fewer…mean／matters than→more than／more benefits that→than／a clean air→cleaner air／love matters on time→more than timing），接著、10 -ing 主詞、11 and/or、12 leading to、13 比較級、14 逗號連兩句、15 make/let、16 時態、17 every/there、18 改一個掉一個。
 - 1021 當天錯的（1024 已複考，重打後全對）：teach→teachs（ch 要 es）、more pays（pay 不可數）、pay attention **on**（第 5 次）、**with** a better mood（第 3 次）、exames、are **worry**（問了「be 後面不能接動詞嗎」→ 只能接形容詞／V-ing／過去分詞）、body and **mental**、laws affect little on／less effect to（→ have little effect on）。
 
-**How to apply:** 開場先複考 1024／1027 錯的（in a mood、are worried、goes／does、get a promotion、A happy employee、people living in、the better choice、stay healthy、crucial that＋原形、deal with his work every day、part of our history、keeps the whole family in harmony、a warm and stable home、Studying old plays does more harm than good、being watched…leads、foreign、life there is slow and has far less pressure），再出第 12 批 5 句，不要重講規則。
+**How to apply:** 開場先複考 1024／1027 錯的（in a mood、are worried、goes／does、get a promotion、A happy employee、people living in、the better choice、stay healthy、crucial that＋原形、deal with his work every day、part of our history、keeps the whole family in harmony、a warm and stable home、Studying old plays does more harm than good、being watched…leads、foreign、life there is slow and has far less pressure、a bad temper that hurts families），再出第 13 批 5 句，不要重講規則。
