@@ -1,6 +1,6 @@
 ---
 name: we-grammar-review-progress
-description: WE_文法總複習.html 18 類互動考題進度——1027 考完第 7–14 批，下次從第 15 批（make／let＋原形）接
+description: WE_文法總複習.html 18 類互動考題進度——1027 考完第 7–15 批，下次從第 16 批（時態）接
 metadata:
   node_type: memory
   type: project
@@ -22,7 +22,8 @@ WE 文法總複習（repo `WE_文法總複習.html`，18 類依犯過題數排�
 - **2026-10-27 第 12 批「leading to 後接名詞」完成**（重打後全對）。leading to／before／for 四句一次對；錯：long hours **causes**（複數主詞多加 s）、and it hurts（問了單句有沒有錯 → 單句沒錯，錯在 leading to 後面只能放名詞片語；Claude 承認出題沒交代語境）。James 要中文自己翻：bad temper 掉 a、**and this** hurts、hurts **family**（→ families）；再來寫成 **and that** hurts（and 沒拿掉）。口訣 and it → that（兩字換一字）。
 - **2026-10-27 第 13 批「比較級」完成**（重打後全對）。錯：less working hours is less money（第一次沒改）→ 改成 fewer…mean 後又寫 **fewer money**（money 不可數用 less；問了 mean 要不要加 s → 複數主詞不加）、matters than（漏 more）＋ discount 漏 s、**a** cleaner air、love matters on time → 改成 more than **on time**（on time＝準時，→ timing）。
 - **2026-10-27 第 14 批「逗號連兩句」完成**（重打後全對）。but／and 兩句一次對；錯：, a safe city（沒補 and）＋ keeps people **safely**（→ safe）、in harmony **that** fame should（把上批 and it→that 套錯地方，這裡是兩個完整句要 , and）、things that cannot find（漏主詞 they）。
-- **下次從第 15 批「make／let／help／see＋原形；allow／push＋to」開始**（makes employees to feel／saw his friend finds／help local family having／allow their child using／pushes parents guide），接著、10 -ing 主詞、11 and/or、12 leading to、13 比較級、14 逗號連兩句、15 make/let、16 時態、17 every/there、18 改一個掉一個。
+- **2026-10-27 第 15 批「make／let／help／see＋原形；allow／push＋to」完成**（重打後全對）。allow to 一次對；錯：makes employees **to** feel、saw his friend **finding**（不算錯，see＋-ing 成立，但範文用 find）、help local **family having**（→ families earn）、pushes parents **guiding**（→ to guide）；重打時 allow their children **use**（to 又掉，改一個掉一個）。
+- **下次從第 16 批「時態」開始**（people who lived alone can／school built good habits／As James gets married→married／some schools praised→praise／If a student surffing→surfs），接著、10 -ing 主詞、11 and/or、12 leading to、13 比較級、14 逗號連兩句、15 make/let、16 時態、17 every/there、18 改一個掉一個。
 - 1021 當天錯的（1024 已複考，重打後全對）：teach→teachs（ch 要 es）、more pays（pay 不可數）、pay attention **on**（第 5 次）、**with** a better mood（第 3 次）、exames、are **worry**（問了「be 後面不能接動詞嗎」→ 只能接形容詞／V-ing／過去分詞）、body and **mental**、laws affect little on／less effect to（→ have little effect on）。
 
-**How to apply:** 開場先複考 1024／1027 錯的（in a mood、are worried、goes／does、get a promotion、A happy employee、people living in、the better choice、stay healthy、crucial that＋原形、deal with his work every day、part of our history、keeps the whole family in harmony、a warm and stable home、Studying old plays does more harm than good、being watched…leads、foreign、life there is slow and has far less pressure、a bad temper that hurts families、fewer hours mean less money、cleaner air、more than timing、keeps people safe、, and fame should never…），再出第 15 批 5 句，不要重講規則。
+**How to apply:** 開場先複考 1024／1027 錯的（in a mood、are worried、goes／does、get a promotion、A happy employee、people living in、the better choice、stay healthy、crucial that＋原形、deal with his work every day、part of our history、keeps the whole family in harmony、a warm and stable home、Studying old plays does more harm than good、being watched…leads、foreign、life there is slow and has far less pressure、a bad temper that hurts families、fewer hours mean less money、cleaner air、more than timing、keeps people safe、, and fame should never…、makes…feel／allow…to use／push…to guide），再出第 16 批 5 句，不要重講規則。
