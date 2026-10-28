@@ -1,0 +1,32 @@
+{
+ "o": 2,
+ "chain": {
+  "stance": "不能兼顧，學生要專心讀書",
+  "p1": "反方：學生可以邊讀邊工作 ｜ 我方：學生應該專心讀書",
+  "p2": "打工教有用的課 → 職場教學校教不了的 → 若學生打工 → 學到書本外的東西 → 視野更開闊 → 很多人稱讚工讀生",
+  "p3": "讀書需要時間和平靜的心 → James 大學全力讀書 → 好成績、好工作、穩定收入 → **更好的前途＋溫暖穩定的家**",
+  "p4": "讀書優先 ｜ 建議：先完成學業再去工作"
+ },
+ "slots": {
+  "con": {"hl": ["teaches"], "w": "講打工本身的好處，**some students think** ✗；單數 → teaches", "src": ["g0", "g1"]},
+  "conR": {"hl": ["the workplace"], "w": "打工題對準 the workplace；**real life** 是 #1 的字 ✗", "src": ["g2"]},
+  "cond": {"hl": ["students take"], "w": "泛指用複數，**student takes** ✗；後面跟著用 they", "src": ["g3"]},
+  "subj": {"hl": ["they"], "w": "前面 students 複數 → they，**he** ✗", "src": ["g3"]},
+  "resA": {"hl": ["things", "they"], "w": "漏主詞 they（#1 也犯）；things 漏 g，**thins** ✗", "src": ["g4", "s0"]},
+  "concl": {"hl": ["students"], "w": "many people 加對了卻掉這個 s，**working student** ✗", "src": ["g5"]},
+  "stance": {"hl": ["focus on"], "w": "固定搭配 focus on，**focus in** ✗", "src": ["g6"]},
+  "reason": {"hl": ["needs", "a calm mind"], "w": "單數 → needs；time 不加 a、mind 要 a；**concentrate** ✗", "src": ["g7", "g8", "g9"]},
+  "does": {"hl": ["into study"], "w": "固定 put…into；唸書用不可數 study，**effort in studies** ✗", "src": ["g10"]},
+  "final": {"hl": ["come first"], "w": "**take first** ✗；I believe that 後要自己放 should", "src": ["g11"]},
+  "rec": {"hl": ["finish"], "w": "crucial that 後直接原形，**should finish** ✗（#22 也犯）", "src": ["g12"]}
+ },
+ "ok": ["topic", "result", "impl"],
+ "top3": [
+  {"t": "⑰⑱ should 相反", "b": "⑰ I believe that 要放 should；⑱ crucial that 不加 should、直接原形。卡了三輪", "src": ["g12"]},
+  {"t": "顧此失彼的 s", "b": "④ teaches、⑫ needs、⑩ working students：加對一個就掉另一個", "src": ["g1", "g9", "g5"]},
+  {"t": "冠詞看可不可數", "b": "⑫ time 不可數不加 a，a calm mind 要 a——同一句兩個規則", "src": ["g8"]}
+ ],
+ "spell": [["things", "thins"]],
+ "spellSrc": ["s0"],
+ "skipped": []
+}

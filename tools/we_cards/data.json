@@ -1,0 +1,4234 @@
+[
+ {
+  "o": 1,
+  "n": "④-1",
+  "t": "生活經驗 vs 學校正規教育",
+  "en": "Some people think that life experience is more important than formal education provided in schools and universities. How far do you agree with this statement, and provide examples?",
+  "stance": "正規教育更重要（latter）",
+  "p2zh": "讓步：生活經驗能開闊視野",
+  "p3zh": "主論：正規教育 → 好工作穩定收入 → 溫暖的家",
+  "es": {
+   "topic": "life experience versus formal education",
+   "va": "life experience teaches more than school",
+   "vb": "formal education is more important",
+   "con": "life experience can teach useful lessons",
+   "conR": "real life shows what schools cannot",
+   "cond": "people learn from real-life challenges",
+   "subj": "they",
+   "resA": "<i class=\"a3\">learn things they cannot find in books</i>",
+   "resB": "<i class=\"a3\">a broader view of life</i>",
+   "concl": "many successful people say they learned from life experience",
+   "stance": "formal education is more important",
+   "reason": "school builds good habits such as self-discipline",
+   "jv": "studies",
+   "jn": "university",
+   "does": "follows a well-planned study program",
+   "result": "get high grades and find <i class=\"a4\">a good job with a steady income</i>",
+   "impl": "formal education leads to better future prospects and <i class=\"a4\">a warm and stable home</i>",
+   "final": "formal education matters more than life experience",
+   "rec": "young people finish their studies first"
+  },
+  "zh": {
+   "p1": "反方：生活經驗 (life experience) 教得比學校多；我方：正規教育 (formal education) 更重要",
+   "p2": "生活經驗有用——真實生活展示學校教不了的 (real life shows what schools cannot)。若人們從現實挑戰中學習 (people learn from real-life challenges) → 學到書本外的東西 (learn things they cannot find in books) → 更開闊的視野。小結：很多成功人士說他們從生活經驗中學到東西 (say they learned from life experience)",
+   "p3": "正規教育更重要——學校養成自律 (self-discipline) 等好習慣。例：James（大學生版）按部就班讀書 (a well-planned study program) → 好成績 (high grades)、好工作穩定收入。含義：正規教育帶來更好的前途與溫暖穩定的家 (a warm and stable home)",
+   "p4": "正規教育比生活經驗重要；建議：年輕人先完成學業 (finish their studies first)"
+  },
+  "mistakes": {
+   "spell": [
+    {
+     "x": "challange",
+     "o": "challenges",
+     "nt": "chall-e-nge，不是 challange；而且要複數"
+    },
+    {
+     "x": "self-displing",
+     "o": "self-discipline",
+     "nt": "dis-ci-pline（別漏 c、別把 -pline 打成 -pling）"
+    },
+    {
+     "x": "well-planed",
+     "o": "well-planned",
+     "nt": "plan 加 -ed 雙寫 n（同 stop→stopped）"
+    }
+   ],
+   "grammar": [
+    {
+     "x": "life experience and formal education",
+     "o": "life experience versus formal education",
+     "nt": "versus 才有對立感，呼應下一句的 controversy；而且 versus 本身是連接詞，不能再加 and"
+    },
+    {
+     "x": "real life shows the things that cannot learn from school",
+     "o": "real life shows what schools cannot",
+     "nt": "① things 是被學的，要被動 be learned ② what = the things that，一個字抵三個字 ③ cannot 後面可直接省略"
+    },
+    {
+     "x": "learn things that cannot find in books",
+     "o": "learn things they cannot find in books",
+     "nt": "漏主詞 they——things 不會自己找東西"
+    },
+    {
+     "x": "real life challange",
+     "o": "real-life challenges",
+     "nt": "當形容詞修飾名詞要加連字號"
+    },
+    {
+     "x": "a broader views of life",
+     "o": "a broader view of life",
+     "nt": "a 是單數冠詞不能接複數（今天在這個片語上錯兩次：另一次是 a broader life experience）"
+    },
+    {
+     "x": "many success people",
+     "o": "many successful people",
+     "nt": "success 是名詞，修飾 people 要用形容詞 successful"
+    },
+    {
+     "x": "schools built good habits",
+     "o": "school builds good habits",
+     "nt": "講普遍事實用現在式；過去式永遠不加 s，只有「現在式＋第三人稱單數」才加 s"
+    },
+    {
+     "x": "James studied at university",
+     "o": "James studies at university",
+     "nt": "模板句講現在狀態，現在式 +s"
+    },
+    {
+     "x": "studies with well-planed",
+     "o": "follows a well-planned study program",
+     "nt": "① 動詞跟⑬重複，換 follows ② well-planned 後面要接名詞"
+    },
+    {
+     "x": "get high scores",
+     "o": "get high grades",
+     "nt": "固定片語用 grades；score 是分數數字、grade 是成績等第"
+    },
+    {
+     "x": "find a good job and steady income / with steady income",
+     "o": "find a good job with a steady income",
+     "nt": "a 不能漏（今天第三次）；改成 with 後 find 不用硬管 income"
+    },
+    {
+     "x": "get high grades and a good job with a steady income",
+     "o": "get high grades and find a good job…",
+     "nt": "顧了 a 就掉了 find——改一個掉一個是今天的模式，送出前回頭念一次"
+    },
+    {
+     "x": "formal education brings good future prospects and stable home",
+     "o": "formal education leads to better future prospects and a warm and stable home",
+     "nt": "① 固定動詞 leads to ② 比較級 better ③ a warm and stable home 整串不能減字"
+    },
+    {
+     "x": "young people finish their study",
+     "o": "young people finish their studies",
+     "nt": "study 當「學業」是可數名詞，要複數"
+    },
+    {
+     "x": "before find a job",
+     "o": "before they find a job（或 before finding a job）",
+     "nt": "連接詞／介系詞後面不能丟原形動詞——同 leading to 的規則"
+    }
+   ],
+   "note": "2026-09-15 第一次逐 slot 練這題，16 格全打完。這篇的新問題是「改一個掉一個」（補了 a 就漏 find、改了 challenges 又多打 things）——送出前要回頭念一次。時態錯兩次（built／studied 該用現在式），今天第二次。做對的：teaches／matters／follows／leads 四個 +s 全對、finish 原形、⑮⑯ 兩個長固定句一字不差（含當天剛改的 with a steady income 與 better future prospects）。"
+  }
+ },
+ {
+  "o": 2,
+  "n": "④-2",
+  "t": "學習和工作不可能兼顧",
+  "en": "Effective learning requires time, comfort and peace so it is impossible to combine study and employment. Study and employment distract one from another. To what extent do you think the statements are realistic? Support your opinion with examples. (part-time’s advantages and disadvantages)",
+  "stance": "不能兼顧 — 要專心學習",
+  "p2zh": "讓步：打工能學到書本外的東西",
+  "p3zh": "主論：專心讀書 → 好成績 → 好工作 → 溫暖的家",
+  "es": {
+   "topic": "whether students can study and work at the same time",
+   "va": "students can study and work at the same time",
+   "vb": "students should focus on study",
+   "con": "a part-time job teaches useful lessons",
+   "conR": "the workplace shows what schools cannot",
+   "cond": "students take a part-time job",
+   "subj": "they",
+   "resA": "<i class=\"a3\">learn things they cannot find in books</i>",
+   "resB": "<i class=\"a3\">a broader view of life</i>",
+   "concl": "many people praise working students",
+   "stance": "students should focus on their studies",
+   "reason": "study needs time and a calm mind",
+   "jv": "studies",
+   "jn": "university",
+   "does": "puts all his energy into study",
+   "result": "get high grades and find <i class=\"a4\">a good job with a steady income</i>",
+   "impl": "study time leads to better future prospects and <i class=\"a4\">a warm and stable home</i>",
+   "final": "study should come first",
+   "rec": "students finish their studies before taking a job"
+  },
+  "zh": {
+   "p1": "反方：學生可以邊讀邊工作 (study and work at the same time)；我方：學生應專心讀書 (focus on study)",
+   "p2": "打工能學到有用的課 (useful lessons)——職場展現學校教不了的。若學生打工 (a part-time job) → 學到書本外的東西 → 更開闊的視野。小結：很多人稱讚工讀生 (working students)",
+   "p3": "學生應專注學業——讀書需要時間與平靜的心 (a calm mind)。例：James（大學生版）全力讀書 (puts all his energy into study) → 好成績、好工作穩定收入。含義：讀書時間帶來更好的前途與溫暖穩定的家 (study time leads to better future prospects and a warm and stable home)",
+   "p4": "讀書優先 (study should come first)；建議：先完成學業再工作 (finish studies before taking a job)"
+  },
+  "mistakes": {
+   "spell": [
+    {
+     "x": "thins",
+     "o": "things",
+     "nt": "漏 g"
+    }
+   ],
+   "grammar": [
+    {
+     "x": "some students think work matters as studying",
+     "o": "a part-time job teaches useful lessons",
+     "nt": "④要講打工本身的好處，不是「有人認為」；而且比較句 as… 沒寫完（要 as much as）"
+    },
+    {
+     "x": "a part-time job teach",
+     "o": "a part-time job teaches",
+     "nt": "單數主詞現在式 +s（同一則訊息裡 shows 加對了、teaches 卻漏，顧此失彼）"
+    },
+    {
+     "x": "real life shows…（這題）",
+     "o": "the workplace shows what schools cannot",
+     "nt": "#1 講人生歷練用 real life，本題講打工要對準 workplace"
+    },
+    {
+     "x": "student takes a part-time job / he can learn",
+     "o": "students take a part-time job / they can learn",
+     "nt": "泛指用複數，主詞複數後面代名詞跟著用 they"
+    },
+    {
+     "x": "learn things that cannot find in books",
+     "o": "learn things they cannot find in books",
+     "nt": "漏主詞 they（#1 也犯過同一個）"
+    },
+    {
+     "x": "working student",
+     "o": "working students",
+     "nt": "漏 s——同句的 many people 加對了卻掉這個"
+    },
+    {
+     "x": "focus in their studies",
+     "o": "focus on their studies",
+     "nt": "固定搭配 focus on"
+    },
+    {
+     "x": "studying needs time and concentrate",
+     "o": "studying needs time and a calm mind",
+     "nt": "concentrate 是動詞不能跟 time 並列；改用好拼的 a calm mind"
+    },
+    {
+     "x": "time and calm mind",
+     "o": "time and a calm mind",
+     "nt": "mind 可數單數一定要冠詞；time 不可數不用——同句兩個名詞規則不同"
+    },
+    {
+     "x": "studying need time",
+     "o": "studying needs time",
+     "nt": "動名詞主詞＝單數（補了 a 又掉了 s）"
+    },
+    {
+     "x": "puts all his effort in studies",
+     "o": "puts all his energy into study",
+     "nt": "put … into 是固定片語；純講「唸書」這個活動用不可數的 study，有 their 才用 studies"
+    },
+    {
+     "x": "studying should take first",
+     "o": "study should come first",
+     "nt": "come first ＝排第一，沒有 take first 的用法"
+    },
+    {
+     "x": "it is crucial that students should finish",
+     "o": "it is crucial that students finish",
+     "nt": "crucial 本身已含「應該」，再加 should 是重複（今天第二次，#22 也犯）。⑰的 I believe that 才需要自己放 should"
+    }
+   ],
+   "note": "2026-09-15 第五篇逐 slot 練習，16 格全打完。⑰⑱ 兩格的 should 規則相反（I believe that 要、it is crucial that 不要）卡了三輪才通。延續「顧此失彼」模式：teaches/shows 一對一錯、補 a 掉 s。做對的：①topic 一字不差、⑮⑯ 兩長句一次過、⑱ before they get a job（#1 剛學的連接詞後要完整子句）、students take/they 的複數一致。"
+  }
+ },
+ {
+  "o": 3,
+  "n": "④-3",
+  "t": "數字媒體 vs 圖書館",
+  "en": "With the increase of digital media available online, the role of the library has become obsolete. Universities should only procure digital materials rather than constantly upgrading textbooks. Discuss both the advantages and disadvantages of this position and give your own point of view.",
+  "stance": "不同意 — 圖書館沒有過時",
+  "p2zh": "讓步：數位資料方便，用裝置查資料庫 → 快速完成",
+  "p3zh": "主論：圖書館安靜專注 → 靠自己吸收 → 建立見解與批判思考",
+  "es": {
+   "topic": "the role of the library",
+   "va": "online digital media has made libraries out of date",
+   "vb": "libraries still play a role that cannot be replaced",
+   "con": "digital materials are very convenient for students",
+   "conR": "they can be used on any digital device",
+   "cond": "students need to find resources",
+   "subj": "they",
+   "resA": "easily search online databases",
+   "resB": "<i class=\"a1\">finishing tasks in a short time</i>",
+   "concl": "students are more willing to use digital materials",
+   "stance": "studying with textbooks in the library still plays an important role",
+   "reason": "a quiet library is the best place for <i class=\"a3\">deep learning</i>",
+   "jv": "studies",
+   "jn": "university",
+   "does": "always studies with printed textbooks in the quiet library",
+   "result": "<i class=\"a3\">learn by himself</i> instead of quickly reading digital pages",
+   "impl": "he can build his own understanding and develop critical thinking, which leads to better future prospects and <i class=\"a4\">a warm and stable home</i>",
+   "final": "libraries are still very useful",
+   "rec": "universities keep spending on libraries and textbooks"
+  },
+  "zh": {
+   "p1": "反方：數位媒體讓圖書館過時 (out of date)；我方：圖書館的角色無可取代 (cannot be replaced)",
+   "p2": "數位資料對學生很方便 (convenient)——任何裝置 (any digital device) 都能用。若要找資料 → 輕鬆搜尋線上資料庫 (search online databases) → 短時間完成任務 (in a short time)。小結：學生更願意用數位資料",
+   "p3": "在圖書館讀紙本教科書 (printed textbooks) 仍重要——安靜的圖書館 (a quiet library) 最適合深度學習 (deep learning)。例：James（大學生版）總是在安靜圖書館讀紙本書 → 靠自己吸收知識 (learn by himself)，不是快速滑過數位頁面。含義：建立自己的理解 (own understanding)、培養批判思考 (critical thinking) → 更好的前途與溫暖穩定的家 (better future prospects and a warm and stable home)",
+   "p4": "圖書館仍然很有用；建議：大學持續投資 (keep spending) 圖書館與教科書"
+  },
+  "mistakes": {
+   "spell": [
+    {
+     "x": "shold",
+     "o": "should"
+    },
+    {
+     "x": "digitial",
+     "o": "digital"
+    },
+    {
+     "x": "upgarding",
+     "o": "upgrading",
+     "nt": "a/r 顛倒，錯兩次"
+    },
+    {
+     "x": "furthur",
+     "o": "further"
+    },
+    {
+     "x": "libaby / libraby",
+     "o": "library"
+    },
+    {
+     "x": "unreplaceble",
+     "o": "irreplaceable"
+    },
+    {
+     "x": "renowing",
+     "o": "renowned"
+    },
+    {
+     "x": "dispect",
+     "o": "despite",
+     "nt": "上一篇也錯，第二次！"
+    },
+    {
+     "x": "materilas",
+     "o": "materials"
+    }
+   ],
+   "grammar": [
+    {
+     "x": "should constantly upgrading",
+     "o": "should constantly upgrade",
+     "nt": "should + 原形"
+    },
+    {
+     "x": "are really convenience",
+     "o": "are really convenient",
+     "nt": "形容詞"
+    },
+    {
+     "x": "resources what they need",
+     "o": "resources that they need",
+     "nt": "what→that"
+    },
+    {
+     "x": "As James always study",
+     "o": "As James always studies",
+     "nt": "第三人稱 +s（你的罩門）"
+    },
+    {
+     "x": "with textbook",
+     "o": "with textbooks",
+     "nt": "複數"
+    },
+    {
+     "x": "equip the knowledge by his own",
+     "o": "acquire knowledge on his own",
+     "nt": "動詞＋片語"
+    },
+    {
+     "x": "he can built",
+     "o": "he can build",
+     "nt": "can + 原形"
+    },
+    {
+     "x": "have a critical thinking",
+     "o": "develop critical thinking",
+     "nt": "不可數，不加 a"
+    },
+    {
+     "x": "an experiences",
+     "o": "an experience",
+     "nt": "單數"
+    }
+   ],
+   "note": "2026-06-11 第四篇。進步：counterargument 記得加 true、convenient 拼對。罩門依舊：第三人稱 +s、dispect（第二次錯）。"
+  }
+ },
+ {
+  "o": 4,
+  "n": "④-4",
+  "t": "建築設計的影響",
+  "en": "How does the design of buildings affect, either positively or negatively, where people work or live?",
+  "stance": "正面影響更顯著",
+  "p2zh": "讓步：差的設計 → 壓力、心理問題",
+  "p3zh": "主論：好設計 → 專注表現好 → 穩定收入 → 成家",
+  "es": {
+   "topic": "the design of buildings",
+   "va": "bad design leads to harm",
+   "vb": "good design brings good effects",
+   "con": "bad design brings bad effects",
+   "conR": "it <i class=\"a2\">leads to stress and anxiety</i>",
+   "cond": "we live in dark and small rooms",
+   "subj": "we",
+   "resA": "<i class=\"a2\">feel upset and anxious</i>",
+   "resB": "<i class=\"a2\">a bad temper that hurts families</i>",
+   "concl": "many people move away from such places",
+   "stance": "good design does more good than harm",
+   "reason": "a comfortable space helps people focus",
+   "jv": "works",
+   "jn": "firm",
+   "does": "sits in a bright and well-designed office all day",
+   "result": "stay focused and earn <i class=\"a4\">a steady income</i> for his family",
+   "impl": "good design supports careers and <i class=\"a4\">a warm and stable home</i>",
+   "final": "building design does more good than harm",
+   "rec": "designers focus on comfort and how people use the space"
+  },
+  "zh": {
+   "p1": "反方：壞設計帶來傷害 (leads to harm)；我方：好設計帶來好影響 (good effects)",
+   "p2": "壞設計帶來壞影響——導致壓力焦慮。若住在陰暗狹小的房間 (dark and small rooms) → 沮喪焦慮 (feel upset and anxious) → 壞脾氣傷害家庭 (a bad temper)。小結：很多人搬離那種地方 (many people move away)",
+   "p3": "好設計好處大於壞處 (good design does more good than harm)——舒適的空間 (a comfortable space) 幫助專注 (focus)。例：James 整天坐在明亮、設計良好的辦公室 (sits in a bright and well-designed office all day) → 保持專注 (stay focused)、為家人賺穩定收入 (earn a steady income for his family)。含義：好設計支撐職涯與溫暖穩定的家",
+   "p4": "建築設計好處大於壞處 (building design does more good than harm)；建議：設計師注重舒適 (comfort) 與空間的使用方式 (how people use the space)"
+  },
+  "mistakes": {
+   "spell": [
+    {
+     "x": "bas effects",
+     "o": "bad effects"
+    },
+    {
+     "x": "familu",
+     "o": "families"
+    },
+    {
+     "x": "fpcus",
+     "o": "focus",
+     "nt": "o 按成隔壁的 p"
+    },
+    {
+     "x": "all dat",
+     "o": "all day"
+    }
+   ],
+   "grammar": [
+    {
+     "x": "bad design leads harm",
+     "o": "bad design leads to harm",
+     "nt": "lead 接名詞一定要 to"
+    },
+    {
+     "x": "good design brings good",
+     "o": "good design brings good effects",
+     "nt": "漏名詞 effects（複數 s）"
+    },
+    {
+     "x": "it will leads to stress and anxious",
+     "o": "it leads to stress and anxiety",
+     "nt": "will 後接原形（範文不用 will）；and 兩邊都要名詞：anxious 是形容詞 → anxiety"
+    },
+    {
+     "x": "bad temper and hurt familu",
+     "o": "a bad temper that hurts families",
+     "nt": "漏 a；temper 單數 → hurts"
+    },
+    {
+     "x": "a bad temper and it hurts families",
+     "o": "a bad temper that hurts families",
+     "nt": "leading to 後面只能放名詞片語，不能接新句子。口訣：and it 換成 that（＝「會傷害家庭的」壞脾氣）；打錯兩次"
+    },
+    {
+     "x": "many people move out these places",
+     "o": "many people move away from such places",
+     "nt": "move out 接地點要 of（move out of）；範文用 move away from"
+    },
+    {
+     "x": "many people away from such places",
+     "o": "many people move away from such places",
+     "nt": "漏動詞 move"
+    },
+    {
+     "x": "a comfortable place help people focus",
+     "o": "a comfortable space helps people focus",
+     "nt": "第三人稱 +s（頭號罩門）。help／let／make + 人 + 原形：focus 不加 s 不加 to"
+    },
+    {
+     "x": "keep concentrate",
+     "o": "stay focused",
+     "nt": "keep 不接原形動詞；stay focused 跟上一格 focus 同字好背"
+    },
+    {
+     "x": "earn steady income",
+     "o": "earn a steady income",
+     "nt": "固定片語 a 不能漏（16 題共用）；打錯兩次"
+    },
+    {
+     "x": "a good design support career",
+     "o": "good design supports careers",
+     "nt": "泛指設計這件事不加 a；單數 → supports；泛指大家的事業 → careers"
+    },
+    {
+     "x": "focus on the comfortable",
+     "o": "focus on comfort",
+     "nt": "focus on 接名詞：comfortable 形容詞 → comfort"
+    },
+    {
+     "x": "the way of how people use",
+     "o": "how people use the space",
+     "nt": "the way 與 how 二選一，不能疊用"
+    }
+   ],
+   "note": "2026-09-21 首次逐 slot 練，情緒讓步線負面版第三題，18 格全打完、4 拼字＋13 文法。最大宗是「形容詞 vs 名詞」（anxious/anxiety、comfortable/comfort）與 and it 接子句。做對的：works、sits、does 表態句兩處、helps（訂正後）、well-designed 連字號。②反方說換 James 版 bad design leads to harm（與④承認同開頭）、⑩難怪加 many。⑥用 a dark and small room、⑱用 use spaces 也對，範文維持複數/the space。"
+  }
+ },
+ {
+  "o": 5,
+  "n": "④-5",
+  "t": "家長應對孩子的行為負法律責任",
+  "en": "Parents should be held legally responsible for their children’s act. What is your opinion? Support it with personal examples.",
+  "stance": "同意 — 家長應負法律責任",
+  "p2zh": "讓步：對家長壓力過大、不盡公平",
+  "p3zh": "主論：用心管教 → 好成績 → 好工作 → 家庭和諧",
+  "es": {
+   "topic": "parents’ legal responsibility for their children",
+   "va": "such responsibility is unfair to parents",
+   "vb": "parents should be held legally responsible",
+   "con": "this puts heavy pressure on parents",
+   "conR": "children may not listen to their parents",
+   "cond": "parents are punished for every mistake",
+   "subj": "they",
+   "resA": "<i class=\"a2\">feel upset and anxious</i>",
+   "resB": "<i class=\"a2\">a bad temper that hurts families</i>",
+   "concl": "some people think this rule is too strict",
+   "stance": "parents should take legal responsibility",
+   "reason": "legal duty pushes parents to guide their children with care",
+   "jv": "works",
+   "jn": "firm",
+   "does": "was carefully guided by his parents",
+   "result": "get high grades and find <i class=\"a4\">a good job with a steady income</i>",
+   "impl": "careful parenting keeps the whole family in harmony",
+   "final": "this rule does more good than harm",
+   "rec": "the law also provide parenting support"
+  },
+  "zh": {
+   "p1": "反方：這責任對家長不公平 (unfair)；我方：家長應負法律責任 (legally responsible)",
+   "p2": "這給家長沉重壓力 (heavy pressure)——孩子可能不聽家長的話 (may not listen to their parents)。若家長為每個錯被罰 (punished for every mistake) → 沮喪焦慮 → 壞脾氣傷家庭。小結：有人覺得規定太嚴 (too strict)",
+   "p3": "家長應負法律責任——法律責任 (legal duty) 促使家長用心管教 (guide with care)。例：James 從小被父母細心引導 (carefully guided) → 好成績 (get high grades)、好工作穩定收入 (a good job and a steady income)。含義：用心的教養 (careful parenting) 讓全家和諧 (in harmony)",
+   "p4": "這規定利大於弊 (this rule does more good than harm)；建議：法律同時提供育兒支援 (parenting support)"
+  },
+  "mistakes": {
+   "spell": [
+    {
+     "x": "parensts",
+     "o": "parents",
+     "nt": "多打一個 s"
+    },
+    {
+     "x": "loose",
+     "o": "lose",
+     "nt": "loose 是「鬆的」；「失去」只有一個 o"
+    },
+    {
+     "x": "huts",
+     "o": "hurts",
+     "nt": "漏 r：h-u-r-t-s"
+    },
+    {
+     "x": "strick",
+     "o": "strict",
+     "nt": "結尾是 ct"
+    },
+    {
+     "x": "hole",
+     "o": "whole",
+     "nt": "hole 是「洞」；「整個」w-h-o-l-e"
+    },
+    {
+     "x": "carful",
+     "o": "careful",
+     "nt": "care＋ful，e 要留"
+    },
+    {
+     "x": "suppot",
+     "o": "support",
+     "nt": "漏 r：s-u-p-p-o-r-t"
+    }
+   ],
+   "grammar": [
+    {
+     "x": "take the legal responsibility",
+     "o": "take legal responsibility",
+     "nt": "固定片語，responsibility 泛指不加 the（③⑩兩格都加了）"
+    },
+    {
+     "x": "this give too much pressure to parents",
+     "o": "this puts heavy pressure on parents",
+     "nt": "this 單數 +s；「給壓力」固定 put pressure on，不用 give…to"
+    },
+    {
+     "x": "parents be punished by each mistakes",
+     "o": "parents are punished for every mistake",
+     "nt": "被動要有 are；因某錯被罰用 for；every 後面一定單數"
+    },
+    {
+     "x": "every mistakes",
+     "o": "every mistake",
+     "nt": "every／each＝一個一個看，後面單數（連錯兩次）"
+    },
+    {
+     "x": "feel depress and anxiety",
+     "o": "feel upset and anxious",
+     "nt": "feel 後接形容詞；②線固定片語 upset and anxious"
+    },
+    {
+     "x": "lose their temper and hurt the family",
+     "o": "a bad temper that hurts families",
+     "nt": "⑧格要名詞，不是動詞句"
+    },
+    {
+     "x": "legal responsibility push parents to teach",
+     "o": "legal duty pushes parents to guide their children with care",
+     "nt": "單數主詞 +s；「管教」是 guide with care，teach 是教書"
+    },
+    {
+     "x": "pushes parents guide",
+     "o": "pushes parents to guide",
+     "nt": "push 人 to do，跟 make 不同要加 to"
+    },
+    {
+     "x": "guide their children by care",
+     "o": "…with care",
+     "nt": "「用心」固定 with care"
+    },
+    {
+     "x": "guided by his parents",
+     "o": "was guided by his parents",
+     "nt": "被動漏 be 動詞，過去式 was"
+    },
+    {
+     "x": "get grades",
+     "o": "get high grades",
+     "nt": "漏 high"
+    },
+    {
+     "x": "with steady income",
+     "o": "with a steady income",
+     "nt": "④線固定片語六字一組：a good job with a steady income"
+    },
+    {
+     "x": "guiding with good care make hole family peace and harmony",
+     "o": "careful parenting keeps the whole family in harmony",
+     "nt": "主詞單數 +s；漏 the whole；固定 in harmony"
+    },
+    {
+     "x": "keeps family in harmony",
+     "o": "keeps the whole family in harmony",
+     "nt": "36 題共用收尾，the whole family 五字一組"
+    },
+    {
+     "x": "this rule does more harm than good",
+     "o": "this rule does more good than harm",
+     "nt": "⚠ 立場打反！同意方是 good than harm，整篇會自打嘴巴"
+    },
+    {
+     "x": "governments give parents support",
+     "o": "the law also provide parenting support",
+     "nt": "漏 also（罰之外也要幫）和 parenting support 關鍵字"
+    }
+   ],
+   "note": "2026-09-18 首次逐 slot 練（情緒讓步線負面版第一題），18 格全打完：7 拼字＋16 文法。最危險：⑰ 立場打反。拼字集中漏 r（huts／suppot）；文法：take legal responsibility 亂加 the 兩次、every 後單數兩次。conR 改成 James 直覺版 may not listen to their parents。"
+  }
+ },
+ {
+  "o": 6,
+  "n": "①-1",
+  "t": "大商場 vs 小商場",
+  "en": "Large shopping malls are replacing small shops. What is your opinion about this?",
+  "stance": "大商場利大於弊",
+  "p2zh": "讓步：小商店承載社區文化",
+  "p3zh": "主論：一站式購物 → 大幅省時",
+  "es": {
+   "topic": "large shopping malls replacing small shops",
+   "va": "small shops should be protected",
+   "vb": "this trend does more good than harm",
+   "con": "small shops are good for the local area",
+   "conR": "they help the people who live nearby know each other",
+   "cond": "people shop at small stores",
+   "subj": "they",
+   "resA": "get to know their neighbors",
+   "resB": "a place where <i class=\"a3\">people from different backgrounds get along</i>",
+   "concl": "many people still like small shops",
+   "stance": "large malls are good for modern life",
+   "reason": "one-stop shopping helps people <i class=\"a1\">save time</i>",
+   "jv": "works",
+   "jn": "firm",
+   "does": "shops at a large mall",
+   "result": "<i class=\"a1\">save a lot of time</i> and spend more <i class=\"a1\">quality time with his family</i>",
+   "impl": "large malls fit our busy life better",
+   "final": "this trend does more good than harm",
+   "rec": "cities keep space for special small shops"
+  },
+  "zh": {
+   "p1": "反方：小店應被保護 (should be protected)；我方：這趨勢利大於弊 (this trend does more good than harm)",
+   "p2": "小店對社區 (local area) 好——讓附近居民互相認識 (know each other)。若人們在小店消費 → 認識鄰居 (get to know their neighbors) → 成為不同背景相處融洽 (get along) 的地方。小結：很多人仍喜歡小店",
+   "p3": "大商場適合現代生活 (modern life)——一站式購物 (one-stop shopping) 幫人省時 (save time)。例：James 在大商場採買 → 省下大量時間 (save a lot of time)＋更多優質時間陪家人 (quality time with his family)。含義：大商場更適合忙碌生活 (busy life)",
+   "p4": "這趨勢利大於弊 (this trend does more good than harm)；建議：城市保留 (keep space) 特色小店"
+  },
+  "mistakes": {
+   "spell": [
+    {
+     "x": "lage",
+     "o": "large"
+    },
+    {
+     "x": "futher",
+     "o": "further"
+    },
+    {
+     "x": "shopes",
+     "o": "shops"
+    },
+    {
+     "x": "crucia",
+     "o": "crucial"
+    },
+    {
+     "x": "convinent",
+     "o": "convenient"
+    },
+    {
+     "x": "poeple / peopel",
+     "o": "people",
+     "nt": "同一字錯兩種拼法"
+    },
+    {
+     "x": "grossary",
+     "o": "groceries"
+    },
+    {
+     "x": "dispect",
+     "o": "despite"
+    }
+   ],
+   "grammar": [
+    {
+     "x": "I tend to be more agree",
+     "o": "I tend to agree more",
+     "nt": "agree 是動詞，前面不加 be"
+    },
+    {
+     "x": "spend time on small shops",
+     "o": "spend time at small shops",
+     "nt": "介係詞 at"
+    },
+    {
+     "x": "the people live nearby",
+     "o": "the people who live nearby",
+     "nt": "關係代名詞 who"
+    },
+    {
+     "x": "the good connection",
+     "o": "good connections",
+     "nt": "複數"
+    },
+    {
+     "x": "As James always shopping",
+     "o": "As James always shops",
+     "nt": "第三人稱 +s，非進行式"
+    },
+    {
+     "x": "buy the home need grossary",
+     "o": "buy his daily groceries",
+     "nt": "名詞別硬疊"
+    },
+    {
+     "x": "government should provide more policy",
+     "o": "the government provide more policies",
+     "nt": "冠詞 the＋policy 複數＋虛擬語氣原形"
+    }
+   ],
+   "note": "2026-06-11 第三篇。結構全對。重複錯：people 拼字、第三人稱 +s、冠詞與單複數。拼字錯偏多，列入每日默寫。"
+  }
+ },
+ {
+  "o": 7,
+  "n": "②-1",
+  "t": "多修路 vs 提升公共交通",
+  "en": "Some believe that governments need to build more roads, while others hold the view that governments need to improve public transportation. Discuss both sides and give your own opinion.",
+  "stance": "支持提升公共交通（latter）",
+  "p2zh": "讓步：修路短期緩解塞車",
+  "p3zh": "主論：搭車能休息 → 路上少壓力 → 好心情回家",
+  "es": {
+   "topic": "building roads versus improving public transport",
+   "va": "building more roads can solve traffic jams",
+   "vb": "improving public transport is more important",
+   "con": "more roads can reduce traffic jams for a while",
+   "conR": "wider roads let cars move more smoothly",
+   "cond": "there are more roads",
+   "subj": "drivers",
+   "resA": "<i class=\"a1\">save time on the road</i>",
+   "resB": "more <i class=\"a1\">quality time with their families</i>",
+   "concl": "many cities keep building more roads",
+   "stance": "improving public transport is more important",
+   "reason": "people can rest during the ride",
+   "jv": "works",
+   "jn": "firm",
+   "does": "takes the metro to work every day",
+   "result": "<i class=\"a2\">feel less stress on the road</i>",
+   "impl": "he goes home in a better mood, which keeps the whole family in harmony",
+   "final": "improving public transport is more important",
+   "rec": "governments invest more money in public transport"
+  },
+  "zh": {
+   "p1": "反方：多修路能解決塞車 (solve traffic jams)；我方：提升大眾運輸 (public transport) 更重要 (more important)",
+   "p2": "修路能暫時 (for a while) 緩解塞車——路更寬 (wider roads) 車流更順 (move smoothly)。若路變多 → 駕駛省下路上時間 (save time on the road) → 更多時間陪家人。小結：很多城市持續修路 (keep building roads)",
+   "p3": "大眾運輸更重要 (more important)——搭車時可以休息 (rest during the ride)。例：James 每天搭捷運上班 (takes the metro to work) → 路上壓力較小 (feel less stress on the road)。含義：回家心情較好 (goes home in a better mood) → 全家和樂 (keeps the whole family in harmony)",
+   "p4": "大眾運輸更重要 (more important)；建議：政府投入更多經費在大眾運輸 (invest more money in public transport)"
+  },
+  "mistakes": {
+   "rules": [
+    {
+     "k": "主詞位動詞要 -ing",
+     "v": "building more roads versus improving public transportation has become…——動詞當主詞一律動名詞，build／improve 裸奔 ❌"
+    },
+    {
+     "k": "複數主詞不加 s",
+     "v": "wider roads make（不是 makes）。+s 只給第三人稱單數；roads／cities／drivers 都是複數"
+    },
+    {
+     "k": "make／let＋受詞＋原形",
+     "v": "make cars move（不是 driving）／let cars move。跟 10/07 的 make employees feel 同一條：make 後面永遠原形，不加 be、不加 -ing"
+    },
+    {
+     "k": "leading to 後面只能接名詞",
+     "v": "動作要壓成名詞：more time with their families ✅；back to home and have more time ❌。兩個概念可用 and 連兩個名詞（an earlier trip home and more time…），考場只留結果最省"
+    },
+    {
+     "k": "home 前不加 to",
+     "v": "go home／come home／get home／a trip home。home 當副詞，沒有 to home"
+    },
+    {
+     "k": "y→i 再加 er",
+     "v": "early→earlier、happy→happier、easy→easier。子音+y 結尾變 i"
+    },
+    {
+     "k": "搭 take the＋工具／靠 by＋工具",
+     "v": "takes the metro／the bus／the train（服務系統，大家知道哪一套所以 the）；goes to work by metro（by 零冠詞）。takes metro ❌ 兩邊都不是。同句 to work 零冠詞（work 當場所，同 go home／go to school）"
+    },
+    {
+     "k": "可數單數不裸奔",
+     "v": "during the ride（⑫ 打對、⑮ 掉 the）、the public transportation system。嫌麻煩就改不可數：public transportation 不用冠詞"
+    },
+    {
+     "k": "in a better mood 不是 with",
+     "v": "心情是狀態，人在狀態裡用 in。10/07 ④-10 錯第一次，這題第二次"
+    },
+    {
+     "k": "and 連兩動詞都要 +s",
+     "v": "he comes home … and keeps the whole family in harmony。第二個動詞不會因為離主詞遠就免 s"
+    },
+    {
+     "k": "讓全家和諧＝keep the whole family in harmony",
+     "v": "固定片語用 keep，不是 let（let 後面要接動作：let him go）"
+    },
+    {
+     "k": "invest in 不是 on",
+     "v": "invest more (money) in public transportation。投資的介系詞固定 in"
+    },
+    {
+     "k": "transportation 是系統不是過程",
+     "v": "搭車途中＝during the ride／on the bus or train；during the time in transportation ❌"
+    },
+    {
+     "k": "拼字四字",
+     "v": "transpor-t-ation（port 的 t，連錯兩次）／firm 公司（film 是電影，r 不是 l）／stress（s-t-r-e-s-s）／harmony（沒有 e，不是 money）"
+    }
+   ],
+   "note": "2026-10-17 首次逐 slot 練（十月菜單 W1 收尾第一題），①效率讓步＋②減壓主線，18 格全打完、6 拼字＋13 文法。主罩門：冠詞／可數單數裸奔（the metro／the ride／system）、make／let 後原形、leading to 要名詞、in a better mood 第二次錯。做對的：⑥⑦⑧⑩⑪⑬⑰ 一次過，三句立場句都沒掉字。James 版多用 reduce／get some rest／comes home，都可，DATA 維持範文。"
+  }
+ },
+ {
+  "o": 8,
+  "n": "②-2",
+  "t": "醫療進步增加壽命 — 福還是禍",
+  "en": "Medical advances can improve people’s life expectancy. Do you believe that it is a blessing or a curse?",
+  "stance": "是福（blessing）",
+  "p2zh": "讓步：父母高齡 → 子女醫療費 → 家庭財務壓力",
+  "p3zh": "主論：長壽 → 多陪家人 → 全家和樂",
+  "es": {
+   "topic": "living longer thanks to medical advances",
+   "va": "living longer is a heavy burden",
+   "vb": "living longer is a blessing",
+   "con": "living longer can bring <i class=\"a4\">financial burdens</i>",
+   "conR": "old people need more medical care",
+   "cond": "old parents live longer",
+   "subj": "their children",
+   "modal": "may",
+   "resA": "spend a lot more money on doctors, medicine and daily care",
+   "resB": "<i class=\"a4\">financial pressure</i> on the whole family",
+   "concl": "young people would worry about their future",
+   "stance": "living longer is a blessing",
+   "reason": "people have more time to spend with their family",
+   "jv": "works",
+   "jn": "firm",
+   "does": "stays healthy and has annual check-ups",
+   "result": "<i class=\"a1\">spend more quality time with his family</i>",
+   "impl": "more time together keeps the whole family in harmony",
+   "final": "living longer is a blessing",
+   "rec": "old people stay healthy"
+  },
+  "zh": {
+   "p1": "反方：活更久是沉重負擔 (a heavy burden)；我方：活更久是福 (a blessing)",
+   "p2": "長壽帶來財務負擔 (financial burdens)——老人需要更多醫療照護 (more medical care)。若年邁父母活得更久 (old parents live longer) → 子女在醫生、藥、日常照護上花更多錢 (spend a lot more money on) → 全家的財務壓力 (financial pressure on the whole family)。小結：年輕人會擔心未來 (would worry about their future)",
+   "p3": "活更久是福 (a blessing)——人有更多時間陪家人 (more time to spend with their family)。例：James 保持健康、每年健檢 (stays healthy and has annual check-ups) → 多陪家人優質時光 (quality time)。含義：多相處讓全家和樂 (more time together keeps the whole family in harmony)",
+   "p4": "活更久是福 (a blessing)；建議：老人保持健康 (old people stay healthy)"
+  },
+  "mistakes": {
+   "spell": [
+    {
+     "x": "Medical（句中大寫）",
+     "o": "medical"
+    },
+    {
+     "x": "peopele",
+     "o": "people",
+     "nt": "黑名單老字第三種錯法（poeple／peopel／peopele）"
+    },
+    {
+     "x": "heathy",
+     "o": "healthy",
+     "nt": "漏 l：heal-thy"
+    },
+    {
+     "x": "anual",
+     "o": "annual",
+     "nt": "雙 n"
+    },
+    {
+     "x": "cheks-up",
+     "o": "check-ups",
+     "nt": "check 有 c；複數 s 加在 check 上"
+    }
+   ],
+   "grammar": [
+    {
+     "x": "medical advances and longer life has become",
+     "o": "living longer thanks to medical advances has become",
+     "nt": "複數主詞配 has 錯；題目改單數，模板 has 不動"
+    },
+    {
+     "x": "cause heavy financial burden",
+     "o": "cause a heavy financial burden",
+     "nt": "burden 可數要 a"
+    },
+    {
+     "x": "spend more budget on",
+     "o": "spend more money on",
+     "nt": "budget 是預算，花的是 money"
+    },
+    {
+     "x": "financial burden for the whole family",
+     "o": "financial pressure on the whole family",
+     "nt": "pressure 不可數免冠詞；介系詞 on"
+    },
+    {
+     "x": "young people are worry about",
+     "o": "young people would worry about",
+     "nt": "worry 是動詞；①-4 工時篇同錯；老師補 would（If 假設的後果）"
+    },
+    {
+     "x": "time so spend with",
+     "o": "time to spend with",
+     "nt": "time to + 原形"
+    },
+    {
+     "x": "keeps stay healthy",
+     "o": "stays healthy",
+     "nt": "keep 後不接動詞；keeps healthy／stays healthy 二選一"
+    },
+    {
+     "x": "does the annual check-up",
+     "o": "has annual check-ups",
+     "nt": "健檢用 has；泛指不加 the"
+    },
+    {
+     "x": "his family get closer",
+     "o": "his family gets closer",
+     "nt": "第三人稱 +s：一個家 family 單數；0905 his families enjoy 同型"
+    },
+    {
+     "x": "medical advances and longer life is a blessing",
+     "o": "living longer is a blessing",
+     "nt": "複數主詞要 are；結論照抄 P1 立場句"
+    },
+    {
+     "x": "crucial that old people should to stay",
+     "o": "crucial that old people stay",
+     "nt": "crucial that + 原形，沒 should 沒 to"
+    }
+   ],
+   "note": "2026-09-07 重寫（08/06 首戰 21 錯 → 16 錯，檢查器只標 8 個）。模板全對；錯集中在動詞形態（are worry／keeps stay／should to／family get）＋冠詞。"
+  }
+ },
+ {
+  "o": 9,
+  "n": "④-6",
+  "t": "遲交作業扣分（Report）",
+  "en": "Some students are deducted marks for late submission. What’s your view? What recommendations would you take?",
+  "stance": "扣分合理；建議：正當理由可延期",
+  "p2zh": "讓步：車禍交不出 → 被當（James 0911 版）",
+  "p3zh": "主論：deadline → 自律 → 好成績 → 好工作",
+  "es": {
+   "topic": "taking off marks for late work",
+   "va": "such punishment is too strict on students",
+   "vb": "taking off marks is fair and necessary",
+   "con": "taking off marks can be too strict in some cases",
+   "conR": "everyone may have an accident",
+   "cond": "a student has a car accident",
+   "subj": "he",
+   "modal": "may",
+   "resA": "fail to submit his work on time",
+   "resB": "failing the course",
+   "concl": "some people ask for more flexible rules",
+   "stance": "taking off marks is fair",
+   "reason": "deadlines build good habits such as self-discipline",
+   "jv": "studies",
+   "jn": "university",
+   "does": "always submits his assignments on time",
+   "result": "get high grades and find <i class=\"a4\">a good job with a steady income</i>",
+   "impl": "deadlines lead to better future prospects and <i class=\"a4\">a warm and stable home</i>",
+   "final": "this rule is fair",
+   "rec": "schools give more time for good reasons"
+  },
+  "zh": {
+   "p1": "反方：這處罰對學生太嚴 (too strict)；我方：扣分公平且必要 (fair and necessary)",
+   "p2": "某些情況扣分太嚴——每個人都可能出意外 (everyone may have an accident)。若學生出車禍 (a car accident) → may 交不出作業 (fail to submit his work on time) → 被當 (failing the course)（0911 James 自己的字）。小結：有人要求更彈性的規定 (flexible rules)",
+   "p3": "扣分是公平的——期限 (deadlines) 養成自律等好習慣。例：James（大學生版）總是準時交作業 (submits assignments on time) → 好成績、好工作穩定收入。含義：期限帶來更好的前途與溫暖穩定的家 (a warm and stable home)",
+   "p4": "這規定公平；建議：有正當理由 (good reasons) 學校給更多時間"
+  },
+  "mistakes": {
+   "spell": [
+    {
+     "x": "concenr",
+     "o": "concern",
+     "nt": "黑名單老字，r 在 n 前"
+    },
+    {
+     "x": "leadind",
+     "o": "leading",
+     "nt": "-ing 的 g 打成 d"
+    },
+    {
+     "x": "failling",
+     "o": "failing",
+     "nt": "ai 兩個母音，l 不重複"
+    },
+    {
+     "x": "reaally",
+     "o": "really",
+     "nt": "real + ly"
+    }
+   ],
+   "grammar": [
+    {
+     "x": "not big issue",
+     "o": "not a big issue",
+     "nt": "可數單數要 a"
+    },
+    {
+     "x": "If student has",
+     "o": "If a student has",
+     "nt": "同上"
+    },
+    {
+     "x": "harsh for student",
+     "o": "harsh on students",
+     "nt": "harsh on；泛指複數"
+    },
+    {
+     "x": "failing on this course",
+     "o": "failing the course",
+     "nt": "fail 直接接受詞"
+    },
+    {
+     "x": "Because every person may have an accident.",
+     "o": "…harsh on students, because every person…",
+     "nt": "不完整句，接回主句"
+    },
+    {
+     "x": "get the good score on time",
+     "o": "get good scores",
+     "nt": "泛指不加 the、複數；on time 多餘"
+    },
+    {
+     "x": "submit the report for a few days late",
+     "o": "submit the report a few days late",
+     "nt": "a few days late 不加 for"
+    },
+    {
+     "x": "if students can … good scores. It is really unfair",
+     "o": "if students can … good scores, it is really unfair",
+     "nt": "if 子句單獨成句"
+    },
+    {
+     "x": "crucial that school should set",
+     "o": "crucial that schools set",
+     "nt": "schools 複數；crucial that + 原形"
+    }
+   ],
+   "note": "2026-09-11 首戰 15 錯＋模板拼字 2（concenr 算真錯；over the schools／in favor of this 練默寫卡）。根因：冠詞／單複數 6 處、不完整句 2 處（Because／if 單獨成句，新出現）。臨場走「公平」論點沒帶回家庭，建議只有 clear policy 偏弱。"
+  }
+ },
+ {
+  "o": 10,
+  "n": "④-7",
+  "t": "政府面臨的最緊迫問題（失業）",
+  "en": "The world’s government and organizations are facing a lot of issues today. Which do you think is the most pressing issue for the inhabitants? Provide solutions to deal with this issue.",
+  "stance": "最緊迫問題：失業；方案：職業訓練 + 創造就業（照 #16 走法：P2 問題嚴重性、P3 解方，無真讓步）",
+  "p2zh": "問題面：失業很難解 → 失去收入 → 天天擔心錢 → 全家壓力焦慮 → 精神疾病",
+  "p3zh": "解方：職訓給技能找新工作；James 失業→政府職訓→這家公司新工作 → 穩定收入 → 溫暖的家",
+  "es": {
+   "topic": "unemployment",
+   "modal": "will",
+   "va": "unemployment is too hard to solve",
+   "vb": "job training can really solve it",
+   "con": "unemployment is a very serious problem",
+   "conR": "people without jobs lose their <i class=\"a4\">steady income</i>",
+   "cond": "people lose their jobs",
+   "subj": "they",
+   "resA": "<i class=\"a4\">worry about money</i> every day",
+   "resB": "<i class=\"a2\">stress and anxiety</i> for the whole family",
+   "concl": "some people may even <i class=\"a2\">develop mental illness</i>",
+   "stance": "job training is the best solution",
+   "reason": "job training gives people new skills to find new jobs",
+   "jv": "works",
+   "jn": "firm",
+   "does": "took a government training program after losing his old job",
+   "result": "find a new job at this firm and earn <i class=\"a4\">a steady income</i> again",
+   "impl": "job training and new jobs give every family <i class=\"a4\">a warm and stable home</i>",
+   "final": "unemployment is the most urgent issue, and job training is the answer",
+   "rec": "governments provide more job training programs and create more jobs"
+  },
+  "zh": {
+   "p1": "主題：失業 (unemployment)。反方：失業太難解 (too hard to solve)；我方：職訓 (job training) 真的解得了",
+   "p2": "失業很嚴重 (a very serious problem)——失業的人失去穩定收入。若人們失業 (lose their jobs) → 天天擔心錢 (worry about money every day) → 全家壓力焦慮。小結：有人甚至罹患精神疾病 (mental illness)",
+   "p3": "職訓是最好的解方 (the best solution)——職訓給人新技能找新工作 (new skills to find new jobs)。例：James 去年失業後參加政府職訓 (took a government training program after losing his old job) → 在這家公司找到新工作、重新有穩定收入 (find a new job at this firm and earn a steady income again)【1021 James 說旁觀版「很多餘、跟全文不搭」，改成親身經歷：失業→職訓→現在的好工作】。含義：職訓和新工作 (job training and new jobs) 給每個家庭溫暖穩定的家",
+   "p4": "失業是最緊迫的問題 (the most urgent issue)，職訓是答案；建議：政府提供更多職訓計畫 (provide more job training programs)、創造更多工作"
+  },
+  "mistakes": {
+   "rules": [
+    {
+     "k": "job 可數：單數裸奔三次",
+     "v": "people without jobs／lose their jobs／new jobs。their 後面看每人幾個（各一份 → jobs）；a job 才單數"
+    },
+    {
+     "k": "anxious 形容詞、anxiety 名詞",
+     "v": "leading to 後面要名詞：stress and anxiety for the whole family（不可數不加 an；「給全家」用 for 不用 on）。#4 錯過同一組"
+    },
+    {
+     "k": "see ＋ 受詞 ＋ 原形（第二題）",
+     "v": "saw his friend find a new job；finds ❌。#25 剛練的規則，隔天又加 s"
+    },
+    {
+     "k": "If 後面要完整句",
+     "v": "If people lose their jobs（主詞不能掉）"
+    },
+    {
+     "k": "with a steady income",
+     "v": "「靠／帶著穩定收入」用 with；by ❌（by 只接零冠詞工具）。a steady income 的 a 不能掉（10/07 #18 同）"
+    },
+    {
+     "k": "一個名詞兩個形容詞只要一個 a",
+     "v": "a warm and stable home ✅；a warm and a stable home ❌＝兩個家。對照 a good career and a stable family（兩個名詞各要 a）"
+    },
+    {
+     "k": "逗號連兩句（第四題連犯）",
+     "v": "the most urgent issue, and job training is the answer。沒 and 的逗號是錯"
+    },
+    {
+     "k": "Report 題答案句要回應「最」",
+     "v": "題目問 the most pressing issue，⑰ 一定要有 the most（an urgent issue ❌ 沒回答到）。urgent 比 pressing 好拼，可用"
+    },
+    {
+     "k": "負面必然後果 If 句用 will",
+     "v": "If people lose their jobs, then they will worry about money（can＝能夠，配正面；will＝必然；may＝可能）。James 自己問的，這題 modal 設 will；#16 #25 環境題用 would"
+    },
+    {
+     "k": "拼字四字",
+     "v": "training（一個 n，ai 長音不雙寫）／solution（so-lu-tion，同 solve）／settle（兩個 t 沒有 a）／urgent（urge＋nt）"
+    }
+   ],
+   "note": "2026-10-21 首次逐 slot 練——**W1 收尾 11 題全部清完**（最後一題）。18 格全打完、4 拼字＋13 文法。主罩門：job 單數裸奔 ×3、anxious→anxiety、saw…finds、逗號連兩句。做對的：①②④⑫⑬⑱ 一次過，unemployment／anxiety 一次拼對。換 James 版：⑦ modal will（他問 can 是不是換 will）、⑫ gives people new skills to find new jobs、⑮ can settle down with、⑰ the most urgent issue, and…、⑱ provide more job training programs and create more jobs。"
+  }
+ },
+ {
+  "o": 11,
+  "n": "②-3",
+  "t": "平衡工作和家庭娛樂生活（重要性與成因）",
+  "en": "It is important to maintain this balance between work and other aspects of one’s life such as family and leisure activities. Please give your opinion about how important to maintain the balance and why some people think it is hard to achieve it?",
+  "stance": "平衡至關重要",
+  "p2zh": "成因：職場壓力焦慮、拚命工作求升遷加薪 → 事業成功但失去家庭",
+  "p3zh": "重要性：錢買不到幸福家庭 → 陪家人 → 身心健康 → 工作更有效率",
+  "es": {
+   "topic": "work-life balance",
+   "va": "people should pay more attention to their work",
+   "vb": "work-life balance is more important",
+   "con": "keeping work-life balance is very difficult for people in this generation",
+   "conR": "working environments are full of <i class=\"a2\">stress and anxiety</i>",
+   "cond": "people work harder",
+   "subj": "they",
+   "resA": "get a promotion and <i class=\"a4\">a higher income</i>",
+   "resB": "less time with their family",
+   "concl": "many people put money first and ignore their family",
+   "stance": "work-life balance is the first priority",
+   "reason": "money cannot buy <i class=\"a1\">a happy family</i>",
+   "jv": "works",
+   "jn": "firm",
+   "does": "now spends more time with his family",
+   "result": "stay <i class=\"a2\">healthy in body and mind</i>",
+   "impl": "a good balance makes him <i class=\"a1\">more efficient and boosts productivity</i> at work",
+   "final": "work-life balance is important",
+   "rec": "people stop working overtime and spend more time with their family"
+  },
+  "zh": {
+   "p1": "反方：應更專注工作 (pay more attention to their work)；我方：工作生活平衡更重要 (more important)",
+   "p2": "這一代要平衡很難 (very difficult for people in this generation)——職場充滿壓力焦慮 (full of stress and anxiety)。若拚命工作 (work harder) → 升遷加薪 (a promotion, a higher income) → 陪家人時間變少。小結：很多人把錢擺第一、忽略家庭 (put money first and ignore their family)（老師 0908 改）",
+   "p3": "平衡是第一優先 (the first priority)——錢買不到幸福家庭 (money cannot buy a happy family)。例：James 現在多陪家人 (spends more time with his family) → 身心健康 (healthy in body and mind)。含義：好的平衡讓他更有效率、提升生產力 (more efficient, boosts productivity)",
+   "p4": "平衡很重要；建議：大家別再加班 (stop working overtime)、多陪家人"
+  },
+  "mistakes": {
+   "spell": [
+    {
+     "x": "attentoin",
+     "o": "attention",
+     "nt": "黑名單老字；-tion 字母顛倒"
+    },
+    {
+     "x": "loose",
+     "o": "lose",
+     "nt": "一個 o；loose 是鬆的"
+    },
+    {
+     "x": "heathy",
+     "o": "healthy",
+     "nt": "漏 l：heal-thy（0907 醫療篇同錯）"
+    }
+   ],
+   "grammar": [
+    {
+     "x": "put more attention on",
+     "o": "pay more attention to",
+     "nt": "固定片語 pay attention to"
+    },
+    {
+     "x": "work-life balance in more important",
+     "o": "work-life balance is more important",
+     "nt": "句子要有動詞"
+    },
+    {
+     "x": "keep work-life balance is difficult",
+     "o": "keeping work-life balance is difficult",
+     "nt": "動詞當主詞加 -ing"
+    },
+    {
+     "x": "working environments are stress and anxiety",
+     "o": "working environments are full of stress and anxiety",
+     "nt": "名詞不能直接當補語；或 lead to stress and anxiety"
+    },
+    {
+     "x": "get promotion and get higher income",
+     "o": "get a promotion and a higher income",
+     "nt": "兩個可數名詞都要 a"
+    },
+    {
+     "x": "are successed in career",
+     "o": "succeed in their careers",
+     "nt": "沒有 successed；succeed 動詞／successful 形容詞；careers 複數"
+    },
+    {
+     "x": "family relation",
+     "o": "family relationships",
+     "nt": "感情關係用 relationships"
+    },
+    {
+     "x": "people cannot buy family relation",
+     "o": "money cannot buy a happy family",
+     "nt": "換全基礎字版"
+    },
+    {
+     "x": "in body and mental",
+     "o": "in body and mind",
+     "nt": "mental 是形容詞；固定片語 in body and mind"
+    },
+    {
+     "x": "makes him more efficient and boost",
+     "o": "makes him more efficient and boosts",
+     "nt": "第三人稱 +s：and 後第二個動詞也要"
+    },
+    {
+     "x": "stop work overtime",
+     "o": "stop working overtime",
+     "nt": "stop + -ing"
+    }
+   ],
+   "note": "2026-09-07 首戰 15 錯（檢查器標 9 個）。模板全對；根因是詞性穿錯衣服（are stress／are successed／and mental）＋ 冠詞 ＋ 第三人稱 s。"
+  }
+ },
+ {
+  "o": 12,
+  "n": "②-4",
+  "t": "平衡工作和家庭娛樂生活（普遍性與後果）",
+  "en": "Nowadays, people who devote too much time to their job leave very little time for their personal and private life. How widespread is the problem? What problem will this shortage of time cause?",
+  "stance": "過勞普遍且後果嚴重",
+  "p2zh": "普遍性：拚命工作求升遷加薪 → 更好前途 → 各行各業都在加班",
+  "p3zh": "後果：事業成功卻失去家庭關係；James 不加班 → 身心健康、全家和樂",
+  "es": {
+   "topic": "people working too much",
+   "va": "people should pay more attention to their work",
+   "vb": "working too much causes serious problems",
+   "con": "working too much is very common for this generation",
+   "conR": "many people believe that working harder is the way to success",
+   "cond": "people work harder",
+   "subj": "they",
+   "resA": "get <i class=\"a4\">a promotion and a higher income</i>",
+   "resB": "<i class=\"a3\">better future prospects</i>",
+   "concl": "working overtime is seen in every job",
+   "stance": "working too much causes serious problems",
+   "reason": "it takes away time with family",
+   "jv": "works",
+   "jn": "firm",
+   "does": "stops working overtime and spends more quality time with his family",
+   "result": "stay healthy in body and mind and keep the whole family in harmony",
+   "impl": "extra money from working overtime cannot buy <i class=\"a1\">a happy family</i>",
+   "final": "working too much does more harm than good to families",
+   "rec": "people stop working overtime and spend more time with their family"
+  },
+  "zh": {
+   "p1": "反方：應更專注工作 (pay more attention to their work)；我方：過勞造成嚴重問題 (serious problems)",
+   "p2": "這一代過勞很普遍 (very common for this generation)——多數人相信拚命工作才會成功 (the way to success)。若拚命工作 (work harder) → 升遷加薪 (a promotion, a higher income) → 更好的前途 (better future prospects)（老師 0908 改）。小結：各行各業都看得到加班 (working overtime is seen in every job)",
+   "p3": "過勞造成嚴重問題——它奪走陪家人的時間 (it takes away time with family)。例：James 不再加班、多陪家人 (stops working overtime, spends more quality time with his family) → 身心健康 (healthy in body and mind)、全家和樂 (keep the whole family in harmony)。含義：加班多賺的錢買不到幸福家庭 (extra money from working overtime cannot buy a happy family)",
+   "p4": "過勞對家庭弊大於利 (does more harm than good to families)；建議：大家別再加班、多陪家人 (stop working overtime)"
+  },
+  "mistakes": {
+   "spell": [
+    {
+     "x": "succuss",
+     "o": "success",
+     "nt": "suc-cess：cc＋ss；動詞 succeed（-ceed↔-cess 同 proceed/process）"
+    },
+    {
+     "x": "cuase",
+     "o": "cause",
+     "nt": "字母顛倒 c-a-u-s-e"
+    },
+    {
+     "x": "take way",
+     "o": "take away",
+     "nt": "漏 a；way 是道路"
+    },
+    {
+     "x": "quailty",
+     "o": "quality",
+     "nt": "字母顛倒 qu-a-li-ty"
+    },
+    {
+     "x": "healty",
+     "o": "healthy",
+     "nt": "漏 h：health＋y（上次漏 l 拼成 heathy）"
+    },
+    {
+     "x": "boots",
+     "o": "boosts",
+     "nt": "boo-s-t-s；boots 是靴子"
+    },
+    {
+     "x": "produtivity",
+     "o": "productivity",
+     "nt": "漏 c：product 來的"
+    },
+    {
+     "x": "cannot but",
+     "o": "cannot buy",
+     "nt": "buy 買；but 但是"
+    }
+   ],
+   "grammar": [
+    {
+     "x": "people works too much（主題格）",
+     "o": "people working too much",
+     "nt": "① 要名詞片語：名詞＋V-ing（who are 省略）；people 複數也不加 s"
+    },
+    {
+     "x": "pay more attention on",
+     "o": "pay more attention to",
+     "nt": "第 4 次（take/put/pay … on）：注意力「付給」對象，永遠 to"
+    },
+    {
+     "x": "working over load will causing",
+     "o": "working too much causes",
+     "nt": "沿用 ① 的字；will 後接原形；V-ing 主詞單數 +s"
+    },
+    {
+     "x": "many people believing working hards",
+     "o": "many people believe that working harder",
+     "nt": "that 子句要真正動詞（不能 -ing）；hard 副詞不加 s，比較級 harder"
+    },
+    {
+     "x": "get promote and higher income",
+     "o": "get a promotion and a higher income",
+     "nt": "get 後接名詞；兩個可數單數都要 a（共用片語）"
+    },
+    {
+     "x": "many works can see working overtime",
+     "o": "working overtime is seen in every job",
+     "nt": "work 不可數（works＝作品）；加班「被看到」→ is seen（see-saw-seen）"
+    },
+    {
+     "x": "working overtime causes many problems（⑪）",
+     "o": "working too much causes serious problems",
+     "nt": "表態句三處同一句"
+    },
+    {
+     "x": "this take way the time to spend with family",
+     "o": "it takes away time with family",
+     "nt": "it 單數 +s；一句一個主要動詞，spend 刪掉"
+    },
+    {
+     "x": "stops working overtime/ spend",
+     "o": "stops working overtime and spends",
+     "nt": "不能用斜線；and 後第二個動詞也要 +s"
+    },
+    {
+     "x": "with family（⑭）",
+     "o": "with his family",
+     "nt": "James 自己的家人要 his"
+    },
+    {
+     "x": "stay health in both body and mental",
+     "o": "stay healthy in body and mind",
+     "nt": "stay 連綴動詞接形容詞；body and 名詞 mind（#11 0907 同錯 body and mental）"
+    },
+    {
+     "x": "able to … and keeps",
+     "o": "able to … and keep",
+     "nt": "to 後兩個動作都原形"
+    },
+    {
+     "x": "the whole family with harmony",
+     "o": "the whole family in harmony",
+     "nt": "固定 in harmony"
+    },
+    {
+     "x": "the happy of family（兩次）",
+     "o": "a happy family",
+     "nt": "of 前後要名詞；形容詞直接放名詞前＋a"
+    },
+    {
+     "x": "more efficiency",
+     "o": "more efficient",
+     "nt": "make him＋形容詞（舊 ⑯ 長版，已刪）"
+    }
+   ],
+   "note": "2026-09-23 首次逐 slot 練，18 格全打完、8 拼字＋15 文法。主罩門：pay attention to 第 4 次錯 on；形容詞／名詞混用（health/healthy、mental/mind、efficiency/efficient、happy of family）；V-ing 主詞 vs that 子句缺動詞；第三人稱 +s 漏兩次（take／spends）。做對的：⑥⑨⑰⑱ 一次過、V-ing 主詞＋s（causes/does）。換 James 版：④ 刪 people in、⑭ 加 quality（陪家人線固定片語）、⑯ 太長改「extra money from working overtime cannot buy a happy family」（刪 efficient／boosts productivity 半句）。⑤ harder/hard、⑩ every job/can be seen in many jobs 兩者皆可，範文不動。"
+  }
+ },
+ {
+  "o": 13,
+  "n": "④-8",
+  "t": "實踐式學習 vs 傳統教育",
+  "en": "Some people point that experiential learning (i·e· learning by doing it) can work well in formal education. However, others think a traditional form of teaching is the best. Do you think experiential learning can work well in high schools or colleges?",
+  "stance": "挺傳統教育 — 系統化學習",
+  "p2zh": "讓步：動手做能學到書本外的東西",
+  "p3zh": "主論：系統化學習 → 紮實基礎 → 好成績 → 好工作",
+  "es": {
+   "topic": "learning by doing in schools",
+   "va": "learning by doing works well in schools",
+   "vb": "a traditional form of teaching is the best",
+   "con": "learning by doing is fresh and fun",
+   "conR": "hands-on tasks show how things work",
+   "cond": "students learn by doing",
+   "subj": "they",
+   "resA": "<i class=\"a3\">learn things they cannot find in books</i>",
+   "resB": "<i class=\"a3\">a broader view of life</i>",
+   "concl": "many schools now add hands-on courses",
+   "stance": "traditional teaching is still the best",
+   "reason": "it builds knowledge step by step",
+   "jv": "studies",
+   "jn": "university",
+   "does": "follows well-planned courses",
+   "result": "get high grades and find <i class=\"a4\">a good job with a steady income</i>",
+   "impl": "step-by-step learning leads to better future prospects and <i class=\"a4\">a warm and stable home</i>",
+   "final": "traditional teaching works better",
+   "rec": "schools keep traditional teaching as the main way"
+  },
+  "zh": {
+   "p1": "反方：做中學 (learning by doing) 在學校很有效；我方：傳統教學 (traditional teaching) 最好",
+   "p2": "做中學新鮮有趣 (fresh and fun)——動手做 (hands-on tasks) 展現事物運作原理。若學生做中學 → 學到書本外的東西 → 更開闊的視野。小結：很多學校加開實作課",
+   "p3": "傳統教學仍是最好——一步步 (step by step) 建立知識。例：James（大學生版）跟著規劃好的課程 (well-planned courses) → 好成績、好工作穩定收入。含義：循序漸進的學習帶來更好的前途與溫暖穩定的家 (better future prospects and a warm and stable home)",
+   "p4": "傳統教學效果更好；建議：學校以傳統教學為主 (as the main way)"
+  },
+  "mistakes": {
+   "spell": [
+    {
+     "x": "homw",
+     "o": "home",
+     "nt": "w／e 打錯鍵"
+    },
+    {
+     "x": "works will",
+     "o": "works well",
+     "nt": "will／well 別混"
+    },
+    {
+     "x": "hand-on / hands- on",
+     "o": "hands-on",
+     "nt": "hand 要加 s，連字號中間不能有空格"
+    },
+    {
+     "x": "step by step learning / step-by- step",
+     "o": "step-by-step learning",
+     "nt": "當形容詞放名詞前要連字號、中間不留空格"
+    }
+   ],
+   "grammar": [
+    {
+     "x": "learning by doing in school",
+     "o": "learning by doing in schools",
+     "nt": "題目問 high schools or colleges，泛指用複數"
+    },
+    {
+     "x": "traditional form of teaching is the best",
+     "o": "a traditional form of teaching is the best",
+     "nt": "照抄題目時連冠詞一起抄；form 可數單數不能裸奔"
+    },
+    {
+     "x": "hands-on task shows how the things work",
+     "o": "hands-on tasks show how things work",
+     "nt": "泛指複數→動詞不加 s；things 不加 the"
+    },
+    {
+     "x": "students use learning by doing method",
+     "o": "students learn by doing",
+     "nt": "名詞疊太多；題目給的 learn by doing 直接當動詞用"
+    },
+    {
+     "x": "students learn things by doing",
+     "o": "students learn by doing",
+     "nt": "固定片語中間不要插字（things 還會跟⑧撞詞）"
+    },
+    {
+     "x": "many school add the hands-on course",
+     "o": "many schools now add hands-on courses",
+     "nt": "many 後面一定複數、courses 漏 s、the 要拿掉、漏了 now（強調新趨勢）"
+    },
+    {
+     "x": "this build knowledge / it build knowledge",
+     "o": "it builds knowledge step by step",
+     "nt": "單數主詞 +s（這格連錯兩次）"
+    },
+    {
+     "x": "this builds the knowledge",
+     "o": "…builds knowledge",
+     "nt": "knowledge 不可數，泛指不加 the"
+    },
+    {
+     "x": "traditional form of learning is still the best",
+     "o": "traditional teaching is still the best",
+     "nt": "題目講的是教學方式 teaching，learning 是對方那派的字"
+    },
+    {
+     "x": "studies at University",
+     "o": "studies at university",
+     "nt": "不是專有名詞，小寫"
+    },
+    {
+     "x": "follows the well-planned study course",
+     "o": "follows well-planned courses",
+     "nt": "① the 要拿掉（第一次提到、後面無限定）② courses 漏 s ③ study 多餘"
+    },
+    {
+     "x": "step-by-step learning brings…",
+     "o": "…leads to…",
+     "nt": "①線收尾固定 leads to（brings 文法也對，James 決定兩個都背）"
+    },
+    {
+     "x": "a warm and stable income",
+     "o": "a warm and stable home",
+     "nt": "收尾是「家」，income 是⑮那格的字串過來了"
+    }
+   ],
+   "note": "2026-09-17 第六篇逐 slot 練習，16 格全打完。本篇兩大主題：① 多加 the（今天累計 5 次）——規則是「前面沒提過、後面沒限定就不要 the」② 連字號（hands-on／step-by-step／well-planned）。⑫ 的 +s 連錯兩次。做對的：studies／follows／leads 三個 +s、⑮ 一字不差、⑱ keep 原形不加 should（前兩題都卡這裡，這次一次過）。James 問了 this vs it（延續同主題用 it、要指出某事才用 this，兩者皆可）與 the 的三條判斷法。"
+  }
+ },
+ {
+  "o": 14,
+  "n": "④-9",
+  "t": "畢業或工作前就結婚是愚蠢的",
+  "en": "It is foolish to get married before completing studies or getting a work. Do you agree or disagree?",
+  "stance": "同意 — 先完成學業與工作",
+  "p2zh": "讓步：早婚有情感支持",
+  "p3zh": "主論：先唸完書找到工作 → 穩定收入 → 婚姻穩定",
+  "es": {
+   "topic": "marrying before finishing studies or work",
+   "va": "love matters more than timing",
+   "vb": "marriage should wait until they have a steady job",
+   "con": "marrying young can give a couple support",
+   "conR": "couples encourage each other through hard times",
+   "cond": "a couple gets married young",
+   "subj": "they",
+   "resA": "feel less lonely",
+   "resB": "<i class=\"a2\">peace of mind</i> in hard times",
+   "concl": "some early marriages do work well",
+   "stance": "studies and a job should come first",
+   "reason": "<i class=\"a4\">a steady income</i> keeps a marriage strong",
+   "jv": "works",
+   "jn": "firm",
+   "does": "married after finishing school and finding a job",
+   "result": "build <i class=\"a4\">a warm and stable home</i> without <i class=\"a4\">money worries</i>",
+   "impl": "a stable career supports a happy marriage",
+   "final": "marrying too early is unwise",
+   "rec": "young people finish school and find a job before getting married"
+  },
+  "zh": {
+   "p1": "反方：愛比時機重要 (love matters more than timing)；我方：婚姻應等有穩定工作 (until they have a steady job)",
+   "p2": "早婚能給夫妻支持 (marrying young can give a couple support)——夫妻互相鼓勵 (encourage each other) 度過難關。若一對情侶早婚 (a couple gets married young) → 比較不孤單 (feel less lonely) → 困難時的安心 (peace of mind)。小結：有些早婚確實幸福 (do work well)",
+   "p3": "學業與工作應優先 (come first)——穩定收入 (a steady income) 讓婚姻穩固 (keeps a marriage strong)。例：James 完成學業找到工作後才結婚 (married after finishing school and finding a job) → 建立無金錢煩惱 (without money worries) 的溫暖穩定的家。含義：穩定職涯支撐幸福婚姻 (a happy marriage)",
+   "p4": "太早結婚不明智 (unwise)；建議：年輕人先唸完書找到工作再結婚 (finish school and find a job before getting married)"
+  },
+  "mistakes": {
+   "spell": [
+    {
+     "x": "ob",
+     "o": "job",
+     "nt": "漏 j"
+    },
+    {
+     "x": "timeing",
+     "o": "timing",
+     "nt": "-ing 去 e（using／evolving 同款）"
+    },
+    {
+     "x": "suppurt",
+     "o": "support",
+     "nt": "sup＋port（港口的 port）"
+    },
+    {
+     "x": "peach of mind",
+     "o": "peace of mind",
+     "nt": "peach 是桃子；pea＋ce"
+    }
+   ],
+   "grammar": [
+    {
+     "x": "married before finishing school … (① 主題)",
+     "o": "marrying before finishing school …",
+     "nt": "① 是句子主詞，動詞要 -ing；whether it is foolish to get married… 這種整句版也對"
+    },
+    {
+     "x": "love matters on time",
+     "o": "love matters more than timing",
+     "nt": "「比…重要」＝more than；on time 是「準時」。#29 是 age、#14 是 timing"
+    },
+    {
+     "x": "until that have stable jobs",
+     "o": "until they have steady jobs",
+     "nt": "that 不能當主詞，是 they"
+    },
+    {
+     "x": "getting married can give a couple support",
+     "o": "getting married early can give a couple support",
+     "nt": "漏 early 就不是讓步了，重點是「早」婚"
+    },
+    {
+     "x": "support each other at hard times",
+     "o": "encourage each other through hard times",
+     "nt": "撐過一段時期用 through（或 in）；at 是時間點。support 跟 ④ 重複，換 encourage"
+    },
+    {
+     "x": "leading to having peace of mind in a hard time",
+     "o": "leading to peace of mind in hard times",
+     "nt": "leading to 後直接接名詞，having 多餘；跟 ⑤ 同一組用 hard times（a hard time 本身也對，一篇統一）"
+    },
+    {
+     "x": "some young marriages work-well",
+     "o": "some early marriages do work well",
+     "nt": "婚姻是「早」不是「年輕」（young 形容人）；work well 沒有連字號"
+    },
+    {
+     "x": "education and works should come first",
+     "o": "education and work should come first",
+     "nt": "work 當「工作」不可數，沒有 s（works＝作品）"
+    },
+    {
+     "x": "As James gets married after finishing school",
+     "o": "As James married after finishing school",
+     "nt": "James 做過的一次的事一律過去式；現在式讀起來像「他每次結婚都…」。⑭ 定死用過去式"
+    },
+    {
+     "x": "he is able to built",
+     "o": "he is able to build",
+     "nt": "to 後面永遠原形；⑭ 過去式、⑮ 跟 able to 走"
+    }
+   ],
+   "note": "2026-09-23 首次逐 slot 練，情緒讓步線正面版第二題，18 格全打完、4 拼字＋10 文法。主罩門：時態（⑭ 該過去式打現在式、⑮ able to 後打過去式）、介系詞 at／through、一字之差改意思（on time／more than timing、漏 early）。做對的：get married／gets married 全篇沒再錯、lonely 對、⑯ 一字不差、⑫ a steady income 的 a、⑱ crucial that 後原形。James 決定 #14 ⑭ 拿掉 at 26（題目沒問年齡）→ married after finishing school and finding a job，與 #29 分開；⑱ 他的 only get married after finishing their studies and finding jobs 也對，範文不動。"
+  }
+ },
+ {
+  "o": 15,
+  "n": "③-1",
+  "t": "海外學習 vs 本地學習",
+  "en": "It is often argued that studying overseas is overrated. There are many scholars who study locally. Is travel a necessary component of quality education?",
+  "stance": "海外學習值得（不是 overrated）",
+  "p2zh": "讓步：本地省錢 → 家庭財務壓力小",
+  "p3zh": "主論：海外 → 跨文化理解 → 開闊視野",
+  "es": {
+   "topic": "whether studying overseas is overrated",
+   "va": "studying locally is just as good",
+   "vb": "studying overseas gives something local study cannot",
+   "con": "studying locally is cheaper",
+   "conR": "studying overseas needs a lot of money, such as insurance, visa fees and accommodation",
+   "cond": "students stay in their own country",
+   "subj": "they",
+   "resA": "save money on living costs",
+   "resB": "less <i class=\"a4\">pressure from money</i> for families",
+   "concl": "many great scholars never studied abroad",
+   "stance": "studying overseas is really worth it",
+   "reason": "a new place opens the mind",
+   "jv": "studies",
+   "jn": "university",
+   "does": "lives abroad among people from different backgrounds",
+   "result": "<i class=\"a3\">learn things he cannot find in books</i> and <i class=\"a3\">talk with confidence</i>",
+   "impl": "a wide view and strong confidence later help a good career and a stable family",
+   "final": "the value of studying overseas is real",
+   "rec": "students take international chances when they can"
+  },
+  "zh": {
+   "p1": "反方：在本地讀 (studying locally) 一樣好；我方：海外學習 (studying overseas) 有本地給不了的東西",
+   "p2": "本地讀比較省錢 (cheaper)——海外要花很多錢：保險、簽證費、住宿 (needs a lot of money, such as insurance, visa fees and accommodation)。若學生留在本國唸書 (stay in their own country) → 省下生活費 (save money on living costs) → 家庭少一點金錢壓力 (less pressure from money)。小結：很多大學者從沒出國 (never studied abroad)",
+   "p3": "海外學習真的值得 (really worth it)——新環境打開心胸 (opens the mind)。例：James（大學生版）在國外與不同背景的人一起生活 → 學到書本外的東西、講話變自信 (confident)。含義：開闊的視野和自信 (a wide view and strong confidence) 之後帶來好職涯與穩定家庭",
+   "p4": "海外學習的價值是真的 (the value is real)；建議：有機會就把握國際機會 (international chances)"
+  },
+  "mistakes": {
+   "rules": [
+    {
+     "k": "e 走 y 留",
+     "v": "動詞加 -ing：e 結尾去 e（use→using、evolve→evolving）、y 結尾留 y（study→studying）。留 y 是因為變 i 會撞成 studiing"
+    },
+    {
+     "k": "動名詞算單數",
+     "v": "studying overseas needs／involving employees does——動名詞當主詞，動詞要 +s"
+    },
+    {
+     "k": "and 連接兩主詞＝複數",
+     "v": "a wide view and strong confidence later help（不加 s）。不管兩邊各自是單數或不可數"
+    },
+    {
+     "k": "情態助動詞後接原形、永不加 s",
+     "v": "they can take／he may hold／study should come"
+    },
+    {
+     "k": "動名詞對外名詞、對內動詞",
+     "v": "所以配副詞不配形容詞：studying locally ✅／local studying ❌。形容詞要配純名詞：local study ✅"
+    },
+    {
+     "k": "overseas 形容詞副詞同形",
+     "v": "studying overseas（動名詞+副詞）＝ overseas study（形容詞+名詞），兩個都對；local 只有形容詞身分，副詞是 locally"
+    },
+    {
+     "k": "字尾 t 換成 ce ＝ 名詞",
+     "v": "confident→confidence、different→difference、important→importance、silent→silence。再加 ly 就是副詞"
+    },
+    {
+     "k": "worth 直接吃、worthy 配 of",
+     "v": "is worth it／worth any cost／worth preserving；worthy of respect。兩個都是形容詞不是動詞"
+    },
+    {
+     "k": "their 不決定單複數",
+     "v": "看「每人幾個」：their own country（每人一國，單數）vs their studies（每人多門課，複數）"
+    },
+    {
+     "k": "and 兩邊的冠詞分開算",
+     "v": "a good career and a stable family（兩個可數單數各要 a）；strong confidence 不可數不用。不是「共用一個 a」"
+    },
+    {
+     "k": "副詞不能卡在及物動詞與受詞之間",
+     "v": "❌ help later a career ✅ later help a career ✅ help a career later（受詞長時往前挪較清楚）"
+    },
+    {
+     "k": "省略法：只留助動詞",
+     "v": "前面講過的動詞可砍掉：what schools cannot（省 teach）／something local study cannot（省 give）／when they can（省 take）"
+    },
+    {
+     "k": "介系詞三組",
+     "v": "stay in a country（國家用 in）／save money on X（on 才是「在 X 上省」）／pressure from money for families"
+    },
+    {
+     "k": "then vs than",
+     "v": "then＝那麼（If…then…）；than＝比（more than）。模板字別打錯"
+    },
+    {
+     "k": "later vs latter",
+     "v": "latter 兩個 t ＝ 兩者中的後者（the latter，一定加 the）；later 一個 t ＝ 之後。發音也不同：later 長音、latter 短音"
+    },
+    {
+     "k": "abroad / aboard / broad",
+     "v": "abroad ＝ ab+road 在國外；aboard ＝ 上船上機；broad ＝ 寬的（a broader view of life）"
+    }
+   ],
+   "note": "2026-10-10 首次逐 slot 練這題（③視野線第一題，走法跟前面七題都不同：P2 讓步用錢、P3 用視野自信線、收尾是 a good career and a stable family 不是溫暖的家）。James 嫌原 conR「海外花費高很多」邏輯太薄弱，換成他自己的具體版（insurance／visa fees／accommodation）。本篇問了六個文法觀念：動名詞為何配副詞、their 後面單複數、worth vs worthy、confident 詞性家族、later vs latter、副詞位置。拼字錯 9 個是歷來最多（abroad 兩種錯法已入默拼庫）。做對的：⑮ 一次過（he cannot find 的 he 抓對）、take／help 的單複數、介系詞 for families。"
+  }
+ },
+ {
+  "o": 16,
+  "n": "②-5",
+  "t": "你會選擇學習氣候變化哪些方面？（Report）",
+  "en": "You need to study climate change, which aspect of climate change will you choose and why? Use examples.",
+  "stance": "選擇：氣候成因（照範文段落，無讓步）",
+  "p2zh": "成因鏈：溫室氣體 → 汽車工廠 → 極端天氣 → 政府行動",
+  "p3zh": "為何重要：傷環境和人 → James 公司被大水沖走 → 找成因才能擋住",
+  "es": {
+   "topic": "climate change",
+   "modal": "would",
+   "va": "the effects of climate change are the best topic",
+   "vb": "the causes are the best topic",
+   "con": "global warming is caused by too much greenhouse gas",
+   "conR": "most greenhouse gas comes from cars and factories",
+   "cond": "people drive cars every day",
+   "subj": "they",
+   "resA": "put more and more greenhouse gas into the air",
+   "resB": "more and more <i class=\"a2\">extreme weather</i>",
+   "concl": "governments all over the world take action",
+   "stance": "finding the causes is very important",
+   "reason": "climate change <i class=\"a2\">harms both the environment and people</i>",
+   "jv": "works",
+   "jn": "firm",
+   "does": "saw his firm washed away by a big flood last year",
+   "result": "see how serious climate change is",
+   "impl": "finding the causes is the only way to stop these problems",
+   "final": "the causes are the most important aspect to study",
+   "rec": "governments study the causes and <i class=\"a1\">protect every family</i>"
+  },
+  "zh": {
+   "p1": "反方：研究氣候的影響 (the effects) 最好；我方：研究成因 (the causes) 最好",
+   "p2": "成因是什麼——暖化是溫室氣體太多造成 (caused by too much greenhouse gas)，大多溫室氣體來自汽車和工廠 (most greenhouse gas comes from cars and factories)。若人們每天開車 (drive cars every day) → 越來越多溫室氣體排到空氣中 (put more greenhouse gas into the air) → 越來越多極端天氣 (more and more extreme weather)。小結：世界各國政府都在採取行動 (take action)",
+   "p3": "為什麼要研究成因——氣候變遷同時傷害環境和人 (harms both the environment and people)。例：James 去年親眼看到公司被大水沖走 (saw his firm washed away by a big flood) → 看出氣候變遷有多嚴重 (how serious climate change is)（老師 0908：例子要有具體結局）。含義：找出成因是阻止這些問題的唯一方法 (the only way to stop these problems)",
+   "p4": "成因是最重要的面向 (the most important aspect)；建議：政府研究成因、保護每個家庭 (protect every family)"
+  },
+  "mistakes": {
+   "spell": [
+    {
+     "x": "wheather（×2）",
+     "o": "weather",
+     "nt": "wea-ther，w 後沒有 h"
+    },
+    {
+     "x": "peopele",
+     "o": "people",
+     "nt": "黑名單老字第四種錯法"
+    }
+   ],
+   "grammar": [
+    {
+     "x": "the effects of climate change is",
+     "o": "the effects of climate change are",
+     "nt": "主詞 effects 複數；找主詞跳過 of 後面"
+    },
+    {
+     "x": "the causes of climate change is",
+     "o": "the causes of climate change are",
+     "nt": "同上"
+    },
+    {
+     "x": "caused by the greenhouse gas",
+     "o": "caused by too much greenhouse gas",
+     "nt": "泛指不加 the"
+    },
+    {
+     "x": "are the main causes to product greenhouse gas",
+     "o": "produce most greenhouse gas",
+     "nt": "product 名詞／produce 動詞；結構不通"
+    },
+    {
+     "x": "more greenhouse would come into air",
+     "o": "more greenhouse gas would go into the air",
+     "nt": "漏 gas；the air"
+    },
+    {
+     "x": "the governments all over the world",
+     "o": "governments all over the world",
+     "nt": "泛指不加 the"
+    },
+    {
+     "x": "harms people and environment",
+     "o": "harms both the environment and people",
+     "nt": "the environment 固定加 the"
+    },
+    {
+     "x": "washed out by the heavy flood",
+     "o": "washed away by a heavy flood",
+     "nt": "沖走是 away；第一次提到用 a"
+    },
+    {
+     "x": "see the how the extreme weather is",
+     "o": "see how serious climate change is",
+     "nt": "how 前不加 the，後接形容詞"
+    },
+    {
+     "x": "study the causes … is important",
+     "o": "studying the causes … is important",
+     "nt": "動詞當主詞 -ing；0907 keep→keeping 同型"
+    },
+    {
+     "x": "all the governments start invest more research budget",
+     "o": "governments invest more money in this research",
+     "nt": "all the→all；start 後 -ing 或直接 invest；invest 搭 money，budget 搭 increase"
+    }
+   ],
+   "note": "2026-09-08 首戰 16 錯＋模板拼字 2（gererally／attenion 練默寫卡）。根因：the 多加少加共 5 處；主詞複數配 is 兩次；動詞當主詞沒 -ing 再犯。would、washed by flood 的例子都有用上。"
+  }
+ },
+ {
+  "o": 17,
+  "n": "②-6",
+  "t": "法律對人類行為的影響",
+  "en": "Some people think human behaviors can be limited by laws, others think laws have little effect. What is your opinion?",
+  "stance": "法律能有效約束行為",
+  "p2zh": "讓步：人有自由意志，法律管不住想犯法的人（借機經）",
+  "p3zh": "主論：怕罰 → 大多數人不敢 → 社會安全 → 安心 → 每個家庭和諧",
+  "es": {
+   "topic": "whether laws can limit human behaviors",
+   "va": "laws have little effect on human behaviors",
+   "vb": "laws can really change how people behave",
+   "con": "laws sometimes have little effect on human behaviors",
+   "conR": "people follow their own minds, not the law",
+   "cond": "someone wants money badly",
+   "subj": "he",
+   "resA": "break the law for money",
+   "resB": "more <i class=\"a2\">crimes that laws cannot stop</i>",
+   "concl": "laws can only tell people what they can do, but cannot force them to follow",
+   "stance": "laws can really limit human behaviors",
+   "reason": "the fear of punishment stops most people from doing bad things",
+   "jv": "works",
+   "jn": "firm",
+   "does": "lives in a city with strict traffic laws and heavy fines",
+   "result": "travel safely every day and <i class=\"a2\">enjoy peace of mind</i>",
+   "impl": "laws keep society in order, and a safe city <i class=\"a1\">keeps every family in harmony</i>",
+   "final": "laws play a big role in guiding human behaviors",
+   "rec": "governments use laws fairly and equally"
+  },
+  "zh": {
+   "p1": "反方：法律對行為影響很小 (little effect)；我方：法律真能改變行為 (really change)",
+   "p2": "法律有時影響很小 (little effect)——人照自己的想法做事，不是照法律 (follow their own minds, not the law)。若一個人非常想要錢 (wants money badly) → 為了錢違法 (break the law for money) → 法律擋不住的更多犯罪 (more crimes that laws cannot stop)。小結：法律只能說什麼可以做 (what is allowed)，不能逼人去守 (cannot force them to follow)【2026-10-18 借機經「自由意志」論點改寫】",
+   "p3": "法律真能約束行為——怕罰 (fear of punishment) 讓大多數人不敢做壞事 (stops most people from doing bad things)。例：James 住在交通法規嚴、罰款重 (strict traffic laws and heavy fines) 的城市 → 每天安全通勤 (travel safely)、安心 (peace of mind)。含義：法律維持社會秩序 (keep society in order)，安全的城市讓每個家庭和諧 (keeps every family in harmony)",
+   "p4": "法律對引導行為 (guiding behaviors) 作用重大；建議：政府公平平等地 (fairly and equally) 使用法律"
+  },
+  "mistakes": {
+   "rules": [
+    {
+     "k": "the law／laws／by law 三形狀",
+     "v": "當名詞講法律：the law＝整個法律（break／obey／against／not the law）、laws＝一條條法規泛指不加 the（strict traffic laws／laws cannot stop）；by law＝「依法」固定片語零冠詞（banned by law）。law 單數裸奔 ❌（錯 4 次：the laws×2、break law、that law cannot stop）"
+    },
+    {
+     "k": "逗號不能連兩句",
+     "v": "兩個完整句中間要 and／but：tell people what they can do, but cannot force…／keep society in order, and a safe city keeps…。⑩⑯ 各錯一次"
+    },
+    {
+     "k": "複數主詞不加 s、單數主詞要 s",
+     "v": "laws play（不是 plays）／a safe city keeps（不是 keep）。兩個方向同一場都犯，先找主詞再決定"
+    },
+    {
+     "k": "every／each 後面一定單數",
+     "v": "every family（不是 families）。#5 錯 every mistakes，這題第二次"
+    },
+    {
+     "k": "effect 名詞、affect 動詞",
+     "v": "laws have little effect on X ✅；laws effect little ❌。考場只用 have little effect on，不碰 affect"
+    },
+    {
+     "k": "behave 動詞、behavior 名詞",
+     "v": "people&#39;s behaviors（所有格後面要名詞）／how people behave（動詞）。human 單獨當「人們」❌ → people"
+    },
+    {
+     "k": "can only 不是 only can",
+     "v": "only 放助動詞後面：can only tell／will only／should only"
+    },
+    {
+     "k": "長修飾語放名詞後面用 with",
+     "v": "a city with strict traffic laws and heavy fines ✅；a strict traffic laws and heavy fines city ❌。一個形容詞可放前面（a big city），一串就放後面（同 #28 old buildings with history）"
+    },
+    {
+     "k": "泛指不可數不加 the",
+     "v": "keep society in order／enjoy peace of mind（不是 the society／the peace of mind）。同 nature／life"
+    },
+    {
+     "k": "follow their own minds",
+     "v": "「照自己的想法」固定 follow；by their own minds ❌（by 只接工具／方式：by car／by law）"
+    },
+    {
+     "k": "punish／punished／punishment",
+     "v": "動詞／過去分詞／名詞。can be punished（被動要分詞）；the fear of punishment（名詞）。can be punishment ❌"
+    },
+    {
+     "k": "guide 不是 lead",
+     "v": "引導行為用 guide（guiding human behaviors）；lead 是帶路／領導"
+    },
+    {
+     "k": "break the law for money",
+     "v": "break the law 的 the 不能掉；for＋名詞最短，for getting money 囉嗦"
+    },
+    {
+     "k": "拼字五字",
+     "v": "sometimes（有 s；sometime 是某時）／follow（fallow 是休耕）／afraid（a-f-r-a-i-d）／firm（1017 film、1018 frim 連兩天）／harmony（1017 harmoney、1018 harmoy 兩天兩種錯法）。strict James 自己點名要盯"
+    }
+   ],
+   "note": "2026-10-18 首次逐 slot 練（W1 收尾第二題）。練前 James 看機經範文說「我們的邏輯有點弱」，借機經兩條改版：讓步借「自由意志」（人照自己想法／想要錢→違法→法律擋不住）、主論借「威懾」（怕罰→不敢→安全→家庭和諧），字維持基礎。18 格全打完、5 拼字＋18 文法。主罩門：the law／laws 冠詞（岔出去練兩批 10 題後 ⑨ 還掉一次）、逗號連兩句×2、單複數 s 反向、every＋單數第二次。做對的：①②⑥⑪⑱ 一次過。換 James 版：② on human behaviors、⑥ someone、⑩ what they can do。"
+  }
+ },
+ {
+  "o": 18,
+  "n": "④-10",
+  "t": "員工參與服務決策的好處和壞處",
+  "en": "Some employers involve employees in the decision-making process of products and services. What are the advantages and disadvantages?",
+  "stance": "好處大於壞處",
+  "p2zh": "壞處：決策變慢 → 效率降低",
+  "p3zh": "好處：被重視 → 動力 → 生產力與升遷",
+  "es": {
+   "topic": "involving employees in decision-making",
+   "va": "decisions should be left to managers alone",
+   "vb": "involving employees does more good than harm",
+   "con": "involving employees can slow things down",
+   "conR": "wide discussion takes time",
+   "cond": "every decision needs everyone to agree",
+   "subj": "the process",
+   "resA": "become slow",
+   "resB": "lower <i class=\"a1\">efficiency</i>",
+   "concl": "some firms decide at the top",
+   "stance": "involving employees does more good than harm",
+   "reason": "taking part makes employees feel important and willing to work",
+   "jv": "works",
+   "jn": "firm",
+   "does": "joins the decision-making process at his firm",
+   "result": "feel valued, work harder and earn <i class=\"a4\">a steady income</i> for his family",
+   "impl": "a happy employee goes home in a better mood, which keeps the whole family in harmony",
+   "final": "involving employees does more good than harm",
+   "rec": "companies build good ways for employees to take part"
+  },
+  "zh": {
+   "p1": "反方：決策該留給主管 (left to managers alone)；我方：讓員工參與好處大於壞處 (involving employees does more good than harm)",
+   "p2": "員工參與會拖慢速度 (slow things down)——廣泛討論很花時間 (takes time)。若每個決策都要全員同意 (everyone to agree) → 流程變慢 (become slow) → 效率降低 (lower efficiency)。小結：有些公司由高層決定 (decide at the top)",
+   "p3": "好處遠大於壞處——參與讓員工覺得被重視 (feel important)、願意工作 (willing to work)。例：James 參與公司決策 (joins the decision-making process) → 感到被重視 (feel valued)、更努力工作 (work harder)、為家庭賺穩定收入。含義：快樂的員工回家心情較好 (goes home in a better mood)，全家和樂 (keeps the whole family in harmony)",
+   "p4": "讓員工參與利大於弊 (involving employees does more good than harm)；建議：公司建立良好的參與機制 (good ways to take part)"
+  },
+  "mistakes": {
+   "spell": [
+    {
+     "x": "slow done",
+     "o": "slow down",
+     "nt": "done 是 do 的分詞；拖慢＝slow d-o-w-n"
+    },
+    {
+     "x": "knee",
+     "o": "keen",
+     "nt": "knee 是膝蓋；James 說 keen 不會 → ⑫ 改 willing to work"
+    },
+    {
+     "x": "hole",
+     "o": "whole",
+     "nt": "hole 是洞；整個＝w-h-o-l-e（the whole family 收尾句 10 題共用）"
+    },
+    {
+     "x": "mechnisam",
+     "o": "mechanism",
+     "nt": "難字別用 → ⑱ 改 good ways for employees to take part"
+    },
+    {
+     "x": "at the tops",
+     "o": "at the top",
+     "nt": "固定片語單數"
+    }
+   ],
+   "grammar": [
+    {
+     "x": "decision-making should leave to the supervisor",
+     "o": "decisions should be left to managers alone",
+     "nt": "決策是「被留給」→ 被動 be left；alone＝只給主管"
+    },
+    {
+     "x": "employees joining decision-making process brings more good than harm",
+     "o": "involving employees does more good than harm",
+     "nt": "漏 the；固定片語是 does more good than harm；③⑪⑰ 同句背短版"
+    },
+    {
+     "x": "involving employees in the meeting will slow done the time",
+     "o": "involving employees can slow things down",
+     "nt": "拖慢的是事情不是時間；讓步段用 can 不用 will"
+    },
+    {
+     "x": "it takes a lot of time on discussion",
+     "o": "wide discussion takes time",
+     "nt": "take time on ✗；把「討論」當主詞最簡單"
+    },
+    {
+     "x": "all the decisions need to be approves by everyone",
+     "o": "every decision needs everyone to agree",
+     "nt": "被動要過去分詞 approved；every＋單數＋needs"
+    },
+    {
+     "x": "some companies make decisions by high level",
+     "o": "some firms decide at the top",
+     "nt": "high level 是形容詞，不能當「高層」名詞；高層＝at the top"
+    },
+    {
+     "x": "makes employees be focused",
+     "o": "makes employees feel important",
+     "nt": "make＋受詞＋原形／形容詞，不加 be（同 ①-1 的 be more agree）；被重視≠focused"
+    },
+    {
+     "x": "take part in the firm decision",
+     "o": "joins the decision-making process at his firm",
+     "nt": "James 第三人稱 +s（takes）；跟 ① 同字 the decision-making process"
+    },
+    {
+     "x": "brings steady income to his family",
+     "o": "earn a steady income for his family",
+     "nt": "able to 後面全原形；a steady income 的 a 不能掉"
+    },
+    {
+     "x": "happy employee goes home with good mood and brings the hole family in harmony",
+     "o": "a happy employee goes home in a better mood, which keeps the whole family in harmony",
+     "nt": "可數單數裸奔 a happy employee；in a better mood 不是 with；keep … in harmony"
+    },
+    {
+     "x": "employees join the decision-making process does more good than harm",
+     "o": "involving employees does more good than harm",
+     "nt": "join 和 does 兩個動詞撞車；主詞要名詞片語（involving employees／employees joining）"
+    }
+   ],
+   "note": "2026-10-07 首次逐 slot 練（補 10/6 D2 菜單），職涯線，18 格全打完、5 拼字＋11 文法。主罩門：被動漏 be／-ed（be left／approved）、make＋受詞不加 be、冠詞（a steady income／a happy employee／the process）、兩個動詞撞車。做對的：①⑦⑧⑨⑪⑬ 一次過。換 James 版：⑫ keen → willing to work（他說 keen 不會）、⑮ 加 work harder（他說「參與 → 穩定收入」跳太快，多一步才對）、⑱ mechanism 換基礎字。"
+  }
+ },
+ {
+  "o": 19,
+  "n": "④-11",
+  "t": "筆試是有效評估學生學習的方法",
+  "en": "The formal written examination can be a valid method to assess students’ learning. To what extent do you agree or disagree?",
+  "stance": "大致同意",
+  "p2zh": "讓步：一試定生死 → 壓力 → 失常",
+  "p3zh": "主論：筆試公平 → 認真唸書 → 好成績 → 好工作",
+  "es": {
+   "topic": "the written exam as a way to test students",
+   "va": "written exams fail to show students’ true ability",
+   "vb": "written exams are still fair",
+   "con": "written exams can cause problems",
+   "conR": "everything depends on a single performance",
+   "cond": "one test decides everything",
+   "subj": "students",
+   "resA": "<i class=\"a2\">feel upset and anxious</i>",
+   "resB": "performance below their true level",
+   "concl": "people often talk about changing exams",
+   "stance": "written exams are still fair",
+   "reason": "they test knowledge in a fair way",
+   "jv": "studies",
+   "jn": "university",
+   "does": "prepares step by step for written exams",
+   "result": "get high grades and find <i class=\"a4\">a good job with a steady income</i>",
+   "impl": "fair exams lead to better future prospects and <i class=\"a4\">a warm and stable home</i>",
+   "final": "written exams are a good way to test students",
+   "rec": "schools keep written exams as the main way to test students"
+  },
+  "zh": {
+   "p1": "反方：筆試 (written exams) 測不出真實能力 (true ability)；我方：筆試仍然公平 (still fair)",
+   "p2": "筆試會造成問題——一切取決於一次表現 (a single performance)。若一試定生死 (one test decides everything) → 學生沮喪焦慮 → 表現低於真實水準 (below their true level)。小結：改革考試的討論不斷",
+   "p3": "筆試仍公平——用公平的方式測驗知識 (test knowledge in a fair way)。例：James（大學生版）循序準備筆試 (prepares step by step) → 好成績、好工作穩定收入。含義：公平的考試帶來更好的前途與溫暖穩定的家 (a warm and stable home)",
+   "p4": "筆試是測驗學生的好方法；建議：學校保留筆試作為主要測驗方式 (keep written exams as the main way；句型同 #13)（0919 James 改）"
+  },
+  "mistakes": {
+   "spell": [],
+   "grammar": [
+    {
+     "x": "Whether written examination can be…",
+     "o": "whether written exams can be…",
+     "nt": "句中不大寫；exam 可數不能裸奔（複數／the＋單數／a＋單數 三選一）"
+    },
+    {
+     "x": "student’s true ability",
+     "o": "students’ true ability",
+     "nt": "複數所有格撇號在 s 後面"
+    },
+    {
+     "x": "written exams are fail to show",
+     "o": "written exams fail to show",
+     "nt": "fail 是動詞，前面不能再放 are"
+    },
+    {
+     "x": "written exams still fair",
+     "o": "written exams are still fair",
+     "nt": "fair 是形容詞，前面一定要 are（跟上一條剛好相反）"
+    },
+    {
+     "x": "everything depend on",
+     "o": "everything depends on",
+     "nt": "every- 家族（everything／everyone）一律單數 +s；沒有 everythings 這個字"
+    },
+    {
+     "x": "students lead to upset and anxiety",
+     "o": "students can feel upset and anxious",
+     "nt": "lead to 是下一段模板的字串過來；feel 後接形容詞 anxious（#5 同錯）"
+    },
+    {
+     "x": "performing less than their actual ability",
+     "o": "performance below their true level",
+     "nt": "「低於」用 below；performance 是名詞（-ance）"
+    },
+    {
+     "x": "people always discuss the exam need to change",
+     "o": "people often talk about changing exams",
+     "nt": "常常＝often；兩個動詞撞在一起，talk about＋-ing"
+    },
+    {
+     "x": "changing exam",
+     "o": "changing exams／changing the exam",
+     "nt": "exam 裸奔"
+    },
+    {
+     "x": "prepare written exams",
+     "o": "prepares for written exams",
+     "nt": "James 後面 +s（看格子前一個字：人名 +s、to／can 原形）；準備考試要 for，沒 for 是「出考題」"
+    },
+    {
+     "x": "a stable income",
+     "o": "a steady income",
+     "nt": "文法沒錯但串格：steady 配 income、stable 配 home（#13 也串過）"
+    },
+    {
+     "x": "fair exam leads to",
+     "o": "fair exams lead to",
+     "nt": "exam 裸奔；改複數後動詞去 s"
+    },
+    {
+     "x": "written exam is the best way",
+     "o": "written exams are a good way",
+     "nt": "exam 裸奔（本篇第四次）；立場是「仍公平」，the best 太滿"
+    },
+    {
+     "x": "keep the written exams as the main test method",
+     "o": "keep written exams as the main way to test students",
+     "nt": "泛指複數不加 the；way to test students 跟⑰同一組字"
+    }
+   ],
+   "note": "2026-09-19 首次逐 slot 練（情緒讓步線負面版第二題），18 格全打完：0 拼字＋14 文法（首次拼字全對）。主罩門：exam 裸奔四次（可數名詞泛指一律打複數 exams）、be 動詞有無（are fail ✗／still fair 漏 are）。同日 ⑱ 建議句改成 keep written exams as the main way（句型同 #13）。"
+  }
+ },
+ {
+  "o": 20,
+  "n": "④-12",
+  "t": "欠發達國家旅遊業",
+  "en": "The disadvantages of tourism in less developed countries are as great as the advantages. What is your opinion?",
+  "stance": "不同意 — 利大於弊",
+  "p2zh": "讓步：過度商業化 → 文化失真",
+  "p3zh": "主論：旅遊業 → 就業 → 收入養家",
+  "es": {
+   "topic": "tourism in less developed countries",
+   "va": "tourism does as much harm as good",
+   "vb": "tourism does more good than harm",
+   "con": "tourism can harm local culture",
+   "conR": "business turns local culture into a product",
+   "cond": "a place becomes too focused on money",
+   "subj": "local traditions",
+   "resA": "become shows for tourists",
+   "resB": "<i class=\"a3\">a loss of real local culture</i>",
+   "concl": "careless tourism leaves damage behind",
+   "stance": "tourism does more good than harm",
+   "reason": "tourism creates <i class=\"a4\">job opportunities</i> for local people",
+   "jv": "works",
+   "jn": "firm",
+   "does": "develops travel programs in less developed countries for his firm",
+   "result": "see how tourism helps local families earn <i class=\"a4\">a steady income</i> and build <i class=\"a4\">warm and stable homes</i>",
+   "impl": "tourism is a big help for development",
+   "final": "tourism does more good than harm to less developed countries",
+   "rec": "governments manage tourism in a careful way"
+  },
+  "zh": {
+   "p1": "反方：弊跟利一樣大 (tourism does as much harm as good)；我方：利大於弊 (tourism does more good than harm)",
+   "p2": "旅遊業可能傷害在地文化 (harm local culture)——商業把文化變商品 (into a product)。若一個地方太向錢看 (too focused on money) → 在地傳統變成演給觀光客看的秀 (become shows for tourists) → 真正在地文化流失 (a loss of real local culture)。小結：粗心的旅遊留下傷害 (leaves damage)",
+   "p3": "好處遠大於壞處——旅遊業為在地人創造就業機會 (job opportunities)。例：James 替公司在欠發達國家開發旅遊行程 (develops travel programs) → 看到旅遊幫在地家庭賺穩定收入、建立溫暖的家。含義：旅遊業是發展 (development) 的一大助力",
+   "p4": "旅遊業對欠發達國家利大於弊 (does more good than harm to less developed countries)；建議：政府謹慎管理 (manage in a careful way) 旅遊業"
+  },
+  "mistakes": {
+   "spell": [
+    {
+     "x": "development／develop",
+     "o": "developed",
+     "nt": "less developed countries 照題目抄；過去分詞當形容詞，-ed 不能掉（連錯兩次）"
+    },
+    {
+     "x": "conutries",
+     "o": "countries",
+     "nt": "字母顛倒：c-o-u-n-tries"
+    },
+    {
+     "x": "hart",
+     "o": "hurt",
+     "nt": "h-u-r-t"
+    },
+    {
+     "x": "loose／lose（⑨ 名詞格）",
+     "o": "loss",
+     "nt": "⑨ 錯三次：lose 動詞／lost 過去式／loss 名詞／loose 鬆的；leading to 後面只能接名詞 loss"
+    },
+    {
+     "x": "carelss",
+     "o": "careless",
+     "nt": "care＋less"
+    },
+    {
+     "x": "toruism",
+     "o": "tourism",
+     "nt": "t-o-u-r-ism，本題關鍵字"
+    }
+   ],
+   "grammar": [
+    {
+     "x": "the tourism in less development countries",
+     "o": "tourism in less developed countries",
+     "nt": "不可數通稱不加 the；developed 是形容詞、development 是名詞"
+    },
+    {
+     "x": "tourism does more harm than good（②）",
+     "o": "tourism does as much harm as good",
+     "nt": "題目說「弊跟利一樣大」→ as much … as，不是 more … than"
+    },
+    {
+     "x": "business turn local culture into products",
+     "o": "business turns local culture into a product",
+     "nt": "business 不可數＝單數，+s"
+    },
+    {
+     "x": "one place too look forward to money",
+     "o": "a place becomes too focused on money",
+     "nt": "整句沒動詞；look forward to＝期待；becomes +s、focused -ed 各掉一次"
+    },
+    {
+     "x": "local culture can loose their nature",
+     "o": "local traditions can become shows for tourists",
+     "nt": "⑦ 要複數 traditions 才接 their；本色＝real character；James 嫌 ⑧⑨ 太重複，改成「變成演給觀光客看的秀」"
+    },
+    {
+     "x": "a loss of local cultures",
+     "o": "a loss of real local culture",
+     "nt": "culture 不可數不加 s"
+    },
+    {
+     "x": "tourism can bring jobs for local people",
+     "o": "tourism creates job opportunities for local people",
+     "nt": "bring … to／create … for；④ 線共用 job opportunities"
+    },
+    {
+     "x": "tourism help local family having a steady income and building a warm family",
+     "o": "tourism helps local families earn a steady income and build warm and stable homes",
+     "nt": "helps +s；families 複數；help＋受詞＋原形；固定片語 warm and stable home"
+    },
+    {
+     "x": "the big help for development",
+     "o": "a big help for development",
+     "nt": "泛指「一大助力」用 a"
+    },
+    {
+     "x": "governments should take more care about tourism",
+     "o": "governments manage tourism in a careful way",
+     "nt": "crucial that 後面原形，不加 should；take care of 不是 about；「管理」＝manage"
+    }
+   ],
+   "note": "2026-10-07 首次逐 slot 練（補 10/6 D2 菜單），職涯線，18 格全打完、6 拼字＋10 文法。主罩門：-ed 分詞當形容詞（developed／focused）、第三人稱 +s（turns／becomes／helps）、lose／loss 三錯、help＋受詞＋原形。做對的：③⑪⑬⑰ 一次過，②④ 一次改對。換 James 版：⑧⑨ 改 become shows for tourists → a loss of real local culture（原 lose their real character → a loss of local culture 同一件事講兩次）。"
+  }
+ },
+ {
+  "o": 21,
+  "n": "②-7",
+  "t": "大眾媒體帶來信息革命的影響",
+  "en": "“The information revolution by modern mass media has both positive and negative consequences for individuals and for society.” To what extent do you agree?",
+  "stance": "負面影響為主",
+  "p2zh": "讓步：幾秒拿到全球新聞 → 知道世界在發生什麼 → 視野寬（0912 重排）",
+  "p3zh": "主論：資訊過載假新聞 → 焦慮發脾氣 → 傷家人",
+  "es": {
+   "topic": "the information revolution",
+   "va": "the information revolution does more good than harm",
+   "vb": "it does more harm than good",
+   "con": "the information revolution has some positive consequences",
+   "conR": "people can get news from around the world in seconds",
+   "cond": "people read the news on their phones every day",
+   "subj": "they",
+   "resA": "learn what is happening around the world",
+   "resB": "<i class=\"a3\">a broader view of life</i>",
+   "concl": "many people see the information revolution as a big step forward",
+   "stance": "the information revolution does more harm than good",
+   "reason": "too much information and fake news <i class=\"a2\">lead to stress and anxiety</i>",
+   "jv": "works",
+   "jn": "firm",
+   "does": "keeps checking the news on his phone all evening",
+   "able": "he is unable to",
+   "result": "relax at home or spend <i class=\"a1\">quality time with his family</i>",
+   "impl": "too much news makes people <i class=\"a2\">lose their temper</i> and <i class=\"a2\">hurt family relationships</i>",
+   "final": "the information revolution does more harm than good",
+   "rec": "people learn to judge news and limit screen time"
+  },
+  "zh": {
+   "p1": "反方：好處大於壞處 (the information revolution does more good than harm)；我方：壞處大於好處 (it does more harm than good)",
+   "p2": "資訊革命有些正面影響 (some positive consequences)——幾秒內拿到全世界的新聞 (get news from around the world in seconds)。若每天用手機看新聞 → 知道世界在發生什麼 (learn what is happening around the world) → 更開闊的視野 (a broader view of life)。小結：很多人視資訊革命為一大進步 (a big step forward)。⚠ 與 P3 對照：每天看拓視野 vs 太多資訊整晚滑（0912 重排）",
+   "p3": "壞處大於好處 (the information revolution does more harm than good)——資訊過載 (too much information) 與假新聞 (fake news) 導致壓力焦慮 (stress and anxiety)。例：James 整晚一直看手機新聞 (keeps checking the news all evening) → **無法放鬆、也沒法陪家人** (he is **unable to** relax at home or spend quality time with his family)。含義：太多新聞讓人發脾氣 (lose their temper)、傷害家庭關係。⚠ 本題與 #35 同樣把模板的 he is able to 改成 he is unable to",
+   "p4": "弊大於利 (does more harm than good)；建議：人們學會判斷新聞 (judge news)、限制螢幕時間 (limit screen time)"
+  },
+  "mistakes": {
+   "spell": [
+    {
+     "x": "happing",
+     "o": "happening",
+     "nt": "happen＋ing：e 不去、n 不雙寫"
+    },
+    {
+     "x": "seem",
+     "o": "see",
+     "nt": "多打 m 變成「似乎」；see A as B 視為"
+    },
+    {
+     "x": "axniety",
+     "o": "anxiety",
+     "nt": "字母顛倒：an-xi-e-ty"
+    },
+    {
+     "x": "relationshio",
+     "o": "relationships",
+     "nt": "尾字母 p 打成 o"
+    }
+   ],
+   "grammar": [
+    {
+     "x": "information revolution",
+     "o": "the information revolution",
+     "nt": "特指這場革命要加 the（①格漏、⑨格又漏）"
+    },
+    {
+     "x": "some positive consequence",
+     "o": "some positive consequences",
+     "nt": "some 後面接複數"
+    },
+    {
+     "x": "people watch news by mobile phone every day",
+     "o": "people read the news on their phones every day",
+     "nt": "手機看新聞用 read；「用手機」固定 on their phones 不用 by"
+    },
+    {
+     "x": "on phone / on their phone",
+     "o": "on their phones",
+     "nt": "可數名詞不能裸奔；複數人配複數手機（這格連掉兩次）"
+    },
+    {
+     "x": "everyday",
+     "o": "every day",
+     "nt": "分開寫才是副詞「每天」；everyday 連寫是形容詞（everyday life）"
+    },
+    {
+     "x": "people read news on their phones",
+     "o": "…every day",
+     "nt": "漏 every day；每天看＝好 vs 整晚看＝壞，這個對照字不能掉"
+    },
+    {
+     "x": "many people think … is a big step",
+     "o": "many people see the information revolution as a big step forward",
+     "nt": "「視為」固定 see A as B；「進步」是 step forward，漏 forward"
+    },
+    {
+     "x": "too many information",
+     "o": "too much information",
+     "nt": "information 不可數用 much"
+    },
+    {
+     "x": "lead to pressure and anxiety",
+     "o": "lead to stress and anxiety",
+     "nt": "②線固定片語 stress and anxiety 四字一組"
+    },
+    {
+     "x": "keeps read news",
+     "o": "keeps checking the news",
+     "nt": "keep 後接 -ing；查看新聞用 checking"
+    },
+    {
+     "x": "all night",
+     "o": "all evening",
+     "nt": "下班在家是 evening，all night 是通宵"
+    },
+    {
+     "x": "with his families",
+     "o": "with his family",
+     "nt": "他一個人只有一個家庭"
+    },
+    {
+     "x": "relax and spend…",
+     "o": "relax at home or spend…",
+     "nt": "unable to 後面兩件都做不到用 or；漏 at home"
+    },
+    {
+     "x": "too many news",
+     "o": "too much news",
+     "nt": "news 不可數用 much（跟 information 同一組）"
+    },
+    {
+     "x": "makes people angry",
+     "o": "makes people lose their temper",
+     "nt": "②線固定片語「發脾氣」，跟 hurt family relationships 一組"
+    },
+    {
+     "x": "hurt the family relationship",
+     "o": "hurt family relationships",
+     "nt": "泛指 people 的關係用複數、去 the（這格連掉兩次 s）"
+    },
+    {
+     "x": "limit time of screen",
+     "o": "limit screen time",
+     "nt": "「螢幕時間」固定複合名詞 screen time，不用 of"
+    }
+   ],
+   "note": "2026-09-17 首次逐 slot 練（讓步線最後一題），18 格全打完：4 拼字＋17 文法。主罩門：複數 s（phones／relationships 各掉兩次）、不可數 much（information／news）、the information revolution 的 the。"
+  }
+ },
+ {
+  "o": 22,
+  "n": "④-13",
+  "t": "大眾媒體對人類（年輕人）有重大影響",
+  "en": "Mass media, including TV and newspaper, have a great influence on humans, particularly on the younger generation. What is your opinion?",
+  "stance": "負面影響為主 — 影響學業",
+  "p2zh": "讓步：媒體有教育內容、能開視野",
+  "p3zh": "主論：分心 → 荒廢學業 → 影響前途",
+  "es": {
+   "topic": "the influence of mass media on the young",
+   "va": "mass media does more good than harm to the young",
+   "vb": "it does more harm than good",
+   "con": "media can teach young people new things",
+   "conR": "good programs show the wide world",
+   "cond": "young people watch quality content",
+   "subj": "they",
+   "resA": "<i class=\"a3\">learn things they cannot find in books</i>",
+   "resB": "<i class=\"a3\">a broader view of life</i>",
+   "concl": "parents welcome educational programs",
+   "stance": "mass media does more harm than good to the young",
+   "reason": "short videos pull students away from their books",
+   "jv": "studies",
+   "jn": "university",
+   "does": "keeps away from social media on school days",
+   "result": "get high grades and find <i class=\"a4\">a good job with a steady income</i>",
+   "impl": "study time leads to better future prospects and <i class=\"a4\">a warm and stable home</i>",
+   "final": "mass media does more harm than good to the young",
+   "rec": "parents set clear limits on media use"
+  },
+  "zh": {
+   "p1": "反方：媒體對年輕人利大於弊 (does more good than harm to the young)；我方：弊大於利 (does more harm than good)",
+   "p2": "媒體能教新東西 (teach us new things)——好節目展現廣闊世界 (the wide world)。若年輕人看優質內容 (quality content) → 學到書本外的東西 → 更開闊的視野。小結：家長歡迎教育性節目 (educational programs)",
+   "p3": "媒體對年輕人弊大於利 (does more harm than good to the young)——短影音 (short videos) 把學生從書本拉走 (pull students away)。例：James（大學生版）上課日遠離社群媒體 (keeps away from social media on school days) → 好成績 (get high grades)、好工作穩定收入 (a good job and a steady income)。含義：讀書時間帶來更好的前途與溫暖穩定的家 (study time leads to better future prospects and a warm and stable home)",
+   "p4": "媒體對年輕人弊大於利 (does more harm than good to the young)；建議：家長為媒體使用設清楚界線 (set clear limits)"
+  },
+  "mistakes": {
+   "spell": [
+    {
+     "x": "wellcome",
+     "o": "welcome",
+     "nt": "只有一個 l"
+    },
+    {
+     "x": "programes / programs",
+     "o": "programs",
+     "nt": "program 直接加 s，不要多一個 e"
+    },
+    {
+     "x": "contexts",
+     "o": "content",
+     "nt": "context 是上下文；content（內容）不可數不加 s"
+    },
+    {
+     "x": "form",
+     "o": "from",
+     "nt": "字母顛倒——三大拼字模式之一"
+    },
+    {
+     "x": "on other words",
+     "o": "In other words",
+     "nt": "模板句，別打錯介系詞"
+    }
+   ],
+   "grammar": [
+    {
+     "x": "the mass media influence young",
+     "o": "the influence of mass media on the young",
+     "nt": "topic 要名詞片語不是句子；young 是形容詞，當名詞要 the young"
+    },
+    {
+     "x": "does more good than harm on the young",
+     "o": "… to the young",
+     "nt": "do good/harm 的對象用 to"
+    },
+    {
+     "x": "young peoples",
+     "o": "young people",
+     "nt": "people 本身就是複數，加 s 反而錯（跟平常漏 s 相反）"
+    },
+    {
+     "x": "good program gives the young wider world",
+     "o": "good programs show the wide world",
+     "nt": "① programs 漏 s ② 主詞複數動詞不加 s ③ 世界只有一個用 the wide world"
+    },
+    {
+     "x": "educated programs",
+     "o": "educational programs",
+     "nt": "educated 形容人（受過教育的）、educational 形容東西（教育性的）"
+    },
+    {
+     "x": "in turn leading to have a broader view",
+     "o": "in turn leading to a broader view of life",
+     "nt": "leading to 的 to 是介系詞，只收名詞／V-ing，不收原形動詞（今天第三次多加動詞）"
+    },
+    {
+     "x": "short videos distract the attention at class to student",
+     "o": "short videos pull students away from their books",
+     "nt": "distract 直接接人（distract students）；in class 不是 at class；student 漏 s"
+    },
+    {
+     "x": "find a good job and steady income",
+     "o": "find a good job with a steady income",
+     "nt": "0915 改的新版，a 不能漏"
+    },
+    {
+     "x": "study time leads him to … and warm and stable home",
+     "o": "study time leads to … and a warm and stable home",
+     "nt": "① 不要加 him，主詞是讀書時間 ② a warm and stable home 的 a 不能漏"
+    },
+    {
+     "x": "it is crucial that parents should set",
+     "o": "it is crucial that parents set",
+     "nt": "虛擬語氣原形。should 版英式可接受、不算文法錯，但 repo 模板統一用原形（省一字、不必記兩套）"
+    }
+   ],
+   "note": "2026-09-15 第一次逐 slot 練這題，16 格全打完。這篇主要錯在「該不該加 s」兩個方向都犯：programs／students 漏 s，people 卻多加 s，good programs 的動詞又誤加 s。另外把 resA 填進 conR、result／impl 誤填 does 的內容——⑧線和①線的固定句要認位置不是只認句子。做對的：keeps 的 +s、pull 不加 s、topic 名詞片語、to the young。"
+  }
+ },
+ {
+  "o": 23,
+  "n": "①-2",
+  "t": "電視是生活中重要的一部分（Report）",
+  "en": "Television serves many useful functions. It helps people to relax. We can learn from television and it can also be seen as a companion for the lonely. To What extent do you agree with this? Explain why with your own experiences.",
+  "stance": "部分同意 — 電視能陪伴、解決部分孤單，但不是真正的陪伴，家人才是",
+  "p2zh": "讓步：電視陪孤獨的人 → 少一點孤單 → 心情好",
+  "p3zh": "主論：電視不會跟你說話 → 關電視 → 真互動 → 全家和樂",
+  "es": {
+   "topic": "whether television is a good companion for people",
+   "va": "television helps people relax, teaches them many things and keeps lonely people company",
+   "vb": "television does more harm than good",
+   "con": "television can be a companion for the lonely",
+   "conR": "people who live alone can hear voices and see faces on television",
+   "cond": "old people who live alone watch their favorite programs every day",
+   "subj": "they",
+   "resA": "<i class=\"a2\">feel less lonely</i>",
+   "resB": "<i class=\"a2\">a better mood</i>",
+   "concl": "many lonely people see television as a friend",
+   "stance": "television is not a real companion",
+   "reason": "television cannot talk with you or listen to you",
+   "jv": "works",
+   "jn": "firm",
+   "does": "always turns off the television during dinner",
+   "result": "<i class=\"a1\">have more conversations with his family</i>",
+   "impl": "turning off the television keeps the whole family in harmony",
+   "final": "television does more harm than good",
+   "rec": "people turn off the television and spend time with their families and friends"
+  },
+  "zh": {
+   "p1": "反方：電視很有用 (very useful)；我方：弊大於利 (does more harm than good)",
+   "p2": "電視可以陪伴孤單的人 (a companion for the lonely)——獨居的人能在電視上聽到聲音、看到臉孔 (hear voices and see faces on television)。若獨居老人天天看最愛的節目 (watch their favorite programs every day) → 比較不孤單 (feel less lonely) → 心情比較好 (a better mood)。小結：很多孤單的人把電視當朋友 (see television as a friend)",
+   "p3": "電視不是真正的陪伴 (not a real companion)——它不能跟你說話、也不能聽你說 (cannot talk with you or listen to you)。例：James 晚餐時總是關電視 (always turns off the television during dinner) → 跟家人有更多對話 (have more conversations with his family)。含義：關電視 (turning off the television) 讓全家和樂 (keeps the whole family in harmony)",
+   "p4": "電視弊大於利 (does more harm than good)；建議：家人關掉電視、多聊天 (talk more)"
+  },
+  "mistakes": {
+   "spell": [
+    {
+     "x": "longly",
+     "o": "lonely",
+     "nt": "昨天 #29 才錯過，重犯。lone＋ly 沒有 g"
+    },
+    {
+     "x": "compnay",
+     "o": "company",
+     "nt": "字母顛倒：com-pa-ny"
+    },
+    {
+     "x": "favorate",
+     "o": "favorite",
+     "nt": "fav-o-rite"
+    }
+   ],
+   "grammar": [
+    {
+     "x": "television companies lonely people",
+     "o": "television keeps lonely people company",
+     "nt": "company 當「陪伴」是名詞，沒有動詞 companies（那是公司複數）；固定講法 keep sb company"
+    },
+    {
+     "x": "keeps lonely people companion",
+     "o": "keeps lonely people company",
+     "nt": "companion 是「同伴」（人），company 才是「陪伴」"
+    },
+    {
+     "x": "people who lived alone can hear",
+     "o": "people who live alone can hear",
+     "nt": "一般情況現在式，跟後面 can 一致"
+    },
+    {
+     "x": "on televisions",
+     "o": "on television",
+     "nt": "「在電視上」固定不加 s，television 當媒體不可數"
+    },
+    {
+     "x": "If old people … can watch their favorite shows",
+     "o": "If old people … watch their favorite programs every day",
+     "nt": "If 子句講條件不放 can（can 在 then 後面）；every day 才有天天看→不孤單的因果"
+    },
+    {
+     "x": "take television as their friends",
+     "o": "see television as a friend",
+     "nt": "television 單數＝一個朋友；see … as 是固定片語"
+    },
+    {
+     "x": "cannot talk with you and listen to you",
+     "o": "cannot talk with you or listen to you",
+     "nt": "否定句兩個都不能用 or（同 #21／#35 unable to A or B）"
+    },
+    {
+     "x": "during dinner times／at dinner times",
+     "o": "at dinner time／during dinner",
+     "nt": "dinner time 是時段名，單數；連錯兩次"
+    },
+    {
+     "x": "makes family more harmony",
+     "o": "keeps the whole family in harmony",
+     "nt": "harmony 是名詞不能接 more 當形容詞；10 題共用的固定片語逐字背"
+    },
+    {
+     "x": "the television does more harm than good",
+     "o": "television does more harm than good",
+     "nt": "電視當「媒體」不加 the（③ 自己打對）；當「機器」才加：turn off the television"
+    },
+    {
+     "x": "turn off television",
+     "o": "turn off the television",
+     "nt": "關的是機器要 the；跟上一條是同一規則的兩個方向"
+    }
+   ],
+   "note": "2026-09-23 首次逐 slot 練，情緒讓步線正面版第三題，18 格全打完、3 拼字＋11 文法。舊罩門重犯 4 條：lonely 拼錯（昨天才錯）、字母顛倒 compnay、時態 lived、否定用 and。新東西：company／companion／companies 三個字分清楚、television 加不加 the 兩個方向、dinner time 單數。做對的：② 三個 +s 全對、⑭ turns 有 s、⑧⑨⑪⑬ 一字不差、⑮ 自己換成 conversations。他的 ⑮ have more discussion 文法對但改用 conversations，範文不動。"
+  }
+ },
+ {
+  "o": 24,
+  "n": "④-14",
+  "t": "市場營銷應該注重名聲還是折扣",
+  "en": "Should marketing for consumer goods companies like clothing and food focus on reputation or on short term strategies like discount and special offers? Why?",
+  "stance": "注重名聲（reputation）",
+  "p2zh": "讓步：折扣 → 立即吸客 → 短期業績",
+  "p3zh": "主論：名聲 → 忠誠 → 長期獲利",
+  "es": {
+   "topic": "whether marketing should focus on a good reputation or discounts",
+   "va": "discounts attract customers the most",
+   "vb": "a good reputation is the key to marketing",
+   "con": "discounts can boost sales rapidly",
+   "conR": "a low price is a strong reason to buy",
+   "cond": "prices drop",
+   "subj": "customers",
+   "resA": "buy right away",
+   "resB": "short-term <i class=\"a4\">money gains</i>",
+   "concl": "discount campaigns can be seen everywhere",
+   "stance": "a good reputation is the key to marketing",
+   "reason": "it builds customer loyalty and <i class=\"a4\">long-term profits</i>",
+   "jv": "works",
+   "jn": "firm",
+   "does": "helps keep his firm’s good reputation for quality",
+   "result": "see loyal customers coming back every year and bring <i class=\"a4\">a steady income</i> to the firm",
+   "impl": "a good reputation can create <i class=\"a4\">long-term value</i> that discounts cannot",
+   "final": "a good reputation matters more than short-term discounts",
+   "rec": "companies spend on quality and customer trust"
+  },
+  "zh": {
+   "p1": "反方：折扣 (discounts) 最能吸客；我方：好名聲 (a good reputation) 是行銷的關鍵 (the key to marketing)",
+   "p2": "折扣快速衝銷量 (boost sales quickly)——低價 (a low price) 是強力購買理由。若降價 (prices drop) → 顧客立刻買 (buy right away) → 短期收益 (short-term money gains)。小結：折扣活動到處都是",
+   "p3": "好名聲才是重點——建立顧客忠誠 (customer loyalty) 與長期獲利 (long-term profits)。例：James 幫公司維持品質好名聲 (good reputation for quality) → 看到忠實顧客每年回來 (coming back every year)，帶來穩定收入。含義：好名聲創造折扣做不到的長期價值 (long-term value)。★唯一不收家庭的題",
+   "p4": "名聲比短期折扣重要；建議：公司投資品質與顧客信任 (quality and customer trust)"
+  },
+  "mistakes": {
+   "spell": [
+    {
+     "x": "reputaion／reputaiont／reputaiotn（四次）",
+     "o": "reputation",
+     "nt": "James 選用 reputation（範文原本 a good name）；分三段打 repu-ta-tion，-tion 前面有 ta"
+    },
+    {
+     "x": "foucs",
+     "o": "focus",
+     "nt": "字母顛倒 f-o-c-u-s"
+    },
+    {
+     "x": "campains → campaings",
+     "o": "campaigns",
+     "nt": "g 不發音；-gn 同 sign／design／foreign，g 在 n 前"
+    },
+    {
+     "x": "quailty",
+     "o": "quality",
+     "nt": "第 2 次（#12 同錯）：qu-ali-ty"
+    },
+    {
+     "x": "stady",
+     "o": "steady",
+     "nt": "ea 同 ready／head"
+    },
+    {
+     "x": "coustomers／cutomer",
+     "o": "customers",
+     "nt": "custom＋er：cu-s-tom"
+    }
+   ],
+   "grammar": [
+    {
+     "x": "focus on good reputation or discounting",
+     "o": "focus on a good reputation or discounts",
+     "nt": "a good reputation 要 a；or 兩邊都名詞"
+    },
+    {
+     "x": "the key point of marketing／the key of",
+     "o": "the key to marketing",
+     "nt": "key point 是論點重點；key 固定接 to（同 the way to success）"
+    },
+    {
+     "x": "a key to marketing（⑪）",
+     "o": "the key to marketing",
+     "nt": "表態句三處同一句；the＝唯一關鍵"
+    },
+    {
+     "x": "lower price is",
+     "o": "a low price is",
+     "nt": "price 可數單數裸奔；沒比較對象用 low"
+    },
+    {
+     "x": "discounting activities can be seen every where",
+     "o": "discount campaigns can be seen everywhere",
+     "nt": "名詞修飾名詞不用 -ing；activities 中式直翻；everywhere 一個字"
+    },
+    {
+     "x": "customer loyalties and long profits",
+     "o": "customer loyalty and long-term profits",
+     "nt": "loyalty 不可數；長期＝long-term（對照 ⑨ short-term）"
+    },
+    {
+     "x": "keep his company a good reputation of quality",
+     "o": "keep his firm’s good reputation for quality",
+     "nt": "所有格 firm’s；以…聞名 reputation for"
+    },
+    {
+     "x": "create a long-term value",
+     "o": "create long-term value",
+     "nt": "value 抽象不可數不加 a"
+    },
+    {
+     "x": "matters than shorten discounts",
+     "o": "matters more than short-term discounts",
+     "nt": "than 要配比較級 more；shorten 是動詞"
+    }
+   ],
+   "note": "2026-09-23 首次逐 slot 練（錢與方便讓步線第二題），18 格全打完、6 拼字＋9 文法。James 選 reputation 取代 a good name，結果 reputation 拼錯四次（-tion 前的 ta 亂序）。主罩門：字母顛倒（focus／quality／campaigns）、不可數加 a 或 s（loyalty／value）、介系詞搭配（key to／reputation for）。做對的：被動 can be seen、help＋原形、see＋人＋V-ing、able to 後兩個原形、⑥⑧⑨⑱ 一次過。換 James 版：全篇 a good name → a good reputation、② the most、③⑪ is the key to marketing、④ rapidly、⑩ can be seen、⑮ coming back every year and bring … to the firm、⑯ can create … cannot。"
+  }
+ },
+ {
+  "o": 25,
+  "n": "②-8",
+  "t": "氣候變化誰應負責？（Report）",
+  "en": "In terms of climate change, who should be responsible, individuals, organizations or governments?",
+  "stance": "政府主責（與 #16 共用字）",
+  "p2zh": "讓步：個人少開車、工廠用潔淨能源 → 空氣變乾淨",
+  "p3zh": "主論：只有政府能立法給錢 → 新法一出工廠就減排 → 保護每個家庭",
+  "es": {
+   "topic": "who should be responsible for climate change",
+   "modal": "would",
+   "va": "people and companies should take the lead",
+   "vb": "governments should take the main role",
+   "con": "people and companies also play a part",
+   "conR": "most greenhouse gas comes from cars and factories",
+   "cond": "people drive less and factories use clean energy",
+   "subj": "they",
+   "resA": "put less greenhouse gas into the air",
+   "resB": "<i class=\"a2\">cleaner air for everyone</i>",
+   "concl": "many people support personal action",
+   "stance": "governments should take the main role",
+   "reason": "only governments have the right to make laws and give money",
+   "jv": "works",
+   "jn": "firm",
+   "does": "saw his factory cut greenhouse gas right after a new law last year",
+   "result": "see how fast a company changes when the law is strict",
+   "impl": "only strict laws can make companies change and <i class=\"a1\">protect every family</i>",
+   "final": "governments must take the main role",
+   "rec": "governments make strict laws and people and companies follow them"
+  },
+  "zh": {
+   "p1": "主題：誰該為氣候變化負責 (be responsible for)。反方：個人與企業 (people and companies) 應主導 (take the lead)；我方：政府 (governments) 應擔任主要角色 (the main role)",
+   "p2": "個人與企業也有貢獻 (play a part)——大多數溫室氣體來自汽車和工廠 (greenhouse gas from cars and factories)。若大家少開車 (drive less)、工廠用潔淨能源 (use clean energy) → 排較少溫室氣體 → 大家都有更乾淨的空氣 (cleaner air for everyone)。小結：很多人支持個人行動 (personal action)",
+   "p3": "政府應主導——只有政府有權 (the right) 立法 (make laws)、給錢 (give money)。例：James 去年親眼看到新法一出、他的工廠馬上減排 (saw his factory cut greenhouse gas right after a new law) → 親眼看到法律嚴、公司就改得快 (how fast a company changes when the law is strict)。含義：只有嚴格的法律 (strict laws) 能讓公司改變、保護每個家庭 (protect every family)（老師 0908：結局要跟公司有關）",
+   "p4": "政府必須擔主角；建議：政府訂嚴格法律 (strict laws)，個人與企業遵守 (follow them)"
+  },
+  "mistakes": {
+   "rules": [
+    {
+     "k": "take the lead／take the main role（James 點名易忘）",
+     "v": "帶頭＝take the lead、擔主角＝take the main role，立場句 ③⑪⑰ 三次都用它，一字不差。the 是因為「唯一的那個位置」：main／first／best／only／same 前面一律 the。對照不加 the：take part／take action"
+    },
+    {
+     "k": "greenhouse gas 兩個字一組",
+     "v": "greenhouse 單獨是「溫室」玻璃房；溫室氣體一定帶 gas，整篇三次。泛指不加 the（0908 錯 by the greenhouse gas、1019 再錯）。不可數＝單數：most greenhouse gas comes（+s）"
+    },
+    {
+     "k": "不可數不加 a、比較級",
+     "v": "cleaner air for everyone：air 不可數（a clean air ❌）、「更乾淨」比較級 cleaner、「給大家」用 for 不用 to"
+    },
+    {
+     "k": "into the air",
+     "v": "排進空氣有「進入」動作用 into（to the air ❌）；air 同 the sky／the sea／the environment，地球就一個，固定 the"
+    },
+    {
+     "k": "see／hear／make／let ＋ 受詞 ＋ 原形",
+     "v": "saw his factory cut gas／make companies change／let him go。第二個動詞是受詞的動作，不加 s 不加 to。跟 the money they earn（名詞後接主詞＋動詞）是表兄弟，都不是第二個主句"
+    },
+    {
+     "k": "how 子句不倒裝",
+     "v": "see how fast a company changes（主詞前、動詞後、+s）；how fast can company change ❌ 是問句語序。加 can 可免 s：how fast a company can change"
+    },
+    {
+     "k": "when 後面要完整句",
+     "v": "when the law is strict／when there is a strict law；when saw a strict law ❌ 沒主詞"
+    },
+    {
+     "k": "it is crucial that A and B 原形",
+     "v": "governments make strict laws and individuals and firms follow them。and 後面不再加 that、不加 to"
+    },
+    {
+     "k": "every 後面一定單數（第三次）",
+     "v": "protect every family。#5 every mistakes、#17 every families、#25 every families"
+    },
+    {
+     "k": "可數名詞不裸奔（第三題連犯）",
+     "v": "a company／companies；company 單獨 ❌。泛指用複數最省（make companies change）"
+    },
+    {
+     "k": "should 後面要動詞",
+     "v": "should take the lead；should the lead ❌（漏動詞整句垮）"
+    },
+    {
+     "k": "last year 單數",
+     "v": "去年就一年；last years ❌"
+    },
+    {
+     "k": "拼字兩字",
+     "v": "factories（factory 去 y 加 ies；1019 拼 factorites 多 t）／strict（1019 拼 strike＝罷工；1018 自己點名的字）"
+    }
+   ],
+   "note": "2026-10-19 首次逐 slot 練（W1 收尾第四題，見證線 G、If 句用 would）。18 格全打完、2 拼字＋16 文法。主罩門：greenhouse 掉 gas×2、不可數／單數 +s（comes×2、changes）、冠詞（a clean air／the greenhouse gas／a company）、every family 第三次。做對的：①③④⑥⑩⑬⑰ 一次過，⑭ 問完 see＋受詞＋原形後一字不差。換 James 版：① who should be responsible for climate change（跟題目同字）、⑫ the right to make laws and give money（比 power／provide 好拼）。"
+  }
+ },
+ {
+  "o": 26,
+  "n": "①-3",
+  "t": "一項科技發明帶來的好處或壞處（Report）",
+  "en": "Recently, in our technological world, the number of new inventions has been evolving on a daily basis. Please describe a new invention and explain the impact, either beneficial or detrimental, that you feel it has had on society.",
+  "stance": "選擇：智慧型手機，好處為主",
+  "p2zh": "讓步：成癮 → 上課不專注 → 成績差",
+  "p3zh": "主論：省時聯絡方便 → 陪家人 → 全家和樂",
+  "es": {
+   "topic": "the impact of the smartphone",
+   "va": "the smartphone does more harm than good",
+   "vb": "it is a very useful invention",
+   "con": "smartphones have some problems",
+   "conR": "many young people get addicted to the internet",
+   "cond": "a student keeps surfing the internet on his phone",
+   "subj": "he",
+   "resA": "easily <i class=\"a4\">lose focus in class</i>",
+   "resB": "<i class=\"a4\">poor academic performance</i>",
+   "concl": "some parents do not allow their children to use cell phones",
+   "stance": "the smartphone is a very useful invention",
+   "reason": "it puts communication, information and work in one device",
+   "jv": "works",
+   "jn": "firm",
+   "does": "manages work and family chats on his smartphone",
+   "result": "<i class=\"a1\">finish his work faster</i> and reach his family anytime",
+   "impl": "it keeps the whole family connected and in harmony",
+   "final": "the smartphone does more good than harm",
+   "rec": "users build healthy digital habits",
+   "p1end": "I firmly believe that the smartphone does more good than harm and will discuss this further below."
+  },
+  "zh": {
+   "p1": "反方：手機弊大於利；我方：非常有用的發明 (a very useful invention)",
+   "p2": "手機有些問題 (problems)——很多年輕人網路成癮 (addicted to the internet)。若學生一直滑手機 (keeps surfing) → 上課容易分心 (lose focus) → 成績差 (poor academic performance)。小結：有些父母不准孩子用手機",
+   "p3": "手機非常有用——把通訊 (communication)、資訊 (information)、工作整合在一台裝置 (one device)。例：James 用手機管理工作與家庭群組 (manages work and family chats) → 更快完成工作 (finish work faster)＋隨時聯絡家人 (reach his family anytime)。含義：手機讓全家保持聯繫、和樂 (keeps the whole family connected and in harmony)",
+   "p4": "手機好處遠大於壞處 (the smartphone does more good than harm)；建議：使用者養成健康數位習慣 (healthy digital habits)"
+  },
+  "mistakes": {
+   "spell": [
+    {
+     "x": "evoloing",
+     "o": "evolving",
+     "nt": "演進"
+    },
+    {
+     "x": "espacially",
+     "o": "especially"
+    },
+    {
+     "x": "surffing",
+     "o": "surfing"
+    },
+    {
+     "x": "closr and happer",
+     "o": "closer and happier"
+    }
+   ],
+   "grammar": [
+    {
+     "x": "cannot stay focus",
+     "o": "cannot stay focused",
+     "nt": "stay + 形容詞"
+    },
+    {
+     "x": "a bad performace on academic",
+     "o": "poor academic performance",
+     "nt": "形容詞+名詞，不用 on"
+    },
+    {
+     "x": "save time for many employee",
+     "o": "...for many employees",
+     "nt": "many + 複數"
+    },
+    {
+     "x": "while he spend time",
+     "o": "while he spends time",
+     "nt": "第三人稱單數 +s"
+    },
+    {
+     "x": "deal with the works",
+     "o": "deal with his work",
+     "nt": "work 不可數，不加 the/s"
+    },
+    {
+     "x": "allow their child using",
+     "o": "allow their children to use",
+     "nt": "allow sb to do"
+    },
+    {
+     "x": "If a student surffing on internet",
+     "o": "If a student surfs the internet",
+     "nt": "if 子句用現在式"
+    },
+    {
+     "x": "have more benefits that the shortage",
+     "o": "has more benefits than drawbacks",
+     "nt": "主詞單數用 has；比較用 than"
+    }
+   ],
+   "note": "2026-06-11 第一次手寫。內容與論點結構全對，純拼字／文法。重點：第三人稱 +s、單複數、if 子句時態。"
+  }
+ },
+ {
+  "o": 27,
+  "n": "④-15",
+  "t": "學校應該開設古老戲劇課程嗎？",
+  "en": "There are benefits and problems of high school students studying plays and working for theatre centuries ago. What is your opinion? Please give examples with your own experience.",
+  "stance": "問題更大 — 擠壓唸書時間",
+  "p2zh": "讓步：經典戲劇能學文化、開視野",
+  "p3zh": "主論：佔時間 → 影響成績 → 影響前途",
+  "es": {
+   "topic": "whether high schools should teach very old plays",
+   "va": "old plays should be taught in school",
+   "vb": "teaching old plays does more harm than good",
+   "con": "old plays carry deep culture",
+   "conR": "old stories teach history and human behavior",
+   "cond": "students study old plays",
+   "subj": "they",
+   "resA": "see how people lived in the past",
+   "resB": "<i class=\"a3\">a broader view of life</i>",
+   "concl": "some schools praise drama courses",
+   "stance": "teaching old plays does more harm than good",
+   "reason": "practice takes hours from main subjects",
+   "jv": "studies",
+   "jn": "university",
+   "does": "puts all his time into main subjects",
+   "result": "get high grades and find <i class=\"a4\">a good job with a steady income</i>",
+   "impl": "focusing on main subjects leads to better future prospects and <i class=\"a4\">a warm and stable home</i>",
+   "final": "teaching old plays does more harm than good",
+   "rec": "schools offer drama only as an optional class"
+  },
+  "zh": {
+   "p1": "反方：老戲劇該在學校教 (should be taught in school)；我方：壞處大於好處 (teaching old plays does more harm than good)",
+   "p2": "老戲劇承載深厚文化 (deep culture)——老故事教歷史與人的行為 (history and human behavior)。若學生研讀 → 看到過去的人怎麼生活 (see how people lived in the past) → 更開闊的視野。小結：有些學校稱讚戲劇課 (drama courses)",
+   "p3": "壞處大於好處 (teaching old plays does more harm than good)——排練佔用主科時間 (takes hours from main subjects)。例：James（大學生版）把時間全放主科 (puts all his time into main subjects) → 好成績、好工作穩定收入。含義：專注主科帶來更好的前途與溫暖穩定的家 (focusing on main subjects leads to better future prospects and a warm and stable home)",
+   "p4": "戲劇課壞處大於好處 (teaching old plays does more harm than good)；建議：戲劇只設選修 (an optional class)"
+  },
+  "mistakes": {
+   "spell": [
+    {
+     "x": "to much",
+     "o": "too much",
+     "nt": "too 兩個 o"
+    }
+   ],
+   "grammar": [
+    {
+     "x": "high school / old story / some school / drama course / high grade",
+     "o": "high schools / old stories / some schools / drama courses / high grades",
+     "nt": "漏 s — 今天犯 5 次。泛指的可數名詞一律複數、不加冠詞"
+    },
+    {
+     "x": "the drama courses",
+     "o": "drama courses",
+     "nt": "泛指不加 the；加 the 是指前面提過的特定幾堂"
+    },
+    {
+     "x": "some schools praised drama courses",
+     "o": "some schools praise drama courses",
+     "nt": "現在式（普遍情況）。上一句 lived 用過去式是因為句尾有 in the past"
+    },
+    {
+     "x": "students learn old plays",
+     "o": "students study old plays",
+     "nt": "learn 接技能或 learn about；課程內容用 study 直接接"
+    },
+    {
+     "x": "practice takes hours on main subjects",
+     "o": "practice takes hours from main subjects",
+     "nt": "from＝從主科搶走時間；on 變成「花時間在主科上」語意相反"
+    },
+    {
+     "x": "studies hard on main subjects",
+     "o": "puts all his time into main subjects",
+     "nt": "study 不接 on（要 focus on 或 study + 受詞）"
+    },
+    {
+     "x": "students study old plays does more harm than good",
+     "o": "teaching old plays does more harm than good",
+     "nt": "完整子句不能當主詞，要動名詞"
+    },
+    {
+     "x": "has more harm than good",
+     "o": "does more harm than good",
+     "nt": "固定片語動詞是 does，不會變 has/is/brings"
+    },
+    {
+     "x": "find a good job and have stable income",
+     "o": "find a good job with a steady income",
+     "nt": "① 不要多加動詞 have，find 一個動詞管到底 ② steady income／stable home 別互換 ③ a 不能漏"
+    },
+    {
+     "x": "leads to better future prospects and have a warm and stable home",
+     "o": "leads to better future prospects and a warm and stable home",
+     "nt": "leads to A and B 是兩個名詞並列，中間不能再塞動詞（今天多加 have 兩次）"
+    },
+    {
+     "x": "a warm and stable family",
+     "o": "a warm and stable home",
+     "nt": "固定片語 10 題共用，home 不能換成 family（犯 2 次）"
+    },
+    {
+     "x": "a great academic performance",
+     "o": "outstanding academic performance",
+     "nt": "academic performance 抽象不可數，不加 a"
+    },
+    {
+     "x": "a broader life experience",
+     "o": "a broader view of life",
+     "nt": "⑧視野讓步線固定收尾 7 題共用，別自己換字"
+    },
+    {
+     "x": "schools make old drama course as an optional",
+     "o": "schools offer drama only as an optional class",
+     "nt": "① make 不接 as ② optional 是形容詞不能當名詞，要接 class ③ only 是建議的重點，漏了語氣就弱（漏 2 次）"
+    }
+   ],
+   "note": "2026-09-15 第一次逐 slot 練這題，16 格全打完。根因集中在漏 s（5 次）與多加動詞 have（2 次）。做對的：studies／leads 的第三人稱 +s、it is crucial that 後面 make 用原形、prospects 不加 a。同場決定改 DATA 三處：conR human nature→human behavior、result find...with、impl 換成他自己的 focusing on main subjects。"
+  }
+ },
+ {
+  "o": 28,
+  "n": "④-16",
+  "t": "成本高也要保存漂亮的舊建築",
+  "en": "It is important to preserve the beautiful buildings of the past, even if it is expensive to do so. To what extent do you agree or disagree?",
+  "stance": "不同意 — 預算優先民生",
+  "p2zh": "讓步：古建築承載歷史文化",
+  "p3zh": "主論：預算花在住房醫療就業 → 家庭穩定生活",
+  "es": {
+   "topic": "keeping old buildings even when it is expensive",
+   "va": "old buildings are worth any cost",
+   "vb": "public money should go to daily needs first",
+   "con": "old buildings are part of our history",
+   "conR": "they show how people lived in the past",
+   "cond": "cities keep old buildings",
+   "subj": "people",
+   "resA": "<i class=\"a3\">learn things they cannot find in books</i>",
+   "resB": "<i class=\"a3\">a broader view of life</i>",
+   "concl": "many tourists visit these old streets",
+   "stance": "budgets should go to housing and jobs first",
+   "reason": "daily life matters more than beautiful walls",
+   "jv": "works",
+   "jn": "firm",
+   "does": "lives in a city that spends money on housing and hospitals",
+   "result": "raise his family and enjoy <i class=\"a2\">peace of mind</i>",
+   "impl": "money on daily needs gives every family <i class=\"a4\">a warm and stable home</i>",
+   "final": "daily needs should come before saving expensive old buildings",
+   "rec": "governments keep only the most important buildings"
+  },
+  "zh": {
+   "p1": "反方：老建築花再多錢都值得 (worth any cost)；我方：公帑應先花在民生 (go to daily needs first)",
+   "p2": "老建築是我們歷史的一部分 (part of our history)——展示過去的人怎麼生活 (show how people lived in the past)。若城市保留老建築 → 學到書本外的東西 (learn things they cannot find in books) → 更開闊的視野。小結：很多觀光客造訪老街 (visit these old streets)（0913 全段換基礎字）",
+   "p3": "預算應先給住房與就業 (housing and jobs first)——日常生活比美麗的牆重要 (daily life matters more)。例：James 住在花錢蓋住房與醫院 (a city that spends money on housing and hospitals) 的城市 → 養家、安心 (raise his family and enjoy peace of mind)。含義：錢花在民生 (daily needs)，每個家庭都有溫暖穩定的家",
+   "p4": "民生應優先於昂貴的老建築；建議：政府只保留最重要的建築 (the most important buildings)"
+  },
+  "mistakes": {
+   "spell": [
+    {
+     "x": "placees",
+     "o": "places"
+    },
+    {
+     "x": "monry",
+     "o": "money",
+     "nt": "m-o-n-e-y"
+    },
+    {
+     "x": "out history",
+     "o": "our history",
+     "nt": "漏 r"
+    },
+    {
+     "x": "invetments",
+     "o": "investments",
+     "nt": "in-ves-tments"
+    }
+   ],
+   "grammar": [
+    {
+     "x": "old building / many tourist / budget / job / daily need",
+     "o": "old buildings / many tourists / budgets / jobs / daily needs",
+     "nt": "漏 s — 本篇 7 次（old buildings 一字就錯 5 次）。檢查法：看到 are／they／many／some 就回頭確認主詞有沒有 s"
+    },
+    {
+     "x": "it is worth to preserve",
+     "o": "old buildings are worth any cost（或 worth preserving）",
+     "nt": "worth 後面只收名詞或動名詞，不接 to"
+    },
+    {
+     "x": "old buildings are a history",
+     "o": "old buildings are part of our history",
+     "nt": "history 不可數不加 a；a history 是「一部歷史著作」"
+    },
+    {
+     "x": "public money should spend on",
+     "o": "public money should go to",
+     "nt": "錢是被花的，主動要寫 should be spent；範文用 go to 就避開被動語態"
+    },
+    {
+     "x": "public spend should go to",
+     "o": "public money should go to",
+     "nt": "spend 是動詞不能當主詞"
+    },
+    {
+     "x": "we know how people lived",
+     "o": "they show how people lived",
+     "nt": "主詞是 old buildings，P2 整段保持第三人稱"
+    },
+    {
+     "x": "broader their view of life",
+     "o": "a broader view of life",
+     "nt": "broader 是形容詞比較級不能當動詞；in turn leading to 後面要名詞片語"
+    },
+    {
+     "x": "a city with budgets go to daily needs first",
+     "o": "a city that spends money on housing and hospitals",
+     "nt": "with 只接名詞片語，接子句要用 that；例子要具體化，別重複 stance 的字"
+    },
+    {
+     "x": "a city that spend money",
+     "o": "a city that spends money",
+     "nt": "關係代名詞 that 代替 a city（單數）→ 動詞 +s"
+    },
+    {
+     "x": "he is able to raised his family",
+     "o": "he is able to raise his family",
+     "nt": "able to 接原形"
+    },
+    {
+     "x": "a warm and a stable home",
+     "o": "a warm and stable home",
+     "nt": "一個 a 管兩個形容詞"
+    },
+    {
+     "x": "money on daily needs gives a warm and stable home",
+     "o": "money on daily needs gives every family a warm and stable home",
+     "nt": "give 要「給誰」＋「給什麼」兩個受詞"
+    },
+    {
+     "x": "budgets should go to housing and jobs（漏 first）",
+     "o": "budgets should go to housing and jobs first",
+     "nt": "first 是本題立場核心：民生優先、不是全盤否定（漏 2 次）"
+    },
+    {
+     "x": "money on daily use",
+     "o": "money on daily needs",
+     "nt": "整篇統一用 daily needs"
+    }
+   ],
+   "note": "2026-09-15 第一次逐 slot 練這題，16 格全打完。漏 s 7 次（old buildings 一字 5 次）是最大宗，其次是被動語態與 with 接子句。做對的：housing 不加 s、enjoy peace of mind、it is crucial that 後面 keep 用原形、lived 過去式、raise 原形。final 打成 before expensive old buildings（未加 saving）也判通過——語意成立，只是比較對象不完全對等。"
+  }
+ },
+ {
+  "o": 29,
+  "n": "②-9",
+  "t": "年齡限制（Report）",
+  "en": "Age restrictions can be seen everywhere. It is believed that people should not do things until they reach the right age, such as marriage, and driving. Select one activity and state the minimum age that you think. Support with your own experiences.",
+  "stance": "選「結婚」；最低年齡 25 歲（2026-09-11 從開車改結婚，全套字共用 #14）",
+  "p2zh": "讓步：早婚有情感支持 → 不孤單 → 安心（同 #14 P2）",
+  "p3zh": "主論：25 歲多半唸完書有工作 → 穩定收入 → 溫暖的家（同 #14 P3）",
+  "es": {
+   "topic": "the minimum age for marriage",
+   "va": "love matters more than age",
+   "vb": "marriage should wait until 25",
+   "con": "marrying young can give a couple support",
+   "conR": "couples encourage each other through hard times",
+   "cond": "a couple gets married young",
+   "subj": "they",
+   "resA": "<i class=\"a2\">feel less lonely</i>",
+   "resB": "<i class=\"a2\">peace of mind</i> in hard times",
+   "concl": "some early marriages do work well",
+   "stance": "25 is the right age for marriage",
+   "reason": "at that age most people have finished school and have <i class=\"a4\">a steady income</i>",
+   "jv": "works",
+   "jn": "firm",
+   "does": "married at 26 after finishing school and finding a job",
+   "result": "build <i class=\"a4\">a warm and stable home</i> without money worries",
+   "impl": "waiting a few years can protect young couples from money problems",
+   "final": "25 is a fair minimum age for marriage",
+   "rec": "young people finish school and find a job before getting married"
+  },
+  "zh": {
+   "p1": "主題：結婚最低年齡 (the minimum age for marriage)。反方：愛比年齡重要 (love matters more than age)；我方：結婚應等到 25 歲 (wait until 25)",
+   "p2": "（同 #14）早婚能給夫妻支持 (give a couple support)——夫妻在困難時互相鼓勵 (encourage each other)。若一對情侶早婚 (a couple gets married young) → 不那麼孤單 (feel less lonely) → 困難時安心 (peace of mind)。小結：有些早婚確實過得好 (do work well)",
+   "p3": "25 歲是結婚的正確年齡——在那個年紀 (at that age) 多數人已唸完書、有穩定收入 (finished school and have a steady income)。例：James 26 歲唸完書找到工作後才結婚 (married at 26 after finishing school and finding a job) → 建立溫暖穩定的家、沒有金錢煩惱 (without money worries)。含義：多等幾年 (waiting a few years) 能保護年輕夫妻遠離金錢問題 (can protect young couples from money problems)",
+   "p4": "25 歲是公平的最低年齡；建議：年輕人先唸完書找到工作再結婚 (before getting married)"
+  },
+  "mistakes": {
+   "spell": [
+    {
+     "x": "longly",
+     "o": "lonely",
+     "nt": "lone＋ly，是 o-n-e 沒有 g"
+    },
+    {
+     "x": "mariage",
+     "o": "marriage",
+     "nt": "兩個 r：marr＋i＋age（marry 的 y 變 i）"
+    }
+   ],
+   "grammar": [
+    {
+     "x": "the minimum marriage",
+     "o": "the minimum age for marriage",
+     "nt": "漏了 age；the minimum age of marriage 也對"
+    },
+    {
+     "x": "couple can encourage each other",
+     "o": "couples encourage each other",
+     "nt": "couple 可數，單數不能裸奔 → 複數免冠詞"
+    },
+    {
+     "x": "through hard time",
+     "o": "through hard times",
+     "nt": "time 當「一段時期」可數 → hard times 或 a hard time"
+    },
+    {
+     "x": "a young couple get marry early",
+     "o": "a couple gets married young",
+     "nt": "get＋married（形容詞），不是 get marry；a couple 單數 → gets；young 和 early 重複"
+    },
+    {
+     "x": "peace of mind with problems",
+     "o": "peace of mind in hard times",
+     "nt": "with problems 變成「帶著問題的安心」；用 ⑤ 同一組 hard times"
+    },
+    {
+     "x": "many people finish study … during that age",
+     "o": "at that age most people have finished school",
+     "nt": "年紀是一個點 → at that age；study 可數不能裸奔 → school；多數＝most"
+    },
+    {
+     "x": "most people finished their studies and have",
+     "o": "most people have finished … and have",
+     "nt": "「已經唸完」→ have finished；過去式跟後面現在式 have 對不上"
+    },
+    {
+     "x": "finished school at 26 / get marriage after he finds a good job",
+     "o": "married at 26 after finishing school and finding a job",
+     "nt": "語序：先講 married at 26，after 後面才放兩個 -ing；26 歲是結婚不是畢業；連錯兩輪"
+    },
+    {
+     "x": "get marriage",
+     "o": "got married／married",
+     "nt": "marriage 是名詞；get 後面永遠接 married；過去的事用過去式"
+    },
+    {
+     "x": "finding job",
+     "o": "finding a job",
+     "nt": "job 可數單數要 a"
+    },
+    {
+     "x": "wait for a few years can protect",
+     "o": "waiting a few years can protect",
+     "nt": "動詞原形不能當主詞 → -ing"
+    },
+    {
+     "x": "protect young couples away from",
+     "o": "protect young couples from",
+     "nt": "protect A from B 不加 away（keep A away from B 才有）"
+    },
+    {
+     "x": "25 years is the fair minimum married age",
+     "o": "25 is a fair minimum age for marriage",
+     "nt": "25 years＝25 年；a fair 不是 the；married age 不通 → 直接搬 ① 的 minimum age for marriage；重打又漏 minimum"
+    },
+    {
+     "x": "before getting marriage",
+     "o": "before getting married",
+     "nt": "今天第三次：get marry／get marriage／getting marriage。get 在變（get/gets/got/getting），married 永遠不動；marriage 只跟在 for 後面"
+    }
+   ],
+   "note": "2026-09-22 首次逐 slot 練，情緒讓步線正面版第一題，18 格全打完、2 拼字＋14 文法。主罩門：get＋married（錯三次）、可數單數裸奔（couple／hard time／job）、⑭ 語序（married at 26 先講、after 後兩個 -ing）。做對的：⑩⑮ 一字不差、works、a steady income 的 a、crucial that 後 finish／find 原形、⑯ 自己用 can＋複數避開 +s 和冠詞。換 James 版：⑯ can protect young couples；「唸完書」⑫⑭⑱ 三格統一 school（#14 ⑭⑱ 同句同步）；數字改寫 25／26。他的 ② love is more important than age、④ early marriage can bring support to a young couple、⑪ the best age 也對，範文不動。"
+  }
+ },
+ {
+  "o": 30,
+  "n": "②-10",
+  "t": "城市生活與鄉村生活",
+  "en": "Living in the countryside or having a city life, which one do you prefer? Please use examples or your personal experience to support your opinion.",
+  "stance": "偏好鄉村生活",
+  "p2zh": "讓步：城市工作機會多",
+  "p3zh": "主論：步調慢壓力小 → 放鬆陪家人 → 全家和樂",
+  "es": {
+   "topic": "country life versus city life",
+   "va": "city life is the better choice",
+   "vb": "country life brings more peace of mind",
+   "con": "cities offer many job chances",
+   "conR": "big companies are there and pay well",
+   "cond": "young people work in big cities",
+   "subj": "they",
+   "resA": "find <i class=\"a4\">a good job with a steady income</i>",
+   "resB": "faster career growth",
+   "concl": "many young people move to cities",
+   "stance": "country life is the better choice",
+   "reason": "life there is slow and has far less pressure",
+   "jv": "works",
+   "jn": "firm",
+   "does": "lives in the quiet countryside and does his job online",
+   "result": "feel relaxed and spend more <i class=\"a1\">quality time with his family</i>",
+   "impl": "country life brings <i class=\"a2\">peace of mind</i> and keeps the whole family in harmony",
+   "final": "country life is my choice",
+   "rec": "people think about both career and family when choosing"
+  },
+  "zh": {
+   "p1": "反方：城市生活 (city life) 是更好選擇；我方：鄉村生活帶來更多安心 (country life brings more peace of mind)",
+   "p2": "城市工作機會多 (many job chances)——大公司都在那裡 (big companies are there)、薪水好 (pay well)。若年輕人在大城市工作 → 好工作穩定收入 → 職涯成長更快 (faster career growth)。小結：很多年輕人搬去城市",
+   "p3": "鄉村生活是更好的選擇 (the better choice)——那裡的生活步調慢 (life there is slow)、壓力小很多 (far less pressure)。例：James 住在安靜的鄉下、遠端工作 (lives in the quiet countryside and does his job online) → 放鬆 (feel relaxed)、更多優質時間陪家人 (quality time with his family)。含義：鄉村生活帶來安心 (peace of mind)、全家和樂 (keeps the whole family in harmony)",
+   "p4": "鄉村生活是我的選擇 (country life is my choice)；建議：選擇時同時考量職涯與家庭 (think about both career and family when choosing)"
+  },
+  "mistakes": {
+   "spell": [
+    {
+     "x": "counrty",
+     "o": "country",
+     "nt": "t／r 顛倒：coun-tr-y，tr 連在一起"
+    },
+    {
+     "x": "contryside",
+     "o": "countryside",
+     "nt": "漏 u：coun-try-side（① 的 country 加 side）"
+    },
+    {
+     "x": "locat",
+     "o": "located",
+     "nt": "漏 e；而且「位於」要被動 are located in——範文直接用 are there 避開"
+    },
+    {
+     "x": "movie",
+     "o": "move",
+     "nt": "多 i 變成「電影」；搬去＝move to"
+    },
+    {
+     "x": "on line",
+     "o": "online",
+     "nt": "一個字（同 everywhere）"
+    },
+    {
+     "x": "peae",
+     "o": "peace",
+     "nt": "漏 c：pea-c-e"
+    },
+    {
+     "x": "bg／damily",
+     "o": "big／family",
+     "nt": "打字滑掉（漏 i；d 跟 f 是鍵盤鄰居）——寫完回頭掃一眼"
+    }
+   ],
+   "grammar": [
+    {
+     "x": "city offers many job chances",
+     "o": "cities offer many job chances",
+     "nt": "city 可數單數裸奔；用複數免冠詞也免 +s"
+    },
+    {
+     "x": "big companies locat in cities",
+     "o": "big companies are there",
+     "nt": "④ 剛講 cities，⑤ 用 there 指回去；真要寫「位於」得用被動 are located in"
+    },
+    {
+     "x": "country life is a better choice（⑪）",
+     "o": "country life is the better choice",
+     "nt": "二選一裡比較好的那個是唯一 → the；跟 ② 對稱（兩個比 the better、三個以上 the best）"
+    },
+    {
+     "x": "country is the better choice",
+     "o": "country life is the better choice",
+     "nt": "country 單獨是「國家」，鄉村生活要 country life"
+    },
+    {
+     "x": "the life pace is slow and far less pressure",
+     "o": "life there is slow and has far less pressure",
+     "nt": "「生活步調」是 the pace of life，範文用 life there；and 兩邊要對稱，動詞片語配動詞片語 → 補 has"
+    },
+    {
+     "x": "lives in a quiet countryside",
+     "o": "lives in the quiet countryside",
+     "nt": "countryside 當地區固定配 the；country life（生活方式）才不加"
+    },
+    {
+     "x": "enjoy the peace of mind",
+     "o": "enjoy peace of mind",
+     "nt": "固定片語不加 the（③ 自己打對）"
+    },
+    {
+     "x": "gives a peae",
+     "o": "brings peace of mind",
+     "nt": "peace 不可數不加 a；片語要完整 peace of mind"
+    },
+    {
+     "x": "he is able to he can relax",
+     "o": "he is able to feel relaxed",
+     "nt": "模板前面已有 he is able to，這格直接接原形"
+    },
+    {
+     "x": "feel relax",
+     "o": "feel relaxed",
+     "nt": "feel 是連綴動詞接形容詞（同 stay healthy）；relax 動詞／relaxed 人放鬆的／relaxing 事物讓人放鬆的"
+    },
+    {
+     "x": "people choice by both career and family",
+     "o": "people think about both career and family when choosing",
+     "nt": "choice 是名詞，整句沒動詞；「考慮」用 think about；句尾 when choosing 連掉兩次"
+    }
+   ],
+   "note": "2026-09-25 首次逐 slot 練（錢與方便讓步·賺錢線第三題，P3 陪家人線），18 格全打完、7 拼字＋11 文法。練前先復習 09-23 五題：拼字 20 字錯 4（lonely／company／timing／campaigns，都是連兩天同錯）、文法 20 句錯 12，重犯 7 條（a steady income 的 a 第 3 次、否定 or、the television、the whole、dinner time 單數、① people working、the key to）。本題主罩門：可數單數裸奔（city／a quiet countryside）、the 的兩個方向（the better choice 要加、peace of mind 不加）、打字滑掉 4 個（bg／movie／peae／damily）。做對的：②③⑧⑨⑯ 一字不差、+s 全對（brings／lives／does／keeps）。換 James 版：① country life versus city life（全篇統一 country life）、⑭ lives in the quiet countryside and does his job online、⑮ 改 feel relaxed（James 嫌 ③⑮⑯ 三次 peace of mind 太重複，留 ③⑯）、⑰ country life is my choice。"
+  }
+ },
+ {
+  "o": 31,
+  "n": "④-17",
+  "t": "減少工時以緩解失業率",
+  "en": "In modern society, unemployment among young people is a serious problem. One solution is to shorten the working week. Give your opinion of the idea, considering the advantages and disadvantages, whether it can apply to young people or the whole workforce.",
+  "stance": "不同意 — 薪水跟著減，養不了家",
+  "p2zh": "讓步：工時短 → 公司補人 → 多請年輕人（2026-09-23 James 指出舊版「多休息」跟青年失業無關）",
+  "p3zh": "主論：工時減 → 收入減 → 動搖家庭穩定",
+  "es": {
+   "topic": "shorter working hours to reduce youth unemployment",
+   "va": "a shorter week can reduce unemployment",
+   "vb": "a shorter working week does more harm than good",
+   "con": "a shorter working week can create more jobs",
+   "conR": "companies need more workers to finish the same work",
+   "cond": "employees work fewer hours",
+   "subj": "companies",
+   "resA": "hire more young people",
+   "resB": "lower youth unemployment",
+   "concl": "many governments like this idea",
+   "stance": "a shorter working week does more harm than good",
+   "reason": "fewer working hours mean less pay",
+   "jv": "works",
+   "jn": "firm",
+   "does": "works full weeks at his firm",
+   "result": "earn <i class=\"a4\">a steady income</i> for his family",
+   "impl": "cutting hours cuts pay and shakes <i class=\"a4\">a stable home</i>",
+   "final": "a shorter working week does more harm than good",
+   "rec": "governments create new jobs for both young people and the whole workforce"
+  },
+  "zh": {
+   "p1": "反方：縮短工時能減少失業 (reduce unemployment)；我方：壞處大於好處 (a shorter working week does more harm than good)",
+   "p2": "縮短工時能創造更多工作 (create more jobs)——公司要更多人做同樣的工作 (need more workers to finish the same work)。若員工工時變少 (work fewer hours) → 公司多請年輕人 (hire more young people) → 青年失業率下降 (lower youth unemployment)。小結：很多政府喜歡這個點子 (like this idea)",
+   "p3": "縮短工時壞處大於好處 (a shorter working week does more harm than good)——工時少＝薪水少 (fewer working hours mean less pay)。例：James 在公司整週全職工作 (works full weeks at his firm) → 為家人賺穩定收入。含義：砍工時就是砍薪水 (cutting hours cuts pay)，動搖穩定的家 (shakes a stable home)",
+   "p4": "弊大於利 (a shorter working week does more harm than good)；建議：政府改為創造新工作 (create new jobs instead)"
+  },
+  "mistakes": {
+   "spell": [],
+   "grammar": [
+    {
+     "x": "shorten the working hours to lower…（主題格）",
+     "o": "shorter working hours to reduce youth unemployment",
+     "nt": "① 要名詞片語當主詞；動詞原形要變 -ing（shortening），或用形容詞 shorter 開頭"
+    },
+    {
+     "x": "to do the same works",
+     "o": "to do the same work",
+     "nt": "work 當工作量不可數不加 s；works 是作品／工廠。jobs（職缺）才可數"
+    },
+    {
+     "x": "workers work less",
+     "o": "employees work fewer hours",
+     "nt": "work less 只是「少做」沒說到工時；hours 可數 → fewer"
+    },
+    {
+     "x": "young unemployment decrease",
+     "o": "lower youth unemployment",
+     "nt": "youth 名詞「青年」（young 是形容詞）；leading to 後面要名詞，decrease 動詞放不進去"
+    },
+    {
+     "x": "less working hours is less money",
+     "o": "fewer working hours mean less pay",
+     "nt": "hours 可數 → fewer；複數主詞不能用 is；「等於」用 mean"
+    },
+    {
+     "x": "works in a whole week",
+     "o": "works full weeks at his firm",
+     "nt": "in a whole week 是「一週之內」；full weeks 直接接，不加介系詞"
+    },
+    {
+     "x": "works full week",
+     "o": "works full weeks",
+     "nt": "week 可數單數不能裸奔 → 複數"
+    },
+    {
+     "x": "earn steady income",
+     "o": "earn a steady income",
+     "nt": "固定就是 a steady income（#37 也漏過）"
+    },
+    {
+     "x": "is cutting salary, this will impact",
+     "o": "cuts pay and shakes",
+     "nt": "「等於」不用進行式；逗號不能直接接新句 → and；salary 可數要冠詞，用 pay 不可數"
+    },
+    {
+     "x": "government create",
+     "o": "governments create",
+     "nt": "government 可數單數裸奔 → 複數免冠詞（⑩ 自己就寫對 many governments）"
+    },
+    {
+     "x": "and whole workforce",
+     "o": "and the whole workforce",
+     "nt": "whole 前面幾乎永遠有 the"
+    }
+   ],
+   "note": "2026-09-23 首次逐 slot 練，18 格全打完、0 拼字＋11 文法。練前 James 指出舊 P2「多休息→放鬆」跟青年失業無關，整段改成「工時短→公司補人→多請年輕人→青年失業降」，#31 移出情緒讓步線。主罩門：可數單數裸奔（work 反向／full week／steady income／government／the whole）、fewer vs less（兩次）、介系詞後要名詞（①⑨）。做對的：①②③④⑩ 自己版本全對、-ing 主詞＋s 三次全中（shortening does／cutting cuts shakes）、governments 拼對、0 拼字。換 James 版：表態句三處＋④ 統一 a shorter working week、⑫ fewer working hours mean less pay。"
+  }
+ },
+ {
+  "o": 32,
+  "n": "②-11",
+  "t": "名人是否要放棄隱私",
+  "en": "People who are famous entertainers or sports people should give up the right to privacy because this is the price of fame.To what extent do you agree or disagree with this point of view? Give your opinion with your experiences.",
+  "stance": "不同意 — 隱私是基本權利",
+  "p2zh": "讓步：名氣換高收入（砍尾不收家人）",
+  "p3zh": "主論：隱私 → 放鬆安心 → 全家和樂",
+  "es": {
+   "topic": "whether famous people should give up privacy",
+   "va": "famous people need to give up their privacy for fame",
+   "vb": "famous people should never give up privacy",
+   "con": "fame can bring famous people big money",
+   "conR": "losing some privacy is a fair trade for the money they earn",
+   "cond": "famous people stay in the news",
+   "subj": "they",
+   "resA": "keep their fame and many fans",
+   "resB": "<i class=\"a4\">a very high income</i>",
+   "concl": "many stars give up privacy for money and fame",
+   "stance": "famous people should never give up privacy",
+   "reason": "being watched all the time <i class=\"a2\">leads to stress</i> and makes it hard to focus on work",
+   "jv": "works",
+   "jn": "firm",
+   "does": "is not famous and enjoys his private time after work",
+   "result": "relax and <i class=\"a2\">enjoy peace of mind</i>",
+   "impl": "privacy keeps the whole family in harmony, and fame should never take privacy away",
+   "final": "privacy is a right that fame cannot replace",
+   "rec": "the media respect private life"
+  },
+  "zh": {
+   "p1": "反方：名人為了名氣得放棄隱私 (need to give up their privacy for fame)；我方：名人絕不該放棄隱私 (never give up privacy)",
+   "p2": "成名確實能帶來大錢 (big money)——失去一些隱私是賺大錢的公平交換 (a fair trade for the money they earn)【2026-10-18 借機經 trade-off】。若名人常上新聞 (stay in the news) → 保持名氣和粉絲 → 非常高的收入 (a very high income)。小結：很多明星願意用隱私換名利 (money and fame)。★讓步砍尾：不收家人，家人留給主論②收",
+   "p3": "名人不該放棄隱私——時刻被注視 (being watched all the time) 導致壓力、無法專心工作 (hard to focus on work)【借機經 cannot concentrate】。例：James 不是名人 (is not famous)，下班享受私人時間 (private time) → 放鬆安心。含義：隱私讓全家和樂 (privacy keeps the whole family in harmony)，名氣絕不該奪走隱私 (fame should never take privacy away)",
+   "p4": "隱私是名氣無法取代的權利 (a right)；建議：媒體尊重 (respect) 私人生活 (private life)"
+  },
+  "mistakes": {
+   "rules": [
+    {
+     "k": "冠詞六連錯：先問「哪一個／第一次提」",
+     "v": "in the news（固定）／a lot of（a 不能掉）／his private time（他自己的用 his）／a right（第一次提到的一種權利）／the media（整體固定 the，同 the government／the public）。enjoy peace of mind 不加 the（#17 ⑮ 也錯，連兩題）"
+    },
+    {
+     "k": "money 不可數",
+     "v": "big money／huge money／a lot of money；a huge money ❌"
+    },
+    {
+     "k": "give up X for Y",
+     "v": "用 X 換 Y 介系詞是 for：give up privacy for fame and money／break the law for money。to ❌"
+    },
+    {
+     "k": "take … away",
+     "v": "奪走＝take away privacy／take privacy away；take of ❌"
+    },
+    {
+     "k": "for 後面只能接名詞或 -ing",
+     "v": "for the money they earn／for earning big money；for earn ❌"
+    },
+    {
+     "k": "名詞後面接「主詞＋動詞」＝那個名詞的說明",
+     "v": "the money they earn（that 省略）、things he cannot find、crimes that laws cannot stop。主句動詞只有一個（is），earn 是小句子的動詞，不是第二個主句"
+    },
+    {
+     "k": "主詞位的被動用 being＋過去分詞",
+     "v": "being watched all the time leads to…。been watch ❌（been 是 have been 的，不能開頭）"
+    },
+    {
+     "k": "情態助動詞後原形",
+     "v": "may lead（不是 may leads）；and 後面要平行：may lead to stress and make it hard（兩個都接 may）"
+    },
+    {
+     "k": "fame 不會「放棄」東西",
+     "v": "動作的主詞要是人：famous people need to give up their privacy for fame。fame need to give up of privacy ❌（主詞錯＋give up 後面沒有 of）"
+    },
+    {
+     "k": "a 配單數",
+     "v": "a celebrity／a right；a celebrities ❌。乾脆用 famous people／is not famous，沒單複數坑"
+    },
+    {
+     "k": "media 不加 s、配複數動詞、前面加 the",
+     "v": "the media respect private life。medias ❌。同 police（看似單數其實複數）；news 相反（看似複數其實單數 the news is）"
+    },
+    {
+     "k": "逗號連兩句（第三題連犯）",
+     "v": "privacy keeps the whole family in harmony, and fame should never take away privacy。沒有 and 的逗號是錯"
+    },
+    {
+     "k": "第三人稱 +s",
+     "v": "James is not a celebrity and enjoys his private time（同一主詞第二個動詞也 +s；and 前不用逗號）"
+    },
+    {
+     "k": "拼字五字",
+     "v": "privacy（pri-va-cy，同 private）／fame（有 e；一場三次 fam／fam／famw）／losing（一個 o；loose 是鬆的）／earning（e-a-r-n-i-n-g；一場三次 earing／earining／eraning，改用 the money they earn 避開 -ing）／celebrities 拼不穩改用 famous people"
+    }
+   ],
+   "note": "2026-10-18 晚首次逐 slot 練（W1 收尾第三題）。練前 James 看機經範文（立場相反：同意放棄隱私是賺錢交換），借兩條補強：⑤ 讓步改 trade-off、⑫ 加 hard to focus on work；⑭ 加 is not famous、⑱ 去 people’s。18 格全打完、9 拼字（5 字）＋20 文法。主罩門：冠詞 6 次、介系詞 3 次、fame／earning 各錯三次才過。做對的：③⑨⑪⑬ 一次過，firm 首次一次過。換 James 版：② famous people need to give up their privacy for fame（他說 fame comes at the price of privacy「不是我自己想的，要另外背」退回）、⑰ 加 that。"
+  }
+ },
+ {
+  "o": 33,
+  "n": "②-12",
+  "t": "要不要限定最高薪資",
+  "en": "\"Should there be a maximum wage for high-paying people.\"To what extent do you agree with this statement? Please give your reasons and/or arguments.",
+  "stance": "同意設上限",
+  "p2zh": "讓步：高報酬激勵人才",
+  "p3zh": "主論：薪水有頂 → 不拼命加班 → 陪家人 → 和諧",
+  "es": {
+   "topic": "whether there should be a maximum wage",
+   "va": "there should be no maximum wage",
+   "vb": "a maximum wage does more good than harm",
+   "con": "high pay can push people to work hard",
+   "conR": "everyone wants to earn more",
+   "cond": "people chase higher pay",
+   "subj": "they",
+   "resA": "work very hard",
+   "resB": "new ideas and business growth",
+   "concl": "many firms keep talent with high pay",
+   "stance": "there should be a maximum wage",
+   "reason": "when pay has a limit, people stop endless overtime",
+   "jv": "works",
+   "jn": "firm",
+   "does": "leaves the office on time because more hours do not mean more pay",
+   "result": "<i class=\"a1\">spend more quality time with his family</i>",
+   "impl": "a pay limit gives people less overtime and more family time, which keeps the whole family in harmony",
+   "final": "a maximum wage does more good than harm",
+   "rec": "governments set a fair limit on pay"
+  },
+  "zh": {
+   "p1": "反方：不該有薪資上限 (no maximum wage)；我方：設上限利大於弊 (a maximum wage does more good than harm)",
+   "p2": "高薪能激勵人努力 (push people to work hard)——每個人都想賺更多 (everyone wants to earn more)。若人們追逐高薪 (chase higher pay) → 非常努力工作 → 新點子與企業成長 (business growth)。小結：很多公司用高薪留才 (keep talent)",
+   "p3": "應該設薪資上限——薪水有上限 (pay has a limit)，人們就不再無止盡加班 (endless overtime)。例：James 準時下班，因為多做幾小時也不會多領 (more hours do not mean more pay) → 多陪家人。含義：薪資上限讓人少加班、多陪家人 (less overtime and more family time)，全家和諧 (keeps the whole family in harmony)",
+   "p4": "上限利大於弊 (more good than harm)；建議：政府設定公平的薪資上限 (set a fair limit on pay)"
+  },
+  "mistakes": {
+   "rules": [
+    {
+     "k": "James 點名要背的兩句",
+     "v": "⑩ many companies keep talent with high pay（talent 不可數＝人才；with＝用）／⑭ leaves the office on time because more hours do not mean more pay（主詞 hours 複數配 do not）"
+    },
+    {
+     "k": "there 只配 be，不配 have／get",
+     "v": "「有」＝there is／there should be；there have ❌、there will not get ❌（中文「有」害的）。主詞是人就用 he：he will not get more pay"
+    },
+    {
+     "k": "no 佔冠詞位",
+     "v": "there should be no wage limit ✅／there should not be a wage limit ✅；no a ❌"
+    },
+    {
+     "k": "薪水三字的可數性",
+     "v": "wage 可數（a maximum wage／high wages）、salary 可數（a high salary）、pay 不可數（high pay／a limit on pay，沒有 a pay）。整篇用 pay 最省；用 wage 記得帶 a（這篇掉 a 四次）"
+    },
+    {
+     "k": "maximum 和 limit 二選一",
+     "v": "a wage limit／a maximum wage；maximum wage limit ❌ 重複（錯兩次）"
+    },
+    {
+     "k": "a limit on pay",
+     "v": "限制「在」什麼上用 on；a limit for pay ❌"
+    },
+    {
+     "k": "chase 直接接受詞",
+     "v": "chase higher pay／chase money；chase for ❌"
+    },
+    {
+     "k": "overtime 兩種身分",
+     "v": "名詞：endless overtime／do overtime；副詞：work overtime／stop working overtime。endless working ❌（形容詞接動詞）、overtime working ❌（語序反）"
+    },
+    {
+     "k": "抽象名詞＋of X 前面加 the",
+     "v": "the growth of companies／the fear of punishment／the price of fame；沒有 of 就不加（business growth）。考場用 business growth 兩字最省"
+    },
+    {
+     "k": "助動詞後 be 動詞變 be",
+     "v": "there is → there should be；he is → he should be；be responsible for。should／can／may／must／will 後面一律原形"
+    },
+    {
+     "k": "everyone 單數",
+     "v": "everyone wants（every 家族全單數，同 every family）"
+    },
+    {
+     "k": "改一個掉一個",
+     "v": "their→there 改對、people 掉成 person；拼字修對、s 掉了。送出前整句回頭念一次（#1 0915 同款）"
+    },
+    {
+     "k": "拼字",
+     "v": "there（有）≠ their（他們的）同音混／company→companies（com-pa-nies；一場 compnay、comapnies 兩種顛倒，0923 也錯過）／more more 重打"
+    }
+   ],
+   "note": "2026-10-20 首次逐 slot 練（W1 收尾第五題）。練前 James 確認 high pay 是道地用法（high pay／equal pay／a pay rise）；⑯ 加 which keeps the whole family in harmony 收錨點。18 格全打完、3 拼字＋17 文法。主罩門：a 掉四次（wage limit×2／maximum wage／salary）、there have／there will not get、maximum＋limit 重複×2。做對的：④⑦⑧⑩⑬ 一次過，⑫⑭⑯ 看原句後一次過。DATA 維持範文（James 的 wage limit／working overtime 都可，但 ③⑰ 要同句所以留 maximum wage）。"
+  }
+ },
+ {
+  "o": 34,
+  "n": "③-2",
+  "t": "有人工智能翻譯，還需要學外語嗎？",
+  "en": "Advanced technology such as artificial intelligence can translate a foreign language easily. Do you think learning a foreign language is still necessary? Support with your own experience.",
+  "stance": "仍需要學外語",
+  "p2zh": "讓步：AI 翻譯快速方便 → 省時",
+  "p3zh": "主論：學語言 → 真互動信任 → 工作穩 → 家庭和諧",
+  "es": {
+   "topic": "learning foreign languages in the AI age",
+   "va": "AI translation makes learning languages useless",
+   "vb": "learning foreign languages is still important",
+   "con": "AI translation is very convenient",
+   "conR": "AI tools are fast and almost free",
+   "cond": "we use translation tools",
+   "subj": "we",
+   "resA": "understand foreign texts right away",
+   "resB": "<i class=\"a1\">great efficiency and lower costs</i>",
+   "concl": "many people use AI translation every day",
+   "stance": "learning foreign languages is still important",
+   "reason": "learning languages allows us to talk with foreigners directly",
+   "jv": "works",
+   "jn": "firm",
+   "does": "learns foreign languages himself",
+   "result": "<i class=\"a3\">talk with confidence</i> and get along with <i class=\"a3\">people from different backgrounds</i>",
+   "impl": "real talks build trust, a stable job and a happy family",
+   "final": "learning foreign languages is still important",
+   "rec": "people use AI as a supporting tool only"
+  },
+  "zh": {
+   "p1": "反方：AI 翻譯讓學語言沒用 (useless)；我方：學外語仍然很重要 (still important)",
+   "p2": "AI 翻譯很方便 (convenient)——AI 工具快又幾乎免費 (AI tools are fast and almost free)【1020 James 說 machines 不會拼、文意不通，換掉】。若用翻譯工具 → 立刻看懂外文 (understand right away) → 效率高、成本更低 (great efficiency and lower costs)。小結：很多人天天用 AI 翻譯",
+   "p3": "學外語仍重要——學語言讓我們能直接跟外國人交談 (allows us to talk with foreigners directly)【1020 James 版】。例：James 自己學外語 → 講話有自信 (talk with confidence)、跟不同背景的人相處融洽 (get along with people from different backgrounds)。含義：真實交談 (real talks build) 建立信任 (trust)、穩定工作、幸福家庭",
+   "p4": "學外語仍然重要；建議：人們把 AI 當輔助工具就好 (a supporting tool only)"
+  },
+  "mistakes": {
+   "rules": [
+    {
+     "k": "s 的方向：可數泛指加 s、不可數不加",
+     "v": "掉 s 五次：foreign languages（×3）／foreigners／backgrounds——可數名詞泛指一律複數。多加 s 三次：AI translation（翻譯這件事不可數）／a supporting tool（a 配單數）。先問「這個字數得出來嗎」再決定"
+    },
+    {
+     "k": "the ＋ 時代",
+     "v": "the AI age／the digital age／the past。「某個時代」固定 the"
+    },
+    {
+     "k": "translate 動詞、translation 名詞",
+     "v": "當主詞要名詞：AI translation makes…。translate 裸奔當主詞 ❌（同 behave／behavior、effect／affect）"
+    },
+    {
+     "k": "allow us to／let us 原形",
+     "v": "allows us to talk ✅（allow 配 to）；lets us talk ✅（let 不配 to）。James 這篇沒混，記住兩個形狀不同"
+    },
+    {
+     "k": "and 兩邊的冠詞分開算",
+     "v": "trust, a stable job and a happy family：trust 不可數不用、job／family 各要 a。三個並列用逗號，不要 and…and（#15 同規則）"
+    },
+    {
+     "k": "get along ≠ get alone",
+     "v": "along（相處）一個字母差 alone（獨自）。get along with people from different backgrounds"
+    },
+    {
+     "k": "③⑪⑰ 三句一字不差",
+     "v": "定版 learning foreign languages is still important（James 版，去掉 really／very）"
+    },
+    {
+     "k": "改一個掉一個（第三題連犯）",
+     "v": "① 補了 the 掉 s、② 修 translation 掉 s、⑮ 修 along 掉 s。送出前整句回頭念"
+    },
+    {
+     "k": "拼字",
+     "v": "translation（打成 translatioin 多 i）／along（打成 alone）／backgrounds（back＋ground，d 別漏）。foreign 這篇全對"
+    }
+   ],
+   "note": "2026-10-20 晚首次逐 slot 練（W1 收尾第七題，③視野線）。練前 James 說 ⑤ machines 不會拼且文意不通，換成 AI tools are fast and almost free。18 格全打完、3 拼字＋13 文法，一個主題：s 的方向（掉 5 多 3）。做對的：④⑤⑩⑪⑬⑭⑰ 一次過。換 James 版：② learning languages、③⑪⑰ 統一 still important、⑫ allows us to talk with foreigners directly（比範文 13 字短）、⑱ people／supporting tool。"
+  }
+ },
+ {
+  "o": 35,
+  "n": "②-13",
+  "t": "孩子在21世紀的成長比過去更難",
+  "en": "It is harder for children to grow up in the 21st century than it was in the past. Do you agree or disagree?",
+  "stance": "同意 — 更難",
+  "p2zh": "讓步：資訊取得方便（與 #26 手機題共用字組，角色互換）",
+  "p3zh": "主論：容易成癮 → 讀不好書 → 前途與家人擔心",
+  "es": {
+   "topic": "whether growing up in the 21st century is harder",
+   "va": "children today have easier lives",
+   "vb": "growing up today is harder than ever",
+   "con": "smartphones are a very useful tool for children",
+   "conR": "phones put information and lessons in one device",
+   "cond": "children study on their phones",
+   "subj": "they",
+   "resA": "finish their homework faster",
+   "resB": "a faster and easier way to learn",
+   "concl": "life is easier in some ways",
+   "stance": "growing up today is harder",
+   "reason": "many young people get addicted to the internet",
+   "jv": "studies",
+   "jn": "high school",
+   "does": "keeps surfing the internet on his phone",
+   "able": "he is unable to",
+   "result": "focus in class or finish his homework on time",
+   "impl": "poor academic performance hurts <i class=\"a4\">his future</i> and his family life",
+   "final": "children today face bigger problems than in the past",
+   "rec": "families and schools teach children to build healthy digital habits"
+  },
+  "zh": {
+   "p1": "反方：現在的孩子日子更輕鬆 (easier lives)；我方：現在成長比以往更難 (harder than ever)",
+   "p2": "手機對孩子是很有用的工具 (a very useful tool)——手機把資訊與課程裝在一台裝置 (phones put ... in one device，**複數避開 +s**)。若小孩用手機唸書 → 作業做更快 → 更快更輕鬆的學習方式。小結：某些方面生活確實更輕鬆【全套字抄 #26 主論】",
+   "p3": "現在成長更難——很多年輕人上網成癮 (get addicted to the internet)。例：James（中學生 high school）一直滑手機 → **上課無法專心、作業做不完** (he is **unable to** focus in class or finish his homework on time)。⚠ 本題把模板的 he is able to 改成 he is unable to（James 決定特別記這題），其他 36 題不變。含義：成績差 (poor academic performance) 傷他的前途與家庭生活【全套字抄 #26 讓步；用 his 承接 James，避開 their 沒有指涉對象＋worries 的第三人稱 s】",
+   "p4": "現在的孩子面對比過去更大的問題 (than in the past)；建議：家庭與學校教孩子養成健康數位習慣 (healthy digital habits，同 #26)"
+  },
+  "mistakes": {
+   "rules": [
+    {
+     "k": "life → lives（James 點名）",
+     "v": "f 變 ves（knife→knives、wife→wives）。有主人用複數：children have easier lives；泛指「生活」用不可數單數：life is easier in some ways。跟動詞 he lives 同形，看前面是形容詞還是 he"
+    },
+    {
+     "k": "grow up 兩個字一組",
+     "v": "grow up＝長大；growing 單獨是生長／增加。growing up today is harder"
+    },
+    {
+     "k": "it is 形容詞 for 某人 to 做",
+     "v": "it is harder for children to grow up（to 不能掉）。照題目抄最安全"
+    },
+    {
+     "k": "way 後面接 to 或 of",
+     "v": "an easier way to learn／an easier way of learning；way for ❌"
+    },
+    {
+     "k": "in some ways 複數",
+     "v": "「在某些方面」固定複數；in some way 單數＝用某種方法，意思變了"
+    },
+    {
+     "k": "addicted to the internet",
+     "v": "addicted 配 to（不是 on）；internet 固定加 the、小寫。拼字 addict＋ed"
+    },
+    {
+     "k": "surf the internet／on his phone",
+     "v": "surf 直接吃受詞（同 chase），不加 on；「在手機上」用 on his phone。by his phone ❌（by phone 是「用電話聯絡」）"
+    },
+    {
+     "k": "stay focused／focus in class",
+     "v": "stay＋形容詞 → focused（-ed 當形容詞，同 #20 developed）；或 focus 當動詞。in class 零冠詞（同 at school／at work），in the class 變「在那個班」"
+    },
+    {
+     "k": "unable to A or B",
+     "v": "否定句「不能 A 也不能 B」用 or 不用 and。#35 #21 兩題 able 改 unable，只有這兩題"
+    },
+    {
+     "k": "more＋可數要複數",
+     "v": "more challenges／more problems；more challenge ❌"
+    },
+    {
+     "k": "可數單數不裸奔",
+     "v": "a very useful tool（這篇只掉這一個 a，進步）"
+    },
+    {
+     "k": "拼字",
+     "v": "one（打成 on）／study（打成 studt，y 旁的 t）／addicted（打成 addicit）。都是按鍵滑掉，送出前看字尾"
+    }
+   ],
+   "note": "2026-10-20 首次逐 slot 練（W1 收尾第六題）。18 格全打完、3 拼字＋14 文法，比前幾篇順：冠詞只掉 2（a tool／in the class），主要是片語形狀（grow up／way of／in some ways／addicted to／surf the internet／on his phone／stay focused）和 unable to 後的 or。做對的：②⑦⑧⑬⑯⑱ 一次過，academic 一次拼對。James 點名記 lives。DATA 維持範文（他的 use smartphones to study／are facing more challenges than before 都可）。"
+  }
+ },
+ {
+  "o": 36,
+  "n": "①-4",
+  "t": "未來會工作更少時間嗎",
+  "en": "“In the future, people will work less hours at their jobs.” To what extent do you agree with it? Please support your opinion with your own experience.",
+  "stance": "同意",
+  "p2zh": "讓步：通訊發達 → 遠端隨時待命 → 沒時間陪家人",
+  "p3zh": "主論：AI 發展 → 多工省時 → 多陪家人",
+  "es": {
+   "topic": "the future of working hours",
+   "va": "competition will force longer hours",
+   "vb": "people will work fewer hours overall",
+   "con": "people may work overtime in the future",
+   "conR": "we can use communication tools very easily",
+   "cond": "work can be done from home",
+   "subj": "employees",
+   "resA": "work anywhere, anytime",
+   "resB": "<i class=\"a1\">no time to spend with their families</i>",
+   "concl": "workers are worried about the future",
+   "stance": "people will work fewer hours than they do nowadays",
+   "reason": "AI is developing very fast",
+   "jv": "works",
+   "jn": "firm",
+   "does": "is good at using AI",
+   "result": "<i class=\"a1\">save a lot of time</i>",
+   "impl": "he can always finish his work on time and spend more <i class=\"a1\">quality time with his family</i>",
+   "final": "future generations will indeed work fewer hours",
+   "rec": "everyone learn how to use AI"
+  },
+  "zh": {
+   "p1": "反方：競爭會迫使工時更長 (longer hours)；我方：整體工時會變少 (fewer hours)",
+   "p2": "未來可能會加班 (work overtime)——通訊工具 (communication tools) 太方便。若在家也能工作 (work from home) → 員工隨時隨地工作 (anywhere, anytime) → 沒時間陪家人 (no time to spend with families)。小結：勞工對未來擔憂 (worried)",
+   "p3": "未來人們工時更少——AI 發展飛快 (developing very fast)。例：James 擅長用 AI (good at using AI) → 省下大量時間 (save a lot of time)。含義：準時完成工作 (finish his work on time)、更多優質時間陪家人 (spend more quality time with his family)",
+   "p4": "未來世代確實會工時更少；建議：每個人都學會用 AI (learn how to use AI)"
+  },
+  "mistakes": {
+   "spell": [
+    {
+     "x": "remotly",
+     "o": "remotely",
+     "nt": "遠端"
+    },
+    {
+     "x": "useing",
+     "o": "using"
+    },
+    {
+     "x": "simotaniously",
+     "o": "simultaneously",
+     "nt": "同時地"
+    },
+    {
+     "x": "Al（小寫 L）",
+     "o": "AI（大寫）",
+     "nt": "全文錯 4 次，AI 一定大寫"
+    }
+   ],
+   "grammar": [
+    {
+     "x": "individuals can work lessly",
+     "o": "...can work less",
+     "nt": "lessly 不是字"
+    },
+    {
+     "x": "then employee can",
+     "o": "then employees can",
+     "nt": "複數"
+    },
+    {
+     "x": "work anyway anytime",
+     "o": "work anywhere, anytime",
+     "nt": "anyway=無論如何；要的是 anywhere"
+    },
+    {
+     "x": "no time spend with family",
+     "o": "no time to spend with family",
+     "nt": "time 後接 to+原形：沒時間「去」做某事"
+    },
+    {
+     "x": "the workers are worry",
+     "o": "workers are worried",
+     "nt": "worried 是形容詞"
+    },
+    {
+     "x": "work muti-tasks",
+     "o": "handle multiple tasks",
+     "nt": "multitask 是動詞；muti 拼字"
+    },
+    {
+     "x": "have full evening",
+     "o": "have the whole evening",
+     "nt": "要冠詞"
+    },
+    {
+     "x": "reason is that the development of AI",
+     "o": "reason is that AI is developing fast",
+     "nt": "that 後接子句，不放名詞片語"
+    }
+   ],
+   "note": "2026-06-11 第二篇。模板框架大進步（P4 完整）。重複錯：anywhere/anytime、AI 大寫、第三人稱與複數。"
+  }
+ },
+ {
+  "o": 37,
+  "n": "③-3",
+  "t": "外語應該作為必修課嗎？",
+  "en": "Should schools make learning a foreign language compulsory?",
+  "stance": "同意 — 應列必修",
+  "p2zh": "讓步：課業已重 → 壓力",
+  "p3zh": "主論：語言 → 外國客戶 → 穩定收入 → 溫暖穩定的家",
+  "es": {
+   "topic": "whether schools should make foreign languages a required subject",
+   "va": "schools should not force students to learn a new language",
+   "vb": "foreign languages should be a required subject",
+   "con": "required language classes add pressure",
+   "conR": "students already have heavy workloads",
+   "cond": "schools add one more subject",
+   "subj": "students",
+   "modal": "may",
+   "resA": "<i class=\"a2\">feel upset and anxious</i>",
+   "resB": "less interest in learning",
+   "concl": "any change to courses needs careful planning",
+   "stance": "foreign languages should be a required subject",
+   "reason": "foreign languages open the door to other cultures",
+   "jv": "works",
+   "jn": "firm",
+   "does": "studied a foreign language in school",
+   "result": "<i class=\"a3\">talk with confidence</i> and get along with <i class=\"a3\">people from different backgrounds</i>",
+   "impl": "language skills bring more foreign clients, <i class=\"a4\">a steady income</i> and <i class=\"a4\">a warm and stable home</i>",
+   "final": "schools should make foreign languages a required subject",
+   "rec": "courses stay fun and useful to reduce pressure"
+  },
+  "zh": {
+   "p1": "反方：學校不該強迫學生學新語言 (should not force … a new language)；我方：外語應列必修 (a required subject)",
+   "p2": "必修語言課增加壓力——學生課業已重 (heavy workloads)。若學校再加一科 (add one more subject) → 學生可能 (may) 沮喪焦慮 (upset and anxious) → 學習興趣下降 (less interest)。小結：課程調整需要謹慎規劃 (careful planning)",
+   "p3": "外語應列必修——語言打開通往其他文化的門 (opens the door)。例：James 在學校學過外語 → 講話有自信 (talk with confidence)、跟不同背景的人相處融洽 (get along with people from different backgrounds)。含義：語言能力帶來更多外國客戶 (more foreign clients) → 穩定收入 (a steady income) → 溫暖穩定的家 (a warm and stable home)",
+   "p4": "學校應把外語列必修；建議：課程保持有趣實用 (fun and useful) 以減壓"
+  },
+  "mistakes": {
+   "spell": [
+    {
+     "x": "require subject",
+     "o": "required subject",
+     "nt": "形容詞「必修的」要 -d"
+    }
+   ],
+   "grammar": [
+    {
+     "x": "make foreign languages as a required subject",
+     "o": "make foreign languages a required subject",
+     "nt": "make＋東西＋變成什麼，不加 as（真的變成 → make；只是看作 → see/treat/use ＋ as）；P4 又犯一次"
+    },
+    {
+     "x": "should become the main subject",
+     "o": "should be a required subject",
+     "nt": "main subject＝主科，題目問的是必修 required"
+    },
+    {
+     "x": "a required language subject will increase the pressure",
+     "o": "required language classes add pressure",
+     "nt": "沒特指的壓力不加 the；範文複數主詞免 +s 免 will"
+    },
+    {
+     "x": "the course load of students is heavy already",
+     "o": "students already have heavy workloads",
+     "nt": "already 放動詞前；學生當主詞與下一句一致"
+    },
+    {
+     "x": "lead to upset and anxiety",
+     "o": "feel upset and anxious",
+     "nt": "主詞是 students → feel＋形容詞。口訣：feel 配 -ous、stress 配 -ty"
+    },
+    {
+     "x": "less interest on learning",
+     "o": "less interest in learning",
+     "nt": "興趣用 in；interest on 是「利息」"
+    },
+    {
+     "x": "every change of courses need",
+     "o": "any change to courses needs",
+     "nt": "every/any change 單數 → needs；對…的改變用 change to"
+    },
+    {
+     "x": "any change to course need",
+     "o": "any change to courses needs",
+     "nt": "泛指課程用複數；主詞是 change 不是 courses"
+    },
+    {
+     "x": "needs planning careful",
+     "o": "needs careful planning",
+     "nt": "形容詞放名詞前"
+    },
+    {
+     "x": "should be the required subject",
+     "o": "should be a required subject",
+     "nt": "必修課很多門，外語是其中一門 → a"
+    },
+    {
+     "x": "language skill brings more foreign clients and a steady income and warm home",
+     "o": "language skills bring more foreign clients, a steady income and a warm and stable home",
+     "nt": "skill 可數單數要冠詞 → 用複數免 +s；三樣東西 A, B and C 只用一個 and"
+    },
+    {
+     "x": "…, steady income and a warm and stable home",
+     "o": "…, a steady income and a warm and stable home",
+     "nt": "列舉的每樣東西各自要冠詞；warm and stable 是兩個形容詞共用一個 a（連三次漏 a）"
+    },
+    {
+     "x": "schools make foreign languages…（結論句）",
+     "o": "schools should make foreign languages…",
+     "nt": "I believe that 後要自己寫 should；不寫 should 只限 it is crucial that 後面"
+    },
+    {
+     "x": "course keep interest and useful to losing the stress",
+     "o": "courses stay fun and useful to reduce pressure",
+     "nt": "courses 複數；interest 名詞→fun 形容詞；to 接原形；lose 失去→reduce 減少。keep 用原形（crucial 規則）有做對"
+    }
+   ],
+   "note": "2026-09-21 首次逐 slot 練，情緒讓步線負面版最後一題（四題收完），18 格全打完、1 拼字＋14 文法。主罩門：make … as、冠詞 a（a steady income 連漏）、every/any 單數 +s。做對的：P2 如果句全對、works、may 模板、crucial that 後 keep 原形、foreign languages open（自己用複數避 +s）。換 James 版：①主題 whether 句（與⑰同句）、②a new language、⑫foreign languages open、⑭studied … in school。⑮他寫 talk with confidence（範文 become confident when he talks，#15/#34 共用），待定。"
+  }
+ }
+]

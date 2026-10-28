@@ -1,0 +1,30 @@
+{
+ "o": 30,
+ "chain": {
+  "stance": "偏好鄉村生活",
+  "p1": "反方：城市生活比較好 ｜ 我方：鄉村生活帶來更多安心",
+  "p2": "城市工作機會多 → 大公司都在那裡、薪水好 → 年輕人去大城市工作 → 好工作、穩定收入 → 職涯成長更快 → 很多年輕人搬去城市",
+  "p3": "鄉村步調慢、壓力小很多 → James 住在安靜的鄉下、在線上工作 → 放鬆、多陪家人 → **鄉村生活帶來安心，全家和諧**",
+  "p4": "鄉村生活是我的選擇 ｜ 建議：選擇時同時想職涯和家庭"
+ },
+ "slots": {
+  "topic": {"hl": ["country"], "w": "coun-tr-y，**counrty** ✗（t／r 顛倒）", "src": ["s0"]},
+  "con": {"hl": ["cities offer"], "w": "city 可數，單數不能裸奔 → 用複數 cities，動詞也不加 s", "src": ["g0"]},
+  "conR": {"hl": ["are there"], "w": "用 there 指回 ④ 的 cities，**locat in cities** ✗", "src": ["g1", "s2"]},
+  "concl": {"hl": ["move to"], "w": "搬去＝move to，**movie** ✗ 多 i 變電影", "src": ["s3"]},
+  "stance": {"hl": ["country life", "the better"], "w": "二選一較好的那個用 the（同 ②）；country 單獨＝國家，要 country life", "src": ["g2", "g3"]},
+  "reason": {"hl": ["life there", "has"], "w": "**the life pace** ✗ → life there；and 兩邊要對稱，補 has", "src": ["g4"]},
+  "does": {"hl": ["the quiet countryside", "online"], "w": "countryside 固定配 the，不是 a；countryside 漏過 u；online 一個字", "src": ["g5", "s1", "s4"]},
+  "result": {"hl": ["feel relaxed"], "w": "模板已有 he is able to，直接接原形；feel＋形容詞，**feel relax** ✗", "src": ["g8", "g9"]},
+  "rec": {"hl": ["think about", "when choosing"], "w": "choice 是名詞，**people choice** ✗ 沒動詞；句尾 when choosing 掉兩次", "src": ["g10"]}
+ },
+ "ok": ["va", "vb", "resA", "resB", "impl"],
+ "top3": [
+  {"t": "the 的兩個方向", "b": "⑪ the better choice 要 the（同 ②）；peace of mind 不加 the 也不加 a（③⑯），**enjoy the peace of mind** ✗", "src": ["g2", "g6", "g7"]},
+  {"t": "可數單數不能裸奔", "b": "④ cities offer；⑭ the quiet countryside（不是 a）", "src": ["g0", "g5"]},
+  {"t": "打字滑掉 4 個", "b": "bg／movie／peae／damily：寫完回頭掃一眼（⑩ move to）", "src": ["s3", "s5", "s6"]}
+ ],
+ "spell": [["country", "counrty"], ["countryside", "contryside"], ["located", "locat"], ["move", "movie"], ["online", "on line"], ["peace", "peae"], ["big", "bg"], ["family", "damily"]],
+ "spellSrc": ["s0", "s1", "s2", "s3", "s4", "s5", "s6"],
+ "skipped": []
+}

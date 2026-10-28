@@ -1,0 +1,32 @@
+{
+ "o": 35,
+ "chain": {
+  "stance": "同意：現在的孩子長大比以前更難",
+  "p1": "反方：現在的孩子日子更輕鬆 ｜ 我方：現在長大比以往更難",
+  "p2": "手機是孩子很有用的工具 → 資訊和課程都在一台手機 → 孩子用手機讀書 → 作業做更快 → 學習更快更輕鬆 → 某些方面生活確實更輕鬆",
+  "p3": "很多年輕人上網成癮 → James 高中生，一直用手機上網 → 上課無法專心、作業做不完 → 成績差，**傷他的前途和家庭和諧**",
+  "p4": "現在的孩子問題比過去大 ｜ 建議：家庭和學校教孩子健康的上網習慣"
+ },
+ "slots": {
+  "topic": {"hl": ["growing up"], "w": "grow up 兩字一組；growing 單獨是生長", "src": ["r1"]},
+  "va": {"hl": [], "w": "James 點名記：life → lives（f 變 ves），有主人用複數", "src": ["r0"]},
+  "con": {"hl": ["a"], "w": "tool 可數單數要 a（這篇只掉這一個 a）", "src": ["r10"]},
+  "conR": {"hl": ["one"], "w": "one 打成 on 過，送出前看字尾", "src": ["r11"]},
+  "cond": {"hl": ["study"], "w": "study 打成 studt 過（y 旁邊的 t）", "src": ["r11"]},
+  "resB": {"hl": ["way to learn"], "w": "way 後接 to 或 of＋-ing，**way for** ✗", "src": ["r3"]},
+  "concl": {"hl": ["in some ways"], "w": "「在某些方面」固定複數 ways；泛指生活用單數 life", "src": ["r4", "r0"]},
+  "reason": {"hl": ["addicted to", "the internet"], "w": "addicted 配 to 不是 on；internet 加 the；**addicit** ✗", "src": ["r5", "r11"]},
+  "does": {"hl": ["surfing the internet", "on his phone"], "w": "surf 直接接受詞不加 on；在手機上＝on his phone，**by his phone** ✗", "src": ["r6"]},
+  "result": {"hl": ["in class", "or"], "w": "否定用 or（unable to A or B）；in class 零冠詞，**in the class** ✗", "src": ["r8", "r7"]},
+  "final": {"hl": ["problems"], "w": "problems 可數，泛指用複數；more＋可數要 s，**more challenge** ✗", "src": ["r9"]}
+ },
+ "ok": ["va", "subj", "resA", "jv", "jn", "impl", "rec"],
+ "top3": [
+  {"t": "片語形狀", "b": "① grow up 一組、⑨ way to learn、⑩ in some ways、⑫ addicted to、⑭ surf the internet on his phone", "src": ["r1", "r3", "r4", "r5", "r6"]},
+  {"t": "unable to A or B", "b": "本題模板改 he is unable to（只有這題和 #21）；⑮ 否定「不能 A 也不能 B」用 or", "src": ["r8"]},
+  {"t": "lives／life（James 點名）", "b": "② children have easier lives（有主人用複數）；⑩ 泛指生活用單數 life", "src": ["r0"]}
+ ],
+ "spell": [["one", "on"], ["study", "studt"], ["addicted", "addicit"]],
+ "spellSrc": ["r11"],
+ "skipped": ["r2：範文已改寫，18 格沒有 it is harder for … to 句型（照題目抄最安全）"]
+}

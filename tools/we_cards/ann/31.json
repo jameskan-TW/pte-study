@@ -1,0 +1,30 @@
+{
+ "o": 31,
+ "chain": {
+  "stance": "不同意：縮短工時薪水跟著少，養不了家",
+  "p1": "反方：縮短工時能減少失業 ｜ 我方：縮短工時弊大於利",
+  "p2": "縮短工時能創造工作 → 公司要更多人做同樣的事 → 員工工時變少 → 公司多請年輕人 → 青年失業下降 → 很多政府喜歡這點子",
+  "p3": "工時少＝薪水少 → James 在公司整週全職工作 → 為家人賺穩定收入 → 砍工時就砍薪水，**動搖穩定的家（家庭和諧）**",
+  "p4": "弊大於利 ｜ 建議：政府為年輕人和全體勞工創造新工作"
+ },
+ "slots": {
+  "topic": {"hl": ["shorter"], "w": "① 要名詞片語：用 shorter 開頭，**shorten the working hours** ✗", "src": ["g0"]},
+  "conR": {"hl": ["the same work"], "w": "work＝工作量，不可數，**the same works** ✗；jobs 才可數", "src": ["g1"]},
+  "cond": {"hl": ["fewer hours"], "w": "hours 可數 → fewer；**workers work less** ✗ 沒講到工時", "src": ["g2"]},
+  "resB": {"hl": ["lower", "youth"], "w": "youth＝青年（名詞）；這裡要名詞，**young unemployment decrease** ✗", "src": ["g3"]},
+  "reason": {"hl": ["fewer", "mean"], "w": "hours 可數 → fewer；複數主詞用 mean，**less working hours is** ✗", "src": ["g4"]},
+  "does": {"hl": ["full weeks"], "w": "full weeks 直接接、要 s，**works in a whole week** ✗", "src": ["g5", "g6"]},
+  "result": {"hl": ["a steady"], "w": "固定 a steady income，a 不能掉（#37 也漏過）", "src": ["g7"]},
+  "impl": {"hl": ["cuts pay and shakes"], "w": "「等於」不用進行式；逗號不能接新句 → and；pay 不可數免冠詞", "src": ["g8"]},
+  "rec": {"hl": ["governments", "the whole"], "w": "government 可數 → 用複數（⑩ 自己寫對）；whole 前面要 the", "src": ["g9", "g10"]}
+ },
+ "ok": ["va", "vb", "con", "concl"],
+ "top3": [
+  {"t": "可數單數不能裸奔", "b": "⑭ full weeks、⑮ a steady income、⑱ governments；反過來 ⑤ work 不加 s", "src": ["g6", "g7", "g9", "g1"]},
+  {"t": "fewer 不是 less", "b": "hours 可數 → ⑥ fewer hours、⑫ fewer working hours（錯兩次）；less 只配 pay", "src": ["g2", "g4"]},
+  {"t": "要名詞的位置", "b": "① shorter working hours（不是 shorten）；⑨ lower youth unemployment（不是 decrease）", "src": ["g0", "g3"]}
+ ],
+ "spell": [],
+ "spellSrc": [],
+ "skipped": []
+}

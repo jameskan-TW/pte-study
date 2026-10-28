@@ -1,0 +1,31 @@
+{
+ "o": 28,
+ "chain": {
+  "stance": "不同意：預算先給民生，不是花大錢保存舊建築",
+  "p1": "反方：舊建築花多少錢都值得 ｜ 我方：公家的錢先給日常需要",
+  "p2": "舊建築是歷史的一部分 → 看得到以前的人怎麼生活 → 城市留著舊建築 → 學到書本外的東西 → 視野更廣 → 很多觀光客來老街",
+  "p3": "預算先給住房和工作 → 日常生活比漂亮的牆重要 → James 住在花錢蓋住房和醫院的城市 → 養家、安心 → **每個家庭有溫暖穩定的家，家庭和諧**",
+  "p4": "民生比保存昂貴舊建築優先 ｜ 建議：政府只留最重要的建築"
+ },
+ "slots": {
+  "va": {"hl": ["old buildings", "worth any cost"], "w": "worth 後接名詞，**worth to preserve** ✗；old buildings 要 s", "src": ["g1", "g0"]},
+  "vb": {"hl": ["money", "should go to"], "w": "spend 是動詞不能當主詞；錢不會自己花，**should spend on** ✗ → go to", "src": ["g4", "g3"]},
+  "con": {"hl": ["part of", "our"], "w": "history 不可數不加 a，**are a history** ✗；our 漏 r 打成 out", "src": ["g2", "s2"]},
+  "conR": {"hl": ["they show"], "w": "主詞是舊建築 → they，P2 不換成 we，**we know how** ✗", "src": ["g5"]},
+  "resB": {"hl": ["a broader view"], "w": "broader 是形容詞不能當動詞，**broader their view** ✗；這裡要名詞", "src": ["g6"]},
+  "concl": {"hl": ["tourists"], "w": "many 後面要 s：many tourists", "src": ["g0"]},
+  "stance": {"hl": ["budgets", "jobs", "first"], "w": "budgets、jobs 都要 s；first 是立場核心（民生優先），漏 2 次", "src": ["g0", "g12"]},
+  "does": {"hl": ["that spends"], "w": "with 只接名詞，接句子用 that；that＝a city 單數 → spends", "src": ["g7", "g8"]},
+  "result": {"hl": ["raise"], "w": "able to 後原形，**raised** ✗", "src": ["g9"]},
+  "impl": {"hl": ["every family", "a warm and stable", "daily needs"], "w": "give 要「給誰＋給什麼」；一個 a 管兩個形容詞；整篇統一 daily needs", "src": ["g11", "g10", "g13"]}
+ },
+ "ok": [],
+ "top3": [
+  {"t": "漏 s（錯 7 次）", "b": "old buildings（①②④⑥⑰）、many tourists ⑩、budgets／jobs ⑪：看到 are／many 就回頭查 s", "src": ["g0"]},
+  {"t": "錢不會自己花", "b": "③ money should go to（不寫 should spend on）；⑭ a city that spends（接句子用 that，不用 with）", "src": ["g3", "g7"]},
+  {"t": "first 不能漏", "b": "⑪ housing and jobs first：民生優先，不是全盤否定（漏 2 次）", "src": ["g12"]}
+ ],
+ "spell": [["places", "placees"], ["money", "monry"], ["our", "out"], ["investments", "invetments"]],
+ "spellSrc": ["s0", "s1", "s2", "s3"],
+ "skipped": []
+}

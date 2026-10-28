@@ -1,0 +1,32 @@
+{
+ "o": 16,
+ "chain": {
+  "stance": "選氣候變遷的「成因」來研究",
+  "p1": "反方：研究影響最好 ｜ 我方：研究成因最好",
+  "p2": "暖化是溫室氣體太多造成 → 大多來自汽車和工廠 → 若人們每天開車 → 越來越多溫室氣體進到空氣 → 越來越多極端天氣 → 各國政府都在行動",
+  "p3": "氣候變遷同時傷害環境和人 → James 去年親眼看到公司被大水沖走 → 看出氣候變遷有多嚴重 → 找出成因才擋得住這些問題",
+  "p4": "成因是最該研究的面向 ｜ 建議：政府研究成因，**保護每個家庭**"
+ },
+ "slots": {
+  "va": {"hl": ["are"], "w": "主詞 effects 複數 → are；找主詞跳過 of 後面", "src": ["g0"]},
+  "vb": {"hl": ["are"], "w": "主詞 causes 複數 → are", "src": ["g1"]},
+  "con": {"hl": ["too much greenhouse gas"], "w": "泛指不加 the：**the greenhouse gas** ✗", "src": ["g2"]},
+  "resA": {"hl": ["gas", "the air"], "w": "greenhouse 後的 gas 別漏；into the air 要 the", "src": ["g4"]},
+  "resB": {"hl": ["weather"], "w": "weather 的 w 後沒有 h（**wheather** ✗ 錯兩次）", "src": ["s0"]},
+  "concl": {"hl": ["governments"], "w": "泛指不加 the：**the governments** ✗", "src": ["g5"]},
+  "stance": {"hl": ["finding"], "w": "動詞當主詞要 -ing（**study** the causes is ✗）", "src": ["g9"]},
+  "reason": {"hl": ["the environment"], "w": "the environment 固定加 the", "src": ["g6"]},
+  "does": {"hl": ["washed away", "a big flood"], "w": "沖走是 away（**out** ✗）；第一次提到用 a", "src": ["g7"]},
+  "result": {"hl": ["how serious"], "w": "how 前不加 the，後面接形容詞 serious", "src": ["g8"]},
+  "rec": {"hl": ["governments"], "w": "泛指不加 the（**all the governments** ✗）；crucial that 後原形", "src": ["g10"]}
+ },
+ "ok": [],
+ "top3": [
+  {"t": "the 多加少加（5 處）", "b": "不加：④ too much greenhouse gas／⑩⑱ governments；要加：⑧ the air／⑫ the environment", "src": ["g2", "g5", "g4", "g6"]},
+  {"t": "複數主詞配 are", "b": "② the effects of climate change are／③ the causes are：找主詞跳過 of 後面", "src": ["g0", "g1"]},
+  {"t": "動詞當主詞 -ing", "b": "⑪⑯ finding the causes is…（#11 keep→keeping 同型再犯）", "src": ["g9"]}
+ ],
+ "spell": [["weather", "wheather"], ["people", "peopele"], ["generally", "gererally"], ["attention", "attenion"]],
+ "spellSrc": ["s0", "s1"],
+ "skipped": ["g3：範文已改寫，⑤ 現在是 comes from，produce 不在格裡"]
+}

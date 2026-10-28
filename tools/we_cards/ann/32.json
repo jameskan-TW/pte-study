@@ -1,0 +1,32 @@
+{
+ "o": 32,
+ "chain": {
+  "stance": "不同意：隱私是基本權利，名人不該放棄",
+  "p1": "反方：名人為了名氣得放棄隱私 ｜ 我方：名人絕不該放棄隱私",
+  "p2": "成名帶來大錢 → 失去一點隱私換錢很公平 → 名人常上新聞 → 保住名氣和粉絲 → 收入很高 → 很多明星用隱私換名利",
+  "p3": "一直被盯著 → 壓力大、難專心工作 → James 不是名人，下班享受私人時間 → 放鬆安心 → **隱私讓全家和諧**，名氣不該奪走隱私",
+  "p4": "隱私是名氣換不到的權利 ｜ 建議：媒體尊重私人生活"
+ },
+ "slots": {
+  "va": {"hl": ["famous people need", "for fame"], "w": "主詞要是人，**fame need to give up** ✗；用 X 換 Y 用 for", "src": ["r8", "r2"]},
+  "con": {"hl": ["fame", "big money"], "w": "fame 有 e；money 不可數，**a huge money** ✗", "src": ["r13", "r1"]},
+  "conR": {"hl": ["losing", "for", "the money they earn"], "w": "losing 一個 o；for 後要名詞，**for earn** ✗；they earn 說明 money", "src": ["r13", "r4", "r5"]},
+  "cond": {"hl": ["the news"], "w": "in the news 固定有 the", "src": ["r0"]},
+  "concl": {"hl": ["for"], "w": "用 X 換 Y 用 for，**to** ✗", "src": ["r2"]},
+  "reason": {"hl": ["being watched", "leads", "makes"], "w": "主詞位被動用 being＋過去分詞，**been watch** ✗；and 兩邊同形：leads…makes", "src": ["r6", "r7"]},
+  "does": {"hl": ["enjoys", "his"], "w": "同一主詞第二個動詞也 +s；自己的時間用 his；and 前不加逗號", "src": ["r12", "r0"]},
+  "result": {"hl": ["peace of mind"], "w": "peace of mind 不加 the（#17 也錯，連兩題）", "src": ["r0"]},
+  "impl": {"hl": [", and", "take privacy away"], "w": "逗號後要 and（第三題連犯）；奪走＝take … away，**take of** ✗", "src": ["r11", "r3"]},
+  "final": {"hl": ["a right"], "w": "第一次提到的一種權利 → a right；a 後面只能單數，**a celebrities** ✗", "src": ["r0", "r9"]},
+  "rec": {"hl": ["the media respect"], "w": "media 不加 s、前面加 the、配複數動詞 respect，**medias** ✗", "src": ["r10", "r0"]}
+ },
+ "ok": ["vb", "resB", "stance", "jv", "jn"],
+ "top3": [
+  {"t": "冠詞錯 6 次", "b": "先問「哪一個／第一次提」：⑥ in the news、⑭ his、⑰ a right、⑱ the media；⑮ peace of mind 不加 the", "src": ["r0"]},
+  {"t": "介系詞錯 3 次", "b": "用 X 換 Y 用 for（②⑩）；⑤ for 後只接名詞；⑯ take privacy away，不加 of", "src": ["r2", "r4", "r3"]},
+  {"t": "fame／earning 各錯三次", "b": "fame 有 e（④）；earning 拼不穩 → ⑤ 用 the money they earn 避開", "src": ["r13"]}
+ ],
+ "spell": [["privacy"], ["fame", "fam", "famw"], ["losing"], ["earning", "earing", "earining", "eraning"], ["celebrities"]],
+ "spellSrc": ["r13"],
+ "skipped": []
+}

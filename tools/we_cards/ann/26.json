@@ -1,0 +1,28 @@
+{
+ "o": 26,
+ "chain": {
+  "stance": "選智慧型手機：好處為主",
+  "p1": "反方：手機弊大於利 ｜ 我方：非常有用的發明",
+  "p2": "很多年輕人網路成癮 → 若學生一直用手機上網 → 上課容易分心 → 成績差 → 難怪有些父母不准孩子用手機",
+  "p3": "通訊、資訊、工作都在一台手機 → James 用手機管工作和家庭群組 → 工作更快做完、隨時聯絡家人 → **手機讓全家保持聯繫、家庭和諧**",
+  "p4": "手機好處大於壞處 ｜ 建議：使用者養成健康的數位習慣"
+ },
+ "slots": {
+  "cond": {"hl": ["keeps", "surfing", "the internet"], "w": "If 子句要現在式動詞 keeps（+s）；surfing 一個 f；the internet 要 the", "src": ["g6", "s2"]},
+  "resA": {"hl": ["focus"], "w": "lose focus 的 focus 是名詞；舊版 **stay focus** ✗ → stay＋形容詞 focused", "src": ["g0"]},
+  "resB": {"hl": ["poor academic performance"], "w": "形容詞＋名詞，不用 on；**a bad performace on academic** ✗", "src": ["g1"]},
+  "concl": {"hl": ["children to use"], "w": "allow sb to do；child 複數是 children", "src": ["g5"]},
+  "does": {"hl": ["manages"], "w": "James 後面 +s（舊版錯 **he spend** ✗）", "src": ["g3"]},
+  "result": {"hl": ["his work"], "w": "work 不可數，不加 the／s，**the works** ✗", "src": ["g4"]},
+  "final": {"hl": ["does", "than"], "w": "主詞單數 → does；比較用 than，**that** ✗", "src": ["g7"]}
+ },
+ "ok": [],
+ "top3": [
+  {"t": "第三人稱 +s", "b": "⑥ a student keeps、⑭ James manages、⑰ the smartphone does", "src": ["g3", "g7"]},
+  {"t": "單複數", "b": "⑩ their children（child 的複數）；⑮ his work 不可數不加 s", "src": ["g5", "g4"]},
+  {"t": "If 子句時態", "b": "⑥ If 後面要現在式動詞 keeps／surfs，不能只放 -ing", "src": ["g6"]}
+ ],
+ "spell": [["evolving", "evoloing"], ["especially", "espacially"], ["surfing", "surffing"], ["closer", "closr"], ["happier", "happer"], ["performance", "performace"]],
+ "spellSrc": ["s0", "s1", "s2", "s3"],
+ "skipped": ["g2：範文已改寫，many employees 不在 18 格裡（many＋複數）"]
+}

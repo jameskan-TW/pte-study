@@ -1,0 +1,31 @@
+{
+ "o": 15,
+ "chain": {
+  "stance": "海外學習真的值得（沒有被高估）",
+  "p1": "反方：在本地讀一樣好 ｜ 我方：海外學習有本地給不了的東西",
+  "p2": "本地讀比較便宜 → 出國要花大錢：保險、簽證、住宿 → 若留在本國讀 → 省下生活費 → 家庭金錢壓力變小 → 很多大學者從沒出國",
+  "p3": "海外真的值得 → 新環境打開心胸 → James 在國外和不同背景的人一起生活 → 學到書本外的東西、講話有自信 → **視野和自信帶來好職涯和穩定的家**",
+  "p4": "海外學習的價值是真的 ｜ 建議：有機會就把握國際機會"
+ },
+ "slots": {
+  "topic": {"hl": ["studying"], "w": "y 結尾留 y：studying；e 結尾才去 e（using）", "src": ["r0"]},
+  "va": {"hl": ["locally"], "w": "studying 配副詞 locally（**local studying** ✗）", "src": ["r4"]},
+  "vb": {"hl": ["local study cannot"], "w": "local 只當形容詞 → local study；cannot 後省略 give", "src": ["r5", "r11"]},
+  "conR": {"hl": ["needs"], "w": "動名詞當主詞算單數 → studying overseas needs", "src": ["r1"]},
+  "cond": {"hl": ["in", "country"], "w": "國家用 in；每人一國 → their own country 單數", "src": ["r12", "r8"]},
+  "resA": {"hl": ["on"], "w": "在某方面省錢用 on：save money on", "src": ["r12"]},
+  "stance": {"hl": ["worth it"], "w": "worth 直接接 it；worthy 才配 of", "src": ["r7"]},
+  "does": {"hl": ["abroad"], "w": "abroad＝ab＋road（**aboard** ✗ 是上船、**aoroad** ✗）", "src": ["r15"]},
+  "impl": {"hl": ["confidence", "later help", "a stable family"], "w": "**這格錯最多**：confidence 名詞；兩主詞 → help；later 放 help 前；兩個 a", "src": ["r6", "r2", "r10", "r14", "r9"]},
+  "rec": {"hl": ["when they can"], "w": "can 後省略 take（助動詞後原形、不加 s）", "src": ["r11", "r3"]}
+ },
+ "ok": ["result"],
+ "top3": [
+  {"t": "動名詞當主詞", "b": "算單數 → ⑤ studying overseas needs；配副詞 → ② studying locally", "src": ["r1", "r4"]},
+  {"t": "⑯ 一格四個點", "b": "confidence 名詞；view and confidence 複數 → help；later 放 help 前；a good career and a stable family", "src": ["r6", "r2", "r10", "r9"]},
+  {"t": "一字之差", "b": "⑭ abroad（不是 aboard）；模板 then（不是 than）；⑯ later 一個 t（latter 是後者）", "src": ["r15", "r13", "r14"]}
+ ],
+ "spell": [["abroad", "aboard", "aoroad"], ["then", "than"], ["studying"]],
+ "spellSrc": ["r15", "r13", "r0"],
+ "skipped": []
+}

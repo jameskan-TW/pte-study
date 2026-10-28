@@ -1,0 +1,30 @@
+{
+ "o": 23,
+ "chain": {
+  "stance": "部分同意：電視能陪伴，但不是真正的陪伴，家人才是",
+  "p1": "反方：電視很有用（放鬆、教東西、陪孤單的人）｜ 我方：弊大於利",
+  "p2": "獨居的人在電視上聽到聲音、看到臉 → 若獨居老人天天看最愛的節目 → 比較不孤單 → 心情好 → 難怪很多孤單的人把電視當朋友",
+  "p3": "電視不能跟你說話、也不能聽你說 → James 晚餐時總是關電視 → 跟家人有更多對話 → **關電視讓全家和諧**",
+  "p4": "電視弊大於利 ｜ 建議：關掉電視，多陪家人和朋友"
+ },
+ "slots": {
+  "va": {"hl": ["lonely", "keeps", "company"], "w": "陪伴＝keep sb company；**companies**／**companion** ✗；company 別顛倒、lonely 沒有 g", "src": ["g0", "g1", "s1", "s0"]},
+  "conR": {"hl": ["live", "on television"], "w": "一般情況用現在式 live（**lived** ✗）；在電視上＝on television，不加 s", "src": ["g2", "g3"]},
+  "cond": {"hl": ["watch", "favorite", "every day"], "w": "If 子句不放 can；every day 才有因果；fav-o-rite", "src": ["g4", "s2"]},
+  "concl": {"hl": ["see", "as a friend"], "w": "固定 see … as；television 單數 → a friend，**as their friends** ✗", "src": ["g5"]},
+  "reason": {"hl": ["or"], "w": "否定句兩件都不能用 or（同 #21 unable to A or B）", "src": ["g6"]},
+  "does": {"hl": ["during dinner"], "w": "dinner time 是時段、單數；**during dinner times** ✗（錯兩次）", "src": ["g7"]},
+  "impl": {"hl": ["keeps", "in harmony"], "w": "harmony 是名詞，**more harmony** ✗；整組固定片語逐字背", "src": ["g8"]},
+  "final": {"hl": ["television"], "w": "電視當「媒體」不加 the（③ 自己打對）", "src": ["g9"]},
+  "rec": {"hl": ["the television"], "w": "關的是機器要 the；跟⑰ 剛好相反", "src": ["g10"]}
+ },
+ "ok": ["resA", "resB", "stance", "jv", "jn"],
+ "top3": [
+  {"t": "company／companion／companies", "b": "② keep sb company＝陪伴；④ companion＝同伴；companies 是公司", "src": ["g0", "g1"]},
+  {"t": "television 加不加 the", "b": "③⑰ 當媒體不加 the；⑭⑯⑱ 關機器要 the；⑤ on television 不加 s", "src": ["g9", "g10", "g3"]},
+  {"t": "舊罩門重犯", "b": "⑤ 時態 live 不是 lived；⑫ 否定用 or；lonely 昨天才錯過", "src": ["g2", "g6", "s0"]}
+ ],
+ "spell": [["lonely", "longly"], ["company", "compnay"], ["favorite", "favorate"]],
+ "spellSrc": ["s0", "s1", "s2"],
+ "skipped": []
+}

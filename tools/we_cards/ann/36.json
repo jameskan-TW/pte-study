@@ -1,0 +1,29 @@
+{
+ "o": 36,
+ "chain": {
+  "stance": "同意：未來人們工時會變少",
+  "p1": "反方：競爭會逼人工時更長 ｜ 我方：整體工時會變少",
+  "p2": "未來可能要加班 → 通訊工具太方便 → 在家也能工作 → 員工隨時隨地工作 → 沒時間陪家人 → 勞工擔心未來",
+  "p3": "AI 發展很快 → James 很會用 AI → 省下很多時間 → 準時做完工作，**多陪家人，家庭和諧**",
+  "p4": "未來世代確實工時更少 ｜ 建議：每個人都學會用 AI"
+ },
+ "slots": {
+  "vb": {"hl": ["fewer hours"], "w": "**work lessly** ✗（不是字）；現在統一寫 work fewer hours", "src": ["g0"]},
+  "subj": {"hl": ["employees"], "w": "複數 employees，**employee can** ✗ 漏 s", "src": ["g1"]},
+  "resA": {"hl": ["anywhere"], "w": "anyway＝無論如何；要的是 anywhere（重複錯）", "src": ["g2"]},
+  "resB": {"hl": ["to spend"], "w": "time 後接 to＋原形，**no time spend** ✗", "src": ["g3"]},
+  "concl": {"hl": ["worried"], "w": "worried 是形容詞，**are worry** ✗；workers 泛指不加 the", "src": ["g4"]},
+  "reason": {"hl": ["AI is developing"], "w": "that 後接句子，**the development of AI** ✗；AI 一定大寫", "src": ["g7", "s3"]},
+  "does": {"hl": ["using", "AI"], "w": "use 去 e 加 ing，**useing** ✗；AI 大寫", "src": ["s1", "s3"]},
+  "rec": {"hl": ["AI"], "w": "AI 大寫；crucial that 後原形 learn", "src": ["s3"]}
+ },
+ "ok": [],
+ "top3": [
+  {"t": "AI 一定大寫（錯 4 次）", "b": "⑫⑭⑱ 都有 AI：兩個大寫字母，不是 Al", "src": ["s3"]},
+  {"t": "anywhere, anytime", "b": "⑧ work anywhere, anytime：anyway 是「無論如何」（重複錯）", "src": ["g2"]},
+  {"t": "複數與形容詞", "b": "⑦ employees 要 s；⑩ are worried（worried 是形容詞）", "src": ["g1", "g4"]}
+ ],
+ "spell": [["remotely", "remotly"], ["using", "useing"], ["simultaneously", "simotaniously"], ["AI", "Al"]],
+ "spellSrc": ["s0", "s1", "s2", "s3"],
+ "skipped": ["g5：範文已改寫，handle multiple tasks 不在 18 格裡", "g6：範文已改寫，have the whole evening 不在 18 格裡"]
+}

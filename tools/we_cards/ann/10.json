@@ -1,0 +1,29 @@
+{
+ "o": 10,
+ "chain": {
+  "stance": "最緊迫的問題是失業；解方是職訓＋創造工作",
+  "p1": "反方：失業太難解決 ｜ 我方：職訓真的解得了",
+  "p2": "失業很嚴重 → 沒工作就沒穩定收入 → 若人們失業 → 天天擔心錢 → 全家壓力焦慮 → 有人甚至得精神疾病",
+  "p3": "職訓最好 → 給人新技能找新工作 → James 失業後上政府職訓 → 在這家公司找到新工作、重回穩定收入 → **每個家庭都有溫暖穩定的家**",
+  "p4": "失業最緊迫，職訓是答案 ｜ 建議：政府多辦職訓、創造更多工作"
+ },
+ "slots": {
+  "conR": {"hl": ["jobs"], "w": "job 可數：people without **job** ✗ → jobs", "src": ["r0"]},
+  "cond": {"hl": ["people", "jobs"], "w": "If 後要完整句，主詞 people 不能掉；每人一份 → their jobs", "src": ["r3", "r0"]},
+  "subj": {"hl": [], "w": "If 句的壞結果用 will（必然）；can 配正面", "src": ["r8"]},
+  "resB": {"hl": ["anxiety", "for"], "w": "leading to 後接名詞 anxiety（**anxious** ✗），不加 an；給全家用 for", "src": ["r1"]},
+  "stance": {"hl": ["training", "solution"], "w": "training 一個 n（**trainning** ✗）；solution 同 solve 開頭", "src": ["r9"]},
+  "result": {"hl": ["find", "a steady income"], "w": "able to 後原形 find（**finds** ✗）；a steady income 的 a 別掉", "src": ["r2", "r4"]},
+  "impl": {"hl": ["new jobs", "a warm and stable home"], "w": "new jobs 要 s；一個家只要一個 a，**a warm and a stable** ✗", "src": ["r0", "r5"]},
+  "final": {"hl": ["the most urgent", ", and"], "w": "題目問「最」→ 要 the most；urgent 有 t；逗號後要 and（第四題連犯）", "src": ["r7", "r9", "r6"]}
+ },
+ "ok": ["topic", "va", "con", "reason", "jv", "jn", "rec"],
+ "top3": [
+  {"t": "job 要加 s", "b": "⑤ without jobs／⑥ lose their jobs／⑯ new jobs，單數裸奔錯 3 次", "src": ["r0"]},
+  {"t": "逗號後補 and", "b": "⑰ the most urgent issue, and job training is the answer（第四題連犯）", "src": ["r6"]},
+  {"t": "詞性和原形", "b": "⑨ leading to＋名詞 anxiety；⑮ able to＋原形 find，不加 s", "src": ["r1", "r2"]}
+ ],
+ "spell": [["training", "trainning"], ["solution", "seloution"], ["settle", "seatle"], ["urgent", "urgen"]],
+ "spellSrc": ["r9"],
+ "skipped": []
+}

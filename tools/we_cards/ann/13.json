@@ -1,0 +1,32 @@
+{
+ "o": 13,
+ "chain": {
+  "stance": "挺傳統教學：一步步學最紮實",
+  "p1": "反方：做中學在學校很有效 ｜ 我方：傳統教學最好",
+  "p2": "做中學新鮮有趣 → 動手做看得到東西怎麼運作 → 若學生做中學 → 學到書本外的東西 → 視野更開闊 → 很多學校加開實作課",
+  "p3": "傳統教學仍最好 → 一步步建立知識 → James 跟著規劃好的課程 → 好成績、好工作、穩定收入 → **更好的前途和溫暖穩定的家**",
+  "p4": "傳統教學效果更好 ｜ 建議：學校以傳統教學為主"
+ },
+ "slots": {
+  "topic": {"hl": ["schools"], "w": "題目問高中和大學，泛指用複數 schools", "src": ["g0"]},
+  "va": {"hl": ["well"], "w": "works well：well 好／will 將會，別混", "src": ["s1"]},
+  "vb": {"hl": ["a traditional form"], "w": "照抄題目連 a 一起抄；form 可數不能裸奔", "src": ["g1"]},
+  "conR": {"hl": ["hands-on", "tasks show", "things"], "w": "hands 有 s、連字號不空格；複數 tasks → show；things 不加 the", "src": ["s2", "g2"]},
+  "cond": {"hl": ["learn by doing"], "w": "learn by doing 直接當動詞，中間不插字（**learn things by doing** ✗）", "src": ["g3", "g4"]},
+  "concl": {"hl": ["schools", "now", "hands-on courses"], "w": "many 後複數 schools、courses；不加 the；now 強調新趨勢", "src": ["g5"]},
+  "stance": {"hl": ["teaching"], "w": "我方講教學 teaching；learning 是對方的字", "src": ["g8"]},
+  "reason": {"hl": ["builds", "knowledge"], "w": "it 單數 → builds（連錯兩次）；knowledge 不可數不加 the", "src": ["g6", "g7"]},
+  "jn": {"hl": ["university"], "w": "university 不是專有名詞，小寫", "src": ["g9"]},
+  "does": {"hl": ["well-planned courses"], "w": "第一次提到不加 the；courses 要 s；study 多餘", "src": ["g10"]},
+  "impl": {"hl": ["step-by-step", "home"], "w": "名詞前連字號 step-by-step；收尾是 home 不是 **income**；固定 leads to", "src": ["s3", "s0", "g12", "g11"]}
+ },
+ "ok": ["result", "rec"],
+ "top3": [
+  {"t": "多加 the", "b": "前面沒提過、後面沒限定就不加：⑤ things／⑩ hands-on courses／⑫ knowledge／⑭ well-planned courses", "src": ["g2", "g5", "g7", "g10"]},
+  {"t": "連字號", "b": "⑤⑩ hands-on／⑭ well-planned／⑯ step-by-step：hands 有 s，中間不留空格", "src": ["s2", "s3"]},
+  {"t": "單數主詞 +s", "b": "⑫ it builds 連錯兩次；⑤ 複數 tasks 才用 show", "src": ["g6"]}
+ ],
+ "spell": [["home", "homw"], ["well", "will"], ["hands-on", "hand-on", "hands- on"], ["step-by-step", "step-by- step"]],
+ "spellSrc": ["s0", "s1", "s2", "s3"],
+ "skipped": []
+}

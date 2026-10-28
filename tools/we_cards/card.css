@@ -1,0 +1,38 @@
+@page{size:A4;margin:0}
+*{box-sizing:border-box}
+body{margin:0;color:#1a1a1a;font-family:"PingFang TC","Noto Sans TC",sans-serif}
+.page{width:210mm;height:296mm;padding:8mm 10mm;overflow:hidden;break-after:page}
+.fit{font-size:9.2pt;line-height:1.32}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:6pt;border-bottom:2pt solid #1a1a1a;padding-bottom:3pt}
+.head h1{font-size:1.75em;margin:0;line-height:1.2}
+.head h1 .no{background:#1a1a1a;color:#fff;border-radius:3pt;padding:0 6pt;margin-right:6pt}
+.head .meta{font-size:.92em;color:#555;text-align:right;white-space:nowrap}
+.ln{color:#fff;border-radius:2pt;padding:0 5pt;font-weight:700}
+.l①{background:#2980b9}.l②{background:#e67e22}.l③{background:#8e44ad}.l④{background:#e74c3c}
+.prompt{margin:4pt 0 5pt;padding:3pt 7pt;background:#f3f3f3;border-left:3pt solid #999;font-family:Menlo,Consolas,monospace;font-size:.95em}
+.timer{font-size:.9em;color:#777;margin:0 0 4pt}
+h2{font-size:1.08em;margin:4pt 0 2pt;padding:1.5pt 6pt;background:#1a1a1a;color:#fff;border-radius:2pt}
+.stance{font-weight:700;font-size:1.13em;margin:2pt 0 3pt}
+.chain{border-collapse:collapse;width:100%}
+.chain td{padding:1pt 5pt;border-bottom:1px solid #e3e3e3;vertical-align:top}
+.chain td:first-child{width:3.6em;font-weight:700;white-space:nowrap}
+.ar{color:#e67e22;font-weight:700}
+table.slots{border-collapse:collapse;width:100%}
+.slots td,.slots th{border:1px solid #d5d5d5;padding:1pt 5pt;vertical-align:top;text-align:left}
+.slots th{background:#eee;font-size:.92em}
+.slots td.k{white-space:nowrap;width:7.4em;font-size:.94em;color:#333}
+.slots td.s{font-family:Menlo,Consolas,monospace;font-size:.94em;width:52%}
+.slots td.w{font-size:.94em}
+.slots tr.sec td{background:#555;color:#fff;font-size:.86em;padding:1pt 5pt;font-weight:700}
+.slots tr.calm td.s{color:#777}
+mark{background:#ffd6d1;color:#a11a10;font-weight:700;padding:0 1pt;border-radius:2pt}
+.w b{color:#a11a10}
+.ok{color:#0b6e4f;font-weight:700}
+.top3{display:grid;grid-template-columns:repeat(3,1fr);gap:5pt;margin-top:3pt}
+.top3.n2{grid-template-columns:repeat(2,1fr)}
+.top3 div{border:1.5pt solid #b3261e;border-radius:3pt;padding:3pt 6pt;font-size:.96em;background:#fff8f7}
+.top3 b{color:#a11a10}
+.top3 b.tt{display:block;font-size:1.04em}
+.spell{margin-top:5pt;font-size:.96em}
+.spell span{display:inline-block;border:1px solid #ccc;border-radius:2pt;padding:0 4pt;margin:0 3pt 2pt 0;font-family:Menlo,Consolas,monospace}
+.spell s{color:#a11a10}

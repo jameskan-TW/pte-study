@@ -1,0 +1,33 @@
+{
+ "o": 1,
+ "chain": {
+  "stance": "正規教育比生活經驗重要",
+  "p1": "反方：生活經驗教得比學校多 ｜ 我方：正規教育更重要",
+  "p2": "真實生活教學校教不了的 → 若從現實挑戰中學 → 學到書本外的東西 → 視野更開闊 → 很多成功人士說靠生活經驗學到",
+  "p3": "學校養成自律等好習慣 → James 大學照計畫讀書 → 好成績、好工作、穩定收入 → **更好的前途＋溫暖穩定的家**",
+  "p4": "正規教育比生活經驗重要 ｜ 建議：年輕人先完成學業"
+ },
+ "slots": {
+  "topic": {"hl": ["versus"], "w": "對立用 versus，**experience and education** ✗", "src": ["g0"]},
+  "conR": {"hl": ["what schools cannot"], "w": "what 一字抵三字；**things that cannot learn** ✗（要被動）", "src": ["g1"]},
+  "cond": {"hl": ["real-life challenges"], "w": "當形容詞要連字號 real-life；**challange** ✗，而且要複數", "src": ["g3", "s0"]},
+  "resA": {"hl": ["they"], "w": "漏主詞 they：things 不會自己找，**things that cannot find** ✗", "src": ["g2"]},
+  "resB": {"hl": ["a broader view"], "w": "a 後面單數，**a broader views** ✗（這片語錯兩次）", "src": ["g4"]},
+  "concl": {"hl": ["successful"], "w": "修飾 people 用形容詞，**success people** ✗", "src": ["g5"]},
+  "reason": {"hl": ["builds", "self-discipline"], "w": "普遍事實用現在式 builds，**built** ✗；**self-displing** ✗", "src": ["g6", "s1"]},
+  "jv": {"hl": ["studies"], "w": "講現在狀態用現在式 +s，**studied** ✗；過去式不加 s", "src": ["g7"]},
+  "does": {"hl": ["follows", "well-planned"], "w": "別跟⑬重複，換 follows；**well-planed** ✗ 雙寫 n，後接名詞", "src": ["g8", "s2"]},
+  "result": {"hl": ["grades", "find", "a steady income"], "w": "成績＝grades，**scores** ✗；a 不能漏（第三次）；補了 a 別掉 find", "src": ["g9", "g10", "g11"]},
+  "impl": {"hl": ["leads to", "better", "a warm and stable home"], "w": "固定 leads to＋比較級 better；**stable home** ✗，整串不減字", "src": ["g12"]},
+  "rec": {"hl": ["studies"], "w": "學業＝studies 要複數，**finish their study** ✗", "src": ["g13"]}
+ },
+ "ok": [],
+ "top3": [
+  {"t": "改一個掉一個", "b": "⑮ 補了 a 就掉 find；送出前回頭念一次", "src": ["g10", "g11"]},
+  {"t": "講事實用現在式", "b": "⑫ school builds／⑬ James studies；過去式永遠不加 s", "src": ["g6", "g7"]},
+  {"t": "a 別漏、a 後單數", "b": "⑨ a broader view／⑮ a steady income／⑯ a warm and stable home", "src": ["g4", "g12"]}
+ ],
+ "spell": [["challenges", "challange"], ["self-discipline", "self-displing"], ["well-planned", "well-planed"]],
+ "spellSrc": ["s0", "s1", "s2"],
+ "skipped": ["g14：範文已改寫（⑱ 改成 finish their studies first），before 後接子句不在 18 格"]
+}

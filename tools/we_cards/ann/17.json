@@ -1,0 +1,34 @@
+{
+ "o": 17,
+ "chain": {
+  "stance": "法律真的能約束行為（不是影響很小）",
+  "p1": "反方：法律影響很小 ｜ 我方：法律真的能改變人怎麼做事",
+  "p2": "人照自己的想法 → 若某人很想要錢 → 為錢犯法 → 法律擋不住的犯罪 → 法律只能說、不能逼",
+  "p3": "怕被罰 → 大多數人不敢做壞事 → James 住在交通法嚴、罰款重的城市 → 每天安全通勤、安心 → 社會有秩序，**安全的城市讓每個家庭和諧**",
+  "p4": "法律對引導行為很重要 ｜ 建議：政府公平、平等地用法律"
+ },
+ "slots": {
+  "vb": {"hl": ["people behave"], "w": "behave 動詞／behavior 名詞混過；human 不能單獨當「人們」→ people", "src": ["r5"]},
+  "con": {"hl": ["sometimes", "have little effect on"], "w": "sometimes 有 s；effect 是名詞，整組背，**laws effect little** ✗", "src": ["r4", "r13"]},
+  "conR": {"hl": ["follow", "the law"], "w": "follow 不是 fallow；照想法用 follow，**by their own minds** ✗；整個法律＝the law", "src": ["r9", "r0", "r13"]},
+  "cond": {"hl": [], "w": "someone 單數 → wants", "src": []},
+  "resA": {"hl": ["the"], "w": "the 不能掉；for＋名詞最短", "src": ["r12"]},
+  "resB": {"hl": ["laws"], "w": "一條條法規＝laws，不加 the；**that law cannot stop** ✗（練完還掉一次）", "src": ["r0"]},
+  "concl": {"hl": ["can only", ", but"], "w": "only 放 can 後面；逗號後要 but（錯過）", "src": ["r6", "r1"]},
+  "reason": {"hl": ["punishment"], "w": "of 後面要名詞 punishment；主詞 fear 單數 → stops", "src": ["r10"]},
+  "jn": {"hl": ["firm"], "w": "firm 連兩天拼成 film／frim", "src": ["r13"]},
+  "does": {"hl": ["with", "strict"], "w": "一串修飾放名詞後面用 with；strict 你自己點名要盯", "src": ["r7", "r13"]},
+  "result": {"hl": ["peace of mind"], "w": "peace of mind 不加 the；able to 後原形", "src": ["r8"]},
+  "impl": {"hl": ["keep", "society", ", and", "keeps", "family", "harmony"], "w": "**這格錯最多**：laws keep／city keeps（s 兩個方向）、society 不加 the、逗號後 and、every＋單數 family、harmony 兩天兩種錯拼", "src": ["r2", "r8", "r1", "r3", "r13"]},
+  "final": {"hl": ["play", "guiding"], "w": "laws 複數 → play（寫過 plays）；引導用 guide，不是 lead", "src": ["r2", "r11"]},
+  "rec": {"hl": [], "w": "crucial that 後原形", "src": []}
+ },
+ "ok": ["topic", "va", "cond", "stance", "rec"],
+ "top3": [
+  {"t": "the law／laws", "b": "整個法律 the law（⑤⑧）；一條條法規 laws 不加 the（⑨⑯⑰）。錯 4 次"},
+  {"t": "逗號後補 but／and", "b": "⑩ , but cannot force…／⑯ , and a safe city…"},
+  {"t": "先找主詞再決定 s", "b": "⑯ laws keep／city keeps；⑰ laws play"}
+ ],
+ "spell": [["sometimes"], ["follow", "fallow"], ["firm", "film", "frim"], ["harmony", "harmoney", "harmoy"], ["strict"], ["punishment"]],
+ "skipped": []
+}

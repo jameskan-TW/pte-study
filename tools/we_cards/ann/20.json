@@ -1,0 +1,33 @@
+{
+ "o": 20,
+ "chain": {
+  "stance": "不同意：旅遊業對欠發達國家利大於弊",
+  "p1": "反方：弊跟利一樣大 ｜ 我方：利大於弊",
+  "p2": "商業把在地文化變商品 → 若一個地方太向錢看 → 傳統變成演給觀光客看的秀 → 真正的在地文化流失 → 粗心的旅遊留下傷害",
+  "p3": "旅遊業替在地人創造工作 → James 替公司開發欠發達國家的旅遊行程 → 在地家庭有穩定收入、**溫暖穩定的家** → 旅遊是發展的一大助力",
+  "p4": "旅遊業對欠發達國家利大於弊 ｜ 建議：政府謹慎管理旅遊業"
+ },
+ "slots": {
+  "topic": {"hl": ["tourism", "developed"], "w": "不可數通稱不加 the；developed 形容詞、development 名詞", "src": ["g0", "s0"]},
+  "va": {"hl": ["as much harm as good"], "w": "題目說弊利一樣大 → as much … as，不是 more … than", "src": ["g1"]},
+  "conR": {"hl": ["turns", "a product"], "w": "business 不可數＝單數 → turns；into a product 單數", "src": ["g2"]},
+  "cond": {"hl": ["becomes", "focused"], "w": "整句要有動詞 becomes（+s）；focused -ed 不能掉；look forward to 是期待", "src": ["g3"]},
+  "subj": {"hl": ["traditions"], "w": "複數 traditions；寫過 **local culture can loose their nature** ✗", "src": ["g4"]},
+  "resB": {"hl": ["loss", "culture"], "w": "leading to 後接名詞 loss（lose／loose 錯三次）；culture 不可數不加 s", "src": ["s3", "g5"]},
+  "concl": {"hl": ["careless"], "w": "care＋less，**carelss** ✗", "src": ["s4"]},
+  "reason": {"hl": ["creates", "job opportunities"], "w": "create … for／bring … to；④線共用 job opportunities", "src": ["g6"]},
+  "does": {"hl": ["developed"], "w": "less developed 照題目抄，-ed 不能掉（連錯兩次）", "src": ["s0"]},
+  "result": {"hl": ["helps", "families", "earn", "build", "warm and stable homes"], "w": "helps +s；families 複數；help＋人＋原形；warm and stable home 整組", "src": ["g7"]},
+  "impl": {"hl": ["a big help"], "w": "泛指「一大助力」用 a，**the big help** ✗", "src": ["g8"]},
+  "rec": {"hl": ["manage", "in a careful way"], "w": "crucial that 後原形、不加 should；管理＝manage", "src": ["g9"]}
+ },
+ "ok": ["vb", "stance", "jv", "jn", "final"],
+ "top3": [
+  {"t": "-ed 分詞當形容詞", "b": "① less developed countries（照題目抄）、⑥ too focused on，-ed 都不能掉", "src": ["s0", "g3"]},
+  {"t": "先找主詞再決定 s", "b": "⑤ business turns、⑥ a place becomes、⑮ tourism helps；help 後面的動詞用原形 earn／build", "src": ["g2", "g3", "g7"]},
+  {"t": "lose／loss", "b": "⑨ leading to 後只能接名詞 loss；lose 動詞、lost 過去式、loose 鬆的。錯三次", "src": ["s3"]}
+ ],
+ "spell": [["developed", "development", "develop"], ["countries", "conutries"], ["hurt", "hart"], ["loss", "loose", "lose"], ["careless", "carelss"], ["tourism", "toruism"]],
+ "spellSrc": ["s0", "s1", "s2", "s3", "s4", "s5"],
+ "skipped": []
+}

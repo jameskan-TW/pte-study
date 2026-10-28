@@ -1,0 +1,33 @@
+{
+ "o": 22,
+ "chain": {
+  "stance": "負面為主：媒體對年輕人弊大於利（拖累學業）",
+  "p1": "反方：媒體對年輕人利大於弊 ｜ 我方：弊大於利",
+  "p2": "好節目展現廣闊世界 → 若年輕人看優質內容 → 學到書本外的東西 → 視野更開闊 → 難怪家長歡迎教育性節目",
+  "p3": "短影音把學生從書本拉走 → James 讀大學、上課日遠離社群媒體 → 高分、好工作穩定收入 → **讀書時間帶來好前途和溫暖穩定的家**",
+  "p4": "媒體對年輕人弊大於利 ｜ 建議：家長替媒體使用設清楚界線"
+ },
+ "slots": {
+  "topic": {"hl": ["the influence of", "the young"], "w": "主題要名詞片語，不是句子；young 當名詞要 the young", "src": ["g0"]},
+  "va": {"hl": ["to the young"], "w": "do good／harm 的對象用 to，**on the young** ✗", "src": ["g1"]},
+  "con": {"hl": ["people"], "w": "people 本身就是複數，**young peoples** ✗（跟平常漏 s 相反）", "src": ["g2"]},
+  "conR": {"hl": ["programs show", "the wide world"], "w": "programs 要 s（不是 programes）；複數主詞 → show 不加 s；世界只有一個用 the", "src": ["g3", "s1"]},
+  "cond": {"hl": ["content"], "w": "內容＝content，不可數不加 s；**contexts** ✗ 是上下文", "src": ["s2"]},
+  "resB": {"hl": ["a broader view"], "w": "leading to 後只接名詞，**leading to have** ✗（當天第三次多加動詞）", "src": ["g5"]},
+  "concl": {"hl": ["welcome", "educational"], "w": "welcome 一個 l；educational 形容東西、educated 形容人", "src": ["s0", "g4"]},
+  "reason": {"hl": ["students", "from"], "w": "students 要 s；from 別顛倒成 **form** ✗", "src": ["g6", "s3"]},
+  "does": {"hl": [], "w": "這格只寫 James 做的事；好成績、溫暖的家是⑮⑯（填錯過位置）", "src": []},
+  "result": {"hl": ["with a steady income"], "w": "新版用 with，a 不能漏，**a good job and steady income** ✗", "src": ["g7"]},
+  "impl": {"hl": ["leads to", "a warm"], "w": "主詞是讀書時間，不加 him；a warm and stable home 的 a 不能漏", "src": ["g8"]},
+  "rec": {"hl": ["set"], "w": "crucial that 後用原形 set，不加 should", "src": ["g9"]}
+ },
+ "ok": [],
+ "top3": [
+  {"t": "s 兩個方向都犯", "b": "⑤ programs、⑫ students 要 s；④ people 不加 s；⑤ 複數主詞的動詞 show 不加 s", "src": ["g2", "g3", "g6"]},
+  {"t": "固定句認位置", "b": "⑧ 線的固定句放 ⑧ 不是 ⑤；⑭ 只寫做了什麼，好成績、溫暖的家放 ⑮⑯"},
+  {"t": "名詞位置只放名詞", "b": "① 主題是名詞片語；⑨ leading to 後面直接接名詞 a broader view，不加 have", "src": ["g0", "g5"]}
+ ],
+ "spell": [["welcome", "wellcome"], ["programs", "programes"], ["content", "contexts"], ["from", "form"]],
+ "spellSrc": ["s0", "s1", "s2", "s3"],
+ "skipped": ["s4：模板句（In other words 打成 on other words），練默寫卡就好"]
+}

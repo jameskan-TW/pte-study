@@ -1,0 +1,32 @@
+{
+ "o": 18,
+ "chain": {
+  "stance": "讓員工參與決策，好處大於壞處",
+  "p1": "反方：決策該只留給主管 ｜ 我方：讓員工參與利大於弊",
+  "p2": "員工參與會拖慢速度 → 大家討論很花時間 → 若每個決定都要全員同意 → 流程變慢 → 效率降低 → 有些公司由高層決定",
+  "p3": "參與讓員工覺得被重視、願意工作 → James 參與公司決策 → 被重視、更努力、為家人賺穩定收入 → **快樂的員工帶好心情回家，全家和樂**",
+  "p4": "讓員工參與利大於弊 ｜ 建議：公司建立讓員工參與的好方法"
+ },
+ "slots": {
+  "va": {"hl": ["be left", "managers alone"], "w": "決策是「被留給」→ 被動 be left（漏 be、漏 -ed）", "src": ["g0"]},
+  "vb": {"hl": ["does more good than harm"], "w": "固定片語 does more good than harm（**brings** ✗）；③⑪⑰ 同一句", "src": ["g1"]},
+  "con": {"hl": ["can", "things down"], "w": "拖慢的是 things 不是 time；down 不是 **done**；讓步用 can", "src": ["g2", "s0"]},
+  "conR": {"hl": ["discussion takes time"], "w": "討論當主詞最簡單；**take time on** ✗", "src": ["g3"]},
+  "cond": {"hl": ["every decision needs"], "w": "every＋單數 → decision needs；用 everyone to agree 避開被動", "src": ["g4"]},
+  "concl": {"hl": ["at the top"], "w": "高層＝at the top（單數，**tops** ✗）；high level 不能當名詞", "src": ["g5", "s4"]},
+  "reason": {"hl": ["feel important"], "w": "make＋人＋原形，不加 be（**be focused** ✗）", "src": ["g6"]},
+  "does": {"hl": ["joins", "the decision-making process"], "w": "James 第三人稱 +s → joins；the 別漏，跟①同字", "src": ["g7"]},
+  "result": {"hl": ["earn", "a steady income"], "w": "able to 後全原形 earn（**brings** ✗）；a steady income 的 a 別掉", "src": ["g8"]},
+  "impl": {"hl": ["a happy employee", "in a better mood", "keeps", "whole"], "w": "**這格錯最多**：a 別掉；mood 用 in 不用 with；keep…in harmony；whole 有 w", "src": ["g9", "s2"]},
+  "final": {"hl": ["involving employees"], "w": "主詞用名詞片語；**employees join … does** ✗ 兩個動詞撞車", "src": ["g10"]}
+ },
+ "ok": ["topic", "subj", "resA", "resB", "stance", "jv", "jn"],
+ "top3": [
+  {"t": "被動漏 be／-ed", "b": "② should be left；⑥ 寫過 be approves → 現在改主動 everyone to agree", "src": ["g0", "g4"]},
+  {"t": "冠詞 a／the 別掉", "b": "⑭ the decision-making process；⑮ a steady income；⑯ a happy employee、in a better mood", "src": ["g7", "g8", "g9"]},
+  {"t": "兩個動詞撞車", "b": "⑰ involving employees does…（不是 employees join … does）；⑫ make＋人＋原形不加 be", "src": ["g10", "g6"]}
+ ],
+ "spell": [["slow down", "slow done"], ["whole", "hole"], ["at the top", "at the tops"]],
+ "spellSrc": ["s0", "s2", "s4"],
+ "skipped": ["s1：⑫ 已換成 willing to work，keen 不用背", "s3：⑱ 已換成 good ways for employees to take part，mechanism 不用背"]
+}

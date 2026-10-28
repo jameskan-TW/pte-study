@@ -1,0 +1,31 @@
+{
+ "o": 24,
+ "chain": {
+  "stance": "注重名聲：好名聲才是行銷的關鍵",
+  "p1": "反方：折扣最能吸客 ｜ 我方：好名聲是行銷的關鍵",
+  "p2": "低價是強力的購買理由 → 若降價 → 顧客馬上買 → 短期收益 → 難怪折扣活動到處都是",
+  "p3": "好名聲建立顧客忠誠和長期獲利 → James 幫公司守住品質好名聲 → 忠實顧客每年回來、帶給公司穩定收入 → **好名聲創造折扣做不到的長期價值**",
+  "p4": "好名聲比短期折扣重要 ｜ 建議：公司投資在品質和顧客信任"
+ },
+ "slots": {
+  "topic": {"hl": ["focus", "a good reputation", "discounts"], "w": "focus 別顛倒成 **foucs** ✗；a good reputation 要 a；or 兩邊都名詞", "src": ["s1", "g0"]},
+  "vb": {"hl": ["the key to"], "w": "key 固定接 to，**the key point of** ✗", "src": ["g1"]},
+  "conR": {"hl": ["a low price"], "w": "price 可數單數不裸奔；沒有比較對象用 low，**lower price** ✗", "src": ["g3"]},
+  "concl": {"hl": ["discount campaigns", "everywhere"], "w": "名詞修飾名詞不加 -ing；campaigns 的 g 在 n 前；everywhere 一個字", "src": ["g4", "s2"]},
+  "stance": {"hl": ["the key"], "w": "唯一的關鍵用 the，**a key** ✗；同③ the key to marketing", "src": ["g2"]},
+  "reason": {"hl": ["loyalty", "long-term"], "w": "loyalty 不可數不加 s；長期＝long-term（對照⑨ short-term）", "src": ["g5"]},
+  "does": {"hl": ["firm’s", "for quality"], "w": "所有格 firm’s；以…出名＝reputation for；quality 別打成 **quailty** ✗", "src": ["g6", "s3"]},
+  "result": {"hl": ["steady"], "w": "steady 的 ea 同 ready／head，**stady** ✗", "src": ["s4"]},
+  "impl": {"hl": ["long-term value"], "w": "value 抽象不可數，不加 a", "src": ["g7"]},
+  "final": {"hl": ["more than", "short-term"], "w": "than 要配 more；shorten 是動詞，短期＝short-term", "src": ["g8"]}
+ },
+ "ok": ["cond", "resA", "resB", "rec"],
+ "top3": [
+  {"t": "字母亂序", "b": "reputation 錯四次，分三段打 repu-ta-tion（①③⑪⑭⑯⑰ 都有）；還有 focus、quality、campaigns、customers", "src": ["s0", "s1", "s3", "s2", "s5"]},
+  {"t": "不可數不加 a／s", "b": "⑫ customer loyalty、⑯ long-term value", "src": ["g5", "g7"]},
+  {"t": "介系詞搭配", "b": "③⑪ the key to marketing；⑭ reputation for quality", "src": ["g1", "g6"]}
+ ],
+ "spell": [["reputation", "reputaion", "reputaiont", "reputaiotn"], ["focus", "foucs"], ["campaigns", "campains", "campaings"], ["quality", "quailty"], ["steady", "stady"], ["customers", "coustomers", "cutomer"]],
+ "spellSrc": ["s0", "s1", "s2", "s3", "s4", "s5"],
+ "skipped": []
+}

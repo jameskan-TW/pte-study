@@ -1,0 +1,30 @@
+{
+ "o": 8,
+ "chain": {
+  "stance": "長壽是福",
+  "p1": "反方：活更久是沉重負擔 ｜ 我方：活更久是福",
+  "p2": "老人需要更多醫療照護 → 若年邁父母活更久 → 子女花更多錢在醫生、藥、照護 → 全家財務壓力 → 年輕人會擔心未來",
+  "p3": "人有更多時間陪家人 → James 保持健康、每年健檢 → 多陪家人 → **多相處讓全家和諧**",
+  "p4": "活更久是福 ｜ 建議：老人保持健康"
+ },
+ "slots": {
+  "topic": {"hl": ["living longer", "medical"], "w": "改單數 living longer 才配模板 has；句中 **Medical** ✗ 要小寫", "src": ["g0", "s0"]},
+  "con": {"hl": ["financial burdens"], "w": "burden 可數，要 a 或加 s，**heavy financial burden** ✗", "src": ["g1"]},
+  "resA": {"hl": ["money"], "w": "花的是 money，**budget** 是預算 ✗", "src": ["g2"]},
+  "resB": {"hl": ["pressure on"], "w": "pressure 不可數不加 a；介系詞 on，**burden for** ✗", "src": ["g3"]},
+  "concl": {"hl": ["would worry"], "w": "worry 是動詞，**are worry** ✗；假設的後果用 would", "src": ["g4"]},
+  "reason": {"hl": ["people", "to spend"], "w": "time to＋原形，**time so spend** ✗；**peopele** ✗", "src": ["g5", "s1"]},
+  "does": {"hl": ["stays healthy", "has annual check-ups"], "w": "**keeps stay** ✗；健檢用 has 不加 the；**heathy／anual／cheks-up** ✗", "src": ["g6", "g7", "s2", "s3", "s4"]},
+  "final": {"hl": ["living longer is"], "w": "照抄 P1 立場句；**advances and longer life is** ✗ 複數配 is", "src": ["g9"]},
+  "rec": {"hl": ["stay"], "w": "crucial that＋原形，沒 should 沒 to，**should to stay** ✗", "src": ["g10"]}
+ },
+ "ok": [],
+ "top3": [
+  {"t": "動詞形態", "b": "⑩ would worry（不是 are worry）、⑭ stays（不是 keeps stay）、⑱ stay（不是 should to）", "src": ["g4", "g6", "g10"]},
+  {"t": "主詞單數配 has／is", "b": "①⑰ 用 living longer 當主詞，別寫 advances and longer life", "src": ["g0", "g9"]},
+  {"t": "冠詞看可不可數", "b": "④ burden 可數要 a 或 s；⑨ pressure 不可數；⑭ check-ups 泛指不加 the", "src": ["g1", "g3", "g7"]}
+ ],
+ "spell": [["people", "peopele"], ["healthy", "heathy"], ["annual", "anual"], ["check-ups", "cheks-up"]],
+ "spellSrc": ["s1", "s2", "s3", "s4"],
+ "skipped": ["g8：範文已改寫（⑮ 改成 spend more quality time，his family gets 不在 18 格）"]
+}

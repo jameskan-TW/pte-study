@@ -1,0 +1,32 @@
+{
+ "o": 37,
+ "chain": {
+  "stance": "同意：外語應該列為必修",
+  "p1": "反方：學校不該逼學生學新語言 ｜ 我方：外語應該是必修科目",
+  "p2": "必修語言課增加壓力 → 學生課業已經很重 → 學校再加一科 → 學生可能沮喪焦慮 → 學習興趣變低 → 改課程要小心規劃",
+  "p3": "語言打開通往其他文化的門 → James 在學校學過外語 → 講話有自信、跟不同背景的人處得好 → 外國客戶多、收入穩 → **溫暖穩定的家，家庭和諧**",
+  "p4": "學校應把外語列必修 ｜ 建議：課程有趣又實用，減少壓力"
+ },
+ "slots": {
+  "topic": {"hl": ["make", "required"], "w": "make＋東西＋變成什麼，不加 as；required 要 -d", "src": ["g0", "s0"]},
+  "vb": {"hl": ["required"], "w": "必修＝required，**the main subject** ✗（主科）", "src": ["g1"]},
+  "con": {"hl": ["classes add pressure"], "w": "沒特指的壓力不加 the；複數主詞免 +s 免 will", "src": ["g2"]},
+  "conR": {"hl": ["already have"], "w": "already 放動詞前；學生當主詞，跟下一句一致", "src": ["g3"]},
+  "resA": {"hl": ["feel", "anxious"], "w": "主詞是學生 → feel＋形容詞，**lead to upset and anxiety** ✗", "src": ["g4"]},
+  "resB": {"hl": ["interest in"], "w": "興趣用 in，**interest on** ✗ 是利息", "src": ["g5"]},
+  "concl": {"hl": ["change to", "courses needs", "careful planning"], "w": "any change 單數 → needs；對…的改變用 change to；形容詞放名詞前", "src": ["g6", "g7", "g8"]},
+  "stance": {"hl": ["a required"], "w": "必修課很多門，外語是其中一門 → a，**the required** ✗", "src": ["g9"]},
+  "impl": {"hl": ["skills bring", "a steady", "a warm"], "w": "skills 複數免 +s；A, B and C 只用一個 and；每樣各要 a（連漏 3 次）", "src": ["g10", "g11"]},
+  "final": {"hl": ["should make"], "w": "I believe that 後要自己寫 should；make 後不加 as（P4 又犯）", "src": ["g12", "g0"]},
+  "rec": {"hl": ["courses", "fun", "to reduce"], "w": "courses 複數；fun 形容詞；to 接原形 reduce，**to losing** ✗", "src": ["g13"]}
+ },
+ "ok": ["cond", "subj", "jv"],
+ "top3": [
+  {"t": "make … 不加 as", "b": "①⑰ make foreign languages a required subject（P4 又犯一次）", "src": ["g0"]},
+  {"t": "冠詞 a", "b": "⑪ a required subject（不是 the）；⑯ a steady income、a warm and stable home（連漏 3 次）", "src": ["g9", "g11"]},
+  {"t": "any＋單數 → +s", "b": "⑩ any change … needs：主詞是 change 不是 courses", "src": ["g6", "g7"]}
+ ],
+ "spell": [["required", "require"]],
+ "spellSrc": ["s0"],
+ "skipped": []
+}

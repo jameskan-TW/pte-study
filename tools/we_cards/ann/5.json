@@ -1,0 +1,33 @@
+{
+ "o": 5,
+ "chain": {
+  "stance": "同意：家長應負法律責任",
+  "p1": "反方：這責任對家長不公平 ｜ 我方：家長應負法律責任",
+  "p2": "孩子可能不聽話 → 若家長每個錯都被罰 → 沮喪焦慮 → 壞脾氣傷害家庭 → 有人覺得規定太嚴",
+  "p3": "法律責任逼家長用心教孩子 → James 從小被父母細心引導 → 好成績、好工作、穩定收入 → **用心教養讓全家和諧**",
+  "p4": "這規定利大於弊 ｜ 建議：法律也提供育兒支援"
+ },
+ "slots": {
+  "con": {"hl": ["puts heavy pressure on", "parents"], "w": "單數 → puts；給壓力＝put pressure on；**parensts** ✗", "src": ["g1", "s0"]},
+  "cond": {"hl": ["are punished", "for every mistake"], "w": "被動要 are；因錯被罰用 for；every 後單數（連錯兩次）", "src": ["g2", "g3"]},
+  "resA": {"hl": ["upset and anxious"], "w": "feel 後接形容詞，**depress and anxiety** ✗", "src": ["g4"]},
+  "resB": {"hl": ["a bad temper", "hurts"], "w": "這格要名詞片語，**lose their temper and hurt** ✗；**huts** ✗ 漏 r", "src": ["g5", "s2"]},
+  "concl": {"hl": ["strict"], "w": "結尾是 ct，**strick** ✗", "src": ["s3"]},
+  "stance": {"hl": ["take legal responsibility"], "w": "固定片語不加 the，**take the legal responsibility** ✗（兩次）", "src": ["g0"]},
+  "reason": {"hl": ["pushes", "to guide", "with care"], "w": "單數 → pushes；push 人 to do；管教＝guide，用心＝with care", "src": ["g6", "g7", "g8"]},
+  "does": {"hl": ["was"], "w": "被動要 be 動詞，小時候 → was，**guided by his parents** ✗", "src": ["g9"]},
+  "result": {"hl": ["high", "a steady income"], "w": "漏過 high；a good job with a steady income 整組背，a 別漏", "src": ["g10", "g11"]},
+  "impl": {"hl": ["careful", "keeps", "the whole family", "in harmony"], "w": "單數 → keeps；the whole family 整組（**hole** ✗）；**carful** ✗", "src": ["g12", "g13", "s4", "s5"]},
+  "final": {"hl": ["more good than harm"], "w": "⚠ 立場打反過！同意方＝good than harm，**more harm than good** ✗", "src": ["g14"]},
+  "rec": {"hl": ["also", "parenting support"], "w": "漏過 also、parenting support；原形 provide；**suppot** ✗", "src": ["g15", "s6"]}
+ },
+ "ok": [],
+ "top3": [
+  {"t": "⑰ 立場別打反", "b": "同意方＝does more good than harm；寫反整篇自打嘴巴", "src": ["g14"]},
+  {"t": "漏 r 拼字", "b": "⑨ hurts（huts）、⑱ support（suppot）：打完回頭找 r", "src": ["s2", "s6"]},
+  {"t": "the／every 單數", "b": "⑪ take legal responsibility 不加 the；⑥ every mistake 單數。各錯兩次", "src": ["g0", "g3"]}
+ ],
+ "spell": [["parents", "parensts"], ["lose", "loose"], ["hurts", "huts"], ["strict", "strick"], ["whole", "hole"], ["careful", "carful"], ["support", "suppot"]],
+ "spellSrc": ["s0", "s1", "s2", "s3", "s4", "s5", "s6"],
+ "skipped": []
+}

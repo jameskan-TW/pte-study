@@ -1,0 +1,151 @@
+{
+ "o": 7,
+ "chain": {
+  "stance": "提升大眾運輸比多修路重要",
+  "p1": "反方：多修路能解決塞車 ｜ 我方：提升大眾運輸更重要",
+  "p2": "多修路暫時減少塞車 → 路寬車流順 → 若路變多 → 駕駛省下路上時間 → 多陪家人 → 很多城市一直修路",
+  "p3": "搭車時可以休息 → James 每天搭捷運上班 → 路上壓力少 → **心情好回家，全家和諧**",
+  "p4": "大眾運輸更重要 ｜ 建議：政府投更多錢在大眾運輸"
+ },
+ "slots": {
+  "topic": {
+   "hl": [
+    "building",
+    "improving"
+   ],
+   "w": "動詞當主詞一律 -ing，**build／improve** ✗",
+   "src": [
+    "r0"
+   ]
+  },
+  "conR": {
+   "hl": [
+    "let cars move"
+   ],
+   "w": "roads 複數不加 s；let／make 後原形 move，**driving** ✗",
+   "src": [
+    "r1",
+    "r2"
+   ]
+  },
+  "resB": {
+   "hl": [
+    "more quality time"
+   ],
+   "w": "leading to 後只接名詞，**back to home and have…** ✗",
+   "src": [
+    "r3"
+   ]
+  },
+  "reason": {
+   "hl": [
+    "during the ride"
+   ],
+   "w": "搭車途中＝during the ride，**the time in transportation** ✗",
+   "src": [
+    "r12",
+    "r7"
+   ]
+  },
+  "does": {
+   "hl": [
+    "the metro"
+   ],
+   "w": "take the metro／by metro 冠詞相反，**takes metro** ✗",
+   "src": [
+    "r6"
+   ]
+  },
+  "result": {
+   "hl": [
+    "stress"
+   ],
+   "w": "stress 拼字 s-t-r-e-s-s；able to 後原形 feel",
+   "src": [
+    "r13"
+   ]
+  },
+  "impl": {
+   "hl": [
+    "goes home",
+    "in a better mood",
+    "keeps",
+    "harmony"
+   ],
+   "w": "go home 無 to；心情用 in 非 with；keeps 要 s 不用 let；harmony 無 e",
+   "src": [
+    "r4",
+    "r8",
+    "r9",
+    "r10",
+    "r13"
+   ]
+  },
+  "rec": {
+   "hl": [
+    "in"
+   ],
+   "w": "投資固定 invest in，**invest on** ✗",
+   "src": [
+    "r11"
+   ]
+  }
+ },
+ "ok": [
+  "cond",
+  "subj",
+  "resA",
+  "concl",
+  "stance",
+  "jv",
+  "jn",
+  "final"
+ ],
+ "top3": [
+  {
+   "t": "冠詞：the metro／the ride",
+   "b": "⑭ takes the metro（by metro 零冠詞，剛好相反）；⑫ during the ride；⑮ 掉過 the",
+   "src": [
+    "r6",
+    "r7"
+   ]
+  },
+  {
+   "t": "let／make 後原形",
+   "b": "⑤ let cars move；make 也一樣，不加 be、不加 -ing",
+   "src": [
+    "r2"
+   ]
+  },
+  {
+   "t": "in a better mood",
+   "b": "⑯ 心情用 in 不用 with，錯第二次",
+   "src": [
+    "r8"
+   ]
+  }
+ ],
+ "spell": [
+  [
+   "transportation"
+  ],
+  [
+   "firm",
+   "film"
+  ],
+  [
+   "stress"
+  ],
+  [
+   "harmony"
+  ],
+  [
+   "earlier"
+  ]
+ ],
+ "spellSrc": [
+  "r13",
+  "r5"
+ ],
+ "skipped": []
+}

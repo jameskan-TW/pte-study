@@ -1,0 +1,30 @@
+{
+ "o": 11,
+ "chain": {
+  "stance": "工作生活平衡最重要，要擺第一",
+  "p1": "反方：應該更專注工作 ｜ 我方：工作生活平衡更重要",
+  "p2": "這一代很難平衡 → 職場充滿壓力焦慮 → 若更拚命工作 → 升遷加薪 → 陪家人時間變少 → 很多人把錢擺第一、忽略家庭",
+  "p3": "平衡是第一優先 → **錢買不到幸福家庭** → James 現在多陪家人 → 身心健康 → 好的平衡讓他工作更有效率",
+  "p4": "工作生活平衡很重要 ｜ 建議：別再加班、多陪家人"
+ },
+ "slots": {
+  "va": {"hl": ["pay more attention to"], "w": "固定 pay attention to（**put…on** ✗）；attention 字尾 -tion", "src": ["g0", "s0"]},
+  "vb": {"hl": ["is"], "w": "句子要有動詞 is（打成 **in** ✗）", "src": ["g1"]},
+  "con": {"hl": ["keeping"], "w": "動詞當主詞要 -ing：**keep** work-life balance is ✗", "src": ["g2"]},
+  "conR": {"hl": ["full of"], "w": "名詞不能直接接 are：**are stress** ✗ → are full of", "src": ["g3"]},
+  "resA": {"hl": ["a promotion", "a higher income"], "w": "兩個可數名詞各要 a（**get promotion** ✗）", "src": ["g4"]},
+  "reason": {"hl": ["money"], "w": "錢買不到 → 主詞是 money；換基礎字 a happy family", "src": ["g7"]},
+  "result": {"hl": ["healthy", "mind"], "w": "healthy 有 l（**heathy** ✗）；固定 in body and mind，**mental** ✗", "src": ["s2", "g8"]},
+  "impl": {"hl": ["boosts"], "w": "and 後第二個動詞也跟主詞 → boosts", "src": ["g9"]},
+  "rec": {"hl": ["working"], "w": "stop＋-ing → stop working；crucial that 後 stop 原形", "src": ["g10"]}
+ },
+ "ok": [],
+ "top3": [
+  {"t": "詞性穿錯衣服", "b": "⑤ are full of stress（名詞不能直接接 are）；⑮ in body and mind（mental 是形容詞）", "src": ["g3", "g8"]},
+  {"t": "a 不能掉", "b": "⑧ a promotion and a higher income，兩個可數名詞各要 a", "src": ["g4"]},
+  {"t": "and 後的動詞也要 s", "b": "⑯ makes him more efficient and boosts", "src": ["g9"]}
+ ],
+ "spell": [["attention", "attentoin"], ["lose", "loose"], ["healthy", "heathy"]],
+ "spellSrc": ["s0", "s1", "s2"],
+ "skipped": ["g5：範文已改寫，succeed in their careers 不在 18 格裡", "g6：範文已改寫，family relationships 不在 18 格裡"]
+}

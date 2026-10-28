@@ -1,0 +1,32 @@
+{
+ "o": 4,
+ "chain": {
+  "stance": "好設計好處大於壞處",
+  "p1": "反方：壞設計帶來傷害 ｜ 我方：好設計帶來好影響",
+  "p2": "壞設計帶來壓力和焦慮 → 若住陰暗狹小的房間 → 沮喪焦慮 → 壞脾氣傷害家庭 → 很多人搬離那種地方",
+  "p3": "舒適空間幫人專注 → James 整天在明亮、設計好的辦公室 → 專注、為家人賺穩定收入 → **事業穩，家溫暖穩定**",
+  "p4": "建築設計好處大於壞處 ｜ 建議：設計師注重舒適和空間怎麼用"
+ },
+ "slots": {
+  "va": {"hl": ["leads to"], "w": "lead 接名詞一定要 to，**leads harm** ✗", "src": ["g0"]},
+  "vb": {"hl": ["effects"], "w": "漏過名詞 effects（複數 s），**brings good** ✗", "src": ["g1"]},
+  "con": {"hl": ["bad effects"], "w": "**bas effects** ✗ 手滑；effects 複數", "src": ["s0"]},
+  "conR": {"hl": ["leads to", "anxiety"], "w": "不用 will；and 兩邊都要名詞，**stress and anxious** ✗", "src": ["g2"]},
+  "resB": {"hl": ["a bad temper", "that hurts families"], "w": "and it 換成 that（錯兩次）；temper 單數 → hurts；**familu** ✗", "src": ["g3", "g4", "s1"]},
+  "concl": {"hl": ["move away from"], "w": "漏過動詞 move；**move out these places** ✗（要 out of）", "src": ["g5", "g6"]},
+  "reason": {"hl": ["helps", "focus"], "w": "主詞單數 → helps；help 人＋原形 focus，不加 s；**fpcus** ✗", "src": ["g7", "s2"]},
+  "does": {"hl": ["all day"], "w": "**all dat** ✗ 手滑", "src": ["s3"]},
+  "result": {"hl": ["stay focused", "a steady income"], "w": "keep 不接原形 → stay focused；a steady income 的 a 漏兩次", "src": ["g8", "g9"]},
+  "impl": {"hl": ["good design supports careers"], "w": "泛指設計不加 a；單數 → supports；大家的事業 careers", "src": ["g10"]},
+  "rec": {"hl": ["comfort", "how people use"], "w": "focus on＋名詞 comfort；**the way of how** ✗ 二選一", "src": ["g11", "g12"]}
+ },
+ "ok": [],
+ "top3": [
+  {"t": "形容詞 vs 名詞", "b": "⑤ stress and anxiety（不是 anxious）、⑱ focus on comfort（不是 comfortable）", "src": ["g2", "g11"]},
+  {"t": "and it → that", "b": "⑨ a bad temper that hurts families：leading to 後只能放名詞，錯兩次", "src": ["g4", "g3"]},
+  {"t": "a 別漏、單數 +s", "b": "⑮ a steady income 漏兩次；⑫ helps、⑯ supports", "src": ["g9", "g7", "g10"]}
+ ],
+ "spell": [["bad", "bas"], ["families", "familu"], ["focus", "fpcus"], ["day", "dat"]],
+ "spellSrc": ["s0", "s1", "s2", "s3"],
+ "skipped": []
+}

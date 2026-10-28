@@ -1,0 +1,32 @@
+{
+ "o": 27,
+ "chain": {
+  "stance": "問題較大：老戲劇課擠壓讀書時間",
+  "p1": "反方：老戲劇該在學校教 ｜ 我方：教老戲劇弊大於利",
+  "p2": "老故事教歷史和人的行為 → 若學生讀老戲劇 → 看到過去的人怎麼生活 → 視野更開闊 → 難怪有些學校稱讚戲劇課",
+  "p3": "排練佔走主科時間 → James 讀大學、把時間全放主科 → 高分、好工作穩定收入 → **專注主科帶來好前途和溫暖穩定的家**",
+  "p4": "教老戲劇弊大於利 ｜ 建議：戲劇只當選修課"
+ },
+ "slots": {
+  "topic": {"hl": ["high schools"], "w": "泛指可數名詞一律複數 → high schools", "src": ["g0"]},
+  "vb": {"hl": ["teaching", "does"], "w": "整句不能當主詞，用動名詞 teaching；固定 does more harm，**has** ✗", "src": ["g6", "g7"]},
+  "conR": {"hl": ["old stories"], "w": "漏過 s → old stories", "src": ["g0"]},
+  "cond": {"hl": ["study"], "w": "課程內容用 study 直接接；learn 接技能或 learn about", "src": ["g3"]},
+  "resB": {"hl": ["view of life"], "w": "視野線固定收尾別換字，**a broader life experience** ✗", "src": ["g12"]},
+  "concl": {"hl": ["schools praise", "drama courses"], "w": "兩個都要 s、不加 the；普遍情況用現在式 praise，**praised** ✗", "src": ["g0", "g1", "g2"]},
+  "reason": {"hl": ["from"], "w": "from＝從主科搶走時間；**on** ✗ 意思變相反", "src": ["g4"]},
+  "does": {"hl": ["puts all his time into"], "w": "study 不接 on，**studies hard on** ✗；新版 puts … into", "src": ["g5"]},
+  "result": {"hl": ["high grades", "with a steady income"], "w": "grades 要 s；find 管到底不加 have；steady income 的 a 不能漏", "src": ["g0", "g8"]},
+  "impl": {"hl": ["a warm and stable home"], "w": "leads to A and B 兩個名詞，中間不塞 have；home 不換 family（錯 2 次）", "src": ["g9", "g10"]},
+  "rec": {"hl": ["offer", "only", "optional class"], "w": "make 不接 as → offer；optional 是形容詞要接 class；only 漏過兩次", "src": ["g13"]}
+ },
+ "ok": [],
+ "top3": [
+  {"t": "泛指可數名詞打複數", "b": "① high schools、⑤ old stories、⑩ some schools／drama courses、⑮ high grades。漏 s 五次", "src": ["g0"]},
+  {"t": "不要多塞動詞 have", "b": "⑮ find a good job with…；⑯ leads to A and B，一個動詞管到底。錯兩次", "src": ["g8", "g9"]},
+  {"t": "固定片語別換字", "b": "⑨ a broader view of life；⑯ a warm and stable home；③⑪⑰ does more harm than good", "src": ["g12", "g10", "g7"]}
+ ],
+ "spell": [["too much", "to much"]],
+ "spellSrc": ["s0"],
+ "skipped": ["g11：範文已改寫，academic performance 不在 18 格裡（抽象不可數，不加 a）"]
+}

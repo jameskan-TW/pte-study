@@ -1,0 +1,26 @@
+{
+ "o": 9,
+ "chain": {
+  "stance": "扣分公平；有正當理由可以多給時間",
+  "p1": "反方：這處罰對學生太嚴 ｜ 我方：扣分公平又必要",
+  "p2": "每個人都可能出意外 → 若學生出車禍 → 可能沒辦法準時交 → 被當 → 有人要更彈性的規定",
+  "p3": "期限養成自律等好習慣 → James 大學總是準時交作業 → 好成績、好工作、穩定收入 → **更好的前途＋溫暖穩定的家**",
+  "p4": "這規定公平 ｜ 建議：有正當理由，學校多給時間"
+ },
+ "slots": {
+  "va": {"hl": ["on students"], "w": "harsh／strict on 人，泛指用複數，**harsh for student** ✗", "src": ["g2"]},
+  "cond": {"hl": ["a student"], "w": "可數單數要 a，**If student has** ✗", "src": ["g1"]},
+  "resB": {"hl": ["failing the course"], "w": "fail＋受詞，**failing on this course** ✗；**failling** ✗", "src": ["g3", "s2"]},
+  "result": {"hl": ["high grades"], "w": "泛指不加 the、要複數，**the good score** ✗", "src": ["g5"]},
+  "rec": {"hl": ["schools"], "w": "schools 複數；crucial that 後原形，**school should set** ✗", "src": ["g8"]}
+ },
+ "ok": [],
+ "top3": [
+  {"t": "冠詞／單複數", "b": "⑥ a student、③ on students、⑮ grades、⑱ schools；not a big issue 也漏過 a", "src": ["g1", "g2", "g5", "g8", "g0"]},
+  {"t": "不完整句", "b": "Because…／If… 子句不能自己一句，要接回主句", "src": ["g4", "g7"]},
+  {"t": "concern 黑名單", "b": "模板 a matter of concern，r 在 n 前，**concenr** ✗", "src": ["s0"]}
+ ],
+ "spell": [["concern", "concenr"], ["leading", "leadind"], ["failing", "failling"], ["really", "reaally"]],
+ "spellSrc": ["s0", "s1", "s2", "s3"],
+ "skipped": ["g6：範文已改寫（⑧ 改成 fail to submit his work on time，a few days late 不在 18 格）"]
+}

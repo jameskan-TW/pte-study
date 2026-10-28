@@ -1,0 +1,31 @@
+{
+ "o": 21,
+ "chain": {
+  "stance": "負面為主：資訊革命弊大於利",
+  "p1": "反方：資訊革命利大於弊 ｜ 我方：弊大於利",
+  "p2": "幾秒拿到全世界的新聞 → 若每天用手機看新聞 → 知道世界在發生什麼 → 視野更開闊 → 難怪很多人視它為一大進步",
+  "p3": "資訊太多、假新聞 → 壓力焦慮 → James 整晚一直看手機新聞 → 沒法放鬆、沒法陪家人 → **太多新聞讓人發脾氣、傷害家庭關係**",
+  "p4": "資訊革命弊大於利 ｜ 建議：學會判斷新聞、限制螢幕時間"
+ },
+ "slots": {
+  "topic": {"hl": ["the"], "w": "特指這場革命要加 the（①漏過、後面又漏一次）", "src": ["g0"]},
+  "con": {"hl": ["consequences"], "w": "some 後面接複數 → consequences", "src": ["g1"]},
+  "cond": {"hl": ["read", "on their phones", "every day"], "w": "看新聞用 read；on their phones（不用 by，s 掉兩次）；every day 分開、不能漏", "src": ["g2", "g3", "g4", "g5"]},
+  "resA": {"hl": ["happening"], "w": "happen＋ing：e 不去、n 不雙寫，**happing** ✗", "src": ["s0"]},
+  "concl": {"hl": ["see", "as", "step forward"], "w": "視為＝see A as B（**seem** ✗）；進步＝step forward，漏過 forward", "src": ["g6", "s1"]},
+  "reason": {"hl": ["much", "stress and anxiety"], "w": "information 不可數用 much；②線片語 stress and anxiety，**pressure** ✗", "src": ["g7", "g8", "s2"]},
+  "does": {"hl": ["checking", "all evening"], "w": "keep＋-ing → checking；下班在家是 evening，**all night** ✗ 是通宵", "src": ["g9", "g10"]},
+  "result": {"hl": ["at home or", "family"], "w": "unable to 兩件都做不到用 or，漏過 at home；一個家 → family", "src": ["g12", "g11"]},
+  "impl": {"hl": ["much", "lose their temper", "relationships"], "w": "news 不可數用 much；發脾氣＝lose their temper；family relationships 去 the 加 s", "src": ["g13", "g14", "g15", "s3"]},
+  "rec": {"hl": ["screen time"], "w": "螢幕時間＝screen time，**time of screen** ✗", "src": ["g16"]}
+ },
+ "ok": [],
+ "top3": [
+  {"t": "複數 s 別掉", "b": "⑥ on their phones、⑯ family relationships 各掉兩次；④ some＋複數 consequences", "src": ["g3", "g15", "g1"]},
+  {"t": "不可數用 much", "b": "⑫ too much information、⑯ too much news，不是 too many", "src": ["g7", "g13"]},
+  {"t": "the information revolution", "b": "① 漏過 the；②④⑩⑪⑰ 都是同一組字，the 都不能掉", "src": ["g0"]}
+ ],
+ "spell": [["happening", "happing"], ["see", "seem"], ["anxiety", "axniety"], ["relationships", "relationshio"]],
+ "spellSrc": ["s0", "s1", "s2", "s3"],
+ "skipped": []
+}

@@ -1,0 +1,34 @@
+{
+ "o": 19,
+ "chain": {
+  "stance": "大致同意：筆試仍是公平的測驗方式",
+  "p1": "反方：筆試測不出真實能力 ｜ 我方：筆試仍然公平",
+  "p2": "一切看一次表現 → 若一試定生死 → 學生沮喪焦慮 → 表現低於真實水準 → 難怪常有人討論改考試",
+  "p3": "筆試用公平的方式考知識 → James 讀大學、一步步準備筆試 → 高分、好工作穩定收入 → **公平的考試帶來好前途和溫暖穩定的家**",
+  "p4": "筆試是測學生的好方法 ｜ 建議：學校保留筆試當主要測驗方式"
+ },
+ "slots": {
+  "topic": {"hl": ["the written exam"], "w": "exam 可數不能裸奔（the exam／exams）；寫過 **Whether written examination** ✗", "src": ["g0"]},
+  "va": {"hl": ["fail", "students’"], "w": "fail 是動詞，前面不加 are（**are fail** ✗）；很多學生 → students’ 撇號在 s 後", "src": ["g2", "g1"]},
+  "vb": {"hl": ["are"], "w": "fair 是形容詞，前面一定要 are（跟②剛好相反）", "src": ["g3"]},
+  "conR": {"hl": ["depends"], "w": "every- 家族一律單數 → depends；沒有 everythings", "src": ["g4"]},
+  "resA": {"hl": ["feel", "anxious"], "w": "feel＋形容詞 anxious；寫過 **lead to upset and anxiety** ✗（模板字串過來）", "src": ["g5"]},
+  "resB": {"hl": ["performance", "below"], "w": "名詞 performance（-ance）；低於用 below，**performing less than** ✗", "src": ["g6"]},
+  "concl": {"hl": ["often", "talk about changing", "exams"], "w": "常常＝often；兩個動詞撞在一起 → talk about＋-ing；exam 不裸奔 → exams", "src": ["g7", "g8"]},
+  "stance": {"hl": ["are"], "w": "同③：are 不能漏", "src": ["g3"]},
+  "does": {"hl": ["prepares", "for"], "w": "James 後面 +s；準備考試要 for，沒 for 是「出考題」", "src": ["g9"]},
+  "result": {"hl": ["steady"], "w": "steady 配 income、stable 配 home，**a stable income** ✗（#13 也串過）", "src": ["g10"]},
+  "impl": {"hl": ["exams lead"], "w": "exam 不裸奔 → exams，複數動詞去 s（**fair exam leads** ✗）", "src": ["g11"]},
+  "final": {"hl": ["exams are", "a good way"], "w": "exams 複數 → are；立場是「仍公平」，**the best way** ✗ 太滿", "src": ["g12"]},
+  "rec": {"hl": ["written exams", "way to test students"], "w": "泛指複數不加 the；way to test students 跟⑰同一組字", "src": ["g13"]}
+ },
+ "ok": [],
+ "top3": [
+  {"t": "exam 不裸奔 → 一律打 exams", "b": "可數名詞泛指打複數，動詞跟著去 s：⑩ changing exams、⑯ exams lead、⑰ exams are。本篇錯四次", "src": ["g0", "g8", "g11", "g12"]},
+  {"t": "be 動詞有無", "b": "② fail 是動詞，不加 are；③⑪ fair 是形容詞，一定要 are", "src": ["g2", "g3"]},
+  {"t": "先找主詞再決定 s", "b": "⑤ everything depends（every- 單數）、⑭ James prepares", "src": ["g4", "g9"]}
+ ],
+ "spell": [],
+ "spellSrc": [],
+ "skipped": []
+}

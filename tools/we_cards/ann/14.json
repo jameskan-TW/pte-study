@@ -1,0 +1,30 @@
+{
+ "o": 14,
+ "chain": {
+  "stance": "同意：先唸完書、有工作再結婚",
+  "p1": "反方：愛比時機重要 ｜ 我方：有穩定工作再結婚",
+  "p2": "早婚能給夫妻支持 → 互相鼓勵度過難關 → 若早婚 → 比較不孤單 → 困難時安心 → 有些早婚確實很幸福",
+  "p3": "學業和工作優先 → 穩定收入讓婚姻穩固 → James 唸完書、找到工作才結婚 → 建立沒有金錢煩惱的溫暖穩定的家 → **穩定職涯撐起幸福婚姻**",
+  "p4": "太早結婚不明智 ｜ 建議：年輕人先唸完書、找到工作再結婚"
+ },
+ "slots": {
+  "topic": {"hl": ["marrying"], "w": "① 是句子主詞 → -ing：marrying（**married** ✗）", "src": ["g0"]},
+  "va": {"hl": ["more than timing"], "w": "比…重要＝more than（**on time** ✗ 是準時）；timing 去 e", "src": ["g1", "s1"]},
+  "vb": {"hl": ["they", "job"], "w": "that 不能當主詞 → they；job 的 j 別漏（**ob** ✗）", "src": ["g2", "s0"]},
+  "con": {"hl": ["young", "support"], "w": "重點是「早」婚，young 不能漏；support＝sup＋port", "src": ["g3", "s2"]},
+  "conR": {"hl": ["encourage", "through"], "w": "撐過一段時期用 through（**at** ✗）；support 跟④重複 → encourage", "src": ["g4"]},
+  "resB": {"hl": ["peace", "hard times"], "w": "leading to 後直接接名詞，不加 having；peace 不是 peach", "src": ["g5", "s3"]},
+  "concl": {"hl": ["early", "work well"], "w": "婚姻用 early（young 形容人）；work well 沒有連字號", "src": ["g6"]},
+  "does": {"hl": ["married"], "w": "James 做過一次的事用過去式 married（**gets married** ✗）", "src": ["g8"]},
+  "result": {"hl": ["build"], "w": "able to 後永遠原形 build（**built** ✗）", "src": ["g9"]}
+ },
+ "ok": ["impl", "rec"],
+ "top3": [
+  {"t": "⑭ 過去式、⑮ 原形", "b": "⑭ As James married…（做過一次的事）；⑮ he is able to build（to 後原形）", "src": ["g8", "g9"]},
+  {"t": "時期用 through／in", "b": "⑤ through hard times、⑨ in hard times；at 只接時間點", "src": ["g4", "g5"]},
+  {"t": "一字之差改意思", "b": "② more than timing（on time＝準時）；④⑩ 一定要有「早」：young／early", "src": ["g1", "g3", "g6"]}
+ ],
+ "spell": [["job", "ob"], ["timing", "timeing"], ["support", "suppurt"], ["peace", "peach"]],
+ "spellSrc": ["s0", "s1", "s2", "s3"],
+ "skipped": ["g7：範文已改寫，⑪ 現在是 studies and a job，work 不在格裡"]
+}

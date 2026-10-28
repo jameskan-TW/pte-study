@@ -1,0 +1,32 @@
+{
+ "o": 12,
+ "chain": {
+  "stance": "工作太多很普遍，而且後果嚴重",
+  "p1": "反方：應該更專注工作 ｜ 我方：工作太多造成嚴重問題",
+  "p2": "這一代過勞很普遍 → 多數人相信拚命工作才會成功 → 若更拚命 → 升遷加薪 → 更好的前途 → 各行各業都看得到加班",
+  "p3": "過勞奪走陪家人的時間 → James 不再加班、多陪家人 → 身心健康、全家和樂 → **加班多賺的錢買不到幸福家庭**",
+  "p4": "過勞對家庭弊大於利 ｜ 建議：別再加班、多陪家人"
+ },
+ "slots": {
+  "topic": {"hl": ["working"], "w": "① 要名詞片語 people working；**people works** ✗", "src": ["g0"]},
+  "va": {"hl": ["attention to"], "w": "第 4 次錯 **on**：注意力付給對象，永遠 to", "src": ["g1"]},
+  "vb": {"hl": ["working too much causes"], "w": "沿用①的字；V-ing 主詞算單數 → causes；cause 是 c-a-u-s-e", "src": ["g2", "s1"]},
+  "conR": {"hl": ["believe", "harder", "success"], "w": "that 後要真動詞 believe（**believing** ✗）；hard 不加 s", "src": ["g3", "s0"]},
+  "resA": {"hl": ["a promotion", "a higher income"], "w": "get 後接名詞 promotion（**promote** ✗）；兩個都要 a", "src": ["g4"]},
+  "concl": {"hl": ["is seen", "every job"], "w": "加班「被看到」→ is seen；work 不可數，**works** ✗ 是作品", "src": ["g5"]},
+  "stance": {"hl": ["working too much", "serious problems"], "w": "表態句③⑪同一句，別換成 working overtime", "src": ["g6"]},
+  "reason": {"hl": ["takes away"], "w": "it 單數 → takes；away 有 a（**take way** ✗）；一句一個動詞", "src": ["g7", "s2"]},
+  "does": {"hl": ["and spends", "quality", "his family"], "w": "不能用斜線，and 後也 +s；quality 是 qu-a-li-ty；自己家人用 his", "src": ["g8", "s3", "g9"]},
+  "result": {"hl": ["healthy", "mind", "keep", "in harmony"], "w": "stay＋形容詞 healthy；body and mind；to 後 keep 原形；in harmony", "src": ["s4", "g10", "g11", "g12"]},
+  "impl": {"hl": ["buy", "a happy family"], "w": "buy 買／but 但是；**the happy of family** ✗ → a happy family", "src": ["s7", "g13"]}
+ },
+ "ok": ["cond", "resB", "final", "rec"],
+ "top3": [
+  {"t": "pay attention to", "b": "② 第 4 次錯成 on；注意力付給對象，永遠 to", "src": ["g1"]},
+  {"t": "形容詞／名詞別混", "b": "⑮ stay healthy in body and mind；⑯ a happy family（不是 happy of family）", "src": ["g10", "g13"]},
+  {"t": "單數主詞 +s", "b": "③⑪ working too much causes；⑫ it takes away；⑭ stops … and spends", "src": ["g2", "g7", "g8"]}
+ ],
+ "spell": [["success", "succuss"], ["cause", "cuase"], ["take away", "take way"], ["quality", "quailty"], ["healthy", "healty", "heathy"], ["boosts", "boots"], ["productivity", "produtivity"], ["buy", "but"]],
+ "spellSrc": ["s0", "s1", "s2", "s3", "s4", "s5", "s6", "s7"],
+ "skipped": ["g14：範文已改寫，舊 ⑯ 長版 more efficient 已刪"]
+}

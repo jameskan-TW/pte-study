@@ -1,0 +1,29 @@
+{
+ "o": 25,
+ "chain": {
+  "stance": "政府主責：政府應擔主要角色",
+  "p1": "反方：個人和企業應帶頭 ｜ 我方：政府應擔主要角色",
+  "p2": "大多數溫室氣體來自汽車和工廠 → 若大家少開車、工廠用潔淨能源 → 就會少排溫室氣體 → 大家有更乾淨的空氣 → 難怪很多人支持個人行動",
+  "p3": "只有政府能立法、給錢 → James 去年看到新法一出、工廠馬上減排 → 法律一嚴，公司改得很快 → **嚴格的法律讓公司改變、保護每個家庭**",
+  "p4": "政府必須擔主角 ｜ 建議：政府訂嚴格法律，個人和企業遵守"
+ },
+ "slots": {
+  "va": {"hl": ["take the lead"], "w": "should 後面要動詞，**should the lead** ✗；帶頭＝take the lead", "src": ["r10", "r0"]},
+  "conR": {"hl": ["greenhouse gas", "comes", "factories"], "w": "溫室氣體一定帶 gas、不加 the；不可數＝單數 → comes；**factorites** ✗", "src": ["r1", "r12"]},
+  "resA": {"hl": ["greenhouse gas", "into the air"], "w": "greenhouse 單獨是溫室，要帶 gas；排進空氣用 into，air 固定 the", "src": ["r1", "r3"]},
+  "resB": {"hl": ["cleaner air", "for"], "w": "air 不可數，**a clean air** ✗；更乾淨＝cleaner；給大家用 for", "src": ["r2"]},
+  "stance": {"hl": ["take the main role"], "w": "擔主角＝take the main role，③⑪⑰ 一字不差；main 前固定 the", "src": ["r0"]},
+  "does": {"hl": ["last year"], "w": "see＋受詞＋原形 → cut（問過才打對）；去年就一年，**last years** ✗", "src": ["r4", "r11"]},
+  "result": {"hl": ["a company changes", "the law is strict"], "w": "how 子句不倒裝：主詞＋動詞 +s；when 後要完整句；company 不裸奔", "src": ["r5", "r6", "r9"]},
+  "impl": {"hl": ["strict", "companies change", "every family"], "w": "make＋受詞＋原形 change；every＋單數 family（第三次）；strict 不是 strike", "src": ["r4", "r8", "r9", "r12"]},
+  "rec": {"hl": ["make", "follow"], "w": "crucial that A and B 都原形；and 後不再加 that／to", "src": ["r7"]}
+ },
+ "ok": ["topic", "vb", "con", "cond", "concl", "jv", "jn", "final"],
+ "top3": [
+  {"t": "greenhouse gas 兩字一組", "b": "⑤⑧⑭ 都要帶 gas（掉過兩次），泛指不加 the；不可數 → ⑤ gas comes", "src": ["r1"]},
+  {"t": "冠詞 a／the", "b": "⑨ air 不加 a；⑧ into the air；⑮ a company／⑯ companies 不裸奔", "src": ["r2", "r3", "r9"]},
+  {"t": "先找主詞再決定 s", "b": "⑮ a company changes；⑯ every＋單數 family（第三次）；⑭⑯ 受詞後原形 cut／change", "src": ["r5", "r8", "r4"]}
+ ],
+ "spell": [["factories", "factorites"], ["strict", "strike"]],
+ "skipped": []
+}

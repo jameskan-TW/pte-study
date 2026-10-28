@@ -1,0 +1,26 @@
+{
+ "o": 6,
+ "chain": {
+  "stance": "大商場利大於弊",
+  "p1": "反方：小店應該被保護 ｜ 我方：這趨勢利大於弊",
+  "p2": "小店讓附近居民互相認識 → 若在小店買東西 → 認識鄰居 → 不同背景的人相處融洽 → 很多人還是喜歡小店",
+  "p3": "一站式購物省時間 → James 在大商場買東西 → 省很多時間、**多陪家人** → 大商場更適合忙碌的生活",
+  "p4": "這趨勢利大於弊 ｜ 建議：城市保留空間給特色小店"
+ },
+ "slots": {
+  "topic": {"hl": ["large", "shops"], "w": "**lage** ✗ 漏 r；**shopes** ✗ 沒有 e", "src": ["s0", "s2"]},
+  "conR": {"hl": ["who live nearby"], "w": "people 後面接動作要 who，**the people live nearby** ✗", "src": ["g2"]},
+  "cond": {"hl": ["people", "at"], "w": "在店裡用 at，**on small shops** ✗；**poeple／peopel** ✗", "src": ["g1", "s5"]},
+  "does": {"hl": ["shops"], "w": "第三人稱 +s，不是進行式，**always shopping** ✗", "src": ["g4"]},
+  "rec": {"hl": [], "w": "crucial that 後直接原形，不加 should，**should provide** ✗", "src": ["g6"]}
+ },
+ "ok": [],
+ "top3": [
+  {"t": "第三人稱 +s", "b": "⑭ James shops，不是 always shopping", "src": ["g4"]},
+  {"t": "拼字錯偏多", "b": "people 兩種錯法（poeple／peopel）、large 漏 r、despite 寫成 dispect", "src": ["s5", "s0", "s7"]},
+  {"t": "小字別漏", "b": "⑤ the people who live nearby（漏過 who）；⑥ shop at（不是 on）", "src": ["g2", "g1"]}
+ ],
+ "spell": [["large", "lage"], ["further", "futher"], ["shops", "shopes"], ["crucial", "crucia"], ["convenient", "convinent"], ["people", "poeple", "peopel"], ["groceries", "grossary"], ["despite", "dispect"]],
+ "spellSrc": ["s0", "s1", "s2", "s3", "s4", "s5", "s6", "s7"],
+ "skipped": ["g0：模板句（I tend to agree more…），練默寫卡就好", "g3：範文已改寫（good connections 不在 18 格）", "g5：範文已改寫（groceries 不在 18 格；拼字放進拼字列）"]
+}

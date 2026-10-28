@@ -1,0 +1,26 @@
+{
+ "o": 3,
+ "chain": {
+  "stance": "不同意：圖書館沒有過時",
+  "p1": "反方：數位媒體讓圖書館過時 ｜ 我方：圖書館的角色取代不了",
+  "p2": "數位資料任何裝置都能用 → 若學生要找資料 → 輕鬆搜尋線上資料庫 → 短時間完成作業 → 學生更願意用數位資料",
+  "p3": "安靜圖書館最適合深度學習 → James 總在圖書館讀紙本書 → 靠自己學 → 建立理解、批判思考 → **好前途＋溫暖穩定的家**",
+  "p4": "圖書館仍然很有用 ｜ 建議：大學繼續花錢在圖書館和課本"
+ },
+ "slots": {
+  "con": {"hl": ["digital materials", "convenient"], "w": "形容詞 convenient，**convenience** ✗；**digitial／materilas** ✗", "src": ["g1", "s1", "s8"]},
+  "stance": {"hl": ["textbooks", "library"], "w": "textbooks 要複數，**with textbook** ✗；**libaby／libraby** ✗", "src": ["g4", "s4"]},
+  "does": {"hl": ["studies"], "w": "第三人稱 +s（你的罩門），**always study** ✗", "src": ["g3"]},
+  "result": {"hl": ["by himself"], "w": "靠自己＝by himself／on his own，**by his own** ✗", "src": ["g5"]},
+  "impl": {"hl": ["build", "develop critical thinking"], "w": "can＋原形 build，**built** ✗；develop critical thinking 不加 a", "src": ["g6", "g7"]}
+ },
+ "ok": [],
+ "top3": [
+  {"t": "第三人稱 +s", "b": "⑭ James always studies——你的頭號罩門", "src": ["g3"]},
+  {"t": "can／should 後原形", "b": "⑯ can build（寫過 built）；should upgrade（寫過 upgrading）", "src": ["g6", "g0"]},
+  {"t": "despite 錯第二次", "b": "模板 despite the fact that，**dispect** ✗——連兩篇錯", "src": ["s7"]}
+ ],
+ "spell": [["should", "shold"], ["digital", "digitial"], ["upgrading", "upgarding"], ["further", "furthur"], ["library", "libaby", "libraby"], ["irreplaceable", "unreplaceble"], ["renowned", "renowing"], ["despite", "dispect"], ["materials", "materilas"]],
+ "spellSrc": ["s0", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8"],
+ "skipped": ["g2：範文已改寫（⑥ 改成 find resources，what／that 不在 18 格）", "g8：範文已改寫（an experience 不在 18 格）"]
+}

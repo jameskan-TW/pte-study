@@ -1,0 +1,31 @@
+{
+ "o": 29,
+ "chain": {
+  "stance": "選結婚，最低年齡 25 歲",
+  "p1": "反方：愛比年齡重要 ｜ 我方：結婚應該等到 25 歲",
+  "p2": "早婚能給夫妻支持 → 難過時互相鼓勵 → 年輕就結婚 → 比較不孤單 → 難過時也安心 → 有些早婚確實過得好",
+  "p3": "25 歲多半唸完書、有穩定收入 → James 唸完書找到工作，26 歲才結婚 → 溫暖穩定的家、不愁錢 → **多等幾年遠離錢的問題，家庭和諧**",
+  "p4": "25 歲是公平的最低年齡 ｜ 建議：年輕人先唸完書、找到工作再結婚"
+ },
+ "slots": {
+  "topic": {"hl": ["age for", "marriage"], "w": "漏過 age，**the minimum marriage** ✗；marriage 兩個 r", "src": ["g0", "s1"]},
+  "conR": {"hl": ["couples", "hard times"], "w": "couple 可數，單數不能裸奔 → couples；一段難熬的時期＝hard times", "src": ["g1", "g2"]},
+  "cond": {"hl": ["gets married"], "w": "get＋married，**get marry** ✗；a couple 單數 → gets", "src": ["g3"]},
+  "resA": {"hl": ["lonely"], "w": "lone＋ly，沒有 g，**longly** ✗", "src": ["s0"]},
+  "resB": {"hl": ["in hard times"], "w": "**with problems** ✗；用 ⑤ 同一組 hard times", "src": ["g4"]},
+  "reason": {"hl": ["at that age", "most", "have finished"], "w": "年紀是一個點用 at；多數＝most；已經唸完 → have finished", "src": ["g5", "g6"]},
+  "does": {"hl": ["married at 26", "a job"], "w": "married at 26 先講，after 後兩個 -ing；finding a job 要 a", "src": ["g7", "g8", "g9"]},
+  "impl": {"hl": ["waiting", "from"], "w": "原形不能當主詞 → waiting；protect A from B，不加 away", "src": ["g10", "g11"]},
+  "final": {"hl": ["25", "a fair", "minimum age for"], "w": "**25 years** ✗＝25 年；a fair 不是 the；搬 ① 的 minimum age for marriage", "src": ["g12"]},
+  "rec": {"hl": ["getting married"], "w": "第三次錯：get 會變、married 永遠不動，**getting marriage** ✗", "src": ["g13"]}
+ },
+ "ok": ["concl", "jv", "result"],
+ "top3": [
+  {"t": "get＋married（錯 3 次）", "b": "⑥ gets married／⑭ married at 26／⑱ getting married：get 會變，married 不動；marriage 只放 for 後面（①⑪⑰）", "src": ["g3", "g8", "g13"]},
+  {"t": "可數單數不能裸奔", "b": "⑤ couples、hard times；⑭ finding a job", "src": ["g1", "g2", "g9"]},
+  {"t": "⑭ 語序", "b": "先講 married at 26，after 後面才放 finishing school and finding a job（連錯兩輪）", "src": ["g7"]}
+ ],
+ "spell": [["lonely", "longly"], ["marriage", "mariage"]],
+ "spellSrc": ["s0", "s1"],
+ "skipped": []
+}

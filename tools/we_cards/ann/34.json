@@ -1,0 +1,28 @@
+{
+ "o": 34,
+ "chain": {
+  "stance": "仍需要學外語，AI 翻譯只是輔助",
+  "p1": "反方：AI 翻譯讓學語言沒用 ｜ 我方：學外語仍然很重要",
+  "p2": "AI 翻譯很方便 → 工具快又幾乎免費 → 用翻譯工具 → 馬上看懂外文 → 效率高、成本低 → 很多人天天用 AI 翻譯",
+  "p3": "學語言能直接跟外國人交談 → James 自己學外語 → 講話有自信、跟不同背景的人處得好 → 交談帶來信任、穩定工作 → **幸福的家，家庭和諧**",
+  "p4": "學外語仍然重要 ｜ 建議：AI 只當輔助工具"
+ },
+ "slots": {
+  "topic": {"hl": ["languages", "the AI age"], "w": "時代固定 the；補了 the 又掉 languages 的 s", "src": ["r1", "r7", "r0"]},
+  "va": {"hl": ["AI translation", "languages"], "w": "主詞要名詞 translation，不加 s；languages 要 s", "src": ["r2", "r0", "r7"]},
+  "vb": {"hl": ["languages"], "w": "③⑪⑰ 三句一字不差；languages 要 s（掉過 3 次）", "src": ["r6", "r0"]},
+  "reason": {"hl": ["foreigners"], "w": "foreigners 要 s；allow 配 to，let 不配 to", "src": ["r0", "r3"]},
+  "result": {"hl": ["along", "backgrounds"], "w": "along＝相處，**get alone** ✗；修完 along 又掉 backgrounds 的 s", "src": ["r5", "r7", "r0"]},
+  "impl": {"hl": ["trust", "a stable", "a happy"], "w": "trust 不可數不用 a；job、family 各要 a；三個並列用逗號", "src": ["r4"]},
+  "rec": {"hl": ["a supporting tool"], "w": "a 配單數，tool 不加 s", "src": ["r0"]}
+ },
+ "ok": ["con", "conR", "concl", "stance", "jv", "jn", "does", "final"],
+ "top3": [
+  {"t": "s 的方向（掉 5 多 3）", "b": "可數泛指加 s：languages（①②③）、foreigners ⑫、backgrounds ⑮；不加 s：AI translation ②、a supporting tool ⑱", "src": ["r0"]},
+  {"t": "改一個掉一個（第三題連犯）", "b": "① 補 the 掉 s、② 修 translation 掉 s、⑮ 修 along 掉 s：送出前整句回頭念", "src": ["r7"]},
+  {"t": "③⑪⑰ 一字不差", "b": "learning foreign languages is still important（不加 really／very）", "src": ["r6"]}
+ ],
+ "spell": [["translation", "translatioin"], ["along", "alone"], ["backgrounds"]],
+ "spellSrc": ["r8"],
+ "skipped": []
+}

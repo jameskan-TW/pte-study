@@ -1,0 +1,174 @@
+{
+ "o": 33,
+ "chain": {
+  "stance": "同意：高薪的人應該設薪資上限",
+  "p1": "反方：不該有薪資上限 ｜ 我方：薪資上限利大於弊",
+  "p2": "高薪推人努力 → 每個人都想多賺 → 人追高薪 → 拼命工作 → 新點子、企業成長 → 很多公司用高薪留人才",
+  "p3": "薪水有上限 → 人不再無止盡加班 → James 準時下班，多做也不會多領 → 多陪家人 → 少加班、多陪家人，**全家和諧**",
+  "p4": "上限利大於弊 ｜ 建議：政府設公平的薪資上限"
+ },
+ "slots": {
+  "topic": {
+   "hl": [
+    "there should be",
+    "a"
+   ],
+   "w": "「有」＝there should be，**there have** ✗；wage 可數，a 不能掉",
+   "src": [
+    "r1",
+    "r3"
+   ]
+  },
+  "va": {
+   "hl": [
+    "no maximum wage"
+   ],
+   "w": "no 已佔冠詞位，**no a** ✗；maximum／limit 二選一，不疊在一起",
+   "src": [
+    "r2",
+    "r4"
+   ]
+  },
+  "vb": {
+   "hl": [
+    "a"
+   ],
+   "w": "wage 可數 → a maximum wage（這篇 a 掉四次）",
+   "src": [
+    "r3"
+   ]
+  },
+  "conR": {
+   "hl": [
+    "wants"
+   ],
+   "w": "everyone 單數 → wants（同 every family）",
+   "src": [
+    "r10"
+   ]
+  },
+  "cond": {
+   "hl": [
+    "chase higher pay"
+   ],
+   "w": "chase 直接接受詞，**chase for** ✗；pay 不可數不加 a",
+   "src": [
+    "r6",
+    "r3"
+   ]
+  },
+  "resB": {
+   "hl": [
+    "business growth"
+   ],
+   "w": "business growth 不加 the；有 of 才加：the growth of companies",
+   "src": [
+    "r8"
+   ]
+  },
+  "concl": {
+   "hl": [],
+   "w": "James 點名要背：talent 不可數＝人才；with＝用",
+   "src": [
+    "r0"
+   ]
+  },
+  "stance": {
+   "hl": [
+    "should be"
+   ],
+   "w": "should 後原形 be；there 只配 be，**there will not get** ✗",
+   "src": [
+    "r9",
+    "r1"
+   ]
+  },
+  "reason": {
+   "hl": [
+    "endless overtime"
+   ],
+   "w": "overtime 當名詞：endless overtime，**endless working** ✗",
+   "src": [
+    "r7"
+   ]
+  },
+  "does": {
+   "hl": [
+    "do not mean"
+   ],
+   "w": "James 點名要背；主詞 hours 複數 → do not",
+   "src": [
+    "r0"
+   ]
+  },
+  "final": {
+   "hl": [
+    "a"
+   ],
+   "w": "同 ③ 一字不差，a 不能掉",
+   "src": [
+    "r3"
+   ]
+  },
+  "rec": {
+   "hl": [
+    "limit on pay"
+   ],
+   "w": "限制在…上用 on，**a limit for pay** ✗；pay 不可數不加 a（⑯ a pay limit 的 a 是給 limit）",
+   "src": [
+    "r5",
+    "r3"
+   ]
+  }
+ },
+ "ok": [
+  "con",
+  "subj",
+  "resA",
+  "concl",
+  "jv",
+  "jn"
+ ],
+ "top3": [
+  {
+   "t": "a 掉四次",
+   "b": "wage 可數要 a：①③⑪⑰ a maximum wage；pay 不可數不加 a（④⑥⑱）",
+   "src": [
+    "r3"
+   ]
+  },
+  {
+   "t": "there 只配 be",
+   "b": "「有」＝there is／there should be（①⑪）；**there have**、**there will not get** ✗；主詞是人就用 he",
+   "src": [
+    "r1",
+    "r9"
+   ]
+  },
+  {
+   "t": "改一個掉一個",
+   "b": "their→there 改對、people 掉成 person：送出前整句回頭念一次",
+   "src": [
+    "r11"
+   ]
+  }
+ ],
+ "spell": [
+  [
+   "there",
+   "their"
+  ],
+  [
+   "company",
+   "compnay"
+  ],
+  [
+   "companies",
+   "comapnies"
+  ]
+ ],
+ "spellSrc": [
+  "r12"
+ ],
+ "skipped": []
+}
