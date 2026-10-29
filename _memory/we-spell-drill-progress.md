@@ -1,6 +1,6 @@
 ---
 name: we-spell-drill-progress
-description: WE 錯題本拼字總默拼（總表 37 題 mistakes.spell 去重 92 字）的進度與接續點；1029 第一輪全掃完，錯 26 字，campaigns／reputation 升反覆
+description: WE 錯題本拼字總默拼（總表 37 題 mistakes.spell 去重 92 字）的進度與接續點；1029 第一輪全掃錯 26、當天複考只剩 further／required／convenient，campaigns／reputation 升反覆
 metadata:
   type: project
   modified: 2026-10-29
@@ -28,7 +28,11 @@ James 說「練一下 WE 所有錯過的單字」→ 字庫＝`WE_論點總表.h
 
 **反覆字 10 個第一批全過**（people／healthy／despite／lose／whole／support／quality／lonely 一次過；further、focus 重打後過）。
 
+## 2026-10-29 當天複考 26 錯字：只錯 3 個
+- convenient（多打 n：conveninent）、**further**（第二次答 improve，「更進一步」這個中文對不到字）、**required**（第二次忘，require＋d）。
+- campaigns／reputation／focus／loss／anxiety 五個最該盯的全一次過。
+
 ## 下次接續點
 
-只考上面 26 個錯字（純拼字 11 ＋ 詞性 6 ＋ 字義 10，有重疊），先考 campaigns／reputation／focus／loss／anxiety；全過再做第二輪 92 字。
+開場先考 further／required／convenient 三字，再抽考 1029 第一輪錯的 26 字（見上）；都過就做第二輪 92 字。
 相關：[[spelling-drill-progress]]（VQ 池）、[[interactive-drill-batching]]、[[practice-rules-overview]]
