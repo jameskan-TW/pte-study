@@ -7,7 +7,7 @@
 - [拼字練習進度](spelling-drill-progress.md) — VQ 192 字分反覆卡／非反覆兩池；1019 非反覆池全掃完（89 錯 32），兩池都過一輪；下次只考 1019 錯的 32 字＋反覆卡 34 張
 - [WE 錯字總默拼](we-spell-drill-progress.md) — 總表 37 題 mistakes.spell 去重 92 字，5 字一批中文＋語境挖空；1029 第一輪全掃錯 26，campaigns／reputation 升反覆，當天複考 26 字只剩 further／required／convenient，下次先考這 3 字
 - [考他要 5 題一批](interactive-drill-batching.md) — 拼字類 5 題一批防訊息錯位；WE 逐 slot 練習例外，一格一格考（重複訊息不判分）
-- [PTE 五次成績](pte-exam-scores.md) — 0601 53／0625 69／0827 66／0929 68／1030 69（L72 R69 S84 W60）；W 從 64 掉回 60、R/L 漲 → WE 本身掉分；真目標總分 72＋W75
+- [PTE 五次成績](pte-exam-scores.md) — 0601 53／0625 69／0827 66／0929 68／1030 69（L72 R69 S84 W60）；W 64→60 主因 Short Writing（SWT/SST）滿格→約 56%，WE 卡 59% 沒動；真目標總分 72＋W75
 - [十月計畫](october-plan.md) — 10/5–11/1 28 天菜單：WE W1 收尾 11 題 10/21 全清、接 W2 重打 14 題、W3 整篇；FIB 93 錯格清帳；閱讀搭配練習頁待建
 - [WE 盯梢清單](we-slot-drill-watchlist.md) — James 點名要記：take the metro／by metro 冠詞相反；and…keeps、earlier、the ride 連錯點
 - [SST 關鍵字默拼](sst-keyword-drill.md) — 95 字清單在 repo SST_關鍵字默拼_進度.md；每天考 3 個；1019 第一輪 95 字全過（錯 45）；下次重考進度檔「錯過的字」區：反覆卡 8＋breadth/abstraction 優先，每批 5 個

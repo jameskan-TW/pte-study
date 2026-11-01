@@ -24,6 +24,8 @@ James 的 PTE Academic 正式成績（五次，台北 Pearson 考場）：
 
 0929 Skills Profile（James 截圖，長條目視）：Reproducing（RA/RS/WFD）滿格、Short Writing（SWT/SST）滿格、Extended/Short Speaking 約 88%、Open Response S&W 約 75%、Single-skill Comprehension 約 72%、Multiple-skills Comprehension（FIB-RW/HIW/聽力 FIB）約 60%、**Extended Writing（WE 單獨）約 58% 最低**。
 
-**第五次（1030，成績碼 48e4a6BVR5）**：L 72 歷來最高、R 69、S 84，W 反而 64→60。W 跟 R 共用 FIB-RW、跟 L 共用 WFD／SST，R、L 都漲 W 卻掉 → 推論是 WE（或 SWT）本身掉分。十月實際練法是逐 slot＋文法總複習 18 類＋考前速查表／三分鐘卡，菜單 W3「整篇計時 1 篇／天」沒有留下做過的紀錄。Skills Breakdown 下半截 James 還沒給（2026-11-01 要了）。
+**第五次（1030，成績碼 48e4a6BVR5）**：L 72 歷來最高、R 69、S 84，W 反而 64→60。
+1030 Skills Profile（長條量像素，0929 也是目視，誤差約 ±3%）：Extended／Short Speaking 都滿格（0929 約 88%）、Reproducing（RA/RS/WFD）約 88%（0929 滿格）、Multiple-skills Comprehension 約 85%（0929 約 60%，FIB 清帳見效）、Open Response 約 76%、Single-skill 約 72%（持平）、Extended Writing（WE）約 59%（0929 約 58%，持平）、**Short Writing（SWT/SST）約 56%（0929 滿格，崩掉）**。
+→ W 掉 4 分主因是 Short Writing 崩，不是 WE（2026-11-01 第一輪推論「WE 掉分」看到 Skills Profile 後更正）。WE 十月逐 slot＋文法總複習練一整個月仍卡 59% 沒動。Short Writing 崩的原因待查（SWT 句中有句點／字數超出、SST 字數、冷題、時間），已問 James 考場狀況。
 
-**How to apply:** 排計畫時用第五次當現況：總分缺 3、W 缺 15（唯一硬門檻，五次 38→52→58→64→60 卡在 60 上下）。WE 整篇品質仍是 Writing 最大洞，不能降成保溫；WFD／SWT／SST 已到頂只保溫；R／L 掉分在 Multiple-skills Comprehension（FIB-RW、HIW、聽力 FIB）。
+**How to apply:** 排計畫時用第五次當現況：總分缺 3、W 缺 15（唯一硬門檻，五次 38→52→58→64→60 卡在 60 上下）。WE 整篇品質仍是 Writing 最大洞；**SWT／SST 不能再當保溫**（1030 Short Writing 從滿格掉到約 56%）；R／L 掉分在 Multiple-skills Comprehension（FIB-RW、HIW、聽力 FIB）。
