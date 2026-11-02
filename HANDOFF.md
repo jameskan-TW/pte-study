@@ -19,7 +19,7 @@
 - 部署：GitHub Pages → jameskan-tw.github.io/pte-study（push 後約 1-2 分鐘生效）
 - **主戰場：`WE_論點總表.html`**——37 題範文由檔內 JS 模板 `buildEssay()` + 每題 slot（`DATA` 陣列）組出。模板句改一處影響 37 題；slot 改了只影響該題
 - `WE_中文翻譯.html`：機經原始紀錄（37 題原文＋原始範文），**當對照組，不要動**
-- `WE_交接檔.html`、`index.html`：含同一套模板句的舊副本，模板句改動要四檔同步
+- `index.html`：含同一套模板句的舊副本，模板句改動要三檔同步（論點總表／中文翻譯模板卡／index；`WE_交接檔.html` 2026-11-02 已刪）
 
 ### git / 連線注意
 - git identity 已設好（james / james.kan.tw@gmail.com）
@@ -138,9 +138,9 @@ James：「這種練法比較扎實，以後都按照這個方式推到論點總
 | ④-10 員工參與決策（原#18；2026-10-07 首次逐 slot 練，補 10/6 D2 菜單，18 格全打完、5 拼字＋11 文法；被動漏 be／-ed、make＋受詞不加 be、冠詞、動詞撞車） | ✔ | ✔ ⑫ keen → willing to work＋⑮ 加 work harder＋⑱ 去 mechanism |
 | ④-12 欠發達國家旅遊（原#20；2026-10-07 首次逐 slot 練，補 10/6 D2 菜單，18 格全打完、6 拼字＋10 文法；-ed 分詞當形容詞、+s、lose／loss 三錯、help＋原形） | ✔ | ✔ ⑧⑨ 改 become shows for tourists → a loss of real local culture（原版重複） |
 
-> 2026-09-08 老師看過 WE_訂正定稿 第 6–11 篇（Word 檔 WE_給老師_20260908.docx），改了 5 處已全部同步：②-2 小結補 would；②-3 小結改 put money first and ignore their family；②-4 resB 改 better future prospects；#16/#25 If-then 改 would、James 例子改具體公司事件（firm washed away／factory cut greenhouse gas after a new law）。
+> 2026-09-08 老師看過 WE_訂正定稿 第 6–11 篇（Word 檔 WE_給老師_20260908.docx，2026-11-02 已從 repo 移除），改了 5 處已全部同步：②-2 小結補 would；②-3 小結改 put money first and ignore their family；②-4 resB 改 better future prospects；#16/#25 If-then 改 would、James 例子改具體公司事件（firm washed away／factory cut greenhouse gas after a new law）。
 
-> 2026-09-10 老師看過 ③ 視野線三篇範文（Word 檔 WE_給老師_20260910.docx，只放三篇英文全文）。這三題**尚未實戰練習**，是先送範文審閱。改了 4 處已同步：③-1 resB 改 less pressure from money（James 提的，避開 less worry／fewer worries 之爭）、concl 改 never studied abroad、impl 加 and strong confidence（主詞變複數，helps→**help**）；③-2 resB 改 great efficiency and lower costs、impl 改 real talks build。③-3（#37）老師表示不用動。
+> 2026-09-10 老師看過 ③ 視野線三篇範文（Word 檔 WE_給老師_20260910.docx，2026-11-02 已從 repo 移除；只放三篇英文全文）。這三題**尚未實戰練習**，是先送範文審閱。改了 4 處已同步：③-1 resB 改 less pressure from money（James 提的，避開 less worry／fewer worries 之爭）、concl 改 never studied abroad、impl 加 and strong confidence（主詞變複數，helps→**help**）；③-2 resB 改 great efficiency and lower costs、impl 改 real talks build。③-3（#37）老師表示不用動。
 
 > 2026-09-12 **10 條故事線定案**（取代四條線的細分，寫進 WE_背誦地圖.html 區塊①）：主論 P3 ①穩定收入線（學生版 #1/2/3/5/9/13/19/22/27：get high grades and find a good job and a steady income → leads to a better future and a warm and stable home；上班版 #4/18/24/31：earn a steady income for his family）②先立業線 #14/29 ③陪家人線 #6/7/8/11/12/23/26/30/33/36（spend more quality time with his family → keeps the whole family in harmony）④安心線 #17/28/32（enjoy peace of mind）⑤視野自信線 #15/34/37 ⑥見證線 #10/16/20/25（As James saw… → see how…）⑦反面線 #21/35（keeps surfing… → he is unable to）；讓步 P2 ⑧視野讓步 #1/2/13/21/22/27/28 ⑨情緒讓步（負面 #4/5/19/37 feel upset and anxious；正面 #14/23/29/31 feel less lonely → peace of mind）⑩錢與方便讓步（賺錢 #11/12/24/30/32；錢 #8/10/15；方便 #3/7/18/34/35/36）；問題面不讓步 #6/9/16/17/20/25/26/33。
 

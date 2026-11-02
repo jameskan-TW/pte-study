@@ -65,7 +65,7 @@ A('''<style>
 A('<div class="bar"><button onclick="document.body.classList.toggle(\'hide\')">遮／顯示答案與解析</button>'
   '<span class="toc"><a href="#s1">§1 核心規則</a><a href="#s2">§2 當日紀錄</a><a href="#s3">§3 分類索引</a><a href="#s4">§4 逐篇</a></span></div>')
 A('<h1>閱讀複習包</h1>')
-A(f'<p class="hint">FIB 47 篇 93 格 ＋ 十月菜單 28 天當日紀錄，一頁總統整。產出日 2026-10-17；資料來源是 <a href="閱讀訂正.html">閱讀訂正</a> 和 <a href="讀書菜單_10月.html">十月菜單</a>，改那兩邊後重跑 tools/menu_oct/pack.py。</p>')
+A(f'<p class="hint">FIB 47 篇 93 格 ＋ 十月菜單 28 天當日紀錄，一頁總統整。產出日 2026-10-17；資料來源是 <a href="閱讀訂正.html">閱讀訂正</a> 和 十月菜單的當日紀錄（tools/menu_oct/gen.py 的 LOG／WRONG，菜單頁本身已下架），改那兩邊後重跑 tools/menu_oct/pack.py。</p>')
 A('<blockquote><b>怎麼用</b><br>考前一天：只看 §1 核心規則（黃框），每條一句話判斷法。<br>'
   '平時複習：§1 → §3 分類索引（按「遮答案」自己填，填完再看）→ 錯的格去 §4 看完整解析。<br>'
   '共用動作：<b>先看空格旁邊的介系詞、that、of、a／an，再想意思。</b></blockquote>')
