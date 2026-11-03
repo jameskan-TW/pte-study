@@ -89,7 +89,11 @@
   <button onclick="collapseAll(true)">全部收合</button>
   <button onclick="collapseAll(false)">全部展開</button>
   <button onclick="collapseDone()">收合已完成的天</button>
+  <button onclick="exportRec()">⬇️ 匯出紀錄</button>
+  <button onclick="document.getElementById('imp').click()">⬆️ 匯入紀錄</button>
+  <input type="file" id="imp" accept=".json,application/json" hidden onchange="importRec(this)">
 </div>
+<div class="min" style="margin:-6px 0 14px">打勾和 FIB 作答紀錄只存在這個瀏覽器。換電腦：這台按「匯出」→ 檔案放 OneDrive → 另一台按「匯入」（會合併，不會蓋掉）。</div>
 
 <details class="std">
   <summary>怎麼做（點開看）</summary>
@@ -120,6 +124,7 @@
 </div>
 
 <script>
+/*SYNC*/
 const DAYS = /*DAYS*/;
 const SUM = /*SUM*/;
 const KEY = 'menu90_v1';

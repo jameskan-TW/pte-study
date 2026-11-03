@@ -14,6 +14,6 @@ James 2026-11-03 定的 90 天計畫，頁面 `讀書菜單_90天.html`（產生
 - 中途 James 試過 60 天（太趕）→ 拉長到 90 天；WFD 原本排全部 1132 句，他說「只要練預測 200 題左右」。
 
 **Why:** 第五次成績 W60（目標 75），WE 卡 59%，所以 WE 為主、FIB／WFD 只保預測題。
-- **FIB 在網頁做**（James 11/3 要求「題目答案放進 hub、在網頁練」）：`FIB_練習.html` 373 篇，菜單 FIB 題名直接連過去；作答紀錄在瀏覽器 localStorage，換電腦不同步。
+- **FIB 在網頁做**（James 11/3 要求「題目答案放進 hub、在網頁練」）：`FIB_練習.html` 373 篇，菜單 FIB 題名直接連過去；作答紀錄在瀏覽器 localStorage；James 會隨時換電腦，所以兩頁加了「匯出／匯入紀錄」按鈕，檔案放 OneDrive 搬，匯入會合併。
 
 **How to apply:** James 說「今天 D 幾」就照菜單；練過的 FIB 名單是從 git 歷史閱讀訂正抓的，commit 寫「全對」但沒記編號的抓不到。相關：[[practice-rules-overview]]、[[pte-exam-scores]]

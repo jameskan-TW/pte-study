@@ -82,7 +82,8 @@ for d in range(1, NDAYS + 1):
 
 summary = {'fd': len(fd_new), 'fdOld': len(fd_old), 'fdd': len(fdd_new), 'fddOld': len(fdd_old),
            'wNew': len(w_new), 'wOld': len(w_old), 'end': days[-1]['date']}
-html = (HERE / 'template.html').read_text(encoding='utf-8')
+SYNC = (HERE / 'sync.js').read_text(encoding='utf-8')
+html = (HERE / 'template.html').read_text(encoding='utf-8').replace('/*SYNC*/', SYNC)
 html = html.replace('/*DAYS*/', json.dumps(days, ensure_ascii=False)).replace('/*SUM*/', json.dumps(summary, ensure_ascii=False))
 (ROOT / '讀書菜單_90天.html').write_text(html, encoding='utf-8')
 print('ok', summary, 'WE 順序', we_order)
@@ -97,7 +98,7 @@ for day in days:
 done = {x['id'] for x in data['FIB-D'] + data['FIB-DD'] if x['done']}
 qs = {q['id']: dict(q, day=day_of.get(q['id']), done=q['id'] in done) for q in fib['D'] + fib['DD']}
 assert set(seq) == set(qs), set(seq) ^ set(qs)
-page = (HERE / 'fib_template.html').read_text(encoding='utf-8')
+page = (HERE / 'fib_template.html').read_text(encoding='utf-8').replace('/*SYNC*/', SYNC)
 page = page.replace('/*FIB*/', json.dumps([qs[i] for i in seq], ensure_ascii=False))
 (ROOT / 'FIB_練習.html').write_text(page, encoding='utf-8')
 print('FIB_練習.html', len(seq), '篇')

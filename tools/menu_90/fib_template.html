@@ -68,6 +68,8 @@
   .t-pos{background:#2563eb} .t-num{background:#7c3aed} .t-tense{background:#db2777} .t-coll{background:#ea580c} .t-sem{background:#0891b2}
   .unc{font-size:11px;background:#fde68a;border-radius:3px;padding:0 5px;margin-left:4px}
   .hint{font-size:13px;color:var(--sub)}
+  .sync button{font-size:13.5px;padding:5px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;cursor:pointer}
+  .sync .hint{flex-basis:100%}
 </style>
 </head>
 <body>
@@ -84,6 +86,12 @@
     <span class="seg" id="fk"><button data-v="all" class="on">全部</button><button data-v="d">下拉</button><button data-v="dd">拖拉</button></span>
     <span class="seg" id="fs"><button data-v="all" class="on">全部</button><button data-v="no">沒做過</button><button data-v="ng">有錯</button><button data-v="ok">全對</button></span>
     <span class="stat" id="stat"></span>
+  </div>
+  <div class="bar sync">
+    <button onclick="exportRec()">⬇️ 匯出紀錄</button>
+    <button onclick="document.getElementById('imp').click()">⬆️ 匯入紀錄</button>
+    <input type="file" id="imp" accept=".json,application/json" hidden onchange="importRec(this)">
+    <span class="hint">換電腦：這台按「匯出」→ 檔案放 OneDrive → 另一台按「匯入」。兩邊的紀錄會合併（同一篇留比較新的那次），菜單打勾也一起帶過去。</span>
   </div>
   <div class="list" id="list"></div>
 </div>
@@ -107,6 +115,7 @@
 </div>
 
 <script>
+/*SYNC*/
 const Q = /*FIB*/;
 const KEY = 'fib_prac_v1';
 let rec = {};
@@ -196,7 +205,7 @@ function check() {
   checked = true;
   const wrong = []; for (let b = 0; b < n; b++) if (g[b] !== ans(b)) wrong.push(b);
   const d = new Date(), sec = Math.floor((Date.now() - t0) / 1000);
-  rec[q.id] = {date: (d.getMonth() + 1) + '/' + d.getDate(), wrong, total: n, sec, tries: ((rec[q.id] || {}).tries || 0) + 1};
+  rec[q.id] = {date: (d.getMonth() + 1) + '/' + d.getDate(), ts: Date.now(), wrong, total: n, sec, tries: ((rec[q.id] || {}).tries || 0) + 1};
   save();
   drawChecked(g, wrong, sec);
 }
