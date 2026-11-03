@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" spellcheck="false">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FIB 預測題練習</title>
+<style>
+  :root{--ink:#1a1a2e;--sub:#5a5a72;--line:#d9d9e3;--bg:#f6f6fa;--card:#fff;
+        --accent:#3b2fa0;--accent-bg:#ececf6;--fib:#0b6e4f;--fib-bg:#e6f4ee;--ok:#0a7a4b;--ok-bg:#dff3e8;--ng:#b3261e;--ng-bg:#fdeceb}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.65;
+       font-family:"PingFang TC","Microsoft JhengHei","Noto Sans TC",sans-serif;font-size:16px}
+  .wrap{max-width:860px;margin:0 auto;padding:20px 16px 80px}
+  h1{font-size:22px;margin:0 0 4px}
+  .sub{color:var(--sub);font-size:14px;margin-bottom:14px}
+  .back{font-size:14px;margin-right:14px}
+  a{color:var(--accent)}
+  .bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0}
+  .bar input[type=search]{flex:1;min-width:180px;font-size:15px;padding:6px 10px;border:1px solid var(--line);border-radius:8px}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff}
+  .seg button{border:none;background:none;padding:5px 10px;font-size:13.5px;cursor:pointer;color:var(--sub)}
+  .seg button.on{background:var(--accent);color:#fff}
+  .stat{font-size:13.5px;color:var(--sub)}
+  .list{display:grid;gap:6px}
+  .row{display:flex;gap:10px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 12px;cursor:pointer}
+  .row:hover{border-color:var(--accent)}
+  .row .t{flex:1;min-width:0}
+  .kind{display:inline-block;font-size:12px;font-weight:700;border-radius:6px;padding:0 6px;border:1px solid var(--line);background:#fff;white-space:nowrap}
+  .kind.d{color:var(--fib)} .kind.dd{color:#9a4a00}
+  .id{font-family:Consolas,Menlo,monospace;font-size:13.5px;color:var(--sub)}
+  .badge{font-size:12px;border-radius:8px;padding:0 8px;white-space:nowrap}
+  .badge.ok{background:var(--ok-bg);color:var(--ok)} .badge.ng{background:var(--ng-bg);color:var(--ng)} .badge.no{background:#eee;color:#888}
+  .day{font-size:12px;color:var(--accent);white-space:nowrap}
+  /* 作答頁 */
+  #view{display:none}
+  .qhead{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin:6px 0 10px}
+  .qhead h2{font-size:19px;margin:0}
+  .timer{margin-left:auto;font-family:Consolas,Menlo,monospace;color:var(--sub)}
+  .passage{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;line-height:2.15;font-size:16.5px}
+  select.bk{font-size:15px;padding:1px 4px;border:1.5px solid var(--accent);border-radius:6px;background:#fff;max-width:100%;font-family:inherit}
+  .slot{display:inline-block;min-width:96px;padding:0 8px;border:1.5px dashed var(--accent);border-radius:6px;background:#fff;cursor:pointer;line-height:1.6;text-align:center;vertical-align:baseline}
+  .slot.act{border-style:solid;box-shadow:0 0 0 3px #d6d1f5}
+  .slot.filled{border-style:solid;background:var(--accent-bg)}
+  .slot.over{background:#fff3bf}
+  .bno{font-size:11px;color:var(--sub);vertical-align:super;margin-right:1px}
+  .ok-b{border-color:var(--ok)!important;background:var(--ok-bg)!important}
+  .ng-b{border-color:var(--ng)!important;background:var(--ng-bg)!important}
+  .fix{font-size:13px;color:var(--ok);font-weight:700;margin-left:3px}
+  .bank{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;padding:10px;background:var(--card);border:1px solid var(--line);border-radius:10px;position:sticky;bottom:8px;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+  .chip{padding:4px 12px;border:1px solid #c9c4ec;border-radius:16px;background:#fff;cursor:grab;font-size:15px;user-select:none}
+  .chip.used{opacity:.3;cursor:default}
+  .chip.sel{background:var(--accent);color:#fff}
+  .acts{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+  .acts button{font-size:14.5px;padding:6px 14px;border:1px solid var(--line);border-radius:8px;background:#fff;cursor:pointer}
+  .acts button.main{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .acts .sp{flex:1}
+  .score{font-weight:800;font-size:17px;margin:8px 0}
+  .why{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:6px 14px;margin-top:10px;display:none}
+  .why.show{display:block}
+  .wb{border-top:1px solid var(--line);padding:8px 0;font-size:14.5px}
+  .wb:first-child{border-top:none}
+  .wb .h{font-weight:700}
+  .wb .h .a{color:var(--ok)} .wb .h .u{color:var(--ng);text-decoration:line-through;margin-left:6px}
+  .wb .o{color:var(--sub);font-size:13.5px}
+  .wb .reason{margin:2px 0;font-size:14px}
+  .wb .why{display:block;border:none;padding:0;margin:2px 0;color:var(--ng);font-size:13.5px;background:none}
+  .tag{display:inline-block;font-size:11px;color:#fff;border-radius:3px;padding:0 6px;margin-right:6px}
+  .t-pos{background:#2563eb} .t-num{background:#7c3aed} .t-tense{background:#db2777} .t-coll{background:#ea580c} .t-sem{background:#0891b2}
+  .unc{font-size:11px;background:#fde68a;border-radius:3px;padding:0 5px;margin-left:4px}
+  .hint{font-size:13px;color:var(--sub)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div><a class="back" href="讀書菜單_90天.html">← 90 天菜單</a><a class="back" href="index.html">首頁</a></div>
+
+<div id="home">
+  <h1>FIB 預測題練習</h1>
+  <div class="sub">ptefighter 2026-11-03 機經的預測題：FIB-D 下拉 <span id="nD"></span> 篇、FIB-DD 拖拉 <span id="nDD"></span> 篇。點一篇開始做，做完按「對答案」，紀錄存在這台電腦的瀏覽器。下拉題附逐格解析（來自 <a href="FIB-RW_拆解.html" target="_blank">FIB-RW_拆解</a>）。</div>
+  <div class="bar">
+    <input type="search" id="q" placeholder="搜尋題名或 #編號（例：Oxford、080001）" oninput="renderList()">
+  </div>
+  <div class="bar">
+    <span class="seg" id="fk"><button data-v="all" class="on">全部</button><button data-v="d">下拉</button><button data-v="dd">拖拉</button></span>
+    <span class="seg" id="fs"><button data-v="all" class="on">全部</button><button data-v="no">沒做過</button><button data-v="ng">有錯</button><button data-v="ok">全對</button></span>
+    <span class="stat" id="stat"></span>
+  </div>
+  <div class="list" id="list"></div>
+</div>
+
+<div id="view">
+  <div class="qhead"><span class="kind" id="vk"></span><h2 id="vt"></h2><span class="id" id="vid"></span><span class="day" id="vday"></span><span class="timer" id="timer">0:00</span></div>
+  <div class="hint" id="vhint"></div>
+  <div class="passage" id="psg"></div>
+  <div class="bank" id="bank"></div>
+  <div class="score" id="score"></div>
+  <div class="acts">
+    <button class="main" id="bCheck" onclick="check()">對答案</button>
+    <button onclick="retry()">重做</button>
+    <button onclick="reveal()">直接看答案</button>
+    <span class="sp"></span>
+    <button onclick="go(-1)">← 上一篇</button>
+    <button onclick="go(1)">下一篇 →</button>
+  </div>
+  <div class="why" id="why"></div>
+</div>
+</div>
+
+<script>
+const Q = /*FIB*/;
+const KEY = 'fib_prac_v1';
+let rec = {};
+try { rec = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {}
+function save() { try { localStorage.setItem(KEY, JSON.stringify(rec)); } catch (e) {} }
+function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); }
+const byId = {}; Q.forEach((q, i) => { q.i = i; byId[q.id] = q; });
+document.getElementById('nD').textContent = Q.filter(q => q.k === 'd').length;
+document.getElementById('nDD').textContent = Q.filter(q => q.k === 'dd').length;
+
+let fk = 'all', fs = 'all';
+function seg(id, set) {
+  document.querySelectorAll('#' + id + ' button').forEach(b => b.onclick = () => {
+    document.querySelectorAll('#' + id + ' button').forEach(x => x.classList.toggle('on', x === b)); set(b.dataset.v); renderList();
+  });
+}
+seg('fk', v => fk = v); seg('fs', v => fs = v);
+function status(q) { const r = rec[q.id]; if (!r) return 'no'; return r.wrong.length ? 'ng' : 'ok'; }
+function badge(q) {
+  const r = rec[q.id]; if (!r) return '<span class="badge no">沒做過</span>';
+  return r.wrong.length ? `<span class="badge ng">錯 ${r.wrong.length}／${r.total}</span>` : `<span class="badge ok">全對 ${r.total}／${r.total}</span>`;
+}
+function kindTag(q) { return q.k === 'd' ? '<span class="kind d">下拉</span>' : '<span class="kind dd">拖拉</span>'; }
+function renderList() {
+  const s = document.getElementById('q').value.trim().toLowerCase().replace(/^#/, '');
+  const L = Q.filter(q => (fk === 'all' || q.k === fk) && (fs === 'all' || status(q) === fs) && (!s || q.t.toLowerCase().includes(s) || q.id.includes(s)));
+  document.getElementById('stat').textContent = `${L.length} 篇 · 做過 ${Q.filter(q => rec[q.id]).length}／${Q.length}`;
+  document.getElementById('list').innerHTML = L.map(q => `<div class="row" onclick="location.hash='${q.id}'">${kindTag(q)}<span class="id">#${q.id}</span><span class="t">${esc(q.t)}${q.done ? ' <span class="hint">（練過）</span>' : ''}</span>${q.day ? `<span class="day">D${q.day}</span>` : ''}${badge(q)}</div>`).join('');
+}
+
+// ---------- 作答 ----------
+let cur = null, fill = [], act = -1, checked = false, revealing = false, t0 = 0, tick = null;
+function open(q) {
+  cur = q; checked = false; act = -1; fill = Array(q.parts.length >> 1).fill(null);
+  document.getElementById('home').style.display = 'none'; document.getElementById('view').style.display = 'block';
+  document.getElementById('vk').outerHTML = kindTag(q).replace('class="kind', 'id="vk" class="kind');
+  document.getElementById('vt').textContent = q.t;
+  document.getElementById('vid').textContent = '#' + q.id + ' · PDF p' + q.pg;
+  document.getElementById('vday').textContent = q.day ? '菜單 D' + q.day : '';
+  const r = rec[q.id];
+  document.getElementById('vhint').textContent = (q.k === 'dd' ? '點空格 → 點下面的字（或直接把字拖進空格）；點已填的空格可清掉。' : '每格從下拉選單選一個。') + (r ? `　上次：${r.date} 錯 ${r.wrong.length}／${r.total}` : '');
+  draw(); scrollTo(0, 0);
+  t0 = Date.now(); clearInterval(tick); tick = setInterval(() => {
+    if (checked) return; const s = Math.floor((Date.now() - t0) / 1000);
+    document.getElementById('timer').textContent = Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+  }, 1000);
+}
+function draw() {
+  const q = cur; let h = '';
+  q.parts.forEach((p, j) => {
+    if (j % 2 === 0) { h += esc(p); return; }
+    const b = j >> 1, res = checked ? (fill[b] === ans(b) ? ' ok-b' : ' ng-b') : '';
+    const fix = checked && fill[b] !== ans(b) ? `<span class="fix">→ ${esc(ans(b))}</span>` : '';
+    if (q.k === 'd') {
+      h += `<span class="bno">${b + 1}</span><select class="bk${res}" ${checked ? 'disabled' : ''} onchange="fill[${b}]=this.value||null"><option value="">　—　</option>${q.blanks[b].o.map(o => `<option${fill[b] === o ? ' selected' : ''}>${esc(o)}</option>`).join('')}</select>${fix}`;
+    } else {
+      const f = fill[b] !== null ? esc(q.opts[fill[b]]) : '&nbsp;';
+      h += `<span class="bno">${b + 1}</span><span class="slot${fill[b] !== null ? ' filled' : ''}${act === b ? ' act' : ''}${res}" data-b="${b}" onclick="slotClick(${b})" ondragover="event.preventDefault();this.classList.add('over')" ondragleave="this.classList.remove('over')" ondrop="dropOn(event,${b})">${f}</span>${fix}`;
+    }
+  });
+  document.getElementById('psg').innerHTML = h;
+  const bank = document.getElementById('bank');
+  if (q.k === 'dd') {
+    bank.style.display = 'flex';
+    bank.innerHTML = q.opts.map((o, k) => { const used = fill.includes(k); return `<span class="chip${used ? ' used' : ''}" draggable="${!used && !checked}" ondragstart="event.dataTransfer.setData('text/plain','${k}')" onclick="chipClick(${k})">${esc(o)}</span>`; }).join('');
+  } else bank.style.display = 'none';
+  if (!checked) { document.getElementById('score').textContent = ''; document.getElementById('why').classList.remove('show'); }
+}
+function ans(b) { return cur.k === 'd' ? cur.blanks[b].a : cur.parts[2 * b + 1]; }
+function given(b) { return cur.k === 'd' ? fill[b] : (fill[b] === null ? null : cur.opts[fill[b]]); }
+function slotClick(b) {
+  if (checked) return;
+  if (fill[b] !== null) { fill[b] = null; act = b; } else act = act === b ? -1 : b;
+  draw();
+}
+function chipClick(k) {
+  if (checked || fill.includes(k)) return;
+  let b = act >= 0 ? act : fill.indexOf(null); if (b < 0) return;
+  fill[b] = k; const nx = fill.indexOf(null); act = nx; draw();
+}
+function dropOn(e, b) { e.preventDefault(); if (checked) return; const k = +e.dataTransfer.getData('text/plain'); const old = fill.indexOf(k); if (old >= 0) fill[old] = null; fill[b] = k; act = fill.indexOf(null); draw(); }
+function check() {
+  if (checked) return;
+  const q = cur, n = fill.length;
+  const g = Array.from({length: n}, (_, b) => given(b));   // 下拉存字串、拖拉存選項序號 → 一律換成字串比對
+  if (!revealing && g.some(x => x === null) && !confirm('還有空格沒填，要直接對答案嗎？')) return;
+  checked = true;
+  const wrong = []; for (let b = 0; b < n; b++) if (g[b] !== ans(b)) wrong.push(b);
+  const d = new Date(), sec = Math.floor((Date.now() - t0) / 1000);
+  rec[q.id] = {date: (d.getMonth() + 1) + '/' + d.getDate(), wrong, total: n, sec, tries: ((rec[q.id] || {}).tries || 0) + 1};
+  save();
+  drawChecked(g, wrong, sec);
+}
+function drawChecked(g, wrong, sec) {
+  const q = cur, n = g.length;
+  let h = '';
+  q.parts.forEach((p, j) => {
+    if (j % 2 === 0) { h += esc(p); return; }
+    const b = j >> 1, ok = g[b] === ans(b);
+    h += `<span class="bno">${b + 1}</span><span class="slot filled ${ok ? 'ok-b' : 'ng-b'}">${g[b] === null ? '&nbsp;' : esc(g[b])}</span>${ok ? '' : `<span class="fix">→ ${esc(ans(b))}</span>`}`;
+  });
+  document.getElementById('psg').innerHTML = h;
+  document.getElementById('bank').style.display = 'none';
+  document.getElementById('score').innerHTML = (wrong.length ? `❌ 錯 ${wrong.length}／${n}` : `✅ 全對 ${n}／${n}`) + `<span class="hint">　用時 ${Math.floor(sec / 60)} 分 ${sec % 60} 秒</span>`;
+  const w = document.getElementById('why');
+  w.innerHTML = Array.from({length: n}, (_, b) => {
+    const ok = g[b] === ans(b);
+    const opts = q.k === 'd' ? q.blanks[b].o.join(' / ') : '';
+    const why = q.k === 'd' ? q.blanks[b].why : '';
+    return `<div class="wb"><div class="h">空格 ${b + 1}　<span class="a">${esc(ans(b))}</span>${ok ? ' ✓' : `<span class="u">${g[b] === null ? '（沒填）' : esc(g[b])}</span>`}</div>${opts ? `<div class="o">${esc(opts)}</div>` : ''}${why}</div>`;
+  }).join('') + (q.k === 'dd' ? `<div class="wb"><div class="o">選項庫：${esc(q.opts.join(' / '))}</div></div>` : '');
+  w.classList.add('show');
+}
+function reveal() {
+  if (checked) return;
+  if (!confirm('直接看答案會記成這篇全錯，確定？')) return;
+  fill = fill.map(() => null); revealing = true; check(); revealing = false;
+}
+function retry() { open(byId[cur.id]); }
+function go(dx) { const i = cur.i + dx; if (i >= 0 && i < Q.length) location.hash = Q[i].id; }
+function route() {
+  const h = decodeURIComponent(location.hash.slice(1)).replace(/^#/, '');
+  if (byId[h]) open(byId[h]);
+  else { clearInterval(tick); document.getElementById('view').style.display = 'none'; document.getElementById('home').style.display = 'block'; renderList(); }
+}
+window.addEventListener('hashchange', route);
+route();
+</script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" spellcheck="false">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>90 天讀書菜單（11/4–2/1）</title>
+<style>
+  :root{--ink:#1a1a2e;--sub:#5a5a72;--line:#d9d9e3;--bg:#f6f6fa;--card:#fff;
+        --accent:#3b2fa0;--accent-bg:#ececf6;--fib:#0b6e4f;--fib-bg:#e6f4ee;--done:#0a7a4b;--warn:#b3261e;--today:#fff7e6}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.65;
+       font-family:"PingFang TC","Microsoft JhengHei","Noto Sans TC",sans-serif;font-size:16px}
+  .wrap{max-width:860px;margin:0 auto;padding:24px 16px 64px}
+  h1{font-size:24px;margin:0 0 4px}
+  .sub{color:var(--sub);font-size:14px;margin-bottom:16px}
+  .goal{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 20px}
+  .goal div{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 14px;font-size:14.5px}
+  .goal b{color:var(--accent)}
+  .progress{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:20px}
+  .prow{display:flex;justify-content:space-between;font-size:14px;margin-top:8px}
+  .pbar{height:10px;background:var(--accent-bg);border-radius:6px;overflow:hidden;margin-top:3px}
+  .pfill{height:100%;background:var(--accent);width:0;transition:width .3s}
+  .pfill.g{background:var(--fib)}
+  details.std{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin-bottom:20px}
+  details.std summary{font-weight:700;cursor:pointer}
+  table{border-collapse:collapse;width:100%;margin:10px 0;font-size:14.5px}
+  th,td{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top}
+  th{background:var(--accent-bg)}
+  .tools{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}
+  .tools button{font-size:13px;padding:4px 10px;border:1px solid var(--line);border-radius:7px;background:#fff;cursor:pointer}
+  .phase{font-weight:800;color:var(--sub);font-size:14px;margin:22px 0 4px;border-bottom:1px solid var(--line);padding-bottom:3px}
+  .day{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:10px 0}
+  .day.today{background:var(--today);border-color:#e0b95a;border-width:2px}
+  .day.done{opacity:.62}
+  .day.collapsed .slot{display:none}
+  .dhead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;cursor:pointer}
+  .dhead:hover .dnum{text-decoration:underline}
+  .arrow{display:inline-block;width:14px;color:var(--sub);font-size:12px;transition:transform .15s}
+  .day.collapsed .arrow{transform:rotate(-90deg)}
+  .dnum{font-weight:800;color:var(--accent);font-size:17px}
+  .ddate{color:var(--sub);font-size:14px}
+  .dsum{color:var(--sub);font-size:13px;margin-left:auto}
+  .slot{margin:8px 0 0;padding:8px 10px;border-radius:8px}
+  .slot.am{background:var(--fib-bg)}
+  .slot.pm{background:var(--accent-bg)}
+  .slot h3{margin:0 0 2px;font-size:14.5px}
+  .slot.am h3{color:var(--fib)} .slot.pm h3{color:var(--accent)}
+  ul.chk{list-style:none;margin:0;padding:0}
+  ul.chk li{margin:5px 0;display:flex;gap:8px;align-items:flex-start;font-size:15px}
+  ul.chk input[type=checkbox]{margin-top:4px;width:16px;height:16px;accent-color:var(--accent);flex:none}
+  ul.chk li.checked > span{color:var(--sub);text-decoration:line-through}
+  ul.chk li > span{flex:1;min-width:0}
+  .kind{display:inline-block;font-size:12px;font-weight:700;border-radius:6px;padding:0 6px;margin-right:6px;background:#fff;border:1px solid var(--line)}
+  .id{font-family:Consolas,Menlo,monospace;font-size:14px}
+  .min{color:var(--sub);font-size:13px}
+  .tag{display:inline-block;font-size:12px;background:#fdeceb;color:var(--warn);border-radius:8px;padding:0 8px;margin-left:6px}
+  .ok{font-size:12px;color:var(--done);font-weight:700;margin-left:6px}
+  .slot a{color:var(--accent)}
+  .ws{cursor:pointer;color:var(--fib);font-size:13px;margin-left:6px;user-select:none}
+  .wt{display:none;font-family:Consolas,Menlo,monospace;font-size:14px;background:#fff;border-radius:5px;padding:2px 6px;margin-top:3px}
+  .wt.open{display:block}
+  .rule{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:20px 0;font-size:14.5px}
+  .rule ul{margin:6px 0 0 18px;padding:0}
+  .back{font-size:14px;margin-bottom:10px;display:inline-block}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="index.html">← 回首頁</a>
+<h1>90 天讀書菜單</h1>
+<div class="sub">2026/11/4（三）– 2027/2/1（一）｜每天約 1 小時 15 分，分兩個時段：<b>☀️ 早上文法</b>（FIB＋WFD）、<b>🌙 下午 WE</b>（硬背範文）。每天要做的題號都寫死了，做完打勾（勾選只存在這台電腦的瀏覽器）。點日期那行可收合／展開。</div>
+
+<div class="goal">
+  <div>目標 <b>總分 72／Writing 75</b></div>
+  <div>現況（10/30）總分 69 · L72 · R69 · S84 · <b>W60</b></div>
+  <div>重點 <b>WE 37 篇範文背熟</b>；FIB／WFD 只做<b>預測題</b></div>
+</div>
+
+<div class="progress">
+  <b>總進度</b>
+  <div class="prow"><span>☀️ 早上 文法</span><span id="pAm" class="min"></span></div>
+  <div class="pbar"><div class="pfill g" id="fAm"></div></div>
+  <div class="prow"><span>🌙 下午 WE</span><span id="pPm" class="min"></span></div>
+  <div class="pbar"><div class="pfill" id="fPm"></div></div>
+</div>
+
+<div class="tools">
+  <button onclick="jumpToday()">跳到今天</button>
+  <button onclick="collapseAll(true)">全部收合</button>
+  <button onclick="collapseAll(false)">全部展開</button>
+  <button onclick="collapseDone()">收合已完成的天</button>
+</div>
+
+<details class="std">
+  <summary>怎麼做（點開看）</summary>
+  <table>
+    <tr><th>時段</th><th>項目</th><th>分</th><th>做法</th></tr>
+    <tr><td rowspan="4">☀️ 早上<br>約 35 分</td><td>FIB-D 下拉</td><td>4／篇</td><td>開 <code>FIB-D_新題在前_2026-11-03.pdf</code> 到標示頁數（或在練習平台搜 #編號）。先做再對答案（黃底＝正解），錯格抄下來。逐空格解析可查 <a href="FIB-RW_拆解.html" target="_blank">FIB-RW_拆解</a>（搜 #編號）</td></tr>
+    <tr><td>FIB-DD 拖拉</td><td>3／篇</td><td>開 <code>FIB-DD_新題在前_2026-11-03.pdf</code>，做法同上</td></tr>
+    <tr><td>WFD 預測</td><td>1／句</td><td>在練習平台搜 #編號聽寫；打完點「看句子」對答案，錯字抄下來</td></tr>
+    <tr><td>錯題重練</td><td>8–10</td><td>前一天錯的格／字重做一次；想被考就跟 Claude 說「考 FIB」，照 5 題一批四選一</td></tr>
+    <tr><td rowspan="3">🌙 下午<br>約 40 分</td><td>WE 第 1 天</td><td>40</td><td>開 <a href="WE_論點總表.html" target="_blank">論點總表</a>該題（點題名直達）：看題目＋立場＋走哪條線 → 一段一段背 18 格（P1 → P4），每段背完遮起來說一遍。可搭 <code>WE_三分鐘卡.pdf</code> 同題號那頁看易錯字</td></tr>
+    <tr><td>WE 第 2 天</td><td>40</td><td>先用默寫卡默打一次、對答案改錯 → 再限時 20 分整篇默打，錯的字進錯題本</td></tr>
+    <tr><td>總複習（D76–90）</td><td>20／篇</td><td>每篇限時 20 分整篇默打，37 篇繞一輪</td></tr>
+  </table>
+  <div class="min">時間不夠的日子：<b>WE 不能欠</b>，FIB 可以挪到隔天補。標 <span class="tag">練過</span> 的是 6 月以來做過的預測題，再做一次就好。</div>
+</details>
+
+<div id="days"></div>
+
+<div class="rule">
+  <b>排法依據</b>
+  <ul>
+    <li>題目來源：ptefighter 2026-11-03 機經，只收標「預測」的題（FIB-D 261／FIB-DD 112／WFD 169）。</li>
+    <li>練過的題：從 git 歷史 <code>閱讀訂正.html</code>、舊菜單出現過的 #編號找出，排到後面再做一次（commit 寫「全對」但沒記編號的幾篇抓不到，碰到做過的直接打勾）。</li>
+    <li>WE 順序：十月重打清單錯最多的 14 篇（#12 #5 #21 #30 #1 #3 #28 #4 #13 #8 #29 #37 #24 #27）→ 其餘 14 篇 → 10 月已逐格扎實練的 9 篇（#7 #10 #15 #17 #25 #32 #33 #34 #35）。</li>
+    <li>菜單由 <code>tools/menu_90/gen.py</code> 產生，要改量或順序改那裡再重跑，不要手改這頁。</li>
+  </ul>
+</div>
+</div>
+
+<script>
+const DAYS = /*DAYS*/;
+const SUM = /*SUM*/;
+const KEY = 'menu90_v1';
+let state = {}, collapsed = {};
+try { state = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {}
+try { collapsed = JSON.parse(localStorage.getItem(KEY + '_c') || '{}'); } catch (e) {}
+let fib = {};   // FIB_練習.html 的作答紀錄（同一個 localStorage）
+try { fib = JSON.parse(localStorage.getItem('fib_prac_v1') || '{}'); } catch (e) {}
+function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); localStorage.setItem(KEY + '_c', JSON.stringify(collapsed)); } catch (e) {} }
+function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); }
+function todayIso() { const n = new Date(); return n.getFullYear() + '-' + String(n.getMonth() + 1).padStart(2, '0') + '-' + String(n.getDate()).padStart(2, '0'); }
+
+const MIN = {fd: 4, fdd: 3, wfd: 1, wrong: 8};
+function itemHtml(it, key) {
+  const again = it.again ? '<span class="tag">練過</span>' : '';
+  if (it.k === 'fd' || it.k === 'fdd') {
+    const kind = it.k === 'fd' ? 'FIB-D 下拉' : 'FIB-DD 拖拉';
+    const r = fib[it.id], res = r ? (r.wrong.length ? `<span class="tag">錯 ${r.wrong.length}／${r.total}</span>` : `<span class="ok">✓ ${r.total}／${r.total}</span>`) : '';
+    return `<span class="kind">${kind}</span><a href="FIB_練習.html#${it.id}"><span class="id">#${it.id}</span> ${esc(it.t)}</a>${again}${res} <span class="min">PDF p${it.pg}</span>`;
+  }
+  if (it.k === 'wfd') return `<span class="kind">WFD</span><span class="id">#${it.id}</span>${again}<span class="ws" onclick="event.preventDefault();this.nextElementSibling.classList.toggle('open')">看句子</span><span class="wt">${esc(it.s)}</span>`;
+  if (it.k === 'wrong') return it.final ? '<span class="kind">總複習</span>只練錯過的 FIB 格＋WFD 句（錯題本從頭掃）' : '<span class="kind">錯題重練</span>前一天錯的格／字重做一次 <span class="min">約 8 分</span>';
+  if (it.k === 'we') {
+    const step = {1: '第 1 天：讀懂思路＋分段背 18 格', 2: '第 2 天：默寫＋限時 20 分整篇默打', 3: '限時 20 分整篇默打'}[it.step];
+    const firm = it.firm ? '<span class="tag">10 月練過</span>' : '';
+    return `<span class="kind">WE</span><a href="WE_論點總表.html#q${encodeURIComponent(it.n)}" target="_blank">#${it.o} ${esc(it.t)}</a> <span class="min">${esc(it.n)}</span>${firm}<br><span class="min">${step}</span>`;
+  }
+  if (it.k === 'weall') return '<span class="kind">WE</span>37 篇背完！今天挑最不熟的 2 篇限時默打，明天起總複習';
+}
+function dayMin(day) {
+  let am = 0; day.am.forEach(it => am += MIN[it.k] || 0);
+  const pm = day.pm.some(it => it.step === 3) ? 20 * day.pm.length : 40;
+  return [am, pm];
+}
+function phaseOf(d) {
+  if (d <= 20) return '第一段 D1–20：FIB 新題＋WFD 新預測句（每天 5 句）';
+  if (d <= 30) return '第二段 D21–30：WFD 換成 6 月練過的 69 句（每天 7 句）';
+  if (d <= 48) return '第三段 D31–48：FIB-D＋FIB-DD 新題';
+  if (d <= 60) return '第四段 D49–60：FIB-DD 做完，只剩 FIB-D';
+  if (d <= 75) return '第五段 D61–75：FIB 練過的預測題再做一次；D74 WE 37 篇背完';
+  return '總複習 D76–90：WE 每天 2–3 篇限時默打，FIB／WFD 只練錯過的';
+}
+function render() {
+  const t = todayIso(); let html = '', last = '';
+  let amT = 0, amD = 0, pmT = 0, pmD = 0;
+  DAYS.forEach(day => {
+    const ph = phaseOf(day.d); if (ph !== last) { html += `<div class="phase">${ph}</div>`; last = ph; }
+    let n = 0, c = 0;
+    const list = (arr, slot) => arr.map((it, i) => {
+      const k = day.d + slot + i, on = !!state[k]; n++; if (on) c++;
+      if (slot === 'a') { amT++; if (on) amD++; } else { pmT++; if (on) pmD++; }
+      return `<li class="${on ? 'checked' : ''}"><input type="checkbox" ${on ? 'checked' : ''} onchange="tog('${k}',this.checked)"><span>${itemHtml(it)}</span></li>`;
+    }).join('');
+    const am = list(day.am, 'a'), pm = list(day.pm, 'p');
+    const [ma, mp] = dayMin(day);
+    const cls = ['day', day.iso === t ? 'today' : '', n && c === n ? 'done' : '', collapsed[day.d] ? 'collapsed' : ''].join(' ');
+    html += `<div class="${cls}" id="d${day.d}">
+      <div class="dhead" onclick="toggleDay(${day.d})"><span class="arrow">▼</span><span class="dnum">D${day.d}</span><span class="ddate">${day.date}（${day.wd}）</span><span class="dsum">${c}/${n} 項 · 約 ${ma + mp} 分</span></div>
+      <div class="slot am"><h3>☀️ 早上 文法 <span class="min">約 ${ma} 分</span></h3><ul class="chk">${am}</ul></div>
+      <div class="slot pm"><h3>🌙 下午 WE <span class="min">約 ${mp} 分</span></h3><ul class="chk">${pm}</ul></div>
+    </div>`;
+  });
+  document.getElementById('days').innerHTML = html;
+  document.getElementById('pAm').textContent = `${amD} / ${amT} 項`;
+  document.getElementById('pPm').textContent = `${pmD} / ${pmT} 項`;
+  document.getElementById('fAm').style.width = (amT ? 100 * amD / amT : 0) + '%';
+  document.getElementById('fPm').style.width = (pmT ? 100 * pmD / pmT : 0) + '%';
+}
+function tog(k, v) { if (v) state[k] = 1; else delete state[k]; save(); const y = scrollY; render(); scrollTo(0, y); }
+function toggleDay(d) { if (collapsed[d]) delete collapsed[d]; else collapsed[d] = 1; save(); const y = scrollY; render(); scrollTo(0, y); }
+function collapseAll(v) { collapsed = {}; if (v) DAYS.forEach(d => collapsed[d.d] = 1); save(); render(); }
+function collapseDone() { document.querySelectorAll('.day.done').forEach(el => collapsed[el.id.slice(1)] = 1); save(); render(); }
+function jumpToday() {
+  const t = todayIso(); let day = DAYS.find(d => d.iso === t) || (t < DAYS[0].iso ? DAYS[0] : DAYS[DAYS.length - 1]);
+  if (collapsed[day.d]) { delete collapsed[day.d]; save(); render(); }
+  document.getElementById('d' + day.d).scrollIntoView({behavior: 'smooth', block: 'start'});
+}
+render();
+const m = location.hash.match(/^#d(\d+)$/);
+if (m && document.getElementById('d' + m[1])) document.getElementById('d' + m[1]).scrollIntoView(); else setTimeout(jumpToday, 50);
+</script>
+</body>
+</html>
