@@ -59,6 +59,11 @@
   .ws{cursor:pointer;color:var(--fib);font-size:13px;margin-left:6px;user-select:none}
   .wt{display:none;font-family:Consolas,Menlo,monospace;font-size:14px;background:#fff;border-radius:5px;padding:2px 6px;margin-top:3px}
   .wt.open{display:block}
+  .kwb{background:#effcf5;border:1px solid #a9e4c6;border-radius:7px;padding:5px 8px;margin-top:6px;font-size:13.5px;line-height:1.9}
+  .kwb b{color:#0b6e4f;margin-right:6px}
+  .kwb.empty{color:var(--sub);background:#fff;border-style:dashed}
+  .kwc{display:inline-block;background:#fff;border:1px solid #cdeedd;border-radius:6px;padding:0 7px;margin:2px 4px 2px 0}
+  .kww{font-family:Georgia,serif;font-weight:700;color:#0b6e4f}
   .rule{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:20px 0;font-size:14.5px}
   .rule ul{margin:6px 0 0 18px;padding:0}
   .back{font-size:14px;margin-bottom:10px;display:inline-block}
@@ -150,7 +155,10 @@ function itemHtml(it, key) {
   if (it.k === 'we') {
     const step = {1: '第 1 天：讀懂思路＋分段背 18 格', 2: '第 2 天：默寫＋限時 20 分整篇默打', 3: '限時 20 分整篇默打'}[it.step];
     const firm = it.firm ? '<span class="tag">10 月練過</span>' : '';
-    return `<span class="kind">WE</span><a href="WE_論點總表.html#q${encodeURIComponent(it.n)}" target="_blank">#${it.o} ${esc(it.t)}</a> <span class="min">${esc(it.n)}</span>${firm}<br><span class="min">${step}</span>`;
+    const kw = it.kw && it.kw.length
+      ? `<div class="kwb"><b>🔑 要背的單字</b>${it.kw.map(k => `<span class="kwc"><span class="kww">${esc(k.w)}</span> ${esc(k.zh)}</span>`).join('')}</div>`
+      : '<div class="kwb empty"><b>🔑 要背的單字</b>練這篇時跟範文對照挑出來補上</div>';
+    return `<span class="kind">WE</span><a href="WE_論點總表.html#q${encodeURIComponent(it.n)}" target="_blank">#${it.o} ${esc(it.t)}</a> <span class="min">${esc(it.n)}</span>${firm}<br><span class="min">${step}</span>${kw}`;
   }
   if (it.k === 'weall') return '<span class="kind">WE</span>37 篇背完！今天挑最不熟的 2 篇限時默打，明天起總複習';
 }

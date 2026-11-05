@@ -30,6 +30,9 @@ WE = {}
 for p in re.split(r'\n(?=\{n:)', body)[1:]:
     m = re.match(r"\{n:'([^']*)', o:(\d+), t:'([^']*)'", p)
     WE[int(m.group(2))] = {'o': int(m.group(2)), 'n': m.group(1), 't': m.group(3), 'firm': 'rules:' in p}
+    # 要背的單字：總表該題的 kw:[{w:'…', zh:'…', sp:'…', at:'…'}]，還沒補的題＝空陣列（菜單顯示待補格）
+    kw = re.search(r"\n kw:\[(.*?)\],\n", p, re.S)
+    WE[int(m.group(2))]['kw'] = [{'w': a, 'zh': b} for a, b in re.findall(r"\{w:'([^']*)', zh:'([^']*)'", kw.group(1))] if kw else []
 assert len(WE) == 37, len(WE)
 firm = sorted(o for o, w in WE.items() if w['firm'])
 rest = sorted(o for o in WE if o not in W2 and o not in firm)

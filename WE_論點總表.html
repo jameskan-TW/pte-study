@@ -98,6 +98,15 @@ header p { font-size: .85rem; opacity: .8; margin-top: 4px; }
 .a2 { color: #ad5e0a; background: #fdebd0; }
 .a3 { color: #6f3585; background: #ebdef0; }
 .a4 { color: #b03a2e; background: #fadbd8; }
+.kw { color: #0b6e4f; background: #c8f7dc; border-bottom: 2px solid #1e9e6a; }
+.kwbox { background: #effcf5; border: 1px solid #a9e4c6; border-left: 4px solid #1e9e6a; border-radius: 6px; padding: 10px 14px; margin-bottom: 14px; }
+.kwbox .kw-title { font-weight: 700; color: #0b6e4f; font-size: .9rem; margin-bottom: 8px; }
+.kwbox .kw-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 8px; }
+.kwbox .kw-card { background: white; border: 1px solid #cdeedd; border-radius: 6px; padding: 6px 10px; line-height: 1.45; }
+.kwbox .kw-w { font-family: Georgia, serif; font-weight: 700; font-size: 1.05rem; color: #0b6e4f; }
+.kwbox .kw-sp { font-family: Georgia, serif; font-size: .8rem; color: #888; margin-left: 6px; }
+.kwbox .kw-zh { font-size: .85rem; color: #333; }
+.kwbox .kw-at { font-size: .75rem; color: #999; }
 .wc { text-align: right; font-size: .78rem; color: #999; font-family: 'Noto Sans TC', sans-serif; margin-top: 8px; }
 .slot { color: #555; background: #f0f0ef; border: 1px dashed #bbb; border-radius: 3px;
         padding: 0 5px; font-family: 'Noto Sans TC', sans-serif; font-size: .85em; white-space: nowrap; }
@@ -692,17 +701,25 @@ const DATA = [
  }},
 
 {n:'②-4', o:12, t:'平衡工作和家庭娛樂生活（普遍性與後果）', en:'Nowadays, people who devote too much time to their job leave very little time for their personal and private life. How widespread is the problem? What problem will this shortage of time cause?',
- stance:'過勞普遍且後果嚴重', p2c:4, p2zh:'普遍性：拚命工作求升遷加薪 → 更好前途 → 各行各業都在加班', p3c:2, p3zh:'後果：事業成功卻失去家庭關係；James 不加班 → 身心健康、全家和樂',
- es:{topic:'people working too much',
- va:'people should pay more attention to their work', vb:'working too much causes serious problems',
- con:'working too much is very common for this generation', conR:'many people believe that working harder is the way to success',
- cond:'people work harder', subj:'they', resA:'get <i class="a4">a promotion and a higher income</i>', resB:'<i class="a3">better future prospects</i>',
- concl:'working overtime is seen in every job',
- stance:'working too much causes serious problems', reason:'it takes away time with family',
- jv:'works', jn:'firm', does:'stops working overtime and spends more quality time with his family',
- result:'stay healthy in body and mind and keep the whole family in harmony',
- impl:'extra money from working overtime cannot buy <i class="a1">a happy family</i>',
- final:'working too much does more harm than good to families', rec:'people stop working overtime and spend more time with their family'},
+ stance:'過勞普遍且後果嚴重', p2c:4, p2zh:'普遍性：壓力焦慮大 → 專心拚事業才能升遷 → 更高收入 → 很多人放棄私人生活', p3c:2, p3zh:'後果：很難跟家人保持聯繫；James 時間都花在工作 → 陪不到家人 → 沒有親密感、家不和諧',
+ kw:[{w:'phenomenon', zh:'現象', sp:'phe-no-me-non', at:'P1 結尾、④ 承認、⑪ 我的主張'},
+  {w:'increasingly', zh:'越來越', sp:'in-creas-ing-ly', at:'④ 承認'},
+  {w:'anxiety', zh:'焦慮', sp:'anx-i-e-ty', at:'⑤ 對方的理由'},
+  {w:'concentrate', zh:'專心', sp:'con-cen-trate', at:'⑥ 如果'},
+  {w:'career pursuits', zh:'職涯追求', sp:'pur-suit-s', at:'⑥ 如果'},
+  {w:'promoted', zh:'被升遷', sp:'pro-mo-ted', at:'⑧ 就能'},
+  {w:'intimacy', zh:'親密感', sp:'in-ti-ma-cy', at:'⑯ 換句話說'}],
+ es:{topic:'people devoting too much time to their job',
+ va:'people should focus on their work', vb:'this causes negative impacts on families',
+ p1end:'I will discuss how widespread this <i class="kw">phenomenon</i> is and what impacts it may bring.',
+ con:'this <i class="kw">phenomenon</i> is <i class="kw">increasingly</i> common in modern society', conR:'there is too much stress and <i class="kw">anxiety</i> at work',
+ cond:'people <i class="kw">concentrate</i> fully on their career <i class="kw">pursuits</i>', subj:'they', resA:'be <i class="kw">promoted</i> to higher positions', resB:'<i class="a4">a higher income</i>',
+ concl:'many people give up their personal life',
+ stance:'this <i class="kw">phenomenon</i> causes negative impacts on families', reason:'this makes it difficult for people to stay connected with their family',
+ jv:'works', jn:'firm', does:'spends most of his time on work', able:'he is unable to',
+ result:'spend time with his family',
+ impl:'he cannot improve family <i class="kw">intimacy</i> or keep the family in harmony',
+ final:'working too much does more harm than good', rec:'people spend more time with their family'},
  mistakes:{
   spell:[
    {x:'succuss', o:'success', nt:'suc-cess：cc＋ss；動詞 succeed（-ceed↔-cess 同 proceed/process）'},
@@ -731,7 +748,7 @@ const DATA = [
    {x:'the happy of family（兩次）', o:'a happy family', nt:'of 前後要名詞；形容詞直接放名詞前＋a'},
    {x:'more efficiency', o:'more efficient', nt:'make him＋形容詞（舊 ⑯ 長版，已刪）'}
   ],
-  note:'2026-09-23 首次逐 slot 練，18 格全打完、8 拼字＋15 文法。主罩門：pay attention to 第 4 次錯 on；形容詞／名詞混用（health/healthy、mental/mind、efficiency/efficient、happy of family）；V-ing 主詞 vs that 子句缺動詞；第三人稱 +s 漏兩次（take／spends）。做對的：⑥⑨⑰⑱ 一次過、V-ing 主詞＋s（causes/does）。換 James 版：④ 刪 people in、⑭ 加 quality（陪家人線固定片語）、⑯ 太長改「extra money from working overtime cannot buy a happy family」（刪 efficient／boosts productivity 半句）。⑤ harder/hard、⑩ every job/can be seen in many jobs 兩者皆可，範文不動。'
+  note:'2026-11-06 依機經範文改寫（內容照範文、難字只留 7 個、259 字；James 改成反面例子），上面錯題是 09-23 舊版的。2026-09-23 首次逐 slot 練，18 格全打完、8 拼字＋15 文法。主罩門：pay attention to 第 4 次錯 on；形容詞／名詞混用（health/healthy、mental/mind、efficiency/efficient、happy of family）；V-ing 主詞 vs that 子句缺動詞；第三人稱 +s 漏兩次（take／spends）。做對的：⑥⑨⑰⑱ 一次過、V-ing 主詞＋s（causes/does）。換 James 版：④ 刪 people in、⑭ 加 quality（陪家人線固定片語）、⑯ 太長改「extra money from working overtime cannot buy a happy family」（刪 efficient／boosts productivity 半句）。⑤ harder/hard、⑩ every job/can be seen in many jobs 兩者皆可，範文不動。'
  }},
 
 {n:'②-5', o:16, t:'你會選擇學習氣候變化哪些方面？（Report）', en:'You need to study climate change, which aspect of climate change will you choose and why? Use examples.',
@@ -1748,6 +1765,12 @@ function renderMistakes(mk){
   if (mk.note) out += `<div class="nt" style="margin-top:8px">${mk.note}</div>`;
   return out + '</div>';
 }
+function renderKw(kw){
+  if (!kw || !kw.length) return '';
+  return `<div class="kwbox"><div class="kw-title">🔑 這題要背的單字（${kw.length} 個，範文裡綠底）</div><div class="kw-grid">`
+    + kw.map(k => `<div class="kw-card"><span class="kw-w">${k.w}</span><span class="kw-sp">${k.sp||''}</span><br><span class="kw-zh">${k.zh}</span> <span class="kw-at">${k.at||''}</span></div>`).join('')
+    + '</div></div>';
+}
 function T(s){ return `<span class="tpl">${s}</span>`; }
 
 function buildEssay(e){
@@ -1760,7 +1783,7 @@ function buildEssay(e){
 
 function wordCount(paras){
   const text = paras.join(' ').replace(/<[^>]+>/g,' ');
-  return text.trim().split(/\s+/).length;
+  return text.trim().split(/\s+/).filter(w => /[A-Za-z0-9]/.test(w)).length;  // 標籤換空白後落單的逗號不算字
 }
 
 const sumtable = document.getElementById('sumtable');
@@ -1813,10 +1836,10 @@ const ZH = {
  p3:'平衡是第一優先 (the first priority)——錢買不到幸福家庭 (money cannot buy a happy family)。例：James 現在多陪家人 (spends more time with his family) → 身心健康 (healthy in body and mind)。含義：好的平衡讓他更有效率、提升生產力 (more efficient, boosts productivity)',
  p4:'平衡很重要；建議：大家別再加班 (stop working overtime)、多陪家人'},
 '②-4':{
- p1:'反方：應更專注工作 (pay more attention to their work)；我方：過勞造成嚴重問題 (serious problems)',
- p2:'這一代過勞很普遍 (very common for this generation)——多數人相信拚命工作才會成功 (the way to success)。若拚命工作 (work harder) → 升遷加薪 (a promotion, a higher income) → 更好的前途 (better future prospects)（老師 0908 改）。小結：各行各業都看得到加班 (working overtime is seen in every job)',
- p3:'過勞造成嚴重問題——它奪走陪家人的時間 (it takes away time with family)。例：James 不再加班、多陪家人 (stops working overtime, spends more quality time with his family) → 身心健康 (healthy in body and mind)、全家和樂 (keep the whole family in harmony)。含義：加班多賺的錢買不到幸福家庭 (extra money from working overtime cannot buy a happy family)',
- p4:'過勞對家庭弊大於利 (does more harm than good to families)；建議：大家別再加班、多陪家人 (stop working overtime)'},
+ p1:'反方：應該專注工作 (focus on their work)；我方：對家庭有負面影響 (negative impacts on families)；結尾改答題目兩問：多普遍、有什麼影響 (how widespread this phenomenon is and what impacts it may bring)',
+ p2:'這現象在現代社會越來越普遍 (increasingly common in modern society)——工作壓力和焦慮太大 (too much stress and anxiety at work)。若專心拚事業 (concentrate fully on their career pursuits) → 被升遷到更高職位 (be promoted to higher positions) → 更高收入 (a higher income)。小結：很多人放棄私人生活 (give up their personal life)',
+ p3:'這現象對家庭有負面影響——讓人很難跟家人保持聯繫 (difficult to stay connected with their family)。例：James 大部分時間都花在工作 (spends most of his time on work) → 沒辦法陪家人 (unable to spend time with his family)。含義：無法增進家人親密感、家也不和諧 (cannot improve family intimacy or keep the family in harmony)',
+ p4:'過勞弊大於利 (does more harm than good)；建議：大家多陪家人 (spend more time with their family)'},
 '②-5':{
  p1:'反方：研究氣候的影響 (the effects) 最好；我方：研究成因 (the causes) 最好',
  p2:'成因是什麼——暖化是溫室氣體太多造成 (caused by too much greenhouse gas)，大多溫室氣體來自汽車和工廠 (most greenhouse gas comes from cars and factories)。若人們每天開車 (drive cars every day) → 越來越多溫室氣體排到空氣中 (put more greenhouse gas into the air) → 越來越多極端天氣 (more and more extreme weather)。小結：世界各國政府都在採取行動 (take action)',
@@ -1997,6 +2020,7 @@ DATA.forEach(d=>{
   <div class="q-body">
     <div class="q-en">${d.en}</div>
     <div class="stance"><b>立場：</b>${d.stance}</div>
+    ${renderKw(d.kw)}
     ${ZH[d.n] ? `
     <div class="row">
       <div class="row-label">P1 立場</div>
