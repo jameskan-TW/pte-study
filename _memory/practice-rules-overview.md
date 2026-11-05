@@ -3,7 +3,7 @@ name: practice-rules-overview
 description: PTE 互動練習規則總覽（WE 逐 slot 練法／WE 文法總複習 18 類考法／拼字・SST 關鍵字 5 題一批／FIB 四選一）＋ 2026-10-24 各項接續點。換電腦先讀這份。
 metadata:
   type: project
-  modified: 2026-10-24
+  modified: 2026-11-06
 ---
 
 # PTE 互動練習規則總覽（2026-10-24 整理，給任何一台電腦的 Claude 開考用）
@@ -47,6 +47,20 @@ James 說「對話互動考我」時，照這份做。細節出處：`HANDOFF.md
 W3 起改整篇計時 1 篇／天貼來批改（題目寫死在菜單 D15 起）。
 盯梢：take the metro／by metro 冠詞相反、and…keeps、earlier、the ride（見 `we-slot-drill-watchlist.md`）。
 
+## 1b. 90 天菜單的 WE：對照範文改寫＋要背的單字（2026-11-06 起，優先於 §1 的「只用最基礎字」）
+
+James 2026-11-06 改策略：**「不完全走模板，盡量跟範文一致，難字我判斷一下，可以努力背背看」**。每篇在菜單第 1 天（讀懂＋分段背）先做這步：
+1. James 貼機經原版範文（或從 `WE_中文翻譯.html` 取），我對照總表現有版本說差在哪。
+2. **模板句一個字都不動**（`buildEssay` 的藍字），只把範文的論點填進 18 格 slot。範文的開頭結尾若是另一套模板，一律用他背熟的那套。
+3. 範文難字逐個判斷，列表給他看：**保留**（好拼、可重複用，如 phenomenon）／**可背**／**換掉**（如 managerial hierarchies→higher positions、remunerated→a higher income）／**刪掉**（如 tangible／intangible）。題目裡就有的字（devote、widespread）可照抄，不算要背。
+4. **字數 250 左右**（他說 290 打不完），超過就刪 slot 內容，不刪模板。
+5. 雙題型（how widespread＋what problem）可用 `es.p1end` 換 P1 結尾去答兩問；例子要反面就設 `able:'he is unable to'`。結尾仍收家庭和諧。
+6. 他同意後寫進總表：slot 裡要背的字包 `<i class="kw">…</i>`（綠底）；該題加 `kw:[{w, zh, sp(音節), at(哪一格)}]`，題卡顯示「🔑 這題要背的單字」；重跑 `tools/menu_90/gen.py`，菜單那篇的兩天就會列出單字（沒補的題顯示待補格）。舊錯題留著，note 註明是舊版的。
+7. 然後才照 §1 一格一格考。
+
+**進度**：#12（D1–2）已改完，7 字：phenomenon／increasingly／anxiety／concentrate／career pursuits／promoted／intimacy；還沒開始逐格考。下一篇 #5（D3–4）。
+連帶沒更新：改過的題，`WE_漫畫.html`、`WE_三分鐘卡.pdf`、`WE_關鍵用詞.html` 還是舊內容。
+
 ## 2. WE 文法總複習（錯誤總回顧）考法
 
 頁面 `WE_文法總複習.html`：37 題 mistakes 跨篇歸 **18 類**，每類有一句話規則＋James 錯句→對句。
@@ -84,4 +98,4 @@ James 2026-11-05 定的練法（聊天沒聲音，不模擬聽寫）：
 
 ## 5. 每天怎麼開工
 
-十月菜單已結束（`讀書菜單_10月.html` 2026-11-02 刪除）。**2026-11-05 起照 `讀書菜單_90天.html`**（見 `study-plan-90.md`）：說「今天 D 幾」就照菜單當日欄。說「考 slot」→ §1；說「考文法總複習」→ §2；說「考拼字／SST 單字」→ §3；說「考 FIB」→ §4；說「考 WFD」→ §3b（整句貼出→他重打）。
+十月菜單已結束（`讀書菜單_10月.html` 2026-11-02 刪除）。**2026-11-05 起照 `讀書菜單_90天.html`**（見 `study-plan-90.md`）：說「今天 D 幾」就照菜單當日欄；**WE 新篇先走 §1b（對照範文改寫＋挑要背的單字），再逐格考**。說「考 slot」→ §1；說「考文法總複習」→ §2；說「考拼字／SST 單字」→ §3；說「考 FIB」→ §4；說「考 WFD」→ §3b（整句貼出→他重打）。
