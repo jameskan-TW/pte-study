@@ -1,6 +1,6 @@
 ---
 name: study-plan-90
-description: 2026-11-04 → 2027-02-01 的 90 天讀書計畫：FIB／WFD 只做預測題、WE 37 篇硬背兩天一篇、每天早上文法下午 WE
+description: 2026-11-05 → 2027-02-02 的 90 天讀書計畫：FIB／WFD 只做預測題、WE 37 篇硬背兩天一篇、每天早上文法下午 WE
 metadata:
   type: project
   modified: 2026-11-03

@@ -12,4 +12,4 @@
 - [WE 盯梢清單](we-slot-drill-watchlist.md) — James 點名要記：take the metro／by metro 冠詞相反；and…keeps、earlier、the ride 連錯點
 - [SST 關鍵字默拼](sst-keyword-drill.md) — 95 字清單在 repo SST_關鍵字默拼_進度.md；每天考 3 個；1019 第一輪 95 字全過（錯 45）；下次重考進度檔「錯過的字」區：反覆卡 8＋breadth/abstraction 優先，每批 5 個
 - [WE 文法總複習考題進度](we-grammar-review-progress.md) — 18 類 5 句一批；1028 18 類全考完一輪，下次只考 1024–28 錯句，先複考 1024 錯的 in a mood／are worried／goes／a promotion
-- [90 天讀書計畫](study-plan-90.md) — 11/4–2/1：FIB-D／FIB-DD／WFD 只做 11/3 機經預測題、WE 37 篇硬背兩天一篇；早上文法下午 WE；頁面 讀書菜單_90天.html
+- [90 天讀書計畫](study-plan-90.md) — 11/5–2/2：FIB-D／FIB-DD／WFD 只做 11/3 機經預測題、WE 37 篇硬背兩天一篇；早上文法下午 WE；頁面 讀書菜單_90天.html

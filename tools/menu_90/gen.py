@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""90 天讀書菜單產生器（2026-11-04 → 2027-02-01）
+"""90 天讀書菜單產生器（2026-11-05 → 2027-02-02）
 
 James 2026-11-03 定的規則：
 - FIB-D（下拉）／FIB-DD（拖拉）／WFD 只練 ptefighter 2026-11-03 機經標「預測」的題；練過的（git 歷史 閱讀訂正／舊菜單出現過的 #id）排到後面複習
@@ -13,7 +13,7 @@ import json, re, datetime, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 HERE = pathlib.Path(__file__).resolve().parent
-START = datetime.date(2026, 11, 4)
+START = datetime.date(2026, 11, 5)
 NDAYS = 90
 WE_DAYS = 74          # 37 篇 × 2 天
 NEW_DAYS = 75         # 第 76 天起總複習
