@@ -1297,17 +1297,25 @@ const DATA = [
  }},
 
 {n:'④-5', o:5, t:'家長應對孩子的行為負法律責任', en:'Parents should be held legally responsible for their children’s act. What is your opinion? Support it with personal examples.',
- stance:'同意 — 家長應負法律責任', p2c:2, p2zh:'讓步：對家長壓力過大、不盡公平', p3c:4, p3zh:'主論：用心管教 → 好成績 → 好工作 → 家庭和諧',
- es:{topic:'parents’ legal responsibility for their children',
- va:'such responsibility is unfair to parents', vb:'parents should be held legally responsible',
- con:'this puts heavy pressure on parents', conR:'children may not listen to their parents',
- cond:'parents are punished for every mistake', subj:'they', resA:'<i class="a2">feel upset and anxious</i>', resB:'<i class="a2">a bad temper that hurts families</i>',
- concl:'some people think this rule is too strict',
- stance:'parents should take legal responsibility', reason:'legal duty pushes parents to guide their children with care',
- jv:'works', jn:'firm', does:'was carefully guided by his parents',
- result:'get high grades and find <i class="a4">a good job with a steady income</i>',
- impl:'careful parenting keeps the whole family in harmony',
- final:'this rule does more good than harm', rec:'the law also provide parenting support'},
+ stance:'不同意 — 孩子要為自己的行為負責', p2c:3, p2zh:'讓步：家長該負責——家長教孩子人生道理；沒好好指導 → 霸凌暴力 → 危害社會', p3c:4, p3zh:'主論：孩子長大有獨立思考；James 讀普通高中、為自己利益偷竊 → 該自己負責 → 處罰家長不公平、傷全家',
+ kw:[{w:'accountable', zh:'負責任的', sp:'ac-count-able', at:'④ 承認'},
+  {w:'guidance', zh:'指導（名詞）', sp:'guid-ance', at:'⑥ 如果'},
+  {w:'engage in', zh:'從事（to 後原形）', sp:'en-gage', at:'⑧ 就能'},
+  {w:'bullying', zh:'霸凌', sp:'bul-ly-ing', at:'⑧ 就能'},
+  {w:'violence', zh:'暴力', sp:'vi-o-lence', at:'⑧ 就能'},
+  {w:'consequences', zh:'後果', sp:'con-se-quen-ces', at:'⑨ 進而'},
+  {w:'independent', zh:'獨立的', sp:'in-de-pen-dent', at:'⑫ 因為'},
+  {w:'theft', zh:'偷竊（名詞；steal 是動詞）', sp:'t-h-e-f-t', at:'⑭ James 做了'}],
+ es:{topic:'parents’ legal responsibility for their children’s acts',
+ va:'parents should take the blame', vb:'children should be responsible for their own actions',
+ con:'parents should be held <i class="kw">accountable</i>', conR:'parents can teach their children important lessons in life',
+ cond:'parents fail to provide proper <i class="kw">guidance</i>', subj:'children', modal:'may', resA:'be more likely to <i class="kw">engage</i> in <i class="kw">bullying</i>, <i class="kw">violence</i>, or other harmful behavior', resB:'negative <i class="kw">consequences</i> for society',
+ concl:'parents may sometimes be held partly responsible',
+ stance:'children should be responsible for their own actions', reason:'they develop <i class="kw">independent</i> thinking as they grow up',
+ jv:'studies', jat:'an average', jn:'high school', does:'committed <i class="kw">theft</i> for his own benefit', able:'he should',
+ result:'be responsible for whatever he does',
+ impl:'punishing parents for acts beyond their control is unfair and hurts the whole family',
+ final:'children should be responsible for their own actions', rec:'parents guide their children and keep the family in harmony'},
  mistakes:{
   spell:[
    {x:'parensts', o:'parents', nt:'多打一個 s'},
@@ -1336,7 +1344,7 @@ const DATA = [
    {x:'this rule does more harm than good', o:'this rule does more good than harm', nt:'⚠ 立場打反！同意方是 good than harm，整篇會自打嘴巴'},
    {x:'governments give parents support', o:'the law also provide parenting support', nt:'漏 also（罰之外也要幫）和 parenting support 關鍵字'}
   ],
-  note:'2026-09-18 首次逐 slot 練（情緒讓步線負面版第一題），18 格全打完：7 拼字＋16 文法。最危險：⑰ 立場打反。拼字集中漏 r（huts／suppot）；文法：take legal responsibility 亂加 the 兩次、every 後單數兩次。conR 改成 James 直覺版 may not listen to their parents。'
+  note:'2026-11-08 依機經新版範文改寫（立場改「不同意」、⑬ 用 an average high school、⑮ he should、8 個要背的單字、262 字），上面錯題是 09-18 舊版（同意立場）的。2026-09-18 首次逐 slot 練（情緒讓步線負面版第一題），18 格全打完：7 拼字＋16 文法。最危險：⑰ 立場打反。拼字集中漏 r（huts／suppot）；文法：take legal responsibility 亂加 the 兩次、every 後單數兩次。conR 改成 James 直覺版 may not listen to their parents。'
  }},
 
 {n:'④-6', o:9, t:'遲交作業扣分（Report）', en:'Some students are deducted marks for late submission. What’s your view? What recommendations would you take?',
@@ -1776,7 +1784,7 @@ function T(s){ return `<span class="tpl">${s}</span>`; }
 function buildEssay(e){
   const p1 = `${T('It is generally true that')} ${e.topic} ${T('has become a matter of concern over the years, and this has caused great controversy and captured public attention. Some people are of the opinion that')} ${e.va}${T(', while others hold the view that')} ${e.vb}. ${T(e.p1end || 'I tend to agree more with the latter and will discuss this further below.')}`;
   const p2 = `${T('It has to be admitted that')} ${e.con}${T(', and one argument in favor of this view can be that')} ${e.conR}. ${T('If')} ${e.cond}${T(', then')} ${e.subj} ${T(e.modal||'can')} ${e.resA}${T(', in turn leading to')} ${e.resB}. ${T('As a result, it is unsurprising that')} ${e.concl}.`;
-  const p3 = `${T('On the other hand, I firmly believe that')} ${e.stance}${T(', and one compelling reason is that')} ${e.reason}. ${T(`A pertinent case in point is James, who ${e.jv} at a world-renowned and prestigious ${e.jn}. As James`)} ${e.does}${T(', ' + (e.able || 'he is able to'))} ${e.result}. ${T('In other words,')} ${e.impl}.`;
+  const p3 = `${T('On the other hand, I firmly believe that')} ${e.stance}${T(', and one compelling reason is that')} ${e.reason}. ${T(`A pertinent case in point is James, who ${e.jv} at ${e.jat || 'a world-renowned and prestigious'} ${e.jn}. As James`)} ${e.does}${T(', ' + (e.able || 'he is able to'))} ${e.result}. ${T('In other words,')} ${e.impl}.`;
   const p4 = `${T('In conclusion, despite the fact that the counterargument may hold true in many cases, I believe that')} ${e.final}${T(', and it is crucial that')} ${e.rec}.`;
   return [p1,p2,p3,p4];
 }
@@ -1921,10 +1929,10 @@ const ZH = {
  p3:'好設計好處大於壞處 (good design does more good than harm)——舒適的空間 (a comfortable space) 幫助專注 (focus)。例：James 整天坐在明亮、設計良好的辦公室 (sits in a bright and well-designed office all day) → 保持專注 (stay focused)、為家人賺穩定收入 (earn a steady income for his family)。含義：好設計支撐職涯與溫暖穩定的家',
  p4:'建築設計好處大於壞處 (building design does more good than harm)；建議：設計師注重舒適 (comfort) 與空間的使用方式 (how people use the space)'},
 '④-5':{
- p1:'反方：這責任對家長不公平 (unfair)；我方：家長應負法律責任 (legally responsible)',
- p2:'這給家長沉重壓力 (heavy pressure)——孩子可能不聽家長的話 (may not listen to their parents)。若家長為每個錯被罰 (punished for every mistake) → 沮喪焦慮 → 壞脾氣傷家庭。小結：有人覺得規定太嚴 (too strict)',
- p3:'家長應負法律責任——法律責任 (legal duty) 促使家長用心管教 (guide with care)。例：James 從小被父母細心引導 (carefully guided) → 好成績 (get high grades)、好工作穩定收入 (a good job and a steady income)。含義：用心的教養 (careful parenting) 讓全家和諧 (in harmony)',
- p4:'這規定利大於弊 (this rule does more good than harm)；建議：法律同時提供育兒支援 (parenting support)'},
+ p1:'反方：家長該負責任 (take the blame)；我方：孩子要為自己的行為負責 (be responsible for their own actions)',
+ p2:'家長應被究責 (held accountable)——家長能教孩子人生道理 (important lessons in life)。若家長沒好好指導 (fail to provide proper guidance) → 孩子比較會霸凌、暴力 (engage in bullying, violence) → 對社會有負面後果 (negative consequences for society)。小結：家長有時要負部分責任 (partly responsible)',
+ p3:'孩子要為自己負責——長大會發展獨立思考 (independent thinking)。例：James 讀普通高中 (an average high school)，為自己利益偷竊 (committed theft for his own benefit) → 他該為自己做的事負責 (be responsible for whatever he does)。含義：為家長管不到的事處罰家長 (acts beyond their control) 不公平、傷害全家 (hurts the whole family)',
+ p4:'孩子要為自己的行為負責；建議：家長好好引導孩子、讓家庭和諧 (keep the family in harmony)'},
 '④-6':{
  p1:'反方：這處罰對學生太嚴 (too strict)；我方：扣分公平且必要 (fair and necessary)',
  p2:'某些情況扣分太嚴——每個人都可能出意外 (everyone may have an accident)。若學生出車禍 (a car accident) → may 交不出作業 (fail to submit his work on time) → 被當 (failing the course)（0911 James 自己的字）。小結：有人要求更彈性的規定 (flexible rules)',
