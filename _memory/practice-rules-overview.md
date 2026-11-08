@@ -58,7 +58,7 @@ James 2026-11-06 改策略：**「不完全走模板，盡量跟範文一致，�
 6. 他同意後寫進總表：slot 裡要背的字包 `<i class="kw">…</i>`（綠底）；該題加 `kw:[{w, zh, sp(音節), at(哪一格)}]`，題卡顯示「🔑 這題要背的單字」；重跑 `tools/menu_90/gen.py`，菜單那篇的兩天就會列出單字（沒補的題顯示待補格）。舊錯題留著，note 註明是舊版的。
 7. 然後才照 §1 一格一格考。
 
-**進度**：#12（D1–2）已改完，7 字：phenomenon／increasingly／anxiety／concentrate／career pursuits／promoted／intimacy；還沒開始逐格考。下一篇 #5（D3–4）。
+**進度**：#12（D1–2）已改完，7 字：phenomenon／increasingly／anxiety／concentrate／career pursuits／promoted／intimacy。**11/8 第 1 天照打完 18 格**（James 要求「先給英文 slot、一題題照打練思路」：我貼整格英文、他照打、錯了標出重打；⑬ 模板句他說跳過）。照打錯點（第 2 天默寫先盯）：**第三人稱 +s 漏 3 次**（③ causes、⑪ causes、⑫ makes）；to→too；devote **to**（打成 on）；bring 不加 in（bring in＝引進）；what impacts **it may** bring 漏 it、漏 may；拼字 phonomenon／phenomena（單數 -non）、widespred、socity、anxiouty（anxious 形容詞 vs anxiety 名詞）、concerntrate、prsuits、famliy；leading **to**；make **it** difficult for people（打成 them，形式受詞）；keep **the** family；⑰ too much 不換 too hard。下一步：#12 第 2 天默寫＋限時 20 分整篇；之後 #5（D3–4）。
 連帶沒更新：改過的題，`WE_漫畫.html`、`WE_三分鐘卡.pdf`、`WE_關鍵用詞.html` 還是舊內容。
 
 ## 2. WE 文法總複習（錯誤總回顧）考法
