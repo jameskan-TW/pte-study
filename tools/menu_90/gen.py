@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""90 天讀書菜單產生器（2026-11-05 → 2027-02-02）
+"""90 天讀書菜單產生器（2026-11-05 起；11/9–18 停了十天，11/19 重新開始 → 2027-02-16）
 
 James 2026-11-03 定的規則：
 - FIB-D（下拉）／FIB-DD（拖拉）／WFD 只練 ptefighter 2026-11-03 機經標「預測」的題；練過的（git 歷史 閱讀訂正／舊菜單出現過的 #id）排到後面複習
@@ -14,6 +14,15 @@ import json, re, datetime, pathlib
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 HERE = pathlib.Path(__file__).resolve().parent
 START = datetime.date(2026, 11, 5)
+# 2026-11-18 順延：James 只做完 D1 就停了十天（11/9–18）。內容一題不刪、D 編號不動（打勾紀錄的 key 是 D 編號），只改日期：
+# 11/19 重新開始，先暖身 3 天（D2 拆兩天做、D3 一天），D4＝11/22 起恢復一天一格。
+RESUME = datetime.date(2026, 11, 19)
+def day_dates(d):
+    """回傳 (起日, 迄日, 暖身說明)"""
+    if d == 1: return START, START, ''
+    if d == 2: return RESUME, RESUME + datetime.timedelta(days=1),         '暖身・分兩天做：11/19 早上做前一半＋下午把 #12 的 18 格重新照打一遍；11/20 早上做後一半＋下午 #12 默寫'
+    if d == 3: return RESUME + datetime.timedelta(days=2), RESUME + datetime.timedelta(days=2),         '暖身：#5 範文 11/8 已改好、8 個單字考過，下午只要分段背 18 格'
+    x = RESUME + datetime.timedelta(days=d - 1); return x, x, ''
 NDAYS = 90
 WE_DAYS = 74          # 37 篇 × 2 天
 NEW_DAYS = 75         # 第 76 天起總複習
@@ -66,7 +75,7 @@ REV_WE = spread(we_order, NDAYS - NEW_DAYS)  # D76–90：37 篇限時默打一�
 
 days = []
 for d in range(1, NDAYS + 1):
-    date = START + datetime.timedelta(days=d - 1)
+    date, date2, note = day_dates(d)
     am = []
     if d <= 60: am += [{'k': 'fd', **x} for x in FD[d - 1]]
     if d <= 48: am += [{'k': 'fdd', **x} for x in FDD[d - 1]]
@@ -80,8 +89,10 @@ for d in range(1, NDAYS + 1):
     else:
         pm = [{'k': 'we', 'step': 3, **WE[o]} for o in REV_WE[d - NEW_DAYS - 1]] if d > NEW_DAYS else \
              [{'k': 'weall'}]
-    days.append({'d': d, 'date': f'{date.month}/{date.day}', 'iso': date.isoformat(),
-                 'wd': '一二三四五六日'[date.weekday()], 'am': am, 'pm': pm})
+    wd = '一二三四五六日'
+    days.append({'d': d, 'date': f'{date.month}/{date.day}' + (f'–{date2.month}/{date2.day}' if date2 != date else ''),
+                 'iso': date.isoformat(), 'iso2': date2.isoformat(), 'note': note,
+                 'wd': wd[date.weekday()] + ('–' + wd[date2.weekday()] if date2 != date else ''), 'am': am, 'pm': pm})
 
 summary = {'fd': len(fd_new), 'fdOld': len(fd_old), 'fdd': len(fdd_new), 'fddOld': len(fdd_old),
            'wNew': len(w_new), 'wOld': len(w_old), 'end': days[-1]['date']}

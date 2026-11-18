@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>90 天讀書菜單（11/5–2/2）</title>
+<title>90 天讀書菜單（11/5–2/16）</title>
 <style>
   :root{--ink:#1a1a2e;--sub:#5a5a72;--line:#d9d9e3;--bg:#f6f6fa;--card:#fff;
         --accent:#3b2fa0;--accent-bg:#ececf6;--fib:#0b6e4f;--fib-bg:#e6f4ee;--done:#0a7a4b;--warn:#b3261e;--today:#fff7e6}
@@ -73,7 +73,7 @@
 <div class="wrap">
 <a class="back" href="index.html">← 回首頁</a>
 <h1>90 天讀書菜單</h1>
-<div class="sub">2026/11/5（四）– 2027/2/2（二）｜每天約 1 小時 15 分，分兩個時段：<b>☀️ 早上文法</b>（FIB＋WFD）、<b>🌙 下午 WE</b>（硬背範文）。每天要做的題號都寫死了，做完打勾（勾選只存在這台電腦的瀏覽器）。點日期那行可收合／展開。</div>
+<div class="sub">2026/11/5（四）– 2027/2/16（二）｜<b>11/9–18 休息十天，11/19 重新開始</b>（整份順延、內容不刪，前 3 天暖身）｜每天約 1 小時 15 分，分兩個時段：<b>☀️ 早上文法</b>（FIB＋WFD）、<b>🌙 下午 WE</b>（硬背範文）。每天要做的題號都寫死了，做完打勾（勾選只存在這台電腦的瀏覽器）。點日期那行可收合／展開。</div>
 
 <div class="goal">
   <div>目標 <b>總分 72／Writing 75</b></div>
@@ -188,9 +188,10 @@ function render() {
     }).join('');
     const am = list(day.am, 'a'), pm = list(day.pm, 'p');
     const [ma, mp] = dayMin(day);
-    const cls = ['day', day.iso === t ? 'today' : '', n && c === n ? 'done' : '', collapsed[day.d] ? 'collapsed' : ''].join(' ');
+    const cls = ['day', day.iso <= t && t <= day.iso2 ? 'today' : '', n && c === n ? 'done' : '', collapsed[day.d] ? 'collapsed' : ''].join(' ');
     html += `<div class="${cls}" id="d${day.d}">
       <div class="dhead" onclick="toggleDay(${day.d})"><span class="arrow">▼</span><span class="dnum">D${day.d}</span><span class="ddate">${day.date}（${day.wd}）</span><span class="dsum">${c}/${n} 項 · 約 ${ma + mp} 分</span></div>
+      ${day.note ? `<div class="slot" style="background:var(--today);border-left:3px solid #e0b95a;font-size:.9em">🌱 ${esc(day.note)}</div>` : ''}
       <div class="slot am"><h3>☀️ 早上 文法 <span class="min">約 ${ma} 分</span></h3><ul class="chk">${am}</ul></div>
       <div class="slot pm"><h3>🌙 下午 WE <span class="min">約 ${mp} 分</span></h3><ul class="chk">${pm}</ul></div>
     </div>`;
@@ -206,7 +207,7 @@ function toggleDay(d) { if (collapsed[d]) delete collapsed[d]; else collapsed[d]
 function collapseAll(v) { collapsed = {}; if (v) DAYS.forEach(d => collapsed[d.d] = 1); save(); render(); }
 function collapseDone() { document.querySelectorAll('.day.done').forEach(el => collapsed[el.id.slice(1)] = 1); save(); render(); }
 function jumpToday() {
-  const t = todayIso(); let day = DAYS.find(d => d.iso === t) || (t < DAYS[0].iso ? DAYS[0] : DAYS[DAYS.length - 1]);
+  const t = todayIso(); let day = DAYS.find(d => d.iso <= t && t <= d.iso2) || DAYS.find(d => d.iso > t) || DAYS[DAYS.length - 1];
   if (collapsed[day.d]) { delete collapsed[day.d]; save(); render(); }
   document.getElementById('d' + day.d).scrollIntoView({behavior: 'smooth', block: 'start'});
 }
